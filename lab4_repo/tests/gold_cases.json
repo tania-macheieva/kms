@@ -1,0 +1,664 @@
+{
+ "description": "Золотий набір: еталонні відповіді визначено за текстами джерел (не за виводом рушія).",
+ "cases": [
+  {
+   "id": "T01",
+   "title": "QD=1.99 (нижче порога 2) → LowQD",
+   "tags": [
+    "boundary"
+   ],
+   "facts": {
+    "variant.variant_type": "SNP",
+    "variant.QD": 1.99,
+    "variant.FS": 2.0,
+    "variant.SOR": 1.0,
+    "variant.MQ": 60.0
+   },
+   "expect": {
+    "variant.flags": [
+     "LowQD"
+    ],
+    "variant.filter_status": "FILTERED",
+    "variant.filter_scope": "site"
+   }
+  },
+  {
+   "id": "T02",
+   "title": "QD=2.0 (на порозі, строго менше не виконується) → нічого",
+   "tags": [
+    "boundary",
+    "negative"
+   ],
+   "facts": {
+    "variant.variant_type": "SNP",
+    "variant.QD": 2.0,
+    "variant.FS": 2.0,
+    "variant.SOR": 1.0,
+    "variant.MQ": 60.0
+   },
+   "no_rules_fire": true,
+   "absent": [
+    "variant.flags",
+    "variant.filter_status"
+   ]
+  },
+  {
+   "id": "T03",
+   "title": "FS=60 SNP (на порозі) → нічого",
+   "tags": [
+    "boundary",
+    "negative"
+   ],
+   "facts": {
+    "variant.variant_type": "SNP",
+    "variant.QD": 30.0,
+    "variant.FS": 60.0,
+    "variant.SOR": 1.0,
+    "variant.MQ": 60.0
+   },
+   "no_rules_fire": true
+  },
+  {
+   "id": "T04",
+   "title": "FS=60.01 SNP → LowFS",
+   "tags": [
+    "boundary"
+   ],
+   "facts": {
+    "variant.variant_type": "SNP",
+    "variant.QD": 30.0,
+    "variant.FS": 60.01,
+    "variant.SOR": 1.0,
+    "variant.MQ": 60.0
+   },
+   "expect": {
+    "variant.flags": [
+     "LowFS"
+    ],
+    "variant.filter_status": "FILTERED"
+   }
+  },
+  {
+   "id": "T05",
+   "title": "SOR=3 (на порозі) → нічого",
+   "tags": [
+    "boundary",
+    "negative"
+   ],
+   "facts": {
+    "variant.variant_type": "SNP",
+    "variant.QD": 30.0,
+    "variant.FS": 2.0,
+    "variant.SOR": 3.0,
+    "variant.MQ": 60.0
+   },
+   "no_rules_fire": true
+  },
+  {
+   "id": "T06",
+   "title": "SOR=3.01 → HighSOR",
+   "tags": [
+    "boundary"
+   ],
+   "facts": {
+    "variant.variant_type": "SNP",
+    "variant.QD": 30.0,
+    "variant.FS": 2.0,
+    "variant.SOR": 3.01,
+    "variant.MQ": 60.0
+   },
+   "expect": {
+    "variant.flags": [
+     "HighSOR"
+    ]
+   }
+  },
+  {
+   "id": "T07",
+   "title": "MQ=39.9 → LowMQ",
+   "tags": [
+    "boundary"
+   ],
+   "facts": {
+    "variant.variant_type": "SNP",
+    "variant.QD": 30.0,
+    "variant.FS": 2.0,
+    "variant.SOR": 1.0,
+    "variant.MQ": 39.9
+   },
+   "expect": {
+    "variant.flags": [
+     "LowMQ"
+    ],
+    "variant.filter_status": "FILTERED"
+   }
+  },
+  {
+   "id": "T08",
+   "title": "MQ=45 → лише примітка про межову якість, без прапорців",
+   "tags": [],
+   "facts": {
+    "variant.variant_type": "SNP",
+    "variant.QD": 30.0,
+    "variant.FS": 2.0,
+    "variant.SOR": 1.0,
+    "variant.MQ": 45.0
+   },
+   "expect_contains": {
+    "variant.notes": [
+     "borderline_MQ"
+    ]
+   },
+   "absent": [
+    "variant.flags",
+    "variant.filter_status"
+   ]
+  },
+  {
+   "id": "T09",
+   "title": "MQ=50 (межа примітки) → нічого",
+   "tags": [
+    "boundary",
+    "negative"
+   ],
+   "facts": {
+    "variant.variant_type": "SNP",
+    "variant.QD": 30.0,
+    "variant.FS": 2.0,
+    "variant.SOR": 1.0,
+    "variant.MQ": 50.0
+   },
+   "no_rules_fire": true
+  },
+  {
+   "id": "T10",
+   "title": "MQRankSum=-12.6 → LowMQRankSum",
+   "tags": [
+    "boundary"
+   ],
+   "facts": {
+    "variant.variant_type": "SNP",
+    "variant.QD": 30.0,
+    "variant.FS": 2.0,
+    "variant.SOR": 1.0,
+    "variant.MQ": 60.0,
+    "variant.MQRankSum": -12.6
+   },
+   "expect": {
+    "variant.flags": [
+     "LowMQRankSum"
+    ]
+   }
+  },
+  {
+   "id": "T11",
+   "title": "ReadPosRankSum=-8.1 SNP → LowReadPosRankSum",
+   "tags": [
+    "boundary"
+   ],
+   "facts": {
+    "variant.variant_type": "SNP",
+    "variant.QD": 30.0,
+    "variant.FS": 2.0,
+    "variant.SOR": 1.0,
+    "variant.MQ": 60.0,
+    "variant.ReadPosRankSum": -8.1
+   },
+   "expect": {
+    "variant.flags": [
+     "LowReadPosRankSum"
+    ]
+   }
+  },
+  {
+   "id": "T12",
+   "title": "Кілька прапорців одночасно (QD, FS, SOR)",
+   "tags": [],
+   "facts": {
+    "variant.variant_type": "SNP",
+    "variant.QD": 1.0,
+    "variant.FS": 100.0,
+    "variant.SOR": 5.0,
+    "variant.MQ": 60.0
+   },
+   "expect": {
+    "variant.flags": [
+     "LowQD",
+     "LowFS",
+     "HighSOR"
+    ],
+    "variant.filter_status": "FILTERED"
+   }
+  },
+  {
+   "id": "T13",
+   "title": "Виняток: власні пороги набору → стандартні прапорці не ставляться",
+   "tags": [
+    "exception"
+   ],
+   "facts": {
+    "variant.variant_type": "SNP",
+    "variant.QD": 1.0,
+    "variant.FS": 2.0,
+    "variant.SOR": 1.0,
+    "variant.MQ": 60.0,
+    "dataset.custom_thresholds": true
+   },
+   "absent": [
+    "variant.flags",
+    "variant.filter_status"
+   ],
+   "fired_excludes": [
+    "G01"
+   ]
+  },
+  {
+   "id": "T14",
+   "title": "INDEL, FS=100 → LowFS не ставиться (поріг 200 для INDEL)",
+   "tags": [],
+   "facts": {
+    "variant.variant_type": "INDEL",
+    "variant.QD": 30.0,
+    "variant.FS": 100.0,
+    "variant.SOR": 1.0,
+    "variant.MQ": 60.0
+   },
+   "absent": [
+    "variant.flags",
+    "variant.filter_status"
+   ],
+   "fired_excludes": [
+    "G02"
+   ]
+  },
+  {
+   "id": "T15",
+   "title": "INDEL, FS=230 → LowFS",
+   "tags": [
+    "boundary"
+   ],
+   "facts": {
+    "variant.variant_type": "INDEL",
+    "variant.QD": 30.0,
+    "variant.FS": 230.0,
+    "variant.SOR": 1.0,
+    "variant.MQ": 60.0
+   },
+   "expect": {
+    "variant.flags": [
+     "LowFS"
+    ],
+    "variant.filter_status": "FILTERED"
+   }
+  },
+  {
+   "id": "T16",
+   "title": "INDEL, ReadPosRankSum=-10 → прапорця немає (поріг -20 для INDEL)",
+   "tags": [],
+   "facts": {
+    "variant.variant_type": "INDEL",
+    "variant.QD": 30.0,
+    "variant.FS": 2.0,
+    "variant.SOR": 1.0,
+    "variant.MQ": 60.0,
+    "variant.ReadPosRankSum": -10.0
+   },
+   "absent": [
+    "variant.flags"
+   ],
+   "fired_excludes": [
+    "G06"
+   ]
+  },
+  {
+   "id": "T17",
+   "title": "INDEL, ReadPosRankSum=-21 → прапорець",
+   "tags": [],
+   "facts": {
+    "variant.variant_type": "INDEL",
+    "variant.QD": 30.0,
+    "variant.FS": 2.0,
+    "variant.SOR": 1.0,
+    "variant.MQ": 60.0,
+    "variant.ReadPosRankSum": -21.0
+   },
+   "expect": {
+    "variant.flags": [
+     "LowReadPosRankSum"
+    ]
+   }
+  },
+  {
+   "id": "T18",
+   "title": "SNP на екзонному кінці, лише LowFS, SOR=2.2 → REVIEW, не FILTERED",
+   "tags": [
+    "exception-like"
+   ],
+   "facts": {
+    "variant.variant_type": "SNP",
+    "variant.QD": 30.0,
+    "variant.FS": 72.5,
+    "variant.SOR": 2.2,
+    "variant.MQ": 60.0,
+    "variant.at_exon_end": true
+   },
+   "expect": {
+    "variant.filter_status": "REVIEW",
+    "variant.filter_scope": "site"
+   },
+   "expect_contains": {
+    "variant.review": [
+     "FS_may_penalize_exon_end"
+    ]
+   }
+  },
+  {
+   "id": "T19",
+   "title": "Екзонний кінець, але SOR=4 (теж погано) → залишається FILTERED",
+   "tags": [],
+   "facts": {
+    "variant.variant_type": "SNP",
+    "variant.QD": 30.0,
+    "variant.FS": 72.5,
+    "variant.SOR": 4.0,
+    "variant.MQ": 60.0,
+    "variant.at_exon_end": true
+   },
+   "expect": {
+    "variant.filter_status": "FILTERED"
+   },
+   "fired_excludes": [
+    "G14"
+   ]
+  },
+  {
+   "id": "T20",
+   "title": "Мала панель + великий набір із відомими варіантами → конфлікт розв'язано пріоритетом",
+   "tags": [],
+   "facts": {
+    "dataset.dataset_type": "small_gene_panel",
+    "dataset.large_variant_set": true,
+    "dataset.has_curated_known_variants": true
+   },
+   "expect": {
+    "dataset.filtering_method": "hard_filtering"
+   },
+   "no_unresolved_conflicts": true
+  },
+  {
+   "id": "T21",
+   "title": "Геном + великий набір + відомі варіанти → VQSR",
+   "tags": [],
+   "facts": {
+    "dataset.dataset_type": "whole_genome",
+    "dataset.large_variant_set": true,
+    "dataset.has_curated_known_variants": true
+   },
+   "expect": {
+    "dataset.filtering_method": "VQSR"
+   }
+  },
+  {
+   "id": "T22",
+   "title": "Нестандартний організм → hard filtering",
+   "tags": [],
+   "facts": {
+    "dataset.dataset_type": "non_model_organism",
+    "dataset.large_variant_set": false
+   },
+   "expect": {
+    "dataset.filtering_method": "hard_filtering"
+   }
+  },
+  {
+   "id": "T23",
+   "title": "Екзом без великого набору й без відомих варіантів → жодне правило",
+   "tags": [
+    "negative"
+   ],
+   "facts": {
+    "dataset.dataset_type": "exome",
+    "dataset.large_variant_set": false,
+    "dataset.has_curated_known_variants": false
+   },
+   "no_rules_fire": true,
+   "absent": [
+    "dataset.filtering_method"
+   ]
+  },
+  {
+   "id": "T24",
+   "title": "Фільтрація за QUAL → порада QD",
+   "tags": [],
+   "facts": {
+    "request.filter_basis": "QUAL"
+   },
+   "expect": {
+    "request.advice": "use_QD_instead"
+   }
+  },
+  {
+   "id": "T25",
+   "title": "Фільтрація за DP → порада QD",
+   "tags": [],
+   "facts": {
+    "request.filter_basis": "DP"
+   },
+   "expect": {
+    "request.advice": "use_QD_instead"
+   }
+  },
+  {
+   "id": "T26",
+   "title": "Фільтрація за QD → порад немає",
+   "tags": [
+    "negative"
+   ],
+   "facts": {
+    "request.filter_basis": "QD"
+   },
+   "no_rules_fire": true
+  },
+  {
+   "id": "T27",
+   "title": "BRCA2, батько/мати → 50%",
+   "tags": [],
+   "facts": {
+    "proband.variant_gene": "BRCA2",
+    "relative.relationship": "parent"
+   },
+   "expect": {
+    "relative.inheritance_chance": 0.5
+   }
+  },
+  {
+   "id": "T28",
+   "title": "BRCA1, зведений брат/сестра → 25%",
+   "tags": [],
+   "facts": {
+    "proband.variant_gene": "BRCA1",
+    "relative.relationship": "half_sibling"
+   },
+   "expect": {
+    "relative.inheritance_chance": 0.25
+   }
+  },
+  {
+   "id": "T29",
+   "title": "BRCA1, двоюрідний родич → 12,5% як верхня оцінка",
+   "tags": [],
+   "facts": {
+    "proband.variant_gene": "BRCA1",
+    "relative.relationship": "cousin"
+   },
+   "expect": {
+    "relative.inheritance_chance": 0.125
+   },
+   "expect_contains": {
+    "relative.notes": [
+     "chance_is_upper_bound"
+    ]
+   }
+  },
+  {
+   "id": "T30",
+   "title": "Друг (не родич) → шансу успадкування немає",
+   "tags": [
+    "negative"
+   ],
+   "facts": {
+    "proband.variant_gene": "BRCA1",
+    "proband.variant_known": true,
+    "relative.relationship": "friend"
+   },
+   "absent": [
+    "relative.inheritance_chance"
+   ]
+  },
+  {
+   "id": "T31",
+   "title": "Ген поза BRCA1/BRCA2 → шанс не виводиться",
+   "tags": [
+    "negative"
+   ],
+   "facts": {
+    "proband.variant_gene": "other",
+    "relative.relationship": "parent"
+   },
+   "no_rules_fire": true,
+   "absent": [
+    "relative.inheritance_chance"
+   ]
+  },
+  {
+   "id": "T32",
+   "title": "Вік 17 без дитячого ризику → відкласти до повноліття",
+   "tags": [
+    "boundary"
+   ],
+   "facts": {
+    "relative.age": 17,
+    "proband.variant_childhood_cancer_risk": false
+   },
+   "expect": {
+    "relative.testing_age_status": "defer_until_adult"
+   }
+  },
+  {
+   "id": "T33",
+   "title": "Вік 18 → доросле тестування",
+   "tags": [
+    "boundary"
+   ],
+   "facts": {
+    "relative.age": 18
+   },
+   "expect": {
+    "relative.testing_age_status": "adult_eligible"
+   }
+  },
+  {
+   "id": "T34",
+   "title": "Вік 17, але є ризик раку в дитинстві → виняток скасовує відкладення",
+   "tags": [
+    "exception"
+   ],
+   "facts": {
+    "relative.age": 17,
+    "proband.variant_childhood_cancer_risk": true
+   },
+   "expect": {
+    "relative.testing_age_status": "testing_appropriate"
+   },
+   "fired_excludes": [
+    "C07"
+   ]
+  },
+  {
+   "id": "T35",
+   "title": "Родич недоступний → наступний за близькістю",
+   "tags": [],
+   "facts": {
+    "relative.relationship": "aunt_uncle",
+    "relative.available": false
+   },
+   "expect": {
+    "relative.testing_order": "next_closest_available"
+   }
+  },
+  {
+   "id": "T36",
+   "title": "Рідність «sibling» не уточнена → шанс невідомий, потрібне уточнення",
+   "tags": [],
+   "facts": {
+    "proband.variant_gene": "BRCA1",
+    "relative.relationship": "sibling"
+   },
+   "absent": [
+    "relative.inheritance_chance"
+   ],
+   "expect_contains": {
+    "relative.notes": [
+     "clarify_full_or_half_sibling"
+    ]
+   }
+  },
+  {
+   "id": "T37",
+   "title": "Універсальна панель без родинного варіанта → підтвердити наявність",
+   "tags": [],
+   "facts": {
+    "test.test_type": "generic_cancer_panel",
+    "test.includes_family_variant": false
+   },
+   "expect_contains": {
+    "test.advice": [
+     "confirm_includes_family_variant"
+    ]
+   }
+  },
+  {
+   "id": "T38",
+   "title": "Рак яєчників → розглянути генетичне тестування",
+   "tags": [],
+   "facts": {
+    "patient.diagnosis": "ovarian_cancer"
+   },
+   "expect": {
+    "patient.counseling": "consider_genetic_testing"
+   }
+  },
+  {
+   "id": "T39",
+   "title": "Рак у родині, зміна невідома → каскад не автоматичний",
+   "tags": [],
+   "facts": {
+    "patient.family_member_with_cancer": true,
+    "patient.variant_known": false
+   },
+   "expect": {
+    "patient.cascade_needed": "not_automatic_refer_counselor"
+   }
+  },
+  {
+   "id": "T40",
+   "title": "Повний ланцюжок (потребує чернеткового правила C11) → запропонувати каскадний тест",
+   "tags": [
+    "draft"
+   ],
+   "facts": {
+    "proband.variant_gene": "BRCA1",
+    "proband.variant_known": true,
+    "relative.relationship": "full_sibling",
+    "relative.age": 52,
+    "relative.available": true,
+    "relative.wants_testing": true
+   },
+   "expect": {
+    "relative.recommendation": "offer_cascade_test",
+    "relative.testing_order": 1
+   },
+   "include_draft": true
+  }
+ ]
+}

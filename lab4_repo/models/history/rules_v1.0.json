@@ -1,0 +1,1015 @@
+{
+  "version": "1.0",
+  "note": "Перше витягання правил із текстів (до аналізу конфліктів).",
+  "sources": {
+    "gatk": "sources/gatk_hard_filtering.txt",
+    "cdc": "sources/cdc_cascade_testing.txt"
+  },
+  "rules": [
+    {
+      "id": "G01",
+      "title": "QD < 2 → прапорець LowQD",
+      "group": "qc_variants",
+      "if": [
+        {
+          "fact": "variant.QD",
+          "op": "<",
+          "value": 2
+        }
+      ],
+      "then": [
+        {
+          "add": "variant.flags",
+          "value": "LowQD"
+        }
+      ],
+      "exception": [
+        {
+          "fact": "dataset.custom_thresholds",
+          "op": "==",
+          "value": true
+        }
+      ],
+      "priority": 5,
+      "source": "gatk",
+      "source_quote": "The generic filtering recommendation for QD is to filter out variants with QD below 2.",
+      "status": "verified",
+      "note": "Виняток: власні пороги набору даних. Підстава: «Our recommendations are indeed recommendations that you the scientist will want to refine yourself.»"
+    },
+    {
+      "id": "G02",
+      "title": "FS > 60 → LowFS",
+      "group": "qc_variants",
+      "if": [
+        {
+          "fact": "variant.FS",
+          "op": ">",
+          "value": 60
+        }
+      ],
+      "then": [
+        {
+          "add": "variant.flags",
+          "value": "LowFS"
+        }
+      ],
+      "exception": [
+        {
+          "fact": "dataset.custom_thresholds",
+          "op": "==",
+          "value": true
+        }
+      ],
+      "priority": 5,
+      "source": "gatk",
+      "source_quote": "Our hard filtering recommendations tell us to fail variants with an FS value greater than 60.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "G03",
+      "title": "SOR > 3 → HighSOR",
+      "group": "qc_variants",
+      "if": [
+        {
+          "fact": "variant.SOR",
+          "op": ">",
+          "value": 3
+        }
+      ],
+      "then": [
+        {
+          "add": "variant.flags",
+          "value": "HighSOR"
+        }
+      ],
+      "exception": [
+        {
+          "fact": "dataset.custom_thresholds",
+          "op": "==",
+          "value": true
+        }
+      ],
+      "priority": 5,
+      "source": "gatk",
+      "source_quote": "our hard filtering recommendation of failing variants with an SOR value greater than 3",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "G04",
+      "title": "MQ < 40 → LowMQ",
+      "group": "qc_variants",
+      "if": [
+        {
+          "fact": "variant.MQ",
+          "op": "<",
+          "value": 40
+        }
+      ],
+      "then": [
+        {
+          "add": "variant.flags",
+          "value": "LowMQ"
+        }
+      ],
+      "exception": [
+        {
+          "fact": "dataset.custom_thresholds",
+          "op": "==",
+          "value": true
+        }
+      ],
+      "priority": 5,
+      "source": "gatk",
+      "source_quote": "Our recommendation is to fail any variant with an MQ value less than 40.0.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "G05",
+      "title": "MQRankSum < -12.5 → LowMQRankSum",
+      "group": "qc_variants",
+      "if": [
+        {
+          "fact": "variant.MQRankSum",
+          "op": "<",
+          "value": -12.5
+        }
+      ],
+      "then": [
+        {
+          "add": "variant.flags",
+          "value": "LowMQRankSum"
+        }
+      ],
+      "exception": [
+        {
+          "fact": "dataset.custom_thresholds",
+          "op": "==",
+          "value": true
+        }
+      ],
+      "priority": 5,
+      "source": "gatk",
+      "source_quote": "Our hard filter threshold is -12.5.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "G06",
+      "title": "ReadPosRankSum < -8.0 → LowReadPosRankSum",
+      "group": "qc_variants",
+      "if": [
+        {
+          "fact": "variant.ReadPosRankSum",
+          "op": "<",
+          "value": -8.0
+        }
+      ],
+      "then": [
+        {
+          "add": "variant.flags",
+          "value": "LowReadPosRankSum"
+        }
+      ],
+      "exception": [
+        {
+          "fact": "dataset.custom_thresholds",
+          "op": "==",
+          "value": true
+        }
+      ],
+      "priority": 5,
+      "source": "gatk",
+      "source_quote": "Our hard filtering threshold removes any variant with a ReadPosRankSum value less than -8.0.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "G07",
+      "title": "Є прапорці → FILTERED",
+      "group": "qc_variants",
+      "if": [
+        {
+          "fact": "variant.flags",
+          "op": "nonempty"
+        }
+      ],
+      "then": [
+        {
+          "set": "variant.filter_status",
+          "value": "FILTERED"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "gatk",
+      "source_quote": "Hard-filtering consists of choosing specific thresholds for one or more annotations and throwing out any variants that have annotation values above or below the set thresholds.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "G08",
+      "title": "Усі анотації є й прапорців немає → PASS",
+      "group": "qc_variants",
+      "if": [
+        {
+          "fact": "variant.QD",
+          "op": "exists"
+        },
+        {
+          "fact": "variant.FS",
+          "op": "exists"
+        },
+        {
+          "fact": "variant.SOR",
+          "op": "exists"
+        },
+        {
+          "fact": "variant.MQ",
+          "op": "exists"
+        },
+        {
+          "fact": "variant.flags",
+          "op": "empty"
+        }
+      ],
+      "then": [
+        {
+          "set": "variant.filter_status",
+          "value": "PASS"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": null,
+      "source_quote": "",
+      "status": "draft",
+      "note": "Гіпотеза (замикання за відсутності прапорців): у тексті немає прямого твердження."
+    },
+    {
+      "id": "G09",
+      "title": "Мала панель або немодельний організм → hard-filtering",
+      "group": "method_choice",
+      "if": [
+        {
+          "fact": "dataset.dataset_type",
+          "op": "in",
+          "value": [
+            "small_gene_panel",
+            "non_model_organism"
+          ]
+        }
+      ],
+      "then": [
+        {
+          "set": "dataset.filtering_method",
+          "value": "hard_filtering"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "gatk",
+      "source_quote": "For those of you working with small gene panels or with non-model organisms, this is a deal-breaker, and you have to fall back on hard-filtering.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "G10",
+      "title": "Багато варіантів і відомі ресурси → VQSR",
+      "group": "method_choice",
+      "if": [
+        {
+          "fact": "dataset.large_variant_set",
+          "op": "==",
+          "value": true
+        },
+        {
+          "fact": "dataset.has_curated_known_variants",
+          "op": "==",
+          "value": true
+        }
+      ],
+      "then": [
+        {
+          "set": "dataset.filtering_method",
+          "value": "VQSR"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "gatk",
+      "source_quote": "Unfortunately this method requires a large number of variants and well-curated known variant resources.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "G11",
+      "title": "Фільтр за QUAL/DP → порадити QD",
+      "group": "advice",
+      "if": [
+        {
+          "fact": "request.filter_basis",
+          "op": "in",
+          "value": [
+            "QUAL",
+            "DP"
+          ]
+        }
+      ],
+      "then": [
+        {
+          "set": "request.advice",
+          "value": "use_QD_instead"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "gatk",
+      "source_quote": "For filtering purposes it is better to use QD than either QUAL or DP directly.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "G12",
+      "title": "Фільтрація стосується сайту, не геномів зразків",
+      "group": "qc_variants",
+      "if": [
+        {
+          "fact": "variant.filter_status",
+          "op": "in",
+          "value": [
+            "FILTERED"
+          ]
+        }
+      ],
+      "then": [
+        {
+          "set": "variant.filter_scope",
+          "value": "site"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "gatk",
+      "source_quote": "Even with VQSR, variant sites are being filtered out, not individual sample's data.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "G13",
+      "title": "MQ у [40; 50) → примітка borderline_MQ",
+      "group": "qc_variants",
+      "if": [
+        {
+          "fact": "variant.MQ",
+          "op": ">=",
+          "value": 40
+        },
+        {
+          "fact": "variant.MQ",
+          "op": "<",
+          "value": 50
+        }
+      ],
+      "then": [
+        {
+          "add": "variant.notes",
+          "value": "borderline_MQ"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "gatk",
+      "source_quote": "You may argue that hard filtering any variant with an MQ value less than 50 is fine as well.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "G14",
+      "title": "Екзонний кінець, FS > 60, SOR ≤ 3 → примітка",
+      "group": "qc_variants",
+      "if": [
+        {
+          "fact": "variant.at_exon_end",
+          "op": "==",
+          "value": true
+        },
+        {
+          "fact": "variant.FS",
+          "op": ">",
+          "value": 60
+        },
+        {
+          "fact": "variant.SOR",
+          "op": "<=",
+          "value": 3
+        }
+      ],
+      "then": [
+        {
+          "add": "variant.review",
+          "value": "FS_may_penalize_exon_end"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "gatk",
+      "source_quote": "SOR was created because FS tends to penalize variants that occur at the ends of exons.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "G15",
+      "title": "INDEL: FS > 200 → LowFS",
+      "group": "qc_variants",
+      "if": [
+        {
+          "fact": "variant.variant_type",
+          "op": "==",
+          "value": "INDEL"
+        },
+        {
+          "fact": "variant.FS",
+          "op": ">",
+          "value": 200
+        }
+      ],
+      "then": [
+        {
+          "add": "variant.flags",
+          "value": "LowFS"
+        }
+      ],
+      "exception": [
+        {
+          "fact": "dataset.custom_thresholds",
+          "op": "==",
+          "value": true
+        }
+      ],
+      "priority": 5,
+      "source": "gatk",
+      "source_quote": "FS >60 >200",
+      "status": "verified",
+      "note": "Джерело — коментар читача в статті (таблиця порогів зі статті «How to filter variants…»), а не основний текст; потрібна звірка."
+    },
+    {
+      "id": "G16",
+      "title": "INDEL: ReadPosRankSum < -20 → LowReadPosRankSum",
+      "group": "qc_variants",
+      "if": [
+        {
+          "fact": "variant.variant_type",
+          "op": "==",
+          "value": "INDEL"
+        },
+        {
+          "fact": "variant.ReadPosRankSum",
+          "op": "<",
+          "value": -20.0
+        }
+      ],
+      "then": [
+        {
+          "add": "variant.flags",
+          "value": "LowReadPosRankSum"
+        }
+      ],
+      "exception": [
+        {
+          "fact": "dataset.custom_thresholds",
+          "op": "==",
+          "value": true
+        }
+      ],
+      "priority": 5,
+      "source": "gatk",
+      "source_quote": "ReadPosRankSum< -8.0 < -20.0",
+      "status": "verified",
+      "note": "Джерело — коментар читача в статті; потрібна звірка."
+    },
+    {
+      "id": "G17",
+      "title": "PASS → готовий до анотації",
+      "group": "qc_variants",
+      "if": [
+        {
+          "fact": "variant.filter_status",
+          "op": "==",
+          "value": "PASS"
+        }
+      ],
+      "then": [
+        {
+          "set": "variant.ready_for_annotation",
+          "value": true
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": null,
+      "source_quote": "",
+      "status": "draft",
+      "note": "Припущення про наш пайплайн, не з джерела."
+    },
+    {
+      "id": "C01",
+      "title": "Батьки, діти, рідні брати/сестри → 50%",
+      "group": "cascade_risk",
+      "if": [
+        {
+          "fact": "proband.variant_gene",
+          "op": "in",
+          "value": [
+            "BRCA1",
+            "BRCA2"
+          ]
+        },
+        {
+          "fact": "relative.relationship",
+          "op": "in",
+          "value": [
+            "parent",
+            "child",
+            "full_sibling"
+          ]
+        }
+      ],
+      "then": [
+        {
+          "set": "relative.inheritance_chance",
+          "value": 0.5
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "cdc",
+      "source_quote": "If you have a BRCA1 or BRCA2 genetic change, your mother, father, children, and siblings have a 1 in 2 (50%) chance of having the same genetic change.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "C02",
+      "title": "Зведені брати/сестри, дядьки/тітки, діди/баби → 25%",
+      "group": "cascade_risk",
+      "if": [
+        {
+          "fact": "proband.variant_gene",
+          "op": "in",
+          "value": [
+            "BRCA1",
+            "BRCA2"
+          ]
+        },
+        {
+          "fact": "relative.relationship",
+          "op": "in",
+          "value": [
+            "half_sibling",
+            "aunt_uncle",
+            "grandparent"
+          ]
+        }
+      ],
+      "then": [
+        {
+          "set": "relative.inheritance_chance",
+          "value": 0.25
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "cdc",
+      "source_quote": "Your half-siblings, aunts, uncles, grandmothers, and grandfathers have a 1 in 4 (25%) chance of having the same genetic change.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "C03",
+      "title": "Двоюрідні та далекі родичі → до 12,5%",
+      "group": "cascade_risk",
+      "if": [
+        {
+          "fact": "proband.variant_gene",
+          "op": "in",
+          "value": [
+            "BRCA1",
+            "BRCA2"
+          ]
+        },
+        {
+          "fact": "relative.relationship",
+          "op": "in",
+          "value": [
+            "cousin",
+            "other_distant"
+          ]
+        }
+      ],
+      "then": [
+        {
+          "set": "relative.inheritance_chance",
+          "value": 0.125
+        },
+        {
+          "add": "relative.notes",
+          "value": "chance_is_upper_bound"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "cdc",
+      "source_quote": "Your cousins and other more distantly related family members can have as much as a 1 in 8 (12.5%) chance of having the same genetic change.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "C04",
+      "title": "Родич хоче тест → шукати ту саму зміну",
+      "group": "cascade_procedure",
+      "if": [
+        {
+          "fact": "proband.variant_known",
+          "op": "==",
+          "value": true
+        },
+        {
+          "fact": "relative.wants_testing",
+          "op": "==",
+          "value": true
+        }
+      ],
+      "then": [
+        {
+          "set": "relative.test_target",
+          "value": "proband_variant"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "cdc",
+      "source_quote": "Family members who decide to get tested should be checked for the same genetic change that you have.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "C05",
+      "title": "Загальна панель без сімейної зміни → уточнити",
+      "group": "cascade_procedure",
+      "if": [
+        {
+          "fact": "test.test_type",
+          "op": "==",
+          "value": "generic_cancer_panel"
+        },
+        {
+          "fact": "test.includes_family_variant",
+          "op": "==",
+          "value": false
+        }
+      ],
+      "then": [
+        {
+          "add": "test.advice",
+          "value": "confirm_includes_family_variant"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "cdc",
+      "source_quote": "Getting screened using a cancer test available for a variety of cancers might not include the genetic change that you have, so family members should talk to their doctors about making sure that their test includes your genetic change.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "C06",
+      "title": "Вік ≥ 18 → доросле тестування",
+      "group": "cascade_age",
+      "if": [
+        {
+          "fact": "relative.age",
+          "op": ">=",
+          "value": 18
+        }
+      ],
+      "then": [
+        {
+          "set": "relative.testing_age_status",
+          "value": "adult_eligible"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "cdc",
+      "source_quote": "most current guidelines recommend that testing for these genetic changes should only be done on adults (18 years of age and older).",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "C07",
+      "title": "Вік < 18 → відкласти до дорослого віку",
+      "group": "cascade_age",
+      "if": [
+        {
+          "fact": "relative.age",
+          "op": "<",
+          "value": 18
+        }
+      ],
+      "then": [
+        {
+          "set": "relative.testing_age_status",
+          "value": "defer_until_adult"
+        }
+      ],
+      "exception": [
+        {
+          "fact": "proband.variant_childhood_cancer_risk",
+          "op": "==",
+          "value": true
+        }
+      ],
+      "priority": 5,
+      "source": "cdc",
+      "source_quote": "most current guidelines recommend that testing for these genetic changes should only be done on adults (18 years of age and older).",
+      "status": "verified",
+      "note": "Виняток: зміна підвищує ризик раку в дитинстві (див. C08)."
+    },
+    {
+      "id": "C08",
+      "title": "Вік < 18 і ризик у дитинстві → тест доречний",
+      "group": "cascade_age",
+      "if": [
+        {
+          "fact": "relative.age",
+          "op": "<",
+          "value": 18
+        },
+        {
+          "fact": "proband.variant_childhood_cancer_risk",
+          "op": "==",
+          "value": true
+        }
+      ],
+      "then": [
+        {
+          "set": "relative.testing_age_status",
+          "value": "testing_appropriate"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "cdc",
+      "source_quote": "if the genetic change increases the chances of getting cancer in childhood, then genetic testing of children in the family would be appropriate.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "C09",
+      "title": "Найближчі доступні родичі тестуються першими",
+      "group": "cascade_procedure",
+      "if": [
+        {
+          "fact": "relative.inheritance_chance",
+          "op": ">=",
+          "value": 0.5
+        },
+        {
+          "fact": "relative.available",
+          "op": "==",
+          "value": true
+        }
+      ],
+      "then": [
+        {
+          "set": "relative.testing_order",
+          "value": 1
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "cdc",
+      "source_quote": "When possible, genetic testing should start with family members who are most closely related to the person who has the BRCA1, BRCA2, or other genetic change.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "C10",
+      "title": "Родич недоступний → наступні за близькістю",
+      "group": "cascade_procedure",
+      "if": [
+        {
+          "fact": "relative.available",
+          "op": "==",
+          "value": false
+        }
+      ],
+      "then": [
+        {
+          "set": "relative.testing_order",
+          "value": "next_closest_available"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "cdc",
+      "source_quote": "has died), then testing can start with more distant family members.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "C11",
+      "title": "Черга 1 + вік дозволяє + мета тесту → запропонувати каскадний тест",
+      "group": "cascade_procedure",
+      "if": [
+        {
+          "fact": "relative.testing_order",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "fact": "relative.testing_age_status",
+          "op": "in",
+          "value": [
+            "adult_eligible",
+            "testing_appropriate"
+          ]
+        },
+        {
+          "fact": "relative.test_target",
+          "op": "==",
+          "value": "proband_variant"
+        }
+      ],
+      "then": [
+        {
+          "set": "relative.recommendation",
+          "value": "offer_cascade_test"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": null,
+      "source_quote": "",
+      "status": "draft",
+      "note": "Синтез кількох тверджень джерела (ланцюжок C01→C09→C06→C04); окремої цитати немає."
+    },
+    {
+      "id": "C12",
+      "title": "Тест замовляють для родича → надати звіт пробанда",
+      "group": "cascade_procedure",
+      "if": [
+        {
+          "fact": "test.ordered_for_relative",
+          "op": "==",
+          "value": true
+        }
+      ],
+      "then": [
+        {
+          "add": "test.actions",
+          "value": "provide_proband_test_report"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "cdc",
+      "source_quote": "Provide your genetic test report to any genetic counselor or healthcare provider who orders testing for your family.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "C13",
+      "title": "Пільговий тест обмежений у часі → зберегти звіт із датою",
+      "group": "cascade_procedure",
+      "if": [
+        {
+          "fact": "offer.time_limited",
+          "op": "==",
+          "value": true
+        }
+      ],
+      "then": [
+        {
+          "add": "offer.advice",
+          "value": "keep_copy_of_report_with_date"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "cdc",
+      "source_quote": "If free or discounted cascade testing for family members is limited to a certain amount of time from the first genetic test report, they might need a copy of your report to show the date of your test.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "C14",
+      "title": "Діагноз зі списку → розглянути генетичний тест",
+      "group": "cascade_eligibility",
+      "if": [
+        {
+          "fact": "patient.diagnosis",
+          "op": "in",
+          "value": [
+            "breast_cancer_female",
+            "breast_cancer_male",
+            "ovarian_cancer",
+            "peritoneal_cancer",
+            "fallopian_tube_cancer"
+          ]
+        }
+      ],
+      "then": [
+        {
+          "set": "patient.counseling",
+          "value": "consider_genetic_testing"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "cdc",
+      "source_quote": "Genetic testing for BRCA1, BRCA2, and other genetic changes is currently recommended for some women with breast cancer, men with breast cancer, and women with ovarian, peritoneal, or fallopian tube cancer.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "C15",
+      "title": "Родич із раком без відомої зміни → каскад не обов'язковий",
+      "group": "cascade_eligibility",
+      "if": [
+        {
+          "fact": "patient.family_member_with_cancer",
+          "op": "==",
+          "value": true
+        },
+        {
+          "fact": "patient.variant_known",
+          "op": "==",
+          "value": false
+        }
+      ],
+      "then": [
+        {
+          "set": "patient.cascade_needed",
+          "value": "not_automatic_refer_counselor"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "cdc",
+      "source_quote": "so having a family member with cancer does not always mean that cascade testing is needed",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "C16",
+      "title": "Відома зміна → перевірити страхове покриття для родини",
+      "group": "cascade_procedure",
+      "if": [
+        {
+          "fact": "proband.variant_known",
+          "op": "==",
+          "value": true
+        }
+      ],
+      "then": [
+        {
+          "add": "proband.advice",
+          "value": "check_insurance_coverage_for_family"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "cdc",
+      "source_quote": "Some insurance companies will cover genetic testing for families if a known genetic change is found.",
+      "status": "verified",
+      "note": ""
+    },
+    {
+      "id": "C18",
+      "title": "Відома зміна → каскадне тестування застосовне",
+      "group": "cascade_procedure",
+      "if": [
+        {
+          "fact": "proband.variant_known",
+          "op": "==",
+          "value": true
+        }
+      ],
+      "then": [
+        {
+          "add": "proband.advice",
+          "value": "cascade_testing_applicable"
+        }
+      ],
+      "exception": [],
+      "priority": 5,
+      "source": "cdc",
+      "source_quote": "If you have been diagnosed with a BRCA1, BRCA2, or another genetic change that makes you more likely to get breast, ovarian, and other cancers, your family members could have the same genetic change.",
+      "status": "verified",
+      "note": ""
+    }
+  ]
+}

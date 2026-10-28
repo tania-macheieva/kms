@@ -1,0 +1,16 @@
+SNPVariant   V-001  prefix=variant   валідний; факти: 10
+SNPVariant   V-002  prefix=variant   валідний; факти: 8
+SNPVariant   V-003  prefix=variant   валідний; факти: 8
+IndelVariant V-004  prefix=variant   валідний; факти: 9
+Variant      V-005  prefix=variant   валідний; факти: 8
+Dataset      D-001  prefix=dataset   валідний; факти: 6
+Dataset      D-002  prefix=dataset   валідний; факти: 6
+FilterRequest Q-001  prefix=request   валідний; факти: 3
+Proband      P-001  prefix=proband   валідний; факти: 8
+Relative     R-001  prefix=relative  валідний; факти: 6
+Relative     R-002  prefix=relative  валідний; факти: 6
+Relative     R-003  prefix=relative  валідний; факти: 6
+Patient      P-002  prefix=patient   валідний; факти: 6
+GeneticTest  T-001  prefix=test      валідний; факти: 5
+TestOffer    O-001  prefix=offer     валідний; факти: 3
+15 екземплярів пройшли валідацію

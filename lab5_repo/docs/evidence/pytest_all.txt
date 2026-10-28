@@ -1,0 +1,26 @@
+============================= test session starts ==============================
+testpaths: tests
+plugins: anyio-4.15.1
+collecting ... collected 19 items
+
+tests/test_corpus_versions.py::test_corpus_size_unique_and_alt_labels PASSED [  5%]
+tests/test_corpus_versions.py::test_at_least_50_definitions PASSED       [ 10%]
+tests/test_corpus_versions.py::test_three_versions_same_format_and_size PASSED [ 15%]
+tests/test_corpus_versions.py::test_llm_version_has_division_principle_on_every_internal_node PASSED [ 21%]
+tests/test_corpus_versions.py::test_every_term_in_every_version_exactly_once PASSED [ 26%]
+tests/test_corpus_versions.py::test_kappa_computation_matches_sklearn_on_30_terms PASSED [ 31%]
+tests/test_taxonomy.py::test_ttl_parses_and_has_scheme PASSED            [ 36%]
+tests/test_taxonomy.py::test_every_concept_has_one_english_preflabel PASSED [ 42%]
+tests/test_taxonomy.py::test_every_preflabel_has_language_tag PASSED     [ 47%]
+tests/test_taxonomy.py::test_no_cycles_in_broader PASSED                 [ 52%]
+tests/test_taxonomy.py::test_exactly_one_broader_except_top PASSED       [ 57%]
+tests/test_taxonomy.py::test_every_non_root_has_definition PASSED        [ 63%]
+tests/test_taxonomy.py::test_preferred_labels_unique PASSED              [ 68%]
+tests/test_taxonomy.py::test_share_of_other_is_zero PASSED               [ 73%]
+tests/test_taxonomy.py::test_at_least_five_verified_external_links PASSED [ 78%]
+tests/test_taxonomy.py::test_depth_and_principles_in_final_csv PASSED    [ 84%]
+tests/test_taxonomy.py::test_no_part_of_division_principle PASSED        [ 89%]
+tests/test_taxonomy.py::test_no_category_with_single_child PASSED        [ 94%]
+tests/test_taxonomy.py::test_csv_and_skos_consistent PASSED              [100%]
+
+============================== 19 passed in 1.33s ==============================

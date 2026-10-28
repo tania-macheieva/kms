@@ -1,0 +1,122 @@
+﻿id,term,label_uk,alt_labels,definition,def_status,source,freq,raw_forms
+T001,allele,алель,,Одна з альтернативних форм гена або ділянки ДНК у певному локусі.,llm_draft,gatk,16,5
+T002,amino acid,амінокислота,,"Органічна сполука, мономер білків.",llm_draft,llm_domain,0,4
+T003,autosomal dominant inheritance,аутосомно-домінантне успадкування,,"Тип успадкування, за якого достатньо однієї копії варіанта, щоб проявилась ознака.",llm_draft,llm_domain,0,4
+T004,BAM file,файл BAM,BAM;alignment file,Бінарний формат вирівняних ридів.,llm_draft,llm_domain,0,6
+T005,benign variant,доброякісний варіант,,"Варіант, що за доказами не спричиняє захворювання.",llm_draft,llm_domain,0,4
+T006,biomarker,біомаркер,,"Вимірювана ознака, що відображає біологічний процес чи стан хвороби.",llm_draft,llm_domain,0,4
+T007,BRCA1,BRCA1,,Ген репарації ДНК; патогенні варіанти підвищують ризик раку молочної залози й яєчників.,llm_draft,cdc,8,3
+T008,BRCA2,BRCA2,,Ген репарації ДНК; патогенні варіанти підвищують ризик раку молочної залози й яєчників.,llm_draft,cdc,5,3
+T009,breast cancer,рак молочної залози,,Злоякісна пухлина молочної залози.,llm_draft,cdc,2,4
+T010,cascade testing,каскадне тестування,,Послідовне тестування родичів носія відомого патогенного варіанта.,llm_draft,cdc,4,4
+T011,chromosome,хромосома,,"Структура з ДНК і білків, що несе гени; у людини 23 пари.",llm_draft,llm_domain,0,4
+T012,clinical note,клінічна нотатка,,Вільнотекстовий запис лікаря у медичній документації.,llm_draft,llm_domain,0,4
+T013,clinical trial,клінічне випробування,,Дослідження за участю людей для оцінки втручання.,llm_draft,llm_domain,0,4
+T014,ClinVar,ClinVar,,Публічний архів інтерпретацій клінічної значущості варіантів.,llm_draft,llm_domain,0,4
+T015,competency question,компетентнісне запитання,CQ,"Запитання, на яке база знань має вміти відповісти.",llm_draft,llm_domain,0,5
+T016,controlled vocabulary,контрольований словник,,Узгоджений перелік термінів із фіксованим значенням.,llm_draft,llm_domain,0,4
+T017,copy number variation,варіація числа копій,CNV;copy number variant,Зміна кількості копій ділянки геному відносно референсу.,llm_draft,llm_domain,0,6
+T018,data integration,інтеграція даних,,Об'єднання даних з різних джерел у єдиний погляд.,llm_draft,llm_domain,0,4
+T019,data pipeline,конвеєр даних,ETL pipeline;pipeline,Послідовність кроків обробки даних від джерела до результату.,llm_draft,gatk,3,6
+T020,data privacy,приватність даних,privacy,Захист персональних даних від несанкціонованого доступу.,llm_draft,llm_domain,0,5
+T021,data provenance,походження даних,lineage;provenance,Відомості про джерело й історію перетворень даних.,llm_draft,llm_domain,0,6
+T022,data quality,якість даних,,"Придатність даних до використання: повнота, точність, узгодженість.",llm_draft,llm_domain,0,4
+T023,data schema,схема даних,schema,Формальний опис структури даних.,llm_draft,llm_domain,0,5
+T024,dbSNP,dbSNP,,Публічна база коротких генетичних варіантів.,llm_draft,llm_domain,0,4
+T025,de-identification,деідентифікація,anonymization,"Видалення ознак, що дозволяють ідентифікувати особу в даних.",llm_draft,llm_domain,0,5
+T026,diagnosis,діагноз,,Висновок про захворювання за результатами обстеження.,llm_draft,llm_domain,0,3
+T027,DNA methylation,метилювання ДНК,methylation,Додавання метильної групи до ДНК; епігенетичний механізм.,llm_draft,llm_domain,0,5
+T028,DNA sequencing,секвенування ДНК,sequencing,Визначення порядку нуклеотидів у молекулі ДНК.,llm_draft,gatk,2,5
+T029,electronic health record,електронна медична картка,EHR;electronic medical record;EMR,Цифровий запис медичних даних пацієнта.,llm_draft,llm_domain,0,7
+T030,embedding,embedding,vector embedding;vector representation,"Числовий вектор, що кодує семантику об'єкта.",llm_draft,llm_domain,0,5
+T031,epigenetics,епігенетика,,Вивчення спадкових змін активності генів без зміни послідовності ДНК.,llm_draft,llm_domain,0,3
+T032,exome,екзом,,Сукупність усіх екзонів геному.,llm_draft,llm_domain,0,5
+T033,exon,екзон,,"Ділянка гена, що лишається в зрілій РНК і може кодувати білок.",llm_draft,llm_domain,0,5
+T034,family history,сімейний анамнез,,Відомості про захворювання у родичів пацієнта.,llm_draft,llm_domain,0,4
+T035,FASTQ file,файл FASTQ,FASTQ,Формат для ридів із оцінками якості символів.,llm_draft,llm_domain,0,5
+T036,Fisher strand bias,зміщення ланцюга за Фішером,FS;FisherStrand,Оцінка нерівномірності підтримки варіанта прямим і зворотним ланцюгами.,llm_draft,gatk,20,5
+T037,frame,фрейм,,Структура знань із іменованими слотами та значеннями за замовчуванням.,llm_draft,llm_domain,0,5
+T038,gene,ген,,"Ділянка ДНК, що кодує продукт (білок або РНК) і є одиницею спадковості.",llm_draft,gatk,1,5
+T039,gene expression,експресія гена,,"Процес, у якому інформація гена використовується для синтезу продукту.",llm_draft,llm_domain,0,4
+T040,Gene Ontology,Gene Ontology,GO,"Онтологія функцій генів, біологічних процесів і клітинних компонентів.",llm_draft,llm_domain,0,3
+T041,gene panel,генна панель,gene panel test;targeted panel,"Набір вибраних генів, що аналізуються разом.",llm_draft,llm_domain,0,6
+T042,genetic counseling,генетичне консультування,,Допомога особі у розумінні генетичного ризику й варіантів дій.,llm_draft,cdc,1,4
+T043,genetic testing,генетичне тестування,genetic test,"Аналіз ДНК для виявлення варіантів, пов'язаних із хворобою.",llm_draft,cdc,11,5
+T044,genetic variant,генетичний варіант,variant;genomic variant,Відмінність послідовності ДНК від референсної.,llm_draft,gatk,13,6
+T045,genome,геном,whole genome,Повний набір спадкового матеріалу (ДНК) організму.,llm_draft,gatk,3,6
+T046,genomics,геноміка,,"Дослідження геномів, їхньої структури й варіації.",llm_draft,llm_domain,0,3
+T047,genotype,генотип,,Склад алелів особи в певному локусі або в усьому геномі.,llm_draft,llm_domain,0,4
+T048,germline variant,germline-варіант,hereditary variant;inherited variant,"Варіант у статевих клітинах, що передається нащадкам і присутній у всіх клітинах організму.",llm_draft,llm_domain,0,6
+T049,graph database,графова база даних,graph DB,"База даних, що зберігає вузли й ребра та оптимізована під обхід зв'язків.",llm_draft,llm_domain,0,5
+T050,hard filtering,жорстка фільтрація,hard-filtering,Фільтрація варіантів за фіксованими порогами окремих анотацій.,llm_draft,gatk,17,5
+T051,hereditary cancer,спадковий рак,,"Рак, що виникає через успадкований патогенний варіант.",llm_draft,cdc,1,4
+T052,Human Phenotype Ontology,Human Phenotype Ontology,HPO,Онтологія фенотипових ознак людини.,llm_draft,llm_domain,0,3
+T053,inference engine,рушій виведення,reasoner;rule engine,"Компонент, що застосовує правила до фактів для виведення висновків.",llm_draft,llm_domain,0,6
+T054,informed consent,інформована згода,,Добровільна згода пацієнта після пояснення суті процедури чи дослідження.,llm_draft,llm_domain,0,4
+T055,insertion-deletion,інсерція-делеція,indel;insertion deletion,Вставка або видалення невеликого числа нуклеотидів у послідовності.,llm_draft,gatk,2,6
+T056,intron,інтрон,,"Ділянка гена, що видаляється зі зрілої РНК під час сплайсингу.",llm_draft,llm_domain,0,5
+T057,knowledge graph,граф знань,,"Граф сутностей і зв'язків, що репрезентує знання.",llm_draft,llm_domain,0,4
+T058,laboratory test,лабораторне дослідження,lab test,Аналіз зразка для отримання клінічно значущого результату.,llm_draft,llm_domain,0,5
+T059,mapping quality,якість вирівнювання,MQ;MAPQ,Оцінка впевненості в позиції вирівнювання рида.,llm_draft,gatk,14,6
+T060,mass spectrometry,мас-спектрометрія,MS,Метод вимірювання відношення маси до заряду іонів.,llm_draft,llm_domain,0,5
+T061,mass spectrum,мас-спектр,spectrum,Розподіл інтенсивності іонів за відношенням маси до заряду.,llm_draft,llm_domain,0,5
+T062,Medical Subject Headings,MeSH,MeSH,Контрольований словник медичних тем Національної медичної бібліотеки США.,llm_draft,llm_domain,0,2
+T063,metadata,метадані,,"Дані, що описують інші дані.",llm_draft,llm_domain,0,4
+T064,mutation,мутація,,Стійка зміна послідовності ДНК.,llm_draft,llm_domain,0,4
+T065,nearest neighbor search,пошук найближчих сусідів,similarity search;kNN search,"Пошук об'єктів, найближчих до запиту у векторному просторі.",llm_draft,llm_domain,0,6
+T066,next-generation sequencing,секвенування наступного покоління,NGS;high-throughput sequencing,Масово-паралельне секвенування ДНК або РНК.,llm_draft,llm_domain,0,6
+T067,ontology,онтологія,,Формальна специфікація понять предметної області та зв'язків між ними.,llm_draft,llm_domain,0,4
+T068,ovarian cancer,рак яєчників,,Злоякісна пухлина яєчників.,llm_draft,llm_domain,0,4
+T069,PARP inhibitor,інгібітор PARP,PARP inhibitors,"Клас таргетних препаратів, що блокують ферменти PARP; застосовують за мутацій BRCA.",llm_draft,llm_domain,0,4
+T070,pathogenic variant,патогенний варіант,disease-causing variant,"Варіант, що за доказами спричиняє захворювання або підвищує ризик.",llm_draft,llm_domain,0,5
+T071,patient,пацієнт,,"Особа, що отримує медичну допомогу.",llm_draft,llm_domain,0,5
+T072,penetrance,пенетрантність,,"Частка носіїв варіанта, у яких проявляється ознака.",llm_draft,llm_domain,0,4
+T073,peptide,пептид,,Короткий ланцюжок амінокислот.,llm_draft,llm_domain,0,5
+T074,phenotype,фенотип,,"Спостережувані ознаки організму, результат взаємодії генотипу й середовища.",llm_draft,llm_domain,0,4
+T075,post-translational modification,посттрансляційна модифікація,PTM,Хімічна зміна білка після синтезу.,llm_draft,llm_domain,0,5
+T076,proband,пробанд,index patient,"Особа, з якої починається вивчення родини в генетичному дослідженні.",llm_draft,llm_domain,0,6
+T077,production rule,продукційне правило,IF-THEN rule,Правило вигляду «ЯКЩО умова ТО дія».,llm_draft,llm_domain,0,5
+T078,protein,білок,,"Біополімер із амінокислот, що виконує структурні й функціональні ролі.",llm_draft,llm_domain,0,5
+T079,protein abundance,рівень білка,protein quantity;protein level,Кількість білка в зразку (відносна чи абсолютна).,llm_draft,llm_domain,0,6
+T080,protein domain,білковий домен,domain,Структурно й функціонально відокремлена частина білка.,llm_draft,llm_domain,0,5
+T081,protein identification,ідентифікація білків,,Визначення білків за спектрами через зіставлення з базою послідовностей.,llm_draft,llm_domain,0,4
+T082,protein-protein interaction,білок-білкова взаємодія,PPI,Фізичний чи функціональний контакт двох білків.,llm_draft,llm_domain,0,5
+T083,proteome,протеом,,"Сукупність усіх білків клітини, тканини чи організму.",llm_draft,llm_domain,0,4
+T084,proteomics,протеоміка,,Масштабне дослідження білків та їхніх функцій.,llm_draft,llm_domain,0,3
+T085,quality by depth,якість на глибину,QD,"Оцінка якості варіанта, нормована на глибину покриття.",llm_draft,gatk,17,5
+T086,rank sum test,тест суми рангів,Wilcoxon rank sum test;MQRankSum;ReadPosRankSum,Непараметричний тест порівняння двох груп; у GATK порівнює ріди з референсним та альтернативним алелем.,llm_draft,gatk,21,7
+T087,read depth,глибина покриття,depth;coverage;DP,"Кількість ридів, що перекривають позицію геному.",llm_draft,gatk;cdc,6,7
+T088,reference genome,референсний геном,reference assembly,"Еталонна послідовність геному виду, з якою порівнюють вибірки.",llm_draft,llm_domain,0,5
+T089,relational database,реляційна база даних,SQL database,База даних із таблицями й зв'язками між ними.,llm_draft,llm_domain,0,5
+T090,relative,родич,family member,"Особа, пов'язана з пробандом спорідненістю.",llm_draft,cdc,3,5
+T091,Resource Description Framework,RDF,RDF,Модель даних у вигляді триплетів «суб'єкт—предикат—об'єкт».,llm_draft,llm_domain,0,3
+T092,risk assessment,оцінка ризику,,Оцінювання ймовірності виникнення захворювання.,llm_draft,llm_domain,0,4
+T093,RNA sequencing,секвенування РНК,RNA-seq,Секвенування РНК для оцінки транскриптому й експресії генів.,llm_draft,llm_domain,0,5
+T094,rule-based system,система на правилах,expert system,"Система, що виводить рішення застосуванням правил.",llm_draft,llm_domain,0,5
+T095,semantic similarity,семантична схожість,,Міра близькості значень двох об'єктів.,llm_draft,llm_domain,0,4
+T096,sequence alignment,вирівнювання послідовностей,read alignment;mapping,Зіставлення ридів із позиціями референсного геному.,llm_draft,gatk,10,6
+T097,sequencing read,прочитання секвенування,read;sequence read,"Короткий фрагмент послідовності, отриманий секвенатором.",llm_draft,llm_domain,0,6
+T098,Simple Knowledge Organization System,SKOS,SKOS,Модель W3C для публікації таксономій і тезаурусів у вигляді RDF.,llm_draft,llm_domain,0,3
+T099,single nucleotide polymorphism,однонуклеотидний поліморфізм,SNP;SNV;single nucleotide variant,Заміна одного нуклеотида в певній позиції геному.,llm_draft,gatk,2,7
+T100,SNOMED CT,SNOMED CT,SNOMED,Систематизована клінічна термінологія.,llm_draft,llm_domain,0,4
+T101,somatic variant,соматичний варіант,somatic mutation,"Варіант, набутий у соматичній клітині, не спадковий.",llm_draft,llm_domain,0,5
+T102,SPARQL,SPARQL,SPARQL query language,Мова запитів до RDF-графів.,llm_draft,llm_domain,0,4
+T103,strand odds ratio,відношення шансів ланцюгів,SOR;StrandOddsRatio,"Оцінка зміщення ланцюга, стійкіша до високого покриття.",llm_draft,gatk,20,6
+T104,structural variant,структурний варіант,SV,"Велика зміна геному (від ~50 нуклеотидів): делеція, дуплікація, інверсія, транслокація.",llm_draft,gatk,2,5
+T105,symptom,симптом,clinical sign,"Ознака захворювання, яку відчуває або виявляє пацієнт.",llm_draft,llm_domain,0,6
+T106,tandem mass spectrometry,тандемна мас-спектрометрія,MS/MS;LC-MS/MS,Мас-спектрометрія з фрагментацією іонів для визначення послідовності пептидів.,llm_draft,llm_domain,0,6
+T107,taxonomy,таксономія,classification hierarchy,Ієрархічна класифікація понять на основі зв'язку «загальне—часткове».,llm_draft,llm_domain,0,5
+T108,thesaurus,тезаурус,,"Словник понять із зв'язками еквівалентності, ієрархії й асоціації.",llm_draft,llm_domain,0,3
+T109,transcript,транскрипт,RNA transcript,"Молекула РНК, синтезована на матриці ДНК.",llm_draft,llm_domain,0,5
+T110,transcriptome,транскриптом,,Сукупність усіх РНК-транскриптів клітини чи тканини.,llm_draft,llm_domain,0,4
+T111,treatment,лікування,therapy,Втручання для усунення або полегшення хвороби.,llm_draft,llm_domain,0,5
+T112,UniProt,UniProt,,Ресурс послідовностей і функціональної анотації білків.,llm_draft,llm_domain,0,4
+T113,variant annotation,анотація варіантів,,"Додавання до варіантів відомостей про ген, наслідок і частоту.",llm_draft,llm_domain,0,4
+T114,variant calling,виклик варіантів,variant detection,Визначення варіантів за вирівняними ридами.,llm_draft,llm_domain,0,5
+T115,variant filtering,фільтрація варіантів,,Відсіювання ненадійних варіантів за анотаціями якості.,llm_draft,llm_domain,0,4
+T116,variant of uncertain significance,варіант невизначеного значення,VUS,"Варіант, клінічне значення якого поки не встановлено.",llm_draft,llm_domain,0,5
+T117,variant quality score recalibration,рекалібрація оцінок якості варіантів,VQSR,"Фільтрація моделлю, навченою на відомих варіантах (GATK).",llm_draft,gatk,27,5
+T118,VCF file,файл VCF,variant call format;VCF,Текстовий формат для варіантів та їхніх анотацій.,llm_draft,gatk,2,6
+T119,vector database,векторна база даних,vector DB;vector store,База даних для зберігання embeddings і пошуку за схожістю.,llm_draft,llm_domain,0,6
+T120,whole exome sequencing,секвенування екзому,WES,Секвенування лише кодувальних ділянок геному.,llm_draft,llm_domain,0,5
+T121,whole genome sequencing,секвенування повного геному,WGS,Секвенування всього геному особи.,llm_draft,llm_domain,0,5

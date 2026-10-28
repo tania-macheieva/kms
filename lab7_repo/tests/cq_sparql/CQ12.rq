@@ -1,0 +1,12 @@
+# id: CQ12
+# question: Який шанс успадкування для родичів другого ступеня?
+# lab4_cq: CQ12
+# expect: ["0.25"]
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?answer WHERE {
+  ?c rdfs:label "second-degree relative"@en .
+  { ?c rdfs:subClassOf/owl:hasValue ?answer } UNION { ?x rdf:type ?c . ?x ?p ?answer . FILTER(datatype(?answer) = xsd:decimal && ?answer <= 1) }
+}

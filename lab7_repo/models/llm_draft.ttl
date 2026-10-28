@@ -1,0 +1,548 @@
+@prefix : <http://example.org/onto/brca-gatk#> .
+@prefix ind: <http://example.org/onto/brca-gatk/ind#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/onto/brca-gatk> a owl:Ontology ;
+    rdfs:label "BRCA cascade testing and GATK hard filtering ontology (draft)"@en ;
+    rdfs:comment "Draft OWL ontology for variant quality control (GATK hard filtering) and cascade genetic testing of relatives of a BRCA1/BRCA2 proband."@en .
+
+# ---------- Classes ----------
+:Biomedical_data_analysis a owl:Class ; rdfs:label "Biomedical data analysis"@en ; rdfs:comment "Кореневе поняття: усе, що стосується аналізу біомедичних даних."@uk .
+:Biological_entity a owl:Class ; rdfs:label "Biological entity"@en ; rdfs:comment "Біологічна сутність — об'єкт живої природи на молекулярному рівні."@uk ; rdfs:subClassOf :Biomedical_data_analysis .
+:Genomic_element a owl:Class ; rdfs:label "Genomic element"@en ; rdfs:comment "Елемент геному або сукупність таких елементів."@uk ; rdfs:subClassOf :Biological_entity .
+:genome a owl:Class ; rdfs:label "genome"@en ; rdfs:label "геном"@uk ; rdfs:comment "Повний набір спадкового матеріалу (ДНК) організму."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "whole genome"@en ; rdfs:subClassOf :Genomic_element .
+:chromosome a owl:Class ; rdfs:label "chromosome"@en ; rdfs:label "хромосома"@uk ; rdfs:comment "Структура з ДНК і білків, що несе гени; у людини 23 пари."@uk ; rdfs:subClassOf :Genomic_element .
+:gene a owl:Class ; rdfs:label "gene"@en ; rdfs:label "ген"@uk ; rdfs:comment "Ділянка ДНК, що кодує продукт (білок або РНК) і є одиницею спадковості."@uk ; rdfs:subClassOf :Genomic_element .
+:BRCA1 a owl:Class ; rdfs:label "BRCA1"@en ; rdfs:label "BRCA1"@uk ; rdfs:comment "Ген репарації ДНК; патогенні варіанти підвищують ризик раку молочної залози й яєчників."@uk ; rdfs:subClassOf :gene .
+:BRCA2 a owl:Class ; rdfs:label "BRCA2"@en ; rdfs:label "BRCA2"@uk ; rdfs:comment "Ген репарації ДНК; патогенні варіанти підвищують ризик раку молочної залози й яєчників."@uk ; rdfs:subClassOf :gene .
+:exon a owl:Class ; rdfs:label "exon"@en ; rdfs:label "екзон"@uk ; rdfs:comment "Ділянка гена, що лишається в зрілій РНК і може кодувати білок."@uk ; rdfs:subClassOf :Genomic_element .
+:intron a owl:Class ; rdfs:label "intron"@en ; rdfs:label "інтрон"@uk ; rdfs:comment "Ділянка гена, що видаляється зі зрілої РНК під час сплайсингу."@uk ; rdfs:subClassOf :Genomic_element .
+:exome a owl:Class ; rdfs:label "exome"@en ; rdfs:label "екзом"@uk ; rdfs:comment "Сукупність усіх екзонів геному."@uk ; rdfs:subClassOf :Genomic_element .
+:transcript a owl:Class ; rdfs:label "transcript"@en ; rdfs:label "транскрипт"@uk ; rdfs:comment "Молекула РНК, синтезована на матриці ДНК."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "RNA transcript"@en ; rdfs:subClassOf :Genomic_element .
+:transcriptome a owl:Class ; rdfs:label "transcriptome"@en ; rdfs:label "транскриптом"@uk ; rdfs:comment "Сукупність усіх РНК-транскриптів клітини чи тканини."@uk ; rdfs:subClassOf :Genomic_element .
+:gene_panel a owl:Class ; rdfs:label "gene panel"@en ; rdfs:label "генна панель"@uk ; rdfs:comment "Набір вибраних генів, що аналізуються разом."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "gene panel test"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "targeted panel"@en ; rdfs:subClassOf :Genomic_element .
+:Protein_level_entity a owl:Class ; rdfs:label "Protein-level entity"@en ; rdfs:comment "Сутність білкового рівня: від амінокислоти до протеому."@uk ; rdfs:subClassOf :Biological_entity .
+:amino_acid a owl:Class ; rdfs:label "amino acid"@en ; rdfs:label "амінокислота"@uk ; rdfs:comment "Органічна сполука, мономер білків."@uk ; rdfs:subClassOf :Protein_level_entity .
+:peptide a owl:Class ; rdfs:label "peptide"@en ; rdfs:label "пептид"@uk ; rdfs:comment "Короткий ланцюжок амінокислот."@uk ; rdfs:subClassOf :Protein_level_entity .
+:protein a owl:Class ; rdfs:label "protein"@en ; rdfs:label "білок"@uk ; rdfs:comment "Біополімер із амінокислот, що виконує структурні й функціональні ролі."@uk ; rdfs:subClassOf :Protein_level_entity .
+:protein_domain a owl:Class ; rdfs:label "protein domain"@en ; rdfs:label "білковий домен"@uk ; rdfs:comment "Структурно й функціонально відокремлена частина білка."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "domain"@en ; rdfs:subClassOf :Protein_level_entity .
+:proteome a owl:Class ; rdfs:label "proteome"@en ; rdfs:label "протеом"@uk ; rdfs:comment "Сукупність усіх білків клітини, тканини чи організму."@uk ; rdfs:subClassOf :Protein_level_entity .
+:Genetic_variation a owl:Class ; rdfs:label "Genetic variation"@en ; rdfs:comment "Відмінності послідовності ДНК між особами або від референсу та їх характеристики."@uk ; rdfs:subClassOf :Biomedical_data_analysis .
+:genetic_variant a owl:Class ; rdfs:label "genetic variant"@en ; rdfs:label "генетичний варіант"@uk ; rdfs:comment "Відмінність послідовності ДНК від референсної."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "variant"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "genomic variant"@en ; rdfs:subClassOf :Genetic_variation .
+:single_nucleotide_polymorphism a owl:Class ; rdfs:label "single nucleotide polymorphism"@en ; rdfs:label "однонуклеотидний поліморфізм"@uk ; rdfs:comment "Заміна одного нуклеотида в певній позиції геному."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "SNP"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "SNV"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "single nucleotide variant"@en ; rdfs:subClassOf :genetic_variant .
+:insertion_deletion a owl:Class ; rdfs:label "insertion-deletion"@en ; rdfs:label "інсерція-делеція"@uk ; rdfs:comment "Вставка або видалення невеликого числа нуклеотидів у послідовності."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "indel"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "insertion deletion"@en ; rdfs:subClassOf :genetic_variant .
+:structural_variant a owl:Class ; rdfs:label "structural variant"@en ; rdfs:label "структурний варіант"@uk ; rdfs:comment "Велика зміна геному (від ~50 нуклеотидів): делеція, дуплікація, інверсія, транслокація."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "SV"@en ; rdfs:subClassOf :genetic_variant .
+:copy_number_variation a owl:Class ; rdfs:label "copy number variation"@en ; rdfs:label "варіація числа копій"@uk ; rdfs:comment "Зміна кількості копій ділянки геному відносно референсу."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "CNV"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "copy number variant"@en ; rdfs:subClassOf :genetic_variant .
+:mutation a owl:Class ; rdfs:label "mutation"@en ; rdfs:label "мутація"@uk ; rdfs:comment "Стійка зміна послідовності ДНК."@uk ; rdfs:subClassOf :genetic_variant .
+:allele a owl:Class ; rdfs:label "allele"@en ; rdfs:label "алель"@uk ; rdfs:comment "Одна з альтернативних форм гена або ділянки ДНК у певному локусі."@uk ; rdfs:subClassOf :genetic_variant .
+:Variant_by_origin a owl:Class ; rdfs:label "Variant by origin"@en ; rdfs:comment "Класифікація варіантів за походженням: спадкові чи набуті."@uk ; rdfs:subClassOf :Genetic_variation .
+:germline_variant a owl:Class ; rdfs:label "germline variant"@en ; rdfs:label "germline-варіант"@uk ; rdfs:comment "Варіант у статевих клітинах, що передається нащадкам і присутній у всіх клітинах організму."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "hereditary variant"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "inherited variant"@en ; rdfs:subClassOf :Variant_by_origin .
+:somatic_variant a owl:Class ; rdfs:label "somatic variant"@en ; rdfs:label "соматичний варіант"@uk ; rdfs:comment "Варіант, набутий у соматичній клітині, не спадковий."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "somatic mutation"@en ; rdfs:subClassOf :Variant_by_origin .
+:Variant_by_clinical_significance a owl:Class ; rdfs:label "Variant by clinical significance"@en ; rdfs:comment "Класифікація варіантів за доведеним клінічним значенням."@uk ; rdfs:subClassOf :Genetic_variation .
+:pathogenic_variant a owl:Class ; rdfs:label "pathogenic variant"@en ; rdfs:label "патогенний варіант"@uk ; rdfs:comment "Варіант, що за доказами спричиняє захворювання або підвищує ризик."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "disease-causing variant"@en ; rdfs:subClassOf :Variant_by_clinical_significance .
+:benign_variant a owl:Class ; rdfs:label "benign variant"@en ; rdfs:label "доброякісний варіант"@uk ; rdfs:comment "Варіант, що за доказами не спричиняє захворювання."@uk ; rdfs:subClassOf :Variant_by_clinical_significance .
+:variant_of_uncertain_significance a owl:Class ; rdfs:label "variant of uncertain significance"@en ; rdfs:label "варіант невизначеного значення"@uk ; rdfs:comment "Варіант, клінічне значення якого поки не встановлено."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "VUS"@en ; rdfs:subClassOf :Variant_by_clinical_significance .
+:Biological_property a owl:Class ; rdfs:label "Biological property"@en ; rdfs:comment "Властивість або процес біологічної системи, що спостерігається чи вимірюється."@uk ; rdfs:subClassOf :Biomedical_data_analysis .
+:Heredity a owl:Class ; rdfs:label "Heredity"@en ; rdfs:comment "Властивості, пов'язані з передачею й проявом ознак."@uk ; rdfs:subClassOf :Biological_property .
+:genotype a owl:Class ; rdfs:label "genotype"@en ; rdfs:label "генотип"@uk ; rdfs:comment "Склад алелів особи в певному локусі або в усьому геномі."@uk ; rdfs:subClassOf :Heredity .
+:phenotype a owl:Class ; rdfs:label "phenotype"@en ; rdfs:label "фенотип"@uk ; rdfs:comment "Спостережувані ознаки організму, результат взаємодії генотипу й середовища."@uk ; rdfs:subClassOf :Heredity .
+:penetrance a owl:Class ; rdfs:label "penetrance"@en ; rdfs:label "пенетрантність"@uk ; rdfs:comment "Частка носіїв варіанта, у яких проявляється ознака."@uk ; rdfs:subClassOf :Heredity .
+:autosomal_dominant_inheritance a owl:Class ; rdfs:label "autosomal dominant inheritance"@en ; rdfs:label "аутосомно-домінантне успадкування"@uk ; rdfs:comment "Тип успадкування, за якого достатньо однієї копії варіанта, щоб проявилась ознака."@uk ; rdfs:subClassOf :Heredity .
+:Molecular_activity a owl:Class ; rdfs:label "Molecular activity"@en ; rdfs:comment "Молекулярні процеси та їх вимірювані показники."@uk ; rdfs:subClassOf :Biological_property .
+:gene_expression a owl:Class ; rdfs:label "gene expression"@en ; rdfs:label "експресія гена"@uk ; rdfs:comment "Процес, у якому інформація гена використовується для синтезу продукту."@uk ; rdfs:subClassOf :Molecular_activity .
+:DNA_methylation a owl:Class ; rdfs:label "DNA methylation"@en ; rdfs:label "метилювання ДНК"@uk ; rdfs:comment "Додавання метильної групи до ДНК; епігенетичний механізм."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "methylation"@en ; rdfs:subClassOf :Molecular_activity .
+:post_translational_modification a owl:Class ; rdfs:label "post-translational modification"@en ; rdfs:label "посттрансляційна модифікація"@uk ; rdfs:comment "Хімічна зміна білка після синтезу."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "PTM"@en ; rdfs:subClassOf :Molecular_activity .
+:protein_protein_interaction a owl:Class ; rdfs:label "protein-protein interaction"@en ; rdfs:label "білок-білкова взаємодія"@uk ; rdfs:comment "Фізичний чи функціональний контакт двох білків."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "PPI"@en ; rdfs:subClassOf :Molecular_activity .
+:protein_abundance a owl:Class ; rdfs:label "protein abundance"@en ; rdfs:label "рівень білка"@uk ; rdfs:comment "Кількість білка в зразку (відносна чи абсолютна)."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "protein quantity"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "protein level"@en ; rdfs:subClassOf :Molecular_activity .
+:Method_and_procedure a owl:Class ; rdfs:label "Method and procedure"@en ; rdfs:comment "Спосіб дії: лабораторний, обчислювальний або клінічний."@uk ; rdfs:subClassOf :Biomedical_data_analysis .
+:Laboratory_method a owl:Class ; rdfs:label "Laboratory method"@en ; rdfs:comment "Експериментальний метод аналізу зразків."@uk ; rdfs:subClassOf :Method_and_procedure .
+:DNA_sequencing a owl:Class ; rdfs:label "DNA sequencing"@en ; rdfs:label "секвенування ДНК"@uk ; rdfs:comment "Визначення порядку нуклеотидів у молекулі ДНК."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "sequencing"@en ; rdfs:subClassOf :Laboratory_method .
+:next_generation_sequencing a owl:Class ; rdfs:label "next-generation sequencing"@en ; rdfs:label "секвенування наступного покоління"@uk ; rdfs:comment "Масово-паралельне секвенування ДНК або РНК."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "NGS"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "high-throughput sequencing"@en ; rdfs:subClassOf :DNA_sequencing .
+:whole_genome_sequencing a owl:Class ; rdfs:label "whole genome sequencing"@en ; rdfs:label "секвенування повного геному"@uk ; rdfs:comment "Секвенування всього геному особи."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "WGS"@en ; rdfs:subClassOf :DNA_sequencing .
+:whole_exome_sequencing a owl:Class ; rdfs:label "whole exome sequencing"@en ; rdfs:label "секвенування екзому"@uk ; rdfs:comment "Секвенування лише кодувальних ділянок геному."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "WES"@en ; rdfs:subClassOf :DNA_sequencing .
+:RNA_sequencing a owl:Class ; rdfs:label "RNA sequencing"@en ; rdfs:label "секвенування РНК"@uk ; rdfs:comment "Секвенування РНК для оцінки транскриптому й експресії генів."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "RNA-seq"@en ; rdfs:subClassOf :DNA_sequencing .
+:mass_spectrometry a owl:Class ; rdfs:label "mass spectrometry"@en ; rdfs:label "мас-спектрометрія"@uk ; rdfs:comment "Метод вимірювання відношення маси до заряду іонів."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "MS"@en ; rdfs:subClassOf :Laboratory_method .
+:tandem_mass_spectrometry a owl:Class ; rdfs:label "tandem mass spectrometry"@en ; rdfs:label "тандемна мас-спектрометрія"@uk ; rdfs:comment "Мас-спектрометрія з фрагментацією іонів для визначення послідовності пептидів."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "MS/MS"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "LC-MS/MS"@en ; rdfs:subClassOf :mass_spectrometry .
+:laboratory_test a owl:Class ; rdfs:label "laboratory test"@en ; rdfs:label "лабораторне дослідження"@uk ; rdfs:comment "Аналіз зразка для отримання клінічно значущого результату."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "lab test"@en ; rdfs:subClassOf :Laboratory_method .
+:Computational_procedure a owl:Class ; rdfs:label "Computational procedure"@en ; rdfs:comment "Крок обчислювальної обробки даних."@uk ; rdfs:subClassOf :Method_and_procedure .
+:sequence_alignment a owl:Class ; rdfs:label "sequence alignment"@en ; rdfs:label "вирівнювання послідовностей"@uk ; rdfs:comment "Зіставлення ридів із позиціями референсного геному."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "read alignment"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "mapping"@en ; rdfs:subClassOf :Computational_procedure .
+:variant_calling a owl:Class ; rdfs:label "variant calling"@en ; rdfs:label "виклик варіантів"@uk ; rdfs:comment "Визначення варіантів за вирівняними ридами."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "variant detection"@en ; rdfs:subClassOf :Computational_procedure .
+:variant_annotation a owl:Class ; rdfs:label "variant annotation"@en ; rdfs:label "анотація варіантів"@uk ; rdfs:comment "Додавання до варіантів відомостей про ген, наслідок і частоту."@uk ; rdfs:subClassOf :Computational_procedure .
+:variant_filtering a owl:Class ; rdfs:label "variant filtering"@en ; rdfs:label "фільтрація варіантів"@uk ; rdfs:comment "Відсіювання ненадійних варіантів за анотаціями якості."@uk ; rdfs:subClassOf :Computational_procedure .
+:hard_filtering a owl:Class ; rdfs:label "hard filtering"@en ; rdfs:label "жорстка фільтрація"@uk ; rdfs:comment "Фільтрація варіантів за фіксованими порогами окремих анотацій."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "hard-filtering"@en ; rdfs:subClassOf :variant_filtering .
+:variant_quality_score_recalibration a owl:Class ; rdfs:label "variant quality score recalibration"@en ; rdfs:label "рекалібрація оцінок якості варіантів"@uk ; rdfs:comment "Фільтрація моделлю, навченою на відомих варіантах (GATK)."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "VQSR"@en ; rdfs:subClassOf :variant_filtering .
+:protein_identification a owl:Class ; rdfs:label "protein identification"@en ; rdfs:label "ідентифікація білків"@uk ; rdfs:comment "Визначення білків за спектрами через зіставлення з базою послідовностей."@uk ; rdfs:subClassOf :Computational_procedure .
+:nearest_neighbor_search a owl:Class ; rdfs:label "nearest neighbor search"@en ; rdfs:label "пошук найближчих сусідів"@uk ; rdfs:comment "Пошук об'єктів, найближчих до запиту у векторному просторі."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "similarity search"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "kNN search"@en ; rdfs:subClassOf :Computational_procedure .
+:Clinical_procedure a owl:Class ; rdfs:label "Clinical procedure"@en ; rdfs:comment "Крок клінічного процесу, пов'язаний із генетичними даними."@uk ; rdfs:subClassOf :Method_and_procedure .
+:genetic_testing a owl:Class ; rdfs:label "genetic testing"@en ; rdfs:label "генетичне тестування"@uk ; rdfs:comment "Аналіз ДНК для виявлення варіантів, пов'язаних із хворобою."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "genetic test"@en ; rdfs:subClassOf :Clinical_procedure .
+:cascade_testing a owl:Class ; rdfs:label "cascade testing"@en ; rdfs:label "каскадне тестування"@uk ; rdfs:comment "Послідовне тестування родичів носія відомого патогенного варіанта."@uk ; rdfs:subClassOf :genetic_testing .
+:genetic_counseling a owl:Class ; rdfs:label "genetic counseling"@en ; rdfs:label "генетичне консультування"@uk ; rdfs:comment "Допомога особі у розумінні генетичного ризику й варіантів дій."@uk ; rdfs:subClassOf :Clinical_procedure .
+:risk_assessment a owl:Class ; rdfs:label "risk assessment"@en ; rdfs:label "оцінка ризику"@uk ; rdfs:comment "Оцінювання ймовірності виникнення захворювання."@uk ; rdfs:subClassOf :Clinical_procedure .
+:clinical_trial a owl:Class ; rdfs:label "clinical trial"@en ; rdfs:label "клінічне випробування"@uk ; rdfs:comment "Дослідження за участю людей для оцінки втручання."@uk ; rdfs:subClassOf :Clinical_procedure .
+:Research_field a owl:Class ; rdfs:label "Research field"@en ; rdfs:comment "Галузь науки, об'єкт вивчення якої — певний тип біомолекул."@uk ; rdfs:subClassOf :Biomedical_data_analysis .
+:genomics a owl:Class ; rdfs:label "genomics"@en ; rdfs:label "геноміка"@uk ; rdfs:comment "Дослідження геномів, їхньої структури й варіації."@uk ; rdfs:subClassOf :Research_field .
+:proteomics a owl:Class ; rdfs:label "proteomics"@en ; rdfs:label "протеоміка"@uk ; rdfs:comment "Масштабне дослідження білків та їхніх функцій."@uk ; rdfs:subClassOf :Research_field .
+:epigenetics a owl:Class ; rdfs:label "epigenetics"@en ; rdfs:label "епігенетика"@uk ; rdfs:comment "Вивчення спадкових змін активності генів без зміни послідовності ДНК."@uk ; rdfs:subClassOf :Research_field .
+:Data_and_artifact a owl:Class ; rdfs:label "Data and artifact"@en ; rdfs:comment "Дані й артефакти: файли, записи, метадані."@uk ; rdfs:subClassOf :Biomedical_data_analysis .
+:Omics_data a owl:Class ; rdfs:label "Omics data"@en ; rdfs:comment "Дані геномних і протеомних вимірювань на різних стадіях обробки."@uk ; rdfs:subClassOf :Data_and_artifact .
+:sequencing_read a owl:Class ; rdfs:label "sequencing read"@en ; rdfs:label "прочитання секвенування"@uk ; rdfs:comment "Короткий фрагмент послідовності, отриманий секвенатором."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "read"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "sequence read"@en ; rdfs:subClassOf :Omics_data .
+:FASTQ_file a owl:Class ; rdfs:label "FASTQ file"@en ; rdfs:label "файл FASTQ"@uk ; rdfs:comment "Формат для ридів із оцінками якості символів."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "FASTQ"@en ; rdfs:subClassOf :Omics_data .
+:BAM_file a owl:Class ; rdfs:label "BAM file"@en ; rdfs:label "файл BAM"@uk ; rdfs:comment "Бінарний формат вирівняних ридів."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "BAM"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "alignment file"@en ; rdfs:subClassOf :Omics_data .
+:VCF_file a owl:Class ; rdfs:label "VCF file"@en ; rdfs:label "файл VCF"@uk ; rdfs:comment "Текстовий формат для варіантів та їхніх анотацій."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "variant call format"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "VCF"@en ; rdfs:subClassOf :Omics_data .
+:reference_genome a owl:Class ; rdfs:label "reference genome"@en ; rdfs:label "референсний геном"@uk ; rdfs:comment "Еталонна послідовність геному виду, з якою порівнюють вибірки."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "reference assembly"@en ; rdfs:subClassOf :Omics_data .
+:mass_spectrum a owl:Class ; rdfs:label "mass spectrum"@en ; rdfs:label "мас-спектр"@uk ; rdfs:comment "Розподіл інтенсивності іонів за відношенням маси до заряду."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "spectrum"@en ; rdfs:subClassOf :Omics_data .
+:Clinical_data a owl:Class ; rdfs:label "Clinical data"@en ; rdfs:comment "Записи, що описують пацієнта та його родину."@uk ; rdfs:subClassOf :Data_and_artifact .
+:electronic_health_record a owl:Class ; rdfs:label "electronic health record"@en ; rdfs:label "електронна медична картка"@uk ; rdfs:comment "Цифровий запис медичних даних пацієнта."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "EHR"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "electronic medical record"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "EMR"@en ; rdfs:subClassOf :Clinical_data .
+:clinical_note a owl:Class ; rdfs:label "clinical note"@en ; rdfs:label "клінічна нотатка"@uk ; rdfs:comment "Вільнотекстовий запис лікаря у медичній документації."@uk ; rdfs:subClassOf :Clinical_data .
+:family_history a owl:Class ; rdfs:label "family history"@en ; rdfs:label "сімейний анамнез"@uk ; rdfs:comment "Відомості про захворювання у родичів пацієнта."@uk ; rdfs:subClassOf :Clinical_data .
+:Data_about_data a owl:Class ; rdfs:label "Data about data"@en ; rdfs:comment "Дані, що описують інші дані (метадані, схема, походження)."@uk ; rdfs:subClassOf :Data_and_artifact .
+:metadata a owl:Class ; rdfs:label "metadata"@en ; rdfs:label "метадані"@uk ; rdfs:comment "Дані, що описують інші дані."@uk ; rdfs:subClassOf :Data_about_data .
+:data_schema a owl:Class ; rdfs:label "data schema"@en ; rdfs:label "схема даних"@uk ; rdfs:comment "Формальний опис структури даних."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "schema"@en ; rdfs:subClassOf :Data_about_data .
+:data_provenance a owl:Class ; rdfs:label "data provenance"@en ; rdfs:label "походження даних"@uk ; rdfs:comment "Відомості про джерело й історію перетворень даних."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "lineage"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "provenance"@en ; rdfs:subClassOf :Data_about_data .
+:Measure_of_quality a owl:Class ; rdfs:label "Measure of quality"@en ; rdfs:comment "Показник, за яким оцінюють якість варіантів або даних."@uk ; rdfs:subClassOf :Biomedical_data_analysis .
+:Variant_call_annotation a owl:Class ; rdfs:label "Variant call annotation"@en ; rdfs:comment "Анотація виклику варіанта, що кількісно характеризує його підтримку ридами."@uk ; rdfs:subClassOf :Measure_of_quality .
+:quality_by_depth a owl:Class ; rdfs:label "quality by depth"@en ; rdfs:label "якість на глибину"@uk ; rdfs:comment "Оцінка якості варіанта, нормована на глибину покриття."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "QD"@en ; rdfs:subClassOf :Variant_call_annotation .
+:Fisher_strand_bias a owl:Class ; rdfs:label "Fisher strand bias"@en ; rdfs:label "зміщення ланцюга за Фішером"@uk ; rdfs:comment "Оцінка нерівномірності підтримки варіанта прямим і зворотним ланцюгами."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "FS"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "FisherStrand"@en ; rdfs:subClassOf :Variant_call_annotation .
+:strand_odds_ratio a owl:Class ; rdfs:label "strand odds ratio"@en ; rdfs:label "відношення шансів ланцюгів"@uk ; rdfs:comment "Оцінка зміщення ланцюга, стійкіша до високого покриття."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "SOR"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "StrandOddsRatio"@en ; rdfs:subClassOf :Variant_call_annotation .
+:mapping_quality a owl:Class ; rdfs:label "mapping quality"@en ; rdfs:label "якість вирівнювання"@uk ; rdfs:comment "Оцінка впевненості в позиції вирівнювання рида."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "MQ"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "MAPQ"@en ; rdfs:subClassOf :Variant_call_annotation .
+:read_depth a owl:Class ; rdfs:label "read depth"@en ; rdfs:label "глибина покриття"@uk ; rdfs:comment "Кількість ридів, що перекривають позицію геному."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "depth"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "coverage"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "DP"@en ; rdfs:subClassOf :Variant_call_annotation .
+:rank_sum_test a owl:Class ; rdfs:label "rank sum test"@en ; rdfs:label "тест суми рангів"@uk ; rdfs:comment "Непараметричний тест порівняння двох груп; у GATK порівнює ріди з референсним та альтернативним алелем."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "Wilcoxon rank sum test"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "MQRankSum"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "ReadPosRankSum"@en ; rdfs:subClassOf :Variant_call_annotation .
+:data_quality a owl:Class ; rdfs:label "data quality"@en ; rdfs:label "якість даних"@uk ; rdfs:comment "Придатність даних до використання: повнота, точність, узгодженість."@uk ; rdfs:subClassOf :Measure_of_quality .
+:Clinical_concept a owl:Class ; rdfs:label "Clinical concept"@en ; rdfs:comment "Поняття клінічної ситуації: особа, стан, терапія, захист прав."@uk ; rdfs:subClassOf :Biomedical_data_analysis .
+:Person a owl:Class ; rdfs:label "Person"@en ; rdfs:comment "Особа в контексті генетичного дослідження родини."@uk ; rdfs:subClassOf :Clinical_concept .
+:patient a owl:Class ; rdfs:label "patient"@en ; rdfs:label "пацієнт"@uk ; rdfs:comment "Особа, що отримує медичну допомогу."@uk ; rdfs:subClassOf :Person .
+:proband a owl:Class ; rdfs:label "proband"@en ; rdfs:label "пробанд"@uk ; rdfs:comment "Особа, з якої починається вивчення родини в генетичному дослідженні."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "index patient"@en ; rdfs:subClassOf :patient .
+:relative a owl:Class ; rdfs:label "relative"@en ; rdfs:label "родич"@uk ; rdfs:comment "Особа, пов'язана з пробандом спорідненістю."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "family member"@en ; rdfs:subClassOf :Person .
+:Condition a owl:Class ; rdfs:label "Condition"@en ; rdfs:comment "Клінічний стан: діагноз, симптом, хвороба, маркер."@uk ; rdfs:subClassOf :Clinical_concept .
+:diagnosis a owl:Class ; rdfs:label "diagnosis"@en ; rdfs:label "діагноз"@uk ; rdfs:comment "Висновок про захворювання за результатами обстеження."@uk ; rdfs:subClassOf :Condition .
+:symptom a owl:Class ; rdfs:label "symptom"@en ; rdfs:label "симптом"@uk ; rdfs:comment "Ознака захворювання, яку відчуває або виявляє пацієнт."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "clinical sign"@en ; rdfs:subClassOf :Condition .
+:hereditary_cancer a owl:Class ; rdfs:label "hereditary cancer"@en ; rdfs:label "спадковий рак"@uk ; rdfs:comment "Рак, що виникає через успадкований патогенний варіант."@uk ; rdfs:subClassOf :Condition .
+:breast_cancer a owl:Class ; rdfs:label "breast cancer"@en ; rdfs:label "рак молочної залози"@uk ; rdfs:comment "Злоякісна пухлина молочної залози."@uk ; rdfs:subClassOf :hereditary_cancer .
+:ovarian_cancer a owl:Class ; rdfs:label "ovarian cancer"@en ; rdfs:label "рак яєчників"@uk ; rdfs:comment "Злоякісна пухлина яєчників."@uk ; rdfs:subClassOf :hereditary_cancer .
+:biomarker a owl:Class ; rdfs:label "biomarker"@en ; rdfs:label "біомаркер"@uk ; rdfs:comment "Вимірювана ознака, що відображає біологічний процес чи стан хвороби."@uk ; rdfs:subClassOf :Condition .
+:Therapy a owl:Class ; rdfs:label "Therapy"@en ; rdfs:comment "Лікувальне втручання або лікарський засіб."@uk ; rdfs:subClassOf :Clinical_concept .
+:treatment a owl:Class ; rdfs:label "treatment"@en ; rdfs:label "лікування"@uk ; rdfs:comment "Втручання для усунення або полегшення хвороби."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "therapy"@en ; rdfs:subClassOf :Therapy .
+:PARP_inhibitor a owl:Class ; rdfs:label "PARP inhibitor"@en ; rdfs:label "інгібітор PARP"@uk ; rdfs:comment "Клас таргетних препаратів, що блокують ферменти PARP; застосовують за мутацій BRCA."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "PARP inhibitors"@en ; rdfs:subClassOf :Therapy .
+:Ethical_and_legal_safeguard a owl:Class ; rdfs:label "Ethical and legal safeguard"@en ; rdfs:comment "Правова чи етична гарантія захисту особи й даних."@uk ; rdfs:subClassOf :Clinical_concept .
+:informed_consent a owl:Class ; rdfs:label "informed consent"@en ; rdfs:label "інформована згода"@uk ; rdfs:comment "Добровільна згода пацієнта після пояснення суті процедури чи дослідження."@uk ; rdfs:subClassOf :Ethical_and_legal_safeguard .
+:de_identification a owl:Class ; rdfs:label "de-identification"@en ; rdfs:label "деідентифікація"@uk ; rdfs:comment "Видалення ознак, що дозволяють ідентифікувати особу в даних."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "anonymization"@en ; rdfs:subClassOf :Ethical_and_legal_safeguard .
+:data_privacy a owl:Class ; rdfs:label "data privacy"@en ; rdfs:label "приватність даних"@uk ; rdfs:comment "Захист персональних даних від несанкціонованого доступу."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "privacy"@en ; rdfs:subClassOf :Ethical_and_legal_safeguard .
+:Knowledge_and_information_technology a owl:Class ; rdfs:label "Knowledge and information technology"@en ; rdfs:comment "Поняття інженерії знань та інформаційних технологій."@uk ; rdfs:subClassOf :Biomedical_data_analysis .
+:Knowledge_organization_system a owl:Class ; rdfs:label "Knowledge organization system"@en ; rdfs:comment "Система організації знань: від словника до графа знань."@uk ; rdfs:subClassOf :Knowledge_and_information_technology .
+:ontology a owl:Class ; rdfs:label "ontology"@en ; rdfs:label "онтологія"@uk ; rdfs:comment "Формальна специфікація понять предметної області та зв'язків між ними."@uk ; rdfs:subClassOf :Knowledge_organization_system .
+:Gene_Ontology a owl:Class ; rdfs:label "Gene Ontology"@en ; rdfs:label "Gene Ontology"@uk ; rdfs:comment "Онтологія функцій генів, біологічних процесів і клітинних компонентів."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "GO"@en ; rdfs:subClassOf :ontology .
+:Human_Phenotype_Ontology a owl:Class ; rdfs:label "Human Phenotype Ontology"@en ; rdfs:label "Human Phenotype Ontology"@uk ; rdfs:comment "Онтологія фенотипових ознак людини."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "HPO"@en ; rdfs:subClassOf :ontology .
+:controlled_vocabulary a owl:Class ; rdfs:label "controlled vocabulary"@en ; rdfs:label "контрольований словник"@uk ; rdfs:comment "Узгоджений перелік термінів із фіксованим значенням."@uk ; rdfs:subClassOf :Knowledge_organization_system .
+:Medical_Subject_Headings a owl:Class ; rdfs:label "Medical Subject Headings"@en ; rdfs:label "MeSH"@uk ; rdfs:comment "Контрольований словник медичних тем Національної медичної бібліотеки США."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "MeSH"@en ; rdfs:subClassOf :controlled_vocabulary .
+:SNOMED_CT a owl:Class ; rdfs:label "SNOMED CT"@en ; rdfs:label "SNOMED CT"@uk ; rdfs:comment "Систематизована клінічна термінологія."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "SNOMED"@en ; rdfs:subClassOf :controlled_vocabulary .
+:thesaurus a owl:Class ; rdfs:label "thesaurus"@en ; rdfs:label "тезаурус"@uk ; rdfs:comment "Словник понять із зв'язками еквівалентності, ієрархії й асоціації."@uk ; rdfs:subClassOf :Knowledge_organization_system .
+:taxonomy a owl:Class ; rdfs:label "taxonomy"@en ; rdfs:label "таксономія"@uk ; rdfs:comment "Ієрархічна класифікація понять на основі зв'язку «загальне—часткове»."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "classification hierarchy"@en ; rdfs:subClassOf :Knowledge_organization_system .
+:knowledge_graph a owl:Class ; rdfs:label "knowledge graph"@en ; rdfs:label "граф знань"@uk ; rdfs:comment "Граф сутностей і зв'язків, що репрезентує знання."@uk ; rdfs:subClassOf :Knowledge_organization_system .
+:Data_resource a owl:Class ; rdfs:label "Data resource"@en ; rdfs:comment "Публічний ресурс біомедичних даних."@uk ; rdfs:subClassOf :Knowledge_and_information_technology .
+:ClinVar a owl:Class ; rdfs:label "ClinVar"@en ; rdfs:label "ClinVar"@uk ; rdfs:comment "Публічний архів інтерпретацій клінічної значущості варіантів."@uk ; rdfs:subClassOf :Data_resource .
+:UniProt a owl:Class ; rdfs:label "UniProt"@en ; rdfs:label "UniProt"@uk ; rdfs:comment "Ресурс послідовностей і функціональної анотації білків."@uk ; rdfs:subClassOf :Data_resource .
+:dbSNP a owl:Class ; rdfs:label "dbSNP"@en ; rdfs:label "dbSNP"@uk ; rdfs:comment "Публічна база коротких генетичних варіантів."@uk ; rdfs:subClassOf :Data_resource .
+:Database_technology a owl:Class ; rdfs:label "Database technology"@en ; rdfs:comment "Тип бази даних за моделлю даних."@uk ; rdfs:subClassOf :Knowledge_and_information_technology .
+:relational_database a owl:Class ; rdfs:label "relational database"@en ; rdfs:label "реляційна база даних"@uk ; rdfs:comment "База даних із таблицями й зв'язками між ними."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "SQL database"@en ; rdfs:subClassOf :Database_technology .
+:graph_database a owl:Class ; rdfs:label "graph database"@en ; rdfs:label "графова база даних"@uk ; rdfs:comment "База даних, що зберігає вузли й ребра та оптимізована під обхід зв'язків."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "graph DB"@en ; rdfs:subClassOf :Database_technology .
+:vector_database a owl:Class ; rdfs:label "vector database"@en ; rdfs:label "векторна база даних"@uk ; rdfs:comment "База даних для зберігання embeddings і пошуку за схожістю."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "vector DB"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "vector store"@en ; rdfs:subClassOf :Database_technology .
+:Representation_and_similarity a owl:Class ; rdfs:label "Representation and similarity"@en ; rdfs:comment "Способи подання даних і порівняння об'єктів."@uk ; rdfs:subClassOf :Knowledge_and_information_technology .
+:embedding a owl:Class ; rdfs:label "embedding"@en ; rdfs:label "embedding"@uk ; rdfs:comment "Числовий вектор, що кодує семантику об'єкта."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "vector embedding"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "vector representation"@en ; rdfs:subClassOf :Representation_and_similarity .
+:semantic_similarity a owl:Class ; rdfs:label "semantic similarity"@en ; rdfs:label "семантична схожість"@uk ; rdfs:comment "Міра близькості значень двох об'єктів."@uk ; rdfs:subClassOf :Representation_and_similarity .
+:Resource_Description_Framework a owl:Class ; rdfs:label "Resource Description Framework"@en ; rdfs:label "RDF"@uk ; rdfs:comment "Модель даних у вигляді триплетів «суб'єкт—предикат—об'єкт»."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "RDF"@en ; rdfs:subClassOf :Representation_and_similarity .
+:Simple_Knowledge_Organization_System a owl:Class ; rdfs:label "Simple Knowledge Organization System"@en ; rdfs:label "SKOS"@uk ; rdfs:comment "Модель W3C для публікації таксономій і тезаурусів у вигляді RDF."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "SKOS"@en ; rdfs:subClassOf :Representation_and_similarity .
+:SPARQL a owl:Class ; rdfs:label "SPARQL"@en ; rdfs:label "SPARQL"@uk ; rdfs:comment "Мова запитів до RDF-графів."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "SPARQL query language"@en ; rdfs:subClassOf :Representation_and_similarity .
+:Knowledge_engineering a owl:Class ; rdfs:label "Knowledge engineering"@en ; rdfs:comment "Елементи побудови систем на знаннях."@uk ; rdfs:subClassOf :Knowledge_and_information_technology .
+:rule_based_system a owl:Class ; rdfs:label "rule-based system"@en ; rdfs:label "система на правилах"@uk ; rdfs:comment "Система, що виводить рішення застосуванням правил."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "expert system"@en ; rdfs:subClassOf :Knowledge_engineering .
+:production_rule a owl:Class ; rdfs:label "production rule"@en ; rdfs:label "продукційне правило"@uk ; rdfs:comment "Правило вигляду «ЯКЩО умова ТО дія»."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "IF-THEN rule"@en ; rdfs:subClassOf :Knowledge_engineering .
+:inference_engine a owl:Class ; rdfs:label "inference engine"@en ; rdfs:label "рушій виведення"@uk ; rdfs:comment "Компонент, що застосовує правила до фактів для виведення висновків."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "reasoner"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "rule engine"@en ; rdfs:subClassOf :Knowledge_engineering .
+:frame a owl:Class ; rdfs:label "frame"@en ; rdfs:label "фрейм"@uk ; rdfs:comment "Структура знань із іменованими слотами та значеннями за замовчуванням."@uk ; rdfs:subClassOf :Knowledge_engineering .
+:competency_question a owl:Class ; rdfs:label "competency question"@en ; rdfs:label "компетентнісне запитання"@uk ; rdfs:comment "Запитання, на яке база знань має вміти відповісти."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "CQ"@en ; rdfs:subClassOf :Knowledge_engineering .
+:Data_engineering a owl:Class ; rdfs:label "Data engineering"@en ; rdfs:comment "Етапи роботи з даними в інформаційних системах."@uk ; rdfs:subClassOf :Knowledge_and_information_technology .
+:data_integration a owl:Class ; rdfs:label "data integration"@en ; rdfs:label "інтеграція даних"@uk ; rdfs:comment "Об'єднання даних з різних джерел у єдиний погляд."@uk ; rdfs:subClassOf :Data_engineering .
+:data_pipeline a owl:Class ; rdfs:label "data pipeline"@en ; rdfs:label "конвеєр даних"@uk ; rdfs:comment "Послідовність кроків обробки даних від джерела до результату."@uk ; <http://www.w3.org/2004/02/skos/core#altLabel> "ETL pipeline"@en ; <http://www.w3.org/2004/02/skos/core#altLabel> "pipeline"@en ; rdfs:subClassOf :Data_engineering .
+
+# extra classes needed by triples/scenario
+:first_degree_relative a owl:Class ; rdfs:label "first-degree relative"@en ; rdfs:comment "Relative sharing about 50% of genetic material with the proband (siblings, parents, children)."@en ; rdfs:subClassOf :relative .
+:second_degree_relative a owl:Class ; rdfs:label "second-degree relative"@en ; rdfs:comment "Relative sharing about 25% (half-siblings, aunts/uncles, grandparents)."@en ; rdfs:subClassOf :relative .
+:third_degree_relative a owl:Class ; rdfs:label "third-degree relative"@en ; rdfs:comment "Relative sharing up to 12.5% (cousins and more distant)."@en ; rdfs:subClassOf :relative .
+:variant_at_exon_end a owl:Class ; rdfs:label "variant at exon end"@en ; rdfs:comment "Variant located at the end of an exon."@en ; rdfs:subClassOf :genetic_variant .
+:curated_known_variants a owl:Class ; rdfs:label "curated known variants"@en ; rdfs:comment "Resource of curated known variants."@en ; rdfs:subClassOf :Omics_data .
+:large_variant_set a owl:Class ; rdfs:label "large variant set"@en ; rdfs:comment "A large set of variants."@en ; rdfs:subClassOf :Omics_data .
+:filter_flag a owl:Class ; rdfs:label "filter flag"@en ; rdfs:comment "Flag assigned to a variant by a filtering threshold."@en ; rdfs:subClassOf :Data_and_artifact .
+:filter_status a owl:Class ; rdfs:label "filter status"@en ; rdfs:comment "Outcome status of variant filtering (PASS or FILTERED)."@en ; rdfs:subClassOf :Data_and_artifact .
+:threshold a owl:Class ; rdfs:label "threshold"@en ; rdfs:comment "Threshold on a variant annotation used in hard filtering."@en ; rdfs:subClassOf :Measure_of_quality .
+:filtering_rule a owl:Class ; rdfs:label "filtering rule"@en ; rdfs:comment "Rule for deriving a filtering outcome."@en ; rdfs:subClassOf :Knowledge_engineering .
+:hard_filtering_run a owl:Class ; rdfs:label "hard filtering run"@en ; rdfs:comment "A concrete execution of hard filtering."@en ; rdfs:subClassOf :hard_filtering .
+:flagged_variant a owl:Class ; rdfs:label "flagged variant"@en ; rdfs:comment "Variant with at least one filter flag."@en ; rdfs:subClassOf :genetic_variant .
+:germline_variant rdfs:subClassOf :genetic_variant .
+:somatic_variant rdfs:subClassOf :genetic_variant .
+:pathogenic_variant rdfs:subClassOf :genetic_variant .
+:benign_variant rdfs:subClassOf :genetic_variant .
+:variant_of_uncertain_significance rdfs:subClassOf :genetic_variant .
+:proband rdfs:subClassOf :patient .
+
+# ---------- Disjointness ----------
+[] a owl:AllDisjointClasses ; owl:members ( :Biological_entity :Genetic_variation :Biological_property :Method_and_procedure :Research_field :Data_and_artifact :Measure_of_quality :Clinical_concept :Knowledge_and_information_technology ) .
+[] a owl:AllDisjointClasses ; owl:members ( :germline_variant :somatic_variant ) .
+[] a owl:AllDisjointClasses ; owl:members ( :pathogenic_variant :benign_variant :variant_of_uncertain_significance ) .
+[] a owl:AllDisjointClasses ; owl:members ( :single_nucleotide_polymorphism :insertion_deletion :structural_variant :copy_number_variation ) .
+[] a owl:AllDisjointClasses ; owl:members ( :Genomic_element :Protein_level_entity ) .
+[] a owl:AllDisjointClasses ; owl:members ( :gene :chromosome :exon :intron :genome ) .
+[] a owl:AllDisjointClasses ; owl:members ( :Person :Condition :Therapy :Ethical_and_legal_safeguard ) .
+[] a owl:AllDisjointClasses ; owl:members ( :Laboratory_method :Computational_procedure :Clinical_procedure ) .
+[] a owl:AllDisjointClasses ; owl:members ( :first_degree_relative :second_degree_relative :third_degree_relative ) .
+[] a owl:AllDisjointClasses ; owl:members ( :BRCA1 :BRCA2 ) .
+[] a owl:AllDisjointClasses ; owl:members ( :hard_filtering :variant_quality_score_recalibration ) .
+
+# ---------- Object properties ----------
+:has_annotation a owl:ObjectProperty ; rdfs:label "has_annotation"@en .
+:increases_risk_of a owl:ObjectProperty ; rdfs:label "increases_risk_of"@en .
+:uses_input a owl:ObjectProperty ; rdfs:label "uses_input"@en .
+:applies_to a owl:ObjectProperty ; rdfs:label "applies_to"@en .
+:requires a owl:ObjectProperty ; rdfs:label "requires"@en .
+:recommended_for a owl:ObjectProperty ; rdfs:label "recommended_for"@en .
+:detects a owl:ObjectProperty ; rdfs:label "detects"@en .
+:part_of a owl:ObjectProperty ; rdfs:label "part_of"@en , owl:TransitiveProperty ; owl:inverseOf :has_part .
+:has_part a owl:ObjectProperty ; rdfs:label "has_part"@en ; owl:inverseOf :part_of .
+:is_kin_of a owl:ObjectProperty ; rdfs:label "is_kin_of"@en , owl:SymmetricProperty .
+:produces a owl:ObjectProperty ; rdfs:label "produces"@en ; owl:inverseOf :produced_by .
+:produced_by a owl:ObjectProperty ; rdfs:label "produced by"@en ; owl:inverseOf :produces .
+:derived_from a owl:ObjectProperty ; rdfs:label "derived from"@en , owl:TransitiveProperty .
+:contains_variant a owl:ObjectProperty ; rdfs:label "contains variant"@en ; owl:inverseOf :contained_in .
+:contained_in a owl:ObjectProperty ; rdfs:label "contained in"@en ; owl:inverseOf :contains_variant .
+:has_variant a owl:ObjectProperty ; rdfs:label "has variant"@en ; owl:inverseOf :variant_of .
+:variant_of a owl:ObjectProperty ; rdfs:label "variant of"@en ; owl:inverseOf :has_variant .
+:in_gene a owl:ObjectProperty ; rdfs:label "in gene"@en .
+:has_flag a owl:ObjectProperty ; rdfs:label "has flag"@en .
+:raised_by a owl:ObjectProperty ; rdfs:label "raised by"@en .
+:has_filter_status a owl:ObjectProperty ; rdfs:label "has filter status"@en , owl:FunctionalProperty .
+:has_threshold a owl:ObjectProperty ; rdfs:label "has threshold"@en .
+:on_measure a owl:ObjectProperty ; rdfs:label "on measure"@en .
+:of_measure a owl:ObjectProperty ; rdfs:label "of measure"@en .
+:has_rule a owl:ObjectProperty ; rdfs:label "has rule"@en .
+:has_condition a owl:ObjectProperty ; rdfs:label "has condition"@en .
+:parent_of a owl:ObjectProperty ; rdfs:label "parent of"@en ; owl:inverseOf :child_of .
+:child_of a owl:ObjectProperty ; rdfs:label "child of"@en ; owl:inverseOf :parent_of .
+:sibling_of a owl:ObjectProperty ; rdfs:label "sibling of"@en , owl:SymmetricProperty .
+:cousin_of a owl:ObjectProperty ; rdfs:label "cousin of"@en , owl:SymmetricProperty .
+:has_proband a owl:ObjectProperty ; rdfs:label "has proband"@en ; rdfs:range :proband .
+:testing_deferred_for a owl:ObjectProperty ; rdfs:label "testing deferred for"@en .
+
+# ---------- Data properties ----------
+:hasAge a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "has age"@en ; rdfs:domain :Person ; rdfs:range xsd:integer .
+:hasSex a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "has sex"@en ; rdfs:domain :Person ; rdfs:range xsd:string .
+:isDeceased a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "is deceased"@en ; rdfs:domain :Person ; rdfs:range xsd:boolean .
+:inheritanceProbability a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "inheritance probability"@en ; rdfs:domain :relative ; rdfs:range xsd:decimal .
+:hasValue a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "has value"@en ; rdfs:domain :Variant_call_annotation ; rdfs:range xsd:decimal .
+:thresholdValue a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "threshold value"@en ; rdfs:domain :threshold ; rdfs:range xsd:decimal .
+:thresholdOperator a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "threshold operator"@en ; rdfs:domain :threshold ; rdfs:range xsd:string .
+:thresholdVariantType a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "threshold variant type"@en ; rdfs:domain :threshold ; rdfs:range xsd:string .
+:minTestingAge a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "minimum testing age"@en ; rdfs:domain :cascade_testing ; rdfs:range xsd:integer .
+:panelSize a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "panel size"@en ; rdfs:domain :gene_panel ; rdfs:range xsd:string .
+:ruleText a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "rule text"@en ; rdfs:domain :filtering_rule ; rdfs:range xsd:string .
+:has_example a owl:AnnotationProperty ; rdfs:label "has_example"@en .
+:hasAge rdfs:comment "Age in years."@en .
+
+# ---------- Existential / universal / cardinality axioms ----------
+:cascade_testing rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :applies_to ; owl:someValuesFrom :relative ] .
+:cascade_testing rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :detects ; owl:someValuesFrom :genetic_variant ] .
+:cascade_testing rdfs:subClassOf :genetic_testing .
+:cascade_testing rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :recommended_for ; owl:someValuesFrom :first_degree_relative ] .
+:cascade_testing rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :requires ; owl:someValuesFrom :pathogenic_variant ] .
+:first_degree_relative :has_example "рідні брати/сестри, батьки, діти: 50%"@uk .
+:first_degree_relative rdfs:subClassOf :relative .
+:genetic_counseling rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :applies_to ; owl:someValuesFrom :relative ] .
+:genetic_counseling rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :recommended_for ; owl:someValuesFrom :relative ] .
+:genetic_counseling rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :uses_input ; owl:someValuesFrom :family_history ] .
+:genetic_testing rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :applies_to ; owl:someValuesFrom :proband ] .
+:genetic_testing rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :detects ; owl:someValuesFrom :pathogenic_variant ] .
+:genetic_testing :has_example "тестування лише дорослих (≥ 18 років)"@uk .
+:genetic_testing rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :recommended_for ; owl:someValuesFrom :breast_cancer ] .
+:genetic_testing rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :recommended_for ; owl:someValuesFrom :ovarian_cancer ] .
+:relative rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :is_kin_of ; owl:someValuesFrom :proband ] .
+:risk_assessment rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :applies_to ; owl:someValuesFrom :proband ] .
+:risk_assessment rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :uses_input ; owl:someValuesFrom :family_history ] .
+:second_degree_relative :has_example "зведені брати/сестри, тітки/дядьки, бабусі/дідусі: 25%"@uk .
+:second_degree_relative rdfs:subClassOf :relative .
+:third_degree_relative :has_example "двоюрідні та віддалені родичі: до 12,5%"@uk .
+:third_degree_relative rdfs:subClassOf :relative .
+:BRCA1 rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :increases_risk_of ; owl:someValuesFrom :breast_cancer ] .
+:BRCA1 rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :increases_risk_of ; owl:someValuesFrom :ovarian_cancer ] .
+:BRCA1 rdfs:subClassOf :gene .
+:BRCA2 rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :increases_risk_of ; owl:someValuesFrom :breast_cancer ] .
+:BRCA2 rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :increases_risk_of ; owl:someValuesFrom :ovarian_cancer ] .
+:BRCA2 rdfs:subClassOf :gene .
+:gene rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :part_of ; owl:someValuesFrom :gene_panel ] .
+:genetic_variant rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :has_annotation ; owl:someValuesFrom :Fisher_strand_bias ] .
+:genetic_variant rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :has_annotation ; owl:someValuesFrom :mapping_quality ] .
+:genetic_variant rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :has_annotation ; owl:someValuesFrom :quality_by_depth ] .
+:genetic_variant rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :has_annotation ; owl:someValuesFrom :strand_odds_ratio ] .
+:germline_variant rdfs:subClassOf :genetic_variant .
+:insertion_deletion rdfs:subClassOf :genetic_variant .
+:pathogenic_variant rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :increases_risk_of ; owl:someValuesFrom :breast_cancer ] .
+:pathogenic_variant rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :increases_risk_of ; owl:someValuesFrom :hereditary_cancer ] .
+:pathogenic_variant rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :increases_risk_of ; owl:someValuesFrom :ovarian_cancer ] .
+:pathogenic_variant rdfs:subClassOf :genetic_variant .
+:sequence_alignment rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :produces ; owl:someValuesFrom :BAM_file ] .
+:single_nucleotide_polymorphism rdfs:subClassOf :genetic_variant .
+:variant_calling rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :detects ; owl:someValuesFrom :genetic_variant ] .
+:variant_calling rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :produces ; owl:someValuesFrom :VCF_file ] .
+:variant_calling rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :uses_input ; owl:someValuesFrom :BAM_file ] .
+:Fisher_strand_bias rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :applies_to ; owl:someValuesFrom :variant_at_exon_end ] .
+:Fisher_strand_bias :has_example "FS > 200 (INDEL)"@en .
+:Fisher_strand_bias :has_example "FS > 60 (SNP)"@en .
+:hard_filtering rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :applies_to ; owl:someValuesFrom :genetic_variant ] .
+:hard_filtering rdfs:subClassOf :variant_filtering .
+:hard_filtering rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :recommended_for ; owl:someValuesFrom :gene_panel ] .
+:hard_filtering rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :uses_input ; owl:someValuesFrom :Fisher_strand_bias ] .
+:hard_filtering rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :uses_input ; owl:someValuesFrom :mapping_quality ] .
+:hard_filtering rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :uses_input ; owl:someValuesFrom :quality_by_depth ] .
+:hard_filtering rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :uses_input ; owl:someValuesFrom :rank_sum_test ] .
+:hard_filtering rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :uses_input ; owl:someValuesFrom :strand_odds_ratio ] .
+:mapping_quality rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :applies_to ; owl:someValuesFrom :sequencing_read ] .
+:mapping_quality :has_example "MQ < 40"@en .
+:quality_by_depth :has_example "QD < 2"@en .
+:quality_by_depth rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :uses_input ; owl:someValuesFrom :read_depth ] .
+:rank_sum_test rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :applies_to ; owl:someValuesFrom :mapping_quality ] .
+:rank_sum_test :has_example "MQRankSum < −12,5"@en .
+:rank_sum_test :has_example "ReadPosRankSum < −8"@en .
+:rank_sum_test rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :uses_input ; owl:someValuesFrom :mapping_quality ] .
+:strand_odds_ratio :has_example "SOR > 3"@en .
+:strand_odds_ratio rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :recommended_for ; owl:someValuesFrom :variant_at_exon_end ] .
+:variant_filtering rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :applies_to ; owl:someValuesFrom :VCF_file ] .
+:variant_filtering :has_example "будь-який прапорець → відкинути варіант"@uk .
+:variant_quality_score_recalibration rdfs:subClassOf :variant_filtering .
+:variant_quality_score_recalibration rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :recommended_for ; owl:someValuesFrom :germline_variant ] .
+:variant_quality_score_recalibration rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :requires ; owl:someValuesFrom :curated_known_variants ] .
+:variant_quality_score_recalibration rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :requires ; owl:someValuesFrom :large_variant_set ] .
+:variant_quality_score_recalibration rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :uses_input ; owl:someValuesFrom :VCF_file ] .
+:cascade_testing rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :applies_to ; owl:allValuesFrom :relative ] .
+:sequence_alignment rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :produces ; owl:allValuesFrom :BAM_file ] .
+:variant_calling rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :produces ; owl:allValuesFrom :VCF_file ] .
+:genetic_variant rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :has_annotation ; owl:allValuesFrom :Variant_call_annotation ] .
+:genetic_variant rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :has_filter_status ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ] .
+:Person rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :hasAge ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ] .
+:Person rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :hasSex ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ] .
+:cascade_testing rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :has_proband ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass :proband ] .
+:hard_filtering_run rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :uses_input ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .
+:first_degree_relative rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :inheritanceProbability ; owl:hasValue 0.5 ] .
+:second_degree_relative rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :inheritanceProbability ; owl:hasValue 0.25 ] .
+:third_degree_relative rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :inheritanceProbability ; owl:hasValue 0.125 ] .
+:cascade_testing rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :minTestingAge ; owl:hasValue 18 ] .
+:flagged_variant owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( :genetic_variant [ a owl:Restriction ; owl:onProperty :has_flag ; owl:someValuesFrom :filter_flag ] ) ] .
+:flagged_variant rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :has_filter_status ; owl:hasValue ind:FILTERED ] .
+
+# ---------- Individuals ----------
+ind:Olena a owl:NamedIndividual, :proband ; rdfs:label "Olena"@en ;
+    :hasSex "female" ;
+    :hasAge "42"^^xsd:integer ;
+    :isDeceased false ;
+    :has_variant ind:VAR-001 ;
+    :has_condition ind:Olena_breast_cancer .
+ind:Marta a owl:NamedIndividual, :first_degree_relative ; rdfs:label "Marta"@en ;
+    :hasSex "female" ;
+    :hasAge "39"^^xsd:integer ;
+    :inheritanceProbability "0.5"^^xsd:decimal ;
+    :isDeceased false ;
+    :is_kin_of ind:Olena .
+ind:Iryna a owl:NamedIndividual, :first_degree_relative ; rdfs:label "Iryna"@en ;
+    :hasSex "female" ;
+    :hasAge "68"^^xsd:integer ;
+    :inheritanceProbability "0.5"^^xsd:decimal ;
+    :isDeceased false ;
+    :is_kin_of ind:Olena ;
+    :has_condition ind:Iryna_ovarian_cancer .
+ind:Petro a owl:NamedIndividual, :first_degree_relative ; rdfs:label "Petro"@en ;
+    :hasSex "male" ;
+    :hasAge "70"^^xsd:integer ;
+    :inheritanceProbability "0.5"^^xsd:decimal ;
+    :isDeceased false ;
+    :is_kin_of ind:Olena .
+ind:Sofiia a owl:NamedIndividual, :first_degree_relative ; rdfs:label "Sofiia"@en ;
+    :hasSex "female" ;
+    :hasAge "17"^^xsd:integer ;
+    :inheritanceProbability "0.5"^^xsd:decimal ;
+    :isDeceased false ;
+    :is_kin_of ind:Olena .
+ind:Halyna a owl:NamedIndividual, :second_degree_relative ; rdfs:label "Halyna"@en ;
+    :hasSex "female" ;
+    :hasAge "65"^^xsd:integer ;
+    :inheritanceProbability "0.25"^^xsd:decimal ;
+    :isDeceased false ;
+    :is_kin_of ind:Olena .
+ind:Andrii a owl:NamedIndividual, :third_degree_relative ; rdfs:label "Andrii"@en ;
+    :hasSex "male" ;
+    :hasAge "40"^^xsd:integer ;
+    :inheritanceProbability "0.125"^^xsd:decimal ;
+    :isDeceased false ;
+    :is_kin_of ind:Olena .
+ind:Maria a owl:NamedIndividual, :second_degree_relative ; rdfs:label "Maria"@en ;
+    :hasSex "female" ;
+    :inheritanceProbability "0.25"^^xsd:decimal ;
+    :isDeceased true ;
+    :is_kin_of ind:Olena .
+ind:Marta :sibling_of ind:Olena .
+ind:Halyna :sibling_of ind:Iryna .
+ind:Iryna :parent_of ind:Olena .
+ind:Petro :parent_of ind:Olena .
+ind:Olena :parent_of ind:Sofiia .
+ind:Maria :parent_of ind:Iryna .
+ind:Maria :parent_of ind:Halyna .
+ind:Halyna :parent_of ind:Andrii .
+ind:Andrii :cousin_of ind:Olena .
+ind:Olena_breast_cancer a owl:NamedIndividual, :breast_cancer ; rdfs:label "breast cancer of Olena"@en .
+ind:Iryna_ovarian_cancer a owl:NamedIndividual, :ovarian_cancer ; rdfs:label "ovarian cancer of Iryna"@en .
+ind:BRCA1_gene a owl:NamedIndividual, :BRCA1 ; rdfs:label "BRCA1"@en ;
+    :part_of ind:HBOC-panel ;
+    :increases_risk_of ind:Olena_breast_cancer .
+ind:BRCA2_gene a owl:NamedIndividual, :BRCA2 ; rdfs:label "BRCA2"@en ;
+    :part_of ind:HBOC-panel .
+ind:PALB2_gene a owl:NamedIndividual, :gene ; rdfs:label "PALB2"@en ;
+    :part_of ind:HBOC-panel .
+ind:TP53_gene a owl:NamedIndividual, :gene ; rdfs:label "TP53"@en ;
+    :part_of ind:HBOC-panel .
+ind:HBOC-panel a owl:NamedIndividual, :gene_panel ; rdfs:label "HBOC-panel"@en ;
+    :panelSize "small" ;
+    :has_part ind:BRCA1_gene ;
+    :has_part ind:BRCA2_gene ;
+    :has_part ind:PALB2_gene ;
+    :has_part ind:TP53_gene .
+ind:QD a owl:NamedIndividual, :quality_by_depth ; rdfs:label "QD"@en .
+ind:FS a owl:NamedIndividual, :Fisher_strand_bias ; rdfs:label "FS"@en .
+ind:SOR a owl:NamedIndividual, :strand_odds_ratio ; rdfs:label "SOR"@en .
+ind:MQ a owl:NamedIndividual, :mapping_quality ; rdfs:label "MQ"@en .
+ind:MQRankSum a owl:NamedIndividual, :rank_sum_test ; rdfs:label "MQRankSum"@en .
+ind:ReadPosRankSum a owl:NamedIndividual, :rank_sum_test ; rdfs:label "ReadPosRankSum"@en .
+ind:VAR-001 a owl:NamedIndividual, :pathogenic_variant, :single_nucleotide_polymorphism, :germline_variant ; rdfs:label "VAR-001"@en ;
+    :contained_in ind:sample1.vcf ;
+    :has_filter_status ind:PASS ;
+    :in_gene ind:BRCA1_gene ;
+    :has_annotation ind:VAR-001_QD ;
+    :has_annotation ind:VAR-001_FS ;
+    :has_annotation ind:VAR-001_SOR ;
+    :has_annotation ind:VAR-001_MQ .
+ind:VAR-001_QD a owl:NamedIndividual, :quality_by_depth ; rdfs:label "VAR-001 QD"@en ;
+    :hasValue "25.0"^^xsd:decimal ;
+    :of_measure ind:QD .
+ind:VAR-001_FS a owl:NamedIndividual, :Fisher_strand_bias ; rdfs:label "VAR-001 FS"@en ;
+    :hasValue "3.1"^^xsd:decimal ;
+    :of_measure ind:FS .
+ind:VAR-001_SOR a owl:NamedIndividual, :strand_odds_ratio ; rdfs:label "VAR-001 SOR"@en ;
+    :hasValue "0.8"^^xsd:decimal ;
+    :of_measure ind:SOR .
+ind:VAR-001_MQ a owl:NamedIndividual, :mapping_quality ; rdfs:label "VAR-001 MQ"@en ;
+    :hasValue "60"^^xsd:decimal ;
+    :of_measure ind:MQ .
+ind:VAR-002 a owl:NamedIndividual, :benign_variant, :single_nucleotide_polymorphism ; rdfs:label "VAR-002"@en ;
+    :contained_in ind:sample1.vcf ;
+    :has_filter_status ind:FILTERED ;
+    :in_gene ind:BRCA2_gene ;
+    :has_flag ind:LowQD ;
+    :has_annotation ind:VAR-002_QD .
+ind:VAR-002_QD a owl:NamedIndividual, :quality_by_depth ; rdfs:label "VAR-002 QD"@en ;
+    :hasValue "1.5"^^xsd:decimal ;
+    :of_measure ind:QD .
+ind:VAR-003 a owl:NamedIndividual, :insertion_deletion ; rdfs:label "VAR-003"@en ;
+    :contained_in ind:sample1.vcf ;
+    :has_filter_status ind:PASS ;
+    :in_gene ind:BRCA2_gene ;
+    :has_annotation ind:VAR-003_FS .
+ind:VAR-003_FS a owl:NamedIndividual, :Fisher_strand_bias ; rdfs:label "VAR-003 FS"@en ;
+    :hasValue "150.0"^^xsd:decimal ;
+    :of_measure ind:FS .
+ind:VAR-004 a owl:NamedIndividual, :variant_at_exon_end, :single_nucleotide_polymorphism ; rdfs:label "VAR-004"@en ;
+    :contained_in ind:sample1.vcf ;
+    :has_filter_status ind:FILTERED ;
+    :has_flag ind:HighFS ;
+    :has_annotation ind:VAR-004_FS ;
+    :has_annotation ind:VAR-004_SOR .
+ind:VAR-004_FS a owl:NamedIndividual, :Fisher_strand_bias ; rdfs:label "VAR-004 FS"@en ;
+    :hasValue "62.0"^^xsd:decimal ;
+    :of_measure ind:FS .
+ind:VAR-004_SOR a owl:NamedIndividual, :strand_odds_ratio ; rdfs:label "VAR-004 SOR"@en ;
+    :hasValue "2.1"^^xsd:decimal ;
+    :of_measure ind:SOR .
+ind:VAR-001 :increases_risk_of ind:Olena_breast_cancer .
+ind:LowQD a owl:NamedIndividual, :filter_flag ; rdfs:label "LowQD"@en ;
+    :raised_by ind:T_QD .
+ind:HighFS a owl:NamedIndividual, :filter_flag ; rdfs:label "HighFS"@en ;
+    :raised_by ind:T_FS_SNP .
+ind:FILTERED a owl:NamedIndividual, :filter_status ; rdfs:label "FILTERED"@en .
+ind:PASS a owl:NamedIndividual, :filter_status ; rdfs:label "PASS"@en .
+ind:sample1.bam a owl:NamedIndividual, :BAM_file ; rdfs:label "sample1.bam"@en .
+ind:sample1.vcf a owl:NamedIndividual, :VCF_file ; rdfs:label "sample1.vcf"@en ;
+    :derived_from ind:sample1.bam ;
+    :contains_variant ind:VAR-001 ;
+    :contains_variant ind:VAR-002 ;
+    :contains_variant ind:VAR-003 ;
+    :contains_variant ind:VAR-004 .
+ind:T_QD a owl:NamedIndividual, :threshold ; rdfs:label "QD < 2"@en ;
+    :thresholdOperator "<" ;
+    :thresholdValue "2"^^xsd:decimal ;
+    :thresholdVariantType "any" ;
+    :on_measure ind:QD .
+ind:T_FS_SNP a owl:NamedIndividual, :threshold ; rdfs:label "FS > 60 (SNP)"@en ;
+    :thresholdOperator ">" ;
+    :thresholdValue "60"^^xsd:decimal ;
+    :thresholdVariantType "SNP" ;
+    :on_measure ind:FS .
+ind:T_FS_INDEL a owl:NamedIndividual, :threshold ; rdfs:label "FS > 200 (INDEL)"@en ;
+    :thresholdOperator ">" ;
+    :thresholdValue "200"^^xsd:decimal ;
+    :thresholdVariantType "INDEL" ;
+    :on_measure ind:FS .
+ind:T_SOR a owl:NamedIndividual, :threshold ; rdfs:label "SOR > 3"@en ;
+    :thresholdOperator ">" ;
+    :thresholdValue "3"^^xsd:decimal ;
+    :thresholdVariantType "any" ;
+    :on_measure ind:SOR .
+ind:T_MQ a owl:NamedIndividual, :threshold ; rdfs:label "MQ < 40"@en ;
+    :thresholdOperator "<" ;
+    :thresholdValue "40"^^xsd:decimal ;
+    :thresholdVariantType "any" ;
+    :on_measure ind:MQ .
+ind:T_MQRankSum a owl:NamedIndividual, :threshold ; rdfs:label "MQRankSum < -12.5"@en ;
+    :thresholdOperator "<" ;
+    :thresholdValue "-12.5"^^xsd:decimal ;
+    :thresholdVariantType "any" ;
+    :on_measure ind:MQRankSum .
+ind:T_ReadPosRankSum a owl:NamedIndividual, :threshold ; rdfs:label "ReadPosRankSum < -8"@en ;
+    :thresholdOperator "<" ;
+    :thresholdValue "-8"^^xsd:decimal ;
+    :thresholdVariantType "any" ;
+    :on_measure ind:ReadPosRankSum .
+ind:R-any-flag a owl:NamedIndividual, :filtering_rule ; rdfs:label "R-any-flag"@en ;
+    :ruleText "Any filter flag -> variant is FILTERED." .
+ind:HF-01 a owl:NamedIndividual, :hard_filtering_run ; rdfs:label "HF-01"@en ;
+    :applies_to ind:sample1.vcf ;
+    :recommended_for ind:HBOC-panel ;
+    :has_rule ind:R-any-flag ;
+    :uses_input ind:QD ;
+    :uses_input ind:FS ;
+    :uses_input ind:SOR ;
+    :uses_input ind:MQ ;
+    :uses_input ind:MQRankSum ;
+    :uses_input ind:ReadPosRankSum ;
+    :has_threshold ind:T_QD ;
+    :has_threshold ind:T_FS_SNP ;
+    :has_threshold ind:T_FS_INDEL ;
+    :has_threshold ind:T_SOR ;
+    :has_threshold ind:T_MQ ;
+    :has_threshold ind:T_MQRankSum ;
+    :has_threshold ind:T_ReadPosRankSum .
+ind:VQSR a owl:NamedIndividual, :variant_quality_score_recalibration ; rdfs:label "VQSR"@en ;
+    :requires ind:large-variant-set ;
+    :requires ind:curated-known-variants .
+ind:large-variant-set a owl:NamedIndividual, :large_variant_set ; rdfs:label "large-variant-set"@en .
+ind:curated-known-variants a owl:NamedIndividual, :curated_known_variants ; rdfs:label "curated-known-variants"@en .
+ind:CT-01 a owl:NamedIndividual, :cascade_testing ; rdfs:label "CT-01"@en ;
+    :has_proband ind:Olena ;
+    :requires ind:VAR-001 ;
+    :minTestingAge "18"^^xsd:integer ;
+    :applies_to ind:Marta, ind:Sofiia, ind:Halyna, ind:Andrii ;
+    :recommended_for ind:Marta, ind:Halyna, ind:Andrii ;
+    :testing_deferred_for ind:Sofiia .

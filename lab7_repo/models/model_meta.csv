@@ -1,0 +1,10 @@
+﻿field,value
+model_name,Domain Knowledge Hub — онтологія QC варіантів і каскадного тестування
+version,0.1.0
+owner,студент (власник моделі); контакт — у заголовку звіту
+created,2026-10-25
+status_of_trust,"чернетка; перевірено автоматично (HermiT, CQ-тести); експертом-медиком не перевірено; не для клінічного використання"
+sources,"GATK Team: Hard-filtering germline short variants; CDC: About Cascade Testing; ЛР4 (CQ), ЛР5 (таксономія), ЛР6 (карта v2)"
+reused_vocabularies,"SKOS (мітки/зіставлення), MeSH (URI перевірено у ЛР5), таксономія ЛР5 (skos:closeMatch)"
+llm_involvement,"Claude (claude-sonnet-5-5): чернетки класів, аксіом і ситуацій; журнал — llm_log/; твердження — claims/claims.csv"
+namespace_note,http://example.org/dkh/onto# — заглушка

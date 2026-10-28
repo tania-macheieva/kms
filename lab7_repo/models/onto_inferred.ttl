@@ -1,0 +1,76 @@
+@prefix dkh: <http://example.org/dkh/onto#> .
+
+dkh:VAR-001 a dkh:PathogenicVariant .
+
+dkh:VAR-002 a dkh:LowQDVariant .
+
+dkh:VAR-002_QualityByDepth a dkh:LowQDAnnotation .
+
+dkh:VAR-004 a dkh:ExonEndVariant,
+        dkh:HighFSSnpVariant .
+
+dkh:Petro a dkh:AdultRelative,
+        dkh:FirstDegreeRelative ;
+    dkh:hasChild dkh:Marta,
+        dkh:Olena ;
+    dkh:isSecondDegreeRelativeOf dkh:Sofiia .
+
+dkh:Andrii a dkh:AdultRelative,
+        dkh:ThirdDegreeRelative ;
+    dkh:hasAncestor dkh:Maria ;
+    dkh:hasAuntOrUncle dkh:Iryna ;
+    dkh:hasCousin dkh:Marta,
+        dkh:Olena ;
+    dkh:hasGrandparent dkh:Maria ;
+    dkh:hasParent dkh:Halyna ;
+    dkh:isSecondDegreeRelativeOf dkh:Iryna,
+        dkh:Maria .
+
+dkh:Sofiia a dkh:FirstDegreeRelative,
+        dkh:MinorRelative ;
+    dkh:hasAncestor dkh:Iryna,
+        dkh:Maria,
+        dkh:Petro ;
+    dkh:hasAuntOrUncle dkh:Marta ;
+    dkh:hasGrandparent dkh:Iryna,
+        dkh:Petro ;
+    dkh:isSecondDegreeRelativeOf dkh:Iryna,
+        dkh:Marta,
+        dkh:Petro .
+
+dkh:Halyna a dkh:AdultRelative,
+        dkh:SecondDegreeRelative ;
+    dkh:hasSibling dkh:Iryna ;
+    dkh:isSecondDegreeRelativeOf dkh:Marta,
+        dkh:Olena .
+
+dkh:Olena dkh:hasAncestor dkh:Maria ;
+    dkh:hasAuntOrUncle dkh:Halyna ;
+    dkh:hasChild dkh:Sofiia ;
+    dkh:hasCousin dkh:Andrii ;
+    dkh:hasGrandparent dkh:Maria ;
+    dkh:isSecondDegreeRelativeOf dkh:Halyna,
+        dkh:Maria .
+
+dkh:Iryna a dkh:AdultRelative,
+        dkh:FirstDegreeRelative ;
+    dkh:hasChild dkh:Marta,
+        dkh:Olena ;
+    dkh:isSecondDegreeRelativeOf dkh:Andrii,
+        dkh:Sofiia .
+
+dkh:Marta a dkh:AdultRelative,
+        dkh:FirstDegreeRelative ;
+    dkh:hasAncestor dkh:Maria ;
+    dkh:hasAuntOrUncle dkh:Halyna ;
+    dkh:hasCousin dkh:Andrii ;
+    dkh:hasGrandparent dkh:Maria ;
+    dkh:isSecondDegreeRelativeOf dkh:Halyna,
+        dkh:Maria,
+        dkh:Sofiia .
+
+dkh:Maria a dkh:SecondDegreeRelative ;
+    dkh:isSecondDegreeRelativeOf dkh:Andrii,
+        dkh:Marta,
+        dkh:Olena .
+

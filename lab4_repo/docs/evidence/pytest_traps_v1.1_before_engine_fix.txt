@@ -1,0 +1,50 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.16, pytest-9.1.1, pluggy-1.6.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/claude/lab4_repo
+configfile: pytest.ini
+plugins: anyio-4.15.1
+collecting ... collected 7 items
+
+tests/test_traps.py::test_trap1_indel_with_moderate_fs_and_readpos PASSED [ 14%]
+tests/test_traps.py::test_trap2_nonmodel_organism_with_large_curated_set PASSED [ 28%]
+tests/test_traps.py::test_trap3_draft_absence_rule_fires_too_early FAILED [ 42%]
+tests/test_traps.py::test_trap3_default_engine_has_no_premature_pass PASSED [ 57%]
+tests/test_traps.py::test_trap4_minor_with_risk_but_relative_unavailable PASSED [ 71%]
+tests/test_traps.py::test_trap5_user_supplies_contradicting_derived_fact FAILED [ 85%]
+tests/test_traps.py::test_trap_exception_with_custom_thresholds_blocks_review PASSED [100%]
+
+=================================== FAILURES ===================================
+________________ test_trap3_draft_absence_rule_fires_too_early _________________
+
+rules_path = 'models/rules.json'
+
+    def test_trap3_draft_absence_rule_fires_too_early(rules_path):
+        """Пастка 3: чернеткове G08 («немає прапорців → PASS») спрацьовує до того, як прапорці виведено."""
+        res = run(rules_path, {**BASE, "variant.variant_type": "SNP", "variant.QD": 1.0}, draft=True)
+>       assert res.facts.get("variant.filter_status") == "FILTERED", f"отримано {res.facts.get('variant.filter_status')}, спрацювали {res.fired}"
+E       AssertionError: отримано PASS, спрацювали ['G08', 'G01', 'G07', 'G17']
+E       assert 'PASS' == 'FILTERED'
+E         
+E         - FILTERED
+E         + PASS
+
+tests/test_traps.py:31: AssertionError
+_____________ test_trap5_user_supplies_contradicting_derived_fact ______________
+
+rules_path = 'models/rules.json'
+
+    def test_trap5_user_supplies_contradicting_derived_fact(rules_path):
+        """Пастка 5: користувач вручну вказав filter_status=PASS, але QD=1 дає LowQD → суперечність має бути позначена
+        як НЕрозв'язана (потрібен погляд людини), а не тихо проігнорована."""
+        res = run(rules_path, {**BASE, "variant.variant_type": "SNP", "variant.QD": 1.0, "variant.filter_status": "PASS"})
+>       assert any(c["fact"] == "variant.filter_status" for c in res.unresolved_conflicts), res.conflicts
+E       AssertionError: [{'fact': 'variant.filter_status', 'rule': 'G07', 'kind': 'перезапис вхідного факту', 'resolved': True}]
+E       assert False
+E        +  where False = any(<generator object test_trap5_user_supplies_contradicting_derived_fact.<locals>.<genexpr> at 0x7f367699f920>)
+
+tests/test_traps.py:54: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_traps.py::test_trap3_draft_absence_rule_fires_too_early - A...
+FAILED tests/test_traps.py::test_trap5_user_supplies_contradicting_derived_fact
+========================= 2 failed, 5 passed in 0.04s ==========================

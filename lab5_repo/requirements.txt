@@ -1,0 +1,7 @@
+rdflib==7.6.0
+scikit-learn==1.9.1
+numpy==2.5.3
+scipy==1.18.1
+spacy==3.8.16
+pytest
+# модель: pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.8.0/en_core_web_md-3.8.0-py3-none-any.whl

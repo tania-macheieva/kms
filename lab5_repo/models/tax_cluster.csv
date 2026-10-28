@@ -1,0 +1,162 @@
+﻿id,parent_id,label,level,term_id
+K000,,Biomedical data analysis (clusters),0,
+K01,K000,Variants and molecular biology,1,
+K0101,K01,"Genetic variants, heredity and molecular processes",2,
+KT001,K0101,allele,3,T001
+KT003,K0101,autosomal dominant inheritance,3,T003
+KT005,K0101,benign variant,3,T005
+KT011,K0101,chromosome,3,T011
+KT027,K0101,DNA methylation,3,T027
+KT033,K0101,exon,3,T033
+KT038,K0101,gene,3,T038
+KT039,K0101,gene expression,3,T039
+KT044,K0101,genetic variant,3,T044
+KT045,K0101,genome,3,T045
+KT047,K0101,genotype,3,T047
+KT048,K0101,germline variant,3,T048
+KT064,K0101,mutation,3,T064
+KT070,K0101,pathogenic variant,3,T070
+KT073,K0101,peptide,3,T073
+KT074,K0101,phenotype,3,T074
+KT078,K0101,protein,3,T078
+KT079,K0101,protein abundance,3,T079
+KT081,K0101,protein identification,3,T081
+KT082,K0101,protein-protein interaction,3,T082
+KT099,K0101,single nucleotide polymorphism,3,T099
+KT101,K0101,somatic variant,3,T101
+KT104,K0101,structural variant,3,T104
+KT113,K0101,variant annotation,3,T113
+KT114,K0101,variant calling,3,T114
+KT115,K0101,variant filtering,3,T115
+K02,K000,Reference resources and spectrometry,1,
+K0202,K02,Mass spectrometry and frames,2,
+KT037,K0202,frame,3,T037
+KT060,K0202,mass spectrometry,3,T060
+KT061,K0202,mass spectrum,3,T061
+KT106,K0202,tandem mass spectrometry,3,T106
+K0203,K02,BRCA2 and public variant/protein resources,2,
+KT008,K0203,BRCA2,3,T008
+KT014,K0203,ClinVar,3,T014
+KT024,K0203,dbSNP,3,T024
+KT112,K0203,UniProt,3,T112
+K0204,K02,BRCA1,2,
+KT007,K0204,BRCA1,3,T007
+K0205,K02,SNOMED CT,2,
+KT100,K0205,SNOMED CT,3,T100
+K03,K000,Sequence processing and vocabularies,1,
+K0306,K03,Indel and protein domain,2,
+KT055,K0306,insertion-deletion,3,T055
+KT080,K0306,protein domain,3,T080
+K0307,K03,Variant quality and alignment metrics,2,
+KT017,K0307,copy number variation,3,T017
+KT036,K0307,Fisher strand bias,3,T036
+KT042,K0307,genetic counseling,3,T042
+KT075,K0307,post-translational modification,3,T075
+KT088,K0307,reference genome,3,T088
+KT096,K0307,sequence alignment,3,T096
+KT097,K0307,sequencing read,3,T097
+KT103,K0307,strand odds ratio,3,T103
+KT116,K0307,variant of uncertain significance,3,T116
+KT117,K0307,variant quality score recalibration,3,T117
+K0308,K03,Ontologies,2,
+KT040,K0308,Gene Ontology,3,T040
+KT052,K0308,Human Phenotype Ontology,3,T052
+KT067,K0308,ontology,3,T067
+K0309,K03,Omics disciplines,2,
+KT031,K0309,epigenetics,3,T031
+KT046,K0309,genomics,3,T046
+K0310,K03,De-identification,2,
+KT025,K0310,de-identification,3,T025
+K04,K000,Sequencing and omics layers,1,
+K0411,K04,Genomic elements and penetrance,2,
+KT032,K0411,exome,3,T032
+KT056,K0411,intron,3,T056
+KT072,K0411,penetrance,3,T072
+KT110,K0411,transcriptome,3,T110
+K0412,K04,DNA sequencing technologies,2,
+KT028,K0412,DNA sequencing,3,T028
+KT066,K0412,next-generation sequencing,3,T066
+KT120,K0412,whole exome sequencing,3,T120
+KT121,K0412,whole genome sequencing,3,T121
+K0413,K04,RNA sequencing and transcript,2,
+KT093,K0413,RNA sequencing,3,T093
+KT109,K0413,transcript,3,T109
+K0414,K04,Amino acid and PARP inhibitor,2,
+KT002,K0414,amino acid,3,T002
+KT069,K0414,PARP inhibitor,3,T069
+K0415,K04,Proteome,2,
+KT083,K0415,proteome,3,T083
+K0416,K04,Proteomics,2,
+KT084,K0416,proteomics,3,T084
+K05,K000,Data management and semantic standards,1,
+K0517,K05,Data descriptions and records,2,
+KT021,K0517,data provenance,3,T021
+KT023,K0517,data schema,3,T023
+KT029,K0517,electronic health record,3,T029
+KT053,K0517,inference engine,3,T053
+KT063,K0517,metadata,3,T063
+KT091,K0517,Resource Description Framework,3,T091
+K0518,K05,Graph technologies,2,
+KT049,K0518,graph database,3,T049
+KT057,K0518,knowledge graph,3,T057
+K0519,K05,Data integration and quality,2,
+KT018,K0519,data integration,3,T018
+KT019,K0519,data pipeline,3,T019
+KT020,K0519,data privacy,3,T020
+KT022,K0519,data quality,3,T022
+KT059,K0519,mapping quality,3,T059
+KT094,K0519,rule-based system,3,T094
+KT098,K0519,Simple Knowledge Organization System,3,T098
+K06,K000,Knowledge organization systems,1,
+K0620,K06,Vocabularies and similarity,2,
+KT016,K0620,controlled vocabulary,3,T016
+KT095,K0620,semantic similarity,3,T095
+KT108,K0620,thesaurus,3,T108
+K0621,K06,SPARQL and taxonomy,2,
+KT102,K0621,SPARQL,3,T102
+KT107,K0621,taxonomy,3,T107
+K07,K000,File formats and database technologies,1,
+K0722,K07,Sequence files and MeSH,2,
+KT004,K0722,BAM file,3,T004
+KT035,K0722,FASTQ file,3,T035
+KT062,K0722,Medical Subject Headings,3,T062
+KT118,K0722,VCF file,3,T118
+K0723,K07,Embeddings and databases,2,
+KT030,K0723,embedding,3,T030
+KT089,K0723,relational database,3,T089
+KT119,K0723,vector database,3,T119
+K08,K000,Clinical conditions,1,
+K0824,K08,Biomarker and diagnosis,2,
+KT006,K0824,biomarker,3,T006
+KT026,K0824,diagnosis,3,T026
+K0825,K08,"Cancer, patients and treatment",2,
+KT009,K0825,breast cancer,3,T009
+KT051,K0825,hereditary cancer,3,T051
+KT068,K0825,ovarian cancer,3,T068
+KT071,K0825,patient,3,T071
+KT076,K0825,proband,3,T076
+KT111,K0825,treatment,3,T111
+K09,K000,Clinical workflow and filtering,1,
+K0926,K09,Depth-based quality,2,
+KT085,K0926,quality by depth,3,T085
+KT087,K0926,read depth,3,T087
+K0927,K09,Family information,2,
+KT034,K0927,family history,3,T034
+KT090,K0927,relative,3,T090
+K0928,K09,"Rules, filtering and consent",2,
+KT050,K0928,hard filtering,3,T050
+KT054,K0928,informed consent,3,T054
+KT077,K0928,production rule,3,T077
+K0929,K09,Testing and clinical records,2,
+KT010,K0929,cascade testing,3,T010
+KT012,K0929,clinical note,3,T012
+KT013,K0929,clinical trial,3,T013
+KT092,K0929,risk assessment,3,T092
+KT105,K0929,symptom,3,T105
+K0930,K09,Testing and search,2,
+KT015,K0930,competency question,3,T015
+KT041,K0930,gene panel,3,T041
+KT043,K0930,genetic testing,3,T043
+KT058,K0930,laboratory test,3,T058
+KT065,K0930,nearest neighbor search,3,T065
+KT086,K0930,rank sum test,3,T086

@@ -1,0 +1,809 @@
+{
+ "title": "Карта-замінник колеги (LLM, незалежний запуск)",
+ "concepts": [
+  {
+   "id": "P01",
+   "label": "genetic variant",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Genetic variation",
+   "definition": "Відмінність послідовності ДНК пацієнта від референсу.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P02",
+   "label": "variant calling",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Method and procedure",
+   "definition": "Процедура виявлення варіантів за вирівняними ридами.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P03",
+   "label": "VCF file",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Data and artifact",
+   "definition": "Файл із переліком варіантів та їх анотацій.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P04",
+   "label": "variant annotation",
+   "kind": "concept",
+   "cluster": "X",
+   "type": "Method and procedure",
+   "definition": "Показники, що описують кожен варіант (глибина, зсув ниток тощо).",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P05",
+   "label": "variant filtering",
+   "kind": "concept",
+   "cluster": "Q",
+   "type": "Method and procedure",
+   "definition": "Відсів ненадійних варіантів у наборі викликів.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P06",
+   "label": "hard filtering",
+   "kind": "concept",
+   "cluster": "Q",
+   "type": "Method and procedure",
+   "definition": "Фільтрація за фіксованими порогами окремих анотацій.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P07",
+   "label": "variant quality score recalibration",
+   "kind": "concept",
+   "cluster": "Q",
+   "type": "Method and procedure",
+   "definition": "Фільтрація моделлю машинного навчання за кластерами анотацій.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P08",
+   "label": "known variant resources",
+   "kind": "concept",
+   "cluster": "X",
+   "type": null,
+   "definition": "Добре курований набір відомих варіантів, потрібний для навчання VQSR.",
+   "in_vocabulary": false
+  },
+  {
+   "id": "P09",
+   "label": "quality by depth",
+   "kind": "concept",
+   "cluster": "Q",
+   "type": "Measure of quality",
+   "definition": "Якість варіанта, нормована на глибину; кращий за QUAL чи DP.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P10",
+   "label": "Fisher strand bias",
+   "kind": "concept",
+   "cluster": "Q",
+   "type": "Measure of quality",
+   "definition": "Phred-ймовірність зсуву ниток за точним тестом Фішера.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P11",
+   "label": "strand odds ratio",
+   "kind": "concept",
+   "cluster": "Q",
+   "type": "Measure of quality",
+   "definition": "Оцінка зсуву ниток, придатна для високого покриття та країв екзонів.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P12",
+   "label": "mapping quality",
+   "kind": "concept",
+   "cluster": "Q",
+   "type": "Measure of quality",
+   "definition": "Кореневе середнє квадратів якості картування ридів на сайті.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P13",
+   "label": "rank sum test",
+   "kind": "concept",
+   "cluster": "Q",
+   "type": "Measure of quality",
+   "definition": "Ранговий тест порівняння ref- та alt-ридів (MQRankSum, ReadPosRankSum).",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P14",
+   "label": "data quality",
+   "kind": "concept",
+   "cluster": "X",
+   "type": "Measure of quality",
+   "definition": "Надійність даних секвенування для точних висновків.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P15",
+   "label": "gene panel",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Biological entity",
+   "definition": "Невеликий набір генів для цільового тестування.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P16",
+   "label": "BRCA1",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Biological entity",
+   "definition": "Ген, патогенні варіанти якого спричиняють спадковий рак грудей і яєчників.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P17",
+   "label": "BRCA2",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Biological entity",
+   "definition": "Ген, споріднений за ефектом із BRCA1.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P18",
+   "label": "pathogenic variant",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Genetic variation",
+   "definition": "Варіант, що підвищує ризик хвороби.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P19",
+   "label": "germline variant",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Genetic variation",
+   "definition": "Спадковий варіант, що може передаватися родичам.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P20",
+   "label": "hereditary cancer",
+   "kind": "concept",
+   "cluster": "C",
+   "type": "Clinical concept",
+   "definition": "Рак зі спадковою схильністю.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P21",
+   "label": "breast cancer",
+   "kind": "concept",
+   "cluster": "C",
+   "type": "Clinical concept",
+   "definition": "Рак грудей, для якого показане тестування BRCA.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P22",
+   "label": "ovarian cancer",
+   "kind": "concept",
+   "cluster": "C",
+   "type": "Clinical concept",
+   "definition": "Рак яєчників, асоційований із BRCA.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P23",
+   "label": "proband",
+   "kind": "concept",
+   "cluster": "C",
+   "type": "Clinical concept",
+   "definition": "Особа з виявленим варіантом, від якої починають родинне тестування.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P24",
+   "label": "relative",
+   "kind": "concept",
+   "cluster": "C",
+   "type": "Clinical concept",
+   "definition": "Родич пробанда, потенційний носій того ж варіанта.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P25",
+   "label": "first-degree relative",
+   "kind": "concept",
+   "cluster": "X",
+   "type": null,
+   "definition": "Мати, батько, діти, брати й сестри пробанда.",
+   "in_vocabulary": false
+  },
+  {
+   "id": "P26",
+   "label": "second-degree relative",
+   "kind": "concept",
+   "cluster": "X",
+   "type": null,
+   "definition": "Напівсиблінги, тітки, дядьки, бабусі й дідусі.",
+   "in_vocabulary": false
+  },
+  {
+   "id": "P27",
+   "label": "third-degree relative",
+   "kind": "concept",
+   "cluster": "X",
+   "type": null,
+   "definition": "Двоюрідні та більш віддалені родичі.",
+   "in_vocabulary": false
+  },
+  {
+   "id": "P28",
+   "label": "genetic testing",
+   "kind": "concept",
+   "cluster": "C",
+   "type": "Method and procedure",
+   "definition": "Лабораторне виявлення варіантів у людини.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P29",
+   "label": "cascade testing",
+   "kind": "concept",
+   "cluster": "C",
+   "type": "Method and procedure",
+   "definition": "Послідовне тестування родичів на той самий варіант.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P30",
+   "label": "genetic counseling",
+   "kind": "concept",
+   "cluster": "C",
+   "type": "Method and procedure",
+   "definition": "Консультація, що допомагає вирішити щодо тестування.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P31",
+   "label": "risk assessment",
+   "kind": "concept",
+   "cluster": "C",
+   "type": "Method and procedure",
+   "definition": "Оцінка ймовірності носійства чи хвороби.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P32",
+   "label": "family history",
+   "kind": "concept",
+   "cluster": "C",
+   "type": "Data and artifact",
+   "definition": "Дані про хвороби в родині пробанда.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P33",
+   "label": "autosomal dominant inheritance",
+   "kind": "concept",
+   "cluster": "X",
+   "type": "Biological property",
+   "definition": "Тип успадкування, за якого достатньо однієї копії алеля.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P34",
+   "label": "informed consent",
+   "kind": "concept",
+   "cluster": "X",
+   "type": "Clinical concept",
+   "definition": "Добровільна згода дорослого на тестування.",
+   "in_vocabulary": true
+  },
+  {
+   "id": "P35",
+   "label": "carrier probability",
+   "kind": "concept",
+   "cluster": "X",
+   "type": null,
+   "definition": "Імовірність того, що родич має той самий варіант.",
+   "in_vocabulary": false
+  },
+  {
+   "id": "P36",
+   "label": "QD < 2",
+   "kind": "instance",
+   "cluster": "X",
+   "type": null,
+   "definition": "Поріг: відкинути варіанти з QD нижче 2.",
+   "in_vocabulary": false
+  },
+  {
+   "id": "P37",
+   "label": "FS > 60",
+   "kind": "instance",
+   "cluster": "X",
+   "type": null,
+   "definition": "Поріг: відкинути варіанти з FS вище 60.",
+   "in_vocabulary": false
+  },
+  {
+   "id": "P38",
+   "label": "SOR > 3",
+   "kind": "instance",
+   "cluster": "X",
+   "type": null,
+   "definition": "Поріг: відкинути варіанти з SOR вище 3.",
+   "in_vocabulary": false
+  },
+  {
+   "id": "P39",
+   "label": "MQ < 40",
+   "kind": "instance",
+   "cluster": "X",
+   "type": null,
+   "definition": "Поріг: відкинути варіанти з MQ нижче 40.",
+   "in_vocabulary": false
+  },
+  {
+   "id": "P40",
+   "label": "50 %",
+   "kind": "instance",
+   "cluster": "X",
+   "type": null,
+   "definition": "Шанс носійства для родичів першого ступеня.",
+   "in_vocabulary": false
+  },
+  {
+   "id": "P41",
+   "label": "25 %",
+   "kind": "instance",
+   "cluster": "X",
+   "type": null,
+   "definition": "Шанс носійства для родичів другого ступеня.",
+   "in_vocabulary": false
+  },
+  {
+   "id": "P42",
+   "label": "12,5 %",
+   "kind": "instance",
+   "cluster": "X",
+   "type": null,
+   "definition": "Шанс носійства для двоюрідних родичів.",
+   "in_vocabulary": false
+  }
+ ],
+ "propositions": [
+  {
+   "id": "Q01",
+   "s": "P02",
+   "p": "produces",
+   "o": "P03",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q02",
+   "s": "P01",
+   "p": "has_annotation",
+   "o": "P09",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q03",
+   "s": "P01",
+   "p": "has_annotation",
+   "o": "P10",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q04",
+   "s": "P01",
+   "p": "has_annotation",
+   "o": "P11",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q05",
+   "s": "P01",
+   "p": "has_annotation",
+   "o": "P12",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q06",
+   "s": "P01",
+   "p": "has_annotation",
+   "o": "P13",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q07",
+   "s": "P04",
+   "p": "produces",
+   "o": "P09",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q08",
+   "s": "P06",
+   "p": "is_a",
+   "o": "P05",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q09",
+   "s": "P07",
+   "p": "is_a",
+   "o": "P05",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q10",
+   "s": "P05",
+   "p": "applies_to",
+   "o": "P03",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q11",
+   "s": "P06",
+   "p": "uses_input",
+   "o": "P09",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q12",
+   "s": "P06",
+   "p": "uses_input",
+   "o": "P10",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q13",
+   "s": "P06",
+   "p": "uses_input",
+   "o": "P11",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q14",
+   "s": "P06",
+   "p": "uses_input",
+   "o": "P12",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q15",
+   "s": "P06",
+   "p": "uses_input",
+   "o": "P13",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q16",
+   "s": "P07",
+   "p": "requires",
+   "o": "P08",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q17",
+   "s": "P09",
+   "p": "has_example",
+   "o": "P36",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q18",
+   "s": "P10",
+   "p": "has_example",
+   "o": "P37",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q19",
+   "s": "P11",
+   "p": "has_example",
+   "o": "P38",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q20",
+   "s": "P12",
+   "p": "has_example",
+   "o": "P39",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q21",
+   "s": "P16",
+   "p": "part_of",
+   "o": "P15",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q22",
+   "s": "P17",
+   "p": "part_of",
+   "o": "P15",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q23",
+   "s": "P19",
+   "p": "is_a",
+   "o": "P01",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q24",
+   "s": "P18",
+   "p": "is_a",
+   "o": "P01",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q25",
+   "s": "P18",
+   "p": "increases_risk_of",
+   "o": "P20",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q26",
+   "s": "P18",
+   "p": "increases_risk_of",
+   "o": "P21",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q27",
+   "s": "P18",
+   "p": "increases_risk_of",
+   "o": "P22",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q28",
+   "s": "P28",
+   "p": "detects",
+   "o": "P18",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q29",
+   "s": "P28",
+   "p": "recommended_for",
+   "o": "P21",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q30",
+   "s": "P28",
+   "p": "recommended_for",
+   "o": "P22",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q31",
+   "s": "P29",
+   "p": "is_a",
+   "o": "P28",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q32",
+   "s": "P29",
+   "p": "applies_to",
+   "o": "P24",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q33",
+   "s": "P24",
+   "p": "is_kin_of",
+   "o": "P23",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q34",
+   "s": "P25",
+   "p": "is_a",
+   "o": "P24",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q35",
+   "s": "P26",
+   "p": "is_a",
+   "o": "P24",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q36",
+   "s": "P27",
+   "p": "is_a",
+   "o": "P24",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q37",
+   "s": "P25",
+   "p": "has_example",
+   "o": "P40",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q38",
+   "s": "P26",
+   "p": "has_example",
+   "o": "P41",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q39",
+   "s": "P27",
+   "p": "has_example",
+   "o": "P42",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q40",
+   "s": "P29",
+   "p": "recommended_for",
+   "o": "P25",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q41",
+   "s": "P30",
+   "p": "recommended_for",
+   "o": "P29",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q42",
+   "s": "P29",
+   "p": "requires",
+   "o": "P34",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q43",
+   "s": "P31",
+   "p": "uses_input",
+   "o": "P32",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q44",
+   "s": "P31",
+   "p": "uses_input",
+   "o": "P33",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q45",
+   "s": "P31",
+   "p": "produces",
+   "o": "P35",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q46",
+   "s": "P35",
+   "p": "applies_to",
+   "o": "P24",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q47",
+   "s": "P14",
+   "p": "applies_to",
+   "o": "P03",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q48",
+   "s": "P05",
+   "p": "recommended_for",
+   "o": "P14",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "Q49",
+   "s": "P06",
+   "p": "applies_to",
+   "o": "P18",
+   "cross": true,
+   "explanation": "Поріг, що відкидає варіант, може викинути справжній BRCA-варіант (хибнонегативний) або залишити артефакт; тому пороги лінійні й мають бути поблажливими."
+  },
+  {
+   "id": "Q50",
+   "s": "P29",
+   "p": "requires",
+   "o": "P18",
+   "cross": true,
+   "explanation": "Каскадне тестування запускається лише після надійно підтвердженого варіанта пробанда, тож якість фільтрації прямо визначає, чи і кого тестуватимуть."
+  },
+  {
+   "id": "Q51",
+   "s": "P06",
+   "p": "recommended_for",
+   "o": "P15",
+   "cross": true,
+   "explanation": "BRCA1/BRCA2 лежать у малій панелі, де VQSR неможливий через брак варіантів, тому саме жорстка фільтрація є вимушеним вибором."
+  },
+  {
+   "id": "Q52",
+   "s": "P28",
+   "p": "uses_input",
+   "o": "P03",
+   "cross": true,
+   "explanation": "Результат тесту є відфільтрованим VCF, тож якість анотацій переходить у клінічний висновок про варіант."
+  },
+  {
+   "id": "Q53",
+   "s": "P29",
+   "p": "uses_input",
+   "o": "P35",
+   "cross": true,
+   "explanation": "Ймовірність носійства (50/25/12,5 %) визначає, кого тестувати першим: найближчих родичів із найвищим шансом."
+  }
+ ]
+}

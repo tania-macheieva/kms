@@ -1,0 +1,12 @@
+Файл: step3_triples_llm_raw_output.jsonl; триплетів: 41; за джерелами: {'gatk': 24, 'cdc': 17}
+Цитати знайдено в тексті: 41/41 = 100%
+Типи domain/range коректні: 40/41 = 98%
+Без жодної помилки: 36/41 = 88%
+Помилки за класами: {'E3': 1, 'E5': 4}
+
+Триплети з помилками:
+  L007 [E5] (quality by depth) -has_example-> (QD < 2): об'єкт «QD < 2» — літерал
+  L016 [E5] (strand odds ratio) -has_example-> (SOR > 3): об'єкт «SOR > 3» — літерал
+  L017 [E5] (mapping quality) -has_example-> (MQ < 40): об'єкт «MQ < 40» — літерал
+  L018 [E5] (Fisher strand bias) -has_example-> (FS > 60): об'єкт «FS > 60» — літерал
+  L041 [E3] (genetic counseling) -produces-> (risk assessment): range produces: Method and procedure не дозволено

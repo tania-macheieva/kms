@@ -1,0 +1,2 @@
+spaCy en_core_web_md 3.8.0; numpy 2.5.3; seed 42; K1=9, K2=30
+вузлів 161; термінів без вектора (OOV): 4 ['BRCA2', 'ClinVar', 'dbSNP', 'UniProt']

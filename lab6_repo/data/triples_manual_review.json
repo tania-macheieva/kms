@@ -1,0 +1,10 @@
+{"note": "Ручний семантичний перегляд триплетів LLM (виконала LLM-асистент; студент має підтвердити). Автоматичні перевірки цитат і типів цього не бачать.",
+ "reviewed": [
+  {"id": "L033", "class": "E7", "issue": "cascade testing detects BRCA1: шукають варіанти в гені, а не сам ген (змішування гена та варіанта в ньому)"},
+  {"id": "L034", "class": "E7", "issue": "те саме для BRCA2"},
+  {"id": "L038", "class": "E7", "issue": "genetic testing detects BRCA1: об'єкт має бути pathogenic variant у BRCA1"},
+  {"id": "L039", "class": "E7", "issue": "те саме для BRCA2"},
+  {"id": "L011", "class": "E8", "issue": "rank sum test applies_to allele: тест порівнює якості вирівнювання ридів (mapping quality), а allele — лише умова порівняння"},
+  {"id": "L020", "class": "E9", "issue": "слабка підстава: evidence — лише заголовок статті «Hard-filtering germline short variants»"},
+  {"id": "L012", "class": "E9", "issue": "evidence описує інструмент GenotypeGVCFs, а не виклик варіантів як процедуру загалом"}
+ ]}

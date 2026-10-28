@@ -1,0 +1,67 @@
+=== 1. SNP на екзонному кінці: тільки LowFS → не відкидати, а на перегляд
+variant.filter_status = 'REVIEW'
+  ← правило G14 «Екзонний кінець, лише LowFS, SOR ≤ 3 → REVIEW» (цикл 2)
+      умова: variant.at_exon_end == True   [variant.at_exon_end = True]
+      умова: variant.flags == ['LowFS']   [variant.flags = ['LowFS']]
+        variant.flags = ['LowFS']
+          ← правило G02 «FS > 60 → LowFS (лише SNP)» (цикл 1)
+              умова: variant.variant_type == 'SNP'   [variant.variant_type = 'SNP']
+              умова: variant.FS > 60   [variant.FS = 72.5]
+              джерело: «Our hard filtering recommendations tell us to fail variants with an FS value greater than 60.»
+      умова: variant.SOR <= 3   [variant.SOR = 2.2]
+      джерело: «SOR was created because FS tends to penalize variants that occur at the ends of exons.»
+variant.filter_scope = 'site'
+  ← правило G12 «Фільтрація стосується сайту, не геномів зразків» (цикл 4)
+      умова: variant.filter_status in ['FILTERED', 'REVIEW']   [variant.filter_status = 'REVIEW']
+        variant.filter_status = 'REVIEW'
+          ← правило G14 «Екзонний кінець, лише LowFS, SOR ≤ 3 → REVIEW» (цикл 2)
+              умова: variant.at_exon_end == True   [variant.at_exon_end = True]
+              умова: variant.flags == ['LowFS']   [variant.flags = ['LowFS']]
+                variant.flags = ['LowFS']
+                  ← правило G02 «FS > 60 → LowFS (лише SNP)» (цикл 1)
+                      умова: variant.variant_type == 'SNP'   [variant.variant_type = 'SNP']
+                      умова: variant.FS > 60   [variant.FS = 72.5]
+                      джерело: «Our hard filtering recommendations tell us to fail variants with an FS value greater than 60.»
+              умова: variant.SOR <= 3   [variant.SOR = 2.2]
+              джерело: «SOR was created because FS tends to penalize variants that occur at the ends of exons.»
+      джерело: «Even with VQSR, variant sites are being filtered out, not individual sample's data.»
+  [конфлікт] {'fact': 'variant.filter_status', 'winner': 'G14', 'loser': 'G07', 'resolved': True, 'kind': 'нижчий ранг (5, 1) проти (10, 3)'}
+
+=== 2. Рідний брат пробанда з BRCA1: від ризику до рекомендації  [із чернетковими правилами]
+relative.inheritance_chance = 0.5
+  ← правило C01 «Батьки, діти, рідні брати/сестри → 50%» (цикл 1)
+      умова: proband.variant_gene in ['BRCA1', 'BRCA2']   [proband.variant_gene = 'BRCA1']
+      умова: relative.relationship in ['parent', 'child', 'full_sibling']   [relative.relationship = 'full_sibling']
+      джерело: «If you have a BRCA1 or BRCA2 genetic change, your mother, father, children, and siblings have a 1 in 2 (50%) c…»
+relative.recommendation = 'offer_cascade_test'
+  ← правило C11 «Черга 1 + вік дозволяє + мета тесту → запропонувати каскадний тест» (цикл 5)
+      умова: relative.testing_order == 1   [relative.testing_order = 1]
+        relative.testing_order = 1
+          ← правило C09 «Найближчі доступні родичі тестуються першими» (цикл 3)
+              умова: relative.inheritance_chance >= 0.5   [relative.inheritance_chance = 0.5]
+                relative.inheritance_chance = 0.5
+                  ← правило C01 «Батьки, діти, рідні брати/сестри → 50%» (цикл 1)
+                      умова: proband.variant_gene in ['BRCA1', 'BRCA2']   [proband.variant_gene = 'BRCA1']
+                      умова: relative.relationship in ['parent', 'child', 'full_sibling']   [relative.relationship = 'full_sibling']
+                      джерело: «If you have a BRCA1 or BRCA2 genetic change, your mother, father, children, and siblings have a 1 in 2 (50%) c…»
+              умова: relative.available == True   [relative.available = True]
+              джерело: «When possible, genetic testing should start with family members who are most closely related to the person who…»
+      умова: relative.testing_age_status in ['adult_eligible', 'testing_appropriate']   [relative.testing_age_status = 'adult_eligible']
+        relative.testing_age_status = 'adult_eligible'
+          ← правило C06 «Вік ≥ 18 → доросле тестування» (цикл 4)
+              умова: relative.age >= 18   [relative.age = 52]
+              джерело: «most current guidelines recommend that testing for these genetic changes should only be done on adults (18 yea…»
+      умова: relative.test_target == 'proband_variant'   [relative.test_target = 'proband_variant']
+        relative.test_target = 'proband_variant'
+          ← правило C04 «Родич хоче тест → шукати ту саму зміну» (цикл 2)
+              умова: proband.variant_known == True   [proband.variant_known = True]
+              умова: relative.wants_testing == True   [relative.wants_testing = True]
+              джерело: «Family members who decide to get tested should be checked for the same genetic change that you have.»
+
+=== 3. Мала панель із великим набором варіантів: конфлікт методів розв'язано пріоритетом
+dataset.filtering_method = 'hard_filtering'
+  ← правило G09 «Мала панель або немодельний організм → hard-filtering» (цикл 1)
+      умова: dataset.dataset_type in ['small_gene_panel', 'non_model_organism']   [dataset.dataset_type = 'small_gene_panel']
+      джерело: «For those of you working with small gene panels or with non-model organisms, this is a deal-breaker, and you h…»
+  [конфлікт] {'fact': 'dataset.filtering_method', 'winner': 'G09', 'loser': 'G10', 'resolved': True, 'kind': 'нижчий ранг (5, 2) проти (10, 1)'}
+

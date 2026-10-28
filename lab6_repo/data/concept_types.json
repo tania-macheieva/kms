@@ -1,0 +1,486 @@
+[
+{
+"label": "genome",
+"type": "Biological entity"
+},
+{
+"label": "chromosome",
+"type": "Biological entity"
+},
+{
+"label": "gene",
+"type": "Biological entity"
+},
+{
+"label": "BRCA1",
+"type": "Biological entity"
+},
+{
+"label": "BRCA2",
+"type": "Biological entity"
+},
+{
+"label": "exon",
+"type": "Biological entity"
+},
+{
+"label": "intron",
+"type": "Biological entity"
+},
+{
+"label": "exome",
+"type": "Biological entity"
+},
+{
+"label": "transcript",
+"type": "Biological entity"
+},
+{
+"label": "transcriptome",
+"type": "Biological entity"
+},
+{
+"label": "gene panel",
+"type": "Biological entity"
+},
+{
+"label": "amino acid",
+"type": "Biological entity"
+},
+{
+"label": "peptide",
+"type": "Biological entity"
+},
+{
+"label": "protein",
+"type": "Biological entity"
+},
+{
+"label": "protein domain",
+"type": "Biological entity"
+},
+{
+"label": "proteome",
+"type": "Biological entity"
+},
+{
+"label": "genetic variant",
+"type": "Genetic variation"
+},
+{
+"label": "single nucleotide polymorphism",
+"type": "Genetic variation"
+},
+{
+"label": "insertion-deletion",
+"type": "Genetic variation"
+},
+{
+"label": "structural variant",
+"type": "Genetic variation"
+},
+{
+"label": "copy number variation",
+"type": "Genetic variation"
+},
+{
+"label": "mutation",
+"type": "Genetic variation"
+},
+{
+"label": "allele",
+"type": "Genetic variation"
+},
+{
+"label": "germline variant",
+"type": "Genetic variation"
+},
+{
+"label": "somatic variant",
+"type": "Genetic variation"
+},
+{
+"label": "pathogenic variant",
+"type": "Genetic variation"
+},
+{
+"label": "benign variant",
+"type": "Genetic variation"
+},
+{
+"label": "variant of uncertain significance",
+"type": "Genetic variation"
+},
+{
+"label": "genotype",
+"type": "Biological property"
+},
+{
+"label": "phenotype",
+"type": "Biological property"
+},
+{
+"label": "penetrance",
+"type": "Biological property"
+},
+{
+"label": "autosomal dominant inheritance",
+"type": "Biological property"
+},
+{
+"label": "gene expression",
+"type": "Biological property"
+},
+{
+"label": "DNA methylation",
+"type": "Biological property"
+},
+{
+"label": "post-translational modification",
+"type": "Biological property"
+},
+{
+"label": "protein-protein interaction",
+"type": "Biological property"
+},
+{
+"label": "protein abundance",
+"type": "Biological property"
+},
+{
+"label": "DNA sequencing",
+"type": "Method and procedure"
+},
+{
+"label": "next-generation sequencing",
+"type": "Method and procedure"
+},
+{
+"label": "whole genome sequencing",
+"type": "Method and procedure"
+},
+{
+"label": "whole exome sequencing",
+"type": "Method and procedure"
+},
+{
+"label": "RNA sequencing",
+"type": "Method and procedure"
+},
+{
+"label": "mass spectrometry",
+"type": "Method and procedure"
+},
+{
+"label": "tandem mass spectrometry",
+"type": "Method and procedure"
+},
+{
+"label": "laboratory test",
+"type": "Method and procedure"
+},
+{
+"label": "sequence alignment",
+"type": "Method and procedure"
+},
+{
+"label": "variant calling",
+"type": "Method and procedure"
+},
+{
+"label": "variant annotation",
+"type": "Method and procedure"
+},
+{
+"label": "variant filtering",
+"type": "Method and procedure"
+},
+{
+"label": "hard filtering",
+"type": "Method and procedure"
+},
+{
+"label": "variant quality score recalibration",
+"type": "Method and procedure"
+},
+{
+"label": "protein identification",
+"type": "Method and procedure"
+},
+{
+"label": "nearest neighbor search",
+"type": "Method and procedure"
+},
+{
+"label": "genetic testing",
+"type": "Method and procedure"
+},
+{
+"label": "cascade testing",
+"type": "Method and procedure"
+},
+{
+"label": "genetic counseling",
+"type": "Method and procedure"
+},
+{
+"label": "risk assessment",
+"type": "Method and procedure"
+},
+{
+"label": "clinical trial",
+"type": "Method and procedure"
+},
+{
+"label": "genomics",
+"type": "Research field"
+},
+{
+"label": "proteomics",
+"type": "Research field"
+},
+{
+"label": "epigenetics",
+"type": "Research field"
+},
+{
+"label": "sequencing read",
+"type": "Data and artifact"
+},
+{
+"label": "FASTQ file",
+"type": "Data and artifact"
+},
+{
+"label": "BAM file",
+"type": "Data and artifact"
+},
+{
+"label": "VCF file",
+"type": "Data and artifact"
+},
+{
+"label": "reference genome",
+"type": "Data and artifact"
+},
+{
+"label": "mass spectrum",
+"type": "Data and artifact"
+},
+{
+"label": "electronic health record",
+"type": "Data and artifact"
+},
+{
+"label": "clinical note",
+"type": "Data and artifact"
+},
+{
+"label": "family history",
+"type": "Data and artifact"
+},
+{
+"label": "metadata",
+"type": "Data and artifact"
+},
+{
+"label": "data schema",
+"type": "Data and artifact"
+},
+{
+"label": "data provenance",
+"type": "Data and artifact"
+},
+{
+"label": "quality by depth",
+"type": "Measure of quality"
+},
+{
+"label": "Fisher strand bias",
+"type": "Measure of quality"
+},
+{
+"label": "strand odds ratio",
+"type": "Measure of quality"
+},
+{
+"label": "mapping quality",
+"type": "Measure of quality"
+},
+{
+"label": "read depth",
+"type": "Measure of quality"
+},
+{
+"label": "rank sum test",
+"type": "Measure of quality"
+},
+{
+"label": "data quality",
+"type": "Measure of quality"
+},
+{
+"label": "patient",
+"type": "Clinical concept"
+},
+{
+"label": "proband",
+"type": "Clinical concept"
+},
+{
+"label": "relative",
+"type": "Clinical concept"
+},
+{
+"label": "diagnosis",
+"type": "Clinical concept"
+},
+{
+"label": "symptom",
+"type": "Clinical concept"
+},
+{
+"label": "hereditary cancer",
+"type": "Clinical concept"
+},
+{
+"label": "breast cancer",
+"type": "Clinical concept"
+},
+{
+"label": "ovarian cancer",
+"type": "Clinical concept"
+},
+{
+"label": "biomarker",
+"type": "Clinical concept"
+},
+{
+"label": "treatment",
+"type": "Clinical concept"
+},
+{
+"label": "PARP inhibitor",
+"type": "Clinical concept"
+},
+{
+"label": "informed consent",
+"type": "Clinical concept"
+},
+{
+"label": "de-identification",
+"type": "Clinical concept"
+},
+{
+"label": "data privacy",
+"type": "Clinical concept"
+},
+{
+"label": "ontology",
+"type": "Knowledge and information technology"
+},
+{
+"label": "Gene Ontology",
+"type": "Knowledge and information technology"
+},
+{
+"label": "Human Phenotype Ontology",
+"type": "Knowledge and information technology"
+},
+{
+"label": "controlled vocabulary",
+"type": "Knowledge and information technology"
+},
+{
+"label": "Medical Subject Headings",
+"type": "Knowledge and information technology"
+},
+{
+"label": "SNOMED CT",
+"type": "Knowledge and information technology"
+},
+{
+"label": "thesaurus",
+"type": "Knowledge and information technology"
+},
+{
+"label": "taxonomy",
+"type": "Knowledge and information technology"
+},
+{
+"label": "knowledge graph",
+"type": "Knowledge and information technology"
+},
+{
+"label": "ClinVar",
+"type": "Knowledge and information technology"
+},
+{
+"label": "UniProt",
+"type": "Knowledge and information technology"
+},
+{
+"label": "dbSNP",
+"type": "Knowledge and information technology"
+},
+{
+"label": "relational database",
+"type": "Knowledge and information technology"
+},
+{
+"label": "graph database",
+"type": "Knowledge and information technology"
+},
+{
+"label": "vector database",
+"type": "Knowledge and information technology"
+},
+{
+"label": "embedding",
+"type": "Knowledge and information technology"
+},
+{
+"label": "semantic similarity",
+"type": "Knowledge and information technology"
+},
+{
+"label": "Resource Description Framework",
+"type": "Knowledge and information technology"
+},
+{
+"label": "Simple Knowledge Organization System",
+"type": "Knowledge and information technology"
+},
+{
+"label": "SPARQL",
+"type": "Knowledge and information technology"
+},
+{
+"label": "rule-based system",
+"type": "Knowledge and information technology"
+},
+{
+"label": "production rule",
+"type": "Knowledge and information technology"
+},
+{
+"label": "inference engine",
+"type": "Knowledge and information technology"
+},
+{
+"label": "frame",
+"type": "Knowledge and information technology"
+},
+{
+"label": "competency question",
+"type": "Knowledge and information technology"
+},
+{
+"label": "data integration",
+"type": "Knowledge and information technology"
+},
+{
+"label": "data pipeline",
+"type": "Knowledge and information technology"
+}
+]

@@ -1,0 +1,1550 @@
+{
+ "model_note": "Фасетна таксономія: L1 — тематичні аспекти; нижче is-a та part-of не змішуються в одному ланцюжку (частини геному винесено в окрему гілку).",
+ "principles": {
+  "level1": "Тематичний аспект (фасет) предметної області",
+  "level2": "Вид/рівень об'єкта в межах аспекту (молекулярний рівень, етап процесу, роль, модель даних тощо)",
+  "level3": "Окремий критерій у межах категорії (тип, походження, значущість, охоплення)",
+  "level4": "Специфікація терміна (is-a) або групування однорідних термінів"
+ },
+ "nodes": [
+  {
+   "id": "L001",
+   "parent_id": null,
+   "label": "Biomedical Data Analysis",
+   "level": 0,
+   "principle_of_division": "Тематичний аспект (фасет) предметної області",
+   "term_id": null,
+   "definition": "Предметна область аналізу біомедичних даних: геномні, протеомні, клінічні дані, а також графові й векторні бази."
+  },
+  {
+   "id": "L002",
+   "parent_id": "L001",
+   "label": "Molecular and Genomic Entities",
+   "level": 1,
+   "principle_of_division": "Молекулярний рівень (ДНК, РНК, білок) та специфічність об'єкта",
+   "term_id": null,
+   "definition": "Біологічні об'єкти молекулярного рівня: ДНК, РНК, білки та конкретні гени."
+  },
+  {
+   "id": "L003",
+   "parent_id": "L002",
+   "label": "Genome Structural Components",
+   "level": 2,
+   "principle_of_division": "Рівень структурної організації геному",
+   "term_id": null,
+   "definition": "Структурні складові геному (відношення «ціле–частина»)."
+  },
+  {
+   "id": "L004",
+   "parent_id": "L003",
+   "label": "chromosome",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T011",
+   "definition": "Структура з ДНК і білків, що несе гени; у людини 23 пари."
+  },
+  {
+   "id": "L005",
+   "parent_id": "L003",
+   "label": "gene",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T038",
+   "definition": "Ділянка ДНК, що кодує продукт (білок або РНК) і є одиницею спадковості."
+  },
+  {
+   "id": "L006",
+   "parent_id": "L003",
+   "label": "exon",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T033",
+   "definition": "Ділянка гена, що лишається в зрілій РНК і може кодувати білок."
+  },
+  {
+   "id": "L007",
+   "parent_id": "L003",
+   "label": "intron",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T056",
+   "definition": "Ділянка гена, що видаляється зі зрілої РНК під час сплайсингу."
+  },
+  {
+   "id": "L008",
+   "parent_id": "L002",
+   "label": "Genomic Sequence Collections",
+   "level": 2,
+   "principle_of_division": "Охоплення геномної послідовності",
+   "term_id": null,
+   "definition": "Набори геномної послідовності різного охоплення."
+  },
+  {
+   "id": "L009",
+   "parent_id": "L008",
+   "label": "genome",
+   "level": 3,
+   "principle_of_division": "Роль послідовності геному (еталонна)",
+   "term_id": "T045",
+   "definition": "Повний набір спадкового матеріалу (ДНК) організму."
+  },
+  {
+   "id": "L010",
+   "parent_id": "L009",
+   "label": "reference genome",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T088",
+   "definition": "Еталонна послідовність геному виду, з якою порівнюють вибірки."
+  },
+  {
+   "id": "L011",
+   "parent_id": "L008",
+   "label": "exome",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T032",
+   "definition": "Сукупність усіх екзонів геному."
+  },
+  {
+   "id": "L012",
+   "parent_id": "L008",
+   "label": "gene panel",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T041",
+   "definition": "Набір вибраних генів, що аналізуються разом."
+  },
+  {
+   "id": "L013",
+   "parent_id": "L002",
+   "label": "Specific Genes",
+   "level": 2,
+   "principle_of_division": "Ідентичність гена",
+   "term_id": null,
+   "definition": "Конкретні гени, що мають клінічне значення."
+  },
+  {
+   "id": "L014",
+   "parent_id": "L013",
+   "label": "BRCA1",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T007",
+   "definition": "Ген репарації ДНК; патогенні варіанти підвищують ризик раку молочної залози й яєчників."
+  },
+  {
+   "id": "L015",
+   "parent_id": "L013",
+   "label": "BRCA2",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T008",
+   "definition": "Ген репарації ДНК; патогенні варіанти підвищують ризик раку молочної залози й яєчників."
+  },
+  {
+   "id": "L016",
+   "parent_id": "L002",
+   "label": "RNA Entities",
+   "level": 2,
+   "principle_of_division": "Рівень організації РНК: окрема молекула чи повний набір",
+   "term_id": null,
+   "definition": "РНК-об'єкти."
+  },
+  {
+   "id": "L017",
+   "parent_id": "L016",
+   "label": "transcript",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T109",
+   "definition": "Молекула РНК, синтезована на матриці ДНК."
+  },
+  {
+   "id": "L018",
+   "parent_id": "L016",
+   "label": "transcriptome",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T110",
+   "definition": "Сукупність усіх РНК-транскриптів клітини чи тканини."
+  },
+  {
+   "id": "L019",
+   "parent_id": "L002",
+   "label": "Protein-level Entities",
+   "level": 2,
+   "principle_of_division": "Рівень організації білкового матеріалу",
+   "term_id": null,
+   "definition": "Об'єкти білкового рівня."
+  },
+  {
+   "id": "L020",
+   "parent_id": "L019",
+   "label": "amino acid",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T002",
+   "definition": "Органічна сполука, мономер білків."
+  },
+  {
+   "id": "L021",
+   "parent_id": "L019",
+   "label": "peptide",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T073",
+   "definition": "Короткий ланцюжок амінокислот."
+  },
+  {
+   "id": "L022",
+   "parent_id": "L019",
+   "label": "protein",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T078",
+   "definition": "Біополімер із амінокислот, що виконує структурні й функціональні ролі."
+  },
+  {
+   "id": "L023",
+   "parent_id": "L019",
+   "label": "protein domain",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T080",
+   "definition": "Структурно й функціонально відокремлена частина білка."
+  },
+  {
+   "id": "L024",
+   "parent_id": "L019",
+   "label": "proteome",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T083",
+   "definition": "Сукупність усіх білків клітини, тканини чи організму."
+  },
+  {
+   "id": "L025",
+   "parent_id": "L001",
+   "label": "Genetic Variation and Heredity",
+   "level": 1,
+   "principle_of_division": "Аспект генетичної мінливості: класифікація варіантів та одиниці успадкування",
+   "term_id": null,
+   "definition": "Генетична мінливість, її прояв і успадкування."
+  },
+  {
+   "id": "L026",
+   "parent_id": "L025",
+   "label": "genetic variant",
+   "level": 2,
+   "principle_of_division": "Критерій класифікації варіантів (фасет)",
+   "term_id": "T044",
+   "definition": "Відмінність послідовності ДНК від референсної."
+  },
+  {
+   "id": "L027",
+   "parent_id": "L026",
+   "label": "Variants by Molecular Type",
+   "level": 3,
+   "principle_of_division": "Тип і розмір зміни послідовності",
+   "term_id": null,
+   "definition": "Варіанти за молекулярним типом і розміром зміни."
+  },
+  {
+   "id": "L028",
+   "parent_id": "L027",
+   "label": "single nucleotide polymorphism",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T099",
+   "definition": "Заміна одного нуклеотида в певній позиції геному."
+  },
+  {
+   "id": "L029",
+   "parent_id": "L027",
+   "label": "insertion-deletion",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T055",
+   "definition": "Вставка або видалення невеликого числа нуклеотидів у послідовності."
+  },
+  {
+   "id": "L030",
+   "parent_id": "L027",
+   "label": "copy number variation",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T017",
+   "definition": "Зміна кількості копій ділянки геному відносно референсу."
+  },
+  {
+   "id": "L031",
+   "parent_id": "L027",
+   "label": "structural variant",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T104",
+   "definition": "Велика зміна геному (від ~50 нуклеотидів): делеція, дуплікація, інверсія, транслокація."
+  },
+  {
+   "id": "L032",
+   "parent_id": "L026",
+   "label": "Variants by Origin",
+   "level": 3,
+   "principle_of_division": "Клітинне походження варіанта",
+   "term_id": null,
+   "definition": "Варіанти за походженням."
+  },
+  {
+   "id": "L033",
+   "parent_id": "L032",
+   "label": "germline variant",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T048",
+   "definition": "Варіант у статевих клітинах, що передається нащадкам і присутній у всіх клітинах організму."
+  },
+  {
+   "id": "L034",
+   "parent_id": "L032",
+   "label": "somatic variant",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T101",
+   "definition": "Варіант, набутий у соматичній клітині, не спадковий."
+  },
+  {
+   "id": "L035",
+   "parent_id": "L026",
+   "label": "Variants by Clinical Significance",
+   "level": 3,
+   "principle_of_division": "Доказова клінічна значущість варіанта",
+   "term_id": null,
+   "definition": "Варіанти за клінічною значущістю."
+  },
+  {
+   "id": "L036",
+   "parent_id": "L035",
+   "label": "pathogenic variant",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T070",
+   "definition": "Варіант, що за доказами спричиняє захворювання або підвищує ризик."
+  },
+  {
+   "id": "L037",
+   "parent_id": "L035",
+   "label": "benign variant",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T005",
+   "definition": "Варіант, що за доказами не спричиняє захворювання."
+  },
+  {
+   "id": "L038",
+   "parent_id": "L035",
+   "label": "variant of uncertain significance",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T116",
+   "definition": "Варіант, клінічне значення якого поки не встановлено."
+  },
+  {
+   "id": "L039",
+   "parent_id": "L025",
+   "label": "Genotype, Phenotype and Inheritance",
+   "level": 2,
+   "principle_of_division": "Аспект спадковості: одиниця варіації, її склад, прояв і передача",
+   "term_id": null,
+   "definition": "Поняття, що описують алельний склад, прояв і передачу ознак."
+  },
+  {
+   "id": "L040",
+   "parent_id": "L039",
+   "label": "allele",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T001",
+   "definition": "Одна з альтернативних форм гена або ділянки ДНК у певному локусі."
+  },
+  {
+   "id": "L041",
+   "parent_id": "L039",
+   "label": "genotype",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T047",
+   "definition": "Склад алелів особи в певному локусі або в усьому геномі."
+  },
+  {
+   "id": "L042",
+   "parent_id": "L039",
+   "label": "phenotype",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T074",
+   "definition": "Спостережувані ознаки організму, результат взаємодії генотипу й середовища."
+  },
+  {
+   "id": "L043",
+   "parent_id": "L039",
+   "label": "penetrance",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T072",
+   "definition": "Частка носіїв варіанта, у яких проявляється ознака."
+  },
+  {
+   "id": "L044",
+   "parent_id": "L039",
+   "label": "autosomal dominant inheritance",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T003",
+   "definition": "Тип успадкування, за якого достатньо однієї копії варіанта, щоб проявилась ознака."
+  },
+  {
+   "id": "L045",
+   "parent_id": "L001",
+   "label": "Molecular Processes",
+   "level": 1,
+   "principle_of_division": "Рівень біологічного процесу: геновий чи білковий",
+   "term_id": null,
+   "definition": "Біологічні процеси й механізми."
+  },
+  {
+   "id": "L046",
+   "parent_id": "L045",
+   "label": "Gene-level Processes",
+   "level": 2,
+   "principle_of_division": "Вплив на генетичну інформацію (зміна, регуляція, використання)",
+   "term_id": null,
+   "definition": "Процеси на рівні гена."
+  },
+  {
+   "id": "L047",
+   "parent_id": "L046",
+   "label": "mutation",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T064",
+   "definition": "Стійка зміна послідовності ДНК."
+  },
+  {
+   "id": "L048",
+   "parent_id": "L046",
+   "label": "DNA methylation",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T027",
+   "definition": "Додавання метильної групи до ДНК; епігенетичний механізм."
+  },
+  {
+   "id": "L049",
+   "parent_id": "L046",
+   "label": "gene expression",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T039",
+   "definition": "Процес, у якому інформація гена використовується для синтезу продукту."
+  },
+  {
+   "id": "L050",
+   "parent_id": "L045",
+   "label": "Protein-level Processes",
+   "level": 2,
+   "principle_of_division": "Кількість залучених молекул білка",
+   "term_id": null,
+   "definition": "Процеси на рівні білка."
+  },
+  {
+   "id": "L051",
+   "parent_id": "L050",
+   "label": "post-translational modification",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T075",
+   "definition": "Хімічна зміна білка після синтезу."
+  },
+  {
+   "id": "L052",
+   "parent_id": "L050",
+   "label": "protein-protein interaction",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T082",
+   "definition": "Фізичний чи функціональний контакт двох білків."
+  },
+  {
+   "id": "L053",
+   "parent_id": "L001",
+   "label": "Omics Research Fields",
+   "level": 1,
+   "principle_of_division": "Молекулярний шар, що вивчається",
+   "term_id": null,
+   "definition": "Наукові дисципліни омікс-типу."
+  },
+  {
+   "id": "L054",
+   "parent_id": "L053",
+   "label": "genomics",
+   "level": 2,
+   "principle_of_division": null,
+   "term_id": "T046",
+   "definition": "Дослідження геномів, їхньої структури й варіації."
+  },
+  {
+   "id": "L055",
+   "parent_id": "L053",
+   "label": "epigenetics",
+   "level": 2,
+   "principle_of_division": null,
+   "term_id": "T031",
+   "definition": "Вивчення спадкових змін активності генів без зміни послідовності ДНК."
+  },
+  {
+   "id": "L056",
+   "parent_id": "L053",
+   "label": "proteomics",
+   "level": 2,
+   "principle_of_division": null,
+   "term_id": "T084",
+   "definition": "Масштабне дослідження білків та їхніх функцій."
+  },
+  {
+   "id": "L057",
+   "parent_id": "L001",
+   "label": "Laboratory and Analytical Methods",
+   "level": 1,
+   "principle_of_division": "Аналітична мішень і технологія методу",
+   "term_id": null,
+   "definition": "Лабораторні й аналітичні методи."
+  },
+  {
+   "id": "L058",
+   "parent_id": "L057",
+   "label": "Nucleic Acid Sequencing",
+   "level": 2,
+   "principle_of_division": "Специфічність методу: платформа чи цільовий протокол",
+   "term_id": null,
+   "definition": "Методи секвенування нуклеїнових кислот."
+  },
+  {
+   "id": "L059",
+   "parent_id": "L058",
+   "label": "next-generation sequencing",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T066",
+   "definition": "Масово-паралельне секвенування ДНК або РНК."
+  },
+  {
+   "id": "L060",
+   "parent_id": "L058",
+   "label": "DNA sequencing",
+   "level": 3,
+   "principle_of_division": "Охоплення геному, що секвенується",
+   "term_id": "T028",
+   "definition": "Визначення порядку нуклеотидів у молекулі ДНК."
+  },
+  {
+   "id": "L061",
+   "parent_id": "L060",
+   "label": "whole genome sequencing",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T121",
+   "definition": "Секвенування всього геному особи."
+  },
+  {
+   "id": "L062",
+   "parent_id": "L060",
+   "label": "whole exome sequencing",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T120",
+   "definition": "Секвенування лише кодувальних ділянок геному."
+  },
+  {
+   "id": "L063",
+   "parent_id": "L058",
+   "label": "RNA sequencing",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T093",
+   "definition": "Секвенування РНК для оцінки транскриптому й експресії генів."
+  },
+  {
+   "id": "L064",
+   "parent_id": "L057",
+   "label": "Mass Spectrometry Analysis",
+   "level": 2,
+   "principle_of_division": "Етап аналітичного робочого процесу",
+   "term_id": null,
+   "definition": "Мас-спектрометричний аналіз білків."
+  },
+  {
+   "id": "L065",
+   "parent_id": "L064",
+   "label": "mass spectrometry",
+   "level": 3,
+   "principle_of_division": "Режим вимірювання: з фрагментацією іонів",
+   "term_id": "T060",
+   "definition": "Метод вимірювання відношення маси до заряду іонів."
+  },
+  {
+   "id": "L066",
+   "parent_id": "L065",
+   "label": "tandem mass spectrometry",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T106",
+   "definition": "Мас-спектрометрія з фрагментацією іонів для визначення послідовності пептидів."
+  },
+  {
+   "id": "L067",
+   "parent_id": "L064",
+   "label": "mass spectrum",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T061",
+   "definition": "Розподіл інтенсивності іонів за відношенням маси до заряду."
+  },
+  {
+   "id": "L068",
+   "parent_id": "L064",
+   "label": "protein identification",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T081",
+   "definition": "Визначення білків за спектрами через зіставлення з базою послідовностей."
+  },
+  {
+   "id": "L069",
+   "parent_id": "L064",
+   "label": "protein abundance",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T079",
+   "definition": "Кількість білка в зразку (відносна чи абсолютна)."
+  },
+  {
+   "id": "L070",
+   "parent_id": "L057",
+   "label": "laboratory test",
+   "level": 2,
+   "principle_of_division": "Мета аналізу: виявлення генетичних варіантів",
+   "term_id": "T058",
+   "definition": "Аналіз зразка для отримання клінічно значущого результату."
+  },
+  {
+   "id": "L071",
+   "parent_id": "L070",
+   "label": "genetic testing",
+   "level": 3,
+   "principle_of_division": "Призначення тестування: родинне тестування",
+   "term_id": "T043",
+   "definition": "Аналіз ДНК для виявлення варіантів, пов'язаних із хворобою."
+  },
+  {
+   "id": "L072",
+   "parent_id": "L071",
+   "label": "cascade testing",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T010",
+   "definition": "Послідовне тестування родичів носія відомого патогенного варіанта."
+  },
+  {
+   "id": "L073",
+   "parent_id": "L001",
+   "label": "Sequence Data and Variant Analysis",
+   "level": 1,
+   "principle_of_division": "Тип елемента робочого процесу: дані, кроки обробки, метрики якості",
+   "term_id": null,
+   "definition": "Дані секвенування та обчислювальний аналіз варіантів."
+  },
+  {
+   "id": "L074",
+   "parent_id": "L073",
+   "label": "Sequence Data Products",
+   "level": 2,
+   "principle_of_division": "Етап життєвого циклу даних секвенування",
+   "term_id": null,
+   "definition": "Дані на різних етапах аналізу секвенування."
+  },
+  {
+   "id": "L075",
+   "parent_id": "L074",
+   "label": "sequencing read",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T097",
+   "definition": "Короткий фрагмент послідовності, отриманий секвенатором."
+  },
+  {
+   "id": "L076",
+   "parent_id": "L074",
+   "label": "FASTQ file",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T035",
+   "definition": "Формат для ридів із оцінками якості символів."
+  },
+  {
+   "id": "L077",
+   "parent_id": "L074",
+   "label": "BAM file",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T004",
+   "definition": "Бінарний формат вирівняних ридів."
+  },
+  {
+   "id": "L078",
+   "parent_id": "L074",
+   "label": "VCF file",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T118",
+   "definition": "Текстовий формат для варіантів та їхніх анотацій."
+  },
+  {
+   "id": "L079",
+   "parent_id": "L073",
+   "label": "Variant Analysis Steps",
+   "level": 2,
+   "principle_of_division": "Порядок кроку в робочому процесі",
+   "term_id": null,
+   "definition": "Кроки обчислювального аналізу варіантів."
+  },
+  {
+   "id": "L080",
+   "parent_id": "L079",
+   "label": "sequence alignment",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T096",
+   "definition": "Зіставлення ридів із позиціями референсного геному."
+  },
+  {
+   "id": "L081",
+   "parent_id": "L079",
+   "label": "variant calling",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T114",
+   "definition": "Визначення варіантів за вирівняними ридами."
+  },
+  {
+   "id": "L082",
+   "parent_id": "L079",
+   "label": "variant annotation",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T113",
+   "definition": "Додавання до варіантів відомостей про ген, наслідок і частоту."
+  },
+  {
+   "id": "L083",
+   "parent_id": "L079",
+   "label": "variant filtering",
+   "level": 3,
+   "principle_of_division": "Спосіб фільтрації: порогова чи модельна",
+   "term_id": "T115",
+   "definition": "Відсіювання ненадійних варіантів за анотаціями якості."
+  },
+  {
+   "id": "L084",
+   "parent_id": "L083",
+   "label": "hard filtering",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T050",
+   "definition": "Фільтрація варіантів за фіксованими порогами окремих анотацій."
+  },
+  {
+   "id": "L085",
+   "parent_id": "L083",
+   "label": "variant quality score recalibration",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T117",
+   "definition": "Фільтрація моделлю, навченою на відомих варіантах (GATK)."
+  },
+  {
+   "id": "L086",
+   "parent_id": "L073",
+   "label": "Variant Quality Metrics",
+   "level": 2,
+   "principle_of_division": "Аспект якості, що оцінюється",
+   "term_id": null,
+   "definition": "Метрики й статистики якості варіантів."
+  },
+  {
+   "id": "L087",
+   "parent_id": "L086",
+   "label": "Alignment and Coverage Metrics",
+   "level": 3,
+   "principle_of_division": "Об'єкт вимірювання: позиція рида чи позиція геному",
+   "term_id": null,
+   "definition": "Метрики вирівнювання й покриття."
+  },
+  {
+   "id": "L088",
+   "parent_id": "L087",
+   "label": "mapping quality",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T059",
+   "definition": "Оцінка впевненості в позиції вирівнювання рида."
+  },
+  {
+   "id": "L089",
+   "parent_id": "L087",
+   "label": "read depth",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T087",
+   "definition": "Кількість ридів, що перекривають позицію геному."
+  },
+  {
+   "id": "L090",
+   "parent_id": "L086",
+   "label": "Strand Bias Metrics",
+   "level": 3,
+   "principle_of_division": "Статистичний метод оцінки зміщення",
+   "term_id": null,
+   "definition": "Метрики зміщення ланцюгів."
+  },
+  {
+   "id": "L091",
+   "parent_id": "L090",
+   "label": "Fisher strand bias",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T036",
+   "definition": "Оцінка нерівномірності підтримки варіанта прямим і зворотним ланцюгами."
+  },
+  {
+   "id": "L092",
+   "parent_id": "L090",
+   "label": "strand odds ratio",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T103",
+   "definition": "Оцінка зміщення ланцюга, стійкіша до високого покриття."
+  },
+  {
+   "id": "L093",
+   "parent_id": "L086",
+   "label": "Normalized and Rank-based Metrics",
+   "level": 3,
+   "principle_of_division": "Спосіб порівняння: нормування чи ранговий тест",
+   "term_id": null,
+   "definition": "Нормовані та рангові статистики."
+  },
+  {
+   "id": "L094",
+   "parent_id": "L093",
+   "label": "quality by depth",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T085",
+   "definition": "Оцінка якості варіанта, нормована на глибину покриття."
+  },
+  {
+   "id": "L095",
+   "parent_id": "L093",
+   "label": "rank sum test",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T086",
+   "definition": "Непараметричний тест порівняння двох груп; у GATK порівнює ріди з референсним та альтернативним алелем."
+  },
+  {
+   "id": "L096",
+   "parent_id": "L001",
+   "label": "Clinical Practice",
+   "level": 1,
+   "principle_of_division": "Роль у процесі клінічної допомоги",
+   "term_id": null,
+   "definition": "Клінічні поняття: особи, оцінювання, втручання, документація."
+  },
+  {
+   "id": "L097",
+   "parent_id": "L096",
+   "label": "Persons in Clinical Genetics",
+   "level": 2,
+   "principle_of_division": "Роль особи щодо випадку",
+   "term_id": null,
+   "definition": "Особи в клініко-генетичному випадку."
+  },
+  {
+   "id": "L098",
+   "parent_id": "L097",
+   "label": "patient",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T071",
+   "definition": "Особа, що отримує медичну допомогу."
+  },
+  {
+   "id": "L099",
+   "parent_id": "L097",
+   "label": "proband",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T076",
+   "definition": "Особа, з якої починається вивчення родини в генетичному дослідженні."
+  },
+  {
+   "id": "L100",
+   "parent_id": "L097",
+   "label": "relative",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T090",
+   "definition": "Особа, пов'язана з пробандом спорідненістю."
+  },
+  {
+   "id": "L101",
+   "parent_id": "L096",
+   "label": "Medical Conditions",
+   "level": 2,
+   "principle_of_division": "Критерій класифікації раку (фасет)",
+   "term_id": null,
+   "definition": "Захворювання."
+  },
+  {
+   "id": "L102",
+   "parent_id": "L101",
+   "label": "Cancer by Organ Site",
+   "level": 3,
+   "principle_of_division": "Уражений орган",
+   "term_id": null,
+   "definition": "Рак за органом."
+  },
+  {
+   "id": "L103",
+   "parent_id": "L102",
+   "label": "breast cancer",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T009",
+   "definition": "Злоякісна пухлина молочної залози."
+  },
+  {
+   "id": "L104",
+   "parent_id": "L102",
+   "label": "ovarian cancer",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T068",
+   "definition": "Злоякісна пухлина яєчників."
+  },
+  {
+   "id": "L105",
+   "parent_id": "L101",
+   "label": "Cancer by Etiology",
+   "level": 3,
+   "principle_of_division": "Походження хвороби (успадкована чи ні)",
+   "term_id": null,
+   "definition": "Рак за етіологією."
+  },
+  {
+   "id": "L106",
+   "parent_id": "L105",
+   "label": "hereditary cancer",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T051",
+   "definition": "Рак, що виникає через успадкований патогенний варіант."
+  },
+  {
+   "id": "L107",
+   "parent_id": "L096",
+   "label": "Clinical Evaluation",
+   "level": 2,
+   "principle_of_division": "Вид клінічної інформації",
+   "term_id": null,
+   "definition": "Збір і інтерпретація клінічної інформації."
+  },
+  {
+   "id": "L108",
+   "parent_id": "L107",
+   "label": "symptom",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T105",
+   "definition": "Ознака захворювання, яку відчуває або виявляє пацієнт."
+  },
+  {
+   "id": "L109",
+   "parent_id": "L107",
+   "label": "family history",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T034",
+   "definition": "Відомості про захворювання у родичів пацієнта."
+  },
+  {
+   "id": "L110",
+   "parent_id": "L107",
+   "label": "biomarker",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T006",
+   "definition": "Вимірювана ознака, що відображає біологічний процес чи стан хвороби."
+  },
+  {
+   "id": "L111",
+   "parent_id": "L107",
+   "label": "diagnosis",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T026",
+   "definition": "Висновок про захворювання за результатами обстеження."
+  },
+  {
+   "id": "L112",
+   "parent_id": "L107",
+   "label": "risk assessment",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T092",
+   "definition": "Оцінювання ймовірності виникнення захворювання."
+  },
+  {
+   "id": "L113",
+   "parent_id": "L096",
+   "label": "Clinical Interventions",
+   "level": 2,
+   "principle_of_division": "Вид клінічної діяльності",
+   "term_id": null,
+   "definition": "Втручання та дослідження."
+  },
+  {
+   "id": "L114",
+   "parent_id": "L113",
+   "label": "treatment",
+   "level": 3,
+   "principle_of_division": "Вид терапії: таргетний препарат",
+   "term_id": "T111",
+   "definition": "Втручання для усунення або полегшення хвороби."
+  },
+  {
+   "id": "L115",
+   "parent_id": "L114",
+   "label": "PARP inhibitor",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T069",
+   "definition": "Клас таргетних препаратів, що блокують ферменти PARP; застосовують за мутацій BRCA."
+  },
+  {
+   "id": "L116",
+   "parent_id": "L113",
+   "label": "genetic counseling",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T042",
+   "definition": "Допомога особі у розумінні генетичного ризику й варіантів дій."
+  },
+  {
+   "id": "L117",
+   "parent_id": "L113",
+   "label": "clinical trial",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T013",
+   "definition": "Дослідження за участю людей для оцінки втручання."
+  },
+  {
+   "id": "L118",
+   "parent_id": "L096",
+   "label": "Clinical Documentation",
+   "level": 2,
+   "principle_of_division": "Структурованість запису: система чи окремий запис",
+   "term_id": null,
+   "definition": "Медична документація."
+  },
+  {
+   "id": "L119",
+   "parent_id": "L118",
+   "label": "electronic health record",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T029",
+   "definition": "Цифровий запис медичних даних пацієнта."
+  },
+  {
+   "id": "L120",
+   "parent_id": "L118",
+   "label": "clinical note",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T012",
+   "definition": "Вільнотекстовий запис лікаря у медичній документації."
+  },
+  {
+   "id": "L121",
+   "parent_id": "L001",
+   "label": "Knowledge Representation",
+   "level": 1,
+   "principle_of_division": "Форма артефакту знань",
+   "term_id": null,
+   "definition": "Подання й організація знань."
+  },
+  {
+   "id": "L122",
+   "parent_id": "L121",
+   "label": "Knowledge Organization Systems",
+   "level": 2,
+   "principle_of_division": "Семантична виразність системи",
+   "term_id": null,
+   "definition": "Системи організації знань."
+  },
+  {
+   "id": "L123",
+   "parent_id": "L122",
+   "label": "controlled vocabulary",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T016",
+   "definition": "Узгоджений перелік термінів із фіксованим значенням."
+  },
+  {
+   "id": "L124",
+   "parent_id": "L122",
+   "label": "taxonomy",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T107",
+   "definition": "Ієрархічна класифікація понять на основі зв'язку «загальне—часткове»."
+  },
+  {
+   "id": "L125",
+   "parent_id": "L122",
+   "label": "thesaurus",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T108",
+   "definition": "Словник понять із зв'язками еквівалентності, ієрархії й асоціації."
+  },
+  {
+   "id": "L126",
+   "parent_id": "L122",
+   "label": "ontology",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T067",
+   "definition": "Формальна специфікація понять предметної області та зв'язків між ними."
+  },
+  {
+   "id": "L127",
+   "parent_id": "L121",
+   "label": "Rule-based Reasoning",
+   "level": 2,
+   "principle_of_division": "Роль у системі виведення",
+   "term_id": null,
+   "definition": "Правила й виведення."
+  },
+  {
+   "id": "L128",
+   "parent_id": "L127",
+   "label": "frame",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T037",
+   "definition": "Структура знань із іменованими слотами та значеннями за замовчуванням."
+  },
+  {
+   "id": "L129",
+   "parent_id": "L127",
+   "label": "production rule",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T077",
+   "definition": "Правило вигляду «ЯКЩО умова ТО дія»."
+  },
+  {
+   "id": "L130",
+   "parent_id": "L127",
+   "label": "inference engine",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T053",
+   "definition": "Компонент, що застосовує правила до фактів для виведення висновків."
+  },
+  {
+   "id": "L131",
+   "parent_id": "L127",
+   "label": "rule-based system",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T094",
+   "definition": "Система, що виводить рішення застосуванням правил."
+  },
+  {
+   "id": "L132",
+   "parent_id": "L121",
+   "label": "Semantic Web Technologies",
+   "level": 2,
+   "principle_of_division": "Роль у стеку семантичних технологій",
+   "term_id": null,
+   "definition": "Стек семантичних технологій."
+  },
+  {
+   "id": "L133",
+   "parent_id": "L132",
+   "label": "knowledge graph",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T057",
+   "definition": "Граф сутностей і зв'язків, що репрезентує знання."
+  },
+  {
+   "id": "L134",
+   "parent_id": "L132",
+   "label": "Resource Description Framework",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T091",
+   "definition": "Модель даних у вигляді триплетів «суб'єкт—предикат—об'єкт»."
+  },
+  {
+   "id": "L135",
+   "parent_id": "L132",
+   "label": "Simple Knowledge Organization System",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T098",
+   "definition": "Модель W3C для публікації таксономій і тезаурусів у вигляді RDF."
+  },
+  {
+   "id": "L136",
+   "parent_id": "L132",
+   "label": "SPARQL",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T102",
+   "definition": "Мова запитів до RDF-графів."
+  },
+  {
+   "id": "L137",
+   "parent_id": "L121",
+   "label": "Knowledge Engineering Methods",
+   "level": 2,
+   "principle_of_division": "Завдання інженерії знань",
+   "term_id": null,
+   "definition": "Методи інженерії знань."
+  },
+  {
+   "id": "L138",
+   "parent_id": "L137",
+   "label": "competency question",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T015",
+   "definition": "Запитання, на яке база знань має вміти відповісти."
+  },
+  {
+   "id": "L139",
+   "parent_id": "L137",
+   "label": "semantic similarity",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T095",
+   "definition": "Міра близькості значень двох об'єктів."
+  },
+  {
+   "id": "L140",
+   "parent_id": "L001",
+   "label": "Data Management",
+   "level": 1,
+   "principle_of_division": "Аспект керування даними",
+   "term_id": null,
+   "definition": "Керування даними."
+  },
+  {
+   "id": "L141",
+   "parent_id": "L140",
+   "label": "Data Description and Quality",
+   "level": 2,
+   "principle_of_division": "Аспект опису або довіри до даних",
+   "term_id": null,
+   "definition": "Опис і якість даних."
+  },
+  {
+   "id": "L142",
+   "parent_id": "L141",
+   "label": "metadata",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T063",
+   "definition": "Дані, що описують інші дані."
+  },
+  {
+   "id": "L143",
+   "parent_id": "L141",
+   "label": "data schema",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T023",
+   "definition": "Формальний опис структури даних."
+  },
+  {
+   "id": "L144",
+   "parent_id": "L141",
+   "label": "data provenance",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T021",
+   "definition": "Відомості про джерело й історію перетворень даних."
+  },
+  {
+   "id": "L145",
+   "parent_id": "L141",
+   "label": "data quality",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T022",
+   "definition": "Придатність даних до використання: повнота, точність, узгодженість."
+  },
+  {
+   "id": "L146",
+   "parent_id": "L140",
+   "label": "Data Processing",
+   "level": 2,
+   "principle_of_division": "Вид обробки",
+   "term_id": null,
+   "definition": "Обробка даних."
+  },
+  {
+   "id": "L147",
+   "parent_id": "L146",
+   "label": "data integration",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T018",
+   "definition": "Об'єднання даних з різних джерел у єдиний погляд."
+  },
+  {
+   "id": "L148",
+   "parent_id": "L146",
+   "label": "data pipeline",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T019",
+   "definition": "Послідовність кроків обробки даних від джерела до результату."
+  },
+  {
+   "id": "L149",
+   "parent_id": "L140",
+   "label": "Privacy and Ethics",
+   "level": 2,
+   "principle_of_division": "Роль у захисті: мета, засіб, етична основа",
+   "term_id": null,
+   "definition": "Захист і етика."
+  },
+  {
+   "id": "L150",
+   "parent_id": "L149",
+   "label": "data privacy",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T020",
+   "definition": "Захист персональних даних від несанкціонованого доступу."
+  },
+  {
+   "id": "L151",
+   "parent_id": "L149",
+   "label": "de-identification",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T025",
+   "definition": "Видалення ознак, що дозволяють ідентифікувати особу в даних."
+  },
+  {
+   "id": "L152",
+   "parent_id": "L149",
+   "label": "informed consent",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T054",
+   "definition": "Добровільна згода пацієнта після пояснення суті процедури чи дослідження."
+  },
+  {
+   "id": "L153",
+   "parent_id": "L001",
+   "label": "Databases and Reference Resources",
+   "level": 1,
+   "principle_of_division": "Вид ресурсу",
+   "term_id": null,
+   "definition": "Бази даних та довідкові ресурси."
+  },
+  {
+   "id": "L154",
+   "parent_id": "L153",
+   "label": "Database Systems",
+   "level": 2,
+   "principle_of_division": "Модель даних",
+   "term_id": null,
+   "definition": "Типи баз даних."
+  },
+  {
+   "id": "L155",
+   "parent_id": "L154",
+   "label": "relational database",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T089",
+   "definition": "База даних із таблицями й зв'язками між ними."
+  },
+  {
+   "id": "L156",
+   "parent_id": "L154",
+   "label": "graph database",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T049",
+   "definition": "База даних, що зберігає вузли й ребра та оптимізована під обхід зв'язків."
+  },
+  {
+   "id": "L157",
+   "parent_id": "L154",
+   "label": "vector database",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T119",
+   "definition": "База даних для зберігання embeddings і пошуку за схожістю."
+  },
+  {
+   "id": "L158",
+   "parent_id": "L153",
+   "label": "Vector Retrieval Concepts",
+   "level": 2,
+   "principle_of_division": "Роль у векторному пошуку",
+   "term_id": null,
+   "definition": "Поняття векторного пошуку."
+  },
+  {
+   "id": "L159",
+   "parent_id": "L158",
+   "label": "embedding",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T030",
+   "definition": "Числовий вектор, що кодує семантику об'єкта."
+  },
+  {
+   "id": "L160",
+   "parent_id": "L158",
+   "label": "nearest neighbor search",
+   "level": 3,
+   "principle_of_division": null,
+   "term_id": "T065",
+   "definition": "Пошук об'єктів, найближчих до запиту у векторному просторі."
+  },
+  {
+   "id": "L161",
+   "parent_id": "L153",
+   "label": "Public Reference Resources",
+   "level": 2,
+   "principle_of_division": "Предметна сфера вмісту",
+   "term_id": null,
+   "definition": "Публічні довідкові ресурси."
+  },
+  {
+   "id": "L162",
+   "parent_id": "L161",
+   "label": "Variation Databases",
+   "level": 3,
+   "principle_of_division": "Тип збережених відомостей про варіанти",
+   "term_id": null,
+   "definition": "Бази варіантів."
+  },
+  {
+   "id": "L163",
+   "parent_id": "L162",
+   "label": "dbSNP",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T024",
+   "definition": "Публічна база коротких генетичних варіантів."
+  },
+  {
+   "id": "L164",
+   "parent_id": "L162",
+   "label": "ClinVar",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T014",
+   "definition": "Публічний архів інтерпретацій клінічної значущості варіантів."
+  },
+  {
+   "id": "L165",
+   "parent_id": "L161",
+   "label": "Protein Resources",
+   "level": 3,
+   "principle_of_division": "Тип відомостей про білки",
+   "term_id": null,
+   "definition": "Білкові ресурси."
+  },
+  {
+   "id": "L166",
+   "parent_id": "L165",
+   "label": "UniProt",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T112",
+   "definition": "Ресурс послідовностей і функціональної анотації білків."
+  },
+  {
+   "id": "L167",
+   "parent_id": "L161",
+   "label": "Biomedical Vocabularies and Ontologies",
+   "level": 3,
+   "principle_of_division": "Предметна сфера термінології",
+   "term_id": null,
+   "definition": "Словники й онтології."
+  },
+  {
+   "id": "L168",
+   "parent_id": "L167",
+   "label": "Gene Ontology",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T040",
+   "definition": "Онтологія функцій генів, біологічних процесів і клітинних компонентів."
+  },
+  {
+   "id": "L169",
+   "parent_id": "L167",
+   "label": "Human Phenotype Ontology",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T052",
+   "definition": "Онтологія фенотипових ознак людини."
+  },
+  {
+   "id": "L170",
+   "parent_id": "L167",
+   "label": "Medical Subject Headings",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T062",
+   "definition": "Контрольований словник медичних тем Національної медичної бібліотеки США."
+  },
+  {
+   "id": "L171",
+   "parent_id": "L167",
+   "label": "SNOMED CT",
+   "level": 4,
+   "principle_of_division": null,
+   "term_id": "T100",
+   "definition": "Систематизована клінічна термінологія."
+  }
+ ]
+}

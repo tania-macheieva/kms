@@ -1,0 +1,16 @@
+Схема rules.json: правил 35, порушень 0
+Факти в умовах, яких немає ні у слотах фреймів, ні серед виведених: немає
+
+Перелік винятків (окремо від правил):
+id    виняток (правило НЕ спрацьовує, якщо всі умови істинні)        джерело/примітка
+G01   dataset.custom_thresholds == True                              Виняток: власні пороги набору даних. Підстава: «Our recommen
+G02   dataset.custom_thresholds == True                              v1.1: обмежено SNP, бо для INDEL окремий поріг (G15).
+G03   dataset.custom_thresholds == True                              
+G04   dataset.custom_thresholds == True                              
+G05   dataset.custom_thresholds == True                              
+G06   dataset.custom_thresholds == True                              v1.1: обмежено SNP, бо для INDEL окремий поріг (G16).
+G15   dataset.custom_thresholds == True                              Джерело — коментар читача в статті (таблиця порогів зі статт
+G16   dataset.custom_thresholds == True                              Джерело — коментар читача в статті; потрібна звірка.
+C07   proband.variant_childhood_cancer_risk == True                  Виняток: зміна підвищує ризик раку в дитинстві (див. C08).
+
+Правил із винятками: 9

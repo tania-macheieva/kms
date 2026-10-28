@@ -1,0 +1,33 @@
+== S01_VAR002: Ситуація S01 (низький QD): для яких варіантів спрацьовує guard-клас і яку дію/новий стан задає шаблон?
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dkh: <http://example.org/dkh/onto#>
+SELECT ?variant ?action ?newState WHERE {
+  dkh:Situation_S01 dkh:guardClass ?gc ; dkh:hasAction ?a ; dkh:hasNewState ?n .
+  ?a rdf:type ?ac . ?n rdf:type ?nc . FILTER(?ac != <http://www.w3.org/2002/07/owl#NamedIndividual> && ?nc != <http://www.w3.org/2002/07/owl#NamedIndividual>)
+  ?v rdf:type/rdfs:subClassOf* ?gc . ?v rdfs:label ?variant . ?ac rdfs:label ?action . ?nc rdfs:label ?newState
+  FILTER(lang(?action)="en" && lang(?newState)="en")
+}
+Результат: [('VAR-002', 'apply flag action', 'flagged state')]
+Очікувано (перший стовпець): ['VAR-002'] → OK
+
+== S03_VAR004: Ситуація S03 (FS на кінці екзона): який варіант потрапляє під guard-клас ExonEndVariant?
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dkh: <http://example.org/dkh/onto#>
+SELECT ?variant WHERE { dkh:Situation_S03 dkh:guardClass ?gc . ?v rdf:type/rdfs:subClassOf* ?gc . ?v rdfs:label ?variant }
+Результат: [('VAR-004',)]
+Очікувано (перший стовпець): ['VAR-004'] → OK
+
+== S06_Sofiia: Ситуація S06 (неповнолітній родич): для кого спрацьовує guard-клас MinorRelative?
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dkh: <http://example.org/dkh/onto#>
+SELECT ?person ?action WHERE {
+  dkh:Situation_S06 dkh:guardClass ?gc ; dkh:hasAction ?a . ?a rdf:type ?ac . ?ac rdfs:label ?action .
+  FILTER(?ac != <http://www.w3.org/2002/07/owl#NamedIndividual>)
+  ?p rdf:type/rdfs:subClassOf* ?gc . ?p rdfs:label ?person
+  FILTER(lang(?action)="en")
+}
+Результат: [('Sofiia', 'defer testing action')]
+Очікувано (перший стовпець): ['Sofiia'] → OK

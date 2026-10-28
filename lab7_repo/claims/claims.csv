@@ -1,0 +1,53 @@
+﻿id,claim,type,source,verification_level,status,comment
+C001,Аксіома: HardFiltering ⊑ ∃ usesInput.QualityByDepth,правило,ЛР6 triples_final.csv (verified): For filtering purposes it is better to use QD than,V4,verified,HermiT: онтологія узгоджена; CQ CQ09 пройдено
+C002,Аксіома: HardFiltering ⊑ ∃ usesInput.FisherStrandBias,правило,ЛР6 triples_final.csv (verified): recommendations tell us to fail variants with an FS value greater than 60.,V4,verified,HermiT: онтологія узгоджена; CQ CQ09 пройдено
+C003,Аксіома: HardFiltering ⊑ ∃ usesInput.StrandOddsRatio,правило,ЛР6 triples_final.csv (verified): our hard filtering recommendation of failing variants with an SOR value greater than 3 wil,V4,verified,HermiT: онтологія узгоджена; CQ CQ09 пройдено
+C004,Аксіома: HardFiltering ⊑ ∃ usesInput.MappingQuality,правило,ЛР6 triples_final.csv (verified): You may argue that hard filtering any variant with an MQ value less than 50 is fine as wel,V4,verified,HermiT: онтологія узгоджена; CQ CQ09 пройдено
+C005,Аксіома: HardFiltering ⊑ ∃ usesInput.RankSumAnnotation,правило,ЛР6 triples_final.csv (verified): threshold removes any variant with a ReadPosRankSum value less than -8.0.,V4,verified,HermiT: онтологія узгоджена; CQ CQ09 пройдено
+C006,Аксіома: VQSR ⊑ ∃ requires.LargeVariantSet,правило,ЛР6 triples_final.csv (verified): Unfortunately this method requires a large number of variants and well-curated known varia,V4,verified,HermiT: онтологія узгоджена; CQ CQ05 пройдено
+C007,Аксіома: VQSR ⊑ ∃ requires.CuratedKnownVariants,правило,ЛР6 triples_final.csv (verified): Unfortunately this method requires a large number of variants and well-curated known varia,V4,verified,HermiT: онтологія узгоджена; CQ CQ05 пройдено
+C008,Аксіома: CascadeTesting ⊑ ∃ requires.PathogenicVariant,правило,ЛР6 triples_final.csv (expert_asserted): твердження експерта без цитати,V4,pending,"HermiT: онтологія узгоджена; CQ CQ20 пройдено; джерело — твердження експерта, цитати немає (потрібна перевірка V3)"
+C009,Аксіома: CascadeTesting ⊑ ∀ appliesTo.Relative,правило,ЛР6 triples_final.csv (verified): Cascade testing can find family members who have the same genetic change.,V4,verified,HermiT: онтологія узгоджена; CQ CQ14 пройдено
+C010,Аксіома: CascadeTesting ⊑ ∃ recommendedFor.FirstDegreeRelative,правило,ЛР6 triples_final.csv (expert_asserted): твердження експерта без цитати,V4,pending,"HermiT: онтологія узгоджена; CQ CQ14 пройдено; джерело — твердження експерта, цитати немає (потрібна перевірка V3)"
+C011,Аксіома: GenePanel ⊑ ∃ hasMember.Gene,правило,модельне рішення (не з тексту),V2,verified,HermiT: онтологія узгоджена; змістовність потребує оцінки експерта (V3)
+C012,Аксіома: GenePanel ⊑ ∀ hasMember.Gene,правило,модельне рішення (не з тексту),V2,verified,HermiT: онтологія узгоджена; змістовність потребує оцінки експерта (V3)
+C013,Аксіома: PathogenicVariant ⊑ ∃ increasesRiskOf.BreastCancer,правило,ЛР6 triples_final.csv (expert_asserted): твердження експерта без цитати,V4,pending,"HermiT: онтологія узгоджена; CQ CQ19 пройдено; джерело — твердження експерта, цитати немає (потрібна перевірка V3)"
+C014,Аксіома: PathogenicVariant ⊑ ∃ increasesRiskOf.OvarianCancer,правило,ЛР6 triples_final.csv (expert_asserted): твердження експерта без цитати,V4,pending,"HermiT: онтологія узгоджена; CQ CQ19 пройдено; джерело — твердження експерта, цитати немає (потрібна перевірка V3)"
+C015,Аксіома: HardFiltering ⊑ ∃ recommendedFor.GenePanel,правило,ЛР6 triples_final.csv (expert_asserted): твердження експерта без цитати,V4,pending,"HermiT: онтологія узгоджена; CQ CQ08 пройдено; джерело — твердження експерта, цитати немає (потрібна перевірка V3)"
+C016,Аксіома: StrandOddsRatio ⊑ ∃ recommendedFor.ExonEndVariant,правило,ЛР6 triples_final.csv (verified): SOR was created because FS tends to penalize variants that occur at the ends of exons.,V4,verified,HermiT: онтологія узгоджена; CQ CQ07 пройдено
+C017,Аксіома: VCFFile ⊑ ∃ derivedFrom.BAMFile,правило,модельне рішення (не з тексту),V2,verified,HermiT: онтологія узгоджена; змістовність потребує оцінки експерта (V3)
+C018,Аксіома: BAMFile ⊑ ∃ generatedBy.Sequencer,правило,модельне рішення (не з тексту),V2,verified,HermiT: онтологія узгоджена; змістовність потребує оцінки експерта (V3)
+C019,Аксіома: Exon ⊑ ∃ partOf.Gene,правило,модельне рішення (не з тексту),V2,verified,HermiT: онтологія узгоджена; змістовність потребує оцінки експерта (V3)
+C020,Аксіома: GenePanel ⊑ hasMember ≥ 2 Gene,правило,модельне рішення (не з тексту),V2,verified,HermiT: онтологія узгоджена; змістовність потребує оцінки експерта (V3)
+C021,Аксіома: CascadeTesting ⊑ hasProband = 1 Proband,правило,модельне рішення (не з тексту),V2,verified,HermiT: онтологія узгоджена; змістовність потребує оцінки експерта (V3)
+C022,Аксіома: CascadeTesting ⊑ hasMinTestingAge = 18,правило,модельне рішення (не з тексту),V2,verified,HermiT: онтологія узгоджена; змістовність потребує оцінки експерта (V3)
+C023,Аксіома: Person ⊑ hasParent ≤ 2 Person,правило,модельне рішення (не з тексту),V2,verified,HermiT: онтологія узгоджена; змістовність потребує оцінки експерта (V3)
+C024,Аксіома: GeneticVariant ⊑ hasClinicalSignificance ≤ 1 ClinicalSignificance,правило,модельне рішення (не з тексту),V2,verified,HermiT: онтологія узгоджена; змістовність потребує оцінки експерта (V3)
+C025,Поріг QD < 2,факт,GATK Hard-filtering (ЛР6 claims),V4,verified,цитата в тексті; CQ01/CQ02 пройдено
+C026,Поріг FS > 60 (SNP),факт,GATK Hard-filtering (ЛР6 claims),V4,verified,цитата в тексті; CQ01/CQ02 пройдено
+C027,Поріг SOR > 3,факт,GATK Hard-filtering (ЛР6 claims),V1,verified,цитата в тексті
+C028,Поріг MQ < 40,факт,GATK Hard-filtering (ЛР6 claims),V1,verified,цитата в тексті
+C029,"Поріг MQRankSum < −12,5; ReadPosRankSum < −8",факт,GATK (ЛР6 claims),V1,verified,цитата в тексті
+C030,Поріг FS > 200 для INDEL,факт,коментар читача до статті GATK,V4,pending,"CQ03 технічно пройдено (значення є в онтології), але саме значення з коментаря: потрібна перевірка за документацією GATK"
+C031,Ймовірність успадкування для родичів першого ступеня = 0.5,факт,CDC About Cascade Testing (ЛР6 claims),V4,verified,цитата «1 in 2/4/8» у ЛР6; CQ11–CQ13 пройдено
+C032,Ймовірність успадкування для родичів другого ступеня = 0.25,факт,CDC About Cascade Testing (ЛР6 claims),V4,verified,цитата «1 in 2/4/8» у ЛР6; CQ11–CQ13 пройдено
+C033,Ймовірність успадкування для родичів третього ступеня = 0.125,факт,CDC About Cascade Testing (ЛР6 claims),V4,verified,цитата «1 in 2/4/8» у ЛР6; CQ11–CQ13 пройдено
+C034,Тестування лише дорослих (≥ 18 років); виняток — ризик раку в дитинстві,правило,CDC About Cascade Testing,V4,verified,цитата в тексті (ЛР6); у онтології — AdultRelative/MinorRelative і шаблон S06; виняток не моделюється
+C035,Шаблон ситуації S01 коректно описує стан-подію-guard-дію,правило,models/situations.csv; GATK/CDC,V4,verified,запит SPARQL повертає VAR-002
+C036,Шаблон ситуації S02 коректно описує стан-подію-guard-дію,правило,models/situations.csv; GATK/CDC,V2,pending,запит не виконувався; логіка ідентична S01 для FS
+C037,Шаблон ситуації S03 коректно описує стан-подію-guard-дію,правило,models/situations.csv; GATK/CDC,V4,verified,запит SPARQL повертає VAR-004; правило «кінець екзона → перевірити SOR» з тексту GATK
+C038,Шаблон ситуації S04 коректно описує стан-подію-guard-дію,правило,models/situations.csv; GATK/CDC,V2,pending,запит не виконувався
+C039,Шаблон ситуації S05 коректно описує стан-подію-guard-дію,правило,models/situations.csv; GATK/CDC,V2,pending,запит не виконувався
+C040,Шаблон ситуації S06 коректно описує стан-подію-guard-дію,правило,models/situations.csv; GATK/CDC,V4,verified,запит SPARQL повертає Sofiia
+C041,"Чернетка LLM: part_of і derived_from транзитивні; is_kin_of, sibling_of, cousin_of симетричні; has_filter_status функціональна (з нотаток LLM)",гіпотеза,llm_log/raw/step_llm_draft_raw_output.ttl,V2,rejected,"у файлі ці характеристики записано як значення rdfs:label, а не як типи; rdflib/HermiT бачать 0 транзитивних і симетричних властивостей"
+C042,Чернетка LLM: усі об'єктні властивості типізовані за каталогом,гіпотеза,llm_log/raw/step_llm_draft_raw_output.ttl,V2,rejected,0 з 32 мають domain; 1 із 32 має range
+C043,Чернетка LLM: BRCA1/BRCA2 — класи,гіпотеза,llm_log/raw/step_llm_draft_raw_output.ttl,V3,rejected,"гени — індивіди; змішування класу та індивіда (OntoClean); оцінка автора, не експерта-людини"
+C044,Чернетка LLM: pathogenic variant — первинний підклас genetic variant,гіпотеза,llm_log/raw/step_llm_draft_raw_output.ttl,V3,rejected,анти-жорсткий клас; потрібен означений клас (оцінка автора)
+C045,Чернетка LLM: panelSize — xsd:string,гіпотеза,llm_log/raw/step_llm_draft_raw_output.ttl,V2,rejected,розмір — число
+C046,Чернетка LLM: threshold ⊑ Measure of quality; gene panel ⊑ Genomic element,гіпотеза,llm_log/raw/step_llm_draft_raw_output.ttl,V3,rejected,хибні is-a (OntoClean; оцінка автора)
+C047,"Чернетка LLM: статуси FILTERED призначено явно (VAR-002, VAR-004)",гіпотеза,llm_log/raw/step_llm_draft_raw_output.ttl,V4,rejected,"відповіді правильні, але дублюють пороги; в моїй онтології виводяться"
+C048,Чернетка LLM: пара germline/somatic із диз'юнктністю,правило,llm_log/raw/step_llm_draft_raw_output.ttl,V2,verified,"взято: SomaticVariant у моїй онтології, HermiT узгоджена"
+C049,Чернетка LLM: CascadeTesting має рівно 1 пробанда,правило,llm_log/raw/step_llm_draft_raw_output.ttl,V2,verified,взято: hasProband = 1; HermiT узгоджена
+C050,Чернетка LLM: мінімальний вік тестування як data-значення,правило,llm_log/raw/step_llm_draft_raw_output.ttl,V2,verified,взято: hasMinTestingAge = 18
+C051,Мої визначення класів «рід + відмінність» складено з участю LLM,гіпотеза,models/class_table.csv,V1,pending,"автоперевірка (самопосилання, цикли) пройдена; змістову точність має підтвердити експерт (V3)"
+C052,Повторне використання: skos:closeMatch/exactMatch до MeSH і таксономії ЛР5 доречні,гіпотеза,ЛР5 external_links.csv (URI перевірено MeSH Lookup API),V1,pending,існування URI й мітка перевірені в ЛР5; смислову еквівалентність оцінила LLM

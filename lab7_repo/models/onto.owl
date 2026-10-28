@@ -1,0 +1,1151 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dkh: <http://example.org/dkh/onto#> .
+@prefix ex5: <http://example.org/knowledge-hub/biomed/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/dkh/onto> a owl:Ontology ;
+    dct:creator "Студент (власник моделі); чернетки — Claude (LLM), перевірка — студент" ;
+    dct:description "Навчальна онтологія; статус довіри: чернетка, не перевірена експертом-медиком; не для клінічного використання."@uk ;
+    dct:source "GATK Team, Hard-filtering germline short variants; CDC, About Cascade Testing; таксономія ЛР5; карта ЛР6 v2" ;
+    dct:title "Domain Knowledge Hub: онтологія контролю якості геномних варіантів і каскадного тестування"@uk ;
+    owl:versionIRI <http://example.org/dkh/onto/0.1.0> ;
+    owl:versionInfo "0.1.0" ;
+    skos:note "Повторне використання: skos:closeMatch до таксономії ЛР5 (ex5:), skos:exactMatch/closeMatch до MeSH (URI перевірено MeSH Lookup API у ЛР5)." .
+
+dkh:AnnotationComputedEvent a owl:Class ;
+    rdfs:label "annotation computed event"@en,
+        "подія обчислення анотації"@uk ;
+    rdfs:subClassOf dkh:Event ;
+    skos:definition "Подія обчислення анотації — це подія, в якій для варіанта обчислено значення анотації якості."@uk .
+
+dkh:ApplyFlagAction a owl:Class ;
+    rdfs:label "apply flag action"@en,
+        "дія «поставити прапорець»"@uk ;
+    rdfs:subClassOf dkh:Action ;
+    skos:definition "Дія «поставити прапорець» — це дія, що позначає варіант прапорцем порогу."@uk .
+
+dkh:Benign a dkh:ClinicalSignificance,
+        owl:NamedIndividual ;
+    rdfs:label "benign"@en .
+
+dkh:DeferTestingAction a owl:Class ;
+    rdfs:label "defer testing action"@en,
+        "дія «відкласти тестування»"@uk ;
+    rdfs:subClassOf dkh:Action ;
+    skos:definition "Дія «відкласти тестування» — це дія, що відкладає тестування до повноліття."@uk .
+
+dkh:FlaggedVariant a owl:Class ;
+    rdfs:label "flagged variant"@en,
+        "варіант із прапорцем"@uk ;
+    rdfs:subClassOf dkh:GeneticVariant ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:unionOf ( dkh:LowQDVariant dkh:HighFSSnpVariant dkh:HighFSIndelVariant [ a owl:Class ;
+                        owl:intersectionOf ( dkh:GeneticVariant [ a owl:Restriction ;
+                                    owl:onProperty dkh:hasAnnotation ;
+                                    owl:someValuesFrom [ a owl:Class ;
+                                            owl:intersectionOf ( dkh:StrandOddsRatio [ a owl:Restriction ;
+                                                        owl:onProperty dkh:hasNumericValue ;
+                                                        owl:someValuesFrom [ a rdfs:Datatype ;
+                                                                owl:onDatatype xsd:decimal ;
+                                                                owl:withRestrictions ( [ xsd:minExclusive 3.0 ] ) ] ] ) ] ] ) ] [ a owl:Class ;
+                        owl:intersectionOf ( dkh:GeneticVariant [ a owl:Restriction ;
+                                    owl:onProperty dkh:hasAnnotation ;
+                                    owl:someValuesFrom [ a owl:Class ;
+                                            owl:intersectionOf ( dkh:MappingQuality [ a owl:Restriction ;
+                                                        owl:onProperty dkh:hasNumericValue ;
+                                                        owl:someValuesFrom [ a rdfs:Datatype ;
+                                                                owl:onDatatype xsd:decimal ;
+                                                                owl:withRestrictions ( [ xsd:maxExclusive 40.0 ] ) ] ] ) ] ] ) ] [ a owl:Class ;
+                        owl:intersectionOf ( dkh:GeneticVariant [ a owl:Restriction ;
+                                    owl:onProperty dkh:hasAnnotation ;
+                                    owl:someValuesFrom [ a owl:Class ;
+                                            owl:intersectionOf ( dkh:MQRankSum [ a owl:Restriction ;
+                                                        owl:onProperty dkh:hasNumericValue ;
+                                                        owl:someValuesFrom [ a rdfs:Datatype ;
+                                                                owl:onDatatype xsd:decimal ;
+                                                                owl:withRestrictions ( [ xsd:maxExclusive -12.5 ] ) ] ] ) ] ] ) ] [ a owl:Class ;
+                        owl:intersectionOf ( dkh:GeneticVariant [ a owl:Restriction ;
+                                    owl:onProperty dkh:hasAnnotation ;
+                                    owl:someValuesFrom [ a owl:Class ;
+                                            owl:intersectionOf ( dkh:ReadPosRankSum [ a owl:Restriction ;
+                                                        owl:onProperty dkh:hasNumericValue ;
+                                                        owl:someValuesFrom [ a rdfs:Datatype ;
+                                                                owl:onDatatype xsd:decimal ;
+                                                                owl:withRestrictions ( [ xsd:maxExclusive -8.0 ] ) ] ] ) ] ] ) ] ) ] ;
+    skos:definition "Варіант із прапорцем — це генетичний варіант, що порушує щонайменше один поріг жорсткої фільтрації й тому підлягає відхиленню."@uk .
+
+dkh:MethodChoiceEvent a owl:Class ;
+    rdfs:label "method choice event"@en,
+        "подія вибору методу"@uk ;
+    rdfs:subClassOf dkh:Event ;
+    skos:definition "Подія вибору методу — це подія, в якій потрібно вибрати метод фільтрації для набору даних."@uk .
+
+dkh:OfferCascadeTestingAction a owl:Class ;
+    rdfs:label "offer cascade testing action"@en,
+        "дія «запропонувати каскадне тестування»"@uk ;
+    rdfs:subClassOf dkh:Action ;
+    skos:definition "Дія «запропонувати каскадне тестування» — це дія, що пропонує тестування родичу."@uk .
+
+dkh:PathogenicVariantFoundEvent a owl:Class ;
+    rdfs:label "pathogenic variant found event"@en,
+        "подія виявлення патогенного варіанта"@uk ;
+    rdfs:subClassOf dkh:Event ;
+    skos:definition "Подія виявлення патогенного варіанта — це подія, в якій у пробанда виявлено патогенний варіант."@uk .
+
+dkh:ReviewWithSORAction a owl:Class ;
+    rdfs:label "review with SOR action"@en,
+        "дія «перевірити SOR»"@uk ;
+    rdfs:subClassOf dkh:Action ;
+    skos:definition "Дія «перевірити SOR» — це дія, що додатково перевіряє SOR для варіанта в кінці екзона."@uk .
+
+dkh:SelectHardFilteringAction a owl:Class ;
+    rdfs:label "select hard filtering action"@en,
+        "дія «обрати жорстку фільтрацію»"@uk ;
+    rdfs:subClassOf dkh:Action ;
+    skos:definition "Дія «обрати жорстку фільтрацію» — це дія, що обирає hard filtering замість VQSR."@uk .
+
+dkh:TestingRequestedEvent a owl:Class ;
+    rdfs:label "testing requested event"@en,
+        "подія запиту тестування"@uk ;
+    rdfs:subClassOf dkh:Event ;
+    skos:definition "Подія запиту тестування — це подія, в якій розглядається тестування конкретного родича."@uk .
+
+dkh:carries a owl:ObjectProperty ;
+    rdfs:label "carries"@en,
+        "несе"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:GeneticVariant ;
+    skos:definition "Особа є носієм варіанта."@uk .
+
+dkh:detects a owl:ObjectProperty ;
+    rdfs:label "detects"@en,
+        "виявляє"@uk ;
+    rdfs:domain dkh:Procedure ;
+    rdfs:range dkh:GeneticVariant ;
+    skos:definition "Процедура виявляє варіант."@uk .
+
+dkh:forVariantType a owl:DatatypeProperty ;
+    rdfs:label "for variant type"@en,
+        "для типу варіанта"@uk ;
+    rdfs:domain dkh:FilterThreshold ;
+    rdfs:range xsd:string ;
+    skos:definition "SNP, INDEL або всі."@uk .
+
+dkh:guardClass a owl:AnnotationProperty ;
+    rdfs:label "guard class"@en .
+
+dkh:hasAction a owl:ObjectProperty ;
+    rdfs:label "has action"@en,
+        "має дію"@uk ;
+    rdfs:domain dkh:SituationTemplate ;
+    rdfs:range dkh:Action ;
+    skos:definition "Дія/наслідок шаблона."@uk .
+
+dkh:hasAnnotationName a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has annotation name"@en,
+        "має назву анотації"@uk ;
+    rdfs:domain dkh:QualityAnnotation ;
+    rdfs:range xsd:string ;
+    skos:definition "Скорочена назва анотації (QD, FS, SOR…)."@uk .
+
+dkh:hasComparisonOperator a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has comparison operator"@en,
+        "має оператор порівняння"@uk ;
+    rdfs:domain dkh:FilterThreshold ;
+    rdfs:range xsd:string ;
+    skos:definition "«<» або «>»."@uk .
+
+dkh:hasCousin a owl:ObjectProperty ;
+    rdfs:label "has cousin"@en,
+        "має двоюрідного родича"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Person ;
+    rdfs:subPropertyOf dkh:isThirdDegreeRelativeOf ;
+    owl:propertyChainAxiom ( dkh:hasAuntOrUncle dkh:hasChild ) ;
+    skos:definition "Ланцюг hasAuntOrUncle∘hasChild."@uk .
+
+dkh:hasDiagnosis a owl:ObjectProperty ;
+    rdfs:label "has diagnosis"@en,
+        "має діагноз"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Disease ;
+    skos:definition "Особі встановлено діагноз."@uk .
+
+dkh:hasGeneSymbol a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has gene symbol"@en,
+        "має символ гена"@uk ;
+    rdfs:domain dkh:Gene ;
+    rdfs:range xsd:string ;
+    skos:definition "Офіційний символ гена."@uk .
+
+dkh:hasGrandparent a owl:ObjectProperty ;
+    rdfs:label "has grandparent"@en,
+        "має бабусю/дідуся"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Person ;
+    rdfs:subPropertyOf dkh:isSecondDegreeRelativeOf ;
+    owl:propertyChainAxiom ( dkh:hasParent dkh:hasParent ) ;
+    skos:definition "Ланцюг hasParent∘hasParent."@uk .
+
+dkh:hasGuard a owl:DatatypeProperty ;
+    rdfs:label "has guard"@en,
+        "має умову (guard)"@uk ;
+    rdfs:domain dkh:SituationTemplate ;
+    rdfs:range xsd:string ;
+    skos:definition "Умова спрацювання."@uk .
+
+dkh:hasInitialState a owl:ObjectProperty ;
+    rdfs:label "has initial state"@en,
+        "має початковий стан"@uk ;
+    rdfs:domain dkh:SituationTemplate ;
+    rdfs:range dkh:State ;
+    skos:definition "Початковий стан шаблона."@uk .
+
+dkh:hasNewState a owl:ObjectProperty ;
+    rdfs:label "has new state"@en,
+        "має новий стан"@uk ;
+    rdfs:domain dkh:SituationTemplate ;
+    rdfs:range dkh:State ;
+    skos:definition "Новий стан шаблона."@uk .
+
+dkh:hasSex a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has sex"@en,
+        "має стать"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range xsd:string ;
+    skos:definition "Стать особи (F/M)."@uk .
+
+dkh:hasThreshold a owl:ObjectProperty ;
+    rdfs:label "has threshold"@en,
+        "має поріг"@uk ;
+    rdfs:domain dkh:Procedure ;
+    rdfs:range dkh:FilterThreshold ;
+    skos:definition "Процедура використовує поріг."@uk .
+
+dkh:hasThresholdValue a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has threshold value"@en,
+        "має значення порога"@uk ;
+    rdfs:domain dkh:FilterThreshold ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Граничне значення."@uk .
+
+dkh:hasVariantId a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has variant id"@en,
+        "має ідентифікатор варіанта"@uk ;
+    rdfs:domain dkh:GeneticVariant ;
+    rdfs:range xsd:string ;
+    skos:definition "Ідентифікатор."@uk .
+
+dkh:isDeceased a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "is deceased"@en,
+        "померла/помер"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Ознака, що особа померла (ідея запозичена з чернетки LLM)."@uk .
+
+dkh:locatedIn a owl:ObjectProperty ;
+    rdfs:label "located in"@en,
+        "розташований у"@uk ;
+    rdfs:domain dkh:GeneticVariant ;
+    rdfs:range dkh:Gene ;
+    skos:definition "Варіант розташований у гені."@uk .
+
+dkh:onAnnotationName a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "on annotation name"@en,
+        "для анотації"@uk ;
+    rdfs:domain dkh:FilterThreshold ;
+    rdfs:range xsd:string ;
+    skos:definition "Назва анотації (QD, FS…)."@uk .
+
+dkh:onChromosome a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "on chromosome"@en,
+        "розташований на хромосомі"@uk ;
+    rdfs:domain dkh:Gene ;
+    rdfs:range xsd:string ;
+    skos:definition "Номер хромосоми."@uk .
+
+dkh:produces a owl:ObjectProperty ;
+    rdfs:label "produces"@en,
+        "створює"@uk ;
+    rdfs:domain dkh:Procedure ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( dkh:DataArtifact dkh:GeneticVariant ) ] ;
+    skos:definition "Процедура створює дані чи варіанти."@uk .
+
+dkh:triggeredBy a owl:ObjectProperty ;
+    rdfs:label "triggered by"@en,
+        "ініціюється подією"@uk ;
+    rdfs:domain dkh:SituationTemplate ;
+    rdfs:range dkh:Event ;
+    skos:definition "Подія шаблона."@uk .
+
+dkh:AdultRelative a owl:Class ;
+    rdfs:label "adult relative"@en,
+        "дорослий родич"@uk ;
+    rdfs:subClassOf dkh:Relative ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:Relative [ a owl:Restriction ;
+                        owl:onProperty dkh:hasAgeYears ;
+                        owl:someValuesFrom [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:minInclusive 18 ] ) ] ] ) ] ;
+    skos:definition "Дорослий родич — це родич, якому щонайменше 18 років."@uk .
+
+dkh:Exon a owl:Class ;
+    rdfs:label "exon"@en,
+        "екзон"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dkh:partOf ;
+            owl:someValuesFrom dkh:Gene ],
+        dkh:BiologicalEntity ;
+    skos:closeMatch ex5:C009 ;
+    skos:definition "Екзон — це біологічна сутність, що є ділянкою гена, яка зберігається у зрілій РНК."@uk .
+
+dkh:ExonEndVariant a owl:Class ;
+    rdfs:label "variant at exon end"@en,
+        "варіант у кінці екзона"@uk ;
+    rdfs:subClassOf dkh:GeneticVariant ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:GeneticVariant [ a owl:Restriction ;
+                        owl:hasValue true ;
+                        owl:onProperty dkh:hasExonEndPosition ] ) ] ;
+    skos:definition "Варіант у кінці екзона — це генетичний варіант, розташований на кінці екзона."@uk .
+
+dkh:FamilyHistory a owl:Class ;
+    rdfs:label "family history"@en,
+        "родинний анамнез"@uk ;
+    rdfs:subClassOf dkh:DataArtifact ;
+    skos:closeMatch ex5:C088 ;
+    skos:definition "Родинний анамнез — це артефакт даних, що описує випадки захворювань серед родичів особи."@uk .
+
+dkh:FilteredState a owl:Class ;
+    rdfs:label "filtered state"@en,
+        "відфільтрований стан"@uk ;
+    rdfs:subClassOf dkh:State ;
+    skos:definition "Відфільтрований стан — це стан, в якому варіант відхилено."@uk .
+
+dkh:FlaggedState a owl:Class ;
+    rdfs:label "flagged state"@en,
+        "стан з прапорцем"@uk ;
+    rdfs:subClassOf dkh:State ;
+    skos:definition "Стан з прапорцем — це стан, в якому варіант порушив поріг."@uk .
+
+dkh:GeneticCounseling a owl:Class ;
+    rdfs:label "genetic counseling"@en,
+        "генетичне консультування"@uk ;
+    rdfs:subClassOf dkh:Procedure ;
+    skos:closeMatch ex5:C070 ;
+    skos:definition "Генетичне консультування — це процедура, що пояснює пацієнту й родині результати та ризики тестування."@uk ;
+    skos:exactMatch <http://id.nlm.nih.gov/mesh/D005817> .
+
+dkh:GermlineVariant a owl:Class ;
+    rdfs:label "germline variant"@en,
+        "зародковий варіант"@uk ;
+    rdfs:subClassOf dkh:GeneticVariant ;
+    skos:closeMatch ex5:C030 ;
+    skos:definition "Зародковий варіант — це генетичний варіант, що наявний у клітинах зародкової лінії й успадковується."@uk .
+
+dkh:HardFiltering a owl:Class ;
+    rdfs:label "hard filtering"@en,
+        "жорстка фільтрація"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dkh:usesInput ;
+            owl:someValuesFrom dkh:MappingQuality ],
+        [ a owl:Restriction ;
+            owl:onProperty dkh:recommendedFor ;
+            owl:someValuesFrom dkh:GenePanel ],
+        [ a owl:Restriction ;
+            owl:onProperty dkh:usesInput ;
+            owl:someValuesFrom dkh:RankSumAnnotation ],
+        [ a owl:Restriction ;
+            owl:onProperty dkh:usesInput ;
+            owl:someValuesFrom dkh:FisherStrandBias ],
+        [ a owl:Restriction ;
+            owl:onProperty dkh:usesInput ;
+            owl:someValuesFrom dkh:QualityByDepth ],
+        [ a owl:Restriction ;
+            owl:onProperty dkh:usesInput ;
+            owl:someValuesFrom dkh:StrandOddsRatio ],
+        dkh:VariantFiltering ;
+    skos:closeMatch ex5:C063 ;
+    skos:definition "Жорстка фільтрація — це фільтрація варіантів, що відкидає варіанти за фіксованими порогами анотацій."@uk .
+
+dkh:HighFSIndelVariant a owl:Class ;
+    rdfs:label "high FS indel"@en,
+        "INDEL із високим FS"@uk ;
+    rdfs:subClassOf dkh:Indel ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:Indel [ a owl:Restriction ;
+                        owl:onProperty dkh:hasAnnotation ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:intersectionOf ( dkh:FisherStrandBias [ a owl:Restriction ;
+                                            owl:onProperty dkh:hasNumericValue ;
+                                            owl:someValuesFrom [ a rdfs:Datatype ;
+                                                    owl:onDatatype xsd:decimal ;
+                                                    owl:withRestrictions ( [ xsd:minExclusive 200.0 ] ) ] ] ) ] ] ) ] ;
+    skos:definition "INDEL із високим FS — це вставка-делеція, що має анотацію FS зі значенням більше 200."@uk .
+
+dkh:HighFSSnpVariant a owl:Class ;
+    rdfs:label "high FS SNP"@en,
+        "SNP із високим FS"@uk ;
+    rdfs:subClassOf dkh:SNP ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:SNP [ a owl:Restriction ;
+                        owl:onProperty dkh:hasAnnotation ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:intersectionOf ( dkh:FisherStrandBias [ a owl:Restriction ;
+                                            owl:onProperty dkh:hasNumericValue ;
+                                            owl:someValuesFrom [ a rdfs:Datatype ;
+                                                    owl:onDatatype xsd:decimal ;
+                                                    owl:withRestrictions ( [ xsd:minExclusive 60.0 ] ) ] ] ) ] ] ) ] ;
+    skos:definition "SNP із високим FS — це однонуклеотидний поліморфізм, що має анотацію FS зі значенням більше 60."@uk .
+
+dkh:LowQDAnnotation a owl:Class ;
+    rdfs:label "low QD annotation"@en,
+        "низька анотація QD"@uk ;
+    rdfs:subClassOf dkh:QualityByDepth ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:QualityByDepth [ a owl:Restriction ;
+                        owl:onProperty dkh:hasNumericValue ;
+                        owl:someValuesFrom [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:decimal ;
+                                owl:withRestrictions ( [ xsd:maxExclusive 2.0 ] ) ] ] ) ] ;
+    skos:definition "Низька анотація QD — це якість на глибину, зі значенням менше 2."@uk .
+
+dkh:LowQDVariant a owl:Class ;
+    rdfs:label "low QD variant"@en,
+        "варіант із низьким QD"@uk ;
+    rdfs:subClassOf dkh:GeneticVariant ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:GeneticVariant [ a owl:Restriction ;
+                        owl:onProperty dkh:hasAnnotation ;
+                        owl:someValuesFrom dkh:LowQDAnnotation ] ) ] ;
+    skos:definition "Варіант із низьким QD — це генетичний варіант, що має анотацію QD зі значенням менше 2."@uk .
+
+dkh:MinorRelative a owl:Class ;
+    rdfs:label "minor relative"@en,
+        "неповнолітній родич"@uk ;
+    rdfs:subClassOf dkh:Relative ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:Relative [ a owl:Restriction ;
+                        owl:onProperty dkh:hasAgeYears ;
+                        owl:someValuesFrom [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:maxExclusive 18 ] ) ] ] ) ] ;
+    skos:definition "Неповнолітній родич — це родич, якому менше 18 років."@uk .
+
+dkh:Pathogenic a dkh:ClinicalSignificance,
+        owl:NamedIndividual ;
+    rdfs:label "pathogenic"@en .
+
+dkh:PathogenicVariant a owl:Class ;
+    rdfs:label "pathogenic variant"@en,
+        "патогенний варіант"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dkh:increasesRiskOf ;
+            owl:someValuesFrom dkh:OvarianCancer ],
+        [ a owl:Restriction ;
+            owl:onProperty dkh:increasesRiskOf ;
+            owl:someValuesFrom dkh:BreastCancer ],
+        dkh:GeneticVariant ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:GeneticVariant [ a owl:Restriction ;
+                        owl:onProperty dkh:hasClinicalSignificance ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:oneOf ( dkh:Pathogenic ) ] ] ) ] ;
+    skos:closeMatch ex5:C033 ;
+    skos:definition "Патогенний варіант — це генетичний варіант, якому приписано клінічне значення «патогенний»."@uk .
+
+dkh:ReadDepth a owl:Class ;
+    rdfs:label "read depth"@en,
+        "глибина покриття"@uk ;
+    rdfs:subClassOf dkh:QualityAnnotation ;
+    skos:closeMatch ex5:C099 ;
+    skos:definition "Глибина покриття — це анотація якості, що рахує кількість прочитань, які покривають позицію."@uk .
+
+dkh:RiskAssessment a owl:Class ;
+    rdfs:label "risk assessment"@en,
+        "оцінка ризику"@uk ;
+    rdfs:subClassOf dkh:Procedure ;
+    skos:closeMatch ex5:C071 ;
+    skos:definition "Оцінка ризику — це процедура, що оцінює ймовірність захворювання за варіантами й родинним анамнезом."@uk .
+
+dkh:SecondDegreeRelative a owl:Class ;
+    rdfs:label "second-degree relative"@en,
+        "родич другого ступеня"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue 0.25 ;
+            owl:onProperty dkh:hasInheritanceProbability ],
+        dkh:Relative ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:Person [ a owl:Restriction ;
+                        owl:onProperty dkh:isSecondDegreeRelativeOf ;
+                        owl:someValuesFrom dkh:Proband ] ) ] ;
+    skos:definition "Родич другого ступеня — це родич, що є бабусею/дідусем, тіткою/дядьком або зведеним братом/сестрою пробанда."@uk .
+
+dkh:SequenceAlignment a owl:Class ;
+    rdfs:label "sequence alignment"@en,
+        "вирівнювання послідовностей"@uk ;
+    rdfs:subClassOf dkh:Procedure ;
+    skos:closeMatch ex5:C059 ;
+    skos:definition "Вирівнювання послідовностей — це процедура, що зіставляє прочитання з еталонним геномом."@uk .
+
+dkh:Sequencer a owl:Class ;
+    rdfs:label "sequencer"@en,
+        "секвенатор"@uk ;
+    rdfs:subClassOf dkh:Sensor ;
+    skos:definition "Секвенатор — це сенсор, що зчитує послідовність ДНК і породжує прочитання."@uk .
+
+dkh:SomaticVariant a owl:Class ;
+    rdfs:label "somatic variant"@en,
+        "соматичний варіант"@uk ;
+    rdfs:subClassOf dkh:GeneticVariant ;
+    skos:closeMatch ex5:C031 ;
+    skos:definition "Соматичний варіант — це генетичний варіант, що виник у соматичних клітинах і не успадковується."@uk .
+
+dkh:TestingDeferredState a owl:Class ;
+    rdfs:label "testing deferred state"@en,
+        "стан відкладеного тестування"@uk ;
+    rdfs:subClassOf dkh:State ;
+    skos:definition "Стан відкладеного тестування — це стан, в якому тестування відкладено."@uk .
+
+dkh:TestingOfferedState a owl:Class ;
+    rdfs:label "testing offered state"@en,
+        "стан запропонованого тестування"@uk ;
+    rdfs:subClassOf dkh:State ;
+    skos:definition "Стан запропонованого тестування — це стан, в якому родичу запропоновано тестування."@uk .
+
+dkh:ThirdDegreeRelative a owl:Class ;
+    rdfs:label "third-degree relative"@en,
+        "родич третього ступеня"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue 0.125 ;
+            owl:onProperty dkh:hasInheritanceProbability ],
+        dkh:Relative ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:Person [ a owl:Restriction ;
+                        owl:onProperty dkh:isThirdDegreeRelativeOf ;
+                        owl:someValuesFrom dkh:Proband ] ) ] ;
+    skos:definition "Родич третього ступеня — це родич, що є двоюрідним або більш віддаленим родичем пробанда."@uk .
+
+dkh:UnfilteredState a owl:Class ;
+    rdfs:label "unfiltered state"@en,
+        "нефільтрований стан"@uk ;
+    rdfs:subClassOf dkh:State ;
+    skos:definition "Нефільтрований стан — це стан, в якому варіант ще не перевірено порогами."@uk .
+
+dkh:UntestedState a owl:Class ;
+    rdfs:label "untested state"@en,
+        "нетестований стан"@uk ;
+    rdfs:subClassOf dkh:State ;
+    skos:definition "Нетестований стан — це стан, в якому родича ще не протестовано."@uk .
+
+dkh:VCFFile a owl:Class ;
+    rdfs:label "VCF file"@en,
+        "файл VCF"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dkh:derivedFrom ;
+            owl:someValuesFrom dkh:BAMFile ],
+        dkh:DataFile ;
+    skos:closeMatch ex5:C082 ;
+    skos:definition "Файл VCF — це файл даних, у форматі VCF, що містить варіанти й їхні анотації."@uk .
+
+dkh:VQSR a owl:Class ;
+    rdfs:label "variant quality score recalibration"@en,
+        "рекалібрування якості варіантів (VQSR)"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dkh:requires ;
+            owl:someValuesFrom dkh:LargeVariantSet ],
+        [ a owl:Restriction ;
+            owl:onProperty dkh:requires ;
+            owl:someValuesFrom dkh:CuratedKnownVariants ],
+        dkh:VariantFiltering ;
+    skos:closeMatch ex5:C064 ;
+    skos:definition "Рекалібрування якості варіантів (VQSR) — це фільтрація варіантів, що навчає модель на великому наборі варіантів і відомих ресурсах."@uk .
+
+dkh:VariantCalling a owl:Class ;
+    rdfs:label "variant calling"@en,
+        "виклик варіантів"@uk ;
+    rdfs:subClassOf dkh:Procedure ;
+    skos:closeMatch ex5:C060 ;
+    skos:definition "Виклик варіантів — це процедура, що визначає варіанти за вирівняними прочитаннями."@uk .
+
+dkh:appliesTo a owl:ObjectProperty ;
+    rdfs:label "applies_to"@en,
+        "застосовується до"@uk ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( dkh:Procedure dkh:QualityMeasure ) ] ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( dkh:GeneticVariant dkh:DataArtifact dkh:Person ) ] ;
+    skos:definition "Процедура чи показник застосовується до об'єкта."@uk .
+
+dkh:derivedFrom a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "derived from"@en,
+        "походить від"@uk ;
+    rdfs:domain dkh:DataFile ;
+    rdfs:range dkh:DataFile ;
+    skos:definition "Файл отримано з іншого файла (походження, транзитивно)."@uk .
+
+dkh:generatedBy a owl:ObjectProperty ;
+    rdfs:label "generated by"@en,
+        "створено сенсором"@uk ;
+    rdfs:domain dkh:DataFile ;
+    rdfs:range dkh:Sensor ;
+    skos:definition "Файл створено сенсором (секвенатором)."@uk .
+
+dkh:hasAncestor a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "has ancestor"@en,
+        "має предка"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Person ;
+    skos:definition "Транзитивний зв'язок «предок»."@uk .
+
+dkh:hasAuntOrUncle a owl:ObjectProperty ;
+    rdfs:label "has aunt or uncle"@en,
+        "має тітку/дядька"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Person ;
+    rdfs:subPropertyOf dkh:isSecondDegreeRelativeOf ;
+    owl:propertyChainAxiom ( dkh:hasParent dkh:hasSibling ) ;
+    skos:definition "Ланцюг hasParent∘hasSibling."@uk .
+
+dkh:hasExonEndPosition a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has exon end position"@en,
+        "розташований на кінці екзона"@uk ;
+    rdfs:domain dkh:GeneticVariant ;
+    rdfs:range xsd:boolean ;
+    skos:definition "true, якщо варіант на кінці екзона."@uk .
+
+dkh:hasMinTestingAge a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has minimum testing age"@en,
+        "має мінімальний вік тестування"@uk ;
+    rdfs:domain dkh:CascadeTesting ;
+    rdfs:range xsd:integer ;
+    skos:definition "Мінімальний вік (роки) для тестування."@uk .
+
+dkh:hasPart a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "has part"@en,
+        "має частину"@uk ;
+    rdfs:domain dkh:BiologicalEntity ;
+    rdfs:range dkh:BiologicalEntity ;
+    skos:definition "Обернена до partOf."@uk .
+
+dkh:hasProband a owl:ObjectProperty ;
+    rdfs:label "has proband"@en,
+        "має пробанда"@uk ;
+    rdfs:domain dkh:CascadeTesting ;
+    rdfs:range dkh:Proband ;
+    skos:definition "Каскадне тестування стосується родини одного пробанда."@uk .
+
+dkh:hasSibling a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "has sibling"@en,
+        "має брата/сестру"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Person ;
+    rdfs:subPropertyOf dkh:isFirstDegreeRelativeOf ;
+    skos:definition "Рідний брат або сестра."@uk .
+
+dkh:isAnnotationOf a owl:ObjectProperty ;
+    rdfs:label "is annotation of"@en,
+        "є анотацією варіанта"@uk ;
+    rdfs:domain dkh:QualityAnnotation ;
+    rdfs:range dkh:GeneticVariant ;
+    skos:definition "Обернена до hasAnnotation."@uk .
+
+dkh:isMemberOf a owl:ObjectProperty ;
+    rdfs:label "is member of"@en,
+        "є елементом"@uk ;
+    rdfs:domain dkh:Gene ;
+    rdfs:range dkh:GenePanel ;
+    skos:definition "Обернена до hasMember."@uk .
+
+dkh:partOf a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "part_of"@en,
+        "є складовою"@uk ;
+    rdfs:domain dkh:BiologicalEntity ;
+    rdfs:range dkh:BiologicalEntity ;
+    owl:inverseOf dkh:hasPart ;
+    skos:definition "Об'єкт є частиною цілого (транзитивно)."@uk .
+
+dkh:BAMFile a owl:Class ;
+    rdfs:label "BAM file"@en,
+        "файл BAM"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dkh:generatedBy ;
+            owl:someValuesFrom dkh:Sequencer ],
+        dkh:DataFile ;
+    skos:closeMatch ex5:C081 ;
+    skos:definition "Файл BAM — це файл даних, у форматі BAM, що містить вирівняні прочитання."@uk .
+
+dkh:BreastCancer a owl:Class ;
+    rdfs:label "breast cancer"@en,
+        "рак молочної залози"@uk ;
+    rdfs:subClassOf dkh:Cancer ;
+    skos:closeMatch ex5:C111,
+        <http://id.nlm.nih.gov/mesh/D001943> ;
+    skos:definition "Рак молочної залози — це рак, що виникає в тканині молочної залози."@uk .
+
+dkh:Cancer a owl:Class ;
+    rdfs:label "cancer"@en,
+        "рак"@uk ;
+    rdfs:subClassOf dkh:Disease ;
+    skos:definition "Рак — це захворювання, що характеризується неконтрольованим ростом клітин."@uk .
+
+dkh:CascadeTesting a owl:Class ;
+    rdfs:label "cascade testing"@en,
+        "каскадне тестування"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue 18 ;
+            owl:onProperty dkh:hasMinTestingAge ],
+        [ a owl:Restriction ;
+            owl:onProperty dkh:requires ;
+            owl:someValuesFrom dkh:PathogenicVariant ],
+        [ a owl:Restriction ;
+            owl:onProperty dkh:recommendedFor ;
+            owl:someValuesFrom dkh:FirstDegreeRelative ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dkh:Relative ;
+            owl:onProperty dkh:appliesTo ],
+        [ a owl:Restriction ;
+            owl:onClass dkh:Proband ;
+            owl:onProperty dkh:hasProband ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        dkh:GeneticTesting ;
+    skos:closeMatch ex5:C069 ;
+    skos:definition "Каскадне тестування — це генетичне тестування, що пропонують родичам пробанда після виявлення в нього патогенного варіанта."@uk .
+
+dkh:CuratedKnownVariants a owl:Class ;
+    rdfs:label "curated known variants"@en,
+        "підготовлені відомі варіанти"@uk ;
+    rdfs:subClassOf dkh:DataArtifact ;
+    skos:definition "Підготовлені відомі варіанти — це артефакт даних, що є перевіреним ресурсом відомих варіантів для навчання VQSR."@uk .
+
+dkh:FirstDegreeRelative a owl:Class ;
+    rdfs:label "first-degree relative"@en,
+        "родич першого ступеня"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue 0.5 ;
+            owl:onProperty dkh:hasInheritanceProbability ],
+        dkh:Relative ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:Person [ a owl:Restriction ;
+                        owl:onProperty dkh:isFirstDegreeRelativeOf ;
+                        owl:someValuesFrom dkh:Proband ] ) ] ;
+    skos:definition "Родич першого ступеня — це родич, що є батьком/матір'ю, дитиною або рідним братом/сестрою пробанда."@uk .
+
+dkh:GeneticTesting a owl:Class ;
+    rdfs:label "genetic testing"@en,
+        "генетичне тестування"@uk ;
+    rdfs:subClassOf dkh:Procedure ;
+    skos:closeMatch ex5:C068 ;
+    skos:definition "Генетичне тестування — це процедура, що виявляє варіанти в генах пацієнта."@uk .
+
+dkh:LargeVariantSet a owl:Class ;
+    rdfs:label "large variant set"@en,
+        "великий набір варіантів"@uk ;
+    rdfs:subClassOf dkh:DataArtifact ;
+    skos:definition "Великий набір варіантів — це артефакт даних, достатньо великий, щоб навчити модель VQSR."@uk .
+
+dkh:MQRankSum a owl:Class ;
+    rdfs:label "MQRankSum"@en,
+        "MQRankSum"@uk ;
+    rdfs:subClassOf dkh:RankSumAnnotation ;
+    skos:definition "MQRankSum — це тест суми рангів, що порівнює якості картування прочитань референсного й альтернативного алелів."@uk .
+
+dkh:OvarianCancer a owl:Class ;
+    rdfs:label "ovarian cancer"@en,
+        "рак яєчників"@uk ;
+    rdfs:subClassOf dkh:Cancer ;
+    skos:closeMatch ex5:C112,
+        <http://id.nlm.nih.gov/mesh/D010051> ;
+    skos:definition "Рак яєчників — це рак, що виникає в тканині яєчників."@uk .
+
+dkh:ReadPosRankSum a owl:Class ;
+    rdfs:label "ReadPosRankSum"@en,
+        "ReadPosRankSum"@uk ;
+    rdfs:subClassOf dkh:RankSumAnnotation ;
+    skos:definition "ReadPosRankSum — це тест суми рангів, що порівнює позиції алелів у прочитаннях."@uk .
+
+dkh:hasAgeYears a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has age (years)"@en,
+        "має вік (роки)"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range xsd:integer ;
+    skos:definition "Вік у роках."@uk .
+
+dkh:hasChild a owl:ObjectProperty ;
+    rdfs:label "has child"@en,
+        "має дитину"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Person ;
+    rdfs:subPropertyOf dkh:isFirstDegreeRelativeOf ;
+    skos:definition "Обернена до hasParent."@uk .
+
+dkh:hasClinicalSignificance a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has clinical significance"@en,
+        "має клінічне значення"@uk ;
+    rdfs:domain dkh:GeneticVariant ;
+    rdfs:range dkh:ClinicalSignificance ;
+    skos:definition "Висновок про клінічне значення варіанта."@uk .
+
+dkh:increasesRiskOf a owl:ObjectProperty ;
+    rdfs:label "increases_risk_of"@en,
+        "підвищує ризик"@uk ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( dkh:GeneticVariant dkh:Gene ) ] ;
+    rdfs:range dkh:Disease ;
+    skos:definition "Варіант чи ген підвищує ймовірність захворювання."@uk .
+
+dkh:isThirdDegreeRelativeOf a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "is third-degree relative of"@en,
+        "є родичем третього ступеня"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Person ;
+    skos:definition "Симетричний зв'язок третього ступеня."@uk .
+
+dkh:Indel a owl:Class ;
+    rdfs:label "insertion-deletion"@en,
+        "вставка-делеція"@uk ;
+    rdfs:subClassOf dkh:GeneticVariant ;
+    skos:closeMatch ex5:C024 ;
+    skos:definition "Вставка-делеція — це генетичний варіант, що є вставкою або делецією нуклеотидів."@uk .
+
+dkh:MappingQuality a owl:Class ;
+    rdfs:label "mapping quality"@en,
+        "якість картування"@uk ;
+    rdfs:subClassOf dkh:QualityAnnotation ;
+    skos:closeMatch ex5:C098 ;
+    skos:definition "Якість картування — це анотація якості, що описує надійність вирівнювання прочитання до еталона."@uk .
+
+dkh:SNP a owl:Class ;
+    rdfs:label "single nucleotide polymorphism"@en,
+        "однонуклеотидний поліморфізм"@uk ;
+    rdfs:subClassOf dkh:GeneticVariant ;
+    skos:closeMatch ex5:C023 ;
+    skos:definition "Однонуклеотидний поліморфізм — це генетичний варіант, що змінює один нуклеотид."@uk ;
+    skos:exactMatch <http://id.nlm.nih.gov/mesh/D020641> .
+
+dkh:Sensor a owl:Class ;
+    rdfs:label "sensor"@en,
+        "сенсор"@uk ;
+    skos:definition "Сенсор — це сутність, що вимірює фізичну величину й породжує вихідні дані."@uk .
+
+dkh:StrandOddsRatio a owl:Class ;
+    rdfs:label "strand odds ratio"@en,
+        "співвідношення шансів ланцюгів"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dkh:recommendedFor ;
+            owl:someValuesFrom dkh:ExonEndVariant ],
+        dkh:QualityAnnotation ;
+    skos:closeMatch ex5:C097 ;
+    skos:definition "Співвідношення шансів ланцюгів — це анотація якості, що оцінює зміщення за ланцюгами й менше штрафує кінці екзонів."@uk .
+
+dkh:VariantFiltering a owl:Class ;
+    rdfs:label "variant filtering"@en,
+        "фільтрація варіантів"@uk ;
+    rdfs:subClassOf dkh:Procedure ;
+    skos:closeMatch ex5:C062 ;
+    skos:definition "Фільтрація варіантів — це процедура, що відкидає варіанти за значеннями анотацій."@uk .
+
+dkh:hasInheritanceProbability a owl:DatatypeProperty ;
+    rdfs:label "has inheritance probability"@en,
+        "має ймовірність успадкування"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Шанс мати ту саму зміну."@uk .
+
+dkh:hasMember a owl:ObjectProperty ;
+    rdfs:label "has member"@en,
+        "має елемент"@uk ;
+    rdfs:domain dkh:GenePanel ;
+    rdfs:range dkh:Gene ;
+    owl:inverseOf dkh:isMemberOf ;
+    skos:definition "Панель містить ген."@uk .
+
+dkh:isSecondDegreeRelativeOf a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "is second-degree relative of"@en,
+        "є родичем другого ступеня"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Person ;
+    skos:definition "Симетричний зв'язок другого ступеня."@uk .
+
+dkh:recommendedFor a owl:ObjectProperty ;
+    rdfs:label "recommended_for"@en,
+        "рекомендована для"@uk ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( dkh:Procedure dkh:QualityMeasure ) ] ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( dkh:Person dkh:DataArtifact dkh:GeneticVariant ) ] ;
+    skos:definition "Джерело рекомендує процедуру для об'єкта."@uk .
+
+dkh:requires a owl:ObjectProperty ;
+    rdfs:label "requires"@en,
+        "потребує"@uk ;
+    rdfs:domain dkh:Procedure ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( dkh:GeneticVariant dkh:DataArtifact ) ] ;
+    skos:definition "Для процедури необхідна передумова."@uk .
+
+dkh:Disease a owl:Class ;
+    rdfs:label "disease"@en,
+        "захворювання"@uk ;
+    skos:definition "Захворювання — це сутність, що є порушенням здоров'я людини."@uk .
+
+dkh:FisherStrandBias a owl:Class ;
+    rdfs:label "Fisher strand bias"@en,
+        "зміщення ланцюга за Фішером"@uk ;
+    rdfs:subClassOf dkh:QualityAnnotation ;
+    skos:closeMatch ex5:C096 ;
+    skos:definition "Зміщення ланцюга за Фішером — це анотація якості, що вимірює зміщення за ланцюгами ДНК за тестом Фішера."@uk .
+
+dkh:GenePanel a owl:Class ;
+    rdfs:label "gene panel"@en,
+        "генна панель"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dkh:hasMember ;
+            owl:someValuesFrom dkh:Gene ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dkh:Gene ;
+            owl:onProperty dkh:hasMember ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onClass dkh:Gene ;
+            owl:onProperty dkh:hasMember ],
+        dkh:DataArtifact ;
+    skos:closeMatch ex5:C014 ;
+    skos:definition "Генна панель — це артефакт даних, що є фіксованим набором генів для спільного тестування."@uk .
+
+dkh:QualityByDepth a owl:Class ;
+    rdfs:label "quality by depth"@en,
+        "якість на глибину"@uk ;
+    rdfs:subClassOf dkh:QualityAnnotation ;
+    skos:closeMatch ex5:C095 ;
+    skos:definition "Якість на глибину — це анотація якості, що нормує якість варіанта на глибину покриття."@uk .
+
+dkh:RankSumAnnotation a owl:Class ;
+    rdfs:label "rank sum test"@en,
+        "тест суми рангів"@uk ;
+    rdfs:subClassOf dkh:QualityAnnotation ;
+    skos:closeMatch ex5:C100 ;
+    skos:definition "Тест суми рангів — це анотація якості, що порівнює розподіл якостей для алелів за рангами."@uk .
+
+dkh:hasParent a owl:ObjectProperty ;
+    rdfs:label "has parent"@en,
+        "має батька/матір"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Person ;
+    rdfs:subPropertyOf dkh:hasAncestor,
+        dkh:isFirstDegreeRelativeOf ;
+    owl:inverseOf dkh:hasChild ;
+    skos:definition "Біологічний батько або мати."@uk .
+
+dkh:isFirstDegreeRelativeOf a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "is first-degree relative of"@en,
+        "є родичем першого ступеня"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Person ;
+    skos:definition "Симетричний зв'язок першого ступеня."@uk .
+
+dkh:ClinicalSignificance a owl:Class ;
+    rdfs:label "clinical significance"@en,
+        "клінічне значення"@uk ;
+    skos:definition "Клінічне значення — це сутність, що позначає висновок про вплив варіанта на здоров'я (наприклад, патогенний, доброякісний)."@uk .
+
+dkh:QualityMeasure a owl:Class ;
+    rdfs:label "quality measure"@en,
+        "міра якості"@uk ;
+    skos:closeMatch ex5:C093 ;
+    skos:definition "Міра якості — це сутність, що кількісно характеризує якість даних чи варіанта."@uk .
+
+dkh:usesInput a owl:ObjectProperty ;
+    rdfs:label "uses_input"@en,
+        "використовує вхід"@uk ;
+    rdfs:domain dkh:Procedure ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( dkh:QualityMeasure dkh:DataArtifact ) ] ;
+    skos:definition "Процедура використовує показник або дані як вхід."@uk .
+
+dkh:DataFile a owl:Class ;
+    rdfs:label "data file"@en,
+        "файл даних"@uk ;
+    rdfs:subClassOf dkh:DataArtifact ;
+    skos:definition "Файл даних — це артефакт даних, що зберігається як файл певного формату."@uk .
+
+dkh:Event a owl:Class ;
+    rdfs:label "event"@en,
+        "подія"@uk ;
+    skos:definition "Подія — це сутність, що відбувається в момент часу й змінює стан ситуації."@uk .
+
+dkh:FilterThreshold a owl:Class ;
+    rdfs:label "filter threshold"@en,
+        "поріг фільтрації"@uk ;
+    skos:definition "Поріг фільтрації — це сутність, що задає граничне значення анотації для відхилення варіанта."@uk .
+
+dkh:Proband a owl:Class ;
+    rdfs:label "proband"@en,
+        "пробанд"@uk ;
+    rdfs:subClassOf dkh:Person ;
+    skos:closeMatch ex5:C105 ;
+    skos:definition "Пробанд — це особа, з якої починається аналіз сім'ї."@uk .
+
+dkh:SituationTemplate a owl:Class ;
+    rdfs:label "situation template"@en,
+        "шаблон ситуації"@uk ;
+    skos:definition "Шаблон ситуації — це сутність, що описує пару «початковий стан — подія — умова — новий стан — дія»."@uk .
+
+dkh:Action a owl:Class ;
+    rdfs:label "action"@en,
+        "дія"@uk ;
+    skos:definition "Дія — це сутність, що виконує система чи фахівець у відповідь на подію."@uk .
+
+dkh:BiologicalEntity a owl:Class ;
+    rdfs:label "biological entity"@en,
+        "біологічна сутність"@uk ;
+    skos:closeMatch ex5:C002 ;
+    skos:definition "Біологічна сутність — це сутність, що є об'єктом живої природи на молекулярному рівні."@uk .
+
+dkh:hasAnnotation a owl:ObjectProperty ;
+    rdfs:label "has_annotation"@en,
+        "має анотацію"@uk ;
+    rdfs:domain dkh:GeneticVariant ;
+    rdfs:range dkh:QualityAnnotation ;
+    owl:inverseOf dkh:isAnnotationOf ;
+    skos:definition "Варіант має числовий показник якості."@uk .
+
+dkh:hasNumericValue a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has numeric value"@en,
+        "має числове значення"@uk ;
+    rdfs:domain dkh:QualityAnnotation ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Числове значення анотації."@uk .
+
+dkh:Relative a owl:Class ;
+    rdfs:label "relative"@en,
+        "родич"@uk ;
+    rdfs:subClassOf dkh:Person ;
+    skos:closeMatch ex5:C106 ;
+    skos:definition "Родич — це особа, що пов'язана спорідненістю з пробандом."@uk .
+
+dkh:State a owl:Class ;
+    rdfs:label "state"@en,
+        "стан"@uk ;
+    skos:definition "Стан — це сутність, що описує становище об'єкта в певний момент часу."@uk .
+
+dkh:QualityAnnotation a owl:Class ;
+    rdfs:label "quality annotation"@en,
+        "анотація якості"@uk ;
+    rdfs:subClassOf dkh:QualityMeasure ;
+    skos:closeMatch ex5:C061 ;
+    skos:definition "Анотація якості — це міра якості, що є числовим показником, записаним для варіанта у VCF."@uk .
+
+dkh:DataArtifact a owl:Class ;
+    rdfs:label "data artifact"@en,
+        "артефакт даних"@uk ;
+    skos:closeMatch ex5:C077 ;
+    skos:definition "Артефакт даних — це сутність, що є збереженим набором даних чи інформації."@uk .
+
+dkh:Gene a owl:Class ;
+    rdfs:label "gene"@en,
+        "ген"@uk ;
+    rdfs:subClassOf dkh:BiologicalEntity ;
+    skos:closeMatch ex5:C006 ;
+    skos:definition "Ген — це біологічна сутність, що є ділянкою геному, яка кодує функціональний продукт."@uk ;
+    skos:exactMatch <http://id.nlm.nih.gov/mesh/D005796> .
+
+dkh:Procedure a owl:Class ;
+    rdfs:label "procedure"@en,
+        "процедура"@uk ;
+    skos:closeMatch ex5:C048 ;
+    skos:definition "Процедура — це сутність, що є цілеспрямованою послідовністю дій над даними чи пацієнтом."@uk .
+
+dkh:GeneticVariant a owl:Class ;
+    rdfs:label "genetic variant"@en,
+        "генетичний варіант"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass dkh:ClinicalSignificance ;
+            owl:onProperty dkh:hasClinicalSignificance ] ;
+    skos:closeMatch ex5:C022 ;
+    skos:definition "Генетичний варіант — це сутність, що є відмінністю послідовності ДНК від еталона в конкретній позиції геному."@uk .
+
+dkh:Person a owl:Class ;
+    rdfs:label "person"@en,
+        "особа"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onClass dkh:Person ;
+            owl:onProperty dkh:hasParent ] ;
+    skos:closeMatch ex5:C103 ;
+    skos:definition "Особа — це сутність, що є людиною (в онтології — вигаданою, синтетичною)."@uk .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:Gene dkh:Exon ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:QualityByDepth dkh:FisherStrandBias dkh:StrandOddsRatio dkh:MappingQuality dkh:RankSumAnnotation dkh:ReadDepth ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:GermlineVariant dkh:SomaticVariant ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:FirstDegreeRelative dkh:SecondDegreeRelative dkh:ThirdDegreeRelative ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:BreastCancer dkh:OvarianCancer ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:HardFiltering dkh:VQSR ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:BiologicalEntity dkh:GeneticVariant dkh:QualityMeasure dkh:FilterThreshold dkh:Procedure dkh:DataArtifact dkh:Person dkh:Disease dkh:ClinicalSignificance dkh:Event dkh:State dkh:Action dkh:Sensor dkh:SituationTemplate ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:DataFile dkh:GenePanel dkh:FamilyHistory dkh:LargeVariantSet dkh:CuratedKnownVariants ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:VariantFiltering dkh:VariantCalling dkh:SequenceAlignment dkh:GeneticTesting dkh:GeneticCounseling dkh:RiskAssessment ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:Proband dkh:Relative ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:UnfilteredState dkh:FlaggedState dkh:FilteredState dkh:UntestedState dkh:TestingOfferedState dkh:TestingDeferredState ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:AdultRelative dkh:MinorRelative ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:MQRankSum dkh:ReadPosRankSum ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:SNP dkh:Indel ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:VCFFile dkh:BAMFile ) .
+

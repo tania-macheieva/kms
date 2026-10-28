@@ -1,0 +1,456 @@
+﻿raw,term_id,kind,source
+пацієнт,T001,canonical,cdc
+пацієнти,T001,inflection/typo,cdc
+Пацієнта,T001,inflection/typo,cdc
+patient,T001,synonym,cdc
+хворий,T001,synonym,cdc
+пробанд,T002,canonical,cdc
+пробанда,T002,inflection/typo,cdc
+proband,T002,synonym,cdc
+index patient,T002,synonym,cdc
+індексний пацієнт,T002,synonym,cdc
+родич,T003,canonical,cdc
+родичі,T003,inflection/typo,cdc
+relative,T003,synonym,cdc
+family member,T003,synonym,cdc
+член родини,T003,synonym,cdc
+лікар,T004,canonical,domain
+лікарі,T004,inflection/typo,domain
+physician,T004,synonym,domain
+clinician,T004,synonym,domain
+doctor,T004,synonym,domain
+генетичний консультант,T005,canonical,cdc
+генетичні консультанти,T005,inflection/typo,cdc
+genetic counselor,T005,synonym,cdc
+genetic counsellor,T005,synonym,cdc
+діагноз,T006,canonical,cdc
+діагнози,T006,inflection/typo,cdc
+diagnosis,T006,synonym,cdc
+захворювання,T007,canonical,domain
+хвороба,T007,inflection/typo,domain
+disease,T007,synonym,domain
+condition,T007,synonym,domain
+рак молочної залози,T008,canonical,cdc
+раку молочної залози,T008,inflection/typo,cdc
+breast cancer,T008,synonym,cdc
+карцинома молочної залози,T008,synonym,cdc
+рак яєчників,T009,canonical,cdc
+раку яєчників,T009,inflection/typo,cdc
+ovarian cancer,T009,synonym,cdc
+спадковий рак,T010,canonical,cdc
+hereditary cancer,T010,synonym,cdc
+hereditary breast and ovarian cancer,T010,synonym,cdc
+HBOC,T010,synonym,cdc
+сімейний анамнез,T011,canonical,cdc
+family history,T011,synonym,cdc
+родинний анамнез,T011,synonym,cdc
+терапія,T012,canonical,domain
+лікування,T012,inflection/typo,domain
+therapy,T012,synonym,domain
+treatment,T012,synonym,domain
+біомаркер,T013,canonical,domain
+біомаркери,T013,inflection/typo,domain
+biomarker,T013,synonym,domain
+згода пацієнта,T014,canonical,domain
+informed consent,T014,synonym,domain
+інформована згода,T014,synonym,domain
+ризик раку в дитинстві,T015,canonical,cdc
+childhood cancer risk,T015,synonym,cdc
+chances of getting cancer in childhood,T015,synonym,cdc
+батько або мати,T016,canonical,cdc
+parent,T016,synonym,cdc
+батьки,T016,inflection/typo,cdc
+mother,T016,synonym,cdc
+father,T016,synonym,cdc
+дитина,T017,canonical,cdc
+child,T017,synonym,cdc
+діти,T017,inflection/typo,cdc
+children,T017,synonym,cdc
+рідний брат або сестра,T018,canonical,cdc
+full sibling,T018,synonym,cdc
+sibling,T018,synonym,cdc
+siblings,T018,synonym,cdc
+рідні брати і сестри,T018,inflection/typo,cdc
+зведений брат або сестра,T019,canonical,cdc
+half-sibling,T019,synonym,cdc
+half-siblings,T019,synonym,cdc
+half sibling,T019,synonym,cdc
+тітка або дядько,T020,canonical,cdc
+aunt,T020,synonym,cdc
+uncle,T020,synonym,cdc
+aunts,T020,synonym,cdc
+uncles,T020,synonym,cdc
+бабуся або дідусь,T021,canonical,cdc
+grandparent,T021,synonym,cdc
+grandmother,T021,synonym,cdc
+grandfather,T021,synonym,cdc
+grandmothers,T021,synonym,cdc
+grandfathers,T021,synonym,cdc
+двоюрідний родич,T022,canonical,cdc
+cousin,T022,synonym,cdc
+cousins,T022,synonym,cdc
+двоюрідні родичі,T022,inflection/typo,cdc
+родич першого ступеня,T023,canonical,cdc
+first-degree relative,T023,synonym,cdc
+first degree relative,T023,synonym,cdc
+родич другого ступеня,T024,canonical,cdc
+second-degree relative,T024,synonym,cdc
+second degree relative,T024,synonym,cdc
+родич третього ступеня,T025,canonical,cdc
+third-degree relative,T025,synonym,cdc
+more distantly related family members,T025,synonym,cdc
+повнолітній,T026,canonical,cdc
+adult,T026,synonym,cdc
+дорослий,T026,inflection/typo,cdc
+18 years and older,T026,synonym,cdc
+неповнолітній,T027,canonical,cdc
+minor,T027,synonym,cdc
+діти до 18 років,T027,inflection/typo,cdc
+child under 18,T027,synonym,cdc
+ген,T028,canonical,gatk
+гени,T028,inflection/typo,gatk
+gene,T028,synonym,gatk
+BRCA1,T029,canonical,cdc
+BRCA-1,T029,inflection/typo,cdc
+BRCA2,T030,canonical,cdc
+BRCA-2,T030,inflection/typo,cdc
+BRCAZ,T030,inflection/typo,cdc
+геном,T031,canonical,gatk
+genome,T031,synonym,gatk
+геноми,T031,inflection/typo,gatk
+whole genome,T031,synonym,gatk
+екзом,T032,canonical,gatk
+exome,T032,synonym,gatk
+whole exome,T032,synonym,gatk
+whole-exome sequencing,T032,synonym,gatk
+екзон,T033,canonical,gatk
+exon,T033,synonym,gatk
+екзони,T033,inflection/typo,gatk
+кінець екзона,T034,canonical,gatk
+exon end,T034,synonym,gatk
+ends of exons,T034,synonym,gatk
+end of exon,T034,synonym,gatk
+хромосома,T035,canonical,domain
+chromosome,T035,synonym,domain
+хромосоми,T035,inflection/typo,domain
+алель,T036,canonical,gatk
+allele,T036,synonym,gatk
+алелі,T036,inflection/typo,gatk
+референсна алель,T037,canonical,gatk
+reference allele,T037,synonym,gatk
+ref allele,T037,synonym,gatk
+альтернативна алель,T038,canonical,gatk
+alternate allele,T038,synonym,gatk
+alternative allele,T038,synonym,gatk
+alt allele,T038,synonym,gatk
+генотип,T039,canonical,gatk
+genotype,T039,synonym,gatk
+генотипи,T039,inflection/typo,gatk
+генетичний варіант,T040,canonical,gatk
+variant,T040,synonym,gatk
+genetic variant,T040,synonym,gatk
+варіанти,T040,inflection/typo,gatk
+variation,T040,synonym,gatk
+однонуклеотидний варіант,T041,canonical,gatk
+SNP,T041,synonym,gatk
+SNV,T041,synonym,gatk
+SNPs,T041,synonym,gatk
+single nucleotide polymorphism,T041,synonym,gatk
+однонуклеотидні варіанти,T041,inflection/typo,gatk
+індел,T042,canonical,gatk
+indel,T042,synonym,gatk
+INDEL,T042,synonym,gatk
+indels,T042,synonym,gatk
+insertion/deletion,T042,synonym,gatk
+індели,T042,inflection/typo,gatk
+патогенний варіант,T043,canonical,cdc
+pathogenic variant,T043,synonym,cdc
+genetic change,T043,synonym,cdc
+mutation,T043,synonym,cdc
+мутація,T043,synonym,cdc
+патогенні варіанти,T043,inflection/typo,cdc
+генетична зміна,T043,synonym,cdc
+сайт варіанта,T044,canonical,gatk
+variant site,T044,synonym,gatk
+site,T044,synonym,gatk
+сайти,T044,inflection/typo,gatk
+секвенування,T045,canonical,gatk
+sequencing,T045,synonym,gatk
+next-generation sequencing,T045,synonym,gatk
+NGS,T045,synonym,gatk
+секвенування ДНК,T045,inflection/typo,gatk
+прочитання,T046,canonical,gatk
+read,T046,synonym,gatk
+reads,T046,synonym,gatk
+прочитання ДНК,T046,inflection/typo,gatk
+short read,T046,synonym,gatk
+вирівнювання прочитань,T047,canonical,gatk
+read alignment,T047,synonym,gatk
+mapping,T047,synonym,gatk
+мапінг,T047,inflection/typo,gatk
+глибина покриття,T048,canonical,gatk
+depth,T048,synonym,gatk
+DP,T048,synonym,gatk
+coverage,T048,synonym,gatk
+read depth,T048,synonym,gatk
+викликання варіантів,T049,canonical,gatk
+variant calling,T049,synonym,gatk
+calling variants,T049,synonym,gatk
+генна панель,T050,canonical,gatk
+gene panel,T050,synonym,gatk
+small gene panel,T050,synonym,gatk
+малі генні панелі,T050,inflection/typo,gatk
+multigene panel,T050,synonym,gatk
+немодельний організм,T051,canonical,gatk
+non-model organism,T051,synonym,gatk
+non-model organisms,T051,synonym,gatk
+референсний геном,T052,canonical,gatk
+reference genome,T052,synonym,gatk
+reference,T052,synonym,gatk
+анотація варіанта,T053,canonical,gatk
+variant annotation,T053,synonym,gatk
+annotation,T053,synonym,gatk
+анотації,T053,inflection/typo,gatk
+жорстка фільтрація,T054,canonical,gatk
+hard filtering,T054,synonym,gatk
+hard-filtering,T054,synonym,gatk
+hard filters,T054,synonym,gatk
+жорсткі фільтри,T054,inflection/typo,gatk
+рекалібрування якості варіантів,T055,canonical,gatk
+VQSR,T055,synonym,gatk
+variant quality score recalibration,T055,synonym,gatk
+VQOSR,T055,inflection/typo,gatk
+поріг фільтрації,T056,canonical,gatk
+filter threshold,T056,synonym,gatk
+threshold,T056,synonym,gatk
+cutoff,T056,synonym,gatk
+пороги,T056,inflection/typo,gatk
+прапорець фільтра,T057,canonical,gatk
+filter flag,T057,synonym,gatk
+filter tag,T057,synonym,gatk
+прапорці,T057,inflection/typo,gatk
+якість варіанта,T058,canonical,gatk
+QUAL,T058,synonym,gatk
+variant confidence,T058,synonym,gatk
+variant quality,T058,synonym,gatk
+якість на глибину,T059,canonical,gatk
+QD,T059,synonym,gatk
+QualByDepth,T059,synonym,gatk
+фішерова строгість ланцюжків,T060,canonical,gatk
+FS,T060,synonym,gatk
+FisherStrand,T060,synonym,gatk
+Fisher strand,T060,synonym,gatk
+симетричне відношення шансів,T061,canonical,gatk
+SOR,T061,synonym,gatk
+StrandOddsRatio,T061,synonym,gatk
+strand odds ratio,T061,synonym,gatk
+якість відображення,T062,canonical,gatk
+MQ,T062,synonym,gatk
+RMSMappingQuality,T062,synonym,gatk
+mapping quality,T062,synonym,gatk
+MQRankSum,T063,canonical,gatk
+MappingQualityRankSumTest,T063,synonym,gatk
+mapping quality rank sum,T063,synonym,gatk
+ReadPosRankSum,T064,canonical,gatk
+ReadPosRankSumTest,T064,synonym,gatk
+read position rank sum,T064,synonym,gatk
+зміщення ланцюжка,T065,canonical,gatk
+strand bias,T065,synonym,gatk
+розподіл анотації,T066,canonical,gatk
+annotation distribution,T066,synonym,gatk
+distribution,T066,synonym,gatk
+набір відомих варіантів,T067,canonical,gatk
+known variants resource,T067,synonym,gatk
+curated known variants,T067,synonym,gatk
+well-curated known variant resources,T067,synonym,gatk
+великий набір варіантів,T068,canonical,gatk
+large variant set,T068,synonym,gatk
+large number of variants,T068,synonym,gatk
+власні пороги,T069,canonical,gatk
+custom thresholds,T069,synonym,gatk
+refined thresholds,T069,synonym,gatk
+прохідний варіант,T070,canonical,domain
+PASS,T070,synonym,domain
+відфільтрований варіант,T071,canonical,gatk
+FILTERED,T071,synonym,gatk
+filtered variant,T071,synonym,gatk
+варіант на перегляд,T072,canonical,domain
+REVIEW,T072,synonym,domain
+variant for review,T072,synonym,domain
+VCF,T073,canonical,gatk
+variant call format,T073,synonym,gatk
+VCF file,T073,synonym,gatk
+GATK,T074,canonical,gatk
+Genome Analysis Toolkit,T074,synonym,gatk
+каскадне тестування,T075,canonical,cdc
+cascade testing,T075,synonym,cdc
+cascade genetic testing,T075,synonym,cdc
+генетичне тестування,T076,canonical,cdc
+genetic testing,T076,synonym,cdc
+genetic test,T076,synonym,cdc
+генетичний тест,T076,inflection/typo,cdc
+генетичне консультування,T077,canonical,cdc
+genetic counseling,T077,synonym,cdc
+genetic counselling,T077,synonym,cdc
+імовірність успадкування,T078,canonical,cdc
+inheritance chance,T078,synonym,cdc
+chance of having the same genetic change,T078,synonym,cdc
+ймовірність успадкування,T078,synonym,cdc
+тест на сімейний варіант,T079,canonical,cdc
+family variant specific test,T079,synonym,cdc
+single-site test,T079,synonym,cdc
+testing for the same genetic change,T079,synonym,cdc
+універсальна онкологічна панель,T080,canonical,cdc
+generic cancer panel,T080,synonym,cdc
+multi-gene cancer panel,T080,synonym,cdc
+звіт про тест пробанда,T081,canonical,cdc
+proband test report,T081,synonym,cdc
+copy of the report,T081,synonym,cdc
+страхове покриття,T082,canonical,cdc
+insurance coverage,T082,synonym,cdc
+страхування,T082,inflection/typo,cdc
+пропозиція з обмеженням у часі,T083,canonical,cdc
+time-limited offer,T083,synonym,cdc
+limited time offer,T083,synonym,cdc
+черга тестування,T084,canonical,cdc
+testing order,T084,synonym,cdc
+order of testing,T084,synonym,cdc
+наступний за близькістю родич,T085,canonical,cdc
+next closest relative,T085,synonym,cdc
+next closest available relative,T085,synonym,cdc
+геномні дані,T086,canonical,domain
+genomic data,T086,synonym,domain
+геномних даних,T086,inflection/typo,domain
+протеомні дані,T087,canonical,domain
+proteomic data,T087,synonym,domain
+proteomics,T087,synonym,domain
+клінічні дані,T088,canonical,domain
+clinical data,T088,synonym,domain
+клінічних даних,T088,inflection/typo,domain
+білок,T089,canonical,domain
+protein,T089,synonym,domain
+білки,T089,inflection/typo,domain
+мас-спектрометрія,T090,canonical,domain
+mass spectrometry,T090,synonym,domain
+MS,T090,synonym,domain
+рівень білка,T091,canonical,domain
+protein abundance,T091,synonym,domain
+protein level,T091,synonym,domain
+електронна медична картка,T092,canonical,domain
+EHR,T092,synonym,domain
+electronic health record,T092,synonym,domain
+електронна карта,T092,synonym,domain
+зразок,T093,canonical,domain
+sample,T093,synonym,domain
+specimen,T093,synonym,domain
+зразки,T093,inflection/typo,domain
+якість даних,T094,canonical,domain
+data quality,T094,synonym,domain
+анонімізація,T095,canonical,domain
+de-identification,T095,synonym,domain
+anonymization,T095,synonym,domain
+граф знань,T096,canonical,domain
+knowledge graph,T096,synonym,domain
+графи знань,T096,inflection/typo,domain
+графова база даних,T097,canonical,domain
+graph database,T097,synonym,domain
+graph DB,T097,synonym,domain
+векторна база даних,T098,canonical,domain
+vector database,T098,synonym,domain
+vector DB,T098,synonym,domain
+embedding,T099,canonical,domain
+embeddings,T099,synonym,domain
+векторне подання,T099,synonym,domain
+vector representation,T099,synonym,domain
+семантичний пошук,T100,canonical,domain
+semantic search,T100,synonym,domain
+vector search,T100,synonym,domain
+FHIR,T101,canonical,domain
+Fast Healthcare Interoperability Resources,T101,synonym,domain
+база знань,T102,canonical,domain
+knowledge base,T102,synonym,domain
+KB,T102,synonym,domain
+продукційне правило,T103,canonical,domain
+production rule,T103,synonym,domain
+IF-THEN rule,T103,synonym,domain
+продукційні правила,T103,inflection/typo,domain
+правило IF–THEN,T103,synonym,domain
+правило рішення,T104,canonical,domain
+decision rule,T104,synonym,domain
+правила рішення,T104,inflection/typo,domain
+виняток,T105,canonical,domain
+exception,T105,synonym,domain
+винятки,T105,inflection/typo,domain
+фрейм,T106,canonical,domain
+frame,T106,synonym,domain
+фрейми,T106,inflection/typo,domain
+слот,T107,canonical,domain
+slot,T107,synonym,domain
+слоти,T107,inflection/typo,domain
+прямий ланцюжок виведення,T108,canonical,domain
+forward chaining,T108,synonym,domain
+прямe ланцюжкування,T108,synonym,domain
+розв'язання конфліктів,T109,canonical,domain
+conflict resolution,T109,synonym,domain
+conflict strategy,T109,synonym,domain
+золотий набір,T110,canonical,domain
+gold set,T110,synonym,domain
+gold standard set,T110,synonym,domain
+gold test set,T110,synonym,domain
+пояснення виведення,T111,canonical,domain
+explanation,T111,synonym,domain
+explain,T111,synonym,domain
+explanation function,T111,synonym,domain
+таксономія,T112,canonical,domain
+taxonomy,T112,synonym,domain
+таксономії,T112,inflection/typo,domain
+тезаурус,T113,canonical,domain
+thesaurus,T113,synonym,domain
+онтологія,T114,canonical,domain
+ontology,T114,synonym,domain
+онтології,T114,inflection/typo,domain
+керований словник,T115,canonical,domain
+controlled vocabulary,T115,synonym,domain
+глосарій,T116,canonical,domain
+glossary,T116,synonym,domain
+SKOS,T117,canonical,domain
+Simple Knowledge Organization System,T117,synonym,domain
+поняття,T118,canonical,domain
+concept,T118,synonym,domain
+поняття області,T118,inflection/typo,domain
+сутність,T119,canonical,domain
+entity,T119,synonym,domain
+сутності,T119,inflection/typo,domain
+зв'язок,T120,canonical,domain
+relationship,T120,synonym,domain
+relation,T120,synonym,domain
+джерело знань,T121,canonical,domain
+knowledge source,T121,synonym,domain
+source of knowledge,T121,synonym,domain
+публікація,T122,canonical,domain
+publication,T122,synonym,domain
+публікації,T122,inflection/typo,domain
+тестовий випадок,T123,canonical,domain
+test case,T123,synonym,domain
+тестові випадки,T123,inflection/typo,domain
+валідація,T124,canonical,domain
+validation,T124,synonym,domain
+версія,T125,canonical,domain
+version,T125,synonym,domain
+versioning,T125,synonym,domain
+рисунок,,noise (видалено),
+таблиця,,noise (видалено),
+figure,,noise (видалено),
+click here,,noise (видалено),
+та,,noise (видалено),
+і,,noise (видалено),
+the,,noise (видалено),
+page,,noise (видалено),
+https,,noise (видалено),
+see also,,noise (видалено),
+e.g.,,noise (видалено),
+тощо,,noise (видалено),
+etc,,noise (видалено),
+date,,noise (видалено),
+рис.,,noise (видалено),
+посилання,,noise (видалено),

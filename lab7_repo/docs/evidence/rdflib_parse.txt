@@ -1,0 +1,5 @@
+rdflib 7.6.0
+python -c "import rdflib; g=rdflib.Graph().parse('models/onto.owl', format='turtle'); print(len(g))"  →  1373 триплетів, помилок немає
+python -c "import rdflib; g=rdflib.Graph().parse('models/onto_data.ttl', format='turtle'); print(len(g))"  →  376 триплетів, помилок немає
+python -c "import rdflib; g=rdflib.Graph().parse('models/llm_draft.ttl', format='turtle'); print(len(g))"  →  1723 триплетів, помилок немає
+python -c "import rdflib; g=rdflib.Graph().parse('models/onto_inferred.ttl', format='turtle'); print(len(g))"  →  62 триплетів, помилок немає

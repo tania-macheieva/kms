@@ -1,0 +1,20 @@
+testpaths: tests
+plugins: anyio-4.15.1
+collecting ... collected 14 items
+
+tests/test_onto.py::test_class_table PASSED                              [  7%]
+tests/test_onto.py::test_property_dictionary PASSED                      [ 14%]
+tests/test_onto.py::test_definition_check_clean PASSED                   [ 21%]
+tests/test_onto.py::test_reuse_mapping PASSED                            [ 28%]
+tests/test_onto.py::test_onto_structure PASSED                           [ 35%]
+tests/test_onto.py::test_individuals PASSED                              [ 42%]
+tests/test_onto.py::test_hermit_consistent_and_inferences PASSED         [ 50%]
+tests/test_onto.py::test_contradiction_detected PASSED                   [ 57%]
+tests/test_onto.py::test_situations PASSED                               [ 64%]
+tests/test_onto.py::test_situation_queries PASSED                        [ 71%]
+tests/test_onto.py::test_cq_mine_and_llm PASSED                          [ 78%]
+tests/test_onto.py::test_cq_detects_missing_axiom PASSED                 [ 85%]
+tests/test_onto.py::test_claims_and_logs PASSED                          [ 92%]
+tests/test_onto.py::test_no_api_keys PASSED                              [100%]
+
+============================= 14 passed in 16.97s ==============================

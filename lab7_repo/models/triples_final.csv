@@ -1,0 +1,73 @@
+﻿s,p,o,source,status,evidence,s_type,o_type
+cascade testing,applies_to,relative,expert+llm:cdc,verified,Cascade testing can find family members who have the same genetic change.,Method and procedure,Clinical concept
+cascade testing,detects,genetic variant,llm:cdc,verified,Cascade testing can find family members who have the same genetic change.,Method and procedure,Genetic variation
+cascade testing,is_a,genetic testing,expert,expert_asserted,—,Method and procedure,Method and procedure
+cascade testing,recommended_for,first-degree relative,expert_v2,expert_asserted,—,Method and procedure,Clinical concept
+cascade testing,requires,pathogenic variant,expert,expert_asserted,—,Method and procedure,Genetic variation
+first-degree relative,has_example,"рідні брати/сестри, батьки, діти: 50%",expert_v2,expert_asserted,—,Clinical concept,Clinical concept
+first-degree relative,is_a,relative,expert_v2,expert_asserted,—,Clinical concept,Clinical concept
+genetic counseling,applies_to,relative,llm:cdc,verified,help schedule genetic counseling and testing for your family,Method and procedure,Clinical concept
+genetic counseling,recommended_for,relative,expert,expert_asserted,—,Method and procedure,Clinical concept
+genetic counseling,uses_input,family history,expert,expert_asserted,—,Method and procedure,Data and artifact
+genetic testing,applies_to,proband,expert,expert_asserted,—,Method and procedure,Clinical concept
+genetic testing,detects,pathogenic variant,expert,expert_asserted,—,Method and procedure,Genetic variation
+genetic testing,has_example,тестування лише дорослих (≥ 18 років),expert_v2,verified,should only be done on adults (18 years of age and older),Method and procedure,Clinical concept
+genetic testing,recommended_for,breast cancer,llm:cdc,verified,"Genetic testing for BRCA1, BRCA2, and other genetic changes is currently recommended for some women with breast cancer",Method and procedure,Clinical concept
+genetic testing,recommended_for,ovarian cancer,llm:cdc,verified,"and women with ovarian, peritoneal, or fallopian tube cancer.",Method and procedure,Clinical concept
+relative,is_kin_of,proband,expert+llm:cdc,verified,"family members who are most closely related to the person who has the BRCA1, BRCA2, or",Clinical concept,Clinical concept
+risk assessment,applies_to,proband,expert,expert_asserted,—,Method and procedure,Clinical concept
+risk assessment,uses_input,family history,expert,expert_asserted,—,Method and procedure,Data and artifact
+second-degree relative,has_example,"зведені брати/сестри, тітки/дядьки, бабусі/дідусі: 25%",expert_v2,expert_asserted,—,Clinical concept,Clinical concept
+second-degree relative,is_a,relative,expert_v2,expert_asserted,—,Clinical concept,Clinical concept
+third-degree relative,has_example,"двоюрідні та віддалені родичі: до 12,5%",expert_v2,expert_asserted,—,Clinical concept,Clinical concept
+third-degree relative,is_a,relative,expert_v2,expert_asserted,—,Clinical concept,Clinical concept
+BRCA1,increases_risk_of,breast cancer,expert+llm:cdc,verified,"diagnosed with a BRCA1, BRCA2, or another genetic change that makes you more likely to get breast, ovarian, and",Biological entity,Clinical concept
+BRCA1,increases_risk_of,ovarian cancer,expert+llm:cdc,verified,"diagnosed with a BRCA1, BRCA2, or another genetic change that makes you more likely to get breast, ovarian, and",Biological entity,Clinical concept
+BRCA1,is_a,gene,expert,expert_asserted,—,Biological entity,Biological entity
+BRCA2,increases_risk_of,breast cancer,expert+llm:cdc,verified,"diagnosed with a BRCA1, BRCA2, or another genetic change that makes you more likely to get breast, ovarian, and",Biological entity,Clinical concept
+BRCA2,increases_risk_of,ovarian cancer,expert+llm:cdc,verified,"diagnosed with a BRCA1, BRCA2, or another genetic change that makes you more likely to get breast, ovarian, and",Biological entity,Clinical concept
+BRCA2,is_a,gene,expert,expert_asserted,—,Biological entity,Biological entity
+gene,part_of,gene panel,expert,expert_asserted,—,Biological entity,Biological entity
+genetic variant,has_annotation,Fisher strand bias,expert+llm:gatk,verified,Notice most of the variants that fail have an FS value greater than 55.,Genetic variation,Measure of quality
+genetic variant,has_annotation,mapping quality,expert,expert_asserted,—,Genetic variation,Measure of quality
+genetic variant,has_annotation,quality by depth,expert+llm:gatk,verified,This is the variant confidence (from the QUAL field),Genetic variation,Measure of quality
+genetic variant,has_annotation,strand odds ratio,expert+llm:gatk,verified,Notice most of the variants that have an SOR value greater than 3 fail the VQSR filter.,Genetic variation,Measure of quality
+germline variant,is_a,genetic variant,expert,expert_asserted,—,Genetic variation,Genetic variation
+insertion-deletion,is_a,genetic variant,expert,expert_asserted,—,Genetic variation,Genetic variation
+pathogenic variant,increases_risk_of,breast cancer,expert_v2,expert_asserted,—,Genetic variation,Clinical concept
+pathogenic variant,increases_risk_of,hereditary cancer,expert,expert_asserted,—,Genetic variation,Clinical concept
+pathogenic variant,increases_risk_of,ovarian cancer,expert_v2,expert_asserted,—,Genetic variation,Clinical concept
+pathogenic variant,is_a,genetic variant,expert,expert_asserted,—,Genetic variation,Genetic variation
+sequence alignment,produces,BAM file,expert,expert_asserted,—,Method and procedure,Data and artifact
+single nucleotide polymorphism,is_a,genetic variant,expert,expert_asserted,—,Genetic variation,Genetic variation
+variant calling,detects,genetic variant,expert,expert_asserted,—,Method and procedure,Genetic variation
+variant calling,produces,VCF file,expert,expert_asserted,—,Method and procedure,Data and artifact
+variant calling,uses_input,BAM file,expert,expert_asserted,—,Method and procedure,Data and artifact
+Fisher strand bias,applies_to,variant at exon end,expert_v2,verified,SOR was created because FS tends to penalize variants that occur at the ends of exons.,Measure of quality,Genetic variation
+Fisher strand bias,has_example,FS > 200 (INDEL),expert_v2,pending,—,Measure of quality,Measure of quality
+Fisher strand bias,has_example,FS > 60 (SNP),expert,expert_asserted,—,Measure of quality,Measure of quality
+hard filtering,applies_to,genetic variant,llm:gatk,verified,throwing out any variants that have annotation values above or below the set thresholds.,Method and procedure,Genetic variation
+hard filtering,is_a,variant filtering,expert+llm:gatk,verified,Hard-filtering consists of choosing specific thresholds for one or more annotations,Method and procedure,Method and procedure
+hard filtering,recommended_for,gene panel,expert,expert_asserted,—,Method and procedure,Biological entity
+hard filtering,uses_input,Fisher strand bias,expert+llm:gatk,verified,recommendations tell us to fail variants with an FS value greater than 60.,Method and procedure,Measure of quality
+hard filtering,uses_input,mapping quality,expert+llm:gatk,verified,You may argue that hard filtering any variant with an MQ value less than 50 is fine as well.,Method and procedure,Measure of quality
+hard filtering,uses_input,quality by depth,expert+llm:gatk,verified,For filtering purposes it is better to use QD than,Method and procedure,Measure of quality
+hard filtering,uses_input,rank sum test,expert+llm:gatk,verified,threshold removes any variant with a ReadPosRankSum value less than -8.0.,Method and procedure,Measure of quality
+hard filtering,uses_input,strand odds ratio,expert+llm:gatk,verified,our hard filtering recommendation of failing variants with an SOR value greater than 3 will at,Method and procedure,Measure of quality
+mapping quality,applies_to,sequencing read,llm:gatk,verified,This is the root mean square mapping quality over all the reads at the site.,Measure of quality,Data and artifact
+mapping quality,has_example,MQ < 40,expert,expert_asserted,—,Measure of quality,Measure of quality
+quality by depth,has_example,QD < 2,expert,expert_asserted,—,Measure of quality,Measure of quality
+quality by depth,uses_input,read depth,expert+llm:gatk,verified,divided by the unfiltered depth of non-,Measure of quality,Measure of quality
+rank sum test,applies_to,mapping quality,expert,expert_asserted,—,Measure of quality,Measure of quality
+rank sum test,has_example,"MQRankSum < −12,5",expert_v2,verified,none of your variants have MQRankSum less than -12.5,Measure of quality,Measure of quality
+rank sum test,has_example,ReadPosRankSum < −8,expert_v2,verified,ReadPosRankSum value less than -8.0,Measure of quality,Measure of quality
+rank sum test,uses_input,mapping quality,llm:gatk,verified,This is the u-based z-approximation from the Rank Sum Test for mapping qualities.,Measure of quality,Measure of quality
+strand odds ratio,has_example,SOR > 3,expert,expert_asserted,—,Measure of quality,Measure of quality
+strand odds ratio,recommended_for,variant at exon end,expert_v2,verified,SOR was created because FS tends to penalize variants that occur at the ends of exons.,Measure of quality,Genetic variation
+variant filtering,applies_to,VCF file,expert,expert_asserted,—,Method and procedure,Data and artifact
+variant filtering,has_example,будь-який прапорець → відкинути варіант,expert_v2,verified,throwing out any variants that have annotation values above or below the set thresholds,Method and procedure,Method and procedure
+variant quality score recalibration,is_a,variant filtering,expert+llm:gatk,verified,"Even with VQSR, variant sites are being filtered out, not individual sample's data.",Method and procedure,Method and procedure
+variant quality score recalibration,recommended_for,germline variant,llm:gatk,verified,recommend for filtering germline short variants),Method and procedure,Genetic variation
+variant quality score recalibration,requires,curated known variants,expert_v2,verified,Unfortunately this method requires a large number of variants and well-curated known variant,Method and procedure,Data and artifact
+variant quality score recalibration,requires,large variant set,expert_v2,verified,Unfortunately this method requires a large number of variants and well-curated known variant,Method and procedure,Data and artifact
+variant quality score recalibration,uses_input,VCF file,llm:gatk,verified,"Finally, we ran VQSR on the trio VCF, yielding the filtered callset.",Method and procedure,Data and artifact

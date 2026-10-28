@@ -1,0 +1,55 @@
+﻿id,claim,type,source,verification_level,status,comment
+C001,hard filtering —is_a→ variant filtering,relation,sources/gatk_hard_filtering.txt,V3,verified,[L001] цитата знайдена; типи коректні; збігається з експертною картою
+C002,variant quality score recalibration —is_a→ variant filtering,relation,sources/gatk_hard_filtering.txt,V3,verified,[L002] цитата знайдена; типи коректні; збігається з експертною картою
+C003,hard filtering —uses_input→ quality by depth,relation,sources/gatk_hard_filtering.txt,V3,verified,[L003] цитата знайдена; типи коректні; збігається з експертною картою
+C004,hard filtering —uses_input→ Fisher strand bias,relation,sources/gatk_hard_filtering.txt,V3,verified,[L004] цитата знайдена; типи коректні; збігається з експертною картою
+C005,hard filtering —uses_input→ strand odds ratio,relation,sources/gatk_hard_filtering.txt,V3,verified,[L005] цитата знайдена; типи коректні; збігається з експертною картою
+C006,hard filtering —uses_input→ mapping quality,relation,sources/gatk_hard_filtering.txt,V3,verified,[L006] цитата знайдена; типи коректні; збігається з експертною картою
+C007,quality by depth —has_example→ QD < 2,relation,sources/gatk_hard_filtering.txt,V1,rejected,[L007] автоперевірка: E5
+C008,quality by depth —uses_input→ read depth,relation,sources/gatk_hard_filtering.txt,V3,verified,[L008] цитата знайдена; типи коректні; збігається з експертною картою
+C009,mapping quality —applies_to→ sequencing read,relation,sources/gatk_hard_filtering.txt,V2,verified,"[L009] цитата знайдена; типи коректні; відсутня в експертній карті v1, але підтримана текстом"
+C010,rank sum test —uses_input→ mapping quality,relation,sources/gatk_hard_filtering.txt,V2,verified,"[L010] цитата знайдена; типи коректні; відсутня в експертній карті v1, але підтримана текстом"
+C011,rank sum test —applies_to→ allele,relation,sources/gatk_hard_filtering.txt,V2,rejected,"[L011] rank sum test applies_to allele: тест порівнює якості вирівнювання ридів (mapping quality), а allele — лише умова порівняння"
+C012,variant calling —produces→ VCF file,relation,sources/gatk_hard_filtering.txt,V3,rejected,"[L012] evidence описує інструмент GenotypeGVCFs, а не виклик варіантів як процедуру загалом"
+C013,variant quality score recalibration —uses_input→ VCF file,relation,sources/gatk_hard_filtering.txt,V2,verified,"[L013] цитата знайдена; типи коректні; відсутня в експертній карті v1, але підтримана текстом"
+C014,hard filtering —applies_to→ genetic variant,relation,sources/gatk_hard_filtering.txt,V2,verified,"[L014] цитата знайдена; типи коректні; відсутня в експертній карті v1, але підтримана текстом"
+C015,variant quality score recalibration —requires→ genetic variant,relation,sources/gatk_hard_filtering.txt,V3,verified,[L015] цитата знайдена; типи коректні; збігається з експертною картою
+C016,strand odds ratio —has_example→ SOR > 3,relation,sources/gatk_hard_filtering.txt,V1,rejected,[L016] автоперевірка: E5
+C017,mapping quality —has_example→ MQ < 40,relation,sources/gatk_hard_filtering.txt,V1,rejected,[L017] автоперевірка: E5
+C018,Fisher strand bias —has_example→ FS > 60,relation,sources/gatk_hard_filtering.txt,V1,rejected,[L018] автоперевірка: E5
+C019,hard filtering —uses_input→ rank sum test,relation,sources/gatk_hard_filtering.txt,V3,verified,[L019] цитата знайдена; типи коректні; збігається з експертною картою
+C020,hard filtering —applies_to→ germline variant,relation,sources/gatk_hard_filtering.txt,V2,rejected,[L020] слабка підстава: evidence — лише заголовок статті «Hard-filtering germline short variants»
+C021,variant quality score recalibration —recommended_for→ germline variant,relation,sources/gatk_hard_filtering.txt,V2,verified,"[L021] цитата знайдена; типи коректні; відсутня в експертній карті v1, але підтримана текстом"
+C022,genetic variant —has_annotation→ Fisher strand bias,relation,sources/gatk_hard_filtering.txt,V3,verified,[L022] цитата знайдена; типи коректні; збігається з експертною картою
+C023,genetic variant —has_annotation→ strand odds ratio,relation,sources/gatk_hard_filtering.txt,V3,verified,[L023] цитата знайдена; типи коректні; збігається з експертною картою
+C024,genetic variant —has_annotation→ quality by depth,relation,sources/gatk_hard_filtering.txt,V3,verified,[L024] цитата знайдена; типи коректні; збігається з експертною картою
+C025,BRCA1 —increases_risk_of→ breast cancer,relation,sources/cdc_cascade_testing.txt,V3,verified,[L025] цитата знайдена; типи коректні; збігається з експертною картою
+C026,BRCA1 —increases_risk_of→ ovarian cancer,relation,sources/cdc_cascade_testing.txt,V2,verified,"[L026] цитата знайдена; типи коректні; відсутня в експертній карті v1, але підтримана текстом"
+C027,BRCA2 —increases_risk_of→ breast cancer,relation,sources/cdc_cascade_testing.txt,V2,verified,"[L027] цитата знайдена; типи коректні; відсутня в експертній карті v1, але підтримана текстом"
+C028,BRCA2 —increases_risk_of→ ovarian cancer,relation,sources/cdc_cascade_testing.txt,V3,verified,[L028] цитата знайдена; типи коректні; збігається з експертною картою
+C029,BRCA1 —increases_risk_of→ hereditary cancer,relation,sources/cdc_cascade_testing.txt,V2,verified,"[L029] цитата знайдена; типи коректні; відсутня в експертній карті v1, але підтримана текстом"
+C030,genetic variant —increases_risk_of→ hereditary cancer,relation,sources/cdc_cascade_testing.txt,V2,verified,"[L030] цитата знайдена; типи коректні; відсутня в експертній карті v1, але підтримана текстом"
+C031,cascade testing —applies_to→ relative,relation,sources/cdc_cascade_testing.txt,V3,verified,[L031] цитата знайдена; типи коректні; збігається з експертною картою
+C032,cascade testing —detects→ genetic variant,relation,sources/cdc_cascade_testing.txt,V2,verified,"[L032] цитата знайдена; типи коректні; відсутня в експертній карті v1, але підтримана текстом"
+C033,cascade testing —detects→ BRCA1,relation,sources/cdc_cascade_testing.txt,V2,rejected,"[L033] cascade testing detects BRCA1: шукають варіанти в гені, а не сам ген (змішування гена та варіанта в ньому)"
+C034,cascade testing —detects→ BRCA2,relation,sources/cdc_cascade_testing.txt,V2,rejected,[L034] те саме для BRCA2
+C035,relative —is_kin_of→ proband,relation,sources/cdc_cascade_testing.txt,V3,verified,[L035] цитата знайдена; типи коректні; збігається з експертною картою
+C036,genetic testing —recommended_for→ breast cancer,relation,sources/cdc_cascade_testing.txt,V2,verified,"[L036] цитата знайдена; типи коректні; відсутня в експертній карті v1, але підтримана текстом"
+C037,genetic testing —recommended_for→ ovarian cancer,relation,sources/cdc_cascade_testing.txt,V2,verified,"[L037] цитата знайдена; типи коректні; відсутня в експертній карті v1, але підтримана текстом"
+C038,genetic testing —detects→ BRCA1,relation,sources/cdc_cascade_testing.txt,V2,rejected,[L038] genetic testing detects BRCA1: об'єкт має бути pathogenic variant у BRCA1
+C039,genetic testing —detects→ BRCA2,relation,sources/cdc_cascade_testing.txt,V2,rejected,[L039] те саме для BRCA2
+C040,genetic counseling —applies_to→ relative,relation,sources/cdc_cascade_testing.txt,V2,verified,"[L040] цитата знайдена; типи коректні; відсутня в експертній карті v1, але підтримана текстом"
+C041,genetic counseling —produces→ risk assessment,relation,sources/cdc_cascade_testing.txt,V1,rejected,[L041] автоперевірка: E3
+C042,Тестування родичів: 50% для родичів першого ступеня,number,sources/cdc_cascade_testing.txt,V1,verified,цитата знайдена в тексті: «1 in 2 (50%) chance»
+C043,25% для родичів другого ступеня,number,sources/cdc_cascade_testing.txt,V1,verified,цитата знайдена в тексті: «1 in 4 (25%) chance»
+C044,"12,5% для родичів третього ступеня",number,sources/cdc_cascade_testing.txt,V1,verified,цитата знайдена в тексті: «1 in 8 (12.5%) chance»
+C045,Поріг ReadPosRankSum < −8,number,sources/gatk_hard_filtering.txt,V1,verified,цитата знайдена в тексті: «ReadPosRankSum value less than -8.0»
+C046,"Поріг MQRankSum < −12,5",number,sources/gatk_hard_filtering.txt,V1,verified,цитата знайдена в тексті: «MQRankSum < -12.5»
+C047,VQSR потребує великої кількості варіантів і відомих ресурсів,relation,sources/gatk_hard_filtering.txt,V1,verified,цитата знайдена в тексті: «requires a large number of variants and well-curated known variant»
+C048,"SOR створено, бо FS штрафує варіанти в кінці екзонів",relation,sources/gatk_hard_filtering.txt,V1,verified,цитата знайдена в тексті: «SOR was created because FS tends to penalize variants that occur at the ends of exons»
+C049,Правило: будь-яке значення поза порогом → варіант відкидається,rule,sources/gatk_hard_filtering.txt,V1,verified,цитата знайдена в тексті: «throwing out any variants that have annotation values above or below the set thresholds»
+C050,Тестування лише дорослих (≥ 18 років),rule,sources/cdc_cascade_testing.txt,V1,verified,цитата знайдена в тексті: «should only be done on adults (18 years of age and older)»
+C051,Тестування починають із найближчих родичів,rule,sources/cdc_cascade_testing.txt,V1,verified,цитата знайдена в тексті: «genetic testing should start with family members who are most closely related»
+C052,FS > 200 для INDEL,number,коментар читача до статті GATK (не основний текст),V0,pending,значення з коментаря; перевірити за офіційною документацією GATK (потрібен V4)
+C053,Карта «колеги» (запуск LLM) точніша за LLM-триплети за рубрикою,evaluation,llm_log/raw/step5_rubric_R*_raw_output.json,V3,pending,два незалежні запуски дали однаковий порядок; це не людська оцінка
+C054,Визначення 121 терміна таксономії (ЛР5) коректні,definition,ЛР5,V0,pending,визначення згенеровано/відредаговано з участю LLM; потрібна перевірка студентом за MeSH/EDAM

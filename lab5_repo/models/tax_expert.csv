@@ -1,0 +1,156 @@
+﻿id,parent_id,label,level,principle,term_id,is_term
+E001,,Biomedical data analysis,0,тип сутності предметної області: що саме це поняття є,,0
+E002,E001,Biological entity,1,рівень організації: елементи геному / білкові сутності,,0
+E003,E002,Genomic element,2,роль у структурі геному,,0
+E004,E003,genome,3,,T045,1
+E005,E003,chromosome,3,,T011,1
+E006,E003,gene,3,конкретний ген (екземпляр класу),T038,1
+E007,E006,BRCA1,4,,T007,1
+E008,E006,BRCA2,4,,T008,1
+E009,E003,exon,3,,T033,1
+E010,E003,intron,3,,T056,1
+E011,E003,allele,3,,T001,1
+E012,E003,exome,3,,T032,1
+E013,E003,transcript,3,,T109,1
+E014,E003,transcriptome,3,,T110,1
+E015,E002,Protein-level entity,2,ступінь складності молекулярної сутності,,0
+E016,E015,amino acid,3,,T002,1
+E017,E015,peptide,3,,T073,1
+E018,E015,protein,3,структурна складова білка,T078,1
+E019,E018,protein domain,4,,T080,1
+E020,E015,proteome,3,,T083,1
+E021,E001,Genetic variation,1,аспект характеристики варіації: молекулярний тип / походження / клінічна значущість,,0
+E022,E021,genetic variant,2,молекулярний тип зміни,T044,1
+E023,E022,single nucleotide polymorphism,3,,T099,1
+E024,E022,insertion-deletion,3,,T055,1
+E025,E022,structural variant,3,,T104,1
+E026,E022,copy number variation,3,,T017,1
+E027,E022,mutation,3,,T064,1
+E028,E021,Variant by origin,2,походження варіанта,,0
+E029,E028,germline variant,3,,T048,1
+E030,E028,somatic variant,3,,T101,1
+E031,E021,Variant by clinical significance,2,доведена клінічна значущість варіанта,,0
+E032,E031,pathogenic variant,3,,T070,1
+E033,E031,benign variant,3,,T005,1
+E034,E031,variant of uncertain significance,3,,T116,1
+E035,E001,Biological property,1,що описує властивість: спадковість / молекулярна активність,,0
+E036,E035,Heredity,2,прояв і передача ознаки,,0
+E037,E036,genotype,3,,T047,1
+E038,E036,phenotype,3,,T074,1
+E039,E036,penetrance,3,,T072,1
+E040,E036,autosomal dominant inheritance,3,,T003,1
+E041,E035,Molecular activity,2,тип молекулярної активності,,0
+E042,E041,gene expression,3,,T039,1
+E043,E041,DNA methylation,3,,T027,1
+E044,E041,post-translational modification,3,,T075,1
+E045,E041,protein-protein interaction,3,,T082,1
+E046,E041,protein abundance,3,,T079,1
+E047,E001,Method and procedure,1,сфера застосування: лабораторна / обчислювальна / клінічна / наукова дисципліна,,0
+E048,E047,Laboratory method,2,що аналізується: нуклеїнові кислоти / білки / зразки,,0
+E049,E048,DNA sequencing,3,охоплення й мішень секвенування,T028,1
+E050,E049,next-generation sequencing,4,,T066,1
+E051,E049,whole genome sequencing,4,,T121,1
+E052,E049,whole exome sequencing,4,,T120,1
+E053,E049,RNA sequencing,4,,T093,1
+E054,E048,mass spectrometry,3,наявність фрагментації іонів,T060,1
+E055,E054,tandem mass spectrometry,4,,T106,1
+E056,E048,laboratory test,3,,T058,1
+E057,E047,Computational procedure,2,етап обробки даних,,0
+E058,E057,sequence alignment,3,,T096,1
+E059,E057,variant calling,3,,T114,1
+E060,E057,variant annotation,3,,T113,1
+E061,E057,variant filtering,3,спосіб встановлення порогів,T115,1
+E062,E061,hard filtering,4,,T050,1
+E063,E061,variant quality score recalibration,4,,T117,1
+E064,E057,protein identification,3,,T081,1
+E065,E047,Clinical procedure,2,етап клінічного процесу,,0
+E066,E065,genetic testing,3,коло тестованих осіб,T043,1
+E067,E066,cascade testing,4,,T010,1
+E068,E065,genetic counseling,3,,T042,1
+E069,E065,risk assessment,3,,T092,1
+E070,E065,treatment,3,,T111,1
+E071,E065,clinical trial,3,,T013,1
+E072,E047,Research field,2,об'єкт вивчення,,0
+E073,E072,genomics,3,,T046,1
+E074,E072,proteomics,3,,T084,1
+E075,E072,epigenetics,3,,T031,1
+E076,E001,Data and artifact,1,природа даних: сирі / клінічні / службові,,0
+E077,E076,Sequencing data,2,стадія обробки послідовностей,,0
+E078,E077,sequencing read,3,,T097,1
+E079,E077,FASTQ file,3,,T035,1
+E080,E077,BAM file,3,,T004,1
+E081,E077,VCF file,3,,T118,1
+E082,E077,reference genome,3,,T088,1
+E083,E077,gene panel,3,,T041,1
+E084,E076,Proteomic data,2,тип вимірювань,,0
+E085,E084,mass spectrum,3,,T061,1
+E086,E076,Clinical data,2,тип клінічного запису,,0
+E087,E086,electronic health record,3,,T029,1
+E088,E086,clinical note,3,,T012,1
+E089,E086,family history,3,,T034,1
+E090,E076,Data about data,2,що описується,,0
+E091,E090,metadata,3,,T063,1
+E092,E090,data schema,3,,T023,1
+E093,E090,data provenance,3,,T021,1
+E094,E001,Measure of quality,1,об'єкт оцінювання: варіант / набір даних,,0
+E095,E094,Variant call annotation,2,виміряна ознака підтримки варіанта,,0
+E096,E095,quality by depth,3,,T085,1
+E097,E095,Fisher strand bias,3,,T036,1
+E098,E095,strand odds ratio,3,,T103,1
+E099,E095,mapping quality,3,,T059,1
+E100,E095,read depth,3,,T087,1
+E101,E095,rank sum test,3,,T086,1
+E102,E094,data quality,2,,T022,1
+E103,E001,Clinical concept,1,роль у клінічній ситуації: людина / стан / терапія / захист,,0
+E104,E103,Person,2,роль особи в генетичному дослідженні родини,,0
+E105,E104,patient,3,роль у родинному дослідженні,T071,1
+E106,E105,proband,4,,T076,1
+E107,E104,relative,3,,T090,1
+E108,E103,Condition,2,тип клінічного стану,,0
+E109,E108,diagnosis,3,,T026,1
+E110,E108,symptom,3,,T105,1
+E111,E108,hereditary cancer,3,локалізація пухлини,T051,1
+E112,E111,breast cancer,4,,T009,1
+E113,E111,ovarian cancer,4,,T068,1
+E114,E108,biomarker,3,,T006,1
+E115,E103,Therapeutic agent,2,тип втручання,,0
+E116,E115,PARP inhibitor,3,клас препарату,T069,1
+E117,E103,Ethical and legal safeguard,2,тип гарантії,,0
+E118,E117,informed consent,3,,T054,1
+E119,E117,de-identification,3,,T025,1
+E120,E117,data privacy,3,,T020,1
+E121,E001,Knowledge and information technology,1,роль в інженерії знань: організація / зберігання / подання / виведення,,0
+E122,E121,Knowledge organization system,2,рівень формалізації,,0
+E123,E122,ontology,3,предмет онтології,T067,1
+E124,E123,Gene Ontology,4,,T040,1
+E125,E123,Human Phenotype Ontology,4,,T052,1
+E126,E122,controlled vocabulary,3,призначення словника,T016,1
+E127,E126,Medical Subject Headings,4,,T062,1
+E128,E126,SNOMED CT,4,,T100,1
+E129,E122,thesaurus,3,,T108,1
+E130,E122,taxonomy,3,,T107,1
+E131,E122,knowledge graph,3,,T057,1
+E132,E121,Data resource,2,тип ресурсу,,0
+E133,E132,ClinVar,3,,T014,1
+E134,E132,UniProt,3,,T112,1
+E135,E132,dbSNP,3,,T024,1
+E136,E121,Database technology,2,модель даних,,0
+E137,E136,relational database,3,,T089,1
+E138,E136,graph database,3,,T049,1
+E139,E136,vector database,3,,T119,1
+E140,E121,Representation and similarity,2,що робить з даними: подає / порівнює,,0
+E141,E140,embedding,3,,T030,1
+E142,E140,semantic similarity,3,,T095,1
+E143,E140,nearest neighbor search,3,,T065,1
+E144,E140,Resource Description Framework,3,,T091,1
+E145,E140,Simple Knowledge Organization System,3,,T098,1
+E146,E140,SPARQL,3,,T102,1
+E147,E121,Knowledge engineering,2,елемент системи на знаннях,,0
+E148,E147,rule-based system,3,складова системи на правилах,T094,1
+E149,E148,production rule,4,,T077,1
+E150,E148,inference engine,4,,T053,1
+E151,E147,frame,3,,T037,1
+E152,E147,competency question,3,,T015,1
+E153,E121,Data engineering,2,етап роботи з даними,,0
+E154,E153,data integration,3,,T018,1
+E155,E153,data pipeline,3,,T019,1

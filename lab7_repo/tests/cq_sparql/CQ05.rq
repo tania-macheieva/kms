@@ -1,0 +1,15 @@
+# id: CQ05
+# question: Що потребує VQSR (чому для малих наборів hard filtering)?
+# lab4_cq: CQ08
+# expect: ["curated known variants", "large variant set"]
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?answer WHERE {
+  ?c rdfs:label "variant quality score recalibration"@en .
+  ?c rdfs:subClassOf ?r .
+  ?r owl:onProperty ?p ; owl:someValuesFrom ?f .
+  ?p rdfs:label "requires"@en .
+  ?f rdfs:label ?answer . FILTER(lang(?answer) = "en")
+}

@@ -1,0 +1,615 @@
+{
+ "scores": {
+  "R1": {
+   "llm": {
+    "D1": 3,
+    "D2": 2,
+    "D3": 1,
+    "D4": 2,
+    "D5": 1,
+    "cq_covered": [
+     "CQ01",
+     "CQ02"
+    ],
+    "remarks": [
+     "Геномна (фільтрація) і клінічна (BRCA, каскадне тестування) гілки майже не пов'язані: додайте пояснені крос-зв'язки, напр. cascade testing requires pathogenic variant, hard filtering recommended_for gene panel, щоб карта відповідала фокусному питанню про перехід від якості анотацій до рішення.",
+     "Немає жодних прикладів для родинного ризику (50 %, 25 %, 12,5 %) і порогів для MQRankSum, INDEL-FS, QD; додайте екземпляри через has_example та поняття first/second/third-degree relative, щоб покрити CQ03–CQ04 та CQ11–CQ14.",
+     "Є неточні або надлишкові пропозиції (rank sum test applies_to allele; variant quality score recalibration requires genetic variant; genetic variant has_annotation дублює hard filtering uses; BRCA1 increases_risk_of hereditary cancer дублює пару з раком молочної залози/яєчників); приберіть дублі й додайте логіку рішення: будь-який прапорець - відхилення, VQSR потребує багатьох варіантів, тому для малої панелі hard filtering."
+    ],
+    "justification": "Багато загалом точних пропозицій (~40), але ієрархія переважно дворівнева, крос-зв'язків між гілками практично немає, прикладів чотири. Повністю відповідає лише на CQ01 і CQ02."
+   },
+   "peer": {
+    "D1": 3,
+    "D2": 3,
+    "D3": 4,
+    "D4": 4,
+    "D5": 3,
+    "cq_covered": [
+     "CQ01",
+     "CQ02",
+     "CQ08",
+     "CQ11",
+     "CQ12",
+     "CQ13",
+     "CQ14"
+    ],
+    "remarks": [
+     "Виправте неточні пропозиції: variant annotation produces quality by depth, genetic variant has_annotation rank sum test (це тест, а не показник варіанта), variant filtering recommended_for data quality (мета, а не рекомендація); також дублюються пари has_annotation та hard filtering uses.",
+     "Додайте відсутні пороги й правила рішення: FS > 200 для INDEL, MQRankSum < -12,5, будь-який прапорець - FILTERED, виняток для власних порогів, FS на кінцях екзонів з перевіркою SOR (REVIEW); це закриє CQ03–CQ07, CQ09, CQ10.",
+     "Додайте обмеження тестування родичів: вік від 18 років (виняток - дитячий рак), перехід до наступного доступного родича, потреба перевірити, що універсальна панель містить родинний варіант, і неавтоматичність каскаду при невідомій зміні (CQ15–CQ18); вирівняйте напрямок ієрархії (is_a/part_of) для послідовних рівнів."
+    ],
+    "justification": "Понад 45 переважно точних пропозицій, п'ять змістовних пояснених крос-зв'язків (фільтрація - панель - каскад - ймовірність носійства), сім прикладів і ієрархія родичів 1/2/3 ступеня. Дозволяє повністю відповісти на 7 CQ (поріг лишається 5-7), прогалини в INDEL/MQRankSum, виняткових правилах і обмеженнях тестування."
+   },
+   "expert": {
+    "D1": 3,
+    "D2": 3,
+    "D3": 3,
+    "D4": 4,
+    "D5": 3,
+    "cq_covered": [
+     "CQ01",
+     "CQ02",
+     "CQ08",
+     "CQ11",
+     "CQ13"
+    ],
+    "remarks": [
+     "Виправте неточні пропозиції: breast cancer is_a hereditary cancer та ovarian cancer is_a hereditary cancer (не всі раки спадкові; радше BRCA-варіант increases_risk_of), BRCA1 - лише рак молочної залози, а BRCA2 - лише яєчників (додайте обидва зв'язки для обох генів), relative has_example «рідний брат/сестра: 50%» змішує клас і ймовірність.",
+     "Додайте ієрархію родичів (first/second/third-degree relative is_a relative) з прикладами 50 %, 25 % і до 12,5 %, правило «починати з найближчих доступних родичів» (cascade testing recommended_for first-degree relative) та перехід до наступного доступного; без цього CQ12, CQ14, CQ16 не покриті.",
+     "Слабкі й нерелевантні зв'язки (strand odds ratio recommended_for exon без пояснення; крос-зв'язки здебільшого констатують очевидне): розкрийте правило FS на кінцях екзонів (SOR перевіряється додатково, REVIEW), додайте FS > 200 для INDEL, MQRankSum < -12,5, що будь-який прапорець відхиляє варіант, і зв'язок якості фільтрації з рішенням про каскад."
+    ],
+    "justification": "Близько 50 переважно точних пропозицій з кількома хибними узагальненнями, три рівні ієрархії (gene, genetic variant), шість пояснених, але частково тривіальних крос-зв'язків і шість прикладів. Повністю покриває 5 CQ; бракує родинних правил рішення."
+   }
+  },
+  "R2": {
+   "expert": {
+    "D1": 3,
+    "D2": 4,
+    "D3": 4,
+    "D4": 4,
+    "D5": 3,
+    "cq_covered": [
+     "CQ01",
+     "CQ02",
+     "CQ08",
+     "CQ11",
+     "CQ13"
+    ],
+    "remarks": [
+     "Додати окремі прапорці й пороги: FS > 200 для INDEL (відрізняти від FS > 60 для SNP), MQRankSum < −12,5, а також правило «будь-який прапорець → FILTERED» (CQ03–CQ05).",
+     "Додати 25% для зведеного брата, тітки/дядька, бабусі/дідуся та рівні спорідненості (first/second/third-degree relative), а також логіку пріоритету: тестувати спершу найближчих доступних родичів, далі наступних; умову віку 18 років (CQ12, CQ14–CQ16).",
+     "Виправити неточні або слабкі пропозиції: «strand odds ratio — рекомендований для → exon» не пояснює, що FS штрафує кінці екзонів, тому SOR перевіряють додатково (REVIEW); BRCA1 пов'язано лише з breast cancer, а BRCA2 лише з ovarian cancer, тож додати відсутні зв'язки; прибрати тривіальне «VQSR потребує genetic variant» і замінити на «потребує великої кількості варіантів»."
+    ],
+    "justification": "Багата, коректна карта (~48 пропозицій) із чіткою ієрархією на 4 рівні та п'ятьма поясненими крос-зв'язками й 6 прикладами. Бракує порогових винятків і правил вибору родичів, тому покрито лише 5 CQ."
+   },
+   "llm": {
+    "D1": 3,
+    "D2": 3,
+    "D3": 3,
+    "D4": 2,
+    "D5": 1,
+    "cq_covered": [
+     "CQ01",
+     "CQ02"
+    ],
+    "remarks": [
+     "Клінічну гілку (cascade testing, relative, proband) розгорнути: додати рівні спорідненості та приклади 50% / 25% / до 12,5%, інакше на CQ11–CQ16 відповісти неможливо; зараз родичі лишаються плоскими без жодного числового значення.",
+     "Додати поняття gene panel і зв'язок hard filtering — рекомендований для → gene panel (VQSR потребує багато варіантів), а також прапорці INDEL (FS > 200), MQRankSum < −12,5 і правило «будь-який прапорець → FILTERED» (CQ03–CQ08).",
+     "Пояснити крос-зв'язки (між геномною і клінічною гілками їх зараз немає підписів) і виправити неточні пропозиції: «rank sum test — застосовується до → allele» (ранговий тест порівнює значення читань), «genetic counseling — створює → risk assessment», «cascade testing — виявляє → BRCA1» (виявляє патогенний варіант); дублі «BRCA1/BRCA2 → hereditary cancer» та «genetic variant — має показник» (немає pathogenic variant, зв'язку з фокусним питанням про відкидання варіантів)."
+    ],
+    "justification": "Коректна, але вужча карта (~41 пропозиція): сильна гілка hard filtering з прикладами, клінічна гілка плоска і без чисел. Лише ~4 приклади, без пояснень крос-зв'язків; CQ покрито 2."
+   },
+   "peer": {
+    "D1": 3,
+    "D2": 4,
+    "D3": 4,
+    "D4": 4,
+    "D5": 3,
+    "cq_covered": [
+     "CQ01",
+     "CQ02",
+     "CQ08",
+     "CQ11",
+     "CQ12",
+     "CQ13",
+     "CQ14"
+    ],
+    "remarks": [
+     "Виправити хибні або дивні пропозиції: «genetic variant — має показник → rank sum test» (rank sum test — статистичний тест, а не показник; показник — MQRankSum), «variant annotation — створює → quality by depth» без пояснення, «genetic counseling — рекомендований для → cascade testing» і «variant filtering — рекомендований для → data quality»; ввести MQRankSum як окремий показник.",
+     "Додати пороги та правила фільтрації: FS > 200 для INDEL, MQRankSum < −12,5, «будь-який прапорець → FILTERED», виняток за власних порогів, FS на кінці екзонів → перевірка SOR (REVIEW), фільтрація стосується сайту, а не зразка, QD нормує якість на глибину (CQ03–CQ07, CQ09, CQ10).",
+     "Додати правила вибору родичів і винятки: вік тестування від 18 років (виняток — дитячий рак), перехід до наступного доступного родича, не автоматичний каскад за невідомої зміни в родині, перевірка, що панель містить родинний варіант (CQ15–CQ18); також вказати, що 25% стосується й зведеного брата, тітки/дядька, бабусі/дідуся."
+    ],
+    "justification": "Найповніша карта (~53 пропозиції): три чіткі ієрархії, 5 пояснених нетривіальних крос-зв'язків, 7 конкретних значень і явне кодування рівнів родичів 50/25/12,5%. Є кілька неточних відношень, а виняткові правила (INDEL, REVIEW, вік) не покриті, тож CQ покрито 7."
+   }
+  }
+ },
+ "agreement": {
+  "n_pairs": 15,
+  "mean_abs_diff": 0.4,
+  "exact_agreement": 0.6666666666666666,
+  "within_1": 0.9333333333333333,
+  "pearson": 0.7573052002020729,
+  "spearman": 0.7550590011234933,
+  "weighted_kappa_quadratic": 0.6825396825396826,
+  "per_map_mean_abs_diff": {
+   "expert": 0.4,
+   "llm": 0.6,
+   "peer": 0.2
+  },
+  "per_dim_mean_abs_diff": {
+   "D1": 0.0,
+   "D2": 1.0,
+   "D3": 1.0,
+   "D4": 0.0,
+   "D5": 0.0
+  },
+  "totals": {
+   "expert": {
+    "R1": 16,
+    "R2": 18
+   },
+   "llm": {
+    "R1": 9,
+    "R2": 12
+   },
+   "peer": {
+    "R1": 17,
+    "R2": 18
+   }
+  },
+  "rank_agreement": [
+   [
+    "peer",
+    "expert",
+    "llm"
+   ],
+   [
+    "expert",
+    "peer",
+    "llm"
+   ]
+  ]
+ },
+ "llm_vs_expert_strict": {
+  "tp": 21,
+  "pred": 41,
+  "gold": 49,
+  "precision": 0.5121951219512195,
+  "recall": 0.42857142857142855,
+  "f1": 0.4666666666666667
+ },
+ "llm_vs_expert_relaxed": {
+  "tp_pairs": 23,
+  "precision": 0.5609756097560976,
+  "recall": 0.46938775510204084
+ },
+ "peer_vs_expert_strict": {
+  "tp": 27,
+  "pred": 53,
+  "gold": 49,
+  "precision": 0.5094339622641509,
+  "recall": 0.5510204081632653,
+  "f1": 0.5294117647058822
+ },
+ "peer_vs_expert_relaxed": {
+  "tp_pairs": 27,
+  "precision": 0.5094339622641509,
+  "recall": 0.5510204081632653
+ },
+ "llm_text_supported_precision": {
+  "supported": 29,
+  "total": 41,
+  "share": 0.7073170731707317,
+  "auto_errors": [
+   "L007",
+   "L016",
+   "L017",
+   "L018",
+   "L041"
+  ],
+  "manual_flags": [
+   "L011",
+   "L012",
+   "L020",
+   "L033",
+   "L034",
+   "L038",
+   "L039"
+  ]
+ },
+ "map_stats": {
+  "expert": {
+   "concepts": 33,
+   "instances": 6,
+   "propositions": 49,
+   "cross_links": 5,
+   "relation_counts": {
+    "is_a": 11,
+    "part_of": 1,
+    "produces": 2,
+    "uses_input": 9,
+    "detects": 2,
+    "has_annotation": 4,
+    "applies_to": 5,
+    "recommended_for": 3,
+    "requires": 2,
+    "increases_risk_of": 3,
+    "is_kin_of": 1,
+    "has_example": 6
+   },
+   "related_to_share": 0.0
+  },
+  "peer": {
+   "concepts": 35,
+   "instances": 7,
+   "propositions": 53,
+   "cross_links": 5,
+   "relation_counts": {
+    "produces": 3,
+    "has_annotation": 5,
+    "is_a": 8,
+    "applies_to": 5,
+    "uses_input": 9,
+    "requires": 3,
+    "has_example": 7,
+    "part_of": 2,
+    "increases_risk_of": 3,
+    "detects": 1,
+    "recommended_for": 6,
+    "is_kin_of": 1
+   },
+   "related_to_share": 0.0
+  }
+ },
+ "matches": [
+  [
+   "brca1",
+   "increases_risk_of",
+   "breast cancer"
+  ],
+  [
+   "brca2",
+   "increases_risk_of",
+   "ovarian cancer"
+  ],
+  [
+   "cascade testing",
+   "applies_to",
+   "relative"
+  ],
+  [
+   "fisher strand bias",
+   "has_example",
+   "fs > 60"
+  ],
+  [
+   "genetic variant",
+   "has_annotation",
+   "fisher strand bias"
+  ],
+  [
+   "genetic variant",
+   "has_annotation",
+   "quality by depth"
+  ],
+  [
+   "genetic variant",
+   "has_annotation",
+   "strand odds ratio"
+  ],
+  [
+   "hard filtering",
+   "is_a",
+   "variant filtering"
+  ],
+  [
+   "hard filtering",
+   "uses_input",
+   "fisher strand bias"
+  ],
+  [
+   "hard filtering",
+   "uses_input",
+   "mapping quality"
+  ],
+  [
+   "hard filtering",
+   "uses_input",
+   "quality by depth"
+  ],
+  [
+   "hard filtering",
+   "uses_input",
+   "rank sum test"
+  ],
+  [
+   "hard filtering",
+   "uses_input",
+   "strand odds ratio"
+  ],
+  [
+   "mapping quality",
+   "has_example",
+   "mq < 40"
+  ],
+  [
+   "quality by depth",
+   "has_example",
+   "qd < 2"
+  ],
+  [
+   "quality by depth",
+   "uses_input",
+   "read depth"
+  ],
+  [
+   "relative",
+   "is_kin_of",
+   "proband"
+  ],
+  [
+   "strand odds ratio",
+   "has_example",
+   "sor > 3"
+  ],
+  [
+   "variant calling",
+   "produces",
+   "vcf file"
+  ],
+  [
+   "variant quality score recalibration",
+   "is_a",
+   "variant filtering"
+  ],
+  [
+   "variant quality score recalibration",
+   "requires",
+   "genetic variant"
+  ]
+ ],
+ "llm_only": [
+  [
+   "brca1",
+   "increases_risk_of",
+   "hereditary cancer"
+  ],
+  [
+   "brca1",
+   "increases_risk_of",
+   "ovarian cancer"
+  ],
+  [
+   "brca2",
+   "increases_risk_of",
+   "breast cancer"
+  ],
+  [
+   "cascade testing",
+   "detects",
+   "brca1"
+  ],
+  [
+   "cascade testing",
+   "detects",
+   "brca2"
+  ],
+  [
+   "cascade testing",
+   "detects",
+   "genetic variant"
+  ],
+  [
+   "genetic counseling",
+   "applies_to",
+   "relative"
+  ],
+  [
+   "genetic counseling",
+   "produces",
+   "risk assessment"
+  ],
+  [
+   "genetic testing",
+   "detects",
+   "brca1"
+  ],
+  [
+   "genetic testing",
+   "detects",
+   "brca2"
+  ],
+  [
+   "genetic testing",
+   "recommended_for",
+   "breast cancer"
+  ],
+  [
+   "genetic testing",
+   "recommended_for",
+   "ovarian cancer"
+  ],
+  [
+   "genetic variant",
+   "increases_risk_of",
+   "hereditary cancer"
+  ],
+  [
+   "hard filtering",
+   "applies_to",
+   "genetic variant"
+  ],
+  [
+   "hard filtering",
+   "applies_to",
+   "germline variant"
+  ],
+  [
+   "mapping quality",
+   "applies_to",
+   "sequencing read"
+  ],
+  [
+   "rank sum test",
+   "applies_to",
+   "allele"
+  ],
+  [
+   "rank sum test",
+   "uses_input",
+   "mapping quality"
+  ],
+  [
+   "variant quality score recalibration",
+   "recommended_for",
+   "germline variant"
+  ],
+  [
+   "variant quality score recalibration",
+   "uses_input",
+   "vcf file"
+  ]
+ ],
+ "expert_only": [
+  [
+   "brca1",
+   "is_a",
+   "gene"
+  ],
+  [
+   "brca2",
+   "is_a",
+   "gene"
+  ],
+  [
+   "breast cancer",
+   "is_a",
+   "hereditary cancer"
+  ],
+  [
+   "cascade testing",
+   "is_a",
+   "genetic testing"
+  ],
+  [
+   "cascade testing",
+   "requires",
+   "pathogenic variant"
+  ],
+  [
+   "gene",
+   "part_of",
+   "gene panel"
+  ],
+  [
+   "genetic counseling",
+   "recommended_for",
+   "relative"
+  ],
+  [
+   "genetic counseling",
+   "uses_input",
+   "family history"
+  ],
+  [
+   "genetic testing",
+   "applies_to",
+   "proband"
+  ],
+  [
+   "genetic testing",
+   "detects",
+   "pathogenic variant"
+  ],
+  [
+   "genetic variant",
+   "has_annotation",
+   "mapping quality"
+  ],
+  [
+   "germline variant",
+   "is_a",
+   "genetic variant"
+  ],
+  [
+   "hard filtering",
+   "recommended_for",
+   "gene panel"
+  ],
+  [
+   "insertion-deletion",
+   "is_a",
+   "genetic variant"
+  ],
+  [
+   "ovarian cancer",
+   "is_a",
+   "hereditary cancer"
+  ],
+  [
+   "pathogenic variant",
+   "increases_risk_of",
+   "hereditary cancer"
+  ],
+  [
+   "pathogenic variant",
+   "is_a",
+   "genetic variant"
+  ],
+  [
+   "rank sum test",
+   "applies_to",
+   "mapping quality"
+  ],
+  [
+   "relative",
+   "has_example",
+   "двоюрідний родич: до 12,5%"
+  ],
+  [
+   "relative",
+   "has_example",
+   "рідний брат/сестра: 50%"
+  ],
+  [
+   "risk assessment",
+   "applies_to",
+   "proband"
+  ],
+  [
+   "risk assessment",
+   "uses_input",
+   "family history"
+  ],
+  [
+   "sequence alignment",
+   "produces",
+   "bam file"
+  ],
+  [
+   "single nucleotide polymorphism",
+   "is_a",
+   "genetic variant"
+  ],
+  [
+   "strand odds ratio",
+   "recommended_for",
+   "exon"
+  ],
+  [
+   "variant calling",
+   "detects",
+   "genetic variant"
+  ],
+  [
+   "variant calling",
+   "uses_input",
+   "bam file"
+  ],
+  [
+   "variant filtering",
+   "applies_to",
+   "vcf file"
+  ]
+ ]
+}

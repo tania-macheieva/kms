@@ -1,0 +1,25 @@
+Аксіоми існування/універсальності/кардинальності (SubClassOf):
+  HardFiltering ⊑ ∃ usesInput.QualityByDepth
+  HardFiltering ⊑ ∃ usesInput.FisherStrandBias
+  HardFiltering ⊑ ∃ usesInput.StrandOddsRatio
+  HardFiltering ⊑ ∃ usesInput.MappingQuality
+  HardFiltering ⊑ ∃ usesInput.RankSumAnnotation
+  VQSR ⊑ ∃ requires.LargeVariantSet
+  VQSR ⊑ ∃ requires.CuratedKnownVariants
+  CascadeTesting ⊑ ∃ requires.PathogenicVariant
+  CascadeTesting ⊑ ∀ appliesTo.Relative
+  CascadeTesting ⊑ ∃ recommendedFor.FirstDegreeRelative
+  GenePanel ⊑ ∃ hasMember.Gene
+  GenePanel ⊑ ∀ hasMember.Gene
+  PathogenicVariant ⊑ ∃ increasesRiskOf.BreastCancer
+  PathogenicVariant ⊑ ∃ increasesRiskOf.OvarianCancer
+  HardFiltering ⊑ ∃ recommendedFor.GenePanel
+  StrandOddsRatio ⊑ ∃ recommendedFor.ExonEndVariant
+  VCFFile ⊑ ∃ derivedFrom.BAMFile
+  BAMFile ⊑ ∃ generatedBy.Sequencer
+  Exon ⊑ ∃ partOf.Gene
+  GenePanel ⊑ hasMember ≥ 2 Gene
+  CascadeTesting ⊑ hasProband = 1 Proband
+  CascadeTesting ⊑ hasMinTestingAge = 18
+  Person ⊑ hasParent ≤ 2 Person
+  GeneticVariant ⊑ hasClinicalSignificance ≤ 1 ClinicalSignificance

@@ -1,0 +1,25 @@
+﻿claim_id,claim,type,source,evidence,level,verdict,comment
+CL01,Поняття «gene» — exactMatch до MeSH D005796 (Genes),fact,MeSH Lookup API,відповідь API: http://id.nlm.nih.gov/mesh/D005796 = Genes,V1,confirmed,смислову еквівалентність оцінила LLM; потребує підтвердження студента
+CL02,Поняття «proteome» — exactMatch до MeSH D020543 (Proteome),fact,MeSH Lookup API,відповідь API: http://id.nlm.nih.gov/mesh/D020543 = Proteome,V1,confirmed,смислову еквівалентність оцінила LLM; потребує підтвердження студента
+CL03,Поняття «mass spectrometry» — exactMatch до MeSH D013058 (Mass Spectrometry),fact,MeSH Lookup API,відповідь API: http://id.nlm.nih.gov/mesh/D013058 = Mass Spectrometry,V1,confirmed,смислову еквівалентність оцінила LLM; потребує підтвердження студента
+CL04,Поняття «exome» — exactMatch до MeSH D059472 (Exome),fact,MeSH Lookup API,відповідь API: http://id.nlm.nih.gov/mesh/D059472 = Exome,V1,confirmed,смислову еквівалентність оцінила LLM; потребує підтвердження студента
+CL05,"Поняття «single nucleotide polymorphism» — exactMatch до MeSH D020641 (Polymorphism, Single Nucleotide)",fact,MeSH Lookup API,"відповідь API: http://id.nlm.nih.gov/mesh/D020641 = Polymorphism, Single Nucleotide",V1,confirmed,смислову еквівалентність оцінила LLM; потребує підтвердження студента
+CL06,Поняття «genetic counseling» — exactMatch до MeSH D005817 (Genetic Counseling),fact,MeSH Lookup API,відповідь API: http://id.nlm.nih.gov/mesh/D005817 = Genetic Counseling,V1,confirmed,смислову еквівалентність оцінила LLM; потребує підтвердження студента
+CL07,Поняття «proteomics» — exactMatch до MeSH D040901 (Proteomics),fact,MeSH Lookup API,відповідь API: http://id.nlm.nih.gov/mesh/D040901 = Proteomics,V1,confirmed,смислову еквівалентність оцінила LLM; потребує підтвердження студента
+CL08,Поняття «electronic health record» — exactMatch до MeSH D057286 (Electronic Health Records),fact,MeSH Lookup API,відповідь API: http://id.nlm.nih.gov/mesh/D057286 = Electronic Health Records,V1,confirmed,смислову еквівалентність оцінила LLM; потребує підтвердження студента
+CL09,Поняття «breast cancer» — closeMatch до MeSH D001943 (Breast Neoplasms),fact,MeSH Lookup API,відповідь API: http://id.nlm.nih.gov/mesh/D001943 = Breast Neoplasms,V1,confirmed,"closeMatch, бо «Neoplasms» ширше за «cancer»"
+CL10,Поняття «ovarian cancer» — closeMatch до MeSH D010051 (Ovarian Neoplasms),fact,MeSH Lookup API,відповідь API: http://id.nlm.nih.gov/mesh/D010051 = Ovarian Neoplasms,V1,confirmed,"closeMatch, бо «Neoplasms» ширше за «cancer»"
+CL11,Визначення 121 термінів корпусу (поле definition),fact,LLM,немає зовнішньої перевірки,V3,pending,Чернетки LLM; def_status=llm_draft; студент має звірити з джерелами
+CL12,Українські відповідники 121 термінів (label_uk) та 34 категорій,fact,LLM,немає зовнішньої перевірки,V3,pending,Переклад LLM; частину терміністики варто звірити зі словниками
+CL13,Частота вживань (freq) термінів у текстах gatk і cdc,fact,sources/*.txt,підрахунок scripts/normalize_terms.py,V1,confirmed,Лише 2 тексти; 94 терміни мають freq = 0 (source = llm_domain)
+CL14,"Експертна таксономія має 155 вузлів, 121 термін, глибину 4",fact,models/tax_expert.csv,tests/test_corpus_versions.py,V2,confirmed,Автоматична перевірка структури
+CL15,"Підсумкова таксономія не має циклів, кожен вузол має одного батька та визначення",fact,models/taxonomy.ttl,tests/test_taxonomy.py (19 passed),V2,confirmed,Автоматичні тести
+CL16,Підсумкова таксономія має єдиний принцип поділу в кожному внутрішньому вузлі,hypothesis,LLM / експерт,наявність поля principle перевіряє тест; змістову єдність — ні,V3,pending,Потрібен перегляд людиною
+CL17,Класифікація `gene panel` як даних секвенування є правильною (перша версія),hypothesis,LLM,розбіжність із llm/cluster,V3,rejected,Панель — набір генів → «Genomic element»
+CL18,`nearest neighbor search` належить до «Knowledge and IT» (перша версія),hypothesis,LLM,"розмітники R1, R2: Method and procedure",V3,rejected,Алгоритм → «Computational procedure»
+CL19,`treatment` належить до «Method and procedure» (перша версія),hypothesis,LLM,"розмітники R1, R2: Clinical concept",V3,rejected,Перенесено до «Therapy»
+CL20,"κ = 1,0 між двома LLM-розмітниками свідчить про надійність розмітки",hypothesis,LLM,обидва розмітники — та сама модель,V3,rejected,Не є незалежністю; потрібна розмітка людини (annotations/rater_human_template.csv)
+CL21,Кластери embeddings відтворюють змістову структуру предметної області,hypothesis,LLM,"ARI з expert = 0,12 (рівень 1)",V1,rejected,Статичні вектори усереднених слів; 4 OOV-терміни
+CL22,"GO, HPO, MeSH, SNOMED CT — це бази даних (LLM-версія)",hypothesis,LLM,"словники/онтології, не бази",V3,rejected,Залишаються під ontology / controlled vocabulary
+CL23,`variant call format` відповідає EDAM format_3016,hypothesis,LLM,перевірка не вдалася (сайт edamontology.org недоступний),V3,pending,Не включено в models/taxonomy.ttl
+CL24,`single nucleotide polymorphism` відповідає SO:0000694 (Sequence Ontology),hypothesis,LLM,перевірка не вдалася (OLS обмежив запити),V3,pending,Не включено; для SNP є верифікований зв'язок із MeSH

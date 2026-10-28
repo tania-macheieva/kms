@@ -1,0 +1,41 @@
+{"id": "L001", "s": "hard filtering", "p": "is_a", "o": "variant filtering", "evidence": "Hard-filtering consists of choosing specific thresholds for one or more annotations", "source": "gatk"}
+{"id": "L002", "s": "variant quality score recalibration", "p": "is_a", "o": "variant filtering", "evidence": "Even with VQSR, variant sites are being filtered out, not individual sample's data.", "source": "gatk"}
+{"id": "L003", "s": "hard filtering", "p": "uses_input", "o": "quality by depth", "evidence": "For filtering purposes it is better to use QD than", "source": "gatk"}
+{"id": "L004", "s": "hard filtering", "p": "uses_input", "o": "Fisher strand bias", "evidence": "recommendations tell us to fail variants with an FS value greater than 60.", "source": "gatk"}
+{"id": "L005", "s": "hard filtering", "p": "uses_input", "o": "strand odds ratio", "evidence": "our hard filtering recommendation of failing variants with an SOR value greater than 3 will at", "source": "gatk"}
+{"id": "L006", "s": "hard filtering", "p": "uses_input", "o": "mapping quality", "evidence": "You may argue that hard filtering any variant with an MQ value less than 50 is fine as well.", "source": "gatk"}
+{"id": "L007", "s": "quality by depth", "p": "has_example", "o": "QD < 2", "evidence": "The generic filtering recommendation for QD is to filter out variants with QD below 2.", "source": "gatk"}
+{"id": "L008", "s": "quality by depth", "p": "uses_input", "o": "read depth", "evidence": "divided by the unfiltered depth of non-", "source": "gatk"}
+{"id": "L009", "s": "mapping quality", "p": "applies_to", "o": "sequencing read", "evidence": "This is the root mean square mapping quality over all the reads at the site.", "source": "gatk"}
+{"id": "L010", "s": "rank sum test", "p": "uses_input", "o": "mapping quality", "evidence": "This is the u-based z-approximation from the Rank Sum Test for mapping qualities.", "source": "gatk"}
+{"id": "L011", "s": "rank sum test", "p": "applies_to", "o": "allele", "evidence": "compares the mapping qualities of the reads supporting the reference allele and the alternate", "source": "gatk"}
+{"id": "L012", "s": "variant calling", "p": "produces", "o": "VCF file", "evidence": "then joint-called the GVCFs using GenotypeGVCFs, yielding an unfiltered VCF callset for the", "source": "gatk"}
+{"id": "L013", "s": "variant quality score recalibration", "p": "uses_input", "o": "VCF file", "evidence": "Finally, we ran VQSR on the trio VCF, yielding the filtered callset.", "source": "gatk"}
+{"id": "L014", "s": "hard filtering", "p": "applies_to", "o": "genetic variant", "evidence": "throwing out any variants that have annotation values above or below the set thresholds.", "source": "gatk"}
+{"id": "L015", "s": "variant quality score recalibration", "p": "requires", "o": "genetic variant", "evidence": "Unfortunately this method requires a large number of variants and well-curated known variant", "source": "gatk"}
+{"id": "L016", "s": "strand odds ratio", "p": "has_example", "o": "SOR > 3", "evidence": "SOR>3.0, MQ<40.0, MQRankSum < -12.5 and ReadPosRankSum < -8.0.", "source": "gatk"}
+{"id": "L017", "s": "mapping quality", "p": "has_example", "o": "MQ < 40", "evidence": "Our recommendation is to fail any variant with an MQ value less than 40.0.", "source": "gatk"}
+{"id": "L018", "s": "Fisher strand bias", "p": "has_example", "o": "FS > 60", "evidence": "recommended thresholds for getting passed variants are QD<2.0, FS>60.0,", "source": "gatk"}
+{"id": "L019", "s": "hard filtering", "p": "uses_input", "o": "rank sum test", "evidence": "threshold removes any variant with a ReadPosRankSum value less than -8.0.", "source": "gatk"}
+{"id": "L020", "s": "hard filtering", "p": "applies_to", "o": "germline variant", "evidence": "Hard-filtering germline short variants", "source": "gatk"}
+{"id": "L021", "s": "variant quality score recalibration", "p": "recommended_for", "o": "germline variant", "evidence": "recommend for filtering germline short variants)", "source": "gatk"}
+{"id": "L022", "s": "genetic variant", "p": "has_annotation", "o": "Fisher strand bias", "evidence": "Notice most of the variants that fail have an FS value greater than 55.", "source": "gatk"}
+{"id": "L023", "s": "genetic variant", "p": "has_annotation", "o": "strand odds ratio", "evidence": "Notice most of the variants that have an SOR value greater than 3 fail the VQSR filter.", "source": "gatk"}
+{"id": "L024", "s": "genetic variant", "p": "has_annotation", "o": "quality by depth", "evidence": "This is the variant confidence (from the QUAL field)", "source": "gatk"}
+{"id": "L025", "s": "BRCA1", "p": "increases_risk_of", "o": "breast cancer", "evidence": "diagnosed with a BRCA1, BRCA2, or another genetic change that makes you more likely to get breast, ovarian, and", "source": "cdc"}
+{"id": "L026", "s": "BRCA1", "p": "increases_risk_of", "o": "ovarian cancer", "evidence": "diagnosed with a BRCA1, BRCA2, or another genetic change that makes you more likely to get breast, ovarian, and", "source": "cdc"}
+{"id": "L027", "s": "BRCA2", "p": "increases_risk_of", "o": "breast cancer", "evidence": "diagnosed with a BRCA1, BRCA2, or another genetic change that makes you more likely to get breast, ovarian, and", "source": "cdc"}
+{"id": "L028", "s": "BRCA2", "p": "increases_risk_of", "o": "ovarian cancer", "evidence": "diagnosed with a BRCA1, BRCA2, or another genetic change that makes you more likely to get breast, ovarian, and", "source": "cdc"}
+{"id": "L029", "s": "BRCA1", "p": "increases_risk_of", "o": "hereditary cancer", "evidence": "BRCA1, BRCA2, and most other genetic changes that cause hereditary breast and ovarian cancers", "source": "cdc"}
+{"id": "L030", "s": "genetic variant", "p": "increases_risk_of", "o": "hereditary cancer", "evidence": "other genetic changes that cause hereditary breast and ovarian cancers", "source": "cdc"}
+{"id": "L031", "s": "cascade testing", "p": "applies_to", "o": "relative", "evidence": "Cascade testing can find family members who have the same genetic change.", "source": "cdc"}
+{"id": "L032", "s": "cascade testing", "p": "detects", "o": "genetic variant", "evidence": "Cascade testing can find family members who have the same genetic change.", "source": "cdc"}
+{"id": "L033", "s": "cascade testing", "p": "detects", "o": "BRCA1", "evidence": "Cascade testing for BRCA1, BRCAZ, and other genetic changes", "source": "cdc"}
+{"id": "L034", "s": "cascade testing", "p": "detects", "o": "BRCA2", "evidence": "Cascade testing for BRCA1, BRCAZ, and other genetic changes", "source": "cdc"}
+{"id": "L035", "s": "relative", "p": "is_kin_of", "o": "proband", "evidence": "family members who are most closely related to the person who has the BRCA1, BRCA2, or", "source": "cdc"}
+{"id": "L036", "s": "genetic testing", "p": "recommended_for", "o": "breast cancer", "evidence": "Genetic testing for BRCA1, BRCA2, and other genetic changes is currently recommended for some women with breast cancer", "source": "cdc"}
+{"id": "L037", "s": "genetic testing", "p": "recommended_for", "o": "ovarian cancer", "evidence": "and women with ovarian, peritoneal, or fallopian tube cancer.", "source": "cdc"}
+{"id": "L038", "s": "genetic testing", "p": "detects", "o": "BRCA1", "evidence": "Genetic testing for BRCA1, BRCA2, and other genetic changes", "source": "cdc"}
+{"id": "L039", "s": "genetic testing", "p": "detects", "o": "BRCA2", "evidence": "Genetic testing for BRCA1, BRCA2, and other genetic changes", "source": "cdc"}
+{"id": "L040", "s": "genetic counseling", "p": "applies_to", "o": "relative", "evidence": "help schedule genetic counseling and testing for your family", "source": "cdc"}
+{"id": "L041", "s": "genetic counseling", "p": "produces", "o": "risk assessment", "evidence": "A healthcare provider, such as a genetic counselor, can help with personalized risk estimates for each person in your family.", "source": "cdc"}

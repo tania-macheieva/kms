@@ -1,0 +1,11 @@
+# question: Ситуація S06 (неповнолітній родич): для кого спрацьовує guard-клас MinorRelative?
+# expect_first_column: ["Sofiia"]
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dkh: <http://example.org/dkh/onto#>
+SELECT ?person ?action WHERE {
+  dkh:Situation_S06 dkh:guardClass ?gc ; dkh:hasAction ?a . ?a rdf:type ?ac . ?ac rdfs:label ?action .
+  FILTER(?ac != <http://www.w3.org/2002/07/owl#NamedIndividual>)
+  ?p rdf:type/rdfs:subClassOf* ?gc . ?p rdfs:label ?person
+  FILTER(lang(?action)="en")
+}

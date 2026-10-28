@@ -1,0 +1,179 @@
+== Метрики за версіями
+метрика                     expert       llm   cluster     final
+nodes                          155       171       161       154
+terms_as_nodes                 121       121       121       121
+coverage                     1.000     1.000     1.000     1.000
+category_nodes                  34        50        40        33
+other_share                  0.000     0.000     0.000     0.000
+max_depth                        4         4         3         4
+internal                        46        58        40        43
+leaves                         109       113       121       111
+mean_branching               3.348     2.931     4.000     3.558
+max_branching                    9        10        26         9
+M1_duplicate_terms               0         0         0         0
+M2_single_child                  6         7         6         3
+M3_no_principle                  0         0      None         0
+M4_vague_principle               0         0         0         0
+M5_same_sibling_labels           0         0         0         0
+
+== Вузли з єдиною дитиною
+  expert [('protein', 'protein domain'), ('mass spectrometry', 'tandem mass spectrometry'), ('genetic testing', 'cascade testing'), ('Proteomic data', 'mass spectrum'), ('patient', 'proband'), ('Therapeutic agent', 'PARP inhibitor')]
+  llm [('genome', 'reference genome'), ('mass spectrometry', 'tandem mass spectrometry'), ('laboratory test', 'genetic testing'), ('genetic testing', 'cascade testing'), ('Cancer by Etiology', 'hereditary cancer'), ('treatment', 'PARP inhibitor'), ('Protein Resources', 'UniProt')]
+  cluster [('Variants and molecular biology', 'Genetic variants, heredity and molecular processes'), ('BRCA1', 'BRCA1'), ('SNOMED CT', 'SNOMED CT'), ('De-identification', 'de-identification'), ('Proteome', 'proteome'), ('Proteomics', 'proteomics')]
+
+== κ Коена (30 термінів; категорії = 8 вузлів рівня 1 експертної таксономії)
+  R1 vs R2 (обидва LLM)                κ = 1.000; збіг 100%; n = 30
+  R1 vs експертна таксономія           κ = 0.916; збіг 93%; n = 30
+  R2 vs експертна таксономія           κ = 0.916; збіг 93%; n = 30
+  розбіжності розмітника R1 з експертною таксономією:
+    T065: R1 = Method and procedure | таксономія = Knowledge and information technology
+    T111: R1 = Clinical concept | таксономія = Method and procedure
+
+== Скоригований індекс Ренда (ARI)
+  рівень 1: expert~llm = 0.454; expert~cluster = 0.122; llm~cluster = 0.177; кількість груп {'expert': 8, 'llm': 10, 'cluster': 9}
+  рівень 2: expert~llm = 0.524; expert~cluster = 0.139; llm~cluster = 0.163; кількість груп {'expert': 27, 'llm': 33, 'cluster': 30}
+
+== ARI підсумкової версії відносно трьох чернеток
+  рівень 1: final~expert = 0.887; final~llm = 0.509; final~cluster = 0.139
+  рівень 2: final~expert = 0.898; final~llm = 0.519; final~cluster = 0.136
+  вузли з єдиною дитиною (final): [('mass spectrometry', 'tandem mass spectrometry'), ('genetic testing', 'cascade testing'), ('patient', 'proband')]
+
+== Домінантна відповідність рівня 1: експертна → llm
+  Biological entity                        → Molecular and Genomic Entities (15)
+  Biological property                      → Genetic Variation and Heredity (4)
+  Clinical concept                         → Clinical Practice (10)
+  Data and artifact                        → Sequence Data and Variant Analysis (4)
+  Genetic variation                        → Genetic Variation and Heredity (10)
+  Knowledge and information technology     → Knowledge Representation (14)
+  Measure of quality                       → Sequence Data and Variant Analysis (6)
+  Method and procedure                     → Laboratory and Analytical Methods (11)
+  терміни поза домінантною відповідністю: 47
+    allele: expert=Biological entity | llm=Genetic Variation and Heredity
+    clinical note: expert=Data and artifact | llm=Clinical Practice
+    clinical trial: expert=Method and procedure | llm=Clinical Practice
+    ClinVar: expert=Knowledge and information technology | llm=Databases and Reference Resources
+    data integration: expert=Knowledge and information technology | llm=Data Management
+    data pipeline: expert=Knowledge and information technology | llm=Data Management
+    data privacy: expert=Clinical concept | llm=Data Management
+    data provenance: expert=Data and artifact | llm=Data Management
+    data quality: expert=Measure of quality | llm=Data Management
+    data schema: expert=Data and artifact | llm=Data Management
+    dbSNP: expert=Knowledge and information technology | llm=Databases and Reference Resources
+    de-identification: expert=Clinical concept | llm=Data Management
+    DNA methylation: expert=Biological property | llm=Molecular Processes
+    electronic health record: expert=Data and artifact | llm=Clinical Practice
+    embedding: expert=Knowledge and information technology | llm=Databases and Reference Resources
+    epigenetics: expert=Method and procedure | llm=Omics Research Fields
+    family history: expert=Data and artifact | llm=Clinical Practice
+    gene expression: expert=Biological property | llm=Molecular Processes
+    Gene Ontology: expert=Knowledge and information technology | llm=Databases and Reference Resources
+    gene panel: expert=Data and artifact | llm=Molecular and Genomic Entities
+    genetic counseling: expert=Method and procedure | llm=Clinical Practice
+    genomics: expert=Method and procedure | llm=Omics Research Fields
+    graph database: expert=Knowledge and information technology | llm=Databases and Reference Resources
+    hard filtering: expert=Method and procedure | llm=Sequence Data and Variant Analysis
+    Human Phenotype Ontology: expert=Knowledge and information technology | llm=Databases and Reference Resources
+    informed consent: expert=Clinical concept | llm=Data Management
+    mass spectrum: expert=Data and artifact | llm=Laboratory and Analytical Methods
+    Medical Subject Headings: expert=Knowledge and information technology | llm=Databases and Reference Resources
+    metadata: expert=Data and artifact | llm=Data Management
+    mutation: expert=Genetic variation | llm=Molecular Processes
+    nearest neighbor search: expert=Knowledge and information technology | llm=Databases and Reference Resources
+    post-translational modification: expert=Biological property | llm=Molecular Processes
+    protein abundance: expert=Biological property | llm=Laboratory and Analytical Methods
+    protein-protein interaction: expert=Biological property | llm=Molecular Processes
+    proteomics: expert=Method and procedure | llm=Omics Research Fields
+    reference genome: expert=Data and artifact | llm=Molecular and Genomic Entities
+    relational database: expert=Knowledge and information technology | llm=Databases and Reference Resources
+    risk assessment: expert=Method and procedure | llm=Clinical Practice
+    sequence alignment: expert=Method and procedure | llm=Sequence Data and Variant Analysis
+    SNOMED CT: expert=Knowledge and information technology | llm=Databases and Reference Resources
+    treatment: expert=Method and procedure | llm=Clinical Practice
+    UniProt: expert=Knowledge and information technology | llm=Databases and Reference Resources
+    variant annotation: expert=Method and procedure | llm=Sequence Data and Variant Analysis
+    variant calling: expert=Method and procedure | llm=Sequence Data and Variant Analysis
+    variant filtering: expert=Method and procedure | llm=Sequence Data and Variant Analysis
+    variant quality score recalibration: expert=Method and procedure | llm=Sequence Data and Variant Analysis
+    vector database: expert=Knowledge and information technology | llm=Databases and Reference Resources
+
+== Домінантна відповідність рівня 1: експертна → cluster
+  Biological entity                        → Variants and molecular biology (7)
+  Biological property                      → Variants and molecular biology (7)
+  Clinical concept                         → Clinical conditions (7)
+  Data and artifact                        → Data management and semantic standards (4)
+  Genetic variation                        → Variants and molecular biology (8)
+  Knowledge and information technology     → Data management and semantic standards (8)
+  Measure of quality                       → Clinical workflow and filtering (3)
+  Method and procedure                     → Clinical workflow and filtering (6)
+  терміни поза домінантною відповідністю: 71
+    amino acid: expert=Biological entity | cluster=Sequencing and omics layers
+    BAM file: expert=Data and artifact | cluster=File formats and database technologies
+    BRCA1: expert=Biological entity | cluster=Reference resources and spectrometry
+    BRCA2: expert=Biological entity | cluster=Reference resources and spectrometry
+    clinical note: expert=Data and artifact | cluster=Clinical workflow and filtering
+    ClinVar: expert=Knowledge and information technology | cluster=Reference resources and spectrometry
+    competency question: expert=Knowledge and information technology | cluster=Clinical workflow and filtering
+    controlled vocabulary: expert=Knowledge and information technology | cluster=Knowledge organization systems
+    copy number variation: expert=Genetic variation | cluster=Sequence processing and vocabularies
+    data privacy: expert=Clinical concept | cluster=Data management and semantic standards
+    data quality: expert=Measure of quality | cluster=Data management and semantic standards
+    dbSNP: expert=Knowledge and information technology | cluster=Reference resources and spectrometry
+    de-identification: expert=Clinical concept | cluster=Sequence processing and vocabularies
+    DNA sequencing: expert=Method and procedure | cluster=Sequencing and omics layers
+    embedding: expert=Knowledge and information technology | cluster=File formats and database technologies
+    epigenetics: expert=Method and procedure | cluster=Sequence processing and vocabularies
+    exome: expert=Biological entity | cluster=Sequencing and omics layers
+    family history: expert=Data and artifact | cluster=Clinical workflow and filtering
+    FASTQ file: expert=Data and artifact | cluster=File formats and database technologies
+    Fisher strand bias: expert=Measure of quality | cluster=Sequence processing and vocabularies
+    frame: expert=Knowledge and information technology | cluster=Reference resources and spectrometry
+    Gene Ontology: expert=Knowledge and information technology | cluster=Sequence processing and vocabularies
+    gene panel: expert=Data and artifact | cluster=Clinical workflow and filtering
+    genetic counseling: expert=Method and procedure | cluster=Sequence processing and vocabularies
+    genomics: expert=Method and procedure | cluster=Sequence processing and vocabularies
+    Human Phenotype Ontology: expert=Knowledge and information technology | cluster=Sequence processing and vocabularies
+    informed consent: expert=Clinical concept | cluster=Clinical workflow and filtering
+    insertion-deletion: expert=Genetic variation | cluster=Sequence processing and vocabularies
+    intron: expert=Biological entity | cluster=Sequencing and omics layers
+    mapping quality: expert=Measure of quality | cluster=Data management and semantic standards
+    mass spectrometry: expert=Method and procedure | cluster=Reference resources and spectrometry
+    mass spectrum: expert=Data and artifact | cluster=Reference resources and spectrometry
+    Medical Subject Headings: expert=Knowledge and information technology | cluster=File formats and database technologies
+    nearest neighbor search: expert=Knowledge and information technology | cluster=Clinical workflow and filtering
+    next-generation sequencing: expert=Method and procedure | cluster=Sequencing and omics layers
+    ontology: expert=Knowledge and information technology | cluster=Sequence processing and vocabularies
+    PARP inhibitor: expert=Clinical concept | cluster=Sequencing and omics layers
+    penetrance: expert=Biological property | cluster=Sequencing and omics layers
+    post-translational modification: expert=Biological property | cluster=Sequence processing and vocabularies
+    production rule: expert=Knowledge and information technology | cluster=Clinical workflow and filtering
+    protein domain: expert=Biological entity | cluster=Sequence processing and vocabularies
+    protein identification: expert=Method and procedure | cluster=Variants and molecular biology
+    proteome: expert=Biological entity | cluster=Sequencing and omics layers
+    proteomics: expert=Method and procedure | cluster=Sequencing and omics layers
+    reference genome: expert=Data and artifact | cluster=Sequence processing and vocabularies
+    relational database: expert=Knowledge and information technology | cluster=File formats and database technologies
+    relative: expert=Clinical concept | cluster=Clinical workflow and filtering
+    RNA sequencing: expert=Method and procedure | cluster=Sequencing and omics layers
+    semantic similarity: expert=Knowledge and information technology | cluster=Knowledge organization systems
+    sequence alignment: expert=Method and procedure | cluster=Sequence processing and vocabularies
+    sequencing read: expert=Data and artifact | cluster=Sequence processing and vocabularies
+    SNOMED CT: expert=Knowledge and information technology | cluster=Reference resources and spectrometry
+    SPARQL: expert=Knowledge and information technology | cluster=Knowledge organization systems
+    strand odds ratio: expert=Measure of quality | cluster=Sequence processing and vocabularies
+    symptom: expert=Clinical concept | cluster=Clinical workflow and filtering
+    tandem mass spectrometry: expert=Method and procedure | cluster=Reference resources and spectrometry
+    taxonomy: expert=Knowledge and information technology | cluster=Knowledge organization systems
+    thesaurus: expert=Knowledge and information technology | cluster=Knowledge organization systems
+    transcript: expert=Biological entity | cluster=Sequencing and omics layers
+    transcriptome: expert=Biological entity | cluster=Sequencing and omics layers
+    treatment: expert=Method and procedure | cluster=Clinical conditions
+    UniProt: expert=Knowledge and information technology | cluster=Reference resources and spectrometry
+    variant annotation: expert=Method and procedure | cluster=Variants and molecular biology
+    variant calling: expert=Method and procedure | cluster=Variants and molecular biology
+    variant filtering: expert=Method and procedure | cluster=Variants and molecular biology
+    variant of uncertain significance: expert=Genetic variation | cluster=Sequence processing and vocabularies
+    variant quality score recalibration: expert=Method and procedure | cluster=Sequence processing and vocabularies
+    VCF file: expert=Data and artifact | cluster=File formats and database technologies
+    vector database: expert=Knowledge and information technology | cluster=File formats and database technologies
+    whole exome sequencing: expert=Method and procedure | cluster=Sequencing and omics layers
+    whole genome sequencing: expert=Method and procedure | cluster=Sequencing and omics layers

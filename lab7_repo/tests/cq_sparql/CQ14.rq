@@ -1,0 +1,12 @@
+# id: CQ14
+# question: Яким родичам першого ступеня застосовується каскадне тестування CT-01 (з кого починати)?
+# lab4_cq: CQ14
+# expect: ["Marta", "Sofiia"]
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?answer WHERE {
+  ?t rdfs:label "CT-01"@en . ?t ?p ?x . ?p rdfs:label "applies_to"@en .
+  ?x rdf:type/rdfs:subClassOf* ?c . ?c rdfs:label "first-degree relative"@en . ?x rdfs:label ?answer
+}

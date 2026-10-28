@@ -1,0 +1,15 @@
+== Суперечність 1: індивід VAR-003 (INDEL) додатково оголошено SNP, а SNP і Indel диз'юнктні
+Exception in thread "main" org.semanticweb.owlapi.reasoner.InconsistentOntologyException: Inconsistent ontology
+	at org.semanticweb.HermiT.Reasoner.throwInconsistentOntologyExceptionIfNecessary(Reasoner.java:2164)
+	at org.semanticweb.HermiT.Reasoner.checkPreConditions(Reasoner.java:2154)
+	at org.semanticweb.HermiT.Reasoner.precomputeInferences(Reasoner.java:477)
+	at org.semanticweb.HermiT.cli.CommandLine$ClassifyAction.run(CommandLine.java:169)
+	at org.semanticweb.HermiT.cli.CommandLine.main(CommandLine.java:853)
+
+== Суперечність 2: Marta має трьох різних батьків, а Person ⊑ hasParent ≤ 2
+Exception in thread "main" org.semanticweb.owlapi.reasoner.InconsistentOntologyException: Inconsistent ontology
+	at org.semanticweb.HermiT.Reasoner.throwInconsistentOntologyExceptionIfNecessary(Reasoner.java:2164)
+	at org.semanticweb.HermiT.Reasoner.checkPreConditions(Reasoner.java:2154)
+	at org.semanticweb.HermiT.Reasoner.precomputeInferences(Reasoner.java:477)
+	at org.semanticweb.HermiT.cli.CommandLine$ClassifyAction.run(CommandLine.java:169)
+	at org.semanticweb.HermiT.cli.CommandLine.main(CommandLine.java:853)

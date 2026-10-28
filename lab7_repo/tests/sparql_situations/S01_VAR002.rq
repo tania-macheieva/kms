@@ -1,0 +1,11 @@
+# question: Ситуація S01 (низький QD): для яких варіантів спрацьовує guard-клас і яку дію/новий стан задає шаблон?
+# expect_first_column: ["VAR-002"]
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dkh: <http://example.org/dkh/onto#>
+SELECT ?variant ?action ?newState WHERE {
+  dkh:Situation_S01 dkh:guardClass ?gc ; dkh:hasAction ?a ; dkh:hasNewState ?n .
+  ?a rdf:type ?ac . ?n rdf:type ?nc . FILTER(?ac != <http://www.w3.org/2002/07/owl#NamedIndividual> && ?nc != <http://www.w3.org/2002/07/owl#NamedIndividual>)
+  ?v rdf:type/rdfs:subClassOf* ?gc . ?v rdfs:label ?variant . ?ac rdfs:label ?action . ?nc rdfs:label ?newState
+  FILTER(lang(?action)="en" && lang(?newState)="en")
+}

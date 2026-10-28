@@ -1,0 +1,6 @@
+# question: Ситуація S03 (FS на кінці екзона): який варіант потрапляє під guard-клас ExonEndVariant?
+# expect_first_column: ["VAR-004"]
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dkh: <http://example.org/dkh/onto#>
+SELECT ?variant WHERE { dkh:Situation_S03 dkh:guardClass ?gc . ?v rdf:type/rdfs:subClassOf* ?gc . ?v rdfs:label ?variant }

@@ -1,0 +1,96 @@
+== Оцінки (0–4) за D1..D5; R1/R2 — два незалежні оцінювачі (обидва LLM)
+Власна (експертна) карта           R1: [3, 3, 3, 4, 3] = 16; R2: [3, 4, 4, 4, 3] = 18
+Карта LLM (триплети)               R1: [3, 2, 1, 2, 1] = 9; R2: [3, 3, 3, 2, 1] = 12
+Карта колеги (замінник — LLM)      R1: [3, 3, 4, 4, 3] = 17; R2: [3, 4, 4, 4, 3] = 18
+
+== Узгодженість оцінювачів (15 пар оцінок)
+  n_pairs: 15
+  mean_abs_diff: 0.400
+  exact_agreement: 0.667
+  within_1: 0.933
+  pearson: 0.757
+  spearman: 0.755
+  weighted_kappa_quadratic: 0.683
+  по картах (середня |різниця|): {'expert': 0.4, 'llm': 0.6, 'peer': 0.2}
+  по критеріях: {'D1': 0.0, 'D2': 1.0, 'D3': 1.0, 'D4': 0.0, 'D5': 0.0}
+  порядок карт за сумою: R1 ['peer', 'expert', 'llm']; R2 ['expert', 'peer', 'llm']
+
+== Precision/recall триплетів LLM відносно експертної карти (орієнтовані (s,p,o), нормалізовані мітки)
+  llm_vs_expert_strict: {"tp": 21, "pred": 41, "gold": 49, "precision": 0.5121951219512195, "recall": 0.42857142857142855, "f1": 0.4666666666666667}
+  llm_vs_expert_relaxed: {"tp_pairs": 23, "precision": 0.5609756097560976, "recall": 0.46938775510204084}
+  peer_vs_expert_strict: {"tp": 27, "pred": 53, "gold": 49, "precision": 0.5094339622641509, "recall": 0.5510204081632653, "f1": 0.5294117647058822}
+  peer_vs_expert_relaxed: {"tp_pairs": 27, "precision": 0.5094339622641509, "recall": 0.5510204081632653}
+  LLM: підтримано текстом і без помилок перевірки/перегляду: 29/41 = 71%
+
+  збіг з експертною картою (21):
+    brca1 -increases_risk_of-> breast cancer
+    brca2 -increases_risk_of-> ovarian cancer
+    cascade testing -applies_to-> relative
+    fisher strand bias -has_example-> fs > 60
+    genetic variant -has_annotation-> fisher strand bias
+    genetic variant -has_annotation-> quality by depth
+    genetic variant -has_annotation-> strand odds ratio
+    hard filtering -is_a-> variant filtering
+    hard filtering -uses_input-> fisher strand bias
+    hard filtering -uses_input-> mapping quality
+    hard filtering -uses_input-> quality by depth
+    hard filtering -uses_input-> rank sum test
+    hard filtering -uses_input-> strand odds ratio
+    mapping quality -has_example-> mq < 40
+    quality by depth -has_example-> qd < 2
+    quality by depth -uses_input-> read depth
+    relative -is_kin_of-> proband
+    strand odds ratio -has_example-> sor > 3
+    variant calling -produces-> vcf file
+    variant quality score recalibration -is_a-> variant filtering
+    variant quality score recalibration -requires-> genetic variant
+  лише в LLM (20):
+    brca1 -increases_risk_of-> hereditary cancer
+    brca1 -increases_risk_of-> ovarian cancer
+    brca2 -increases_risk_of-> breast cancer
+    cascade testing -detects-> brca1
+    cascade testing -detects-> brca2
+    cascade testing -detects-> genetic variant
+    genetic counseling -applies_to-> relative
+    genetic counseling -produces-> risk assessment
+    genetic testing -detects-> brca1
+    genetic testing -detects-> brca2
+    genetic testing -recommended_for-> breast cancer
+    genetic testing -recommended_for-> ovarian cancer
+    genetic variant -increases_risk_of-> hereditary cancer
+    hard filtering -applies_to-> genetic variant
+    hard filtering -applies_to-> germline variant
+    mapping quality -applies_to-> sequencing read
+    rank sum test -applies_to-> allele
+    rank sum test -uses_input-> mapping quality
+    variant quality score recalibration -recommended_for-> germline variant
+    variant quality score recalibration -uses_input-> vcf file
+  лише в експертній (28):
+    brca1 -is_a-> gene
+    brca2 -is_a-> gene
+    breast cancer -is_a-> hereditary cancer
+    cascade testing -is_a-> genetic testing
+    cascade testing -requires-> pathogenic variant
+    gene -part_of-> gene panel
+    genetic counseling -recommended_for-> relative
+    genetic counseling -uses_input-> family history
+    genetic testing -applies_to-> proband
+    genetic testing -detects-> pathogenic variant
+    genetic variant -has_annotation-> mapping quality
+    germline variant -is_a-> genetic variant
+    hard filtering -recommended_for-> gene panel
+    insertion-deletion -is_a-> genetic variant
+    ovarian cancer -is_a-> hereditary cancer
+    pathogenic variant -increases_risk_of-> hereditary cancer
+    pathogenic variant -is_a-> genetic variant
+    rank sum test -applies_to-> mapping quality
+    relative -has_example-> двоюрідний родич: до 12,5%
+    relative -has_example-> рідний брат/сестра: 50%
+    risk assessment -applies_to-> proband
+    risk assessment -uses_input-> family history
+    sequence alignment -produces-> bam file
+    single nucleotide polymorphism -is_a-> genetic variant
+    strand odds ratio -recommended_for-> exon
+    variant calling -detects-> genetic variant
+    variant calling -uses_input-> bam file
+    variant filtering -applies_to-> vcf file

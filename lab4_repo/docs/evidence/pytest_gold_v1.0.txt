@@ -1,0 +1,150 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.16, pytest-9.1.1, pluggy-1.6.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/claude/lab4_repo
+configfile: pytest.ini
+plugins: anyio-4.15.1
+collecting ... collected 40 items
+
+tests/test_gold.py::test_gold_case[T01] PASSED                           [  2%]
+tests/test_gold.py::test_gold_case[T02] PASSED                           [  5%]
+tests/test_gold.py::test_gold_case[T03] PASSED                           [  7%]
+tests/test_gold.py::test_gold_case[T04] PASSED                           [ 10%]
+tests/test_gold.py::test_gold_case[T05] PASSED                           [ 12%]
+tests/test_gold.py::test_gold_case[T06] PASSED                           [ 15%]
+tests/test_gold.py::test_gold_case[T07] PASSED                           [ 17%]
+tests/test_gold.py::test_gold_case[T08] PASSED                           [ 20%]
+tests/test_gold.py::test_gold_case[T09] PASSED                           [ 22%]
+tests/test_gold.py::test_gold_case[T10] PASSED                           [ 25%]
+tests/test_gold.py::test_gold_case[T11] PASSED                           [ 27%]
+tests/test_gold.py::test_gold_case[T12] PASSED                           [ 30%]
+tests/test_gold.py::test_gold_case[T13] PASSED                           [ 32%]
+tests/test_gold.py::test_gold_case[T14] FAILED                           [ 35%]
+tests/test_gold.py::test_gold_case[T15] PASSED                           [ 37%]
+tests/test_gold.py::test_gold_case[T16] FAILED                           [ 40%]
+tests/test_gold.py::test_gold_case[T17] PASSED                           [ 42%]
+tests/test_gold.py::test_gold_case[T18] FAILED                           [ 45%]
+tests/test_gold.py::test_gold_case[T19] PASSED                           [ 47%]
+tests/test_gold.py::test_gold_case[T20] FAILED                           [ 50%]
+tests/test_gold.py::test_gold_case[T21] PASSED                           [ 52%]
+tests/test_gold.py::test_gold_case[T22] PASSED                           [ 55%]
+tests/test_gold.py::test_gold_case[T23] PASSED                           [ 57%]
+tests/test_gold.py::test_gold_case[T24] PASSED                           [ 60%]
+tests/test_gold.py::test_gold_case[T25] PASSED                           [ 62%]
+tests/test_gold.py::test_gold_case[T26] PASSED                           [ 65%]
+tests/test_gold.py::test_gold_case[T27] PASSED                           [ 67%]
+tests/test_gold.py::test_gold_case[T28] PASSED                           [ 70%]
+tests/test_gold.py::test_gold_case[T29] PASSED                           [ 72%]
+tests/test_gold.py::test_gold_case[T30] PASSED                           [ 75%]
+tests/test_gold.py::test_gold_case[T31] PASSED                           [ 77%]
+tests/test_gold.py::test_gold_case[T32] PASSED                           [ 80%]
+tests/test_gold.py::test_gold_case[T33] PASSED                           [ 82%]
+tests/test_gold.py::test_gold_case[T34] PASSED                           [ 85%]
+tests/test_gold.py::test_gold_case[T35] PASSED                           [ 87%]
+tests/test_gold.py::test_gold_case[T36] FAILED                           [ 90%]
+tests/test_gold.py::test_gold_case[T37] PASSED                           [ 92%]
+tests/test_gold.py::test_gold_case[T38] PASSED                           [ 95%]
+tests/test_gold.py::test_gold_case[T39] PASSED                           [ 97%]
+tests/test_gold.py::test_gold_case[T40] PASSED                           [100%]
+
+=================================== FAILURES ===================================
+_____________________________ test_gold_case[T14] ______________________________
+
+case = {'id': 'T14', 'title': 'INDEL, FS=100 → LowFS не ставиться (поріг 200 для INDEL)', 'tags': [], 'facts': {'variant.variant_type': 'INDEL', 'variant.QD': 30.0, 'variant.FS': 100.0, 'variant.SOR': 1.0, ...}, ...}
+rules_path = 'models/history/rules_v1.0.json'
+
+    def test_gold_case(case, rules_path):
+        eng = Engine.from_file(rules_path, include_draft=case.get("include_draft", False))
+        res = eng.run(case["facts"])
+        for fact, exp in case.get("expect", {}).items():
+            assert fact in res.facts, f"{case['id']}: факт {fact} не виведено; спрацювали {res.fired}"
+            assert _same(res.facts[fact], exp), f"{case['id']}: {fact} = {res.facts[fact]!r}, очікувалось {exp!r}; спрацювали {res.fired}"
+        for fact, items in case.get("expect_contains", {}).items():
+            got = res.facts.get(fact, [])
+            assert all(i in got for i in items), f"{case['id']}: {fact} = {got!r}, очікувалось містить {items!r}"
+        for fact in case.get("absent", []):
+>           assert fact not in res.facts, f"{case['id']}: {fact} = {res.facts.get(fact)!r}, але мав бути не виведений; спрацювали {res.fired}"
+E           AssertionError: T14: variant.flags = ['LowFS'], але мав бути не виведений; спрацювали ['G02', 'G07', 'G12']
+E           assert 'variant.flags' not in {'variant.variant_type': 'INDEL', 'variant.QD': 30.0, 'variant.FS': 100.0, 'variant.SOR': 1.0, ...}
+E            +  where {'variant.variant_type': 'INDEL', 'variant.QD': 30.0, 'variant.FS': 100.0, 'variant.SOR': 1.0, ...} = Result(facts={'variant.variant_type': 'INDEL', 'variant.QD': 30.0, 'variant.FS': 100.0, 'variant.SOR': 1.0, 'variant.MQ': 60.0, 'variant.flags': ['LowFS'], 'variant.filter_status': 'FILTERED', 'variant.filter_scope': 'site'}, given={'variant.MQ', 'variant.FS', 'variant.SOR', 'variant.variant_type', 'variant.QD'}, trace=[{'rule': 'G02', 'title': 'FS > 60 → LowFS', 'cycle': 1, 'quote': 'Our hard filtering recommendations tell us to fail variants with an FS value greater than 60.', 'competing': [], 'matched': [{'cond': 'variant.FS > 60', 'fact': 'variant.FS', 'actual': 100.0}], 'effects': [{'op': 'add', 'fact': 'variant.flags', 'value': 'LowFS', 'applied': True}]}, {'rule': 'G07', 'title': 'Є прапорці → FILTERED', 'cycle': 2, 'quote': 'Hard-filtering consists of choosing specific thresholds for one or more annotations and throwing out any variants that have annotation values above or below the set thresholds.', 'competing': [], 'matched': [{'cond': 'variant.flags nonempty', 'fact': 'variant.flags', 'actual': ['LowFS']}], 'effects': [{'op': 'set', 'fact': 'variant.filter_status', 'value': 'FILTERED', 'applied': True}]}, {'rule': 'G12', 'title': 'Фільтрація стосується сайту, не геномів зразків', 'cycle': 3, 'quote': "Even with VQSR, variant sites are being filtered out, not individual sample's data.", 'competing': [], 'matched': [{'cond': "variant.filter_status in ['FILTERED']", 'fact': 'variant.filter_status', 'actual': 'FILTERED'}], 'effects': [{'op': 'set', 'fact': 'variant.filter_scope', 'value': 'site', 'applied': True}]}], conflicts=[]).facts
+
+tests/test_gold.py:21: AssertionError
+_____________________________ test_gold_case[T16] ______________________________
+
+case = {'id': 'T16', 'title': 'INDEL, ReadPosRankSum=-10 → прапорця немає (поріг -20 для INDEL)', 'tags': [], 'facts': {'variant.variant_type': 'INDEL', 'variant.QD': 30.0, 'variant.FS': 2.0, 'variant.SOR': 1.0, ...}, ...}
+rules_path = 'models/history/rules_v1.0.json'
+
+    def test_gold_case(case, rules_path):
+        eng = Engine.from_file(rules_path, include_draft=case.get("include_draft", False))
+        res = eng.run(case["facts"])
+        for fact, exp in case.get("expect", {}).items():
+            assert fact in res.facts, f"{case['id']}: факт {fact} не виведено; спрацювали {res.fired}"
+            assert _same(res.facts[fact], exp), f"{case['id']}: {fact} = {res.facts[fact]!r}, очікувалось {exp!r}; спрацювали {res.fired}"
+        for fact, items in case.get("expect_contains", {}).items():
+            got = res.facts.get(fact, [])
+            assert all(i in got for i in items), f"{case['id']}: {fact} = {got!r}, очікувалось містить {items!r}"
+        for fact in case.get("absent", []):
+>           assert fact not in res.facts, f"{case['id']}: {fact} = {res.facts.get(fact)!r}, але мав бути не виведений; спрацювали {res.fired}"
+E           AssertionError: T16: variant.flags = ['LowReadPosRankSum'], але мав бути не виведений; спрацювали ['G06', 'G07', 'G12']
+E           assert 'variant.flags' not in {'variant.variant_type': 'INDEL', 'variant.QD': 30.0, 'variant.FS': 2.0, 'variant.SOR': 1.0, ...}
+E            +  where {'variant.variant_type': 'INDEL', 'variant.QD': 30.0, 'variant.FS': 2.0, 'variant.SOR': 1.0, ...} = Result(facts={'variant.variant_type': 'INDEL', 'variant.QD': 30.0, 'variant.FS': 2.0, 'variant.SOR': 1.0, 'variant.MQ': 60.0, 'variant.ReadPosRankSum': -10.0, 'variant.flags': ['LowReadPosRankSum'], 'variant.filter_status': 'FILTERED', 'variant.filter_scope': 'site'}, given={'variant.ReadPosRankSum', 'variant.MQ', 'variant.FS', 'variant.SOR', 'variant.variant_type', 'variant.QD'}, trace=[{'rule': 'G06', 'title': 'ReadPosRankSum < -8.0 → LowReadPosRankSum', 'cycle': 1, 'quote': 'Our hard filtering threshold removes any variant with a ReadPosRankSum value less than -8.0.', 'competing': [], 'matched': [{'cond': 'variant.ReadPosRankSum < -8.0', 'fact': 'variant.ReadPosRankSum', 'actual': -10.0}], 'effects': [{'op': 'add', 'fact': 'variant.flags', 'value': 'LowReadPosRankSum', 'applied': True}]}, {'rule': 'G07', 'title': 'Є прапорці → FILTERED', 'cycle': 2, 'quote': 'Hard-filtering consists of choosing specific thresholds for one or more annotations and throwing out any variants that have annotation values above or below the set thresholds.', 'competing': [], 'matched': [{'cond': 'variant.flags nonempty', 'fact': 'variant.flags', 'actual': ['LowReadPosRankSum']}], 'effects': [{'op': 'set', 'fact': 'variant.filter_status', 'value': 'FILTERED', 'applied': True}]}, {'rule': 'G12', 'title': 'Фільтрація стосується сайту, не геномів зразків', 'cycle': 3, 'quote': "Even with VQSR, variant sites are being filtered out, not individual sample's data.", 'competing': [], 'matched': [{'cond': "variant.filter_status in ['FILTERED']", 'fact': 'variant.filter_status', 'actual': 'FILTERED'}], 'effects': [{'op': 'set', 'fact': 'variant.filter_scope', 'value': 'site', 'applied': True}]}], conflicts=[]).facts
+
+tests/test_gold.py:21: AssertionError
+_____________________________ test_gold_case[T18] ______________________________
+
+case = {'id': 'T18', 'title': 'SNP на екзонному кінці, лише LowFS, SOR=2.2 → REVIEW, не FILTERED', 'tags': ['exception-like'], 'facts': {'variant.variant_type': 'SNP', 'variant.QD': 30.0, 'variant.FS': 72.5, 'variant.SOR': 2.2, ...}, ...}
+rules_path = 'models/history/rules_v1.0.json'
+
+    def test_gold_case(case, rules_path):
+        eng = Engine.from_file(rules_path, include_draft=case.get("include_draft", False))
+        res = eng.run(case["facts"])
+        for fact, exp in case.get("expect", {}).items():
+            assert fact in res.facts, f"{case['id']}: факт {fact} не виведено; спрацювали {res.fired}"
+>           assert _same(res.facts[fact], exp), f"{case['id']}: {fact} = {res.facts[fact]!r}, очікувалось {exp!r}; спрацювали {res.fired}"
+E           AssertionError: T18: variant.filter_status = 'FILTERED', очікувалось 'REVIEW'; спрацювали ['G14', 'G02', 'G07', 'G12']
+E           assert False
+E            +  where False = _same('FILTERED', 'REVIEW')
+
+tests/test_gold.py:16: AssertionError
+_____________________________ test_gold_case[T20] ______________________________
+
+case = {'id': 'T20', 'title': "Мала панель + великий набір із відомими варіантами → конфлікт розв'язано пріоритетом", 'tags':...dataset_type': 'small_gene_panel', 'dataset.large_variant_set': True, 'dataset.has_curated_known_variants': True}, ...}
+rules_path = 'models/history/rules_v1.0.json'
+
+    def test_gold_case(case, rules_path):
+        eng = Engine.from_file(rules_path, include_draft=case.get("include_draft", False))
+        res = eng.run(case["facts"])
+        for fact, exp in case.get("expect", {}).items():
+            assert fact in res.facts, f"{case['id']}: факт {fact} не виведено; спрацювали {res.fired}"
+>           assert _same(res.facts[fact], exp), f"{case['id']}: {fact} = {res.facts[fact]!r}, очікувалось {exp!r}; спрацювали {res.fired}"
+E           AssertionError: T20: dataset.filtering_method = 'VQSR', очікувалось 'hard_filtering'; спрацювали ['G10', 'G09']
+E           assert False
+E            +  where False = _same('VQSR', 'hard_filtering')
+
+tests/test_gold.py:16: AssertionError
+_____________________________ test_gold_case[T36] ______________________________
+
+case = {'id': 'T36', 'title': 'Рідність «sibling» не уточнена → шанс невідомий, потрібне уточнення', 'tags': [], 'facts': {'proband.variant_gene': 'BRCA1', 'relative.relationship': 'sibling'}, ...}
+rules_path = 'models/history/rules_v1.0.json'
+
+    def test_gold_case(case, rules_path):
+        eng = Engine.from_file(rules_path, include_draft=case.get("include_draft", False))
+        res = eng.run(case["facts"])
+        for fact, exp in case.get("expect", {}).items():
+            assert fact in res.facts, f"{case['id']}: факт {fact} не виведено; спрацювали {res.fired}"
+            assert _same(res.facts[fact], exp), f"{case['id']}: {fact} = {res.facts[fact]!r}, очікувалось {exp!r}; спрацювали {res.fired}"
+        for fact, items in case.get("expect_contains", {}).items():
+            got = res.facts.get(fact, [])
+>           assert all(i in got for i in items), f"{case['id']}: {fact} = {got!r}, очікувалось містить {items!r}"
+E           AssertionError: T36: relative.notes = [], очікувалось містить ['clarify_full_or_half_sibling']
+E           assert False
+E            +  where False = all(<generator object test_gold_case.<locals>.<genexpr> at 0x7fb8b2f9fed0>)
+
+tests/test_gold.py:19: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_gold.py::test_gold_case[T14] - AssertionError: T14: variant...
+FAILED tests/test_gold.py::test_gold_case[T16] - AssertionError: T16: variant...
+FAILED tests/test_gold.py::test_gold_case[T18] - AssertionError: T18: variant...
+FAILED tests/test_gold.py::test_gold_case[T20] - AssertionError: T20: dataset...
+FAILED tests/test_gold.py::test_gold_case[T36] - AssertionError: T36: relativ...
+========================= 5 failed, 35 passed in 0.10s =========================

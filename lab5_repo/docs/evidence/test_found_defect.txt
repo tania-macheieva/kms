@@ -1,0 +1,6 @@
+# Фрагмент першого запуску tests/test_taxonomy.py (до виправлення), 2026-10-22
+FAILED tests/test_taxonomy.py::test_no_category_with_single_child
+    AssertionError: ['Proteomic data']      # категорія з єдиною дитиною (mass spectrum)
+1 failed, 18 passed
+# Виправлення: «Sequencing data» і «Proteomic data» об'єднано в «Omics data» (scripts/build_final_tax.py);
+# після цього: 19 passed (docs/evidence/pytest_all.txt).

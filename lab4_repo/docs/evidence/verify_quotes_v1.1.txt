@@ -1,0 +1,40 @@
+Перевірка цитат: models/rules.json
+id    status    quote      source  ok
+G01   verified  FOUND      gatk    OK
+G02   verified  FOUND      gatk    OK
+G03   verified  FOUND      gatk    OK
+G04   verified  FOUND      gatk    OK
+G05   verified  FOUND      gatk    OK
+G06   verified  FOUND      gatk    OK
+G07   verified  FOUND      gatk    OK
+G08   draft     NO_QUOTE   —       OK
+G09   verified  FOUND      gatk    OK
+G10   verified  FOUND      gatk    OK
+G11   verified  FOUND      gatk    OK
+G12   verified  FOUND      gatk    OK
+G13   verified  FOUND      gatk    OK
+G14   verified  FOUND      gatk    OK
+G15   verified  FOUND      gatk    OK
+G16   verified  FOUND      gatk    OK
+G17   draft     NO_QUOTE   —       OK
+C01   verified  FOUND      cdc     OK
+C02   verified  FOUND      cdc     OK
+C03   verified  FOUND      cdc     OK
+C04   verified  FOUND      cdc     OK
+C05   verified  FOUND      cdc     OK
+C06   verified  FOUND      cdc     OK
+C07   verified  FOUND      cdc     OK
+C08   verified  FOUND      cdc     OK
+C09   verified  FOUND      cdc     OK
+C10   verified  FOUND      cdc     OK
+C11   draft     NO_QUOTE   —       OK
+C12   verified  FOUND      cdc     OK
+C13   verified  FOUND      cdc     OK
+C14   verified  FOUND      cdc     OK
+C15   verified  FOUND      cdc     OK
+C16   verified  FOUND      cdc     OK
+C17   verified  FOUND      cdc     OK
+C18   verified  FOUND      cdc     OK
+
+Усього правил: 35; цитата знайдена: 32; без цитати (draft): 3; невідповідностей: 0
+Частка правил із підтвердженою цитатою: 91%

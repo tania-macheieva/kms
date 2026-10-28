@@ -1,0 +1,104 @@
+[
+ {
+  "surface": "strand bias",
+  "source": "gatk",
+  "evidence": "SB gives the raw counts of reads supporting each allele on the forward and reverse",
+  "reason": "немає поняття у словнику"
+ },
+ {
+  "surface": "QUAL",
+  "source": "gatk",
+  "evidence": "This is the variant confidence (from the QUAL field)",
+  "reason": "поле QUAL відсутнє у словнику"
+ },
+ {
+  "surface": "HaplotypeCaller",
+  "source": "gatk",
+  "evidence": "using HaplotypeCaller in GVCF mode, yielding a GVCF file for each sample.",
+  "reason": "конкретний інструмент відсутній у словнику"
+ },
+ {
+  "surface": "GenotypeGVCFs",
+  "source": "gatk",
+  "evidence": "then joint-called the GVCFs using GenotypeGVCFs, yielding an unfiltered VCF callset for the",
+  "reason": "конкретний інструмент відсутній у словнику"
+ },
+ {
+  "surface": "GVCF file",
+  "source": "gatk",
+  "evidence": "yielding a GVCF file for each sample.",
+  "reason": "формат GVCF відсутній у словнику"
+ },
+ {
+  "surface": "Genome in a Bottle truthset",
+  "source": "gatk",
+  "evidence": "annotating the raw callset using the Genome in a Bottle truthset for",
+  "reason": "еталонний набір відсутній у словнику"
+ },
+ {
+  "surface": "MQRankSum",
+  "source": "gatk",
+  "evidence": "This is the u-based z-approximation from the Rank Sum Test for mapping qualities.",
+  "reason": "конкретний показник відсутній (є лише загальний rank sum test)"
+ },
+ {
+  "surface": "ReadPosRankSum",
+  "source": "gatk",
+  "evidence": "from the Rank Sum Test for site position within reads.",
+  "reason": "конкретний показник відсутній (є лише загальний rank sum test)"
+ },
+ {
+  "surface": "heterozygous (het)",
+  "source": "gatk",
+  "evidence": "These two peaks correspond to variants that are mostly observed in heterozygous",
+  "reason": "поняття зиготності відсутнє у словнику"
+ },
+ {
+  "surface": "truth set",
+  "source": "gatk",
+  "evidence": "One of the most helpful ways to approach hard-filtering is to visualize the distribution of",
+  "reason": "поняття відсутнє у словнику"
+ },
+ {
+  "surface": "siblings",
+  "source": "cdc",
+  "evidence": "your mother, father, children, and siblings have a 1 in 2 (50%) chance of having the same",
+  "reason": "типи родичів відсутні у словнику (лише relative)"
+ },
+ {
+  "surface": "cousins",
+  "source": "cdc",
+  "evidence": "Your cousins and other more distantly related family members can have as much as a 1 in 8 (12.5%) chance of having the same",
+  "reason": "типи родичів відсутні у словнику (лише relative)"
+ },
+ {
+  "surface": "genetic counselor",
+  "source": "cdc",
+  "evidence": "A genetic counselor can help you decide if genetic testing is recommended.",
+  "reason": "роль фахівця відсутня у словнику"
+ },
+ {
+  "surface": "genetic test report",
+  "source": "cdc",
+  "evidence": "Provide your genetic test report to any genetic counselor or healthcare provider who orders testing for your family.",
+  "reason": "артефакт відсутній у словнику"
+ },
+ {
+  "surface": "fallopian tube cancer",
+  "source": "cdc",
+  "evidence": "and women with ovarian, peritoneal, or fallopian tube cancer.",
+  "reason": "окремі види раку відсутні у словнику"
+ },
+ {
+  "surface": "adults (18 years of age and older)",
+  "source": "cdc",
+  "evidence": "testing for these genetic changes should only be done on adults (18 years of age and older).",
+  "reason": "вікова група відсутня у словнику"
+ },
+ {
+  "surface": "insurance coverage",
+  "source": "cdc",
+  "evidence": "Some insurance companies will cover genetic testing for families if a known genetic change is found.",
+  "reason": "поняття відсутнє у словнику"
+ }
+]

@@ -1,0 +1,23 @@
+Класів: 78; проблем формату/самопосилань: 0; циклів залежностей між визначеннями: 0
+
+Залежності (клас → класи, згадані у відмінності):
+  Action → Event
+  CascadeTesting → Proband, Relative
+  Event → State
+  ExonEndVariant → Exon
+  FamilyHistory → Disease, Person, Relative
+  FirstDegreeRelative → Proband
+  GeneticCounseling → Relative
+  OfferCascadeTestingAction → Relative
+  PathogenicVariant → ClinicalSignificance
+  PathogenicVariantFoundEvent → PathogenicVariant, Proband
+  Relative → Proband
+  ReviewWithSORAction → Exon
+  RiskAssessment → Disease, Relative
+  SecondDegreeRelative → Proband
+  SituationTemplate → Action, Event, State
+  StrandOddsRatio → Exon
+  TestingOfferedState → Relative
+  TestingRequestedEvent → Relative
+  ThirdDegreeRelative → Proband
+  UntestedState → Relative

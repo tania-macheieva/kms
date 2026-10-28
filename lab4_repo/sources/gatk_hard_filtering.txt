@@ -1,0 +1,261 @@
+'gatk ©) = Signin
+Enter a question, topic or keyword... Q
+GATK / Technical Documentation / Algorithms
+Articles in this section Vv
+Hard-filtering germline short variants
+GATK Team
+November 6, 2024 at 8:35 AM - Updated
+This document aims to provide some insight into the logic of the generic hard-filtering
+recommendations that we provide as a substitute for VQOSR (the method we normally
+recommend for filtering germline short variants). We hope this will serve as a guide for
+adapting these recommendations or developing new filters that are appropriate for datasets
+that diverge significantly from what we usually work with.
+Note that the annotations described in this article are for samples called at the population
+level, in order to filter out if these sites have data that cannot be trusted for accurate results.
+Even with VQSR, variant sites are being filtered out, not individual sample's data.
+For instructions on how to apply hard filters in practice, see the documentation on JEXL
+filtering expressions and the Tool Docs for SelectVariants and VariantFiltration.
+Contents
+1. Overview
+2. Visualizing the distribution of annotation values
+3. QualByDepth (QD)
+4. FisherStrand (FS)
+5. StrandOddsRatio (SOR)
+6. RMSMappingQuality (MQ)
+7. MappingQualityRankSumTest (MQRankSum)
+8. ReadPosRankSumtTest (ReadPosRankSum)
+1. Overview
+Hard-filtering consists of choosing specific thresholds for one or more annotations and
+throwing out any variants that have annotation values above or below the set thresholds. By
+annotations, we mean properties or statistics that describe for each variant e.g. what the
+sequence context is like around the variant site, how many reads covered it, how many reads
+covered each allele, what proportion of reads were in forward vs reverse orientation, and so on.
+The problem with this approach is that it is very limiting because it forces you to look at each
+annotation dimension individually, and you end up throwing out good variants just because
+one of their annotations looks bad, or keeping bad variants in order to keep those good
+variants.
+In contrast, VQSR is more powerful because it uses machine-learning algorithms to learn from
+the data what are the annotation profiles of good variants (true positives) and of bad variants
+(false positives) in a particular dataset. This empowers you to pull out variants based on how
+they cluster together along different dimensions, and liberates you to a large extent from the
+linear tyranny of single-dimension thresholds.
+Unfortunately this method requires a large number of variants and well-curated known variant
+resources. For those of you working with small gene panels or with non-model organisms, this
+is a deal-breaker, and you have to fall back on hard-filtering.
+2. Visualizing the distribution of annotation values
+One of the most helpful ways to approach hard-filtering is to visualize the distribution of
+annotation values for a truth set called using a particular pipeline. These distributions are
+sharped by both the pipeline methodology and the underlying physical properties of the
+sequence data; so for a given pairing of data generation technology + analysis pipeline, you can
+derive filtering thresholds based on what the distributions look like for the truth set.
+Origin of the data used in the visualizations below
+We called variants on a whole genome trio (samples NAI2878, NA12891, NA12892, previously
+pre-processed) using HaplotypeCaller in GVCF mode, yielding a GVCF file for each sample. We
+then joint-called the GVCFs using GenotypeGVCFs, yielding an unfiltered VCF callset for the
+trio. Finally, we ran VQSR on the trio VCF, yielding the filtered callset. We'll consider that passing
+variants are true while filtered variants are false. Note that this could also be achieved by
+annotating the raw callset using the Genome in a Bottle truthset for NAI2878 as a resource
+(results are not exactly the same but similar enough for what follows.
+We then extracted annotation values for all calls using VariantsToTable. This produced a table
+that we then loaded into RStudio for plotting.
+Plotting methods and interpretation notes
+We made plots for six annotations that tend to be highly informative among the
+recommended annotations: QD, FS, SOR, MQ, MQRankSum and ReadPosRankSum. The same
+principles can be applied to most other annotations produced by GATK tools.
+All plots shown below are density plots generated using the ggplot2 library in R. On the x-axis
+are the annotation values, and on the y-axis are the density values. The area under the density
+plot gives you the probability of observing the annotation values. So, the entire area under all of
+the plots will be equal to 1. However, if you would like to know the probability of observing an
+annotation value between O and 1, you will have to take the area under the curve between O
+and 1.
+In plain English, this means that the plots shows you, for a given set of variants, what is the
+distribution of their annotation values. The caveat is that when we're comparing two or more
+sets of variants on the same plot, we have to keep in mind that they may contain very different
+numbers of variants, so the amount of variants in a given part of the distribution is not directly
+comparable; only their proportions are comparable.
+3. QualByDepth (QD)
+This is the variant confidence (from the QUAL field) divided by the unfiltered depth of non-
+hom-ref samples. This annotation is intended to normalize the variant quality in order to avoid
+inflation caused when there is deep coverage. For filtering purposes it is better to use QD than
+either QUAL or DP directly.
+The generic filtering recommendation for QD is to filter out variants with QD below 2. Why is
+that?
+First, let's look at the QD values distribution for unfiltered variants. Notice the values can be
+anywhere from 0-40. There are two peaks where the majority of variants are (around QD = 12
+and QD = 32). These two peaks correspond to variants that are mostly observed in heterozygous
+(het) versus mostly homozygous-variant (hom-var) states, respectively, in the called samples.
+This is because hom-var samples contribute twice as many reads supporting the variant than
+do het variants. We also see, to the left of the distribution, a "shoulder" of variants with QD
+hovering between O and 5.
+We expect to see a similar distribution profile in callsets generated from most types of high-
+throughput sequencing data, although values where the peaks form may vary.
+Now, let’s look at the plot of QD values for variants that passed VQSR and those that failed
+VQSR. Red indicates the variants that failed VQSR, and blue (green?) the variants that passed
+VQSR.
+We see that the majority of variants filtered out correspond to that low-QD "shoulder"
+(remember that since this is a density plot, the y-axis indicates proportion, not number of
+variants); that is what we would filter out with the generic recommendation of the threshold
+value 2 for QD.
+Notice however that VQSR has failed some variants that have a QD greater than 30! All those
+variants would have passed the hard filter threshold, but VQSR tells us that these variants
+looked artifactual in one or more other annotation dimensions. Conversely, although it is not
+obvious in the figure, we know that VQSR has passed some variants that have a QD less than 2,
+which hard filters would have eliminated from our callset.
+4. FisherStrand (FS)
+This is the Phred-scaled probability that there is strand bias at the site. Strand Bias tells us
+whether the alternate allele was seen more or less often on the forward or reverse strand than
+the reference allele. When there little to no strand bias at the site, the FS value will be close to O.
+Note: SB, SOR and FS are related but not the same! They all measure strand bias (a type of
+sequencing bias in which one DNA strand is favored over the other, which can result in
+incorrect evaluation of the amount of evidence observed for one allele vs. the other) in different
+ways. SB gives the raw counts of reads supporting each allele on the forward and reverse
+strand. FS is the result of using those counts in a Fisher's Exact Test. SOR is a related annotation
+that applies a different statistical test (using the SB counts) that is better for high coverage
+data.
+Let's look at the FS values for the unfiltered variants. The FS values have a very wide range; we
+made the x-axis log-scaled so the distribution is easier to see. Notice most variants have an FS
+value less than 10, and almost all variants have an FS value less than 100. However, there are
+indeed some variants with a value close to 400.
+The plot below shows FS values for variants that passed VQSR and failed VQSR.
+Notice most of the variants that fail have an FS value greater than 55. Our hard filtering
+recommendations tell us to fail variants with an FS value greater than 60. Notice that although
+we are able to remove many false positives by removing variants with FS greater than 60, we
+still keep many false positive variants. If we move the threshold to a lower value, we risk losing
+true positive variants.
+5. StrandOddsRatio (SOR)
+This is another way to estimate strand bias using a test similar to the symmetric odds ratio test.
+SOR was created because FS tends to penalize variants that occur at the ends of exons. Reads
+at the ends of exons tend to only be covered by reads in one direction and FS gives those
+variants a bad score. SOR will take into account the ratios of reads that cover both alleles.
+Let's look at the SOR values for the unfiltered variants. The SOR values range from O to greater
+than 9. Notice most variants have an SOR value less than 3, and almost all variants have an SOR
+value less than 9. However, there is a long tail of variants with a value greater than 9.
+The plot below shows SOR values for variants that passed VQSR and failed VQSR.
+Notice most of the variants that have an SOR value greater than 3 fail the VQSR filter. Although
+there is a non-negligible population of variants with an SOR value less than 3 that failed VQSR,
+our hard filtering recommendation of failing variants with an SOR value greater than 3 will at
+least remove the long tail of variants that show fairly clear bias according to the SOR test.
+6. RMSMappingQuality (MQ)
+This is the root mean square mapping quality over all the reads at the site. Instead of the
+average mapping quality of the site, this annotation gives the square root of the average of the
+squares of the mapping qualities at the site. It is meant to include the standard deviation of the
+mapping qualities. Including the standard deviation allows us to include the variation in the
+dataset. A low standard deviation means the values are all close to the mean, whereas a high
+standard deviation means the values are all far from the mean.When the mapping qualities are
+good at a site, the MQ will be around 60.
+Let’s check out the graph of MQ values for the unfiltered variants. Notice the very large peak
+around MQ = 60. Our recommendation is to fail any variant with an MQ value less than 40.0.
+You may argue that hard filtering any variant with an MQ value less than 50 is fine as well. This
+brings up an excellent point that our hard filtering recommendations are meant to be very
+lenient. We prefer to keep all potentially decent variants rather than get rid of a few bad
+variants.
+Let’s look at the VQSR pass vs fail variants. At first glance, it seems like VQSR has passed the
+variants in the high peak and failed any variants not in the peak.
+It is hard to tell which variants passed and failed, so let’s zoom in and see what exactly is
+happening.
+The plot above shows the x-axis from 59-61. Notice the variants in blue (the ones that passed) all
+have MQ around 60. However, some variants in red (the ones that failed) also have an MQ
+around 60.
+7. MappingQualityRankSumTest (MQRankSum)
+This is the u-based z-approximation from the Rank Sum Test for mapping qualities. It
+compares the mapping qualities of the reads supporting the reference allele and the alternate
+allele. A positive value means the mapping qualities of the reads supporting the alternate allele
+are higher than those supporting the reference allele; a negative value indicates the mapping
+qualities of the reference allele are higher than those supporting the alternate allele. A value
+close to zero is best and indicates little difference between the mapping qualities.
+Let's look at the distribution of values for MQRankSum in the unfiltered variants. Notice the
+values range from approximately -10.5 to 6.5. Our hard filter threshold is -12.5. There are no
+variants in this dataset that have MQRankSum less than -10.5! In this case, hard filtering would
+not fail any variants based on MQRankSum. Remember, our hard filtering recommendations
+are meant to be very lenient. If you do plot your annotation values for your samples and find
+none of your variants have MQRankSum less than -12.5, you may want to refine your hard filters.
+Our recommendations are indeed recommendations that you the scientist will want to refine
+yourself.
+Looking at the plot of pass VQSR vs fail VQSR variants, we see the variants with an
+MQRankSum value less than -2.5 fail VOQSR. However, the region between -2.5 to 2.5 contains
+both pass and fail variants. Are you noticing a trend here? It is very difficult to pick a threshold
+for hard filtering. If we pick -2.5 as our hard filtering threshold, we still have many variants that
+fail VQSR in our dataset. If we try to get rid of those variants, we will lose some good variants as
+well. It is up to you to decide how many false positives you would like to remove from your
+dataset vs how many true positives you would like to keep and adjust your threshold based on
+that.
+8. ReadPosRankSumfTest (ReadPosRankSum)
+The last annotation we will look at is ReadPosRankSum. This is the u-based z-approximation
+from the Rank Sum Test for site position within reads. It compares whether the positions of the
+reference and alternate alleles are different within the reads. Seeing an allele only near the
+ends of reads is indicative of error, because that is where sequencers tend to make the most
+errors. A negative value indicates that the alternate allele is found at the ends of reads more
+often than the reference allele; a positive value indicates that the reference allele is found at the
+ends of reads more often than the alternate allele. A value close to zero is best because it
+indicates there is little difference between the positions of the reference and alternate alleles in
+the reads.
+Notice the values for unfiltered variants fall mostly between -4 and 4. Our hard filtering
+threshold removes any variant with a ReadPosRankSum value less than -8.0. Again, there are
+no variants in this dataset that have a ReadPosRankSum value less than -8.0, but some
+datasets might. If you plot your variant annotations and find there are no variants that have a
+value less than or greater than one of our recommended cutoffs, you will have to refine them
+yourself based on your annotation plots.
+Looking at the VQSR pass vs fail variants, we can see VQSR has failed variants with
+ReadPosRankSum values less than -1.0 and greater than 3.5. However, notice VQSR has failed
+some variants that have values that pass VQSR.
+©) © @ C7
+Was this article helpful?
+22 out of 24 found this helpful
+Return to top (@)
+Related articles
+(How to) Filter variants either with VQSR or by hard-filtering
+VariantFiltration
+JEXL filtering expressions
+Structural variant (SV) discovery
+FilterMutectCalls
+7 comments Sort by v
+) Bhoom Suktitipat
+q April 4, 2020 at 6:09 PM
+As of today, some of the images on this post do not show up. | checked the links of these
+images and they appeared to be in "Google Drive"
+@2© a
+Chase He
+October 7, 2020 at 10:56 AM
+Hi all, in brief, the recommended thresholds for getting passed variants are QD<2.0, FS>60.0,
+SOR>3.0, MQ<40.0, MQRankSum < -12.5 and ReadPosRankSum < -8.0. Am | right?
+OEIC) o
+NOY NawarDalila
+“3 March 4, 2021 at 11:37 AM
+Chase He yes this is right.
+®o® a
+Marsha Wallace
+September 23, 2021 at 4:28 PM - Edited
+This is a great overview of filtering parameters.
+It would be useful to contextualize how the hard filter recommendations in this article differ
+between SNPs vs INDELs as seen in: https://gatk.broadinstitute.org/hc/en-
+us/articles/360035531112--How-to-Filter-variants-either-with-VQSR-or-by-hard-filtering
+Some key differences listed in that article include:
+Filter SNP INDEL
+FS >60 >200
+ReadPosRankSum< -8.0 < -20.0
+QUAL < 30.0< 30.0
+SOR >3.0 NONE
+MQ < 40.0NONE
+MQRankSum < -12.5NONE
+Noticeably, a QUAL < 30.0 is recommended in the other hard filtering article for both SNPs and
+INDELs, but here it's indicated that 'For filtering purposes it is better to use QD than QUAL
+directly’.
+It would be useful to have a bit more in-depth explanation in this article about the SNP vs
+INDEL differences in filtering threshold recommendations.
+®Os® a
+Judith Risse
+January 18, 2022 at 12:48 PM
+Nice article about how to arrive at the filtering conditions. Is there any possibility to make the
+VariantsToTable command and the R-code available? Thx
+®2© a
+Dahn-young Dong
+February 13, 2024 at 7:50 PM
+The images are gone, could you double check the links?
+Best,
+OFZO) a
+Morteza Karbasi
+November 6, 2024 at 8:35 AM
+you can find the pictures of this section from following link:
+algorithms/6925-Understanding-and-adapting-the-generic-hardfiltering-recommendations
+O1® a
+Please sign in to leave a comment.
