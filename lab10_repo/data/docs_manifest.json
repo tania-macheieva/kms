@@ -271,7 +271,7 @@
   "sensitivity": "internal",
   "lang": "uk",
   "license": "author's own work (not redistributed)",
-  "source_url": "local:lab4_repo/docs/scope_cq.md",
+  "source_url": "local:lab04_repo/docs/scope_cq.md",
   "raw_chars": 4821
  },
  {
@@ -282,7 +282,7 @@
   "sensitivity": "internal",
   "lang": "uk",
   "license": "author's own work (not redistributed)",
-  "source_url": "local:lab4_repo/docs/rules_analysis.md",
+  "source_url": "local:lab04_repo/docs/rules_analysis.md",
   "raw_chars": 4919
  },
  {
@@ -293,7 +293,7 @@
   "sensitivity": "restricted",
   "lang": "uk",
   "license": "author's own work (not redistributed)",
-  "source_url": "local:lab7_repo/docs/reasoner_log.md",
+  "source_url": "local:lab07_repo/docs/reasoner_log.md",
   "raw_chars": 5404
  },
  {
@@ -304,7 +304,7 @@
   "sensitivity": "restricted",
   "lang": "uk",
   "license": "author's own work (not redistributed)",
-  "source_url": "local:lab7_repo/docs/onto_eval.md",
+  "source_url": "local:lab07_repo/docs/onto_eval.md",
   "raw_chars": 10697
  },
  {
@@ -315,7 +315,7 @@
   "sensitivity": "restricted",
   "lang": "uk",
   "license": "author's own work (not redistributed)",
-  "source_url": "local:lab7_repo/docs/situations_check.md",
+  "source_url": "local:lab07_repo/docs/situations_check.md",
   "raw_chars": 3146
  },
  {
@@ -326,7 +326,7 @@
   "sensitivity": "restricted",
   "lang": "uk",
   "license": "author's own work (not redistributed)",
-  "source_url": "local:lab8_repo/docs/sparql_results.md",
+  "source_url": "local:lab08_repo/docs/sparql_results.md",
   "raw_chars": 12685
  },
  {
@@ -337,7 +337,7 @@
   "sensitivity": "restricted",
   "lang": "uk",
   "license": "author's own work (not redistributed)",
-  "source_url": "local:lab8_repo/docs/shacl_report.md",
+  "source_url": "local:lab08_repo/docs/shacl_report.md",
   "raw_chars": 6468
  },
  {
@@ -348,7 +348,7 @@
   "sensitivity": "internal",
   "lang": "uk",
   "license": "author's own work (not redistributed)",
-  "source_url": "local:lab9_repo/docs/cq_mapping.md",
+  "source_url": "local:lab09_repo/docs/cq_mapping.md",
   "raw_chars": 5247
  },
  {
@@ -359,7 +359,7 @@
   "sensitivity": "restricted",
   "lang": "uk",
   "license": "author's own work (not redistributed)",
-  "source_url": "local:lab9_repo/docs/cypher_results.md",
+  "source_url": "local:lab09_repo/docs/cypher_results.md",
   "raw_chars": 13771
  }
 ]

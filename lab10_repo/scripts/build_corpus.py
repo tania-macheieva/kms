@@ -34,11 +34,11 @@ EXT = [
  ("gatk_funco_refdiff", "broadinstitute/gatk", "docs/funcotator/forum_info/forum_post_human_reference_discrepancies.md", "reference", "Apache-2.0"),
 ]
 INT = [  # own project documents (Ukrainian); restricted = contain synthetic pedigree/patient-like records
- ("int_cq_scope", "lab4_repo/docs/scope_cq.md", "internal-report"), ("int_rules", "lab4_repo/docs/rules_analysis.md", "internal-report"),
- ("int_reasoner", "lab7_repo/docs/reasoner_log.md", "internal-report"), ("int_onto_eval", "lab7_repo/docs/onto_eval.md", "internal-report"),
- ("int_situations", "lab7_repo/docs/situations_check.md", "internal-report"), ("int_sparql", "lab8_repo/docs/sparql_results.md", "internal-report"),
- ("int_shacl", "lab8_repo/docs/shacl_report.md", "internal-report"), ("int_cq_map", "lab9_repo/docs/cq_mapping.md", "internal-report"),
- ("int_cypher", "lab9_repo/docs/cypher_results.md", "internal-report"),
+ ("int_cq_scope", "lab04_repo/docs/scope_cq.md", "internal-report"), ("int_rules", "lab04_repo/docs/rules_analysis.md", "internal-report"),
+ ("int_reasoner", "lab07_repo/docs/reasoner_log.md", "internal-report"), ("int_onto_eval", "lab07_repo/docs/onto_eval.md", "internal-report"),
+ ("int_situations", "lab07_repo/docs/situations_check.md", "internal-report"), ("int_sparql", "lab08_repo/docs/sparql_results.md", "internal-report"),
+ ("int_shacl", "lab08_repo/docs/shacl_report.md", "internal-report"), ("int_cq_map", "lab09_repo/docs/cq_mapping.md", "internal-report"),
+ ("int_cypher", "lab09_repo/docs/cypher_results.md", "internal-report"),
 ]
 PERSON = re.compile(r"\b(Olena|Iryna|Petro|Marta|Sofiia|Halyna|Andrii)\b")
 
