@@ -1,0 +1,8 @@
+ANNOTATION INSTRUCTION v1 (pilot) - domain: documentation of genomic-variant analysis tools
+
+Task: for every passage read the text and write (a) entity mentions and (b) relation statements. Use ONLY information stated in the passage.
+Entity types (closed list): Tool (software, command or subcommand, e.g. bcftools annotate, HaplotypeCaller), Procedure (analysis step, e.g. variant calling, variant annotation, filtering),
+FileFormat (data/file format, e.g. VCF, BAM), Metric (quality annotation/statistic, e.g. QD, FS, mapping quality), Option (command-line option or parameter, e.g. --merge-logic), Resource (database, reference genome or collection, e.g. dbSNP, GRCh38).
+Relation types (closed list, subject -> object): ACCEPTS Tool->FileFormat (input); PRODUCES Tool->FileFormat (output); PERFORMS Tool->Procedure; HAS_OPTION Tool->Option; COMPUTES_METRIC Tool->Metric; USES_RESOURCE Tool->Resource; INVOKES Tool->Tool.
+Rules: 1) annotate only what the text states, no outside knowledge. 2) "evidence" must be a verbatim span copied from the passage. 3) subject/object are written exactly as in the text (surface form). 4) one statement per (subject, relation, object) per passage. 5) type constraints above must hold. 6) skip statements about people or institutions.
+Output: JSON list [{"passage_id": ..., "entities": [{"text": ..., "type": ...}], "relations": [{"subject": ..., "relation": ..., "object": ..., "evidence": ...}]}]

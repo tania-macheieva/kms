@@ -1,0 +1,134 @@
+method,type,category,passage_id,subject,relation,object,evidence
+rules,FP,extra statement (not in gold),P012,Strelka,COMPUTES_METRIC,DP,"Plots will show:  - Stats by non-reference allele frequency, depth distribution, stats by "
+rules,FP,extra statement (not in gold),P020,nextflow,HAS_OPTION,--resource," dbsnp_vqsr = '--resource:dbsnp,known=false,training=true,truth=false,prior=2.0 dbsnp_146."
+rules,FP,extra statement (not in gold),P021,nf-core/sarek,HAS_OPTION,--input,--input /workspace/gitpod/training/data/reads/sarek-input.csv \
+rules,FP,extra statement (not in gold),P021,nf-core/sarek,HAS_OPTION,--outdir,--outdir . \
+rules,FP,extra statement (not in gold),P021,nf-core/sarek,HAS_OPTION,--tools,"--tools haplotypecaller,snpeff \"
+rules,FP,extra statement (not in gold),P021,snpeff,HAS_OPTION,--genome,--genome GRCh38chr21 \
+rules,FP,wrong subject,P021,snpeff,HAS_OPTION,--joint_germline,--joint_germline \
+rules,FP,wrong subject,P021,snpeff,HAS_OPTION,--intervals,--intervals /workspace/gitpod/training/exome_target_hg38_chr21.bed \
+rules,FP,wrong subject,P021,snpeff,HAS_OPTION,--wes,--wes
+rules,FP,extra statement (not in gold),P029,nf-core/raredisease,HAS_OPTION,-r,- **Reproducibility:** Specify a pipeline version when running the pipeline on your data. 
+rules,FP,wrong subject,P030,nf-core/configs,HAS_OPTION,-profile,"If `-profile` is not specified, the pipeline will run locally and expect all software to b"
+rules,FP,extra statement (not in gold),P039,bcftools,HAS_OPTION,--vcf-ids,Convert 23andme results into VCF — .gen (with --3N6 --vcf-ids)
+rules,FP,extra statement (not in gold),P040,bcftools convert,HAS_OPTION,--tsv2vcf,"bcftools convert -c ID,CHROM,POS,AA -s SampleName -f 23andme-ref.fa --tsv2vcf 23andme.txt "
+rules,FP,extra statement (not in gold),P041,bcftools gtcheck,HAS_OPTION,--pairs, --pairs to be given.
+rules,FP,wrong subject,P064,GATK With,HAS_OPTION,--annotation-override,Required and defaults to false. — The Name or 0-based index of the column containing the e
+rules,FP,extra statement (not in gold),P064,Funcotator,HAS_OPTION,--variant,./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-v
+rules,FP,extra statement (not in gold),P064,Funcotator,HAS_OPTION,--reference,./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-v
+rules,FP,extra statement (not in gold),P064,Funcotator,HAS_OPTION,--ref-version,./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-v
+rules,FP,extra statement (not in gold),P064,Funcotator,HAS_OPTION,--data-sources-path,./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-v
+rules,FP,extra statement (not in gold),P064,Funcotator,HAS_OPTION,--output,./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-v
+rules,FP,extra statement (not in gold),P064,Funcotator,HAS_OPTION,--output-file-format,./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-v
+rules,FN,missed (no candidate),P009,CNNScoreVariants,COMPUTES_METRIC,score,This tool annotates each variant with a score indicating the model's prediction of the qua
+rules,FN,missed (no candidate),P009,FilterVariantTranches,PERFORMS,apply filters,To apply filters based on those scores run the FilterVariantTranches tool with SNP and IND
+rules,FN,missed (no candidate),P009,GATK Germline Single Sample Variant Calling,INVOKES,HaplotypeCaller,uses HaplotypeCaller in its default single-sample mode to call variants.
+rules,FN,missed (no candidate),P009,GATK HaplotypeCaller,PERFORMS,calls germline SNPs and indels,GATK HaplotypeCaller calls germline SNPs and indels via local re-assembly of haplotypes.
+rules,FN,missed (no candidate),P009,GATK HaplotypeCaller,PRODUCES,VCF,The VCF that HaplotypeCaller emits errors on the side of sensitivity
+rules,FN,missed (no candidate),P010,ASCAT,INVOKES,AlleleCount,This is done internally using the software AlleleCount.
+rules,FN,missed (no candidate),P010,ASCAT,PERFORMS,allele-specific copy number analysis,ASCAT is a software for performing allele-specific copy number analysis of tumor samples a
+rules,FN,missed (no candidate),P010,ASCAT,PERFORMS,estimating tumor ploidy and purity,ASCAT is a software for performing allele-specific copy number analysis of tumor samples a
+rules,FN,missed (no candidate),P011,BCFtools annotate,ACCEPTS,VCF,BCFtools annotate is used to add annotations to VCF files.
+rules,FN,missed (no candidate),P011,BCFtools annotate,PERFORMS,add annotations,BCFtools annotate is used to add annotations to VCF files.
+rules,FN,missed (no candidate),P013,VEP,PERFORMS,determine the effects of all sorts of variants,"VEP (Variant Effect Predictor), based on `Ensembl`, is a tool to determine the effects of "
+rules,FN,missed (no candidate),P019,Sarek,ACCEPTS,CSV,"The input data should be provided in a CSV file, according to a format that is largely com"
+rules,FN,missed (no candidate),P021,nf-core/sarek,ACCEPTS,FASTQ,The whole pipeline from FASTQ input to annotated VCF should run in about 25 minutes.
+rules,FN,missed (matched by other subject),P021,nf-core/sarek,HAS_OPTION,--intervals,"Notice that we have selected `--joint_germline` to enable the joint-genotyping workflow, w"
+rules,FN,missed (matched by other subject),P021,nf-core/sarek,HAS_OPTION,--joint_germline,"Notice that we have selected `--joint_germline` to enable the joint-genotyping workflow, w"
+rules,FN,missed (matched by other subject),P021,nf-core/sarek,HAS_OPTION,--wes,"Notice that we have selected `--joint_germline` to enable the joint-genotyping workflow, w"
+rules,FN,missed (no candidate),P021,nf-core/sarek,PRODUCES,VCF,The whole pipeline from FASTQ input to annotated VCF should run in about 25 minutes.
+rules,FN,missed (no candidate),P028,VerifyBamID2,PERFORMS,check for contamination,Used by VerifyBamID2 to check for contamination.
+rules,FN,missed (no candidate),P038,bcftools cnv,INVOKES,matplotlib,call matplotlib to produce plots for chromosomes with quality at least float
+rules,FN,missed (no candidate),P040,bcftools convert,PRODUCES,VCF,"# Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first c"
+rules,FN,missed (no candidate),P041,bcftools gtcheck,HAS_OPTION,-g,"If the -g option is given, the identity of samples from 'query.vcf.gz' is checked against "
+rules,FN,missed (no candidate),P041,bcftools gtcheck,PERFORMS,Checks sample identity,Checks sample identity.
+rules,FN,missed (no candidate),P043,bcftools mpileup,ACCEPTS,BAM,Generate VCF or BCF containing genotype likelihoods for one or multiple alignment (BAM or 
+rules,FN,missed (no candidate),P043,bcftools mpileup,ACCEPTS,CRAM,Generate VCF or BCF containing genotype likelihoods for one or multiple alignment (BAM or 
+rules,FN,missed (no candidate),P043,bcftools mpileup,COMPUTES_METRIC,genotype likelihoods,Generate VCF or BCF containing genotype likelihoods for one or multiple alignment (BAM or 
+rules,FN,missed (no candidate),P043,bcftools mpileup,PRODUCES,BCF,Generate VCF or BCF containing genotype likelihoods for one or multiple alignment (BAM or 
+rules,FN,missed (no candidate),P043,bcftools mpileup,PRODUCES,VCF,Generate VCF or BCF containing genotype likelihoods for one or multiple alignment (BAM or 
+rules,FN,missed (no candidate),P051,./gradlew jacocoTestReport,PERFORMS,compute coverage reports,"To run tests and compute coverage reports, run **`./gradlew jacocoTestReport`**."
+rules,FN,missed (no candidate),P060,LiftOver,HAS_OPTION,TAGS_TO_REVERSE,You should check the TAGS_TO_REVERSE parameter that was used during the LiftOver to be sur
+llm,FP,extra statement (not in gold),P009,CNNScoreVariants,PERFORMS,annotates each variant with a score,This tool annotates each variant with a score indicating the model's prediction of the qua
+llm,FP,extra statement (not in gold),P010,ASCAT,PERFORMS,infers tumor purity and ploidy,It infers tumor purity and ploidy and calculates whole-genome allele-specific copy number 
+llm,FP,extra statement (not in gold),P010,ASCAT,PERFORMS,calculates whole-genome allele-specific copy number profiles,It infers tumor purity and ploidy and calculates whole-genome allele-specific copy number 
+llm,FP,extra statement (not in gold),P010,ASCAT,ACCEPTS,BAM,Running ASCAT on NGS data requires that the BAM files are converted into BAF and LogR valu
+llm,FP,extra statement (not in gold),P011,BCFtools annotate,PERFORMS,add annotations to VCF files,BCFtools annotate is used to add annotations to VCF files.
+llm,FP,extra statement (not in gold),P021,nf-core/sarek,HAS_OPTION,--input,nextflow run nf-core/sarek -r 3.4.0 \ --input /workspace/gitpod/training/data/reads/sarek-
+llm,FP,extra statement (not in gold),P021,nf-core/sarek,HAS_OPTION,--outdir,nextflow run nf-core/sarek -r 3.4.0 \ --input /workspace/gitpod/training/data/reads/sarek-
+llm,FP,extra statement (not in gold),P021,nf-core/sarek,HAS_OPTION,--tools,nextflow run nf-core/sarek -r 3.4.0 \ --input /workspace/gitpod/training/data/reads/sarek-
+llm,FP,extra statement (not in gold),P021,nf-core/sarek,HAS_OPTION,--genome,nextflow run nf-core/sarek -r 3.4.0 \ --input /workspace/gitpod/training/data/reads/sarek-
+llm,FP,extra statement (not in gold),P021,nf-core/sarek,INVOKES,haplotypecaller,nextflow run nf-core/sarek -r 3.4.0 \ --input /workspace/gitpod/training/data/reads/sarek-
+llm,FP,extra statement (not in gold),P021,nf-core/sarek,INVOKES,snpeff,nextflow run nf-core/sarek -r 3.4.0 \ --input /workspace/gitpod/training/data/reads/sarek-
+llm,FP,extra statement (not in gold),P021,nf-core/sarek,USES_RESOURCE,GRCh38chr21,nextflow run nf-core/sarek -r 3.4.0 \ --input /workspace/gitpod/training/data/reads/sarek-
+llm,FP,extra statement (not in gold),P021,nf-core/sarek,PERFORMS,joint-genotyping,"Notice that we have selected `--joint_germline` to enable the joint-genotyping workflow, w"
+llm,FP,extra statement (not in gold),P021,nf-core/sarek,ACCEPTS,bed,"Notice that we have selected `--joint_germline` to enable the joint-genotyping workflow, w"
+llm,FP,extra statement (not in gold),P029,nf-core/raredisease,HAS_OPTION,-r,"Then specify this when running the pipeline with `-r`, for example, `-r 1.3.1`."
+llm,FP,extra statement (not in gold),P030,nf-core/raredisease,USES_RESOURCE,nf-core/configs,The pipeline also dynamically loads configurations from https://github.com/nf-core/configs
+llm,FP,extra statement (not in gold),P031,Nextflow,PERFORMS,handles job submissions,Nextflow handles job submissions and supervises the running jobs.
+llm,FP,extra statement (not in gold),P031,Nextflow,PERFORMS,supervises the running jobs,Nextflow handles job submissions and supervises the running jobs.
+llm,FP,fabricated (evidence does not support),P038,bcftools cnv,HAS_OPTION,-c,### General Options:
+llm,FP,fabricated (evidence does not support),P038,bcftools cnv,HAS_OPTION,-f,### General Options:
+llm,FP,fabricated (evidence does not support),P038,bcftools cnv,HAS_OPTION,-o,### General Options:
+llm,FP,fabricated (evidence does not support),P038,bcftools cnv,HAS_OPTION,-p,### General Options:
+llm,FP,fabricated (evidence does not support),P038,bcftools cnv,HAS_OPTION,-R,### General Options:
+llm,FP,fabricated (evidence does not support),P038,bcftools cnv,HAS_OPTION,-s,### General Options:
+llm,FP,fabricated (evidence does not support),P038,bcftools cnv,HAS_OPTION,-T,### General Options:
+llm,FP,fabricated (evidence does not support),P038,bcftools cnv,HAS_OPTION,-v,### General Options:
+llm,FP,extra statement (not in gold),P040,bcftools convert,HAS_OPTION,-c,"bcftools convert -c ID,CHROM,POS,AA -s SampleName -f 23andme-ref.fa --tsv2vcf 23andme.txt "
+llm,FP,extra statement (not in gold),P040,bcftools convert,HAS_OPTION,-s,"bcftools convert -c ID,CHROM,POS,AA -s SampleName -f 23andme-ref.fa --tsv2vcf 23andme.txt "
+llm,FP,extra statement (not in gold),P040,bcftools convert,HAS_OPTION,-f,"bcftools convert -c ID,CHROM,POS,AA -s SampleName -f 23andme-ref.fa --tsv2vcf 23andme.txt "
+llm,FP,extra statement (not in gold),P040,bcftools convert,HAS_OPTION,--tsv2vcf,"bcftools convert -c ID,CHROM,POS,AA -s SampleName -f 23andme-ref.fa --tsv2vcf 23andme.txt "
+llm,FP,extra statement (not in gold),P040,bcftools convert,HAS_OPTION,-o,"bcftools convert -c ID,CHROM,POS,AA -s SampleName -f 23andme-ref.fa --tsv2vcf 23andme.txt "
+llm,FP,fabricated (evidence does not support),P041,bcftools gtcheck,HAS_OPTION,-e,Exclude sites from query file ('qry:') or genotype file ('gt:') for which EXPRESSION is tr
+llm,FP,fabricated (evidence does not support),P042,bcftools merge,HAS_OPTION,-m,The option controls what types of multiallelic records can be created.
+llm,FP,fabricated (evidence does not support),P044,bcftools query,HAS_OPTION,-u,"do not throw an error if there are undefined tags in the format string,"
+llm,FP,fabricated (evidence does not support),P044,bcftools query,HAS_OPTION,-v,process multiple VCFs listed in the file
+llm,FP,fabricated (evidence does not support),P045,bcftools roh,HAS_OPTION,-a,### HMM Options:
+llm,FP,fabricated (evidence does not support),P045,bcftools roh,HAS_OPTION,-H,### HMM Options:
+llm,FP,fabricated (evidence does not support),P045,bcftools roh,HAS_OPTION,-V,"estimate HMM parameters using Baum-Welch algorithm, using the convergence threshold"
+llm,FP,extra statement (not in gold),P045,bcftools roh,PERFORMS,estimate HMM parameters,"estimate HMM parameters using Baum-Welch algorithm, using the convergence threshold"
+llm,FP,extra statement (not in gold),P050,localJar,PERFORMS,Builds *only* the GATK jar used for running tools locally,Builds *only* the GATK jar used for running tools locally (not on a Spark cluster).
+llm,FP,extra statement (not in gold),P050,sparkJar,PERFORMS,Builds *only* the GATK jar used for running tools on a Spark cluster,Builds *only* the GATK jar used for running tools on a Spark cluster (rather than locally)
+llm,FP,extra statement (not in gold),P050,./gradlew,PERFORMS,remove previous builds,"To remove previous builds, run:"
+llm,FP,extra statement (not in gold),P052,./gradlew localJar,PERFORMS,Build a full GATK4 jar,Build a full GATK4 jar using `./gradlew localJar`
+llm,FP,extra statement (not in gold),P053,Zenhub,PERFORMS,organize and track github issues,We use Zenhub to organize and track github issues.
+llm,FP,extra statement (not in gold),P064,Funcotator,HAS_OPTION,--variant,./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-v
+llm,FP,extra statement (not in gold),P064,Funcotator,HAS_OPTION,--reference,./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-v
+llm,FP,extra statement (not in gold),P064,Funcotator,HAS_OPTION,--ref-version,./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-v
+llm,FP,extra statement (not in gold),P064,Funcotator,HAS_OPTION,--data-sources-path,./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-v
+llm,FP,extra statement (not in gold),P064,Funcotator,HAS_OPTION,--output,./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-v
+llm,FP,extra statement (not in gold),P064,Funcotator,HAS_OPTION,--output-file-format,./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-v
+llm,FP,extra statement (not in gold),P064,./gatk,INVOKES,Funcotator,./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-v
+llm,FP,extra statement (not in gold),P064,Funcotator,PRODUCES,MAF,./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-v
+llm,FP,extra statement (not in gold),P064,Funcotator,USES_RESOURCE,funcotator_dataSources.v1.2.20180329,./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-v
+llm,FN,missed (no candidate),P009,CNNScoreVariants,COMPUTES_METRIC,score,This tool annotates each variant with a score indicating the model's prediction of the qua
+llm,FN,missed (no candidate),P009,GATK Germline Single Sample Variant Calling,INVOKES,HaplotypeCaller,uses HaplotypeCaller in its default single-sample mode to call variants.
+llm,FN,missed (no candidate),P009,GATK HaplotypeCaller,PRODUCES,VCF,The VCF that HaplotypeCaller emits errors on the side of sensitivity
+llm,FN,missed (no candidate),P011,BCFtools annotate,PERFORMS,add annotations,BCFtools annotate is used to add annotations to VCF files.
+llm,FN,missed (no candidate),P019,Sarek,ACCEPTS,CSV,"The input data should be provided in a CSV file, according to a format that is largely com"
+llm,FN,missed (no candidate),P021,nf-core/sarek,PRODUCES,VCF,The whole pipeline from FASTQ input to annotated VCF should run in about 25 minutes.
+llm,FN,missed (no candidate),P028,VerifyBamID2,PERFORMS,check for contamination,Used by VerifyBamID2 to check for contamination.
+llm,FN,missed (no candidate),P030,Nextflow,HAS_OPTION,-profile,Use this parameter to choose a configuration profile.
+llm,FN,missed (no candidate),P038,bcftools cnv,HAS_OPTION,--AF-file,"-f, --AF-file file::"
+llm,FN,missed (no candidate),P038,bcftools cnv,HAS_OPTION,--control-sample,"-c, --control-sample string::"
+llm,FN,missed (no candidate),P038,bcftools cnv,HAS_OPTION,--output-dir,"-o, --output-dir path::"
+llm,FN,missed (no candidate),P038,bcftools cnv,HAS_OPTION,--plot-threshold,"-p, --plot-threshold float::"
+llm,FN,missed (no candidate),P038,bcftools cnv,HAS_OPTION,--query-sample,"-s, --query-sample string::"
+llm,FN,missed (no candidate),P038,bcftools cnv,HAS_OPTION,--regions,"-r, --regions chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::"
+llm,FN,missed (no candidate),P038,bcftools cnv,HAS_OPTION,--regions-file,"-R, --regions-file file::"
+llm,FN,missed (no candidate),P038,bcftools cnv,HAS_OPTION,--targets,"-t, --targets LIST::"
+llm,FN,missed (no candidate),P038,bcftools cnv,HAS_OPTION,--targets-file,"-T, --targets-file FILE::"
+llm,FN,missed (no candidate),P038,bcftools cnv,HAS_OPTION,--verbosity,"-v, --verbosity INT::"
+llm,FN,missed (no candidate),P040,bcftools convert,PRODUCES,VCF,"# Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first c"
+llm,FN,missed (no candidate),P041,bcftools gtcheck,HAS_OPTION,--exclude,"-e, --exclude [qry|gt]:EXPRESSION::"
+llm,FN,missed (no candidate),P042,bcftools merge,HAS_OPTION,--merge,"-m, --merge snps|indels|both|snp-ins-del|all|none|id[,'*']::"
+llm,FN,missed (no candidate),P044,bcftools query,HAS_OPTION,--allow-undef-tags,"-u, --allow-undef-tags::"
+llm,FN,missed (no candidate),P044,bcftools query,HAS_OPTION,--targets-file,"-T, --targets-file file::"
+llm,FN,missed (no candidate),P044,bcftools query,HAS_OPTION,--targets-overlap,--targets-overlap '0'|'1'|'2'::
+llm,FN,missed (no candidate),P044,bcftools query,HAS_OPTION,--vcf-list,"-v, --vcf-list FILE::"
+llm,FN,missed (no candidate),P044,bcftools query,HAS_OPTION,--verbosity,--verbosity INT::
+llm,FN,missed (no candidate),P045,bcftools roh,HAS_OPTION,--az-to-hw,"-H, --az-to-hw FLOAT::"
+llm,FN,missed (no candidate),P045,bcftools roh,HAS_OPTION,--hw-to-az,"-a, --hw-to-az FLOAT::"
+llm,FN,missed (no candidate),P045,bcftools roh,HAS_OPTION,--viterbi-training,"-V, --viterbi-training FLOAT::"
+llm,FN,missed (no candidate),P060,LiftOver,HAS_OPTION,TAGS_TO_REVERSE,You should check the TAGS_TO_REVERSE parameter that was used during the LiftOver to be sur

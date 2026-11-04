@@ -1,0 +1,322 @@
+[
+ {
+  "passage_id": "P001",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 1,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P002",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 3,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P003",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P004",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P005",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P006",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 2,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P007",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 1,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P008",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 3,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P014",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P015",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P016",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P017",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P018",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 1,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P022",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P023",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P024",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P025",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 1,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P026",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P027",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 3,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P033",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 2,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P034",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 2,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P035",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P046",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P047",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P048",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P054",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P055",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P056",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P057",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 5,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P058",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 4,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P059",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 1,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P065",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P066",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P067",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P068",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P069",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P070",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 1,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P071",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 8,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P072",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 6,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ },
+ {
+  "passage_id": "P073",
+  "attempts": 1,
+  "first_errors": [],
+  "first_n_relations": 0,
+  "first_bad_evidence": 0,
+  "first_bad_entities": 0
+ }
+]

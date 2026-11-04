@@ -1,0 +1,963 @@
+[
+ {
+  "id": "E001",
+  "passage_id": "P001",
+  "text": "detect variants",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E002",
+  "passage_id": "P001",
+  "text": "nf-core/modules",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E003",
+  "passage_id": "P002",
+  "text": "CSV",
+  "types_proposed": [
+   "FileFormat"
+  ]
+ },
+ {
+  "id": "E004",
+  "passage_id": "P003",
+  "text": "Nextflow",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E005",
+  "passage_id": "P007",
+  "text": "S3 CLI",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E006",
+  "passage_id": "P009",
+  "text": "GATK Single Sample Variant Calling",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E007",
+  "passage_id": "P009",
+  "text": "calls germline SNPs and indels",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E008",
+  "passage_id": "P009",
+  "text": "apply filters",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E009",
+  "passage_id": "P009",
+  "text": "HaplotypeCaller",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E010",
+  "passage_id": "P009",
+  "text": "GATK Germline Single Sample Variant Calling",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E011",
+  "passage_id": "P010",
+  "text": "allele-specific copy number analysis",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E012",
+  "passage_id": "P010",
+  "text": "estimating tumor ploidy and purity",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E013",
+  "passage_id": "P011",
+  "text": "add annotations",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E014",
+  "passage_id": "P013",
+  "text": "determine the effects of all sorts of variants",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E015",
+  "passage_id": "P014",
+  "text": "nf-core",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E016",
+  "passage_id": "P016",
+  "text": "identify variants",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E017",
+  "passage_id": "P016",
+  "text": "likelihood score",
+  "types_proposed": [
+   "Metric"
+  ]
+ },
+ {
+  "id": "E018",
+  "passage_id": "P016",
+  "text": "local graph assembly",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E019",
+  "passage_id": "P016",
+  "text": "Smith-Waterman",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E020",
+  "passage_id": "P017",
+  "text": "joint calling",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E021",
+  "passage_id": "P018",
+  "text": "VQSR",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E022",
+  "passage_id": "P018",
+  "text": "allele-depth",
+  "types_proposed": [
+   "Metric"
+  ]
+ },
+ {
+  "id": "E023",
+  "passage_id": "P018",
+  "text": "Variant Quality Score Recalibration",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E024",
+  "passage_id": "P019",
+  "text": "joint-genotyping",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E025",
+  "passage_id": "P020",
+  "text": "dbsnp",
+  "types_proposed": [
+   "Resource"
+  ]
+ },
+ {
+  "id": "E026",
+  "passage_id": "P021",
+  "text": "snpeff",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E027",
+  "passage_id": "P021",
+  "text": "haplotypecaller",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E028",
+  "passage_id": "P021",
+  "text": "GRCh38chr21",
+  "types_proposed": [
+   "Resource"
+  ]
+ },
+ {
+  "id": "E029",
+  "passage_id": "P022",
+  "text": "AN",
+  "types_proposed": [
+   "Metric"
+  ]
+ },
+ {
+  "id": "E030",
+  "passage_id": "P022",
+  "text": "AC",
+  "types_proposed": [
+   "Metric"
+  ]
+ },
+ {
+  "id": "E031",
+  "passage_id": "P022",
+  "text": "AF",
+  "types_proposed": [
+   "Metric"
+  ]
+ },
+ {
+  "id": "E032",
+  "passage_id": "P022",
+  "text": "MLEAC",
+  "types_proposed": [
+   "Metric"
+  ]
+ },
+ {
+  "id": "E033",
+  "passage_id": "P022",
+  "text": "MLEAF",
+  "types_proposed": [
+   "Metric"
+  ]
+ },
+ {
+  "id": "E034",
+  "passage_id": "P023",
+  "text": "variant calling",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E035",
+  "passage_id": "P025",
+  "text": "calling and scoring variants",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E036",
+  "passage_id": "P026",
+  "text": "TIDDIT",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E037",
+  "passage_id": "P026",
+  "text": "Annotation",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E038",
+  "passage_id": "P026",
+  "text": "TIDDIT's cov",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E039",
+  "passage_id": "P026",
+  "text": "Variant calling",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E040",
+  "passage_id": "P026",
+  "text": "Alignment",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E041",
+  "passage_id": "P026",
+  "text": "TIDDIT's sv",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E042",
+  "passage_id": "P027",
+  "text": "CSV",
+  "types_proposed": [
+   "FileFormat"
+  ]
+ },
+ {
+  "id": "E043",
+  "passage_id": "P028",
+  "text": "Picard",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E044",
+  "passage_id": "P028",
+  "text": "check for contamination",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E045",
+  "passage_id": "P033",
+  "text": "coordinate sorted",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E046",
+  "passage_id": "P033",
+  "text": "map the reads to a reference genome",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E047",
+  "passage_id": "P034",
+  "text": "AF",
+  "types_proposed": [
+   "Metric"
+  ]
+ },
+ {
+  "id": "E048",
+  "passage_id": "P034",
+  "text": "Alignment and variant calling",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E049",
+  "passage_id": "P035",
+  "text": "ROC",
+  "types_proposed": [
+   "Metric"
+  ]
+ },
+ {
+  "id": "E050",
+  "passage_id": "P035",
+  "text": "evaluated",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E051",
+  "passage_id": "P036",
+  "text": "nf-core",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E052",
+  "passage_id": "P038",
+  "text": "-v",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E053",
+  "passage_id": "P038",
+  "text": "-o",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E054",
+  "passage_id": "P038",
+  "text": "-T",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E055",
+  "passage_id": "P038",
+  "text": "-f",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E056",
+  "passage_id": "P038",
+  "text": "--regions",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E057",
+  "passage_id": "P038",
+  "text": "--output-dir",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E058",
+  "passage_id": "P038",
+  "text": "--verbosity",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E059",
+  "passage_id": "P038",
+  "text": "--targets-file",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E060",
+  "passage_id": "P038",
+  "text": "--query-sample",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E061",
+  "passage_id": "P038",
+  "text": "-R",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E062",
+  "passage_id": "P038",
+  "text": "--targets",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E063",
+  "passage_id": "P038",
+  "text": "--control-sample",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E064",
+  "passage_id": "P038",
+  "text": "-c",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E065",
+  "passage_id": "P038",
+  "text": "-p",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E066",
+  "passage_id": "P038",
+  "text": "--AF-file",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E067",
+  "passage_id": "P038",
+  "text": "--plot-threshold",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E068",
+  "passage_id": "P038",
+  "text": "-s",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E069",
+  "passage_id": "P038",
+  "text": "--regions-file",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E070",
+  "passage_id": "P040",
+  "text": "-o",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E071",
+  "passage_id": "P040",
+  "text": "-s",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E072",
+  "passage_id": "P040",
+  "text": "-c",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E073",
+  "passage_id": "P040",
+  "text": "-f",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E074",
+  "passage_id": "P041",
+  "text": "Checks sample identity",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E075",
+  "passage_id": "P041",
+  "text": "--pairs",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E076",
+  "passage_id": "P041",
+  "text": "-e",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E077",
+  "passage_id": "P041",
+  "text": "-u",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E078",
+  "passage_id": "P041",
+  "text": "--exclude",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E079",
+  "passage_id": "P042",
+  "text": "--merge",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E080",
+  "passage_id": "P042",
+  "text": "-m",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E081",
+  "passage_id": "P043",
+  "text": "-v",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E082",
+  "passage_id": "P043",
+  "text": "-f",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E083",
+  "passage_id": "P043",
+  "text": "bcftools call",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E084",
+  "passage_id": "P043",
+  "text": "-g",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E085",
+  "passage_id": "P044",
+  "text": "--allow-undef-tags",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E086",
+  "passage_id": "P044",
+  "text": "--vcf-list",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E087",
+  "passage_id": "P044",
+  "text": "VCF",
+  "types_proposed": [
+   "FileFormat"
+  ]
+ },
+ {
+  "id": "E088",
+  "passage_id": "P044",
+  "text": "-v",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E089",
+  "passage_id": "P044",
+  "text": "--targets-file",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E090",
+  "passage_id": "P044",
+  "text": "-T",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E091",
+  "passage_id": "P044",
+  "text": "-u",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E092",
+  "passage_id": "P045",
+  "text": "-H",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E093",
+  "passage_id": "P045",
+  "text": "--viterbi-training",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E094",
+  "passage_id": "P045",
+  "text": "-V",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E095",
+  "passage_id": "P045",
+  "text": "--az-to-hw",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E096",
+  "passage_id": "P045",
+  "text": "--hw-to-az",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E097",
+  "passage_id": "P045",
+  "text": "-a",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E098",
+  "passage_id": "P046",
+  "text": "vcfcheck",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E099",
+  "passage_id": "P046",
+  "text": "vcfisec",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E100",
+  "passage_id": "P046",
+  "text": "vcfmerge",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E101",
+  "passage_id": "P050",
+  "text": "Hadoop",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E102",
+  "passage_id": "P050",
+  "text": "Spark",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E103",
+  "passage_id": "P051",
+  "text": "compute coverage reports",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E104",
+  "passage_id": "P051",
+  "text": "IntelliJ",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E105",
+  "passage_id": "P051",
+  "text": "GATK",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E106",
+  "passage_id": "P057",
+  "text": "Homo_sapiens_assembly19",
+  "types_proposed": [
+   "Resource"
+  ]
+ },
+ {
+  "id": "E107",
+  "passage_id": "P059",
+  "text": "--tumor_lod_to_emit",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E108",
+  "passage_id": "P059",
+  "text": "--maxNumHaplotypesInPopulation",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E109",
+  "passage_id": "P059",
+  "text": "orientation bias filter",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E110",
+  "passage_id": "P059",
+  "text": "gnomAD",
+  "types_proposed": [
+   "Resource"
+  ]
+ },
+ {
+  "id": "E111",
+  "passage_id": "P059",
+  "text": "--maxAltAllelesThreshold",
+  "types_proposed": [
+   "Option"
+  ]
+ },
+ {
+  "id": "E112",
+  "passage_id": "P060",
+  "text": "LiftOver",
+  "types_proposed": [
+   "Procedure",
+   "Tool"
+  ]
+ },
+ {
+  "id": "E113",
+  "passage_id": "P061",
+  "text": "Familial_Cancer_Genes",
+  "types_proposed": [
+   "Resource"
+  ]
+ },
+ {
+  "id": "E114",
+  "passage_id": "P061",
+  "text": "Familial Cancer Genes",
+  "types_proposed": [
+   "Resource"
+  ]
+ },
+ {
+  "id": "E115",
+  "passage_id": "P063",
+  "text": "annotate",
+  "types_proposed": [
+   "Procedure"
+  ]
+ },
+ {
+  "id": "E116",
+  "passage_id": "P064",
+  "text": "hg19",
+  "types_proposed": [
+   "Resource"
+  ]
+ },
+ {
+  "id": "E117",
+  "passage_id": "P070",
+  "text": "Funcotator WDL",
+  "types_proposed": [
+   "Tool"
+  ]
+ },
+ {
+  "id": "E118",
+  "passage_id": "P070",
+  "text": "JSON",
+  "types_proposed": [
+   "FileFormat"
+  ]
+ },
+ {
+  "id": "E119",
+  "passage_id": "P071",
+  "text": "hg19",
+  "types_proposed": [
+   "Resource"
+  ]
+ },
+ {
+  "id": "E120",
+  "passage_id": "P071",
+  "text": "hg38",
+  "types_proposed": [
+   "Resource"
+  ]
+ }
+]

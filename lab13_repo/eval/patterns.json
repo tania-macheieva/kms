@@ -1,0 +1,488 @@
+{
+ "chunks": 616,
+ "docs": 24,
+ "vocab": 194,
+ "frequent_items": 51,
+ "min_support_chunks": 12,
+ "min_conf": 0.6,
+ "min_lift": 1.5,
+ "n_candidate_rules": 28,
+ "rules_top40": [
+  {
+   "antecedent": "ac|Metric",
+   "consequent": "an|Metric",
+   "support": 0.0244,
+   "n_chunks": 15,
+   "confidence": 0.789,
+   "lift": 32.42,
+   "n_docs": 3,
+   "perm_p_within_docs": 0.0005,
+   "boot_stable_share": 0.9033333333333333,
+   "boot_lift_p5": 14.609191655801824,
+   "boot_lift_p95": 181.4,
+   "half_lift": [
+    12.94,
+    383.0
+   ]
+  },
+  {
+   "antecedent": "an|Metric",
+   "consequent": "ac|Metric",
+   "support": 0.0244,
+   "n_chunks": 15,
+   "confidence": 1.0,
+   "lift": 32.42,
+   "n_docs": 3,
+   "perm_p_within_docs": 0.0005,
+   "boot_stable_share": 0.9666666666666667,
+   "boot_lift_p5": 16.763265635074145,
+   "boot_lift_p95": 198.15,
+   "half_lift": [
+    12.94,
+    383.0
+   ]
+  },
+  {
+   "antecedent": "singularity|Tool",
+   "consequent": "docker|Tool",
+   "support": 0.0276,
+   "n_chunks": 17,
+   "confidence": 0.944,
+   "lift": 12.65,
+   "n_docs": 7,
+   "perm_p_within_docs": 0.0005,
+   "boot_stable_share": 1.0,
+   "boot_lift_p5": 6.461902985074627,
+   "boot_lift_p95": 23.858310439560444,
+   "half_lift": [
+    12.94,
+    12.54
+   ]
+  },
+  {
+   "antecedent": "raredisease|Tool",
+   "consequent": "nextflow|Tool",
+   "support": 0.0731,
+   "n_chunks": 45,
+   "confidence": 0.918,
+   "lift": 3.75,
+   "n_docs": 3,
+   "perm_p_within_docs": 0.0615,
+   "boot_stable_share": 0.6666666666666666,
+   "boot_lift_p5": 1.0199889817331678,
+   "boot_lift_p95": 11.093889711982932,
+   "half_lift": [
+    12.94,
+    2.58
+   ]
+  },
+  {
+   "antecedent": "gatk4|Tool",
+   "consequent": "gatk|Tool",
+   "support": 0.0503,
+   "n_chunks": 31,
+   "confidence": 0.66,
+   "lift": 4.57,
+   "n_docs": 4,
+   "perm_p_within_docs": 0.5677,
+   "boot_stable_share": 0.6,
+   "boot_lift_p5": 2.0304350772567092,
+   "boot_lift_p95": 6.838509528130674,
+   "half_lift": [
+    6.24,
+    3.67
+   ]
+  },
+  {
+   "antecedent": "sarek|Tool",
+   "consequent": "nextflow|Tool",
+   "support": 0.0731,
+   "n_chunks": 45,
+   "confidence": 0.682,
+   "lift": 2.78,
+   "n_docs": 5,
+   "perm_p_within_docs": 0.1169,
+   "boot_stable_share": 0.6033333333333334,
+   "boot_lift_p5": 1.1856714660382166,
+   "boot_lift_p95": 7.483982683982684,
+   "half_lift": [
+    8.09,
+    2.16
+   ]
+  },
+  {
+   "antecedent": "mutect2 multi|Tool",
+   "consequent": "funcotator|Tool",
+   "support": 0.0195,
+   "n_chunks": 12,
+   "confidence": 0.923,
+   "lift": 9.98,
+   "n_docs": 1,
+   "perm_p_within_docs": 0.3373,
+   "boot_stable_share": 0.6466666666666666,
+   "boot_lift_p5": 0.0,
+   "boot_lift_p95": 31.11692307692308,
+   "half_lift": [
+    0,
+    6.93
+   ]
+  },
+  {
+   "antecedent": "maf|FileFormat",
+   "consequent": "funcotator|Tool",
+   "support": 0.0244,
+   "n_chunks": 15,
+   "confidence": 0.682,
+   "lift": 7.37,
+   "n_docs": 3,
+   "perm_p_within_docs": 0.1344,
+   "boot_stable_share": 0.63,
+   "boot_lift_p5": 2.717983268425212,
+   "boot_lift_p95": 18.225571895424846,
+   "half_lift": [
+    4.85,
+    7.51
+   ]
+  },
+  {
+   "antecedent": "vep|Tool",
+   "consequent": "annotation|Procedure",
+   "support": 0.039,
+   "n_chunks": 24,
+   "confidence": 0.828,
+   "lift": 4.25,
+   "n_docs": 6,
+   "perm_p_within_docs": 0.0005,
+   "boot_stable_share": 0.9766666666666667,
+   "boot_lift_p5": 2.7943650793650794,
+   "boot_lift_p95": 5.601348401863389,
+   "half_lift": [
+    3.15,
+    4.06
+   ]
+  },
+  {
+   "antecedent": "gnomad|Resource",
+   "consequent": "funcotator|Tool",
+   "support": 0.0195,
+   "n_chunks": 12,
+   "confidence": 0.632,
+   "lift": 6.83,
+   "n_docs": 3,
+   "perm_p_within_docs": 0.1904,
+   "boot_stable_share": 0.5666666666666667,
+   "boot_lift_p5": 2.8343085383879663,
+   "boot_lift_p95": 14.979375453885263,
+   "half_lift": [
+    9.71,
+    5.51
+   ]
+  },
+  {
+   "antecedent": "gencode|Resource",
+   "consequent": "annotation|Procedure",
+   "support": 0.0308,
+   "n_chunks": 19,
+   "confidence": 0.792,
+   "lift": 4.06,
+   "n_docs": 4,
+   "perm_p_within_docs": 0.1179,
+   "boot_stable_share": 0.6966666666666667,
+   "boot_lift_p5": 1.750460529808356,
+   "boot_lift_p95": 6.922147595356553,
+   "half_lift": [
+    6.3,
+    1.73
+   ]
+  },
+  {
+   "antecedent": "tabix|Tool",
+   "consequent": "vcf|FileFormat",
+   "support": 0.0536,
+   "n_chunks": 33,
+   "confidence": 0.805,
+   "lift": 2.27,
+   "n_docs": 4,
+   "perm_p_within_docs": 0.0005,
+   "boot_stable_share": 0.7033333333333334,
+   "boot_lift_p5": 1.3180319552961064,
+   "boot_lift_p95": 5.663368055555556,
+   "half_lift": [
+    1.35,
+    4.5
+   ]
+  },
+  {
+   "antecedent": "bcf|FileFormat",
+   "consequent": "vcf|FileFormat",
+   "support": 0.0438,
+   "n_chunks": 27,
+   "confidence": 0.964,
+   "lift": 2.72,
+   "n_docs": 1,
+   "perm_p_within_docs": 1.0,
+   "boot_stable_share": 0.6266666666666667,
+   "boot_lift_p5": 0.0,
+   "boot_lift_p95": 3.152897084276395,
+   "half_lift": [
+    1.54,
+    0.0
+   ]
+  },
+  {
+   "antecedent": "snpeff|Tool",
+   "consequent": "annotation|Procedure",
+   "support": 0.026,
+   "n_chunks": 16,
+   "confidence": 0.8,
+   "lift": 4.11,
+   "n_docs": 4,
+   "perm_p_within_docs": 0.0005,
+   "boot_stable_share": 0.9533333333333334,
+   "boot_lift_p5": 2.635064340862522,
+   "boot_lift_p95": 6.213757115749527,
+   "half_lift": [
+    4.2,
+    3.8
+   ]
+  },
+  {
+   "antecedent": "bcftools|Tool",
+   "consequent": "vcf|FileFormat",
+   "support": 0.0584,
+   "n_chunks": 36,
+   "confidence": 0.61,
+   "lift": 1.72,
+   "n_docs": 4,
+   "perm_p_within_docs": 0.7551,
+   "boot_stable_share": 0.33,
+   "boot_lift_p5": 0.9019183436113816,
+   "boot_lift_p95": 2.7176790318512047,
+   "half_lift": [
+    1.4,
+    1.32
+   ]
+  },
+  {
+   "antecedent": "deepvariant|Tool",
+   "consequent": "variant calling|Procedure",
+   "support": 0.0211,
+   "n_chunks": 13,
+   "confidence": 0.65,
+   "lift": 4.6,
+   "n_docs": 6,
+   "perm_p_within_docs": 0.0005,
+   "boot_stable_share": 0.7133333333333334,
+   "boot_lift_p5": 2.8188911426639622,
+   "boot_lift_p95": 8.94829726212282,
+   "half_lift": [
+    5.18,
+    4.07
+   ]
+  },
+  {
+   "antecedent": "mutect2 multi|Tool",
+   "consequent": "annotation|Procedure",
+   "support": 0.0195,
+   "n_chunks": 12,
+   "confidence": 0.923,
+   "lift": 4.74,
+   "n_docs": 1,
+   "perm_p_within_docs": 0.3458,
+   "boot_stable_share": 0.6866666666666666,
+   "boot_lift_p5": 0.0,
+   "boot_lift_p95": 5.6690719063545165,
+   "half_lift": [
+    0,
+    4.26
+   ]
+  },
+  {
+   "antecedent": "vcfanno|Tool",
+   "consequent": "annotation|Procedure",
+   "support": 0.0195,
+   "n_chunks": 12,
+   "confidence": 0.923,
+   "lift": 4.74,
+   "n_docs": 4,
+   "perm_p_within_docs": 0.0005,
+   "boot_stable_share": 0.9733333333333334,
+   "boot_lift_p5": 3.0838235294117644,
+   "boot_lift_p95": 6.758673017279575,
+   "half_lift": [
+    6.3,
+    4.19
+   ]
+  },
+  {
+   "antecedent": "filtering|Procedure",
+   "consequent": "vcf|FileFormat",
+   "support": 0.0455,
+   "n_chunks": 28,
+   "confidence": 0.7,
+   "lift": 1.98,
+   "n_docs": 5,
+   "perm_p_within_docs": 0.0085,
+   "boot_stable_share": 0.5866666666666667,
+   "boot_lift_p5": 1.2580165834525052,
+   "boot_lift_p95": 3.4263130187043234,
+   "half_lift": [
+    1.26,
+    3.18
+   ]
+  },
+  {
+   "antecedent": "bcftools mpileup|Tool",
+   "consequent": "vcf|FileFormat",
+   "support": 0.0308,
+   "n_chunks": 19,
+   "confidence": 1.0,
+   "lift": 2.83,
+   "n_docs": 2,
+   "perm_p_within_docs": 0.1154,
+   "boot_stable_share": 0.8966666666666666,
+   "boot_lift_p5": 0.0,
+   "boot_lift_p95": 6.736556603773585,
+   "half_lift": [
+    1.54,
+    5.72
+   ]
+  },
+  {
+   "antecedent": "csv|FileFormat",
+   "consequent": "nextflow|Tool",
+   "support": 0.0244,
+   "n_chunks": 15,
+   "confidence": 0.789,
+   "lift": 3.22,
+   "n_docs": 3,
+   "perm_p_within_docs": 0.3418,
+   "boot_stable_share": 0.8033333333333333,
+   "boot_lift_p5": 1.5165762179922029,
+   "boot_lift_p95": 6.87455584294437,
+   "half_lift": [
+    0.0,
+    2.25
+   ]
+  },
+  {
+   "antecedent": "singularity|Tool",
+   "consequent": "nextflow|Tool",
+   "support": 0.0227,
+   "n_chunks": 14,
+   "confidence": 0.778,
+   "lift": 3.17,
+   "n_docs": 5,
+   "perm_p_within_docs": 0.0115,
+   "boot_stable_share": 0.8333333333333334,
+   "boot_lift_p5": 1.7230140597008858,
+   "boot_lift_p95": 13.82439613526571,
+   "half_lift": [
+    17.26,
+    2.25
+   ]
+  },
+  {
+   "antecedent": "bcftools view|Tool",
+   "consequent": "vcf|FileFormat",
+   "support": 0.026,
+   "n_chunks": 16,
+   "confidence": 0.941,
+   "lift": 2.66,
+   "n_docs": 2,
+   "perm_p_within_docs": 0.3503,
+   "boot_stable_share": 0.7833333333333333,
+   "boot_lift_p5": 0.0,
+   "boot_lift_p95": 4.7900490101864355,
+   "half_lift": [
+    1.45,
+    5.72
+   ]
+  },
+  {
+   "antecedent": "snpeff|Tool",
+   "consequent": "nextflow|Tool",
+   "support": 0.0227,
+   "n_chunks": 14,
+   "confidence": 0.7,
+   "lift": 2.86,
+   "n_docs": 2,
+   "perm_p_within_docs": 0.6262,
+   "boot_stable_share": 0.5166666666666667,
+   "boot_lift_p5": 0.0,
+   "boot_lift_p95": 5.6494791666666675,
+   "half_lift": [
+    8.63,
+    2.06
+   ]
+  },
+  {
+   "antecedent": "bcftools annotate|Tool",
+   "consequent": "vcf|FileFormat",
+   "support": 0.0195,
+   "n_chunks": 12,
+   "confidence": 1.0,
+   "lift": 2.83,
+   "n_docs": 1,
+   "perm_p_within_docs": 1.0,
+   "boot_stable_share": 0.6166666666666667,
+   "boot_lift_p5": 0.0,
+   "boot_lift_p95": 3.1779292929292935,
+   "half_lift": [
+    1.54,
+    0
+   ]
+  },
+  {
+   "antecedent": "ac|Metric",
+   "consequent": "vcf|FileFormat",
+   "support": 0.0244,
+   "n_chunks": 15,
+   "confidence": 0.789,
+   "lift": 2.23,
+   "n_docs": 2,
+   "perm_p_within_docs": 0.6007,
+   "boot_stable_share": 0.64,
+   "boot_lift_p5": 0.0,
+   "boot_lift_p95": 3.5212867526873457,
+   "half_lift": [
+    1.2,
+    5.72
+   ]
+  },
+  {
+   "antecedent": "an|Metric",
+   "consequent": "vcf|FileFormat",
+   "support": 0.0195,
+   "n_chunks": 12,
+   "confidence": 0.8,
+   "lift": 2.26,
+   "n_docs": 2,
+   "perm_p_within_docs": 0.5367,
+   "boot_stable_share": 0.6033333333333334,
+   "boot_lift_p5": 0.0,
+   "boot_lift_p95": 6.279082406471185,
+   "half_lift": [
+    1.21,
+    5.72
+   ]
+  },
+  {
+   "antecedent": "maf|FileFormat",
+   "consequent": "vcf|FileFormat",
+   "support": 0.0227,
+   "n_chunks": 14,
+   "confidence": 0.636,
+   "lift": 1.8,
+   "n_docs": 5,
+   "perm_p_within_docs": 0.0125,
+   "boot_stable_share": 0.49,
+   "boot_lift_p5": 1.2289852317236072,
+   "boot_lift_p95": 5.624166666666667,
+   "half_lift": [
+    1.54,
+    2.45
+   ]
+  }
+ ]
+}

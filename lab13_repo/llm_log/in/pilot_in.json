@@ -1,0 +1,22 @@
+[
+ {
+  "passage_id": "P001",
+  "text": "sarek_readme — Introduction\n## Introduction\n\n**nf-core/sarek** is a workflow designed to detect variants on whole genome or targeted sequencing data. Initially designed for Human, and Mouse, it can work on any species with a reference genome. Sarek can also handle tumour / normal pairs and could include additional relapses.\n\nThe pipeline is built using Nextflow, a workflow tool to run tasks across multiple compute infrastructures in a very portable manner. It uses Docker/Singularity containers making installation trivial and results highly reproducible. The Nextflow DSL2 implementation of this pipeline uses one container per process which makes it much easier to maintain and update software dependencies. Where possible, these processes have been submitted to and installed from nf-core/modules in order to make them available to all nf-core pipelines, and to everyone within the Nextflow community!\n\nOn release, automated continuous integration tests run the pipeline on a full-sized dataset on the AWS cloud infrastructure. This ensures that the pipeline runs on AWS, has sensible resource allocation defaults set to run on real-world datasets, and permits the persistent storage of results to benchmark between pipeline releases and other analysis sources. The results obtained from the full-sized test can be viewed on the nf-core website.\n\nIt's listed on Elixir - Tools and Data Services Registry and Dockstore."
+ },
+ {
+  "passage_id": "P008",
+  "text": "Introduction — Core Nextflow arguments > How to use SnpSift annotation > Database creation > Condel\n#### Condel\n\nEnable with `--vep_condel`. The following parameters are mandatory:\n\n- `--condel_config`, to specify the path to the Condel config directory containing cutoffs and distribution files.\n\nThe plugin calculates the Consensus Deleteriousness score for missense mutations using SIFT and PolyPhen-2 predictions from the Ensembl API.\n\nFor more details, see here."
+ },
+ {
+  "passage_id": "P023",
+  "text": "Variant Calling Tutorial — Variant Calling Tutorial\n# Variant Calling Tutorial\n\nThese pages are a tutorial workshop for the Nextflow pipeline nf-core/sarek.\n\nIn this workshop, we will recap the application of next generation sequencing to identify genetic variations in a genome. You will learn how to use the pipeline sarek to carry out this data-intensive workflow efficiently. We will cover topics such as experimental design, configuration of the pipeline and code execution.\n\nPlease note that this is not an introductory workshop, and we will assume some basic familiarity with Nextflow.\n\nBy the end of this workshop, you will be able to:\n\n- understand the key concepts behind variant calling, as adopted in this pipeline\n- analyse simple NGS datasets with the sarek workflow\n- customise some of its features for your own variant calling analyses\n- integrate different sources of information to identify candidate variants\n- make a hypothesis about variant interpretation using the output of sarek\n\nLet's get started!"
+ },
+ {
+  "passage_id": "P046",
+  "text": "bcftools_readme\nThis is the official development repository for BCFtools. It contains all the vcf* commands\nwhich previously lived in the htslib repository (such as vcfcheck, vcfmerge, vcfisec, etc.)\nand the samtools BCF calling from bcftools subdirectory of samtools.\n\nFor a full documentation, see bcftools GitHub page.\n\nOther useful links:\n\nFile format specifications live on HTS-spec GitHub page\nhtslib\nsamtools\ntabix"
+ },
+ {
+  "passage_id": "P065",
+  "text": "gatk_funco_spec — 0 - Introduction\n## 0 - Introduction\nThis page details the specification of the annotations that Funcotator can create.\n\nDetailed information on Funcotator can be found in this forum post.\n\n### 0.1 - Table of Contents\n0. 0.0 Introduction\n 1. 0.1 Table of Contents\n1. 1.0 Annotation Specification\n 1. 1.1 Annotations for Pre-Packaged Data Sources\n 1. 1.1.1 Gencode Annotation Specification\n 1. hugoSymbol\n 2. ncbiBuild\n 3. chromosome\n 4. start\n 5. end\n 6. variantClassification\n 7. secondaryVariantClassification\n 8. variantType\n 9. refAllele\n 10. tumorSeqAllele1\n 11. tumorSeqAllele2\n 12. genomeChange\n 13. annotationTranscript\n 14. transcriptStrand\n 15. transcriptExon\n 16. transcriptPos\n 17. cDnaChange\n 18. codonChange\n 19. proteinChange\n 20. gcContent\n 21. referenceContext\n 22. otherTranscripts"
+ }
+]

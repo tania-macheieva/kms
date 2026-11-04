@@ -1,0 +1,1020 @@
+{
+ "relations": [
+  {
+   "id": "D001",
+   "decision": "reject",
+   "reason": "Option belongs to Sarek; tool mapping not explicit"
+  },
+  {
+   "id": "D002",
+   "decision": "reject",
+   "reason": "Option belongs to Sarek; tool mapping not explicit"
+  },
+  {
+   "id": "D003",
+   "decision": "reject",
+   "reason": "Duplicate alias of D004; first surface form is GATK HaplotypeCaller"
+  },
+  {
+   "id": "D004",
+   "decision": "accept",
+   "reason": "Text states HaplotypeCaller emits the VCF"
+  },
+  {
+   "id": "D005",
+   "decision": "accept",
+   "reason": "Explicitly states workflow uses HaplotypeCaller to call variants"
+  },
+  {
+   "id": "D006",
+   "decision": "reject",
+   "reason": "Duplicate of D005; first surface form is the heading name"
+  },
+  {
+   "id": "D007",
+   "decision": "accept",
+   "reason": "Explicit: ASCAT estimates tumor ploidy and purity"
+  },
+  {
+   "id": "D008",
+   "decision": "accept",
+   "reason": "Explicit: VQSR implements soft filtering"
+  },
+  {
+   "id": "D009",
+   "decision": "reject",
+   "reason": "Duplicate alias of D008 (VQSR)"
+  },
+  {
+   "id": "D010",
+   "decision": "accept",
+   "reason": "Input provided in a CSV file"
+  },
+  {
+   "id": "D011",
+   "decision": "accept",
+   "reason": "Aligned reads sorted with samtools sort"
+  },
+  {
+   "id": "D012",
+   "decision": "accept",
+   "reason": "vcfeval engine evaluates SNVs explicitly"
+  },
+  {
+   "id": "D013",
+   "decision": "reject",
+   "reason": "Duplicate; vcfeval engine is the performer (D012)"
+  },
+  {
+   "id": "D014",
+   "decision": "reject",
+   "reason": "Short alias of --regions-file"
+  },
+  {
+   "id": "D015",
+   "decision": "accept",
+   "reason": "Option listed under subcommand; long form is canonical"
+  },
+  {
+   "id": "D016",
+   "decision": "accept",
+   "reason": "Option listed under subcommand; long form is canonical"
+  },
+  {
+   "id": "D017",
+   "decision": "accept",
+   "reason": "Option listed under subcommand; long form is canonical"
+  },
+  {
+   "id": "D018",
+   "decision": "accept",
+   "reason": "Option listed under subcommand; long form is canonical"
+  },
+  {
+   "id": "D019",
+   "decision": "reject",
+   "reason": "Short alias of --control-sample"
+  },
+  {
+   "id": "D020",
+   "decision": "accept",
+   "reason": "Option listed under subcommand; long form is canonical"
+  },
+  {
+   "id": "D021",
+   "decision": "accept",
+   "reason": "Option listed under subcommand; long form is canonical"
+  },
+  {
+   "id": "D022",
+   "decision": "reject",
+   "reason": "Short alias of --targets-file"
+  },
+  {
+   "id": "D023",
+   "decision": "reject",
+   "reason": "Short alias of --output-dir"
+  },
+  {
+   "id": "D024",
+   "decision": "accept",
+   "reason": "Option listed under subcommand; long form is canonical"
+  },
+  {
+   "id": "D025",
+   "decision": "accept",
+   "reason": "Option listed under subcommand; long form is canonical"
+  },
+  {
+   "id": "D026",
+   "decision": "accept",
+   "reason": "Option listed under subcommand; long form is canonical"
+  },
+  {
+   "id": "D027",
+   "decision": "reject",
+   "reason": "Short alias of --query-sample"
+  },
+  {
+   "id": "D028",
+   "decision": "accept",
+   "reason": "Option listed under subcommand; long form is canonical"
+  },
+  {
+   "id": "D029",
+   "decision": "reject",
+   "reason": "Short alias of --verbosity"
+  },
+  {
+   "id": "D030",
+   "decision": "reject",
+   "reason": "Short alias of --AF-file"
+  },
+  {
+   "id": "D031",
+   "decision": "reject",
+   "reason": "Short alias of --plot-threshold"
+  },
+  {
+   "id": "D032",
+   "decision": "accept",
+   "reason": "Convert example explicitly yields a VCF"
+  },
+  {
+   "id": "D033",
+   "decision": "reject",
+   "reason": "Short alias of --exclude"
+  },
+  {
+   "id": "D034",
+   "decision": "accept",
+   "reason": "Option listed under subcommand; long form is canonical"
+  },
+  {
+   "id": "D035",
+   "decision": "reject",
+   "reason": "Short alias of --merge"
+  },
+  {
+   "id": "D036",
+   "decision": "accept",
+   "reason": "Option listed under subcommand; long form is canonical"
+  },
+  {
+   "id": "D037",
+   "decision": "reject",
+   "reason": "Short alias of --targets-file"
+  },
+  {
+   "id": "D038",
+   "decision": "accept",
+   "reason": "Option listed under subcommand; long form is canonical"
+  },
+  {
+   "id": "D039",
+   "decision": "reject",
+   "reason": "Short alias of --vcf-list"
+  },
+  {
+   "id": "D040",
+   "decision": "accept",
+   "reason": "Option listed under subcommand; long form is canonical"
+  },
+  {
+   "id": "D041",
+   "decision": "accept",
+   "reason": "Option listed under subcommand; long form is canonical"
+  },
+  {
+   "id": "D042",
+   "decision": "reject",
+   "reason": "Short alias of --allow-undef-tags"
+  },
+  {
+   "id": "D043",
+   "decision": "accept",
+   "reason": "Option listed under subcommand; long form is canonical"
+  },
+  {
+   "id": "D044",
+   "decision": "reject",
+   "reason": "Short alias of --az-to-hw"
+  },
+  {
+   "id": "D045",
+   "decision": "accept",
+   "reason": "Option listed under subcommand; long form is canonical"
+  },
+  {
+   "id": "D046",
+   "decision": "reject",
+   "reason": "Short alias of --viterbi-training"
+  },
+  {
+   "id": "D047",
+   "decision": "accept",
+   "reason": "Option listed under subcommand; long form is canonical"
+  },
+  {
+   "id": "D048",
+   "decision": "reject",
+   "reason": "Short alias of --hw-to-az"
+  },
+  {
+   "id": "D049",
+   "decision": "accept",
+   "reason": "Explicitly runs the orientation bias filter"
+  },
+  {
+   "id": "D050",
+   "decision": "accept",
+   "reason": "Arguments passed as a JSON file"
+  },
+  {
+   "id": "D051",
+   "decision": "accept",
+   "reason": "use_gnomad enables gnomAD data sources"
+  },
+  {
+   "id": "D052",
+   "decision": "accept",
+   "reason": "Input VCF to annotate is stated"
+  },
+  {
+   "id": "D053",
+   "decision": "reject",
+   "reason": "WDL input parameters; subject should be Funcotator WDL, not Funcotator"
+  },
+  {
+   "id": "D054",
+   "decision": "reject",
+   "reason": "WDL input parameters; subject should be Funcotator WDL, not Funcotator"
+  },
+  {
+   "id": "D055",
+   "decision": "reject",
+   "reason": "WDL input parameters; subject should be Funcotator WDL, not Funcotator"
+  },
+  {
+   "id": "D056",
+   "decision": "reject",
+   "reason": "WDL input parameters; subject should be Funcotator WDL, not Funcotator"
+  },
+  {
+   "id": "D057",
+   "decision": "reject",
+   "reason": "WDL input parameters; subject should be Funcotator WDL, not Funcotator"
+  },
+  {
+   "id": "D058",
+   "decision": "reject",
+   "reason": "WDL input parameters; subject should be Funcotator WDL, not Funcotator"
+  },
+  {
+   "id": "D059",
+   "decision": "reject",
+   "reason": "WDL input parameters; subject should be Funcotator WDL, not Funcotator"
+  },
+  {
+   "id": "D060",
+   "decision": "reject",
+   "reason": "WDL input parameters; subject should be Funcotator WDL, not Funcotator"
+  }
+ ],
+ "entities": [
+  {
+   "id": "E001",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E002",
+   "decision": "reject",
+   "reason": "Module repository, not a tool of listed types"
+  },
+  {
+   "id": "E003",
+   "decision": "accept",
+   "type": "FileFormat",
+   "reason": "Real FileFormat mention in the text"
+  },
+  {
+   "id": "E004",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E005",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E006",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E007",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E008",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E009",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E010",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E011",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E012",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E013",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E014",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E015",
+   "decision": "reject",
+   "reason": "Bare framework name in citation heading"
+  },
+  {
+   "id": "E016",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E017",
+   "decision": "accept",
+   "type": "Metric",
+   "reason": "Real Metric mention in the text"
+  },
+  {
+   "id": "E018",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E019",
+   "decision": "reject",
+   "reason": "Algorithm name, not a listed entity type"
+  },
+  {
+   "id": "E020",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E021",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E022",
+   "decision": "accept",
+   "type": "Metric",
+   "reason": "Real Metric mention in the text"
+  },
+  {
+   "id": "E023",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E024",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E025",
+   "decision": "accept",
+   "type": "Resource",
+   "reason": "Real Resource mention in the text"
+  },
+  {
+   "id": "E026",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E027",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E028",
+   "decision": "accept",
+   "type": "Resource",
+   "reason": "Real Resource mention in the text"
+  },
+  {
+   "id": "E029",
+   "decision": "accept",
+   "type": "Metric",
+   "reason": "Real Metric mention in the text"
+  },
+  {
+   "id": "E030",
+   "decision": "accept",
+   "type": "Metric",
+   "reason": "Real Metric mention in the text"
+  },
+  {
+   "id": "E031",
+   "decision": "accept",
+   "type": "Metric",
+   "reason": "Real Metric mention in the text"
+  },
+  {
+   "id": "E032",
+   "decision": "accept",
+   "type": "Metric",
+   "reason": "Real Metric mention in the text"
+  },
+  {
+   "id": "E033",
+   "decision": "accept",
+   "type": "Metric",
+   "reason": "Real Metric mention in the text"
+  },
+  {
+   "id": "E034",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E035",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E036",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E037",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E038",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E039",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E040",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E041",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E042",
+   "decision": "accept",
+   "type": "FileFormat",
+   "reason": "Real FileFormat mention in the text"
+  },
+  {
+   "id": "E043",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E044",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E045",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E046",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E047",
+   "decision": "accept",
+   "type": "Metric",
+   "reason": "Real Metric mention in the text"
+  },
+  {
+   "id": "E048",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E049",
+   "decision": "accept",
+   "type": "Metric",
+   "reason": "Real Metric mention in the text"
+  },
+  {
+   "id": "E050",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E051",
+   "decision": "reject",
+   "reason": "Bare framework name in citation heading"
+  },
+  {
+   "id": "E052",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E053",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E054",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E055",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E056",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E057",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E058",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E059",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E060",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E061",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E062",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E063",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E064",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E065",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E066",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E067",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E068",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E069",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E070",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E071",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E072",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E073",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E074",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E075",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E076",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E077",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E078",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E079",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E080",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E081",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E082",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E083",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E084",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E085",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E086",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E087",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E088",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E089",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E090",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E091",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E092",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E093",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E094",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E095",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E096",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E097",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E098",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E099",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E100",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E101",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E102",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E103",
+   "decision": "reject",
+   "reason": "Software testing step, not genomic analysis"
+  },
+  {
+   "id": "E104",
+   "decision": "reject",
+   "reason": "IDE, not a domain tool"
+  },
+  {
+   "id": "E105",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E106",
+   "decision": "accept",
+   "type": "Resource",
+   "reason": "Real Resource mention in the text"
+  },
+  {
+   "id": "E107",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E108",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E109",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E110",
+   "decision": "accept",
+   "type": "Resource",
+   "reason": "Real Resource mention in the text"
+  },
+  {
+   "id": "E111",
+   "decision": "accept",
+   "type": "Option",
+   "reason": "Real Option mention in the text"
+  },
+  {
+   "id": "E112",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E113",
+   "decision": "accept",
+   "type": "Resource",
+   "reason": "Real Resource mention in the text"
+  },
+  {
+   "id": "E114",
+   "decision": "accept",
+   "type": "Resource",
+   "reason": "Real Resource mention in the text"
+  },
+  {
+   "id": "E115",
+   "decision": "accept",
+   "type": "Procedure",
+   "reason": "Real Procedure mention in the text"
+  },
+  {
+   "id": "E116",
+   "decision": "accept",
+   "type": "Resource",
+   "reason": "Real Resource mention in the text"
+  },
+  {
+   "id": "E117",
+   "decision": "accept",
+   "type": "Tool",
+   "reason": "Real Tool mention in the text"
+  },
+  {
+   "id": "E118",
+   "decision": "accept",
+   "type": "FileFormat",
+   "reason": "Real FileFormat mention in the text"
+  },
+  {
+   "id": "E119",
+   "decision": "accept",
+   "type": "Resource",
+   "reason": "Real Resource mention in the text"
+  },
+  {
+   "id": "E120",
+   "decision": "accept",
+   "type": "Resource",
+   "reason": "Real Resource mention in the text"
+  }
+ ]
+}

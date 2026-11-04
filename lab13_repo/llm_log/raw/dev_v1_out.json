@@ -1,0 +1,162 @@
+[
+  {
+    "key": "c0fd9c5c3da4039feccc7495efd22ea7e81ec8f49e6a0e342b1b776d983f0a84",
+    "output": "{\"entities\": [{\"text\": \"nf-core/sarek\", \"type\": \"Tool\"}, {\"text\": \"Nextflow\", \"type\": \"Tool\"}, {\"text\": \"detect variants\", \"type\": \"Procedure\"}], \"relations\": [{\"subject\": \"nf-core/sarek\", \"relation\": \"PERFORMS\", \"object\": \"detect variants\", \"evidence\": \"**nf-core/sarek** is a workflow designed to detect variants on whole genome or targeted sequencing data.\"}]}"
+  },
+  {
+    "key": "f8da653bc81782e2b0a9bafc92399bd60c35fd1821f0fd4f79f25cbe998002b8",
+    "output": "{\"entities\": [{\"text\": \"nf-core/sarek\", \"type\": \"Tool\"}, {\"text\": \"Nextflow\", \"type\": \"Tool\"}, {\"text\": \"-profile\", \"type\": \"Option\"}, {\"text\": \"--input\", \"type\": \"Option\"}, {\"text\": \"--outdir\", \"type\": \"Option\"}], \"relations\": [{\"subject\": \"nf-core/sarek\", \"relation\": \"HAS_OPTION\", \"object\": \"-profile\", \"evidence\": \"nextflow run nf-core/sarek \\\\\\n -profile <docker/singularity/.../institute> \\\\\\n --input samplesheet.csv \\\\\\n --outdir <OUTDIR>\"}, {\"subject\": \"nf-core/sarek\", \"relation\": \"HAS_OPTION\", \"object\": \"--input\", \"evidence\": \"nextflow run nf-core/sarek \\\\\\n -profile <docker/singularity/.../institute> \\\\\\n --input samplesheet.csv \\\\\\n --outdir <OUTDIR>\"}, {\"subject\": \"nf-core/sarek\", \"relation\": \"HAS_OPTION\", \"object\": \"--outdir\", \"evidence\": \"nextflow run nf-core/sarek \\\\\\n -profile <docker/singularity/.../institute> \\\\\\n --input samplesheet.csv \\\\\\n --outdir <OUTDIR>\"}]}"
+  },
+  {
+    "key": "91393dab79ceba58ab5ad5024d031ae5e67fe33bbfd44e93aeacc192a43cf208",
+    "output": "{\"entities\": [], \"relations\": []}"
+  },
+  {
+    "key": "5fb23b1fb809ea071d27dd4755ec2f179bbd9151df8741b46de75fb1d546a3db",
+    "output": "{\"entities\": [], \"relations\": []}"
+  },
+  {
+    "key": "5d755d4784255a5ab980f395ef98ce40a73c327996ee7a92b5bf9c9fd12d9823",
+    "output": "{\"entities\": [], \"relations\": []}"
+  },
+  {
+    "key": "ec1491b2f80b5d1d08d3e908d8b9b58ac1a5324466c488323128d096f9256690",
+    "output": "{\"entities\": [{\"text\": \"SNPeff\", \"type\": \"Tool\"}, {\"text\": \"VEP\", \"type\": \"Tool\"}, {\"text\": \"--vep_cache\", \"type\": \"Option\"}, {\"text\": \"--snpeff_cache\", \"type\": \"Option\"}], \"relations\": [{\"subject\": \"SNPeff\", \"relation\": \"HAS_OPTION\", \"object\": \"--snpeff_cache\", \"evidence\": \"To use these, supply the parameters `--vep_cache` and/or `--snpeff_cache` with the locations to the root of the annotation cache folder for each tool.\"}, {\"subject\": \"VEP\", \"relation\": \"HAS_OPTION\", \"object\": \"--vep_cache\", \"evidence\": \"To use these, supply the parameters `--vep_cache` and/or `--snpeff_cache` with the locations to the root of the annotation cache folder for each tool.\"}]}"
+  },
+  {
+    "key": "4cbe98cdbcd3d6936503b87755c622ee873d59a515720e928a20c1b9df365bba",
+    "output": "{\"entities\": [{\"text\": \"Annotation-cache\", \"type\": \"Resource\"}, {\"text\": \"Sarek\", \"type\": \"Tool\"}, {\"text\": \"SNPeff\", \"type\": \"Tool\"}, {\"text\": \"VEP\", \"type\": \"Tool\"}], \"relations\": [{\"subject\": \"Sarek\", \"relation\": \"USES_RESOURCE\", \"object\": \"Annotation-cache\", \"evidence\": \"Annotation-cache is an open AWS registry resource that stores a mirror of some cache files on AWS S3 which can be used with Sarek.\"}]}"
+  },
+  {
+    "key": "c7965dc41a940ce6b751880558bb60053566ace374cd1f10d032eccdc45a5641",
+    "output": "{\"entities\": [{\"text\": \"--condel_config\", \"type\": \"Option\"}, {\"text\": \"--vep_condel\", \"type\": \"Option\"}, {\"text\": \"Condel\", \"type\": \"Tool\"}, {\"text\": \"Consensus Deleteriousness score\", \"type\": \"Metric\"}, {\"text\": \"PolyPhen-2\", \"type\": \"Tool\"}, {\"text\": \"SIFT\", \"type\": \"Tool\"}], \"relations\": [{\"subject\": \"Condel\", \"relation\": \"COMPUTES_METRIC\", \"object\": \"Consensus Deleteriousness score\", \"evidence\": \"The plugin calculates the Consensus Deleteriousness score for missense mutations using SIFT and PolyPhen-2 predictions from the Ensembl API.\"}, {\"subject\": \"Condel\", \"relation\": \"HAS_OPTION\", \"object\": \"--condel_config\", \"evidence\": \"`--condel_config`, to specify the path to the Condel config directory containing cutoffs and distribution files.\"}, {\"subject\": \"Condel\", \"relation\": \"HAS_OPTION\", \"object\": \"--vep_condel\", \"evidence\": \"Enable with `--vep_condel`.\"}]}"
+  },
+  {
+    "key": "b1b7f275714e6b515e5e76373173d96d92c49263078536ee6c40526cec2aab13",
+    "output": "{\"entities\": [], \"relations\": []}"
+  },
+  {
+    "key": "9e9565216ab13a5f2480b32dd4225a360c6354254955fa9c3ea7bc31756aba28",
+    "output": "{\"entities\": [], \"relations\": []}"
+  },
+  {
+    "key": "73de7d9d39b148bf87a961ef5b7dec28a044626957158c539553853f4012a54d",
+    "output": "{\"entities\": [{\"text\": \"GATK\", \"type\": \"Tool\"}], \"relations\": []}"
+  },
+  {
+    "key": "47a5a3618f45b3efd517eef0768e00253c2cdd42e0639025f60bf83984b3a4c7",
+    "output": "{\"entities\": [{\"text\": \"VCF\", \"type\": \"FileFormat\"}, {\"text\": \"GVCF\", \"type\": \"FileFormat\"}, {\"text\": \"GATK\", \"type\": \"Tool\"}], \"relations\": []}"
+  },
+  {
+    "key": "b7012befd58f8f043bb504c5c02fc8d98b65a74ac669878c4241d5f424a3d09b",
+    "output": "{\"entities\": [{\"text\": \"GATK\", \"type\": \"Tool\"}, {\"text\": \"Variant Quality Score Recalibration\", \"type\": \"Tool\"}, {\"text\": \"Hard filtering\", \"type\": \"Procedure\"}, {\"text\": \"Soft filtering\", \"type\": \"Procedure\"}, {\"text\": \"mapping quality\", \"type\": \"Metric\"}], \"relations\": [{\"subject\": \"Variant Quality Score Recalibration\", \"relation\": \"PERFORMS\", \"object\": \"Soft filtering\", \"evidence\": \"This approach is used by a GATK tool called Variant Quality Score Recalibration (VQSR).\"}]}"
+  },
+  {
+    "key": "eeba5733a03473a90943eb4a34c22ac447a939382cbbed506396a44a35708cfe",
+    "output": "{\"entities\": [], \"relations\": []}"
+  },
+  {
+    "key": "011e4af4efd48df61b0b47907a58594c61e56f2ee2b6af41f58e03e25ecf382d",
+    "output": "{\"entities\": [{\"text\": \"nf-core/sarek\", \"type\": \"Tool\"}, {\"text\": \"Nextflow\", \"type\": \"Tool\"}], \"relations\": []}"
+  },
+  {
+    "key": "55df97cdd20a23e16c717d92469c718afc0a7a46cbad768b64ddef4e6ccbaeb5",
+    "output": "{\"entities\": [], \"relations\": []}"
+  },
+  {
+    "key": "a1d5f555b9ffe56e23a490a2cc1a6715ac2c5cab303266979449e03e1f7e674e",
+    "output": "{\"entities\": [{\"text\": \"nf-core/raredisease\", \"type\": \"Tool\"}, {\"text\": \"Nextflow\", \"type\": \"Tool\"}, {\"text\": \"calling and scoring variants\", \"type\": \"Procedure\"}], \"relations\": [{\"subject\": \"nf-core/raredisease\", \"relation\": \"PERFORMS\", \"object\": \"calling and scoring variants\", \"evidence\": \"**nf-core/raredisease** is a best-practice bioinformatic pipeline for calling and scoring variants from WGS/WES data from rare disease patients.\"}]}"
+  },
+  {
+    "key": "17c356cc811e3e09fc832c704f476ffdef4b294fe259fff40714a09bb40ca445",
+    "output": "{\"entities\": [], \"relations\": []}"
+  },
+  {
+    "key": "3d6a57106021a199c285bbc24b5a001aa0b572fecc5b8e2b80003ebeea783da3",
+    "output": "{\"entities\": [{\"text\": \"nf-core/raredisease\", \"type\": \"Tool\"}, {\"text\": \"Nextflow\", \"type\": \"Tool\"}, {\"text\": \"-profile\", \"type\": \"Option\"}, {\"text\": \"--input\", \"type\": \"Option\"}, {\"text\": \"--outdir\", \"type\": \"Option\"}], \"relations\": [{\"subject\": \"nf-core/raredisease\", \"relation\": \"HAS_OPTION\", \"object\": \"-profile\", \"evidence\": \"nextflow run nf-core/raredisease \\\\\\n -profile <docker/singularity/podman/shifter/charliecloud/conda/institute> \\\\\\n --input samplesheet.csv \\\\\\n --outdir <OUTDIR>\"}, {\"subject\": \"nf-core/raredisease\", \"relation\": \"HAS_OPTION\", \"object\": \"--input\", \"evidence\": \"nextflow run nf-core/raredisease \\\\\\n -profile <docker/singularity/podman/shifter/charliecloud/conda/institute> \\\\\\n --input samplesheet.csv \\\\\\n --outdir <OUTDIR>\"}, {\"subject\": \"nf-core/raredisease\", \"relation\": \"HAS_OPTION\", \"object\": \"--outdir\", \"evidence\": \"nextflow run nf-core/raredisease \\\\\\n -profile <docker/singularity/podman/shifter/charliecloud/conda/institute> \\\\\\n --input samplesheet.csv \\\\\\n --outdir <OUTDIR>\"}]}"
+  },
+  {
+    "key": "1f91f3a3864197887e8d14f7edb49804f9b278600cff6a2f453de50b45a65e2c",
+    "output": "{\"entities\": [{\"text\": \"--aligner\", \"type\": \"Option\"}, {\"text\": \"BWA-MEME\", \"type\": \"Tool\"}, {\"text\": \"coordinate sorted\", \"type\": \"Procedure\"}, {\"text\": \"map the reads to a reference genome\", \"type\": \"Procedure\"}, {\"text\": \"samtools sort\", \"type\": \"Tool\"}], \"relations\": [{\"subject\": \"BWA-MEME\", \"relation\": \"PERFORMS\", \"object\": \"map the reads to a reference genome\", \"evidence\": \"BWA-MEME used to map the reads to a reference genome.\"}, {\"subject\": \"samtools sort\", \"relation\": \"PERFORMS\", \"object\": \"coordinate sorted\", \"evidence\": \"The aligned reads are coordinate sorted with samtools sort.\"}]}"
+  },
+  {
+    "key": "5d5bb49c4e1a500998a44f8326ecd5a62b282a8db0ed4c7411acb4c1a8444f41",
+    "output": "{\"entities\": [{\"text\": \"GATK Mitochondrial short variant discovery pipeline\", \"type\": \"Tool\"}, {\"text\": \"Mutect2\", \"type\": \"Tool\"}, {\"text\": \"--skip_subworkflows\", \"type\": \"Option\"}, {\"text\": \"mitochondrial variant discovery\", \"type\": \"Procedure\"}, {\"text\": \"vcf\", \"type\": \"FileFormat\"}], \"relations\": [{\"subject\": \"GATK Mitochondrial short variant discovery pipeline\", \"relation\": \"PERFORMS\", \"object\": \"mitochondrial variant discovery\", \"evidence\": \"The pipeline for mitochondrial variant discovery, using Mutect2, uses a high sensitivity to low AF and separate alignments using opposite genome breakpoints to allow for the tracing of lineages of rare mitochondrial variants.\"}, {\"subject\": \"GATK Mitochondrial short variant discovery pipeline\", \"relation\": \"INVOKES\", \"object\": \"Mutect2\", \"evidence\": \"The pipeline for mitochondrial variant discovery, using Mutect2, uses a high sensitivity to low AF and separate alignments using opposite genome breakpoints to allow for the tracing of lineages of rare mitochondrial variants.\"}]}"
+  },
+  {
+    "key": "6ca9c8fffe923b218bbfd51341715230c0f14d5e6eca68caeee9d1bec043adcf",
+    "output": "{\"entities\": [{\"text\": \"RTG Tools' vcfeval\", \"type\": \"Tool\"}], \"relations\": []}"
+  },
+  {
+    "key": "7e8eba7c6226ace4744027eccfaa154b03ac2a568cafe4c7c691f82aa7cef1f8",
+    "output": "{\"entities\": [{\"text\": \"BCFtools\", \"type\": \"Tool\"}, {\"text\": \"vcfcheck\", \"type\": \"Tool\"}, {\"text\": \"vcfmerge\", \"type\": \"Tool\"}, {\"text\": \"vcfisec\", \"type\": \"Tool\"}, {\"text\": \"htslib\", \"type\": \"Tool\"}, {\"text\": \"samtools\", \"type\": \"Tool\"}], \"relations\": []}"
+  },
+  {
+    "key": "b70896362ba36a145679a2ee191d45c36d5a8263a53dd561200e1c7883658fc8",
+    "output": "{\"entities\": [], \"relations\": []}"
+  },
+  {
+    "key": "0080f73203bc06e8c6b84986f2a3a08c6a5af601fafaa53801d89f1797ec6e52",
+    "output": "{\"entities\": [], \"relations\": []}"
+  },
+  {
+    "key": "1b782bef11000da52b30f08cd580f168e0ed749334cb8774bab6e46d404a724d",
+    "output": "{\"entities\": [], \"relations\": []}"
+  },
+  {
+    "key": "1174da758eee0819c487fc371394f7ca5c125455d2d439d142c7faf6bb17122c",
+    "output": "{\"entities\": [], \"relations\": []}"
+  },
+  {
+    "key": "541f945d212bc115cbf16721d02341798fd9b4039269ff76e27c44c2346111b6",
+    "output": "{\"entities\": [], \"relations\": []}"
+  },
+  {
+    "key": "4e3e41061ac44d52f264f6f686d4f04678283e84af59d238e4c9ed23cd8f4535",
+    "output": "{\"entities\": [{\"text\": \"mutect2_multi_sample\", \"type\": \"Tool\"}, {\"text\": \"Mutect2\", \"type\": \"Tool\"}, {\"text\": \"Mutect2_Multi.gatk4_jar\", \"type\": \"Option\"}, {\"text\": \"Mutect2_Multi.scatter_count\", \"type\": \"Option\"}, {\"text\": \"Mutect2_Multi.intervals\", \"type\": \"Option\"}, {\"text\": \"Mutect2_Multi.ref_fasta\", \"type\": \"Option\"}, {\"text\": \"Mutect2_Multi.pon\", \"type\": \"Option\"}, {\"text\": \"VCF\", \"type\": \"FileFormat\"}], \"relations\": [{\"subject\": \"mutect2_multi_sample\", \"relation\": \"HAS_OPTION\", \"object\": \"Mutect2_Multi.gatk4_jar\", \"evidence\": \"``Mutect2_Multi.gatk4_jar`` -- Location *within the docker file* of the GATK4 jar file.\"}, {\"subject\": \"mutect2_multi_sample\", \"relation\": \"HAS_OPTION\", \"object\": \"Mutect2_Multi.scatter_count\", \"evidence\": \"``Mutect2_Multi.scatter_count`` -- Number of executions to split the Mutect2 task into.\"}, {\"subject\": \"mutect2_multi_sample\", \"relation\": \"HAS_OPTION\", \"object\": \"Mutect2_Multi.intervals\", \"evidence\": \"``Mutect2_Multi.intervals`` -- A file listing genomic intervals to search for somatic mutations.\"}, {\"subject\": \"mutect2_multi_sample\", \"relation\": \"HAS_OPTION\", \"object\": \"Mutect2_Multi.ref_fasta\", \"evidence\": \"``Mutect2_Multi.ref_fasta`` -- reference fasta.\"}, {\"subject\": \"mutect2_multi_sample\", \"relation\": \"HAS_OPTION\", \"object\": \"Mutect2_Multi.pon\", \"evidence\": \"``Mutect2_Multi.pon`` -- (optional) Panel of normals VCF to use for false positive reduction.\"}]}"
+  },
+  {
+    "key": "6d822f58da8722f6813cf3f065daf561a27f827c7dabc365f74bf3277795a2e6",
+    "output": "{\"entities\": [{\"text\": \"mutect2\", \"type\": \"Tool\"}, {\"text\": \"Mutect2.tumor_bam\", \"type\": \"Option\"}, {\"text\": \"Mutect2.normal_bam\", \"type\": \"Option\"}, {\"text\": \"Mutect2.tumor_bam_index\", \"type\": \"Option\"}, {\"text\": \"Mutect2.normal_bam_index\", \"type\": \"Option\"}, {\"text\": \"bam\", \"type\": \"FileFormat\"}], \"relations\": [{\"subject\": \"mutect2\", \"relation\": \"HAS_OPTION\", \"object\": \"Mutect2.tumor_bam\", \"evidence\": \"``Mutect2.tumor_bam`` -- File path or storage location (depending on backend) of the tumor bam file.\"}, {\"subject\": \"mutect2\", \"relation\": \"HAS_OPTION\", \"object\": \"Mutect2.normal_bam\", \"evidence\": \"``Mutect2.normal_bam`` -- (optional) File path or storage location (depending on backend) of the normal bam file.\"}, {\"subject\": \"mutect2\", \"relation\": \"HAS_OPTION\", \"object\": \"Mutect2.tumor_bam_index\", \"evidence\": \"``Mutect2.tumor_bam_index`` -- File path or storage location (depending on backend) of the tumor bam file index.\"}, {\"subject\": \"mutect2\", \"relation\": \"HAS_OPTION\", \"object\": \"Mutect2.normal_bam_index\", \"evidence\": \"``Mutect2.normal_bam_index`` -- (optional, but required if ``Mutect2.normal_bam`` is specified) File path or storage location (depending on backend) of the normal bam file index.\"}]}"
+  },
+  {
+    "key": "f63f8deceb25784b65cc3dc6f6ad0c1d44c2043281efd71440376188f8d48cb3",
+    "output": "{\"entities\": [{\"text\": \"mutect2_multi_sample\", \"type\": \"Tool\"}, {\"text\": \"Oncotator\", \"type\": \"Tool\"}, {\"text\": \"Cromwell\", \"type\": \"Tool\"}], \"relations\": [{\"subject\": \"mutect2_multi_sample\", \"relation\": \"INVOKES\", \"object\": \"Oncotator\", \"evidence\": \"Runs both the orientation bias filter and Oncotator.\"}]}"
+  },
+  {
+    "key": "3e72f847347b8dfd1026bee0c377cdbd2cb0875fd7afdfb89cd5207c874d20c0",
+    "output": "{\"entities\": [{\"text\": \"Funcotator\", \"type\": \"Tool\"}], \"relations\": []}"
+  },
+  {
+    "key": "7ba8fe74c378b7dc15ce7191fc1bb01ecc069ccf4767e54b2f4d505d4fcbc151",
+    "output": "{\"entities\": [], \"relations\": []}"
+  },
+  {
+    "key": "effe79c97719ecf8ecebc70b0d942ed3a5ba11cc7ca698dcd15d07e33bf359a7",
+    "output": "{\"entities\": [{\"text\": \"hg19\", \"type\": \"Resource\"}, {\"text\": \"b37\", \"type\": \"Resource\"}, {\"text\": \"GRCh37\", \"type\": \"Resource\"}, {\"text\": \"humanG1Kv37\", \"type\": \"Resource\"}], \"relations\": []}"
+  },
+  {
+    "key": "36988d512d2ae4938da0558f90321e225fdc5af1309bf4d6bf62089cffaf0858",
+    "output": "{\"entities\": [{\"text\": \"GRCh37\", \"type\": \"Resource\"}, {\"text\": \"HumanG1Kv37\", \"type\": \"Resource\"}, {\"text\": \"hg19\", \"type\": \"Resource\"}, {\"text\": \"b37\", \"type\": \"Resource\"}], \"relations\": []}"
+  },
+  {
+    "key": "d9ae1c8ccb00f44de8ce86cbed62191cba651b319a35f8f450ac91e31cb3af81",
+    "output": "{\"entities\": [{\"text\": \"hg19\", \"type\": \"Resource\"}, {\"text\": \"GRCh37\", \"type\": \"Resource\"}], \"relations\": []}"
+  },
+  {
+    "key": "a995391112cf7841613776a5cc301de0fdd0c24d3f49198104c2fe4a333ff40d",
+    "output": "{\"entities\": [{\"text\": \"cromwell\", \"type\": \"Tool\"}, {\"text\": \"Funcotator WDL\", \"type\": \"Tool\"}, {\"text\": \"funcotator.wdl\", \"type\": \"Tool\"}, {\"text\": \"JSON\", \"type\": \"FileFormat\"}, {\"text\": \"Cromshell\", \"type\": \"Tool\"}, {\"text\": \"Terra/FireCloud\", \"type\": \"Tool\"}], \"relations\": [{\"subject\": \"funcotator.wdl\", \"relation\": \"ACCEPTS\", \"object\": \"JSON\", \"evidence\": \"These arguments re passed in as a JSON file (see below for a non-working example).\"}]}"
+  },
+  {
+    "key": "27810ffc3878b5c46d087d8785c87a13ff97d7f80bb1b830c72685b5e500a7a9",
+    "output": "{\"entities\": [{\"text\": \"Funcotator WDL\", \"type\": \"Tool\"}, {\"text\": \"gatk_docker\", \"type\": \"Option\"}, {\"text\": \"reference_version\", \"type\": \"Option\"}, {\"text\": \"output_format\", \"type\": \"Option\"}, {\"text\": \"compress\", \"type\": \"Option\"}, {\"text\": \"use_gnomad\", \"type\": \"Option\"}, {\"text\": \"VCF\", \"type\": \"FileFormat\"}, {\"text\": \"MAF\", \"type\": \"FileFormat\"}], \"relations\": [{\"subject\": \"Funcotator WDL\", \"relation\": \"HAS_OPTION\", \"object\": \"gatk_docker\", \"evidence\": \"String gatk_docker - GATK Docker image in which to run\"}, {\"subject\": \"Funcotator WDL\", \"relation\": \"HAS_OPTION\", \"object\": \"reference_version\", \"evidence\": \"String reference_version - Version of the reference being used. Either `hg19` or `hg38`.\"}, {\"subject\": \"Funcotator WDL\", \"relation\": \"HAS_OPTION\", \"object\": \"output_format\", \"evidence\": \"String output_format - Output file format (either VCF or MAF).\"}, {\"subject\": \"Funcotator WDL\", \"relation\": \"HAS_OPTION\", \"object\": \"compress\", \"evidence\": \"Boolean compress - Whether to compress the resulting output file.\"}, {\"subject\": \"Funcotator WDL\", \"relation\": \"HAS_OPTION\", \"object\": \"use_gnomad\", \"evidence\": \"Boolean use_gnomad - If true, will enable the gnomAD data sources in the data source tar.gz, if they exist.\"}, {\"subject\": \"Funcotator WDL\", \"relation\": \"ACCEPTS\", \"object\": \"VCF\", \"evidence\": \"File variant_vcf_to_funcotate - Variant Context File (VCF) containing the variants to annotate.\"}, {\"subject\": \"Funcotator WDL\", \"relation\": \"PRODUCES\", \"object\": \"VCF\", \"evidence\": \"String output_format - Output file format (either VCF or MAF).\"}, {\"subject\": \"Funcotator WDL\", \"relation\": \"PRODUCES\", \"object\": \"MAF\", \"evidence\": \"String output_format - Output file format (either VCF or MAF).\"}]}"
+  },
+  {
+    "key": "e0ca90a3246b2a8387c95a947fea3f5c6c9c96d97ff1b3e7e56a412c88de82af",
+    "output": "{\"entities\": [{\"text\": \"Funcotator\", \"type\": \"Tool\"}, {\"text\": \"interval_list\", \"type\": \"Option\"}, {\"text\": \"data_sources_tar_gz\", \"type\": \"Option\"}, {\"text\": \"transcript_selection_mode\", \"type\": \"Option\"}, {\"text\": \"annotation_overrides\", \"type\": \"Option\"}, {\"text\": \"gatk4_jar_override\", \"type\": \"Option\"}, {\"text\": \"funcotator_extra_args\", \"type\": \"Option\"}], \"relations\": [{\"subject\": \"Funcotator\", \"relation\": \"HAS_OPTION\", \"object\": \"interval_list\", \"evidence\": \"File? interval_list - Intervals to be used for traversal.\"}, {\"subject\": \"Funcotator\", \"relation\": \"HAS_OPTION\", \"object\": \"data_sources_tar_gz\", \"evidence\": \"File? data_sources_tar_gz - Path to tar.gz containing the data sources for Funcotator to create annotations.\"}, {\"subject\": \"Funcotator\", \"relation\": \"HAS_OPTION\", \"object\": \"transcript_selection_mode\", \"evidence\": \"String? transcript_selection_mode - Method of detailed transcript selection.\"}, {\"subject\": \"Funcotator\", \"relation\": \"HAS_OPTION\", \"object\": \"annotation_overrides\", \"evidence\": \"Array[String]? annotation_overrides - Override values for annotations (in the format <ANNOTATION>:<VALUE>).\"}, {\"subject\": \"Funcotator\", \"relation\": \"HAS_OPTION\", \"object\": \"gatk4_jar_override\", \"evidence\": \"File? gatk4_jar_override - Override Jar file containing GATK 4.0.\"}, {\"subject\": \"Funcotator\", \"relation\": \"HAS_OPTION\", \"object\": \"funcotator_extra_args\", \"evidence\": \"String? funcotator_extra_args - Extra command-line arguments to pass through to Funcotator.\"}]}"
+  },
+  {
+    "key": "d3f469720b0881848f4840b63ccaa777cec62b644d7c2a5c821f270ecf4a6789",
+    "output": "{\"entities\": [{\"text\": \"PathSeq\", \"type\": \"Tool\"}, {\"text\": \"GATK Resource Bundle\", \"type\": \"Resource\"}], \"relations\": []}"
+  }
+]

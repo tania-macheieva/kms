@@ -1,0 +1,9 @@
+# Python 3.13 (tested). spaCy model installed separately: python -m spacy download en_core_web_md  (en-core-web-md==3.8.0)
+spacy==3.8.16
+numpy==2.5.3
+rdflib==7.6.0
+jsonschema==4.26.0
+falkordblite==0.11.0
+pytest==9.1.1
+python-docx==1.2.0
+# optional, live LLM mode only (untested): anthropic

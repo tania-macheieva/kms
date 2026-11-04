@@ -1,0 +1,49 @@
+{
+ "relation_grid_n": 2727,
+ "relation_kappa_grid": 0.708,
+ "relation_positive_agreement_F1": 0.72,
+ "relation_both": 77,
+ "relation_A1": 102,
+ "relation_A2": 112,
+ "entity_presence_kappa_pool": -0.142,
+ "entity_pool_n": 450,
+ "entity_presence_positive_agreement_F1": 0.848,
+ "entity_type_kappa_on_agreed": 0.995,
+ "entity_type_n": 331,
+ "gold_entities": 446,
+ "gold_relations": 108,
+ "gold_statements": 554,
+ "by_split": {
+  "dev": {
+   "entities": 246,
+   "relations": 49,
+   "docs": 15
+  },
+  "test": {
+   "entities": 200,
+   "relations": 59,
+   "docs": 7
+  }
+ },
+ "relations_by_type": {
+  "PERFORMS": 16,
+  "HAS_OPTION": 69,
+  "COMPUTES_METRIC": 3,
+  "INVOKES": 5,
+  "PRODUCES": 7,
+  "ACCEPTS": 7,
+  "USES_RESOURCE": 1
+ },
+ "entities_by_type": {
+  "Procedure": 29,
+  "Tool": 197,
+  "Option": 130,
+  "FileFormat": 32,
+  "Resource": 30,
+  "Metric": 28
+ },
+ "docs": 22,
+ "offset_missing": 0,
+ "ent_rejected": 6,
+ "rel_rejected": 30
+}

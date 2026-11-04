@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Extraction output for one passage (prompt versions annotate_v2 / extract_llm_v1)",
+  "type": "object",
+  "required": ["entities", "relations"],
+  "additionalProperties": false,
+  "properties": {
+    "entities": {"type": "array", "items": {"type": "object", "required": ["text", "type"], "additionalProperties": false,
+      "properties": {"text": {"type": "string", "minLength": 1},
+                     "type": {"enum": ["Tool", "Procedure", "FileFormat", "Metric", "Option", "Resource"]}}}},
+    "relations": {"type": "array", "items": {"type": "object", "required": ["subject", "relation", "object", "evidence"], "additionalProperties": false,
+      "properties": {"subject": {"type": "string", "minLength": 1},
+                     "relation": {"enum": ["ACCEPTS", "PRODUCES", "PERFORMS", "HAS_OPTION", "COMPUTES_METRIC", "USES_RESOURCE", "INVOKES"]},
+                     "object": {"type": "string", "minLength": 1},
+                     "evidence": {"type": "string", "minLength": 3}}}}
+  }
+}

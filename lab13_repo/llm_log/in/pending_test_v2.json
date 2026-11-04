@@ -1,0 +1,204 @@
+{
+ "system_file": "llm_log/prompts/extract_v2.txt",
+ "model": "claude-haiku-4-5",
+ "items": [
+  {
+   "key": "a238cc9445d775418cc2fd9fafbb412effcc803bb79caeaa1580f261456240da",
+   "user": "PASSAGE_ID: P009\n\nsarek_output — Variant Calling > SNVs and small indels > GATK HaplotypeCaller\n#### GATK HaplotypeCaller\n\nGATK HaplotypeCaller calls germline SNPs and indels via local re-assembly of haplotypes.\n\n Output files for normal samples\n\n**Output directory: `{outdir}/variant_calling/haplotypecaller/<sample>/`**\n\n- `<sample>.haplotypecaller.vcf.gz` and `<sample>.haplotypecaller.vcf.gz.tbi`\n - VCF with tabix index\n\n##### GATK Germline Single Sample Variant Calling\n\nGATK Single Sample Variant Calling\nuses HaplotypeCaller in its default single-sample mode to call variants. The VCF that HaplotypeCaller emits errors on the side of sensitivity, therefore they are filtered by first running the CNNScoreVariants tool. This tool annotates each variant with a score indicating the model's prediction of the quality of each variant. To apply filters based on those scores run the FilterVariantTranches tool with SNP and INDEL sensitivity tranches appropriate for your task.\n\nIf the haplotype-called VCF files are not filtered, then Sarek should be run with at least one of the options `--dbsnp` or `--known_indels`.\n\n Output files for normal samples\n\n**Output directory: `{outdir}/variant_calling/haplotypecaller/<sample>/`**\n\n- `<sample>.haplotypecaller.filtered.vcf.gz` and `<sample>.haplotypecaller.filtered.vcf.gz.tbi`\n - VCF with tabix index",
+   "passage_id": "P009",
+   "attempt": 0
+  },
+  {
+   "key": "30787e4ab4901c8533f1e75b4c6c44221b3b58da515bc46e10606af2c7735758",
+   "user": "PASSAGE_ID: P010\n\nsarek_output — Variant Calling > SNVs and small indels > ASCAT\n#### ASCAT\n\nASCAT is a software for performing allele-specific copy number analysis of tumor samples and for estimating tumor ploidy and purity (normal contamination).\nIt infers tumor purity and ploidy and calculates whole-genome allele-specific copy number profiles.\nThe ASCAT process gives several images as output, described in detail in this book chapter.\nRunning ASCAT on NGS data requires that the BAM files are converted into BAF and LogR values.\nThis is done internally using the software AlleleCount. For further reading and documentation see the ASCAT manual.\n\n Output files for tumor/normal paired samples\n\n**Output directory: `{outdir}/variant_calling/ascat/<tumorsample_vs_normalsample>/`**",
+   "passage_id": "P010",
+   "attempt": 0
+  },
+  {
+   "key": "b3a8a430ddc645b9f56f9d794bd98b9e1d4d4b6169863df30cc3d730fb7c5b85",
+   "user": "PASSAGE_ID: P011\n\nsarek_output — Variant annotation > BCFtools annotate\n### BCFtools annotate\n\nBCFtools annotate is used to add annotations to VCF files. The annotations are added to the INFO column of the VCF file. The annotations are added to the VCF header and the VCF header is updated with the new annotations. For further reading and documentation see the BCFtools annotate manual.\n\n Output files for all samples\n\n- `{sample,tumorsample_vs_normalsample}.<variantcaller>_bcf.ann.vcf.gz` and `{sample,tumorsample_vs_normalsample}.<variantcaller>_bcf.ann.vcf.gz.tbi`\n - VCF with tabix index",
+   "passage_id": "P011",
+   "attempt": 0
+  },
+  {
+   "key": "fffcf840e40a79c0916bc48399b57188f2c1e785cf5ea5e5cf4a4802ca9cd437",
+   "user": "PASSAGE_ID: P012\n\nsarek_output — Variant annotation > BCFtools annotate > bcftools stats\n#### bcftools stats\n\nbcftools stats produces a statistics text file which is suitable for machine processing and can be plotted using plot-vcfstats.\nFor further reading and documentation see the bcftools stats manual.\n\nPlots will show:\n\n- Stats by non-reference allele frequency, depth distribution, stats by quality and per-sample counts, singleton stats, etc.\n- Note: When using Strelka, there will be no depth distribution plot, as Strelka does not report the INFO/DP field\n\n Output files for all samples\n\n**Output directory: `{outdir}/reports/bcftools/`**\n\n- `<sample>.<variantcaller>.bcftools_stats.txt`\n - Raw statistics used by `MultiQC`",
+   "passage_id": "P012",
+   "attempt": 0
+  },
+  {
+   "key": "69eaed4a7a3c0af3248ccd12293f49a80f40ceee8c04e917160128873e81b62b",
+   "user": "PASSAGE_ID: P013\n\nsarek_output — Variant annotation > BCFtools annotate > VEP reports\n#### VEP reports\n\nVEP (Variant Effect Predictor), based on `Ensembl`, is a tool to determine the effects of all sorts of variants, including SNPs, indels, structural variants, CNVs. For further reading and documentation see the VEP manual\n\n Output files for all samples\n\n**Output directory: `{outdir}/reports/EnsemblVEP/{sample,tumorsamplt_vs_normalsample}/<variantcaller>/`**\n\n- `<sample>.<variantcaller>_VEP.summary.html`\n - Summary of the VEP run to be visualised with a web browser",
+   "passage_id": "P013",
+   "attempt": 0
+  },
+  {
+   "key": "5c89db22db996339493184022bab1ef48a5597dad75f3cd11f2197ecb0f48fef",
+   "user": "PASSAGE_ID: P019\n\nUsing Sarek for Variant Calling — Using Sarek for Variant Calling > Experimental Design > Input files\n### Input files\n\nThe input data should be provided in a CSV file, according to a format that is largely common for nf-core pipelines.\nThe format is described in the sarek usage page.\n\n## GATK Best Practices\n\nDuring this tutorial we will use the options Sarek offers to follow the GATK best practices workflow.\n\nThis is solely for educational purposes, since the tutorial dataset includes only 2 samples: while joint-genotyping is a valid choice, the use of soft filtering for such a limited dataset will not offer significant improvements. Additionally, running VQSR on a small dataset will incur in issues with some annotations and will require limiting this step to fewer parameters than usual.",
+   "passage_id": "P019",
+   "attempt": 0
+  },
+  {
+   "key": "95059716ca41361a7c807150a99470b9ab52e920bcd31c546436964f52a53205",
+   "user": "PASSAGE_ID: P020\n\nUsing Sarek for Variant Calling — Using Sarek for Variant Calling > Running Sarek Germline > Reference Genome\n### Reference Genome\n\nFollowing the considerations above, we will first of all edit the `nextflow.config` file in our working directory to add a new genome.\nIt is sufficient to add the following code to the `parameters` directive in the config.\n\n```groovy\nigenomes_base = '/workspace/gitpod/training/data/refs/'\ngenomes {\n\t'GRCh38chr21' {\n bwa = \"${params.igenomes_base}/sequence/Homo_sapiens_assembly38_chr21.fasta.{amb,ann,bwt,pac,sa}\"\n dbsnp = \"${params.igenomes_base}/annotations/dbsnp_146.hg38_chr21.vcf.gz\"\n dbsnp_tbi = \"${params.igenomes_base}/annotations/dbsnp_146.hg38_chr21.vcf.gz.tbi\"\n dbsnp_vqsr = '--resource:dbsnp,known=false,training=true,truth=false,prior=2.0 dbsnp_146.hg38_chr21.vcf.gz'\n dict = \"${params.igenomes_base}/sequence/Homo_sapiens_assembly38_chr21.dict\"\n fasta = \"${params.igenomes_base}/sequence/Homo_sapiens_assembly38_chr21.fasta\"\n fasta_fai = \"${params.igenomes_base}/sequence/Homo_sapiens_assembly38_chr21.fasta.fai\"\n germline_resource = \"${params.igenomes_base}/annotations/gnomAD.r2.1.1.GRCh38.PASS.AC.AF.only_chr21.vcf.gz\"\n germline_resource_tbi = \"${params.igenomes_base}/annotations/gnomAD.r2.1.1.GRCh38.PASS.AC.AF.only_chr21.vcf.gz.tbi\"\n known_snps = \"${params.igenomes_base}/annotations/1000G_phase1.snps.high_confidence.hg38_chr21.vcf.gz\"\n known_snps_tbi = \"${params.igenomes_base}/annotations/1000G_phase1.snps.high_confidence.hg38_chr21.vcf.gz.tbi\"\n known_snps_vqsr = '--resource:1000G,known=false,training=true,truth=true,prior=10.0 1000G_phase1.snps.high_confidence.hg38_chr21.vcf.gz'\n known_indels = \"${params.igenomes_base}/annotations/Mills_and_1000G_gold_standard.indels.hg38_chr21.vcf.gz\"\n known_indels_tbi = \"${params.igenomes_base}/annotations/Mills_and_1000G_gold_standard.indels.hg38_chr21.vcf.gz.tbi\"\n known_indels_vqsr = '--resource:mills,known=false,training=true,truth=true,prior=10.0 Mills_and_1000G_gold_standard.indels.hg38_chr21.vcf.gz'\n snpeff_db = '105'\n snpeff_genome = 'GRCh38'\n\t}\n}\n```",
+   "passage_id": "P020",
+   "attempt": 0
+  },
+  {
+   "key": "dd582e21043adbbc683cff4950fb5efe0505c0054034c1462c2a108c60aa7ba1",
+   "user": "PASSAGE_ID: P021\n\nUsing Sarek for Variant Calling — Using Sarek for Variant Calling > Running Sarek Germline > Launching the pipeline\n### Launching the pipeline\n\nNow we are ready to launch the pipeline, and we can use the following command line:\n\n```bash\nnextflow run nf-core/sarek -r 3.4.0 \\\n--input /workspace/gitpod/training/data/reads/sarek-input.csv \\\n--outdir . \\\n--tools haplotypecaller,snpeff \\\n--genome GRCh38chr21 \\\n--joint_germline \\\n--intervals /workspace/gitpod/training/exome_target_hg38_chr21.bed \\\n--wes\n```\n\nNotice that we have selected `--joint_germline` to enable the joint-genotyping workflow, we have specified our library strategy is using a capture with `--wes` and we have provided a bed file with the targets with `--intervals`.\nThe target file in this case refers to the capture intervals on chromosome 21 only, where the data have been simulated.\n\nThe whole pipeline from FASTQ input to annotated VCF should run in about 25 minutes.\n\nOur final VCF file will be located in\n\n```bash\n./annotation/haplotypecaller/joint_variant_calling\n```",
+   "passage_id": "P021",
+   "attempt": 0
+  },
+  {
+   "key": "599f0b3838e829f10fc48deafbae1e005e8c03d6d3920d5054e5f09efcaad1f7",
+   "user": "PASSAGE_ID: P028\n\nnf-core/raredisease: Usage — Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data > Reference files and parameters > 2. QC stats from the alignment files\n##### 2. QC stats from the alignment files\n\n| Mandatory | Optional |\n\n| intervals_wgs 1 | |\n| intervals_y 1 | |\n| target_bed / (bait_intervals & target_intervals) 2 | |\n| | verifybamid_svd_bed 3 |\n| | verifybamid_svd_mu 3 |\n| | verifybamid_svd_ud 3 |\n\n 1 These files are Picard's style interval list files, comprising the entire genome or only the chromosome Y. A version of these files for GRCh37 and for GRCh38 is supplied in the pipeline assets. These files are not necessary if you are using Sentieon.\n 2 If a target_bed file is provided, bait_intervals and target_intervals can be generated by the pipeline.\n 3 Used by VerifyBamID2 to check for contamination. These files can either be downloaded from VerifyBamID2 repository or created using VerifyBamID2 with custom files as described here.",
+   "passage_id": "P028",
+   "attempt": 0
+  },
+  {
+   "key": "ff49edb12d932433297bf5efb177aa5639cad53ab3d4cc583f40e81b27f19643",
+   "user": "PASSAGE_ID: P029\n\nnf-core/raredisease: Usage — Other Nextflow hidden files, like history of pipeline logs. > Best practices\n- **Reproducibility:** Specify a pipeline version when running the pipeline on your data. This ensures that a specific version of the pipeline code and software are used when you run your pipeline. If you keep using the same tag, you'll be running the same version of the pipeline, even if there have been changes to the code since. First, go to the nf-core/raredisease releases page and find the latest pipeline version - numeric only (e.g. `1.3.1`). Then specify this when running the pipeline with `-r`, for example, `-r 1.3.1`. You can switch to another version by changing the number after the `-r` flag. The version number will be logged in reports when you run the pipeline. For example, you can view the version number at the bottom of the MultiQC reports.\n\nTo further assist in reproducibility, you can use share and reuse parameter files to repeat pipeline runs with the same settings without having to write out a command with every single parameter.\nTIP:\nIf you wish to share such profile (such as upload as supplementary material for academic publications), make sure to NOT include cluster specific paths to files, nor institutional specific profiles.",
+   "passage_id": "P029",
+   "attempt": 0
+  },
+  {
+   "key": "0af003dd2668d41b19504371266d12daeb4efcd2ee059571ae90d44b34ab09e3",
+   "user": "PASSAGE_ID: P030\n\nnf-core/raredisease: Usage — Other Nextflow hidden files, like history of pipeline logs. > Core Nextflow arguments\n## Core Nextflow arguments\nNOTE:\nThese options are part of Nextflow and use a _single_ hyphen (pipeline parameters use a double-hyphen)\n\n### `-profile`\n\nUse this parameter to choose a configuration profile. Profiles can give configuration presets for different compute environments.\n\nSeveral generic profiles are bundled with the pipeline which instruct the pipeline to use software packaged using different methods (Docker, Singularity, Podman, Shifter, Charliecloud, Apptainer, Conda) - see below.\nIMPORTANT:\nWe highly recommend the use of Docker or Singularity containers for full pipeline reproducibility, however when this is not possible, Conda is also supported.\n\nThe pipeline also dynamically loads configurations from https://github.com/nf-core/configs when it runs, making multiple config profiles for various institutional clusters available at run time. For more information and to check if your system is supported, please see the nf-core/configs documentation.\n\nNote that multiple profiles can be loaded, for example: `-profile test,docker` - the order of arguments is important!\nThey are loaded in sequence, so later profiles can overwrite earlier profiles.\n\nIf `-profile` is not specified, the pipeline will run locally and expect all software to be installed and available on the `PATH`. This is _not_ recommended, since it can lead to different results on different machines dependent on the computer environment.",
+   "passage_id": "P030",
+   "attempt": 0
+  },
+  {
+   "key": "55f0769aa52201967c612ebeae961c25821e46ae6f195403e3115ed5baf741bd",
+   "user": "PASSAGE_ID: P031\n\nnf-core/raredisease: Usage — Other Nextflow hidden files, like history of pipeline logs. > Core Nextflow arguments > Running in the background\n### Running in the background\n\nNextflow handles job submissions and supervises the running jobs. The Nextflow process must run until the pipeline is finished.\n\nThe Nextflow `-bg` flag launches Nextflow in the background, detached from your terminal so that the workflow does not stop if you log out of your session. The logs are saved to a file.\n\nAlternatively, you can use `screen` / `tmux` or similar tool to create a detached session which you can log back into at a later time.\nSome HPC setups also allow you to run Nextflow within a cluster job submitted to your job scheduler (from where it submits more jobs).",
+   "passage_id": "P031",
+   "attempt": 0
+  },
+  {
+   "key": "c3cff80d2b041ea198bd9bb5aecf1efc344d00d118ab3f4f5a9cb255d298f794",
+   "user": "PASSAGE_ID: P032\n\nnf-core/raredisease: Usage — Other Nextflow hidden files, like history of pipeline logs. > Core Nextflow arguments > Nextflow memory requirements\n### Nextflow memory requirements\n\nIn some cases, the Nextflow Java virtual machines can start to request a large amount of memory.\nWe recommend adding the following line to your environment to limit this (typically in `~/.bashrc` or `~./bash_profile`):\n\n```bash\nNXF_OPTS='-Xms1g -Xmx4g'\n```",
+   "passage_id": "P032",
+   "attempt": 0
+  },
+  {
+   "key": "70614e9370b5edcc24f941aa563b369ac8eb597d3dfdfad15385f938cc556a48",
+   "user": "PASSAGE_ID: P036\n\nrare_citations — Nextflow & nf-core\n## Nextflow & nf-core\n\n- nf-core\n\n > Ewels PA, Peltzer A, Fillinger S, Patel H, Alneberg J, Wilm A, Garcia MU, Di Tommaso P, Nahnsen S. The nf-core framework for community-curated bioinformatics pipelines. Nat Biotechnol. 2020 Mar;38(3):276-278. doi: 10.1038/s41587-020-0439-x. PubMed PMID: 32055031.\n\n- Nextflow\n\n > Di Tommaso P, Chatzou M, Floden EW, Barja PP, Palumbo E, Notredame C. Nextflow enables reproducible computational workflows. Nat Biotechnol. 2017 Apr 11;35(4):316-319. doi: 10.1038/nbt.3820. PubMed PMID: 28398311.",
+   "passage_id": "P036",
+   "attempt": 0
+  },
+  {
+   "key": "39b3702945f5b687300376862b23bf84590095c92f295cefe8b67e6754b0352b",
+   "user": "PASSAGE_ID: P037\n\nrare_citations — Software packaging/containerisation tools\n## Software packaging/containerisation tools\n\n- Anaconda\n\n > Anaconda Software Distribution. Computer software. Vers. 2-2.4.0. Anaconda, Nov. 2016. Web.\n\n- Bioconda\n\n > Grüning B, Dale R, Sjödin A, Chapman BA, Rowe J, Tomkins-Tinch CH, Valieris R, Köster J; Bioconda Team. Bioconda: sustainable and comprehensive software distribution for the life sciences. Nat Methods. 2018 Jul;15(7):475-476. doi: 10.1038/s41592-018-0046-7. PubMed PMID: 29967506.\n\n- BioContainers\n\n > da Veiga Leprevost F, Grüning B, Aflitos SA, Röst HL, Uszkoreit J, Barsnes H, Vaudel M, Moreno P, Gatto L, Weber J, Bai M, Jimenez RC, Sachsenberg T, Pfeuffer J, Alvarez RV, Griss J, Nesvizhskii AI, Perez-Riverol Y. BioContainers: an open-source and community-driven framework for software standardization. Bioinformatics. 2017 Aug 15;33(16):2580-2582. doi: 10.1093/bioinformatics/btx192. PubMed PMID: 28379341; PubMed Central PMCID: PMC5870671.\n\n- Docker\n\n > Merkel, D. (2014). Docker: lightweight linux containers for consistent development and deployment. Linux Journal, 2014(239), 2. doi: 10.5555/2600239.2600241.\n\n- Singularity\n\n > Kurtzer GM, Sochat V, Bauer MW. Singularity: Scientific containers for mobility of compute. PLoS One. 2017 May 11;12(5):e0177459. doi: 10.1371/journal.pone.0177459. eCollection 2017. PubMed PMID: 28494014; PubMed Central PMCID: PMC5426675.",
+   "passage_id": "P037",
+   "attempt": 0
+  },
+  {
+   "key": "730f7867cce61d4b328e9bf473051c1d553f7c930f0f6f3926baeea4aa24f299",
+   "user": "PASSAGE_ID: P038\n\nConvert 23andme results into VCF — bcftools cnv '[OPTIONS] FILE' > General Options:\n### General Options:\n\n-c, --control-sample string::\n optional control sample name. If given, pairwise calling is performed\n and the -P option can be used\n\n-f, --AF-file file::\n read allele frequencies from a tab-delimited file with the columns CHR,POS,REF,ALT,AF\n\n-o, --output-dir path::\n output directory\n\n-p, --plot-threshold float::\n call matplotlib to produce plots for chromosomes with quality at least float,\n useful for visual inspection of the calls. With -p 0, plots for all chromosomes will be\n generated. If not given, a matplotlib script will be created but not called.\n\n-r, --regions chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::\n see <<common_options,Common Options>>\n\n-R, --regions-file file::\n see <<common_options,Common Options>>\n\n--regions-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n-s, --query-sample string::\n query sample name\n\n-t, --targets LIST::\n see <<common_options,Common Options>>\n\n-T, --targets-file FILE::\n see <<common_options,Common Options>>\n\n--targets-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n-v, --verbosity INT::\n see <<common_options,Common Options>>",
+   "passage_id": "P038",
+   "attempt": 0
+  },
+  {
+   "key": "261feb93c36e7f557300a2d21acf5dfdcf17a9906858d11c8254fc1890efc377",
+   "user": "PASSAGE_ID: P039\n\nConvert 23andme results into VCF — .gen (with --3N6 --vcf-ids)\n## .gen (with --3N6 --vcf-ids)\n chr1 1:111485207_G_A rsID1 111485207 G A 0 1 0 0 1 0\n chr1 1:111494194_C_T rsID2 111494194 C T 0 1 0 0 0 1\n\n .gen (with --vcf-ids)\n ---------------------------\n 1:111485207_G_A rsID1 111485207 G A 0 1 0 0 1 0\n 1:111494194_C_T rsID2 111494194 C T 0 1 0 0 0 1\n\n .gen (the default)\n ------------------------------\n 1:111485207_G_A 1:111485207_G_A 111485207 G A 0 1 0 0 1 0\n 1:111494194_C_T 1:111494194_C_T 111494194 C T 0 1 0 0 0 1",
+   "passage_id": "P039",
+   "attempt": 0
+  },
+  {
+   "key": "1bcc387cdf930e6f05314ad839c3c88fa0c0ba332c6ea9bdf4efcf9d55176160",
+   "user": "PASSAGE_ID: P040\n\nConvert 23andme results into VCF — Convert 23andme results into VCF\n# Convert 23andme results into VCF\nbcftools convert -c ID,CHROM,POS,AA -s SampleName -f 23andme-ref.fa --tsv2vcf 23andme.txt -o out.vcf.gz\n\n# Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored\nbcftools convert -c -,CHROM,POS,REF,ALT -f ref.fa --tsv2vcf calls.txt -o out.bcf\n----\n\n[[csq]]",
+   "passage_id": "P040",
+   "attempt": 0
+  },
+  {
+   "key": "4609f316bafa16ec57bd29fafe80f0f0f8f71938d75b792c3d3e674362d34dbe",
+   "user": "PASSAGE_ID: P041\n\nConvert 23andme results into VCF — Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools gtcheck [OPTIONS] [-g 'genotypes.vcf.gz'] 'query.vcf.gz'\n## bcftools gtcheck [OPTIONS] [-g 'genotypes.vcf.gz'] 'query.vcf.gz'\nChecks sample identity. The program can operate in two modes. If the -g\noption is given, the identity of samples from 'query.vcf.gz'\nis checked against the samples in the -g file.\nWithout the -g option, multi-sample cross-check of samples in 'query.vcf.gz' is performed.\n\nNote that the interpretation of the discordance score depends on the options provided (specifically -e and\n-u) and on the available annotations (FORMAT/PL vs FORMAT/GT).\nThe discordance score can be interpreted as the number of mismatching genotypes only if GT-vs-GT matching is performed.\n\n--distinctive-sites 'NUM[,MEM[,DIR]]'::\n Find sites that can distinguish between at least NUM sample pairs. If the number is smaller or equal to 1,\n it is interpreted as the fraction of pairs. The optional MEM string sets the maximum memory used for\n in-memory sorting and DIR is the temporary directory for external sorting. This option requires also\n --pairs to be given.\n\n--dry-run::\n Stop after first record to estimate required time.\n\n-e, --exclude [qry|gt]:EXPRESSION::\n Exclude sites from query file ('qry:') or genotype file ('gt:') for which EXPRESSION is true.\n For valid expressions see <<expressions,EXPRESSIONS>>.",
+   "passage_id": "P041",
+   "attempt": 0
+  },
+  {
+   "key": "7b28ee0854e26451437ebfc2d2e3556aab7df7d2fab505ab35abc6955bb1b422",
+   "user": "PASSAGE_ID: P042\n\nConvert 23andme results into VCF — Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools merge [OPTIONS] 'A.vcf.gz B.vcf.gz' [...]\n-m, --merge snps|indels|both|snp-ins-del|all|none|id[,'*']::\n The option controls what types of multiallelic records can be created. If single asterisk\n '\\' is appended, the unobserved allele '<> or <NON_REF>' will be removed at variant sites;\n if two asterisks '**' are appended, the unobserved allele will be removed all sites.\n----\n-m exact .. require the exact same alleles\n-m none .. no new multiallelics, output multiple records instead\n-m snps .. allow multiallelic SNP records\n-m indels .. allow multiallelic indel records\n-m both .. both SNP and indel records can be multiallelic\n-m both, .. same as above but remove <> (or <NON_REF>) from variant sites\n-m both, .. same as above but remove <> (or <NON_REF>) at all sites\n-m all .. SNP records can be merged with indel records\n-m snp-ins-del .. allow multiallelic SNVs, insertions, deletions, but don't mix them\n-m id .. merge by ID\n----",
+   "passage_id": "P042",
+   "attempt": 0
+  },
+  {
+   "key": "8b2ae27f26ab7b358a93128fa4c0ebf9d6fac6c24ac754e1745c7ab16bb6792e",
+   "user": "PASSAGE_ID: P043\n\nConvert 23andme results into VCF — Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools mpileup [OPTIONS] -f 'ref.fa in.bam' ['in2.bam' [...]]\n## bcftools mpileup [OPTIONS] -f 'ref.fa in.bam' ['in2.bam' [...]]\nGenerate VCF or BCF containing genotype likelihoods for one or multiple\nalignment (BAM or CRAM) files. This is based on the original\nsamtools mpileup command (with the -v or -g options) producing\ngenotype likelihoods in VCF or BCF format, but not the textual pileup\noutput. The mpileup command was transferred to bcftools in order to\navoid errors resulting from use of incompatible versions of samtools\nand bcftools when using in the mpileup+bcftools call pipeline.\n\nIndividuals are identified from the SM tags in the @RG header lines. Multiple\nindividuals can be pooled in one alignment file, also one individual can be\nseparated into multiple files. If sample identifiers are absent, each input\nfile is regarded as one sample.",
+   "passage_id": "P043",
+   "attempt": 0
+  },
+  {
+   "key": "6c9b5c1285efdb1c3bd0fe6d200de62ac2cfdea813ed1f42847aec7dde27cd4f",
+   "user": "PASSAGE_ID: P044\n\nConvert 23andme results into VCF — Replace missing genotypes with 0|0 > bcftools query [OPTIONS] 'file.vcf.gz' ['file.vcf.gz' [...]]\n-T, --targets-file file::\n see <<common_options,Common Options>>\n\n--targets-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n-u, --allow-undef-tags::\n do not throw an error if there are undefined tags in the format string,\n print \".\" instead\n\n-v, --vcf-list FILE::\n process multiple VCFs listed in the file\n\n--verbosity INT::\n see <<common_options,Common Options>>",
+   "passage_id": "P044",
+   "attempt": 0
+  },
+  {
+   "key": "009026fb69936eea5fc8f6df24f4538e6738f9e0ec101f2540d47a5f046ef652",
+   "user": "PASSAGE_ID: P045\n\nConvert 23andme results into VCF — Replace missing genotypes with 0|0 > bcftools roh [OPTIONS] 'file.vcf.gz' > HMM Options:\n### HMM Options:\n\n-a, --hw-to-az FLOAT::\n P(AZ|HW) transition probability from AZ (autozygous) to HW (Hardy-Weinberg) state\n\n-H, --az-to-hw FLOAT::\n P(HW|AZ) transition probability from HW to AZ state\n\n-V, --viterbi-training FLOAT::\n estimate HMM parameters using Baum-Welch algorithm, using the convergence threshold\n FLOAT, e.g. 1e-10 (experimental)\n\n[[sort]]",
+   "passage_id": "P045",
+   "attempt": 0
+  },
+  {
+   "key": "a9c713f406662d4ae9ce0528b359da675b652ed16753e0eb3508fb6d578a725c",
+   "user": "PASSAGE_ID: P049\n\ngatk_readme — Requirements\ntest files required to run the test suite. Run `git lfs install` after downloading, followed by `git lfs pull` from\n the root of your git clone to download all of the large files, including those required to run the test suite. The\n full download is approximately 5 gigabytes. Alternatively, if you are just building GATK and not running the test\n suite, you can skip this step since the build itself will use git-lfs to download the minimal set of large `lfs`\n resource files required to complete the build. The test resources will not be downloaded, but this greatly reduces\n the size of the download.\n * Gradle 5.6. We recommend using the `./gradlew` script which will\n download and use an appropriate gradle version automatically (see examples below).",
+   "passage_id": "P049",
+   "attempt": 0
+  },
+  {
+   "key": "8fcf3ee5eae7b4f03337c4b41c9775aa2fea381dda714bdae0c11293da85927e",
+   "user": "PASSAGE_ID: P050\n\ngatk_readme — Building GATK4\n* **Other ways to build:**\n * `./gradlew installDist`\n * Does a *fast* build that only lets you run GATK tools from inside your git clone, and locally only (not on a cluster). Good for developers!\n * `./gradlew installAll`\n * Does a *semi-fast* build that only lets you run GATK tools from inside your git clone, but works both locally and on a cluster. Good for developers!\n * `./gradlew localJar`\n * Builds *only* the GATK jar used for running tools locally (not on a Spark cluster). The resulting jar will be in `build/libs` with a name like `gatk-package-VERSION-local.jar`, and can be used outside of your git clone.\n * `./gradlew sparkJar`\n * Builds *only* the GATK jar used for running tools on a Spark cluster (rather than locally). The resulting jar will be in `build/libs` with a name like `gatk-package-VERSION-spark.jar`, and can be used outside of your git clone.\n * This jar will not include Spark and Hadoop libraries, in order to allow the versions of Spark and Hadoop installed on your cluster to be used.\n\n* **To remove previous builds, run:**\n\n ./gradlew clean\n\n* For faster gradle operations, add `org.gradle.daemon=true` to your `~/.gradle/gradle.properties` file.\n This will keep a gradle daemon running in the background and avoid the ~6s gradle start up time on every command.",
+   "passage_id": "P050",
+   "attempt": 0
+  },
+  {
+   "key": "1ee33729d655b563c1ea211ece3a05423d798f4bccae547f649a9c4cda61552c",
+   "user": "PASSAGE_ID: P051\n\ngatk_readme — Running GATK4 > Testing GATK\n* To run tests and compute coverage reports, run **`./gradlew jacocoTestReport`**. The report is then in `build/reports/jacoco/test/html/index.html`.\n (IntelliJ has a good coverage tool that is preferable for development).\n\n* We use Github Actions as our continuous integration provider.\n\n * Before merging any branch make sure that all required tests pass on Github.\n * Every Actions build will upload the test results to our GATK Google Cloud Storage bucket and a zipped artifact upload.\n A link to the uploaded report will appear at the very bottom of the github actions log.\n Look for the line that says `See the test report at`.\n Test github actions test artifacts will not show up on the webpage until the entire test has concluded.\n If TestNG itself crashes there will be no report generated.\n\n* We use Broad Jenkins for our long-running tests and performance tests.\n * To add a performance test (requires Broad-ID), you need to make a \"new item\" in Jenkins and make it a \"copy\" instead of a blank project. You need to base it on either the \"-spark-\" jobs or the other kind of jobs and alter the commandline.\n\n* To output stack traces for `UserException` set the environment variable `GATK_STACKTRACE_ON_USER_EXCEPTION=true`",
+   "passage_id": "P051",
+   "attempt": 0
+  },
+  {
+   "key": "a5132fc2c1a0fa88cf010bd682c8cd0bbafe9d3f638f9fddca4ecdc3d200153a",
+   "user": "PASSAGE_ID: P052\n\ngatk_readme — Running GATK4 > Setting up profiling using JProfiler\n#### Setting up profiling using JProfiler\n\n * Running JProfiler standalone:\n * Build a full GATK4 jar using `./gradlew localJar`\n * In the \"Session Settings\" window, select the GATK4 jar, eg. `~/gatk/build/libs/gatk-package-4.alpha-196-gb542813-SNAPSHOT-local.jar` for \"Main class or executable JAR\" and enter the right \"Arguments\"\n * Under \"Profiling Settings\", select \"sampling\" as the \"Method call recording\" method.\n\n * Running JProfiler from within IntelliJ:\n * JProfiler has great integration with IntelliJ (we're using IntelliJ Ultimate edition) so the setup is trivial.\n * Follow the instructions above for creating an IntelliJ project for GATK\n * Right click on a test method/class/package and select \"Profile\"",
+   "passage_id": "P052",
+   "attempt": 0
+  },
+  {
+   "key": "5ac15ea741aa0b3f00552db0a63c4140127c2fef7e6a9aef517dc92c83c80c81",
+   "user": "PASSAGE_ID: P053\n\ngatk_readme — Running GATK4 > Using Zenhub to track github issues\n#### Using Zenhub to track github issues\n\nWe use Zenhub to organize and track github issues.\n\n* To add Zenhub to github, go to the Zenhub home page while logged in to github, and click \"Add Zenhub to Github\"\n\n* Zenhub allows the GATK development team to assign time estimates to issues, and to mark issues as Triaged/In Progress/In Review/Blocked/etc.",
+   "passage_id": "P053",
+   "attempt": 0
+  },
+  {
+   "key": "53728c28c73be79a21aaf5f9a2ec26362172fa0a4706ca888eb8f02a6e9782b2",
+   "user": "PASSAGE_ID: P060\n\nRequired and defaults to false. — 1 - Funcotator Background Information > 1.1.2.2.1 - Enabling gnomAD\nOriginalAlleles* A list of the original alleles (including REF) of the variant prior to liftover. If the alleles were not changed during liftover, this attribute will be omitted.\n OriginalContig* The name of the source contig/chromosome prior to liftover.\n OriginalStart* The position of the variant on the source contig prior to liftover.\n ReverseComplementedAlleles* The REF and the ALT alleles have been reverse complemented in liftover since the mapping from the previous reference to the current one was on the negative strand.\n SwappedAlleles* The REF and the ALT alleles have been swapped in liftover due to changes in the reference. It is possible that not all INFO annotations reflect this swap, and in the genotypes, only the GT, PL, and AD fields have been modified. You should check the TAGS_TO_REVERSE parameter that was used during the LiftOver to be sure.\n\n\\* - only available in *hg38*",
+   "passage_id": "P060",
+   "attempt": 0
+  },
+  {
+   "key": "c6de1dc18485f2525fdae9018448ca70e11522c48cfd932948d070626a8b579b",
+   "user": "PASSAGE_ID: P061\n\nRequired and defaults to false. — 1 - Funcotator Background Information > 1.1.5 - User-Defined Data Sources > 1.1.5.1 - Configuration File Format\n#### 1.1.5.1 - Configuration File Format\nThe configuration file is a standard Java properties-style configuration file with key-value pairs. This file name **must end in .config**.\n\n##### 1.1.5.1.1 - Simple XSV\n\nThe following is an example of a Locatable XSV configuration file (for the Familial Cancer Genes data source):\n\n```\nname = Familial_Cancer_Genes\nversion = 20110905\nsrc_file = Familial_Cancer_Genes.no_dupes.tsv\norigin_location = oncotator_v1_ds_April052016.tar.gz\npreprocessing_script = UNKNOWN",
+   "passage_id": "P061",
+   "attempt": 0
+  },
+  {
+   "key": "4a70d105b2d2f13c32d842f5f2f374cb9c26c7e7e86edd3524f0516b58cc6a1e",
+   "user": "PASSAGE_ID: P062\n\nRequired and defaults to false. — Required and defaults to false.\n# Required and defaults to false.\nisB37DataSource = false\n\n# vcf -- Custom datasource class for Variant Call Format (VCF) files\ntype = simpleXSV\n\n# Path to the FASTA file from which to load the sequences for GENCODE transcripts:\ngencode_fasta_path =",
+   "passage_id": "P062",
+   "attempt": 0
+  },
+  {
+   "key": "533f181064a56b5b925ad66f518cd10575e6b185273595fb78fd8e11e12da424",
+   "user": "PASSAGE_ID: P063\n\nRequired and defaults to false. — The Name or 0-based index of the column containing the end position for each row\n# The Name or 0-based index of the column containing the end position for each row\nend_column = 3\n```\n\n#### 1.1.5.2 - Cloud Data Sources\n\nFuncotator allows for data sources with source files that live on the cloud, enabling users to annotate with data sources that are not physically present on the machines running Funcotator.\nTo create a data source based on the cloud, create a configuration file for that data source and put the cloud URL in as the src_file property (see Configuration File Format for details).\nE.g.:\n```\n ...\nsrc_file = gs://broad-references/hg19/v0/1000G_phase1.snps.high_confidence.b37.vcf.gz\n...\n```",
+   "passage_id": "P063",
+   "attempt": 0
+  },
+  {
+   "key": "cfc436c34751199c4bc3335e0182b3cf136661295f8c82dcbade02552c7ad067",
+   "user": "PASSAGE_ID: P064\n\nRequired and defaults to false. — The Name or 0-based index of the column containing the end position for each row > 2.1 - Running Funcotator in the GATK With Base Options > 2.2.5 - --annotation-override\n#### 2.2.5 - --annotation-override\nThis parameter specifies an override value for an annotation. If the annotation were to be added to a variant by a data source, the value for that annotation would be replaced with the value specified in the annotation override. If the annotation would not be added by a data source it is added to the output with the given value.\n\nTo specify this annotation default, the value on the command line takes the format:\n`ANNOTATION_FIELD:value`\n\nFor example, to override the _NCBI_Build_ annotation to _HG19_:\n```\n./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-version hg19 --data-sources-path funcotator_dataSources.v1.2.20180329 --output variants.funcotated.maf --output-file-format MAF --annotation-override NCBI_Build:HG19\n```\n\nIt is valid to provide both the `--annotation-override` and `--annotation-default` arguments to Funcotator, however the behavior of specifying an annotation-override and an annotation-default for the _same annotation field_ is undefined.",
+   "passage_id": "P064",
+   "attempt": 0
+  }
+ ]
+}

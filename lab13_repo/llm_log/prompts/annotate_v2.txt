@@ -1,0 +1,16 @@
+ANNOTATION INSTRUCTION v2 - domain: documentation of genomic-variant analysis tools (see docs/extraction_schema.md)
+
+Task: for every passage write (a) entity mentions and (b) relation statements. Use ONLY information stated in the passage.
+Entity types (closed list): Tool (software, workflow/pipeline, plugin, command or subcommand, e.g. bcftools annotate, HaplotypeCaller, nf-core/sarek), Procedure (analysis step, e.g. variant calling, annotation, filtering),
+FileFormat (data/file format, e.g. VCF, BAM, CRAM), Metric (quality annotation/statistic/score, e.g. QD, FS, mapping quality), Option (command-line option/parameter/flag, e.g. --merge-logic), Resource (named database, reference genome or collection, e.g. dbSNP, GRCh38, Gencode).
+Relation types (closed list, subject -> object): ACCEPTS Tool->FileFormat (input); PRODUCES Tool->FileFormat (output); PERFORMS Tool->Procedure; HAS_OPTION Tool->Option; COMPUTES_METRIC Tool->Metric; USES_RESOURCE Tool->Resource; INVOKES Tool->Tool (one tool calls/runs another as a step).
+Rules:
+1) Annotate only what the text states explicitly, no outside knowledge; a bare mention in a title, table of contents or list of names is not a statement (entities may still be tagged).
+2) "evidence" = a verbatim span copied from the passage (markup such as backticks kept), up to 2 consecutive sentences; it must contain the predicate (verb/phrase that carries the relation).
+3) subject/object use the surface form from the text WITHOUT markdown markup (no backticks, bold, link brackets). If the subject is a pronoun/"the plugin"/"this tool", resolve it to the named entity in the same passage; the evidence need not contain the resolved name.
+4) One statement per (subject, relation, object) per passage; do not duplicate aliases (nf-core/sarek and Sarek are one entity: use the first surface form).
+5) Type constraints must hold. "Contains / is built with / uses a container" is NOT INVOKES; containment and dependency are not annotated.
+6) PERFORMS/COMPUTES_METRIC/etc. need an explicit statement that this tool does it; "can be customised for X" or mere topic of the section is not enough. Procedure may be a verb phrase as written.
+7) Skip statements about people, institutions, funding, licences, citations.
+Edge cases: negated statements ("does not support") are not annotated; options listed for a subcommand belong to that subcommand; an option mentioned as an example value of another option is not HAS_OPTION.
+Output: JSON list [{"passage_id": ..., "entities": [{"text": ..., "type": ...}], "relations": [{"subject": ..., "relation": ..., "object": ..., "evidence": ...}]}] - one item per passage, in input order. Output only the JSON file, nothing else.

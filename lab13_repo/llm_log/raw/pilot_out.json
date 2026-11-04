@@ -1,0 +1,19 @@
+[
+ {"passage_id":"P001",
+  "entities":[{"text":"nf-core/sarek","type":"Tool"},{"text":"Sarek","type":"Tool"},{"text":"Nextflow","type":"Tool"},{"text":"Docker","type":"Tool"},{"text":"Singularity","type":"Tool"},{"text":"detect variants","type":"Procedure"}],
+  "relations":[{"subject":"nf-core/sarek","relation":"PERFORMS","object":"detect variants","evidence":"is a workflow designed to detect variants"}]},
+ {"passage_id":"P008",
+  "entities":[{"text":"Condel","type":"Tool"},{"text":"SIFT","type":"Tool"},{"text":"PolyPhen-2","type":"Tool"},{"text":"--vep_condel","type":"Option"},{"text":"--condel_config","type":"Option"},{"text":"Consensus Deleteriousness score","type":"Metric"}],
+  "relations":[{"subject":"Condel","relation":"HAS_OPTION","object":"--vep_condel","evidence":"Enable with `--vep_condel`"},
+   {"subject":"Condel","relation":"HAS_OPTION","object":"--condel_config","evidence":"`--condel_config`, to specify the path to the Condel config directory"},
+   {"subject":"Condel","relation":"COMPUTES_METRIC","object":"Consensus Deleteriousness score","evidence":"The plugin calculates the Consensus Deleteriousness score for missense mutations"}]},
+ {"passage_id":"P023",
+  "entities":[{"text":"nf-core/sarek","type":"Tool"},{"text":"sarek","type":"Tool"},{"text":"Nextflow","type":"Tool"},{"text":"variant calling","type":"Procedure"}],
+  "relations":[{"subject":"sarek","relation":"PERFORMS","object":"variant calling","evidence":"customise some of its features for your own variant calling analyses"}]},
+ {"passage_id":"P046",
+  "entities":[{"text":"BCFtools","type":"Tool"},{"text":"bcftools","type":"Tool"},{"text":"vcfcheck","type":"Tool"},{"text":"vcfmerge","type":"Tool"},{"text":"vcfisec","type":"Tool"},{"text":"htslib","type":"Tool"},{"text":"samtools","type":"Tool"},{"text":"tabix","type":"Tool"}],
+  "relations":[]},
+ {"passage_id":"P065",
+  "entities":[{"text":"Funcotator","type":"Tool"},{"text":"Gencode","type":"Resource"}],
+  "relations":[]}
+]

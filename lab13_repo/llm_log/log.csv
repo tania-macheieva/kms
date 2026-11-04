@@ -1,0 +1,8 @@
+date,model,temperature_seed,prompt_version,raw_output,purpose,human_decision
+2026-11-02,claude-sonnet-5-5 (subagent),not controllable (default),annotate_v1,llm_log/raw/pilot_out.json,pilot annotation of 5 dev passages; 13 ambiguities -> instruction v2 (refinements U1-U6),accepted refinements; annotations not used in gold
+2026-11-02/03,claude-sonnet-5-5 (subagent A1),not controllable,annotate_v2,llm_log/raw/annot_A1.json,"independent annotator 1, 73 passages",used in gold via adjudication
+2026-11-02/03,claude-sonnet-5-5 (subagent A2),not controllable,annotate_v2,llm_log/raw/annot_A2.json,"independent annotator 2, 73 passages (no shared context with A1)",used in gold via adjudication
+2026-11-03,claude-sonnet-5-5 (subagent),not controllable,adjudicate_v1,llm_log/raw/adjudication.json,"third reviewer: 60 relation + 120 entity disputes; 30/30 relations accept/reject, 114/6 entities",accepted as-is; spot-check by student pending (V3); Hadoop (E101) accepted unverified by the judge
+2026-11-03,claude-haiku-4-5 (subagent as extractor),not controllable,extract_v1,llm_log/raw/dev_v1_out.json,"method B, dev, 40 passages",tuning step; dev F1 entities 0.597 / relations 0.602 -> revise prompt
+2026-11-03,claude-haiku-4-5 (subagent as extractor),not controllable,extract_v2,llm_log/raw/dev_v2_out.json,"method B, dev, 40 passages",dev F1 0.860 / 0.672 -> v2 selected
+2026-11-03,claude-haiku-4-5 (subagent as extractor),not controllable,extract_v2,llm_log/raw/test_v2_out.json,"method B, test, 33 passages, single run",reported as final; no re-run after seeing test

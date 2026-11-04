@@ -1,0 +1,4 @@
+ADJUDICATION INSTRUCTION v1. You are the third, independent reviewer. Use the annotation instruction llm_log/prompts/annotate_v2.txt and the passage texts in llm_log/in/gold_in.json.
+Input 1: llm_log/in/disputes_in.json - relation statements proposed by only one of two annotators. Decide "accept" if the passage text explicitly states the relation under rules 1-7 (type constraints, explicit statement, evidence contains the predicate), else "reject".
+Input 2: llm_log/in/ent_disputes_in.json - entity mentions proposed by only one annotator (or with conflicting types). Decide "accept" with the correct type (one of Tool, Procedure, FileFormat, Metric, Option, Resource) if the text mention is a real entity of that type under the instruction, else "reject".
+Output JSON: {"relations":[{"id":"D001","decision":"accept|reject","reason":"<=15 words"}],"entities":[{"id":"E001","decision":"accept|reject","type":"<type if accept>","reason":"<=15 words"}]}

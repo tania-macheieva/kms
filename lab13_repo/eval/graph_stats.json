@@ -1,0 +1,109 @@
+{
+ "nodes": 355,
+ "relationships": 181,
+ "rel_by_type": {
+  "HAS_OPTION": 128,
+  "ACCEPTS": 9,
+  "PRODUCES": 5,
+  "INVOKES": 7,
+  "PERFORMS": 26,
+  "COMPUTES_METRIC": 2,
+  "USES_RESOURCE": 4
+ },
+ "evidence_query": "MATCH (a:Entity)-[r:PERFORMS]->(b:Entity) RETURN a.name, b.name, r.source, r.start, r.end, r.model, r.confidence, r.evidence ORDER BY r.confidence DESC",
+ "evidence_rows": [
+  [
+   "nf-core/sarek",
+   "variant calling",
+   "sarek_readme",
+   45,
+   149,
+   "claude-haiku-4-5",
+   0.8,
+   "**nf-core/sarek** is a workflow designed to detect variants on whole genome or targeted sequencing data."
+  ],
+  [
+   "nf-core/sarek",
+   "joint-genotyping",
+   "sarek_vc_sarek",
+   507,
+   735,
+   "claude-haiku-4-5",
+   0.8,
+   "Notice that we have selected `--joint_germline` to enable the joint-genotyping workflow, we have specified our library strategy is using a capture with `--wes` and we have provided a bed file with the targets with `--intervals`."
+  ],
+  [
+   "Nextflow",
+   "handles job submissions",
+   "rare_usage",
+   174,
+   239,
+   "claude-haiku-4-5",
+   0.8,
+   "Nextflow handles job submissions and supervises the running jobs."
+  ],
+  [
+   "Nextflow",
+   "supervises the running jobs",
+   "rare_usage",
+   174,
+   239,
+   "claude-haiku-4-5",
+   0.8,
+   "Nextflow handles job submissions and supervises the running jobs."
+  ],
+  [
+   "VEP",
+   "determine the effects of all sorts of variants",
+   "sarek_output",
+   86,
+   249,
+   "claude-haiku-4-5",
+   0.8,
+   "VEP (Variant Effect Predictor), based on `Ensembl`, is a tool to determine the effects of all sorts of variants, including SNPs, indels, structural variants, CNVs."
+  ],
+  [
+   "VQSR",
+   "Soft filtering",
+   "sarek_vc_theory",
+   945,
+   1032,
+   "claude-haiku-4-5",
+   0.8,
+   "This approach is used by a GATK tool called Variant Quality Score Recalibration (VQSR)."
+  ],
+  [
+   "nf-core/raredisease",
+   "variant calling",
+   "rare_readme",
+   44,
+   188,
+   "claude-haiku-4-5",
+   0.8,
+   "**nf-core/raredisease** is a best-practice bioinformatic pipeline for calling and scoring variants from WGS/WES data from rare disease patients."
+  ],
+  [
+   "BWA-MEME",
+   "alignment",
+   "rare_output",
+   59,
+   112,
+   "claude-haiku-4-5",
+   0.8,
+   "BWA-MEME used to map the reads to a reference genome."
+  ]
+ ],
+ "entities_by_type": {
+  "Tool": 129,
+  "Procedure": 26,
+  "Resource": 16,
+  "FileFormat": 13,
+  "Option": 141,
+  "Metric": 30
+ },
+ "linked_entities": 27,
+ "aliases_merged": 31,
+ "entities_ge2_docs": 42,
+ "statements": 181,
+ "ttl_triples": 3471
+}

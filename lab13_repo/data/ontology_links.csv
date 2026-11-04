@@ -1,0 +1,28 @@
+canonical,type,onto_class,rule
+VQSR,Tool,VQSR,L1 exact label in lab7 class_table
+variant calling,Procedure,VariantCalling,L1 exact label
+alignment,Procedure,SequenceAlignment,L2 synonym
+hard filtering,Procedure,HardFiltering,L1 exact label
+VCF,FileFormat,VCFFile,L1 format -> file class
+BAM,FileFormat,BAMFile,L1 format -> file class
+QD,Metric,QualityByDepth,L1 abbreviation of class label
+FS,Metric,FisherStrandBias,L1 abbreviation
+SOR,Metric,StrandOddsRatio,L1 abbreviation
+MQ,Metric,MappingQuality,L1 abbreviation
+mapping quality,Metric,MappingQuality,L1 exact label
+MQRankSum,Metric,MQRankSum,L1 exact label
+ReadPosRankSum,Metric,ReadPosRankSum,L1 exact label
+DP,Metric,ReadDepth,L1 abbreviation
+dbSNP,Resource,CuratedKnownVariants,L3 curated variant collection
+gnomAD,Resource,CuratedKnownVariants,L3 curated variant collection
+soft filtering,Procedure,VariantFiltering,L2 broader class
+VQSR,Procedure,VQSR,L1 exact label
+GVCF,FileFormat,VCFFile,L2 subclass of VCF file
+BCF,FileFormat,DataFile,L3 generic data file class (no specific class in lab7)
+FASTQ,FileFormat,DataFile,L3 generic data file class
+FASTA,FileFormat,DataFile,L3 generic data file class
+CRAM,FileFormat,DataFile,L3 generic data file class
+MAF,FileFormat,DataFile,L3 generic data file class
+BED,FileFormat,DataFile,L3 generic data file class
+JSON,FileFormat,DataFile,L3 generic data file class
+CSV,FileFormat,DataFile,L3 generic data file class

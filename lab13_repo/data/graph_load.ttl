@@ -1,0 +1,4035 @@
+@prefix ex: <http://example.org/dkh13/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:E0003 a ex:Tool ;
+    rdfs:label "Docker" .
+
+ex:E0004 a ex:Tool ;
+    rdfs:label "Singularity" .
+
+ex:E0006 a ex:Resource ;
+    rdfs:label "nf-core/modules" .
+
+ex:E0013 a ex:Resource ;
+    rdfs:label "biocontainers" .
+
+ex:E0014 a ex:Resource ;
+    rdfs:label "bioconda" .
+
+ex:E0019 a ex:Resource ;
+    rdfs:label "Annotation-cache" .
+
+ex:E0020 a ex:Tool ;
+    rdfs:label "S3 CLI" .
+
+ex:E0022 a ex:Option ;
+    rdfs:label "snpeff_cache" .
+
+ex:E0023 a ex:Option ;
+    rdfs:label "vep_cache" .
+
+ex:E0028 a ex:Tool ;
+    rdfs:label "PolyPhen-2" .
+
+ex:E0029 a ex:Tool ;
+    rdfs:label "SIFT" .
+
+ex:E0030 a ex:Tool ;
+    rdfs:label "R" .
+
+ex:E0031 a ex:Tool ;
+    rdfs:label "RColorBrewer" .
+
+ex:E0032 a ex:Tool ;
+    rdfs:label "Anaconda" .
+
+ex:E0033 a ex:Tool ;
+    rdfs:label "Bioconda" .
+
+ex:E0034 a ex:Tool ;
+    rdfs:label "BioContainers" .
+
+ex:E0035 a ex:Tool ;
+    rdfs:label "GATK" .
+
+ex:E0037 a ex:FileFormat ;
+    rdfs:label "GVCF" ;
+    ex:ontologyClass ex:lab7_VCFFile .
+
+ex:E0039 a ex:Procedure ;
+    rdfs:label "Hard filtering" ;
+    ex:ontologyClass ex:lab7_HardFiltering .
+
+ex:E0041 a ex:Metric ;
+    rdfs:label "allele-depth" .
+
+ex:E0042 a ex:Metric ;
+    rdfs:label "mapping quality" ;
+    ex:ontologyClass ex:lab7_MappingQuality .
+
+ex:E0043 a ex:Metric ;
+    rdfs:label "AC" .
+
+ex:E0044 a ex:Metric ;
+    rdfs:label "AF" .
+
+ex:E0045 a ex:Metric ;
+    rdfs:label "AN" .
+
+ex:E0046 a ex:Metric ;
+    rdfs:label "BaseQRankSum" .
+
+ex:E0047 a ex:Metric ;
+    rdfs:label "DP" ;
+    ex:ontologyClass ex:lab7_ReadDepth .
+
+ex:E0048 a ex:Metric ;
+    rdfs:label "ExcessHet" .
+
+ex:E0049 a ex:Metric ;
+    rdfs:label "FS" ;
+    ex:ontologyClass ex:lab7_FisherStrandBias .
+
+ex:E0050 a ex:Metric ;
+    rdfs:label "MLEAC" .
+
+ex:E0051 a ex:Metric ;
+    rdfs:label "MLEAF" .
+
+ex:E0052 a ex:Metric ;
+    rdfs:label "MQ" ;
+    ex:ontologyClass ex:lab7_MappingQuality .
+
+ex:E0053 a ex:Metric ;
+    rdfs:label "MQRankSum" ;
+    ex:ontologyClass ex:lab7_MQRankSum .
+
+ex:E0054 a ex:Metric ;
+    rdfs:label "QD" ;
+    ex:ontologyClass ex:lab7_QualityByDepth .
+
+ex:E0055 a ex:Metric ;
+    rdfs:label "ReadPosRankSum" ;
+    ex:ontologyClass ex:lab7_ReadPosRankSum .
+
+ex:E0056 a ex:Metric ;
+    rdfs:label "SOR" ;
+    ex:ontologyClass ex:lab7_StrandOddsRatio .
+
+ex:E0057 a ex:Metric ;
+    rdfs:label "VQSLOD" .
+
+ex:E0058 a ex:Metric ;
+    rdfs:label "AD" .
+
+ex:E0059 a ex:Metric ;
+    rdfs:label "GQ" .
+
+ex:E0060 a ex:Metric ;
+    rdfs:label "PL" .
+
+ex:E0061 a ex:Procedure ;
+    rdfs:label "variant interpretation" .
+
+ex:E0062 a ex:Tool ;
+    rdfs:label "Gitpod" .
+
+ex:E0064 a ex:Tool ;
+    rdfs:label "MIP" .
+
+ex:E0065 a ex:Tool ;
+    rdfs:label "fastp" .
+
+ex:E0066 a ex:Tool ;
+    rdfs:label "Spring" .
+
+ex:E0067 a ex:Tool ;
+    rdfs:label "BWA-MEM2" ;
+    ex:alias "Bwa-mem2" .
+
+ex:E0069 a ex:Tool ;
+    rdfs:label "BWA" .
+
+ex:E0070 a ex:Tool ;
+    rdfs:label "Sentieon DNAseq" .
+
+ex:E0071 a ex:Tool ;
+    rdfs:label "FastQC" .
+
+ex:E0072 a ex:Tool ;
+    rdfs:label "Mosdepth" .
+
+ex:E0073 a ex:Tool ;
+    rdfs:label "MultiQC" .
+
+ex:E0074 a ex:Tool ;
+    rdfs:label "Picard" .
+
+ex:E0075 a ex:Tool ;
+    rdfs:label "CollectMultipleMetrics" .
+
+ex:E0076 a ex:Tool ;
+    rdfs:label "CollectHsMetrics" .
+
+ex:E0077 a ex:Tool ;
+    rdfs:label "CollectWgsMetrics" .
+
+ex:E0078 a ex:Tool ;
+    rdfs:label "Sambamba" .
+
+ex:E0079 a ex:Tool ;
+    rdfs:label "WgsMetricsAlgo" .
+
+ex:E0080 a ex:Tool ;
+    rdfs:label "TIDDIT" .
+
+ex:E0081 a ex:Tool ;
+    rdfs:label "VerifyBamID2" .
+
+ex:E0082 a ex:Tool ;
+    rdfs:label "NGSbits SampleGender" .
+
+ex:E0083 a ex:Tool ;
+    rdfs:label "Peddy" .
+
+ex:E0084 a ex:Tool ;
+    rdfs:label "DeepVariant" .
+
+ex:E0085 a ex:Tool ;
+    rdfs:label "Sentieon DNAscope" .
+
+ex:E0086 a ex:Tool ;
+    rdfs:label "Manta" .
+
+ex:E0087 a ex:Tool ;
+    rdfs:label "CNVnator" .
+
+ex:E0088 a ex:Tool ;
+    rdfs:label "GATK GermlineCNVCaller" .
+
+ex:E0089 a ex:Tool ;
+    rdfs:label "SMNCopyNumberCaller" .
+
+ex:E0090 a ex:Tool ;
+    rdfs:label "MitoSAlt" .
+
+ex:E0091 a ex:Tool ;
+    rdfs:label "Saltshaker" .
+
+ex:E0093 a ex:Tool ;
+    rdfs:label "vcfanno" .
+
+ex:E0094 a ex:Tool ;
+    rdfs:label "CADD" .
+
+ex:E0095 a ex:Tool ;
+    rdfs:label "UPD" .
+
+ex:E0096 a ex:Tool ;
+    rdfs:label "Chromograph" .
+
+ex:E0097 a ex:Tool ;
+    rdfs:label "SVDB query" .
+
+ex:E0099 a ex:Tool ;
+    rdfs:label "Expansion Hunter" .
+
+ex:E0100 a ex:Tool ;
+    rdfs:label "Stranger" .
+
+ex:E0101 a ex:Tool ;
+    rdfs:label "RetroSeq" .
+
+ex:E0102 a ex:Tool ;
+    rdfs:label "GENMOD" .
+
+ex:E0103 a ex:Tool ;
+    rdfs:label "RTG Tools" .
+
+ex:E0110 a ex:Tool ;
+    rdfs:label "vcfeval" .
+
+ex:E0112 a ex:Tool ;
+    rdfs:label "vcfcheck" .
+
+ex:E0113 a ex:Tool ;
+    rdfs:label "vcfmerge" .
+
+ex:E0114 a ex:Tool ;
+    rdfs:label "vcfisec" .
+
+ex:E0115 a ex:Tool ;
+    rdfs:label "htslib" .
+
+ex:E0116 a ex:Tool ;
+    rdfs:label "samtools" ;
+    ex:alias "SAMtools" .
+
+ex:E0117 a ex:Tool ;
+    rdfs:label "tabix" .
+
+ex:E0119 a ex:Tool ;
+    rdfs:label "GATK4" .
+
+ex:E0120 a ex:Tool ;
+    rdfs:label "gradlew test" .
+
+ex:E0141 a ex:Tool ;
+    rdfs:label "Cromwell" ;
+    ex:alias "cromwell" .
+
+ex:E0143 a ex:FileFormat ;
+    rdfs:label "tar.gz" .
+
+ex:E0159 a ex:Resource ;
+    rdfs:label "Gencode" ;
+    ex:alias "GENCODE" .
+
+ex:E0160 a ex:Resource ;
+    rdfs:label "GRCh37" ;
+    ex:alias "b37",
+        "hg19" .
+
+ex:E0161 a ex:Resource ;
+    rdfs:label "humanG1Kv37" ;
+    ex:alias "HumanG1Kv37" .
+
+ex:E0162 a ex:Tool ;
+    rdfs:label "Cromshell" .
+
+ex:E0165 a ex:Tool ;
+    rdfs:label "Terra/FireCloud" .
+
+ex:E0180 a ex:Resource ;
+    rdfs:label "GRCh38" ;
+    ex:alias "hg38" .
+
+ex:E0190 a ex:Tool ;
+    rdfs:label "PathSeq" .
+
+ex:E0191 a ex:Resource ;
+    rdfs:label "GATK Resource Bundle" .
+
+ex:E0207 a ex:Tool ;
+    rdfs:label "bcftools stats" .
+
+ex:E0208 a ex:Tool ;
+    rdfs:label "plot-vcfstats" .
+
+ex:E0209 a ex:Tool ;
+    rdfs:label "Strelka" .
+
+ex:E0210 a ex:Metric ;
+    rdfs:label "INFO/DP" .
+
+ex:E0211 a ex:Resource ;
+    rdfs:label "Ensembl" .
+
+ex:E0213 a ex:FileFormat ;
+    rdfs:label "CSV" ;
+    ex:ontologyClass ex:lab7_DataFile .
+
+ex:E0215 a ex:Procedure ;
+    rdfs:label "VQSR" ;
+    ex:ontologyClass ex:lab7_VQSR .
+
+ex:E0217 a ex:Resource ;
+    rdfs:label "dbsnp" ;
+    ex:ontologyClass ex:lab7_CuratedKnownVariants .
+
+ex:E0225 a ex:Tool ;
+    rdfs:label "Sentieon" .
+
+ex:E0226 a ex:Option ;
+    rdfs:label "intervals_wgs" .
+
+ex:E0227 a ex:Option ;
+    rdfs:label "intervals_y" .
+
+ex:E0228 a ex:Option ;
+    rdfs:label "target_bed" .
+
+ex:E0229 a ex:Option ;
+    rdfs:label "bait_intervals" .
+
+ex:E0230 a ex:Option ;
+    rdfs:label "target_intervals" .
+
+ex:E0231 a ex:Option ;
+    rdfs:label "verifybamid_svd_bed" .
+
+ex:E0232 a ex:Option ;
+    rdfs:label "verifybamid_svd_mu" .
+
+ex:E0233 a ex:Option ;
+    rdfs:label "verifybamid_svd_ud" .
+
+ex:E0235 a ex:Tool ;
+    rdfs:label "Podman" .
+
+ex:E0236 a ex:Tool ;
+    rdfs:label "Shifter" .
+
+ex:E0237 a ex:Tool ;
+    rdfs:label "Charliecloud" .
+
+ex:E0238 a ex:Tool ;
+    rdfs:label "Apptainer" .
+
+ex:E0239 a ex:Tool ;
+    rdfs:label "Conda" .
+
+ex:E0242 a ex:Tool ;
+    rdfs:label "screen" .
+
+ex:E0243 a ex:Tool ;
+    rdfs:label "tmux" .
+
+ex:E0246 a ex:Option ;
+    rdfs:label "NXF_OPTS" .
+
+ex:E0247 a ex:Tool ;
+    rdfs:label "nf-core" .
+
+ex:E0249 a ex:Option ;
+    rdfs:label "-f" .
+
+ex:E0250 a ex:Option ;
+    rdfs:label "-o" .
+
+ex:E0251 a ex:Option ;
+    rdfs:label "-p" .
+
+ex:E0253 a ex:Option ;
+    rdfs:label "-s" .
+
+ex:E0254 a ex:Option ;
+    rdfs:label "-T" ;
+    ex:alias "-t" .
+
+ex:E0256 a ex:Option ;
+    rdfs:label "-v" ;
+    ex:alias "-V" .
+
+ex:E0258 a ex:FileFormat ;
+    rdfs:label ".gen" .
+
+ex:E0259 a ex:Option ;
+    rdfs:label "--3N6" .
+
+ex:E0266 a ex:Option ;
+    rdfs:label "-e" .
+
+ex:E0267 a ex:Option ;
+    rdfs:label "-g" .
+
+ex:E0268 a ex:Metric ;
+    rdfs:label "discordance score" .
+
+ex:E0271 a ex:Option ;
+    rdfs:label "-m" .
+
+ex:E0273 a ex:Tool ;
+    rdfs:label "samtools mpileup" .
+
+ex:E0277 a ex:Option ;
+    rdfs:label "-u" .
+
+ex:E0279 a ex:Option ;
+    rdfs:label "-a" .
+
+ex:E0280 a ex:Option ;
+    rdfs:label "-H" .
+
+ex:E0282 a ex:Tool ;
+    rdfs:label "Gradle" .
+
+ex:E0283 a ex:Tool ;
+    rdfs:label "git lfs" .
+
+ex:E0285 a ex:Tool ;
+    rdfs:label "installDist" .
+
+ex:E0286 a ex:Tool ;
+    rdfs:label "installAll" .
+
+ex:E0289 a ex:Tool ;
+    rdfs:label "Spark" .
+
+ex:E0290 a ex:Tool ;
+    rdfs:label "Hadoop" .
+
+ex:E0295 a ex:Tool ;
+    rdfs:label "Github Actions" .
+
+ex:E0296 a ex:Tool ;
+    rdfs:label "Broad Jenkins" .
+
+ex:E0297 a ex:Tool ;
+    rdfs:label "TestNG" .
+
+ex:E0298 a ex:Option ;
+    rdfs:label "GATK_STACKTRACE_ON_USER_EXCEPTION" .
+
+ex:E0300 a ex:Tool ;
+    rdfs:label "JProfiler" .
+
+ex:E0301 a ex:Tool ;
+    rdfs:label "IntelliJ" .
+
+ex:E0305 a ex:Tool ;
+    rdfs:label "github" .
+
+ex:E0307 a ex:Tool ;
+    rdfs:label "LiftOver" .
+
+ex:E0308 a ex:Option ;
+    rdfs:label "TAGS_TO_REVERSE" .
+
+ex:E0309 a ex:Metric ;
+    rdfs:label "OriginalAlleles" .
+
+ex:E0310 a ex:Metric ;
+    rdfs:label "OriginalContig" .
+
+ex:E0311 a ex:Metric ;
+    rdfs:label "OriginalStart" .
+
+ex:E0312 a ex:Metric ;
+    rdfs:label "ReverseComplementedAlleles" .
+
+ex:E0313 a ex:Metric ;
+    rdfs:label "SwappedAlleles" .
+
+ex:E0314 a ex:Resource ;
+    rdfs:label "Familial Cancer Genes" .
+
+ex:E0315 a ex:Option ;
+    rdfs:label "src_file" .
+
+ex:E0316 a ex:Option ;
+    rdfs:label "origin_location" .
+
+ex:E0317 a ex:Option ;
+    rdfs:label "preprocessing_script" .
+
+ex:E0318 a ex:Option ;
+    rdfs:label "gencode_fasta_path" .
+
+ex:E0319 a ex:Option ;
+    rdfs:label "isB37DataSource" .
+
+ex:E0320 a ex:Option ;
+    rdfs:label "end_column" .
+
+ex:E0330 a ex:Metric ;
+    rdfs:label "NCBI_Build" .
+
+ex:stmt0001 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 3718 ;
+    ex:endOffset 639 ;
+    ex:evidence " --input samplesheet.csv \\" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P002" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "sarek_readme" ;
+    ex:startOffset 613 ;
+    rdf:object ex:E0009 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0001 .
+
+ex:stmt0002 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 3745 ;
+    ex:endOffset 658 ;
+    ex:evidence " --outdir <OUTDIR>" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P002" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "sarek_readme" ;
+    ex:startOffset 640 ;
+    rdf:object ex:E0010 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0001 .
+
+ex:stmt0003 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 3777 ;
+    ex:endOffset 906 ;
+    ex:evidence "Please provide pipeline parameters via the CLI or Nextflow `-params-file` option. Custom config files including those provided by the `-c` Nextflow option can be used to provide any configuration _**except for parameters**_; see docs." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P002" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "sarek_readme" ;
+    ex:startOffset 672 ;
+    rdf:object ex:E0011 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0002 .
+
+ex:stmt0004 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 3777 ;
+    ex:endOffset 906 ;
+    ex:evidence "Please provide pipeline parameters via the CLI or Nextflow `-params-file` option. Custom config files including those provided by the `-c` Nextflow option can be used to provide any configuration _**except for parameters**_; see docs." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P002" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "sarek_readme" ;
+    ex:startOffset 672 ;
+    rdf:object ex:E0012 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0002 .
+
+ex:stmt0005 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 66056 ;
+    ex:endOffset 477 ;
+    ex:evidence "To use these, supply the parameters `--vep_cache` and/or `--snpeff_cache` with the locations to the root of the annotation cache folder for each tool." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P006" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "sarek_usage" ;
+    ex:startOffset 327 ;
+    rdf:object ex:E0017 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0016 .
+
+ex:stmt0006 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 66056 ;
+    ex:endOffset 477 ;
+    ex:evidence "To use these, supply the parameters `--vep_cache` and/or `--snpeff_cache` with the locations to the root of the annotation cache folder for each tool." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P006" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "sarek_usage" ;
+    ex:startOffset 327 ;
+    rdf:object ex:E0018 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0016 .
+
+ex:stmt0007 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 69741 ;
+    ex:endOffset 728 ;
+    ex:evidence "aws s3 --no-sign-request ls s3://annotation-cache/snpeff_cache" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P007" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "sarek_usage" ;
+    ex:startOffset 666 ;
+    rdf:object ex:E0021 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0016 .
+
+ex:stmt0008 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 74961 ;
+    ex:endOffset 180 ;
+    ex:evidence "Enable with `--vep_condel`. The following parameters are mandatory:" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P008" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "sarek_usage" ;
+    ex:startOffset 113 ;
+    rdf:object ex:E0025 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0026 .
+
+ex:stmt0009 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 75030 ;
+    ex:endOffset 296 ;
+    ex:evidence "- `--condel_config`, to specify the path to the Condel config directory containing cutoffs and distribution files." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P008" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "sarek_usage" ;
+    ex:startOffset 182 ;
+    rdf:object ex:E0024 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0026 .
+
+ex:stmt0010 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 3518 ;
+    ex:endOffset 899 ;
+    ex:evidence " --input samplesheet.csv \\" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P027" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "rare_readme" ;
+    ex:startOffset 873 ;
+    rdf:object ex:E0009 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0063 .
+
+ex:stmt0011 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 3545 ;
+    ex:endOffset 918 ;
+    ex:evidence " --outdir <OUTDIR>" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P027" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "rare_readme" ;
+    ex:startOffset 900 ;
+    rdf:object ex:E0010 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0063 .
+
+ex:stmt0012 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 3577 ;
+    ex:endOffset 1166 ;
+    ex:evidence "Please provide pipeline parameters via the CLI or Nextflow `-params-file` option. Custom config files including those provided by the `-c` Nextflow option can be used to provide any configuration _**except for parameters**_; see docs." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P027" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "rare_readme" ;
+    ex:startOffset 932 ;
+    rdf:object ex:E0011 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0002 .
+
+ex:stmt0013 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 3577 ;
+    ex:endOffset 1166 ;
+    ex:evidence "Please provide pipeline parameters via the CLI or Nextflow `-params-file` option. Custom config files including those provided by the `-c` Nextflow option can be used to provide any configuration _**except for parameters**_; see docs." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P027" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "rare_readme" ;
+    ex:startOffset 932 ;
+    rdf:object ex:E0012 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0002 .
+
+ex:stmt0014 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 2247 ;
+    ex:endOffset 359 ;
+    ex:evidence "BWA-MEME used to map the reads to a reference genome. The aligned reads are coordinate sorted with samtools sort. These files are treated as intermediates and are not placed in the output folder by default. It is not the default aligner, but it can be chosen by setting `--aligner` option to bwameme." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P033" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "rare_output" ;
+    ex:startOffset 59 ;
+    rdf:object ex:E0104 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0105 .
+
+ex:stmt0015 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 19031 ;
+    ex:endOffset 203 ;
+    ex:evidence "Mitochondrial analysis is run by default. If you want to turn off annotations set `--skip_subworkflows mt_annotation`." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P034" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "rare_output" ;
+    ex:startOffset 85 ;
+    rdf:object ex:E0108 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0063 .
+
+ex:stmt0016 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 3786 ;
+    ex:endOffset 537 ;
+    ex:evidence "- ``Mutect2_Multi.gatk4_jar`` -- Location *within the docker file* of the GATK4 jar file. If you wish you to use a different jar file, such as one on your local filesystem or a google bucket, specify that location with ``Mutect2_Multi.gatk4_jar_override``. This parameter is ignored if ``Mutect2_Multi.gatk4_jar_override`` is specified." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P057" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 201 ;
+    rdf:object ex:E0122 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0017 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 3786 ;
+    ex:endOffset 537 ;
+    ex:evidence "- ``Mutect2_Multi.gatk4_jar`` -- Location *within the docker file* of the GATK4 jar file. If you wish you to use a different jar file, such as one on your local filesystem or a google bucket, specify that location with ``Mutect2_Multi.gatk4_jar_override``. This parameter is ignored if ``Mutect2_Multi.gatk4_jar_override`` is specified." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P057" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 201 ;
+    rdf:object ex:E0123 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0018 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 4123 ;
+    ex:endOffset 725 ;
+    ex:evidence "- ``Mutect2_Multi.scatter_count`` -- Number of executions to split the Mutect2 task into. The more you put here, the faster Mutect2 will return results, but at a higher cost of resources." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P057" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 538 ;
+    rdf:object ex:E0124 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0019 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 4311 ;
+    ex:endOffset 869 ;
+    ex:evidence "- ``Mutect2_Multi.intervals`` -- A file listing genomic intervals to search for somatic mutations. This should be in the standard GATK4 format." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P057" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 726 ;
+    rdf:object ex:E0125 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0020 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 4455 ;
+    ex:endOffset 1019 ;
+    ex:evidence "- ``Mutect2_Multi.ref_fasta`` -- reference fasta. For Broad internal VM: ``/seq/references/Homo_sapiens_assembly19/v1/Homo_sapiens_assembly19.fasta``" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P057" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 870 ;
+    rdf:object ex:E0126 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0021 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 4605 ;
+    ex:endOffset 1162 ;
+    ex:evidence "- ``Mutect2_Multi.ref_fasta_index`` -- For Broad internal VM: ``/seq/references/Homo_sapiens_assembly19/v1/Homo_sapiens_assembly19.fasta.fai``" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P057" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1020 ;
+    rdf:object ex:E0127 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0022 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 4748 ;
+    ex:endOffset 1293 ;
+    ex:evidence "- ``Mutect2_Multi.ref_dict`` -- For Broad internal VM: ``/seq/references/Homo_sapiens_assembly19/v1/Homo_sapiens_assembly19.dict``" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P057" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1163 ;
+    rdf:object ex:E0128 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0023 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 4879 ;
+    ex:endOffset 1389 ;
+    ex:evidence "- ``Mutect2_Multi.pon`` -- (optional) Panel of normals VCF to use for false positive reduction." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P057" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1294 ;
+    rdf:object ex:E0129 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0024 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 11486 ;
+    ex:endOffset 298 ;
+    ex:evidence "- ``Mutect2.gatk4_jar`` -- Please see parameter description above in the mutect2_multi_sample." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P058" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 204 ;
+    rdf:object ex:E0131 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0109 .
+
+ex:stmt0025 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 11581 ;
+    ex:endOffset 393 ;
+    ex:evidence "- ``Mutect2.intervals`` -- Please see parameter description above in the mutect2_multi_sample." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P058" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 299 ;
+    rdf:object ex:E0132 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0109 .
+
+ex:stmt0026 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 11676 ;
+    ex:endOffset 488 ;
+    ex:evidence "- ``Mutect2.ref_fasta`` -- Please see parameter description above in the mutect2_multi_sample." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P058" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 394 ;
+    rdf:object ex:E0133 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0109 .
+
+ex:stmt0027 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 11771 ;
+    ex:endOffset 589 ;
+    ex:evidence "- ``Mutect2.ref_fasta_index`` -- Please see parameter description above in the mutect2_multi_sample." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P058" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 489 ;
+    rdf:object ex:E0134 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0109 .
+
+ex:stmt0028 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 11872 ;
+    ex:endOffset 683 ;
+    ex:evidence "- ``Mutect2.ref_dict`` -- Please see parameter description above in the mutect2_multi_sample." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P058" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 590 ;
+    rdf:object ex:E0135 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0109 .
+
+ex:stmt0029 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 11966 ;
+    ex:endOffset 786 ;
+    ex:evidence "- ``Mutect2.tumor_bam`` -- File path or storage location (depending on backend) of the tumor bam file." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P058" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 684 ;
+    rdf:object ex:E0136 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0109 .
+
+ex:stmt0030 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 12069 ;
+    ex:endOffset 901 ;
+    ex:evidence "- ``Mutect2.tumor_bam_index`` -- File path or storage location (depending on backend) of the tumor bam file index." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P058" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 787 ;
+    rdf:object ex:E0137 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0109 .
+
+ex:stmt0031 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 12184 ;
+    ex:endOffset 1017 ;
+    ex:evidence "- ``Mutect2.normal_bam`` -- (optional) File path or storage location (depending on backend) of the normal bam file." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P058" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 902 ;
+    rdf:object ex:E0138 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0109 .
+
+ex:stmt0032 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 12300 ;
+    ex:endOffset 1198 ;
+    ex:evidence "- ``Mutect2.normal_bam_index`` -- (optional, but required if ``Mutect2.normal_bam`` is specified) File path or storage location (depending on backend) of the normal bam file index." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P058" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1018 ;
+    rdf:object ex:E0139 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0109 .
+
+ex:stmt0033 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 19207 ;
+    ex:endOffset 713 ;
+    ex:evidence " \"Mutect2_Multi.gatk4_jar_override\": \"/home/lichtens/test_onco_m2/gatk/build/libs/gatk.jar\"," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 621 ;
+    rdf:object ex:E0123 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0034 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 19300 ;
+    ex:endOffset 755 ;
+    ex:evidence " \"Mutect2_Multi.gatk4_jar\": \"DO NOT USE\"," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 714 ;
+    rdf:object ex:E0122 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0035 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 19342 ;
+    ex:endOffset 838 ;
+    ex:evidence " \"Mutect2_Multi.intervals\": \"/home/lichtens/test_onco_m2/intervals.interval_list\"," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 756 ;
+    rdf:object ex:E0125 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0036 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 19425 ;
+    ex:endOffset 909 ;
+    ex:evidence " \"Mutect2_Multi.ref_fasta\": \"/data/ref/Homo_sapiens_assembly19.fasta\"," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 839 ;
+    rdf:object ex:E0126 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0037 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 19496 ;
+    ex:endOffset 990 ;
+    ex:evidence " \"Mutect2_Multi.ref_fasta_index\": \"/data/ref/Homo_sapiens_assembly19.fasta.fai\"," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 910 ;
+    rdf:object ex:E0127 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0038 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 19577 ;
+    ex:endOffset 1059 ;
+    ex:evidence " \"Mutect2_Multi.ref_dict\": \"/data/ref/Homo_sapiens_assembly19.dict\"," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 991 ;
+    rdf:object ex:E0128 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0039 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 19646 ;
+    ex:endOffset 1128 ;
+    ex:evidence " \"Mutect2_Multi.pair_list\": \"/home/lichtens/test_onco_m2/pair_list\"," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1060 ;
+    rdf:object ex:E0144 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0040 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 19715 ;
+    ex:endOffset 1210 ;
+    ex:evidence " \"Mutect2_Multi.pon\": \"/data/m1/refseq_exome_10bp_hg19_300_1kg_normal_panel.vcf\"," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1129 ;
+    rdf:object ex:E0129 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0041 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 19797 ;
+    ex:endOffset 1302 ;
+    ex:evidence " \"Mutect2_Multi.pon_index\": \"/data/m1/refseq_exome_10bp_hg19_300_1kg_normal_panel.vcf.idx\"," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1211 ;
+    rdf:object ex:E0145 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0042 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 19889 ;
+    ex:endOffset 1337 ;
+    ex:evidence " \"Mutect2_Multi.scatter_count\": 2," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1303 ;
+    rdf:object ex:E0124 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0043 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 19924 ;
+    ex:endOffset 1385 ;
+    ex:evidence " \"Mutect2_Multi.gnomad\": \"/data/m2/gnomad.vcf\"," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1338 ;
+    rdf:object ex:E0146 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0044 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 19972 ;
+    ex:endOffset 1443 ;
+    ex:evidence " \"Mutect2_Multi.gnomad_index\": \"/data/m2/gnomad.vcf.idx\"," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1386 ;
+    rdf:object ex:E0147 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0045 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 20030 ;
+    ex:endOffset 1533 ;
+    ex:evidence " \"Mutect2_Multi.variants_for_contamination\": \"/data/m2/gnomad-common-biallelic-snps.vcf\"," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1444 ;
+    rdf:object ex:E0148 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0046 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 20120 ;
+    ex:endOffset 1633 ;
+    ex:evidence " \"Mutect2_Multi.variants_for_contamination_index\": \"/data/m2/gnomad-common-biallelic-snps.vcf.idx\"," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1534 ;
+    rdf:object ex:E0149 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0047 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 20220 ;
+    ex:endOffset 1688 ;
+    ex:evidence " \"Mutect2_Multi.is_run_orientation_bias_filter\": true," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1634 ;
+    rdf:object ex:E0150 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0048 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 20275 ;
+    ex:endOffset 1729 ;
+    ex:evidence " \"Mutect2_Multi.is_run_oncotator\": true," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1689 ;
+    rdf:object ex:E0151 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0049 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 20316 ;
+    ex:endOffset 1791 ;
+    ex:evidence " \"Mutect2_Multi.gatk_docker\": \"broadinstitute/gatk:4.beta.5\"," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1730 ;
+    rdf:object ex:E0152 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0050 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 20378 ;
+    ex:endOffset 1862 ;
+    ex:evidence " \"Mutect2_Multi.oncotator_docker\": \"broadinstitute/oncotator:1.9.3.0\"," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1792 ;
+    rdf:object ex:E0153 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0051 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 20449 ;
+    ex:endOffset 1904 ;
+    ex:evidence " \"Mutect2_Multi.preemptible_attempts\": 2," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1863 ;
+    rdf:object ex:E0154 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0052 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 20491 ;
+    ex:endOffset 1990 ;
+    ex:evidence " \"Mutect2_Multi.onco_ds_tar_gz\": \"/data/onco_dir/oncotator_v1_ds_April052016.tar.gz\"," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1905 ;
+    rdf:object ex:E0155 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0053 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 20577 ;
+    ex:endOffset 2083 ;
+    ex:evidence " \"Mutect2_Multi.m2_extra_args\": \"--maxNumHaplotypesInPopulation 50 --tumor_lod_to_emit 4.0\"," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1991 ;
+    rdf:object ex:E0156 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0054 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 20577 ;
+    ex:endOffset 2083 ;
+    ex:evidence " \"Mutect2_Multi.m2_extra_args\": \"--maxNumHaplotypesInPopulation 50 --tumor_lod_to_emit 4.0\"," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1991 ;
+    rdf:object ex:E0332 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0142 .
+
+ex:stmt0055 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 20577 ;
+    ex:endOffset 2083 ;
+    ex:evidence " \"Mutect2_Multi.m2_extra_args\": \"--maxNumHaplotypesInPopulation 50 --tumor_lod_to_emit 4.0\"," ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 1991 ;
+    rdf:object ex:E0333 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0142 .
+
+ex:stmt0056 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 20670 ;
+    ex:endOffset 2154 ;
+    ex:evidence " \"Mutect2_Multi.m2_extra_filtering_args\": \"--maxAltAllelesThreshold 2\"" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 2084 ;
+    rdf:object ex:E0157 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0057 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 20670 ;
+    ex:endOffset 2154 ;
+    ex:evidence " \"Mutect2_Multi.m2_extra_filtering_args\": \"--maxAltAllelesThreshold 2\"" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P059" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 2084 ;
+    rdf:object ex:E0334 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0142 .
+
+ex:stmt0058 a ex:Statement ;
+    ex:confidence 0.6 ;
+    ex:docStartOffset 1422 ;
+    ex:endOffset 320 ;
+    ex:evidence "Once your cromwell instance is active, you will need to generate input arguments to pass to funcotator.wdl. These arguments re passed in as a JSON file (see below for a non-working example)." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P070" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 130 ;
+    rdf:object ex:E0335 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0158 .
+
+ex:stmt0059 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 1890 ;
+    ex:endOffset 203 ;
+    ex:evidence "String gatk_docker - GATK Docker image in which to run" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P071" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 149 ;
+    rdf:object ex:E0167 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0060 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 1946 ;
+    ex:endOffset 243 ;
+    ex:evidence "File ref_fasta - Reference FASTA file." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P071" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 205 ;
+    rdf:object ex:E0168 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0061 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 1986 ;
+    ex:endOffset 295 ;
+    ex:evidence "File ref_fasta_index - Reference FASTA file index." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P071" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 245 ;
+    rdf:object ex:E0169 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0062 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 2038 ;
+    ex:endOffset 360 ;
+    ex:evidence "File ref_fasta_dict - Reference FASTA file sequence dictionary." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P071" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 297 ;
+    rdf:object ex:E0170 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0063 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 2103 ;
+    ex:endOffset 457 ;
+    ex:evidence "File variant_vcf_to_funcotate - Variant Context File (VCF) containing the variants to annotate." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P071" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 362 ;
+    rdf:object ex:E0171 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0064 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 2200 ;
+    ex:endOffset 598 ;
+    ex:evidence "File variant_vcf_to_funcotate_index - Index file corresponding to the input Variant Context File (VCF) containing the variants to annotate." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P071" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 459 ;
+    rdf:object ex:E0172 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0065 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 2341 ;
+    ex:endOffset 688 ;
+    ex:evidence "String reference_version - Version of the reference being used. Either `hg19` or `hg38`." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P071" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 600 ;
+    rdf:object ex:E0173 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0066 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 2431 ;
+    ex:endOffset 744 ;
+    ex:evidence "String output_file_name - Path to desired output file." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P071" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 690 ;
+    rdf:object ex:E0174 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0067 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 2487 ;
+    ex:endOffset 808 ;
+    ex:evidence "String output_format - Output file format (either VCF or MAF)." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P071" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 746 ;
+    rdf:object ex:E0175 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0068 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 2551 ;
+    ex:endOffset 875 ;
+    ex:evidence "Boolean compress - Whether to compress the resulting output file." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P071" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 810 ;
+    rdf:object ex:E0176 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0069 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 2618 ;
+    ex:endOffset 984 ;
+    ex:evidence "Boolean use_gnomad - If true, will enable the gnomAD data sources in the data source tar.gz, if they exist." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P071" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 877 ;
+    rdf:object ex:E0177 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0070 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 2767 ;
+    ex:endOffset 193 ;
+    ex:evidence "File? interval_list - Intervals to be used for traversal. If specified will only traverse the given intervals." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P072" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 83 ;
+    rdf:object ex:E0181 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0071 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 2879 ;
+    ex:endOffset 303 ;
+    ex:evidence "File? data_sources_tar_gz - Path to tar.gz containing the data sources for Funcotator to create annotations." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P072" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 195 ;
+    rdf:object ex:E0182 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0072 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 2989 ;
+    ex:endOffset 476 ;
+    ex:evidence "String? transcript_selection_mode - Method of detailed transcript selection. This will select the transcript for detailed annotation (either `CANONICAL` or `BEST_EFFECT`)." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P072" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 305 ;
+    rdf:object ex:E0183 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0073 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 3162 ;
+    ex:endOffset 597 ;
+    ex:evidence "Array[String]? transcript_selection_list - Set of transcript IDs to use for annotation to override selected transcript." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P072" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 478 ;
+    rdf:object ex:E0184 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0074 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 3283 ;
+    ex:endOffset 873 ;
+    ex:evidence "Array[String]? annotation_defaults - Annotations to include in all annotated variants if the annotation is not specified in the data sources (in the format <ANNOTATION>:<VALUE>). This will add the specified annotation to every annotated variant if it is not already present." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P072" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 599 ;
+    rdf:object ex:E0185 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0075 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 3559 ;
+    ex:endOffset 1049 ;
+    ex:evidence "Array[String]? annotation_overrides - Override values for annotations (in the format <ANNOTATION>:<VALUE>). Replaces existing annotations of the given name with given values." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P072" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 875 ;
+    rdf:object ex:E0186 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0076 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 3735 ;
+    ex:endOffset 1196 ;
+    ex:evidence "File? gatk4_jar_override - Override Jar file containing GATK 4.0. Use this when overriding the docker JAR or when using a backend without docker." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P072" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 1051 ;
+    rdf:object ex:E0187 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0077 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 3882 ;
+    ex:endOffset 1352 ;
+    ex:evidence "String? funcotator_extra_args - Extra command-line arguments to pass through to Funcotator. (e.g. \" --exclude-field foo_field --exclude-field bar_field \")" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P072" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 1198 ;
+    rdf:object ex:E0188 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0078 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 3882 ;
+    ex:endOffset 1352 ;
+    ex:evidence "String? funcotator_extra_args - Extra command-line arguments to pass through to Funcotator. (e.g. \" --exclude-field foo_field --exclude-field bar_field \")" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P072" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 1198 ;
+    rdf:object ex:E0189 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0158 .
+
+ex:stmt0079 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 19426 ;
+    ex:endOffset 1103 ;
+    ex:evidence "If the haplotype-called VCF files are not filtered, then Sarek should be run with at least one of the options `--dbsnp` or `--known_indels`." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P009" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "sarek_output" ;
+    ex:startOffset 963 ;
+    rdf:object ex:E0195 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0001 .
+
+ex:stmt0080 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 19426 ;
+    ex:endOffset 1103 ;
+    ex:evidence "If the haplotype-called VCF files are not filtered, then Sarek should be run with at least one of the options `--dbsnp` or `--known_indels`." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P009" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "sarek_output" ;
+    ex:startOffset 963 ;
+    rdf:object ex:E0196 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0001 .
+
+ex:stmt0081 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 3922 ;
+    ex:endOffset 814 ;
+    ex:evidence " dbsnp_vqsr = '--resource:dbsnp,known=false,training=true,truth=false,prior=2.0 dbsnp_146.hg38_chr21.vcf.gz'" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P020" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "sarek_vc_sarek" ;
+    ex:startOffset 706 ;
+    rdf:object ex:E0336 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0002 .
+
+ex:stmt0082 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 6985 ;
+    ex:endOffset 338 ;
+    ex:evidence "--input /workspace/gitpod/training/data/reads/sarek-input.csv \\" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P021" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "sarek_vc_sarek" ;
+    ex:startOffset 275 ;
+    rdf:object ex:E0009 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0001 .
+
+ex:stmt0083 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 7049 ;
+    ex:endOffset 351 ;
+    ex:evidence "--outdir . \\" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P021" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "sarek_vc_sarek" ;
+    ex:startOffset 339 ;
+    rdf:object ex:E0010 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0001 .
+
+ex:stmt0084 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 7062 ;
+    ex:endOffset 384 ;
+    ex:evidence "--tools haplotypecaller,snpeff \\" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P021" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "sarek_vc_sarek" ;
+    ex:startOffset 352 ;
+    rdf:object ex:E0219 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0001 .
+
+ex:stmt0085 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 7095 ;
+    ex:endOffset 407 ;
+    ex:evidence "--genome GRCh38chr21 \\" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P021" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "sarek_vc_sarek" ;
+    ex:startOffset 385 ;
+    rdf:object ex:E0220 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0015 .
+
+ex:stmt0086 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 7118 ;
+    ex:endOffset 426 ;
+    ex:evidence "--joint_germline \\" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P021" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "sarek_vc_sarek" ;
+    ex:startOffset 408 ;
+    rdf:object ex:E0221 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0015 .
+
+ex:stmt0087 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 7137 ;
+    ex:endOffset 495 ;
+    ex:evidence "--intervals /workspace/gitpod/training/exome_target_hg38_chr21.bed \\" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P021" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "sarek_vc_sarek" ;
+    ex:startOffset 427 ;
+    rdf:object ex:E0222 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0015 .
+
+ex:stmt0088 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 7206 ;
+    ex:endOffset 501 ;
+    ex:evidence "--wes" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P021" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "sarek_vc_sarek" ;
+    ex:startOffset 496 ;
+    rdf:object ex:E0223 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0015 .
+
+ex:stmt0089 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 24098 ;
+    ex:endOffset 870 ;
+    ex:evidence "- **Reproducibility:** Specify a pipeline version when running the pipeline on your data. This ensures that a specific version of the pipeline code and software are used when you run your pipeline. If you keep using the same tag, you'll be running the same version of the pipeline, even if there have been changes to the code since. First, go to the nf-core/raredisease releases page and find the latest pipeline version - numeric only (e.g. `1.3.1`). Then specify this when running the pipeline with `-r`, for example, `-r 1.3.1`. You can switch to another version by changing the number after the `-r` flag. The version number will be logged in reports when you run the pipeline. For example, you can view the version number at the bottom of the MultiQC reports." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P029" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "rare_usage" ;
+    ex:startOffset 106 ;
+    rdf:object ex:E0234 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0063 .
+
+ex:stmt0090 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 26792 ;
+    ex:endOffset 266 ;
+    ex:evidence "### `-profile`" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P030" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "rare_usage" ;
+    ex:startOffset 252 ;
+    rdf:object ex:E0008 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0002 .
+
+ex:stmt0091 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 27829 ;
+    ex:endOffset 1546 ;
+    ex:evidence "If `-profile` is not specified, the pipeline will run locally and expect all software to be installed and available on the `PATH`. This is _not_ recommended, since it can lead to different results on different machines dependent on the computer environment." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P030" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "rare_usage" ;
+    ex:startOffset 1289 ;
+    rdf:object ex:E0008 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0337 .
+
+ex:stmt0092 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 33717 ;
+    ex:endOffset 488 ;
+    ex:evidence "The Nextflow `-bg` flag launches Nextflow in the background, detached from your terminal so that the workflow does not stop if you log out of your session. The logs are saved to a file." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P031" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "rare_usage" ;
+    ex:startOffset 303 ;
+    rdf:object ex:E0241 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0002 .
+
+ex:stmt0093 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 33287 ;
+    ex:endOffset 135 ;
+    ex:evidence "-c, --control-sample string::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P038" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 106 ;
+    rdf:object ex:E0338 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0248 .
+
+ex:stmt0094 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 33420 ;
+    ex:endOffset 259 ;
+    ex:evidence "-f, --AF-file file::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P038" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 239 ;
+    rdf:object ex:E0339 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0248 .
+
+ex:stmt0095 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 33529 ;
+    ex:endOffset 371 ;
+    ex:evidence "-o, --output-dir path::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P038" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 348 ;
+    rdf:object ex:E0340 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0248 .
+
+ex:stmt0096 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 33572 ;
+    ex:endOffset 419 ;
+    ex:evidence "-p, --plot-threshold float::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P038" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 391 ;
+    rdf:object ex:E0341 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0248 .
+
+ex:stmt0097 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 33848 ;
+    ex:endOffset 728 ;
+    ex:evidence "-r, --regions chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P038" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 667 ;
+    rdf:object ex:E0342 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0248 .
+
+ex:stmt0098 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 33950 ;
+    ex:endOffset 794 ;
+    ex:evidence "-R, --regions-file file::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P038" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 769 ;
+    rdf:object ex:E0343 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0248 .
+
+ex:stmt0099 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 34016 ;
+    ex:endOffset 866 ;
+    ex:evidence "--regions-overlap '0'|'1'|'2'::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P038" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 835 ;
+    rdf:object ex:E0252 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0248 .
+
+ex:stmt0100 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 34088 ;
+    ex:endOffset 934 ;
+    ex:evidence "-s, --query-sample string::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P038" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 907 ;
+    rdf:object ex:E0344 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0248 .
+
+ex:stmt0101 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 34136 ;
+    ex:endOffset 975 ;
+    ex:evidence "-t, --targets LIST::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P038" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 955 ;
+    rdf:object ex:E0345 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0248 .
+
+ex:stmt0102 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 34197 ;
+    ex:endOffset 1041 ;
+    ex:evidence "-T, --targets-file FILE::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P038" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 1016 ;
+    rdf:object ex:E0346 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0248 .
+
+ex:stmt0103 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 34263 ;
+    ex:endOffset 1113 ;
+    ex:evidence "--targets-overlap '0'|'1'|'2'::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P038" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 1082 ;
+    rdf:object ex:E0255 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0248 .
+
+ex:stmt0104 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 34335 ;
+    ex:endOffset 1175 ;
+    ex:evidence "-v, --verbosity INT::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P038" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 1154 ;
+    rdf:object ex:E0278 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0248 .
+
+ex:stmt0105 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 45924 ;
+    ex:endOffset 62 ;
+    ex:evidence "Convert 23andme results into VCF — .gen (with --3N6 --vcf-ids)" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P039" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 0 ;
+    rdf:object ex:E0260 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0111 .
+
+ex:stmt0106 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 51523 ;
+    ex:endOffset 206 ;
+    ex:evidence "bcftools convert -c ID,CHROM,POS,AA -s SampleName -f 23andme-ref.fa --tsv2vcf 23andme.txt -o out.vcf.gz" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P040" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 103 ;
+    rdf:object ex:E0262 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0261 .
+
+ex:stmt0107 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 66055 ;
+    ex:endOffset 882 ;
+    ex:evidence "--distinctive-sites 'NUM[,MEM[,DIR]]'::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P041" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 843 ;
+    rdf:object ex:E0264 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0263 .
+
+ex:stmt0108 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 66407 ;
+    ex:endOffset 1216 ;
+    ex:evidence " --pairs to be given." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P041" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 1195 ;
+    rdf:object ex:E0347 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0263 .
+
+ex:stmt0109 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 66430 ;
+    ex:endOffset 1229 ;
+    ex:evidence "--dry-run::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P041" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 1218 ;
+    rdf:object ex:E0265 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0263 .
+
+ex:stmt0110 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 66495 ;
+    ex:endOffset 1318 ;
+    ex:evidence "-e, --exclude [qry|gt]:EXPRESSION::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P041" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 1283 ;
+    rdf:object ex:E0348 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0263 .
+
+ex:stmt0111 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 80332 ;
+    ex:endOffset 256 ;
+    ex:evidence "-m, --merge snps|indels|both|snp-ins-del|all|none|id[,'*']::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P042" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 196 ;
+    rdf:object ex:E0349 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0270 .
+
+ex:stmt0112 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 122452 ;
+    ex:endOffset 158 ;
+    ex:evidence "-T, --targets-file file::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P044" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 133 ;
+    rdf:object ex:E0346 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0276 .
+
+ex:stmt0113 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 122518 ;
+    ex:endOffset 230 ;
+    ex:evidence "--targets-overlap '0'|'1'|'2'::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P044" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 199 ;
+    rdf:object ex:E0255 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0276 .
+
+ex:stmt0114 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 122590 ;
+    ex:endOffset 295 ;
+    ex:evidence "-u, --allow-undef-tags::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P044" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 271 ;
+    rdf:object ex:E0350 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0276 .
+
+ex:stmt0115 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 122708 ;
+    ex:endOffset 410 ;
+    ex:evidence "-v, --vcf-list FILE::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P044" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 389 ;
+    rdf:object ex:E0351 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0276 .
+
+ex:stmt0116 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 122773 ;
+    ex:endOffset 471 ;
+    ex:evidence "--verbosity INT::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P044" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 454 ;
+    rdf:object ex:E0278 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0276 .
+
+ex:stmt0117 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 132697 ;
+    ex:endOffset 164 ;
+    ex:evidence "-a, --hw-to-az FLOAT::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P045" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 142 ;
+    rdf:object ex:E0352 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0092 .
+
+ex:stmt0118 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 132804 ;
+    ex:endOffset 271 ;
+    ex:evidence "-H, --az-to-hw FLOAT::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P045" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 249 ;
+    rdf:object ex:E0353 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0092 .
+
+ex:stmt0119 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 132881 ;
+    ex:endOffset 356 ;
+    ex:evidence "-V, --viterbi-training FLOAT::" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P045" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 326 ;
+    rdf:object ex:E0354 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0092 .
+
+ex:stmt0120 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 30635 ;
+    ex:endOffset 203 ;
+    ex:evidence "Required and defaults to false. — The Name or 0-based index of the column containing the end position for each row > 2.1 - Running Funcotator in the GATK With Base Options > 2.2.5 - --annotation-override" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P064" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funco_tutorial" ;
+    ex:startOffset 0 ;
+    rdf:object ex:E0322 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0355 .
+
+ex:stmt0121 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 31384 ;
+    ex:endOffset 1003 ;
+    ex:evidence "./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-version hg19 --data-sources-path funcotator_dataSources.v1.2.20180329 --output variants.funcotated.maf --output-file-format MAF --annotation-override NCBI_Build:HG19" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P064" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funco_tutorial" ;
+    ex:startOffset 749 ;
+    rdf:object ex:E0324 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0158 .
+
+ex:stmt0122 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 31384 ;
+    ex:endOffset 1003 ;
+    ex:evidence "./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-version hg19 --data-sources-path funcotator_dataSources.v1.2.20180329 --output variants.funcotated.maf --output-file-format MAF --annotation-override NCBI_Build:HG19" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P064" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funco_tutorial" ;
+    ex:startOffset 749 ;
+    rdf:object ex:E0325 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0158 .
+
+ex:stmt0123 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 31384 ;
+    ex:endOffset 1003 ;
+    ex:evidence "./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-version hg19 --data-sources-path funcotator_dataSources.v1.2.20180329 --output variants.funcotated.maf --output-file-format MAF --annotation-override NCBI_Build:HG19" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P064" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funco_tutorial" ;
+    ex:startOffset 749 ;
+    rdf:object ex:E0326 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0158 .
+
+ex:stmt0124 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 31384 ;
+    ex:endOffset 1003 ;
+    ex:evidence "./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-version hg19 --data-sources-path funcotator_dataSources.v1.2.20180329 --output variants.funcotated.maf --output-file-format MAF --annotation-override NCBI_Build:HG19" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P064" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funco_tutorial" ;
+    ex:startOffset 749 ;
+    rdf:object ex:E0327 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0158 .
+
+ex:stmt0125 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 31384 ;
+    ex:endOffset 1003 ;
+    ex:evidence "./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-version hg19 --data-sources-path funcotator_dataSources.v1.2.20180329 --output variants.funcotated.maf --output-file-format MAF --annotation-override NCBI_Build:HG19" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P064" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funco_tutorial" ;
+    ex:startOffset 749 ;
+    rdf:object ex:E0328 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0158 .
+
+ex:stmt0126 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 31384 ;
+    ex:endOffset 1003 ;
+    ex:evidence "./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-version hg19 --data-sources-path funcotator_dataSources.v1.2.20180329 --output variants.funcotated.maf --output-file-format MAF --annotation-override NCBI_Build:HG19" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P064" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funco_tutorial" ;
+    ex:startOffset 749 ;
+    rdf:object ex:E0329 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0158 .
+
+ex:stmt0127 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 31384 ;
+    ex:endOffset 1003 ;
+    ex:evidence "./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-version hg19 --data-sources-path funcotator_dataSources.v1.2.20180329 --output variants.funcotated.maf --output-file-format MAF --annotation-override NCBI_Build:HG19" ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P064" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funco_tutorial" ;
+    ex:startOffset 749 ;
+    rdf:object ex:E0322 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0158 .
+
+ex:stmt0128 a ex:Statement ;
+    ex:confidence 0.5 ;
+    ex:docStartOffset 31644 ;
+    ex:endOffset 1246 ;
+    ex:evidence "It is valid to provide both the `--annotation-override` and `--annotation-default` arguments to Funcotator, however the behavior of specifying an annotation-override and an annotation-default for the _same annotation field_ is undefined." ;
+    ex:method "rules" ;
+    ex:model "spacy:en_core_web_md+rules" ;
+    ex:passage "P064" ;
+    ex:promptVersion "rules_v1" ;
+    ex:source "gatk_funco_tutorial" ;
+    ex:startOffset 1009 ;
+    rdf:object ex:E0323 ;
+    rdf:predicate ex:HAS_OPTION ;
+    rdf:subject ex:E0158 .
+
+ex:stmt0129 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 45 ;
+    ex:endOffset 149 ;
+    ex:evidence "**nf-core/sarek** is a workflow designed to detect variants on whole genome or targeted sequencing data." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P001" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_readme" ;
+    ex:startOffset 45 ;
+    rdf:object ex:E0005 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0001 .
+
+ex:stmt0130 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 75146 ;
+    ex:endOffset 438 ;
+    ex:evidence "The plugin calculates the Consensus Deleteriousness score for missense mutations using SIFT and PolyPhen-2 predictions from the Ensembl API." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P008" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_usage" ;
+    ex:startOffset 298 ;
+    rdf:object ex:E0027 ;
+    rdf:predicate ex:COMPUTES_METRIC ;
+    rdf:subject ex:E0026 .
+
+ex:stmt0131 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 10215 ;
+    ex:endOffset 1032 ;
+    ex:evidence "This approach is used by a GATK tool called Variant Quality Score Recalibration (VQSR)." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P018" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_vc_theory" ;
+    ex:startOffset 945 ;
+    rdf:object ex:E0040 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0038 .
+
+ex:stmt0132 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 44 ;
+    ex:endOffset 188 ;
+    ex:evidence "**nf-core/raredisease** is a best-practice bioinformatic pipeline for calling and scoring variants from WGS/WES data from rare disease patients." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P025" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "rare_readme" ;
+    ex:startOffset 44 ;
+    rdf:object ex:E0005 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0063 .
+
+ex:stmt0133 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 2247 ;
+    ex:endOffset 112 ;
+    ex:evidence "BWA-MEME used to map the reads to a reference genome." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P033" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "rare_output" ;
+    ex:startOffset 59 ;
+    rdf:object ex:E0107 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0068 .
+
+ex:stmt0134 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 2301 ;
+    ex:endOffset 172 ;
+    ex:evidence "The aligned reads are coordinate sorted with samtools sort." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P033" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "rare_output" ;
+    ex:startOffset 113 ;
+    rdf:object ex:E0106 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0105 .
+
+ex:stmt0135 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 19944 ;
+    ex:endOffset 1223 ;
+    ex:evidence "The pipeline for mitochondrial variant discovery, using Mutect2, uses a high sensitivity to low AF and separate alignments using opposite genome breakpoints to allow for the tracing of lineages of rare mitochondrial variants." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P034" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "rare_output" ;
+    ex:startOffset 998 ;
+    rdf:object ex:E0109 ;
+    rdf:predicate ex:INVOKES ;
+    rdf:subject ex:E0098 .
+
+ex:stmt0136 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 19944 ;
+    ex:endOffset 1223 ;
+    ex:evidence "The pipeline for mitochondrial variant discovery, using Mutect2, uses a high sensitivity to low AF and separate alignments using opposite genome breakpoints to allow for the tracing of lineages of rare mitochondrial variants." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P034" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "rare_output" ;
+    ex:startOffset 998 ;
+    rdf:object ex:E0005 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0098 .
+
+ex:stmt0137 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 18920 ;
+    ex:endOffset 386 ;
+    ex:evidence "Runs both the orientation bias filter and Oncotator." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P059" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "gatk_mutect2_wdl" ;
+    ex:startOffset 334 ;
+    rdf:object ex:E0142 ;
+    rdf:predicate ex:INVOKES ;
+    rdf:subject ex:E0121 .
+
+ex:stmt0138 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 1530 ;
+    ex:endOffset 320 ;
+    ex:evidence "These arguments re passed in as a JSON file (see below for a non-working example)." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P070" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 238 ;
+    rdf:object ex:E0166 ;
+    rdf:predicate ex:ACCEPTS ;
+    rdf:subject ex:E0164 .
+
+ex:stmt0139 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 2103 ;
+    ex:endOffset 457 ;
+    ex:evidence "File variant_vcf_to_funcotate - Variant Context File (VCF) containing the variants to annotate." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P071" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 362 ;
+    rdf:object ex:E0036 ;
+    rdf:predicate ex:ACCEPTS ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0140 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 1946 ;
+    ex:endOffset 243 ;
+    ex:evidence "File ref_fasta - Reference FASTA file." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P071" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 205 ;
+    rdf:object ex:E0130 ;
+    rdf:predicate ex:ACCEPTS ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0141 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 2487 ;
+    ex:endOffset 808 ;
+    ex:evidence "String output_format - Output file format (either VCF or MAF)." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P071" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 746 ;
+    rdf:object ex:E0036 ;
+    rdf:predicate ex:PRODUCES ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0142 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 2487 ;
+    ex:endOffset 808 ;
+    ex:evidence "String output_format - Output file format (either VCF or MAF)." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P071" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 746 ;
+    rdf:object ex:E0178 ;
+    rdf:predicate ex:PRODUCES ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0143 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 2618 ;
+    ex:endOffset 984 ;
+    ex:evidence "Boolean use_gnomad - If true, will enable the gnomAD data sources in the data source tar.gz, if they exist." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P071" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "gatk_funcotator_wdl" ;
+    ex:startOffset 877 ;
+    rdf:object ex:E0179 ;
+    rdf:predicate ex:USES_RESOURCE ;
+    rdf:subject ex:E0163 .
+
+ex:stmt0144 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 18568 ;
+    ex:endOffset 193 ;
+    ex:evidence "GATK HaplotypeCaller calls germline SNPs and indels via local re-assembly of haplotypes." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P009" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_output" ;
+    ex:startOffset 105 ;
+    rdf:object ex:E0005 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0192 .
+
+ex:stmt0145 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 19172 ;
+    ex:endOffset 820 ;
+    ex:evidence "This tool annotates each variant with a score indicating the model's prediction of the quality of each variant." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P009" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_output" ;
+    ex:startOffset 709 ;
+    rdf:object ex:E0197 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0193 .
+
+ex:stmt0146 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 19284 ;
+    ex:endOffset 961 ;
+    ex:evidence "To apply filters based on those scores run the FilterVariantTranches tool with SNP and INDEL sensitivity tranches appropriate for your task." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P009" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_output" ;
+    ex:startOffset 821 ;
+    rdf:object ex:E0198 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0194 .
+
+ex:stmt0147 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 36476 ;
+    ex:endOffset 230 ;
+    ex:evidence "ASCAT is a software for performing allele-specific copy number analysis of tumor samples and for estimating tumor ploidy and purity (normal contamination)." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P010" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_output" ;
+    ex:startOffset 75 ;
+    rdf:object ex:E0201 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0199 .
+
+ex:stmt0148 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 36476 ;
+    ex:endOffset 230 ;
+    ex:evidence "ASCAT is a software for performing allele-specific copy number analysis of tumor samples and for estimating tumor ploidy and purity (normal contamination)." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P010" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_output" ;
+    ex:startOffset 75 ;
+    rdf:object ex:E0202 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0199 .
+
+ex:stmt0149 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 36632 ;
+    ex:endOffset 330 ;
+    ex:evidence "It infers tumor purity and ploidy and calculates whole-genome allele-specific copy number profiles." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P010" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_output" ;
+    ex:startOffset 231 ;
+    rdf:object ex:E0203 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0199 .
+
+ex:stmt0150 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 36632 ;
+    ex:endOffset 330 ;
+    ex:evidence "It infers tumor purity and ploidy and calculates whole-genome allele-specific copy number profiles." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P010" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_output" ;
+    ex:startOffset 231 ;
+    rdf:object ex:E0204 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0199 .
+
+ex:stmt0151 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 36824 ;
+    ex:endOffset 516 ;
+    ex:evidence "Running ASCAT on NGS data requires that the BAM files are converted into BAF and LogR values." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P010" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_output" ;
+    ex:startOffset 423 ;
+    rdf:object ex:E0140 ;
+    rdf:predicate ex:ACCEPTS ;
+    rdf:subject ex:E0199 .
+
+ex:stmt0152 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 36918 ;
+    ex:endOffset 572 ;
+    ex:evidence "This is done internally using the software AlleleCount." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P010" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_output" ;
+    ex:startOffset 517 ;
+    rdf:object ex:E0200 ;
+    rdf:predicate ex:INVOKES ;
+    rdf:subject ex:E0199 .
+
+ex:stmt0153 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 54579 ;
+    ex:endOffset 135 ;
+    ex:evidence "BCFtools annotate is used to add annotations to VCF files." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P011" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_output" ;
+    ex:startOffset 77 ;
+    rdf:object ex:E0036 ;
+    rdf:predicate ex:ACCEPTS ;
+    rdf:subject ex:E0205 .
+
+ex:stmt0154 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 54579 ;
+    ex:endOffset 135 ;
+    ex:evidence "BCFtools annotate is used to add annotations to VCF files." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P011" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_output" ;
+    ex:startOffset 77 ;
+    rdf:object ex:E0206 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0205 .
+
+ex:stmt0155 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 64092 ;
+    ex:endOffset 249 ;
+    ex:evidence "VEP (Variant Effect Predictor), based on `Ensembl`, is a tool to determine the effects of all sorts of variants, including SNPs, indels, structural variants, CNVs." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P013" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_output" ;
+    ex:startOffset 86 ;
+    rdf:object ex:E0212 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0016 .
+
+ex:stmt0156 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 6947 ;
+    ex:endOffset 501 ;
+    ex:evidence """nextflow run nf-core/sarek -r 3.4.0 \\
+--input /workspace/gitpod/training/data/reads/sarek-input.csv \\
+--outdir . \\
+--tools haplotypecaller,snpeff \\
+--genome GRCh38chr21 \\
+--joint_germline \\
+--intervals /workspace/gitpod/training/exome_target_hg38_chr21.bed \\
+--wes""" ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P021" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_vc_sarek" ;
+    ex:startOffset 237 ;
+    rdf:object ex:E0218 ;
+    rdf:predicate ex:INVOKES ;
+    rdf:subject ex:E0001 .
+
+ex:stmt0157 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 6947 ;
+    ex:endOffset 501 ;
+    ex:evidence """nextflow run nf-core/sarek -r 3.4.0 \\
+--input /workspace/gitpod/training/data/reads/sarek-input.csv \\
+--outdir . \\
+--tools haplotypecaller,snpeff \\
+--genome GRCh38chr21 \\
+--joint_germline \\
+--intervals /workspace/gitpod/training/exome_target_hg38_chr21.bed \\
+--wes""" ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P021" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_vc_sarek" ;
+    ex:startOffset 237 ;
+    rdf:object ex:E0015 ;
+    rdf:predicate ex:INVOKES ;
+    rdf:subject ex:E0001 .
+
+ex:stmt0158 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 6947 ;
+    ex:endOffset 501 ;
+    ex:evidence """nextflow run nf-core/sarek -r 3.4.0 \\
+--input /workspace/gitpod/training/data/reads/sarek-input.csv \\
+--outdir . \\
+--tools haplotypecaller,snpeff \\
+--genome GRCh38chr21 \\
+--joint_germline \\
+--intervals /workspace/gitpod/training/exome_target_hg38_chr21.bed \\
+--wes""" ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P021" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_vc_sarek" ;
+    ex:startOffset 237 ;
+    rdf:object ex:E0216 ;
+    rdf:predicate ex:USES_RESOURCE ;
+    rdf:subject ex:E0001 .
+
+ex:stmt0159 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 7217 ;
+    ex:endOffset 735 ;
+    ex:evidence "Notice that we have selected `--joint_germline` to enable the joint-genotyping workflow, we have specified our library strategy is using a capture with `--wes` and we have provided a bed file with the targets with `--intervals`." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P021" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_vc_sarek" ;
+    ex:startOffset 507 ;
+    rdf:object ex:E0214 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0001 .
+
+ex:stmt0160 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 7567 ;
+    ex:endOffset 941 ;
+    ex:evidence "The whole pipeline from FASTQ input to annotated VCF should run in about 25 minutes." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P021" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_vc_sarek" ;
+    ex:startOffset 857 ;
+    rdf:object ex:E0007 ;
+    rdf:predicate ex:ACCEPTS ;
+    rdf:subject ex:E0001 .
+
+ex:stmt0161 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 7217 ;
+    ex:endOffset 735 ;
+    ex:evidence "Notice that we have selected `--joint_germline` to enable the joint-genotyping workflow, we have specified our library strategy is using a capture with `--wes` and we have provided a bed file with the targets with `--intervals`." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P021" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "sarek_vc_sarek" ;
+    ex:startOffset 507 ;
+    rdf:object ex:E0224 ;
+    rdf:predicate ex:ACCEPTS ;
+    rdf:subject ex:E0001 .
+
+ex:stmt0162 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 27326 ;
+    ex:endOffset 980 ;
+    ex:evidence "The pipeline also dynamically loads configurations from https://github.com/nf-core/configs when it runs, making multiple config profiles for various institutional clusters available at run time." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P030" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "rare_usage" ;
+    ex:startOffset 786 ;
+    rdf:object ex:E0240 ;
+    rdf:predicate ex:USES_RESOURCE ;
+    rdf:subject ex:E0063 .
+
+ex:stmt0163 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 33588 ;
+    ex:endOffset 239 ;
+    ex:evidence "Nextflow handles job submissions and supervises the running jobs." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P031" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "rare_usage" ;
+    ex:startOffset 174 ;
+    rdf:object ex:E0244 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0002 .
+
+ex:stmt0164 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 33588 ;
+    ex:endOffset 239 ;
+    ex:evidence "Nextflow handles job submissions and supervises the running jobs." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P031" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "rare_usage" ;
+    ex:startOffset 174 ;
+    rdf:object ex:E0245 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0002 .
+
+ex:stmt0165 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 33602 ;
+    ex:endOffset 498 ;
+    ex:evidence "call matplotlib to produce plots for chromosomes with quality at least float," ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P038" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 421 ;
+    rdf:object ex:E0257 ;
+    rdf:predicate ex:INVOKES ;
+    rdf:subject ex:E0248 .
+
+ex:stmt0166 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 65492 ;
+    ex:endOffset 341 ;
+    ex:evidence "Checks sample identity. The program can operate in two modes." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P041" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 280 ;
+    rdf:object ex:E0269 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0263 .
+
+ex:stmt0167 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 82963 ;
+    ex:endOffset 327 ;
+    ex:evidence "Generate VCF or BCF containing genotype likelihoods" ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P043" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 276 ;
+    rdf:object ex:E0036 ;
+    rdf:predicate ex:PRODUCES ;
+    rdf:subject ex:E0272 .
+
+ex:stmt0168 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 82963 ;
+    ex:endOffset 327 ;
+    ex:evidence "Generate VCF or BCF containing genotype likelihoods" ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P043" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 276 ;
+    rdf:object ex:E0118 ;
+    rdf:predicate ex:PRODUCES ;
+    rdf:subject ex:E0272 .
+
+ex:stmt0169 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 82963 ;
+    ex:endOffset 378 ;
+    ex:evidence """Generate VCF or BCF containing genotype likelihoods for one or multiple
+alignment (BAM or CRAM) files.""" ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P043" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 276 ;
+    rdf:object ex:E0140 ;
+    rdf:predicate ex:ACCEPTS ;
+    rdf:subject ex:E0272 .
+
+ex:stmt0170 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 82963 ;
+    ex:endOffset 378 ;
+    ex:evidence """Generate VCF or BCF containing genotype likelihoods for one or multiple
+alignment (BAM or CRAM) files.""" ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P043" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 276 ;
+    rdf:object ex:E0274 ;
+    rdf:predicate ex:ACCEPTS ;
+    rdf:subject ex:E0272 .
+
+ex:stmt0171 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 82963 ;
+    ex:endOffset 327 ;
+    ex:evidence "Generate VCF or BCF containing genotype likelihoods" ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P043" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 276 ;
+    rdf:object ex:E0275 ;
+    rdf:predicate ex:COMPUTES_METRIC ;
+    rdf:subject ex:E0272 .
+
+ex:stmt0172 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 132913 ;
+    ex:endOffset 441 ;
+    ex:evidence "estimate HMM parameters using Baum-Welch algorithm, using the convergence threshold" ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P045" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "bcftools_manual" ;
+    ex:startOffset 358 ;
+    rdf:object ex:E0281 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0092 .
+
+ex:stmt0173 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 8051 ;
+    ex:endOffset 514 ;
+    ex:evidence "Builds *only* the GATK jar used for running tools locally (not on a Spark cluster)." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P050" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "gatk_readme" ;
+    ex:startOffset 431 ;
+    rdf:object ex:E0291 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0287 .
+
+ex:stmt0174 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 8298 ;
+    ex:endOffset 769 ;
+    ex:evidence "Builds *only* the GATK jar used for running tools on a Spark cluster (rather than locally)." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P050" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "gatk_readme" ;
+    ex:startOffset 678 ;
+    rdf:object ex:E0292 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0288 .
+
+ex:stmt0175 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 8677 ;
+    ex:endOffset 1088 ;
+    ex:evidence "To remove previous builds, run:" ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P050" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "gatk_readme" ;
+    ex:startOffset 1057 ;
+    rdf:object ex:E0293 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0284 .
+
+ex:stmt0176 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 23266 ;
+    ex:endOffset 125 ;
+    ex:evidence "To run tests and compute coverage reports, run **`./gradlew jacocoTestReport`**." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P051" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "gatk_readme" ;
+    ex:startOffset 45 ;
+    rdf:object ex:E0299 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0294 .
+
+ex:stmt0177 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 28089 ;
+    ex:endOffset 195 ;
+    ex:evidence "Build a full GATK4 jar using `./gradlew localJar`" ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P052" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "gatk_readme" ;
+    ex:startOffset 146 ;
+    rdf:object ex:E0303 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0302 .
+
+ex:stmt0178 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 31152 ;
+    ex:endOffset 158 ;
+    ex:evidence "We use Zenhub to organize and track github issues." ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P053" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "gatk_readme" ;
+    ex:startOffset 108 ;
+    rdf:object ex:E0306 ;
+    rdf:predicate ex:PERFORMS ;
+    rdf:subject ex:E0304 .
+
+ex:stmt0179 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 31384 ;
+    ex:endOffset 1003 ;
+    ex:evidence "./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-version hg19 --data-sources-path funcotator_dataSources.v1.2.20180329 --output variants.funcotated.maf --output-file-format MAF --annotation-override NCBI_Build:HG19" ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P064" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "gatk_funco_tutorial" ;
+    ex:startOffset 749 ;
+    rdf:object ex:E0158 ;
+    rdf:predicate ex:INVOKES ;
+    rdf:subject ex:E0321 .
+
+ex:stmt0180 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 31384 ;
+    ex:endOffset 1003 ;
+    ex:evidence "./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-version hg19 --data-sources-path funcotator_dataSources.v1.2.20180329 --output variants.funcotated.maf --output-file-format MAF --annotation-override NCBI_Build:HG19" ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P064" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "gatk_funco_tutorial" ;
+    ex:startOffset 749 ;
+    rdf:object ex:E0178 ;
+    rdf:predicate ex:PRODUCES ;
+    rdf:subject ex:E0158 .
+
+ex:stmt0181 a ex:Statement ;
+    ex:confidence 0.8 ;
+    ex:docStartOffset 31384 ;
+    ex:endOffset 1003 ;
+    ex:evidence "./gatk Funcotator --variant variants.vcf --reference Homo_sapiens_assembly19.fasta --ref-version hg19 --data-sources-path funcotator_dataSources.v1.2.20180329 --output variants.funcotated.maf --output-file-format MAF --annotation-override NCBI_Build:HG19" ;
+    ex:method "llm" ;
+    ex:model "claude-haiku-4-5" ;
+    ex:passage "P064" ;
+    ex:promptVersion "extract_v2" ;
+    ex:source "gatk_funco_tutorial" ;
+    ex:startOffset 749 ;
+    rdf:object ex:E0331 ;
+    rdf:predicate ex:USES_RESOURCE ;
+    rdf:subject ex:E0158 .
+
+ex:E0038 a ex:Tool ;
+    rdfs:label "VQSR" ;
+    ex:PERFORMS ex:E0040 ;
+    ex:alias "Variant Quality Score Recalibration" ;
+    ex:ontologyClass ex:lab7_VQSR .
+
+ex:E0068 a ex:Tool ;
+    rdfs:label "BWA-MEME" ;
+    ex:PERFORMS ex:E0107 .
+
+ex:E0111 a ex:Tool ;
+    rdfs:label "BCFtools" ;
+    ex:HAS_OPTION ex:E0260 ;
+    ex:alias "bcftools" .
+
+ex:E0164 a ex:Tool ;
+    rdfs:label "funcotator.wdl" ;
+    ex:ACCEPTS ex:E0166 .
+
+ex:E0192 a ex:Tool ;
+    rdfs:label "GATK HaplotypeCaller" ;
+    ex:PERFORMS ex:E0005 .
+
+ex:E0193 a ex:Tool ;
+    rdfs:label "CNNScoreVariants" ;
+    ex:PERFORMS ex:E0197 .
+
+ex:E0194 a ex:Tool ;
+    rdfs:label "FilterVariantTranches" ;
+    ex:PERFORMS ex:E0198 .
+
+ex:E0261 a ex:Tool ;
+    rdfs:label "bcftools convert" ;
+    ex:HAS_OPTION ex:E0262 .
+
+ex:E0270 a ex:Tool ;
+    rdfs:label "bcftools merge" ;
+    ex:HAS_OPTION ex:E0349 .
+
+ex:E0284 a ex:Tool ;
+    rdfs:label "./gradlew" ;
+    ex:PERFORMS ex:E0293 .
+
+ex:E0287 a ex:Tool ;
+    rdfs:label "localJar" ;
+    ex:PERFORMS ex:E0291 .
+
+ex:E0288 a ex:Tool ;
+    rdfs:label "sparkJar" ;
+    ex:PERFORMS ex:E0292 .
+
+ex:E0294 a ex:Tool ;
+    rdfs:label "./gradlew jacocoTestReport" ;
+    ex:PERFORMS ex:E0299 .
+
+ex:E0302 a ex:Tool ;
+    rdfs:label "./gradlew localJar" ;
+    ex:PERFORMS ex:E0303 .
+
+ex:E0304 a ex:Tool ;
+    rdfs:label "Zenhub" ;
+    ex:PERFORMS ex:E0306 .
+
+ex:E0321 a ex:Tool ;
+    rdfs:label "./gatk" ;
+    ex:INVOKES ex:E0158 .
+
+ex:E0337 a ex:Tool ;
+    rdfs:label "nf-core/configs" ;
+    ex:HAS_OPTION ex:E0008 .
+
+ex:E0355 a ex:Tool ;
+    rdfs:label "GATK With" ;
+    ex:HAS_OPTION ex:E0322 .
+
+ex:E0007 a ex:FileFormat ;
+    rdfs:label "FASTQ" ;
+    ex:alias "fastq" ;
+    ex:ontologyClass ex:lab7_DataFile .
+
+ex:E0017 a ex:Option ;
+    rdfs:label "--vep_cache" .
+
+ex:E0018 a ex:Option ;
+    rdfs:label "--snpeff_cache" .
+
+ex:E0021 a ex:Option ;
+    rdfs:label "--no-sign-request" .
+
+ex:E0024 a ex:Option ;
+    rdfs:label "--condel_config" .
+
+ex:E0025 a ex:Option ;
+    rdfs:label "--vep_condel" .
+
+ex:E0027 a ex:Metric ;
+    rdfs:label "Consensus Deleteriousness score" .
+
+ex:E0040 a ex:Procedure ;
+    rdfs:label "Soft filtering" ;
+    ex:alias "soft filtering" ;
+    ex:ontologyClass ex:lab7_VariantFiltering .
+
+ex:E0098 a ex:Tool ;
+    rdfs:label "GATK Mitochondrial short variant discovery pipeline" ;
+    ex:INVOKES ex:E0109 ;
+    ex:PERFORMS ex:E0005 .
+
+ex:E0104 a ex:Option ;
+    rdfs:label "--aligner" .
+
+ex:E0105 a ex:Tool ;
+    rdfs:label "samtools sort" ;
+    ex:HAS_OPTION ex:E0104 ;
+    ex:PERFORMS ex:E0106 .
+
+ex:E0106 a ex:Procedure ;
+    rdfs:label "coordinate sorted" .
+
+ex:E0107 a ex:Procedure ;
+    rdfs:label "alignment" ;
+    ex:alias "map the reads to a reference genome" ;
+    ex:ontologyClass ex:lab7_SequenceAlignment .
+
+ex:E0108 a ex:Option ;
+    rdfs:label "--skip_subworkflows" .
+
+ex:E0118 a ex:FileFormat ;
+    rdfs:label "BCF" ;
+    ex:ontologyClass ex:lab7_DataFile .
+
+ex:E0130 a ex:FileFormat ;
+    rdfs:label "fasta" ;
+    ex:alias "FASTA" ;
+    ex:ontologyClass ex:lab7_DataFile .
+
+ex:E0131 a ex:Option ;
+    rdfs:label "Mutect2.gatk4_jar" .
+
+ex:E0132 a ex:Option ;
+    rdfs:label "Mutect2.intervals" .
+
+ex:E0133 a ex:Option ;
+    rdfs:label "Mutect2.ref_fasta" .
+
+ex:E0134 a ex:Option ;
+    rdfs:label "Mutect2.ref_fasta_index" .
+
+ex:E0135 a ex:Option ;
+    rdfs:label "Mutect2.ref_dict" .
+
+ex:E0136 a ex:Option ;
+    rdfs:label "Mutect2.tumor_bam" .
+
+ex:E0137 a ex:Option ;
+    rdfs:label "Mutect2.tumor_bam_index" .
+
+ex:E0138 a ex:Option ;
+    rdfs:label "Mutect2.normal_bam" .
+
+ex:E0139 a ex:Option ;
+    rdfs:label "Mutect2.normal_bam_index" .
+
+ex:E0144 a ex:Option ;
+    rdfs:label "Mutect2_Multi.pair_list" .
+
+ex:E0145 a ex:Option ;
+    rdfs:label "Mutect2_Multi.pon_index" .
+
+ex:E0146 a ex:Option ;
+    rdfs:label "Mutect2_Multi.gnomad" .
+
+ex:E0147 a ex:Option ;
+    rdfs:label "Mutect2_Multi.gnomad_index" .
+
+ex:E0148 a ex:Option ;
+    rdfs:label "Mutect2_Multi.variants_for_contamination" .
+
+ex:E0149 a ex:Option ;
+    rdfs:label "Mutect2_Multi.variants_for_contamination_index" .
+
+ex:E0150 a ex:Option ;
+    rdfs:label "Mutect2_Multi.is_run_orientation_bias_filter" .
+
+ex:E0151 a ex:Option ;
+    rdfs:label "Mutect2_Multi.is_run_oncotator" .
+
+ex:E0152 a ex:Option ;
+    rdfs:label "Mutect2_Multi.gatk_docker" .
+
+ex:E0153 a ex:Option ;
+    rdfs:label "Mutect2_Multi.oncotator_docker" .
+
+ex:E0154 a ex:Option ;
+    rdfs:label "Mutect2_Multi.preemptible_attempts" .
+
+ex:E0155 a ex:Option ;
+    rdfs:label "Mutect2_Multi.onco_ds_tar_gz" .
+
+ex:E0156 a ex:Option ;
+    rdfs:label "Mutect2_Multi.m2_extra_args" .
+
+ex:E0157 a ex:Option ;
+    rdfs:label "Mutect2_Multi.m2_extra_filtering_args" .
+
+ex:E0166 a ex:FileFormat ;
+    rdfs:label "JSON" ;
+    ex:ontologyClass ex:lab7_DataFile .
+
+ex:E0167 a ex:Option ;
+    rdfs:label "gatk_docker" .
+
+ex:E0168 a ex:Option ;
+    rdfs:label "ref_fasta" .
+
+ex:E0169 a ex:Option ;
+    rdfs:label "ref_fasta_index" .
+
+ex:E0170 a ex:Option ;
+    rdfs:label "ref_fasta_dict" .
+
+ex:E0171 a ex:Option ;
+    rdfs:label "variant_vcf_to_funcotate" .
+
+ex:E0172 a ex:Option ;
+    rdfs:label "variant_vcf_to_funcotate_index" .
+
+ex:E0173 a ex:Option ;
+    rdfs:label "reference_version" .
+
+ex:E0174 a ex:Option ;
+    rdfs:label "output_file_name" .
+
+ex:E0175 a ex:Option ;
+    rdfs:label "output_format" .
+
+ex:E0176 a ex:Option ;
+    rdfs:label "compress" .
+
+ex:E0177 a ex:Option ;
+    rdfs:label "use_gnomad" .
+
+ex:E0179 a ex:Resource ;
+    rdfs:label "gnomAD" ;
+    ex:ontologyClass ex:lab7_CuratedKnownVariants .
+
+ex:E0181 a ex:Option ;
+    rdfs:label "interval_list" .
+
+ex:E0182 a ex:Option ;
+    rdfs:label "data_sources_tar_gz" .
+
+ex:E0183 a ex:Option ;
+    rdfs:label "transcript_selection_mode" .
+
+ex:E0184 a ex:Option ;
+    rdfs:label "transcript_selection_list" .
+
+ex:E0185 a ex:Option ;
+    rdfs:label "annotation_defaults" .
+
+ex:E0186 a ex:Option ;
+    rdfs:label "annotation_overrides" .
+
+ex:E0187 a ex:Option ;
+    rdfs:label "gatk4_jar_override" .
+
+ex:E0188 a ex:Option ;
+    rdfs:label "funcotator_extra_args" .
+
+ex:E0189 a ex:Option ;
+    rdfs:label "--exclude-field" .
+
+ex:E0195 a ex:Option ;
+    rdfs:label "--dbsnp" .
+
+ex:E0196 a ex:Option ;
+    rdfs:label "--known_indels" .
+
+ex:E0197 a ex:Procedure ;
+    rdfs:label "annotates each variant with a score" .
+
+ex:E0198 a ex:Procedure ;
+    rdfs:label "apply filters" .
+
+ex:E0200 a ex:Tool ;
+    rdfs:label "AlleleCount" .
+
+ex:E0201 a ex:Procedure ;
+    rdfs:label "allele-specific copy number analysis" .
+
+ex:E0202 a ex:Procedure ;
+    rdfs:label "estimating tumor ploidy and purity" .
+
+ex:E0203 a ex:Procedure ;
+    rdfs:label "infers tumor purity and ploidy" .
+
+ex:E0204 a ex:Procedure ;
+    rdfs:label "calculates whole-genome allele-specific copy number profiles" .
+
+ex:E0205 a ex:Tool ;
+    rdfs:label "BCFtools annotate" ;
+    ex:ACCEPTS ex:E0036 ;
+    ex:PERFORMS ex:E0206 .
+
+ex:E0206 a ex:Procedure ;
+    rdfs:label "add annotations to VCF files" .
+
+ex:E0212 a ex:Procedure ;
+    rdfs:label "determine the effects of all sorts of variants" .
+
+ex:E0214 a ex:Procedure ;
+    rdfs:label "joint-genotyping" .
+
+ex:E0216 a ex:Resource ;
+    rdfs:label "GRCh38chr21" .
+
+ex:E0218 a ex:Tool ;
+    rdfs:label "haplotypecaller" .
+
+ex:E0219 a ex:Option ;
+    rdfs:label "--tools" .
+
+ex:E0220 a ex:Option ;
+    rdfs:label "--genome" .
+
+ex:E0221 a ex:Option ;
+    rdfs:label "--joint_germline" .
+
+ex:E0222 a ex:Option ;
+    rdfs:label "--intervals" .
+
+ex:E0223 a ex:Option ;
+    rdfs:label "--wes" .
+
+ex:E0224 a ex:FileFormat ;
+    rdfs:label "bed" ;
+    ex:ontologyClass ex:lab7_DataFile .
+
+ex:E0234 a ex:Option ;
+    rdfs:label "-r" ;
+    ex:alias "-R" .
+
+ex:E0240 a ex:Resource ;
+    rdfs:label "nf-core/configs" .
+
+ex:E0241 a ex:Option ;
+    rdfs:label "-bg" .
+
+ex:E0244 a ex:Procedure ;
+    rdfs:label "handles job submissions" .
+
+ex:E0245 a ex:Procedure ;
+    rdfs:label "supervises the running jobs" .
+
+ex:E0252 a ex:Option ;
+    rdfs:label "--regions-overlap" .
+
+ex:E0257 a ex:Tool ;
+    rdfs:label "matplotlib" .
+
+ex:E0260 a ex:Option ;
+    rdfs:label "--vcf-ids" .
+
+ex:E0262 a ex:Option ;
+    rdfs:label "--tsv2vcf" .
+
+ex:E0264 a ex:Option ;
+    rdfs:label "--distinctive-sites" .
+
+ex:E0265 a ex:Option ;
+    rdfs:label "--dry-run" .
+
+ex:E0269 a ex:Procedure ;
+    rdfs:label "Checks sample identity" .
+
+ex:E0274 a ex:FileFormat ;
+    rdfs:label "CRAM" ;
+    ex:ontologyClass ex:lab7_DataFile .
+
+ex:E0275 a ex:Metric ;
+    rdfs:label "genotype likelihoods" .
+
+ex:E0281 a ex:Procedure ;
+    rdfs:label "estimate HMM parameters" .
+
+ex:E0291 a ex:Procedure ;
+    rdfs:label "Builds *only* the GATK jar used for running tools locally" .
+
+ex:E0292 a ex:Procedure ;
+    rdfs:label "Builds *only* the GATK jar used for running tools on a Spark cluster" .
+
+ex:E0293 a ex:Procedure ;
+    rdfs:label "remove previous builds" .
+
+ex:E0299 a ex:Procedure ;
+    rdfs:label "compute coverage reports" .
+
+ex:E0303 a ex:Procedure ;
+    rdfs:label "Build a full GATK4 jar" .
+
+ex:E0306 a ex:Procedure ;
+    rdfs:label "organize and track github issues" .
+
+ex:E0323 a ex:Option ;
+    rdfs:label "--annotation-default" .
+
+ex:E0324 a ex:Option ;
+    rdfs:label "--variant" .
+
+ex:E0325 a ex:Option ;
+    rdfs:label "--reference" .
+
+ex:E0326 a ex:Option ;
+    rdfs:label "--ref-version" .
+
+ex:E0327 a ex:Option ;
+    rdfs:label "--data-sources-path" .
+
+ex:E0328 a ex:Option ;
+    rdfs:label "--output" .
+
+ex:E0329 a ex:Option ;
+    rdfs:label "--output-file-format" .
+
+ex:E0331 a ex:Resource ;
+    rdfs:label "funcotator_dataSources.v1.2.20180329" .
+
+ex:E0332 a ex:Option ;
+    rdfs:label "--maxNumHaplotypesInPopulation" .
+
+ex:E0333 a ex:Option ;
+    rdfs:label "--tumor_lod_to_emit" .
+
+ex:E0334 a ex:Option ;
+    rdfs:label "--maxAltAllelesThreshold" .
+
+ex:E0335 a ex:Option ;
+    rdfs:label "funcotator.wdl" .
+
+ex:E0336 a ex:Option ;
+    rdfs:label "--resource" .
+
+ex:E0338 a ex:Option ;
+    rdfs:label "--control-sample" .
+
+ex:E0339 a ex:Option ;
+    rdfs:label "--AF-file" .
+
+ex:E0340 a ex:Option ;
+    rdfs:label "--output-dir" .
+
+ex:E0341 a ex:Option ;
+    rdfs:label "--plot-threshold" .
+
+ex:E0342 a ex:Option ;
+    rdfs:label "--regions" .
+
+ex:E0343 a ex:Option ;
+    rdfs:label "--regions-file" .
+
+ex:E0344 a ex:Option ;
+    rdfs:label "--query-sample" .
+
+ex:E0345 a ex:Option ;
+    rdfs:label "--targets" .
+
+ex:E0347 a ex:Option ;
+    rdfs:label "--pairs" .
+
+ex:E0348 a ex:Option ;
+    rdfs:label "--exclude" .
+
+ex:E0349 a ex:Option ;
+    rdfs:label "--merge" .
+
+ex:E0350 a ex:Option ;
+    rdfs:label "--allow-undef-tags" .
+
+ex:E0351 a ex:Option ;
+    rdfs:label "--vcf-list" .
+
+ex:E0352 a ex:Option ;
+    rdfs:label "--hw-to-az" .
+
+ex:E0353 a ex:Option ;
+    rdfs:label "--az-to-hw" .
+
+ex:E0354 a ex:Option ;
+    rdfs:label "--viterbi-training" .
+
+ex:E0011 a ex:Option ;
+    rdfs:label "-params-file" .
+
+ex:E0012 a ex:Option ;
+    rdfs:label "-c" .
+
+ex:E0026 a ex:Tool ;
+    rdfs:label "Condel" ;
+    ex:COMPUTES_METRIC ex:E0027 ;
+    ex:HAS_OPTION ex:E0024,
+        ex:E0025 .
+
+ex:E0122 a ex:Option ;
+    rdfs:label "Mutect2_Multi.gatk4_jar" .
+
+ex:E0123 a ex:Option ;
+    rdfs:label "Mutect2_Multi.gatk4_jar_override" .
+
+ex:E0124 a ex:Option ;
+    rdfs:label "Mutect2_Multi.scatter_count" .
+
+ex:E0125 a ex:Option ;
+    rdfs:label "Mutect2_Multi.intervals" .
+
+ex:E0126 a ex:Option ;
+    rdfs:label "Mutect2_Multi.ref_fasta" .
+
+ex:E0127 a ex:Option ;
+    rdfs:label "Mutect2_Multi.ref_fasta_index" .
+
+ex:E0128 a ex:Option ;
+    rdfs:label "Mutect2_Multi.ref_dict" .
+
+ex:E0129 a ex:Option ;
+    rdfs:label "Mutect2_Multi.pon" .
+
+ex:E0008 a ex:Option ;
+    rdfs:label "-profile" .
+
+ex:E0016 a ex:Tool ;
+    rdfs:label "VEP" ;
+    ex:HAS_OPTION ex:E0017,
+        ex:E0018,
+        ex:E0021 ;
+    ex:PERFORMS ex:E0212 .
+
+ex:E0092 a ex:Tool ;
+    rdfs:label "bcftools roh" ;
+    ex:HAS_OPTION ex:E0352,
+        ex:E0353,
+        ex:E0354 ;
+    ex:PERFORMS ex:E0281 .
+
+ex:E0140 a ex:FileFormat ;
+    rdfs:label "BAM" ;
+    ex:alias "bam" ;
+    ex:ontologyClass ex:lab7_BAMFile .
+
+ex:E0178 a ex:FileFormat ;
+    rdfs:label "MAF" ;
+    ex:ontologyClass ex:lab7_DataFile .
+
+ex:E0255 a ex:Option ;
+    rdfs:label "--targets-overlap" .
+
+ex:E0278 a ex:Option ;
+    rdfs:label "--verbosity" .
+
+ex:E0322 a ex:Option ;
+    rdfs:label "--annotation-override" .
+
+ex:E0346 a ex:Option ;
+    rdfs:label "--targets-file" .
+
+ex:E0009 a ex:Option ;
+    rdfs:label "--input" .
+
+ex:E0010 a ex:Option ;
+    rdfs:label "--outdir" .
+
+ex:E0142 a ex:Tool ;
+    rdfs:label "oncotator" ;
+    ex:HAS_OPTION ex:E0332,
+        ex:E0333,
+        ex:E0334 ;
+    ex:alias "Oncotator" .
+
+ex:E0263 a ex:Tool ;
+    rdfs:label "bcftools gtcheck" ;
+    ex:HAS_OPTION ex:E0264,
+        ex:E0265,
+        ex:E0347,
+        ex:E0348 ;
+    ex:PERFORMS ex:E0269 .
+
+ex:E0272 a ex:Tool ;
+    rdfs:label "bcftools mpileup" ;
+    ex:ACCEPTS ex:E0140,
+        ex:E0274 ;
+    ex:COMPUTES_METRIC ex:E0275 ;
+    ex:PRODUCES ex:E0036,
+        ex:E0118 .
+
+ex:E0276 a ex:Tool ;
+    rdfs:label "bcftools query" ;
+    ex:HAS_OPTION ex:E0255,
+        ex:E0278,
+        ex:E0346,
+        ex:E0350,
+        ex:E0351 .
+
+ex:E0015 a ex:Tool ;
+    rdfs:label "SnpEff" ;
+    ex:HAS_OPTION ex:E0220,
+        ex:E0221,
+        ex:E0222,
+        ex:E0223 ;
+    ex:alias "SNPeff",
+        "snpeff" .
+
+ex:E0063 a ex:Tool ;
+    rdfs:label "nf-core/raredisease" ;
+    ex:HAS_OPTION ex:E0009,
+        ex:E0010,
+        ex:E0108,
+        ex:E0234 ;
+    ex:PERFORMS ex:E0005 ;
+    ex:USES_RESOURCE ex:E0240 .
+
+ex:E0199 a ex:Tool ;
+    rdfs:label "ASCAT" ;
+    ex:ACCEPTS ex:E0140 ;
+    ex:INVOKES ex:E0200 ;
+    ex:PERFORMS ex:E0201,
+        ex:E0202,
+        ex:E0203,
+        ex:E0204 .
+
+ex:E0005 a ex:Procedure ;
+    rdfs:label "variant calling" ;
+    ex:alias "calling and scoring variants",
+        "calls germline SNPs and indels",
+        "detect variants",
+        "mitochondrial variant discovery" ;
+    ex:ontologyClass ex:lab7_VariantCalling .
+
+ex:E0036 a ex:FileFormat ;
+    rdfs:label "VCF" ;
+    ex:alias "vcf" ;
+    ex:ontologyClass ex:lab7_VCFFile .
+
+ex:E0002 a ex:Tool ;
+    rdfs:label "Nextflow" ;
+    ex:HAS_OPTION ex:E0008,
+        ex:E0011,
+        ex:E0012,
+        ex:E0241,
+        ex:E0336 ;
+    ex:PERFORMS ex:E0244,
+        ex:E0245 ;
+    ex:alias "nextflow" .
+
+ex:E0109 a ex:Tool ;
+    rdfs:label "mutect2" ;
+    ex:HAS_OPTION ex:E0131,
+        ex:E0132,
+        ex:E0133,
+        ex:E0134,
+        ex:E0135,
+        ex:E0136,
+        ex:E0137,
+        ex:E0138,
+        ex:E0139 ;
+    ex:alias "Mutect2" .
+
+ex:E0248 a ex:Tool ;
+    rdfs:label "bcftools cnv" ;
+    ex:HAS_OPTION ex:E0252,
+        ex:E0255,
+        ex:E0278,
+        ex:E0338,
+        ex:E0339,
+        ex:E0340,
+        ex:E0341,
+        ex:E0342,
+        ex:E0343,
+        ex:E0344,
+        ex:E0345,
+        ex:E0346 ;
+    ex:INVOKES ex:E0257 .
+
+ex:E0001 a ex:Tool ;
+    rdfs:label "nf-core/sarek" ;
+    ex:ACCEPTS ex:E0007,
+        ex:E0224 ;
+    ex:HAS_OPTION ex:E0009,
+        ex:E0010,
+        ex:E0195,
+        ex:E0196,
+        ex:E0219 ;
+    ex:INVOKES ex:E0015,
+        ex:E0218 ;
+    ex:PERFORMS ex:E0005,
+        ex:E0214 ;
+    ex:USES_RESOURCE ex:E0216 ;
+    ex:alias "Sarek" .
+
+ex:E0158 a ex:Tool ;
+    rdfs:label "Funcotator" ;
+    ex:HAS_OPTION ex:E0189,
+        ex:E0322,
+        ex:E0323,
+        ex:E0324,
+        ex:E0325,
+        ex:E0326,
+        ex:E0327,
+        ex:E0328,
+        ex:E0329,
+        ex:E0335 ;
+    ex:PRODUCES ex:E0178 ;
+    ex:USES_RESOURCE ex:E0331 ;
+    ex:alias "funcotator" .
+
+ex:E0163 a ex:Tool ;
+    rdfs:label "Funcotator WDL" ;
+    ex:ACCEPTS ex:E0036,
+        ex:E0130 ;
+    ex:HAS_OPTION ex:E0167,
+        ex:E0168,
+        ex:E0169,
+        ex:E0170,
+        ex:E0171,
+        ex:E0172,
+        ex:E0173,
+        ex:E0174,
+        ex:E0175,
+        ex:E0176,
+        ex:E0177,
+        ex:E0181,
+        ex:E0182,
+        ex:E0183,
+        ex:E0184,
+        ex:E0185,
+        ex:E0186,
+        ex:E0187,
+        ex:E0188 ;
+    ex:PRODUCES ex:E0036,
+        ex:E0178 ;
+    ex:USES_RESOURCE ex:E0179 .
+
+ex:E0121 a ex:Tool ;
+    rdfs:label "Mutect2 Multi" ;
+    ex:HAS_OPTION ex:E0122,
+        ex:E0123,
+        ex:E0124,
+        ex:E0125,
+        ex:E0126,
+        ex:E0127,
+        ex:E0128,
+        ex:E0129,
+        ex:E0144,
+        ex:E0145,
+        ex:E0146,
+        ex:E0147,
+        ex:E0148,
+        ex:E0149,
+        ex:E0150,
+        ex:E0151,
+        ex:E0152,
+        ex:E0153,
+        ex:E0154,
+        ex:E0155,
+        ex:E0156,
+        ex:E0157 ;
+    ex:INVOKES ex:E0142 ;
+    ex:alias "mutect2_multi_sample" .
+

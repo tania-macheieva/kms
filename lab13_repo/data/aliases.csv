@@ -1,0 +1,18 @@
+alias,canonical,rule
+sarek,nf-core/sarek,A1 same pipeline short name
+snpeff,SnpEff,A2 case variants
+bwa-mem2,BWA-MEM2,A2 case variants
+variant quality score recalibration,VQSR,A3 spelled-out form
+gatk germline single sample variant calling,GATK Germline Single Sample Variant Calling,A2
+fastq,FASTQ,A2 case variants
+hg19,GRCh37,A4 UCSC alias of GRCh37 (same assembly family; recorded as owl:sameAs-like alias)
+b37,GRCh37,A4 GATK-bundle alias of GRCh37
+hg38,GRCh38,A4 UCSC alias of GRCh38
+funcotator wdl,Funcotator WDL,A2
+mutect2_multi_sample,Mutect2 Multi,A2
+detect variants,variant calling,A5 verb-phrase Procedure -> noun canonical (synonym of variant calling)
+identify variants,variant calling,A5 verb-phrase synonym
+calls germline SNPs and indels,variant calling,A5 verb-phrase synonym
+calling and scoring variants,variant calling,A5 verb-phrase synonym
+mitochondrial variant discovery,variant calling,A5 verb-phrase synonym
+map the reads to a reference genome,alignment,A5 verb-phrase synonym

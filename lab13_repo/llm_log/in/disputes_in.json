@@ -1,0 +1,482 @@
+[
+ {
+  "id": "D001",
+  "passage_id": "P006",
+  "subject": "SnpEff",
+  "relation": "HAS_OPTION",
+  "object": "--snpeff_cache",
+  "evidence": "To use these, supply the parameters `--vep_cache` and/or `--snpeff_cache` with the locations to the root of the annotation cache folder for each tool."
+ },
+ {
+  "id": "D002",
+  "passage_id": "P006",
+  "subject": "VEP",
+  "relation": "HAS_OPTION",
+  "object": "--vep_cache",
+  "evidence": "To use these, supply the parameters `--vep_cache` and/or `--snpeff_cache` with the locations to the root of the annotation cache folder for each tool."
+ },
+ {
+  "id": "D003",
+  "passage_id": "P009",
+  "subject": "HaplotypeCaller",
+  "relation": "PRODUCES",
+  "object": "VCF",
+  "evidence": "The VCF that HaplotypeCaller emits errors on the side of sensitivity, therefore they are filtered by first running the CNNScoreVariants tool."
+ },
+ {
+  "id": "D004",
+  "passage_id": "P009",
+  "subject": "GATK HaplotypeCaller",
+  "relation": "PRODUCES",
+  "object": "VCF",
+  "evidence": "The VCF that HaplotypeCaller emits errors on the side of sensitivity"
+ },
+ {
+  "id": "D005",
+  "passage_id": "P009",
+  "subject": "GATK Germline Single Sample Variant Calling",
+  "relation": "INVOKES",
+  "object": "HaplotypeCaller",
+  "evidence": "uses HaplotypeCaller in its default single-sample mode to call variants."
+ },
+ {
+  "id": "D006",
+  "passage_id": "P009",
+  "subject": "GATK Single Sample Variant Calling",
+  "relation": "INVOKES",
+  "object": "GATK HaplotypeCaller",
+  "evidence": "uses HaplotypeCaller in its default single-sample mode to call variants."
+ },
+ {
+  "id": "D007",
+  "passage_id": "P010",
+  "subject": "ASCAT",
+  "relation": "PERFORMS",
+  "object": "estimating tumor ploidy and purity",
+  "evidence": "ASCAT is a software for performing allele-specific copy number analysis of tumor samples and for estimating tumor ploidy and purity (normal contamination)."
+ },
+ {
+  "id": "D008",
+  "passage_id": "P018",
+  "subject": "Variant Quality Score Recalibration",
+  "relation": "PERFORMS",
+  "object": "Soft filtering",
+  "evidence": "This approach is used by a GATK tool called Variant Quality Score Recalibration (VQSR)."
+ },
+ {
+  "id": "D009",
+  "passage_id": "P018",
+  "subject": "VQSR",
+  "relation": "PERFORMS",
+  "object": "Soft filtering",
+  "evidence": "This approach is used by a GATK tool called Variant Quality Score Recalibration (VQSR)."
+ },
+ {
+  "id": "D010",
+  "passage_id": "P019",
+  "subject": "Sarek",
+  "relation": "ACCEPTS",
+  "object": "CSV",
+  "evidence": "The input data should be provided in a CSV file, according to a format that is largely common for nf-core pipelines."
+ },
+ {
+  "id": "D011",
+  "passage_id": "P033",
+  "subject": "samtools sort",
+  "relation": "PERFORMS",
+  "object": "coordinate sorted",
+  "evidence": "The aligned reads are coordinate sorted with samtools sort."
+ },
+ {
+  "id": "D012",
+  "passage_id": "P035",
+  "subject": "vcfeval",
+  "relation": "PERFORMS",
+  "object": "SNVs can be evaluated",
+  "evidence": "Provided a truth set, SNVs can be evaluated using RTG Tools' vcfeval engine."
+ },
+ {
+  "id": "D013",
+  "passage_id": "P035",
+  "subject": "RTG Tools",
+  "relation": "PERFORMS",
+  "object": "evaluated",
+  "evidence": "Provided a truth set, SNVs can be evaluated using RTG Tools' vcfeval engine."
+ },
+ {
+  "id": "D014",
+  "passage_id": "P038",
+  "subject": "bcftools cnv",
+  "relation": "HAS_OPTION",
+  "object": "-R",
+  "evidence": "-R, --regions-file file::"
+ },
+ {
+  "id": "D015",
+  "passage_id": "P038",
+  "subject": "bcftools cnv",
+  "relation": "HAS_OPTION",
+  "object": "--query-sample",
+  "evidence": "-s, --query-sample string::"
+ },
+ {
+  "id": "D016",
+  "passage_id": "P038",
+  "subject": "bcftools cnv",
+  "relation": "HAS_OPTION",
+  "object": "--control-sample",
+  "evidence": "-c, --control-sample string::"
+ },
+ {
+  "id": "D017",
+  "passage_id": "P038",
+  "subject": "bcftools cnv",
+  "relation": "HAS_OPTION",
+  "object": "--AF-file",
+  "evidence": "-f, --AF-file file::"
+ },
+ {
+  "id": "D018",
+  "passage_id": "P038",
+  "subject": "bcftools cnv",
+  "relation": "HAS_OPTION",
+  "object": "--output-dir",
+  "evidence": "-o, --output-dir path::"
+ },
+ {
+  "id": "D019",
+  "passage_id": "P038",
+  "subject": "bcftools cnv",
+  "relation": "HAS_OPTION",
+  "object": "-c",
+  "evidence": "-c, --control-sample string::"
+ },
+ {
+  "id": "D020",
+  "passage_id": "P038",
+  "subject": "bcftools cnv",
+  "relation": "HAS_OPTION",
+  "object": "--regions",
+  "evidence": "-r, --regions chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::"
+ },
+ {
+  "id": "D021",
+  "passage_id": "P038",
+  "subject": "bcftools cnv",
+  "relation": "HAS_OPTION",
+  "object": "--targets",
+  "evidence": "-t, --targets LIST::"
+ },
+ {
+  "id": "D022",
+  "passage_id": "P038",
+  "subject": "bcftools cnv",
+  "relation": "HAS_OPTION",
+  "object": "-T",
+  "evidence": "-T, --targets-file FILE::"
+ },
+ {
+  "id": "D023",
+  "passage_id": "P038",
+  "subject": "bcftools cnv",
+  "relation": "HAS_OPTION",
+  "object": "-o",
+  "evidence": "-o, --output-dir path::"
+ },
+ {
+  "id": "D024",
+  "passage_id": "P038",
+  "subject": "bcftools cnv",
+  "relation": "HAS_OPTION",
+  "object": "--plot-threshold",
+  "evidence": "-p, --plot-threshold float::"
+ },
+ {
+  "id": "D025",
+  "passage_id": "P038",
+  "subject": "bcftools cnv",
+  "relation": "HAS_OPTION",
+  "object": "--verbosity",
+  "evidence": "-v, --verbosity INT::"
+ },
+ {
+  "id": "D026",
+  "passage_id": "P038",
+  "subject": "bcftools cnv",
+  "relation": "HAS_OPTION",
+  "object": "--targets-file",
+  "evidence": "-T, --targets-file FILE::"
+ },
+ {
+  "id": "D027",
+  "passage_id": "P038",
+  "subject": "bcftools cnv",
+  "relation": "HAS_OPTION",
+  "object": "-s",
+  "evidence": "-s, --query-sample string::"
+ },
+ {
+  "id": "D028",
+  "passage_id": "P038",
+  "subject": "bcftools cnv",
+  "relation": "HAS_OPTION",
+  "object": "--regions-file",
+  "evidence": "-R, --regions-file file::"
+ },
+ {
+  "id": "D029",
+  "passage_id": "P038",
+  "subject": "bcftools cnv",
+  "relation": "HAS_OPTION",
+  "object": "-v",
+  "evidence": "-v, --verbosity INT::"
+ },
+ {
+  "id": "D030",
+  "passage_id": "P038",
+  "subject": "bcftools cnv",
+  "relation": "HAS_OPTION",
+  "object": "-f",
+  "evidence": "-f, --AF-file file::"
+ },
+ {
+  "id": "D031",
+  "passage_id": "P038",
+  "subject": "bcftools cnv",
+  "relation": "HAS_OPTION",
+  "object": "-p",
+  "evidence": "-p, --plot-threshold float::"
+ },
+ {
+  "id": "D032",
+  "passage_id": "P040",
+  "subject": "bcftools convert",
+  "relation": "PRODUCES",
+  "object": "VCF",
+  "evidence": "# Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored"
+ },
+ {
+  "id": "D033",
+  "passage_id": "P041",
+  "subject": "bcftools gtcheck",
+  "relation": "HAS_OPTION",
+  "object": "-e",
+  "evidence": "-e, --exclude [qry|gt]:EXPRESSION::"
+ },
+ {
+  "id": "D034",
+  "passage_id": "P041",
+  "subject": "bcftools gtcheck",
+  "relation": "HAS_OPTION",
+  "object": "--exclude",
+  "evidence": "-e, --exclude [qry|gt]:EXPRESSION::"
+ },
+ {
+  "id": "D035",
+  "passage_id": "P042",
+  "subject": "bcftools merge",
+  "relation": "HAS_OPTION",
+  "object": "-m",
+  "evidence": "The option controls what types of multiallelic records can be created."
+ },
+ {
+  "id": "D036",
+  "passage_id": "P042",
+  "subject": "bcftools merge",
+  "relation": "HAS_OPTION",
+  "object": "--merge",
+  "evidence": "-m, --merge snps|indels|both|snp-ins-del|all|none|id[,'*']::"
+ },
+ {
+  "id": "D037",
+  "passage_id": "P044",
+  "subject": "bcftools query",
+  "relation": "HAS_OPTION",
+  "object": "-T",
+  "evidence": "-T, --targets-file file::"
+ },
+ {
+  "id": "D038",
+  "passage_id": "P044",
+  "subject": "bcftools query",
+  "relation": "HAS_OPTION",
+  "object": "--targets-file",
+  "evidence": "-T, --targets-file file::"
+ },
+ {
+  "id": "D039",
+  "passage_id": "P044",
+  "subject": "bcftools query",
+  "relation": "HAS_OPTION",
+  "object": "-v",
+  "evidence": "-v, --vcf-list FILE::"
+ },
+ {
+  "id": "D040",
+  "passage_id": "P044",
+  "subject": "bcftools query",
+  "relation": "HAS_OPTION",
+  "object": "--allow-undef-tags",
+  "evidence": "-u, --allow-undef-tags::"
+ },
+ {
+  "id": "D041",
+  "passage_id": "P044",
+  "subject": "bcftools query",
+  "relation": "HAS_OPTION",
+  "object": "--vcf-list",
+  "evidence": "-v, --vcf-list FILE::"
+ },
+ {
+  "id": "D042",
+  "passage_id": "P044",
+  "subject": "bcftools query",
+  "relation": "HAS_OPTION",
+  "object": "-u",
+  "evidence": "-u, --allow-undef-tags::"
+ },
+ {
+  "id": "D043",
+  "passage_id": "P045",
+  "subject": "bcftools roh",
+  "relation": "HAS_OPTION",
+  "object": "--hw-to-az",
+  "evidence": "-a, --hw-to-az FLOAT::"
+ },
+ {
+  "id": "D044",
+  "passage_id": "P045",
+  "subject": "bcftools roh",
+  "relation": "HAS_OPTION",
+  "object": "-H",
+  "evidence": "-H, --az-to-hw FLOAT::"
+ },
+ {
+  "id": "D045",
+  "passage_id": "P045",
+  "subject": "bcftools roh",
+  "relation": "HAS_OPTION",
+  "object": "--viterbi-training",
+  "evidence": "-V, --viterbi-training FLOAT::"
+ },
+ {
+  "id": "D046",
+  "passage_id": "P045",
+  "subject": "bcftools roh",
+  "relation": "HAS_OPTION",
+  "object": "-V",
+  "evidence": "-V, --viterbi-training FLOAT::"
+ },
+ {
+  "id": "D047",
+  "passage_id": "P045",
+  "subject": "bcftools roh",
+  "relation": "HAS_OPTION",
+  "object": "--az-to-hw",
+  "evidence": "-H, --az-to-hw FLOAT::"
+ },
+ {
+  "id": "D048",
+  "passage_id": "P045",
+  "subject": "bcftools roh",
+  "relation": "HAS_OPTION",
+  "object": "-a",
+  "evidence": "-a, --hw-to-az FLOAT::"
+ },
+ {
+  "id": "D049",
+  "passage_id": "P059",
+  "subject": "mutect2_multi_sample",
+  "relation": "PERFORMS",
+  "object": "orientation bias filter",
+  "evidence": "Runs both the orientation bias filter and Oncotator."
+ },
+ {
+  "id": "D050",
+  "passage_id": "P070",
+  "subject": "funcotator.wdl",
+  "relation": "ACCEPTS",
+  "object": "JSON",
+  "evidence": "These arguments re passed in as a JSON file (see below for a non-working example)."
+ },
+ {
+  "id": "D051",
+  "passage_id": "P071",
+  "subject": "Funcotator WDL",
+  "relation": "USES_RESOURCE",
+  "object": "gnomAD",
+  "evidence": "Boolean use_gnomad - If true, will enable the gnomAD data sources in the data source tar.gz, if they exist."
+ },
+ {
+  "id": "D052",
+  "passage_id": "P071",
+  "subject": "Funcotator WDL",
+  "relation": "ACCEPTS",
+  "object": "VCF",
+  "evidence": "File variant_vcf_to_funcotate - Variant Context File (VCF) containing the variants to annotate."
+ },
+ {
+  "id": "D053",
+  "passage_id": "P072",
+  "subject": "Funcotator",
+  "relation": "HAS_OPTION",
+  "object": "funcotator_extra_args",
+  "evidence": "String? funcotator_extra_args - Extra command-line arguments to pass through to Funcotator."
+ },
+ {
+  "id": "D054",
+  "passage_id": "P072",
+  "subject": "Funcotator",
+  "relation": "HAS_OPTION",
+  "object": "gatk4_jar_override",
+  "evidence": "File? gatk4_jar_override - Override Jar file containing GATK 4.0."
+ },
+ {
+  "id": "D055",
+  "passage_id": "P072",
+  "subject": "Funcotator",
+  "relation": "HAS_OPTION",
+  "object": "annotation_overrides",
+  "evidence": "Array[String]? annotation_overrides - Override values for annotations (in the format <ANNOTATION>:<VALUE>)."
+ },
+ {
+  "id": "D056",
+  "passage_id": "P072",
+  "subject": "Funcotator",
+  "relation": "HAS_OPTION",
+  "object": "interval_list",
+  "evidence": "File? interval_list - Intervals to be used for traversal."
+ },
+ {
+  "id": "D057",
+  "passage_id": "P072",
+  "subject": "Funcotator",
+  "relation": "HAS_OPTION",
+  "object": "data_sources_tar_gz",
+  "evidence": "File? data_sources_tar_gz - Path to tar.gz containing the data sources for Funcotator to create annotations."
+ },
+ {
+  "id": "D058",
+  "passage_id": "P072",
+  "subject": "Funcotator",
+  "relation": "HAS_OPTION",
+  "object": "transcript_selection_list",
+  "evidence": "Array[String]? transcript_selection_list - Set of transcript IDs to use for annotation to override selected transcript."
+ },
+ {
+  "id": "D059",
+  "passage_id": "P072",
+  "subject": "Funcotator",
+  "relation": "HAS_OPTION",
+  "object": "transcript_selection_mode",
+  "evidence": "String? transcript_selection_mode - Method of detailed transcript selection."
+ },
+ {
+  "id": "D060",
+  "passage_id": "P072",
+  "subject": "Funcotator",
+  "relation": "HAS_OPTION",
+  "object": "annotation_defaults",
+  "evidence": "Array[String]? annotation_defaults - Annotations to include in all annotated variants if the annotation is not specified in the data sources (in the format <ANNOTATION>:<VALUE>)."
+ }
+]

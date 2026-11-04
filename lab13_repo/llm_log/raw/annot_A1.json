@@ -1,0 +1,2595 @@
+[
+ {
+  "passage_id": "P001",
+  "entities": [
+   {
+    "text": "nf-core/sarek",
+    "type": "Tool"
+   },
+   {
+    "text": "Nextflow",
+    "type": "Tool"
+   },
+   {
+    "text": "Docker",
+    "type": "Tool"
+   },
+   {
+    "text": "Singularity",
+    "type": "Tool"
+   },
+   {
+    "text": "nf-core/modules",
+    "type": "Tool"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "nf-core/sarek",
+    "relation": "PERFORMS",
+    "object": "detect variants",
+    "evidence": "**nf-core/sarek** is a workflow designed to detect variants on whole genome or targeted sequencing data."
+   }
+  ]
+ },
+ {
+  "passage_id": "P002",
+  "entities": [
+   {
+    "text": "nf-core/sarek",
+    "type": "Tool"
+   },
+   {
+    "text": "Nextflow",
+    "type": "Tool"
+   },
+   {
+    "text": "-profile",
+    "type": "Option"
+   },
+   {
+    "text": "--input",
+    "type": "Option"
+   },
+   {
+    "text": "--outdir",
+    "type": "Option"
+   },
+   {
+    "text": "-params-file",
+    "type": "Option"
+   },
+   {
+    "text": "-c",
+    "type": "Option"
+   },
+   {
+    "text": "CSV",
+    "type": "FileFormat"
+   },
+   {
+    "text": "fastq",
+    "type": "FileFormat"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "Nextflow",
+    "relation": "HAS_OPTION",
+    "object": "-params-file",
+    "evidence": "Please provide pipeline parameters via the CLI or Nextflow `-params-file` option."
+   },
+   {
+    "subject": "Nextflow",
+    "relation": "HAS_OPTION",
+    "object": "-c",
+    "evidence": "Custom config files including those provided by the `-c` Nextflow option can be used to provide any configuration _**except for parameters**_; see docs."
+   }
+  ]
+ },
+ {
+  "passage_id": "P003",
+  "entities": [
+   {
+    "text": "Sarek",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P004",
+  "entities": [],
+  "relations": []
+ },
+ {
+  "passage_id": "P005",
+  "entities": [],
+  "relations": []
+ },
+ {
+  "passage_id": "P006",
+  "entities": [
+   {
+    "text": "SNPeff",
+    "type": "Tool"
+   },
+   {
+    "text": "VEP",
+    "type": "Tool"
+   },
+   {
+    "text": "--vep_cache",
+    "type": "Option"
+   },
+   {
+    "text": "--snpeff_cache",
+    "type": "Option"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P007",
+  "entities": [
+   {
+    "text": "Sarek",
+    "type": "Tool"
+   },
+   {
+    "text": "Snpeff",
+    "type": "Tool"
+   },
+   {
+    "text": "VEP",
+    "type": "Tool"
+   },
+   {
+    "text": "annotation-cache",
+    "type": "Resource"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P008",
+  "entities": [
+   {
+    "text": "Condel",
+    "type": "Tool"
+   },
+   {
+    "text": "--vep_condel",
+    "type": "Option"
+   },
+   {
+    "text": "--condel_config",
+    "type": "Option"
+   },
+   {
+    "text": "Consensus Deleteriousness score",
+    "type": "Metric"
+   },
+   {
+    "text": "SIFT",
+    "type": "Tool"
+   },
+   {
+    "text": "PolyPhen-2",
+    "type": "Tool"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "Condel",
+    "relation": "HAS_OPTION",
+    "object": "--vep_condel",
+    "evidence": "Enable with `--vep_condel`."
+   },
+   {
+    "subject": "Condel",
+    "relation": "HAS_OPTION",
+    "object": "--condel_config",
+    "evidence": "`--condel_config`, to specify the path to the Condel config directory containing cutoffs and distribution files."
+   },
+   {
+    "subject": "Condel",
+    "relation": "COMPUTES_METRIC",
+    "object": "Consensus Deleteriousness score",
+    "evidence": "The plugin calculates the Consensus Deleteriousness score for missense mutations using SIFT and PolyPhen-2 predictions from the Ensembl API."
+   }
+  ]
+ },
+ {
+  "passage_id": "P009",
+  "entities": [
+   {
+    "text": "GATK HaplotypeCaller",
+    "type": "Tool"
+   },
+   {
+    "text": "HaplotypeCaller",
+    "type": "Tool"
+   },
+   {
+    "text": "CNNScoreVariants",
+    "type": "Tool"
+   },
+   {
+    "text": "FilterVariantTranches",
+    "type": "Tool"
+   },
+   {
+    "text": "GATK Germline Single Sample Variant Calling",
+    "type": "Tool"
+   },
+   {
+    "text": "Sarek",
+    "type": "Tool"
+   },
+   {
+    "text": "VCF",
+    "type": "FileFormat"
+   },
+   {
+    "text": "--dbsnp",
+    "type": "Option"
+   },
+   {
+    "text": "--known_indels",
+    "type": "Option"
+   },
+   {
+    "text": "score",
+    "type": "Metric"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "GATK HaplotypeCaller",
+    "relation": "PERFORMS",
+    "object": "calls germline SNPs and indels",
+    "evidence": "GATK HaplotypeCaller calls germline SNPs and indels via local re-assembly of haplotypes."
+   },
+   {
+    "subject": "HaplotypeCaller",
+    "relation": "PRODUCES",
+    "object": "VCF",
+    "evidence": "The VCF that HaplotypeCaller emits errors on the side of sensitivity, therefore they are filtered by first running the CNNScoreVariants tool."
+   },
+   {
+    "subject": "CNNScoreVariants",
+    "relation": "COMPUTES_METRIC",
+    "object": "score",
+    "evidence": "This tool annotates each variant with a score indicating the model's prediction of the quality of each variant."
+   },
+   {
+    "subject": "FilterVariantTranches",
+    "relation": "PERFORMS",
+    "object": "apply filters",
+    "evidence": "To apply filters based on those scores run the FilterVariantTranches tool with SNP and INDEL sensitivity tranches appropriate for your task."
+   },
+   {
+    "subject": "GATK Germline Single Sample Variant Calling",
+    "relation": "INVOKES",
+    "object": "HaplotypeCaller",
+    "evidence": "uses HaplotypeCaller in its default single-sample mode to call variants."
+   },
+   {
+    "subject": "Sarek",
+    "relation": "HAS_OPTION",
+    "object": "--dbsnp",
+    "evidence": "If the haplotype-called VCF files are not filtered, then Sarek should be run with at least one of the options `--dbsnp` or `--known_indels`."
+   },
+   {
+    "subject": "Sarek",
+    "relation": "HAS_OPTION",
+    "object": "--known_indels",
+    "evidence": "If the haplotype-called VCF files are not filtered, then Sarek should be run with at least one of the options `--dbsnp` or `--known_indels`."
+   }
+  ]
+ },
+ {
+  "passage_id": "P010",
+  "entities": [
+   {
+    "text": "ASCAT",
+    "type": "Tool"
+   },
+   {
+    "text": "AlleleCount",
+    "type": "Tool"
+   },
+   {
+    "text": "BAM",
+    "type": "FileFormat"
+   },
+   {
+    "text": "BAF",
+    "type": "Metric"
+   },
+   {
+    "text": "LogR",
+    "type": "Metric"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "ASCAT",
+    "relation": "PERFORMS",
+    "object": "allele-specific copy number analysis",
+    "evidence": "ASCAT is a software for performing allele-specific copy number analysis of tumor samples and for estimating tumor ploidy and purity (normal contamination)."
+   },
+   {
+    "subject": "ASCAT",
+    "relation": "INVOKES",
+    "object": "AlleleCount",
+    "evidence": "This is done internally using the software AlleleCount."
+   }
+  ]
+ },
+ {
+  "passage_id": "P011",
+  "entities": [
+   {
+    "text": "BCFtools annotate",
+    "type": "Tool"
+   },
+   {
+    "text": "VCF",
+    "type": "FileFormat"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "BCFtools annotate",
+    "relation": "PERFORMS",
+    "object": "add annotations",
+    "evidence": "BCFtools annotate is used to add annotations to VCF files."
+   },
+   {
+    "subject": "BCFtools annotate",
+    "relation": "ACCEPTS",
+    "object": "VCF",
+    "evidence": "BCFtools annotate is used to add annotations to VCF files."
+   }
+  ]
+ },
+ {
+  "passage_id": "P012",
+  "entities": [
+   {
+    "text": "bcftools stats",
+    "type": "Tool"
+   },
+   {
+    "text": "plot-vcfstats",
+    "type": "Tool"
+   },
+   {
+    "text": "MultiQC",
+    "type": "Tool"
+   },
+   {
+    "text": "Strelka",
+    "type": "Tool"
+   },
+   {
+    "text": "INFO/DP",
+    "type": "Metric"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P013",
+  "entities": [
+   {
+    "text": "VEP",
+    "type": "Tool"
+   },
+   {
+    "text": "Ensembl",
+    "type": "Resource"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "VEP",
+    "relation": "PERFORMS",
+    "object": "determine the effects of all sorts of variants",
+    "evidence": "VEP (Variant Effect Predictor), based on `Ensembl`, is a tool to determine the effects of all sorts of variants, including SNPs, indels, structural variants, CNVs."
+   }
+  ]
+ },
+ {
+  "passage_id": "P014",
+  "entities": [
+   {
+    "text": "nf-core",
+    "type": "Tool"
+   },
+   {
+    "text": "Nextflow",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P015",
+  "entities": [
+   {
+    "text": "R",
+    "type": "Tool"
+   },
+   {
+    "text": "RColorBrewer",
+    "type": "Tool"
+   },
+   {
+    "text": "Anaconda",
+    "type": "Tool"
+   },
+   {
+    "text": "Bioconda",
+    "type": "Tool"
+   },
+   {
+    "text": "BioContainers",
+    "type": "Tool"
+   },
+   {
+    "text": "Docker",
+    "type": "Tool"
+   },
+   {
+    "text": "Singularity",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P016",
+  "entities": [
+   {
+    "text": "GATK",
+    "type": "Tool"
+   },
+   {
+    "text": "local graph assembly",
+    "type": "Procedure"
+   },
+   {
+    "text": "likelihood score",
+    "type": "Metric"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P017",
+  "entities": [
+   {
+    "text": "VCF",
+    "type": "FileFormat"
+   },
+   {
+    "text": "GVCF",
+    "type": "FileFormat"
+   },
+   {
+    "text": "joint calling",
+    "type": "Procedure"
+   },
+   {
+    "text": "strand bias",
+    "type": "Metric"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P018",
+  "entities": [
+   {
+    "text": "VQSR",
+    "type": "Tool"
+   },
+   {
+    "text": "GATK",
+    "type": "Tool"
+   },
+   {
+    "text": "Hard filtering",
+    "type": "Procedure"
+   },
+   {
+    "text": "Soft filtering",
+    "type": "Procedure"
+   },
+   {
+    "text": "mapping quality",
+    "type": "Metric"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "VQSR",
+    "relation": "PERFORMS",
+    "object": "Soft filtering",
+    "evidence": "This approach is used by a GATK tool called Variant Quality Score Recalibration (VQSR)."
+   }
+  ]
+ },
+ {
+  "passage_id": "P019",
+  "entities": [
+   {
+    "text": "Sarek",
+    "type": "Tool"
+   },
+   {
+    "text": "VQSR",
+    "type": "Tool"
+   },
+   {
+    "text": "CSV",
+    "type": "FileFormat"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P020",
+  "entities": [
+   {
+    "text": "GRCh38chr21",
+    "type": "Resource"
+   },
+   {
+    "text": "gnomAD",
+    "type": "Resource"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P021",
+  "entities": [
+   {
+    "text": "nf-core/sarek",
+    "type": "Tool"
+   },
+   {
+    "text": "--input",
+    "type": "Option"
+   },
+   {
+    "text": "--outdir",
+    "type": "Option"
+   },
+   {
+    "text": "--tools",
+    "type": "Option"
+   },
+   {
+    "text": "--genome",
+    "type": "Option"
+   },
+   {
+    "text": "--joint_germline",
+    "type": "Option"
+   },
+   {
+    "text": "--intervals",
+    "type": "Option"
+   },
+   {
+    "text": "--wes",
+    "type": "Option"
+   },
+   {
+    "text": "FASTQ",
+    "type": "FileFormat"
+   },
+   {
+    "text": "VCF",
+    "type": "FileFormat"
+   },
+   {
+    "text": "bed",
+    "type": "FileFormat"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "nf-core/sarek",
+    "relation": "HAS_OPTION",
+    "object": "--joint_germline",
+    "evidence": "Notice that we have selected `--joint_germline` to enable the joint-genotyping workflow, we have specified our library strategy is using a capture with `--wes` and we have provided a bed file with the targets with `--intervals`."
+   },
+   {
+    "subject": "nf-core/sarek",
+    "relation": "HAS_OPTION",
+    "object": "--wes",
+    "evidence": "Notice that we have selected `--joint_germline` to enable the joint-genotyping workflow, we have specified our library strategy is using a capture with `--wes` and we have provided a bed file with the targets with `--intervals`."
+   },
+   {
+    "subject": "nf-core/sarek",
+    "relation": "HAS_OPTION",
+    "object": "--intervals",
+    "evidence": "Notice that we have selected `--joint_germline` to enable the joint-genotyping workflow, we have specified our library strategy is using a capture with `--wes` and we have provided a bed file with the targets with `--intervals`."
+   },
+   {
+    "subject": "nf-core/sarek",
+    "relation": "ACCEPTS",
+    "object": "FASTQ",
+    "evidence": "The whole pipeline from FASTQ input to annotated VCF should run in about 25 minutes."
+   },
+   {
+    "subject": "nf-core/sarek",
+    "relation": "PRODUCES",
+    "object": "VCF",
+    "evidence": "The whole pipeline from FASTQ input to annotated VCF should run in about 25 minutes."
+   }
+  ]
+ },
+ {
+  "passage_id": "P022",
+  "entities": [
+   {
+    "text": "AC",
+    "type": "Metric"
+   },
+   {
+    "text": "AF",
+    "type": "Metric"
+   },
+   {
+    "text": "AN",
+    "type": "Metric"
+   },
+   {
+    "text": "BaseQRankSum",
+    "type": "Metric"
+   },
+   {
+    "text": "DP",
+    "type": "Metric"
+   },
+   {
+    "text": "ExcessHet",
+    "type": "Metric"
+   },
+   {
+    "text": "FS",
+    "type": "Metric"
+   },
+   {
+    "text": "MLEAC",
+    "type": "Metric"
+   },
+   {
+    "text": "MLEAF",
+    "type": "Metric"
+   },
+   {
+    "text": "MQ",
+    "type": "Metric"
+   },
+   {
+    "text": "MQRankSum",
+    "type": "Metric"
+   },
+   {
+    "text": "QD",
+    "type": "Metric"
+   },
+   {
+    "text": "ReadPosRankSum",
+    "type": "Metric"
+   },
+   {
+    "text": "SOR",
+    "type": "Metric"
+   },
+   {
+    "text": "VQSLOD",
+    "type": "Metric"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P023",
+  "entities": [
+   {
+    "text": "nf-core/sarek",
+    "type": "Tool"
+   },
+   {
+    "text": "Nextflow",
+    "type": "Tool"
+   },
+   {
+    "text": "sarek",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P024",
+  "entities": [
+   {
+    "text": "Nextflow",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P025",
+  "entities": [
+   {
+    "text": "nf-core/raredisease",
+    "type": "Tool"
+   },
+   {
+    "text": "MIP",
+    "type": "Tool"
+   },
+   {
+    "text": "Nextflow",
+    "type": "Tool"
+   },
+   {
+    "text": "Docker",
+    "type": "Tool"
+   },
+   {
+    "text": "Singularity",
+    "type": "Tool"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "nf-core/raredisease",
+    "relation": "PERFORMS",
+    "object": "calling and scoring variants",
+    "evidence": "**nf-core/raredisease** is a best-practice bioinformatic pipeline for calling and scoring variants from WGS/WES data from rare disease patients."
+   }
+  ]
+ },
+ {
+  "passage_id": "P026",
+  "entities": [
+   {
+    "text": "fastp",
+    "type": "Tool"
+   },
+   {
+    "text": "Spring",
+    "type": "Tool"
+   },
+   {
+    "text": "Bwa-mem2",
+    "type": "Tool"
+   },
+   {
+    "text": "BWA-MEME",
+    "type": "Tool"
+   },
+   {
+    "text": "BWA",
+    "type": "Tool"
+   },
+   {
+    "text": "Sentieon DNAseq",
+    "type": "Tool"
+   },
+   {
+    "text": "FastQC",
+    "type": "Tool"
+   },
+   {
+    "text": "Mosdepth",
+    "type": "Tool"
+   },
+   {
+    "text": "MultiQC",
+    "type": "Tool"
+   },
+   {
+    "text": "CollectMultipleMetrics",
+    "type": "Tool"
+   },
+   {
+    "text": "CollectHsMetrics",
+    "type": "Tool"
+   },
+   {
+    "text": "CollectWgsMetrics",
+    "type": "Tool"
+   },
+   {
+    "text": "Sambamba",
+    "type": "Tool"
+   },
+   {
+    "text": "WgsMetricsAlgo",
+    "type": "Tool"
+   },
+   {
+    "text": "TIDDIT's cov",
+    "type": "Tool"
+   },
+   {
+    "text": "VerifyBamID2",
+    "type": "Tool"
+   },
+   {
+    "text": "NGSbits SampleGender",
+    "type": "Tool"
+   },
+   {
+    "text": "Peddy",
+    "type": "Tool"
+   },
+   {
+    "text": "DeepVariant",
+    "type": "Tool"
+   },
+   {
+    "text": "Sentieon DNAscope",
+    "type": "Tool"
+   },
+   {
+    "text": "Manta",
+    "type": "Tool"
+   },
+   {
+    "text": "TIDDIT's sv",
+    "type": "Tool"
+   },
+   {
+    "text": "CNVnator",
+    "type": "Tool"
+   },
+   {
+    "text": "GATK GermlineCNVCaller",
+    "type": "Tool"
+   },
+   {
+    "text": "SMNCopyNumberCaller",
+    "type": "Tool"
+   },
+   {
+    "text": "MitoSAlt",
+    "type": "Tool"
+   },
+   {
+    "text": "Saltshaker",
+    "type": "Tool"
+   },
+   {
+    "text": "bcftools roh",
+    "type": "Tool"
+   },
+   {
+    "text": "vcfanno",
+    "type": "Tool"
+   },
+   {
+    "text": "CADD",
+    "type": "Tool"
+   },
+   {
+    "text": "VEP",
+    "type": "Tool"
+   },
+   {
+    "text": "UPD",
+    "type": "Tool"
+   },
+   {
+    "text": "Chromograph",
+    "type": "Tool"
+   },
+   {
+    "text": "SVDB query",
+    "type": "Tool"
+   },
+   {
+    "text": "GATK Mitochondrial short variant discovery pipeline",
+    "type": "Tool"
+   },
+   {
+    "text": "Expansion Hunter",
+    "type": "Tool"
+   },
+   {
+    "text": "Stranger",
+    "type": "Tool"
+   },
+   {
+    "text": "RetroSeq",
+    "type": "Tool"
+   },
+   {
+    "text": "GENMOD",
+    "type": "Tool"
+   },
+   {
+    "text": "RTG Tools",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P027",
+  "entities": [
+   {
+    "text": "nf-core/raredisease",
+    "type": "Tool"
+   },
+   {
+    "text": "Nextflow",
+    "type": "Tool"
+   },
+   {
+    "text": "-profile",
+    "type": "Option"
+   },
+   {
+    "text": "--input",
+    "type": "Option"
+   },
+   {
+    "text": "--outdir",
+    "type": "Option"
+   },
+   {
+    "text": "-params-file",
+    "type": "Option"
+   },
+   {
+    "text": "-c",
+    "type": "Option"
+   },
+   {
+    "text": "CSV",
+    "type": "FileFormat"
+   },
+   {
+    "text": "fastq",
+    "type": "FileFormat"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "Nextflow",
+    "relation": "HAS_OPTION",
+    "object": "-params-file",
+    "evidence": "Please provide pipeline parameters via the CLI or Nextflow `-params-file` option."
+   },
+   {
+    "subject": "Nextflow",
+    "relation": "HAS_OPTION",
+    "object": "-c",
+    "evidence": "Custom config files including those provided by the `-c` Nextflow option can be used to provide any configuration _**except for parameters**_; see docs."
+   }
+  ]
+ },
+ {
+  "passage_id": "P028",
+  "entities": [
+   {
+    "text": "VerifyBamID2",
+    "type": "Tool"
+   },
+   {
+    "text": "Sentieon",
+    "type": "Tool"
+   },
+   {
+    "text": "GRCh37",
+    "type": "Resource"
+   },
+   {
+    "text": "GRCh38",
+    "type": "Resource"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "VerifyBamID2",
+    "relation": "PERFORMS",
+    "object": "check for contamination",
+    "evidence": "Used by VerifyBamID2 to check for contamination."
+   }
+  ]
+ },
+ {
+  "passage_id": "P029",
+  "entities": [
+   {
+    "text": "nf-core/raredisease",
+    "type": "Tool"
+   },
+   {
+    "text": "MultiQC",
+    "type": "Tool"
+   },
+   {
+    "text": "-r",
+    "type": "Option"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P030",
+  "entities": [
+   {
+    "text": "Nextflow",
+    "type": "Tool"
+   },
+   {
+    "text": "-profile",
+    "type": "Option"
+   },
+   {
+    "text": "Docker",
+    "type": "Tool"
+   },
+   {
+    "text": "Singularity",
+    "type": "Tool"
+   },
+   {
+    "text": "Podman",
+    "type": "Tool"
+   },
+   {
+    "text": "Shifter",
+    "type": "Tool"
+   },
+   {
+    "text": "Charliecloud",
+    "type": "Tool"
+   },
+   {
+    "text": "Apptainer",
+    "type": "Tool"
+   },
+   {
+    "text": "Conda",
+    "type": "Tool"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "Nextflow",
+    "relation": "HAS_OPTION",
+    "object": "-profile",
+    "evidence": "Use this parameter to choose a configuration profile."
+   }
+  ]
+ },
+ {
+  "passage_id": "P031",
+  "entities": [
+   {
+    "text": "Nextflow",
+    "type": "Tool"
+   },
+   {
+    "text": "-bg",
+    "type": "Option"
+   },
+   {
+    "text": "screen",
+    "type": "Tool"
+   },
+   {
+    "text": "tmux",
+    "type": "Tool"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "Nextflow",
+    "relation": "HAS_OPTION",
+    "object": "-bg",
+    "evidence": "The Nextflow `-bg` flag launches Nextflow in the background, detached from your terminal so that the workflow does not stop if you log out of your session."
+   }
+  ]
+ },
+ {
+  "passage_id": "P032",
+  "entities": [
+   {
+    "text": "Nextflow",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P033",
+  "entities": [
+   {
+    "text": "BWA-MEME",
+    "type": "Tool"
+   },
+   {
+    "text": "samtools sort",
+    "type": "Tool"
+   },
+   {
+    "text": "--aligner",
+    "type": "Option"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "BWA-MEME",
+    "relation": "PERFORMS",
+    "object": "map the reads to a reference genome",
+    "evidence": "BWA-MEME used to map the reads to a reference genome."
+   }
+  ]
+ },
+ {
+  "passage_id": "P034",
+  "entities": [
+   {
+    "text": "GATK Mitochondrial short variant discovery pipeline",
+    "type": "Tool"
+   },
+   {
+    "text": "Mutect2",
+    "type": "Tool"
+   },
+   {
+    "text": "--skip_subworkflows",
+    "type": "Option"
+   },
+   {
+    "text": "VCF",
+    "type": "FileFormat"
+   },
+   {
+    "text": "AF",
+    "type": "Metric"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "GATK Mitochondrial short variant discovery pipeline",
+    "relation": "INVOKES",
+    "object": "Mutect2",
+    "evidence": "The pipeline for mitochondrial variant discovery, using Mutect2, uses a high sensitivity to low AF and separate alignments using opposite genome breakpoints to allow for the tracing of lineages of rare mitochondrial variants."
+   }
+  ]
+ },
+ {
+  "passage_id": "P035",
+  "entities": [
+   {
+    "text": "RTG Tools",
+    "type": "Tool"
+   },
+   {
+    "text": "vcfeval",
+    "type": "Tool"
+   },
+   {
+    "text": "VCF",
+    "type": "FileFormat"
+   },
+   {
+    "text": "ROC",
+    "type": "Metric"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "vcfeval",
+    "relation": "PERFORMS",
+    "object": "SNVs can be evaluated",
+    "evidence": "Provided a truth set, SNVs can be evaluated using RTG Tools' vcfeval engine."
+   }
+  ]
+ },
+ {
+  "passage_id": "P036",
+  "entities": [
+   {
+    "text": "nf-core",
+    "type": "Tool"
+   },
+   {
+    "text": "Nextflow",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P037",
+  "entities": [
+   {
+    "text": "Anaconda",
+    "type": "Tool"
+   },
+   {
+    "text": "Bioconda",
+    "type": "Tool"
+   },
+   {
+    "text": "BioContainers",
+    "type": "Tool"
+   },
+   {
+    "text": "Docker",
+    "type": "Tool"
+   },
+   {
+    "text": "Singularity",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P038",
+  "entities": [
+   {
+    "text": "bcftools cnv",
+    "type": "Tool"
+   },
+   {
+    "text": "matplotlib",
+    "type": "Tool"
+   },
+   {
+    "text": "--control-sample",
+    "type": "Option"
+   },
+   {
+    "text": "--AF-file",
+    "type": "Option"
+   },
+   {
+    "text": "--output-dir",
+    "type": "Option"
+   },
+   {
+    "text": "--plot-threshold",
+    "type": "Option"
+   },
+   {
+    "text": "--regions",
+    "type": "Option"
+   },
+   {
+    "text": "--regions-file",
+    "type": "Option"
+   },
+   {
+    "text": "--regions-overlap",
+    "type": "Option"
+   },
+   {
+    "text": "--query-sample",
+    "type": "Option"
+   },
+   {
+    "text": "--targets",
+    "type": "Option"
+   },
+   {
+    "text": "--targets-file",
+    "type": "Option"
+   },
+   {
+    "text": "--targets-overlap",
+    "type": "Option"
+   },
+   {
+    "text": "--verbosity",
+    "type": "Option"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "bcftools cnv",
+    "relation": "HAS_OPTION",
+    "object": "--control-sample",
+    "evidence": "-c, --control-sample string::"
+   },
+   {
+    "subject": "bcftools cnv",
+    "relation": "HAS_OPTION",
+    "object": "--AF-file",
+    "evidence": "-f, --AF-file file::"
+   },
+   {
+    "subject": "bcftools cnv",
+    "relation": "HAS_OPTION",
+    "object": "--output-dir",
+    "evidence": "-o, --output-dir path::"
+   },
+   {
+    "subject": "bcftools cnv",
+    "relation": "HAS_OPTION",
+    "object": "--plot-threshold",
+    "evidence": "-p, --plot-threshold float::"
+   },
+   {
+    "subject": "bcftools cnv",
+    "relation": "HAS_OPTION",
+    "object": "--regions",
+    "evidence": "-r, --regions chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::"
+   },
+   {
+    "subject": "bcftools cnv",
+    "relation": "HAS_OPTION",
+    "object": "--regions-file",
+    "evidence": "-R, --regions-file file::"
+   },
+   {
+    "subject": "bcftools cnv",
+    "relation": "HAS_OPTION",
+    "object": "--regions-overlap",
+    "evidence": "--regions-overlap '0'|'1'|'2'::"
+   },
+   {
+    "subject": "bcftools cnv",
+    "relation": "HAS_OPTION",
+    "object": "--query-sample",
+    "evidence": "-s, --query-sample string::"
+   },
+   {
+    "subject": "bcftools cnv",
+    "relation": "HAS_OPTION",
+    "object": "--targets",
+    "evidence": "-t, --targets LIST::"
+   },
+   {
+    "subject": "bcftools cnv",
+    "relation": "HAS_OPTION",
+    "object": "--targets-file",
+    "evidence": "-T, --targets-file FILE::"
+   },
+   {
+    "subject": "bcftools cnv",
+    "relation": "HAS_OPTION",
+    "object": "--targets-overlap",
+    "evidence": "--targets-overlap '0'|'1'|'2'::"
+   },
+   {
+    "subject": "bcftools cnv",
+    "relation": "HAS_OPTION",
+    "object": "--verbosity",
+    "evidence": "-v, --verbosity INT::"
+   },
+   {
+    "subject": "bcftools cnv",
+    "relation": "INVOKES",
+    "object": "matplotlib",
+    "evidence": "call matplotlib to produce plots for chromosomes with quality at least float"
+   }
+  ]
+ },
+ {
+  "passage_id": "P039",
+  "entities": [
+   {
+    "text": ".gen",
+    "type": "FileFormat"
+   },
+   {
+    "text": "--3N6",
+    "type": "Option"
+   },
+   {
+    "text": "--vcf-ids",
+    "type": "Option"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P040",
+  "entities": [
+   {
+    "text": "bcftools convert",
+    "type": "Tool"
+   },
+   {
+    "text": "VCF",
+    "type": "FileFormat"
+   },
+   {
+    "text": "BCF",
+    "type": "FileFormat"
+   },
+   {
+    "text": "--tsv2vcf",
+    "type": "Option"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "bcftools convert",
+    "relation": "PRODUCES",
+    "object": "VCF",
+    "evidence": "# Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored"
+   }
+  ]
+ },
+ {
+  "passage_id": "P041",
+  "entities": [
+   {
+    "text": "bcftools gtcheck",
+    "type": "Tool"
+   },
+   {
+    "text": "discordance score",
+    "type": "Metric"
+   },
+   {
+    "text": "-g",
+    "type": "Option"
+   },
+   {
+    "text": "--distinctive-sites",
+    "type": "Option"
+   },
+   {
+    "text": "--dry-run",
+    "type": "Option"
+   },
+   {
+    "text": "--exclude",
+    "type": "Option"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "bcftools gtcheck",
+    "relation": "PERFORMS",
+    "object": "Checks sample identity",
+    "evidence": "Checks sample identity."
+   },
+   {
+    "subject": "bcftools gtcheck",
+    "relation": "HAS_OPTION",
+    "object": "-g",
+    "evidence": "If the -g\noption is given, the identity of samples from 'query.vcf.gz'\nis checked against the samples in the -g file."
+   },
+   {
+    "subject": "bcftools gtcheck",
+    "relation": "HAS_OPTION",
+    "object": "--distinctive-sites",
+    "evidence": "--distinctive-sites 'NUM[,MEM[,DIR]]'::"
+   },
+   {
+    "subject": "bcftools gtcheck",
+    "relation": "HAS_OPTION",
+    "object": "--dry-run",
+    "evidence": "--dry-run::\n Stop after first record to estimate required time."
+   },
+   {
+    "subject": "bcftools gtcheck",
+    "relation": "HAS_OPTION",
+    "object": "--exclude",
+    "evidence": "-e, --exclude [qry|gt]:EXPRESSION::"
+   }
+  ]
+ },
+ {
+  "passage_id": "P042",
+  "entities": [
+   {
+    "text": "bcftools merge",
+    "type": "Tool"
+   },
+   {
+    "text": "--merge",
+    "type": "Option"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "bcftools merge",
+    "relation": "HAS_OPTION",
+    "object": "--merge",
+    "evidence": "-m, --merge snps|indels|both|snp-ins-del|all|none|id[,'*']::"
+   }
+  ]
+ },
+ {
+  "passage_id": "P043",
+  "entities": [
+   {
+    "text": "bcftools mpileup",
+    "type": "Tool"
+   },
+   {
+    "text": "samtools mpileup",
+    "type": "Tool"
+   },
+   {
+    "text": "bcftools",
+    "type": "Tool"
+   },
+   {
+    "text": "samtools",
+    "type": "Tool"
+   },
+   {
+    "text": "VCF",
+    "type": "FileFormat"
+   },
+   {
+    "text": "BCF",
+    "type": "FileFormat"
+   },
+   {
+    "text": "BAM",
+    "type": "FileFormat"
+   },
+   {
+    "text": "CRAM",
+    "type": "FileFormat"
+   },
+   {
+    "text": "genotype likelihoods",
+    "type": "Metric"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "bcftools mpileup",
+    "relation": "PRODUCES",
+    "object": "VCF",
+    "evidence": "Generate VCF or BCF containing genotype likelihoods for one or multiple\nalignment (BAM or CRAM) files."
+   },
+   {
+    "subject": "bcftools mpileup",
+    "relation": "PRODUCES",
+    "object": "BCF",
+    "evidence": "Generate VCF or BCF containing genotype likelihoods for one or multiple\nalignment (BAM or CRAM) files."
+   },
+   {
+    "subject": "bcftools mpileup",
+    "relation": "ACCEPTS",
+    "object": "BAM",
+    "evidence": "Generate VCF or BCF containing genotype likelihoods for one or multiple\nalignment (BAM or CRAM) files."
+   },
+   {
+    "subject": "bcftools mpileup",
+    "relation": "ACCEPTS",
+    "object": "CRAM",
+    "evidence": "Generate VCF or BCF containing genotype likelihoods for one or multiple\nalignment (BAM or CRAM) files."
+   },
+   {
+    "subject": "bcftools mpileup",
+    "relation": "COMPUTES_METRIC",
+    "object": "genotype likelihoods",
+    "evidence": "Generate VCF or BCF containing genotype likelihoods for one or multiple\nalignment (BAM or CRAM) files."
+   }
+  ]
+ },
+ {
+  "passage_id": "P044",
+  "entities": [
+   {
+    "text": "bcftools query",
+    "type": "Tool"
+   },
+   {
+    "text": "VCF",
+    "type": "FileFormat"
+   },
+   {
+    "text": "--targets-file",
+    "type": "Option"
+   },
+   {
+    "text": "--targets-overlap",
+    "type": "Option"
+   },
+   {
+    "text": "--allow-undef-tags",
+    "type": "Option"
+   },
+   {
+    "text": "--vcf-list",
+    "type": "Option"
+   },
+   {
+    "text": "--verbosity",
+    "type": "Option"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "bcftools query",
+    "relation": "HAS_OPTION",
+    "object": "--targets-file",
+    "evidence": "-T, --targets-file file::"
+   },
+   {
+    "subject": "bcftools query",
+    "relation": "HAS_OPTION",
+    "object": "--targets-overlap",
+    "evidence": "--targets-overlap '0'|'1'|'2'::"
+   },
+   {
+    "subject": "bcftools query",
+    "relation": "HAS_OPTION",
+    "object": "--allow-undef-tags",
+    "evidence": "-u, --allow-undef-tags::"
+   },
+   {
+    "subject": "bcftools query",
+    "relation": "HAS_OPTION",
+    "object": "--vcf-list",
+    "evidence": "-v, --vcf-list FILE::"
+   },
+   {
+    "subject": "bcftools query",
+    "relation": "HAS_OPTION",
+    "object": "--verbosity",
+    "evidence": "--verbosity INT::"
+   }
+  ]
+ },
+ {
+  "passage_id": "P045",
+  "entities": [
+   {
+    "text": "bcftools roh",
+    "type": "Tool"
+   },
+   {
+    "text": "--hw-to-az",
+    "type": "Option"
+   },
+   {
+    "text": "--az-to-hw",
+    "type": "Option"
+   },
+   {
+    "text": "--viterbi-training",
+    "type": "Option"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "bcftools roh",
+    "relation": "HAS_OPTION",
+    "object": "--hw-to-az",
+    "evidence": "-a, --hw-to-az FLOAT::"
+   },
+   {
+    "subject": "bcftools roh",
+    "relation": "HAS_OPTION",
+    "object": "--az-to-hw",
+    "evidence": "-H, --az-to-hw FLOAT::"
+   },
+   {
+    "subject": "bcftools roh",
+    "relation": "HAS_OPTION",
+    "object": "--viterbi-training",
+    "evidence": "-V, --viterbi-training FLOAT::"
+   }
+  ]
+ },
+ {
+  "passage_id": "P046",
+  "entities": [
+   {
+    "text": "BCFtools",
+    "type": "Tool"
+   },
+   {
+    "text": "htslib",
+    "type": "Tool"
+   },
+   {
+    "text": "samtools",
+    "type": "Tool"
+   },
+   {
+    "text": "tabix",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P047",
+  "entities": [
+   {
+    "text": "BCFtools",
+    "type": "Tool"
+   },
+   {
+    "text": "SAMtools",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P048",
+  "entities": [
+   {
+    "text": "BCFtools",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P049",
+  "entities": [
+   {
+    "text": "GATK",
+    "type": "Tool"
+   },
+   {
+    "text": "Gradle",
+    "type": "Tool"
+   },
+   {
+    "text": "git-lfs",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P050",
+  "entities": [
+   {
+    "text": "GATK",
+    "type": "Tool"
+   },
+   {
+    "text": "./gradlew installDist",
+    "type": "Tool"
+   },
+   {
+    "text": "./gradlew installAll",
+    "type": "Tool"
+   },
+   {
+    "text": "./gradlew localJar",
+    "type": "Tool"
+   },
+   {
+    "text": "./gradlew sparkJar",
+    "type": "Tool"
+   },
+   {
+    "text": "./gradlew clean",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P051",
+  "entities": [
+   {
+    "text": "./gradlew jacocoTestReport",
+    "type": "Tool"
+   },
+   {
+    "text": "TestNG",
+    "type": "Tool"
+   },
+   {
+    "text": "Jenkins",
+    "type": "Tool"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "./gradlew jacocoTestReport",
+    "relation": "PERFORMS",
+    "object": "compute coverage reports",
+    "evidence": "To run tests and compute coverage reports, run **`./gradlew jacocoTestReport`**."
+   }
+  ]
+ },
+ {
+  "passage_id": "P052",
+  "entities": [
+   {
+    "text": "JProfiler",
+    "type": "Tool"
+   },
+   {
+    "text": "IntelliJ",
+    "type": "Tool"
+   },
+   {
+    "text": "./gradlew localJar",
+    "type": "Tool"
+   },
+   {
+    "text": "GATK4",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P053",
+  "entities": [
+   {
+    "text": "Zenhub",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P054",
+  "entities": [
+   {
+    "text": "Docker",
+    "type": "Tool"
+   },
+   {
+    "text": "GATK4",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P055",
+  "entities": [
+   {
+    "text": "GATK4",
+    "type": "Tool"
+   },
+   {
+    "text": "Docker",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P056",
+  "entities": [
+   {
+    "text": "./gradlew test",
+    "type": "Tool"
+   },
+   {
+    "text": "Docker",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P057",
+  "entities": [
+   {
+    "text": "mutect2_multi_sample",
+    "type": "Tool"
+   },
+   {
+    "text": "Mutect2",
+    "type": "Tool"
+   },
+   {
+    "text": "Mutect2_Multi.gatk4_jar",
+    "type": "Option"
+   },
+   {
+    "text": "Mutect2_Multi.gatk4_jar_override",
+    "type": "Option"
+   },
+   {
+    "text": "Mutect2_Multi.scatter_count",
+    "type": "Option"
+   },
+   {
+    "text": "Mutect2_Multi.intervals",
+    "type": "Option"
+   },
+   {
+    "text": "Mutect2_Multi.ref_fasta",
+    "type": "Option"
+   },
+   {
+    "text": "Mutect2_Multi.ref_fasta_index",
+    "type": "Option"
+   },
+   {
+    "text": "Mutect2_Multi.ref_dict",
+    "type": "Option"
+   },
+   {
+    "text": "Mutect2_Multi.pon",
+    "type": "Option"
+   },
+   {
+    "text": "Homo_sapiens_assembly19",
+    "type": "Resource"
+   },
+   {
+    "text": "VCF",
+    "type": "FileFormat"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "mutect2_multi_sample",
+    "relation": "HAS_OPTION",
+    "object": "Mutect2_Multi.gatk4_jar",
+    "evidence": "``Mutect2_Multi.gatk4_jar`` -- Location *within the docker file* of the GATK4 jar file."
+   },
+   {
+    "subject": "mutect2_multi_sample",
+    "relation": "HAS_OPTION",
+    "object": "Mutect2_Multi.gatk4_jar_override",
+    "evidence": "If you wish you to use a different jar file, such as one on your local filesystem or a google bucket, specify that location with ``Mutect2_Multi.gatk4_jar_override``."
+   },
+   {
+    "subject": "mutect2_multi_sample",
+    "relation": "HAS_OPTION",
+    "object": "Mutect2_Multi.scatter_count",
+    "evidence": "``Mutect2_Multi.scatter_count`` -- Number of executions to split the Mutect2 task into."
+   },
+   {
+    "subject": "mutect2_multi_sample",
+    "relation": "HAS_OPTION",
+    "object": "Mutect2_Multi.intervals",
+    "evidence": "``Mutect2_Multi.intervals`` -- A file listing genomic intervals to search for somatic mutations."
+   },
+   {
+    "subject": "mutect2_multi_sample",
+    "relation": "HAS_OPTION",
+    "object": "Mutect2_Multi.ref_fasta",
+    "evidence": "``Mutect2_Multi.ref_fasta`` -- reference fasta."
+   },
+   {
+    "subject": "mutect2_multi_sample",
+    "relation": "HAS_OPTION",
+    "object": "Mutect2_Multi.ref_fasta_index",
+    "evidence": "``Mutect2_Multi.ref_fasta_index`` -- For Broad internal VM:"
+   },
+   {
+    "subject": "mutect2_multi_sample",
+    "relation": "HAS_OPTION",
+    "object": "Mutect2_Multi.ref_dict",
+    "evidence": "``Mutect2_Multi.ref_dict`` -- For Broad internal VM:"
+   },
+   {
+    "subject": "mutect2_multi_sample",
+    "relation": "HAS_OPTION",
+    "object": "Mutect2_Multi.pon",
+    "evidence": "``Mutect2_Multi.pon`` -- (optional) Panel of normals VCF to use for false positive reduction."
+   }
+  ]
+ },
+ {
+  "passage_id": "P058",
+  "entities": [
+   {
+    "text": "mutect2",
+    "type": "Tool"
+   },
+   {
+    "text": "mutect2_multi_sample",
+    "type": "Tool"
+   },
+   {
+    "text": "Mutect2.gatk4_jar",
+    "type": "Option"
+   },
+   {
+    "text": "Mutect2.intervals",
+    "type": "Option"
+   },
+   {
+    "text": "Mutect2.ref_fasta",
+    "type": "Option"
+   },
+   {
+    "text": "Mutect2.ref_fasta_index",
+    "type": "Option"
+   },
+   {
+    "text": "Mutect2.ref_dict",
+    "type": "Option"
+   },
+   {
+    "text": "Mutect2.tumor_bam",
+    "type": "Option"
+   },
+   {
+    "text": "Mutect2.tumor_bam_index",
+    "type": "Option"
+   },
+   {
+    "text": "Mutect2.normal_bam",
+    "type": "Option"
+   },
+   {
+    "text": "Mutect2.normal_bam_index",
+    "type": "Option"
+   },
+   {
+    "text": "BAM",
+    "type": "FileFormat"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "mutect2",
+    "relation": "HAS_OPTION",
+    "object": "Mutect2.gatk4_jar",
+    "evidence": "``Mutect2.gatk4_jar`` -- Please see parameter description above in the mutect2_multi_sample."
+   },
+   {
+    "subject": "mutect2",
+    "relation": "HAS_OPTION",
+    "object": "Mutect2.intervals",
+    "evidence": "``Mutect2.intervals`` -- Please see parameter description above in the mutect2_multi_sample."
+   },
+   {
+    "subject": "mutect2",
+    "relation": "HAS_OPTION",
+    "object": "Mutect2.ref_fasta",
+    "evidence": "``Mutect2.ref_fasta`` -- Please see parameter description above in the mutect2_multi_sample."
+   },
+   {
+    "subject": "mutect2",
+    "relation": "HAS_OPTION",
+    "object": "Mutect2.ref_fasta_index",
+    "evidence": "``Mutect2.ref_fasta_index`` -- Please see parameter description above in the mutect2_multi_sample."
+   },
+   {
+    "subject": "mutect2",
+    "relation": "HAS_OPTION",
+    "object": "Mutect2.ref_dict",
+    "evidence": "``Mutect2.ref_dict`` -- Please see parameter description above in the mutect2_multi_sample."
+   },
+   {
+    "subject": "mutect2",
+    "relation": "HAS_OPTION",
+    "object": "Mutect2.tumor_bam",
+    "evidence": "``Mutect2.tumor_bam`` -- File path or storage location (depending on backend) of the tumor bam file."
+   },
+   {
+    "subject": "mutect2",
+    "relation": "HAS_OPTION",
+    "object": "Mutect2.tumor_bam_index",
+    "evidence": "``Mutect2.tumor_bam_index`` -- File path or storage location (depending on backend) of the tumor bam file index."
+   },
+   {
+    "subject": "mutect2",
+    "relation": "HAS_OPTION",
+    "object": "Mutect2.normal_bam",
+    "evidence": "``Mutect2.normal_bam`` -- (optional) File path or storage location (depending on backend) of the normal bam file."
+   },
+   {
+    "subject": "mutect2",
+    "relation": "HAS_OPTION",
+    "object": "Mutect2.normal_bam_index",
+    "evidence": "``Mutect2.normal_bam_index`` -- (optional, but required if ``Mutect2.normal_bam`` is specified) File path or storage location (depending on backend) of the normal bam file index."
+   }
+  ]
+ },
+ {
+  "passage_id": "P059",
+  "entities": [
+   {
+    "text": "mutect2_multi_sample",
+    "type": "Tool"
+   },
+   {
+    "text": "Cromwell",
+    "type": "Tool"
+   },
+   {
+    "text": "Oncotator",
+    "type": "Tool"
+   },
+   {
+    "text": "Docker",
+    "type": "Tool"
+   },
+   {
+    "text": "gnomAD",
+    "type": "Resource"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "mutect2_multi_sample",
+    "relation": "INVOKES",
+    "object": "Oncotator",
+    "evidence": "Runs both the orientation bias filter and Oncotator."
+   }
+  ]
+ },
+ {
+  "passage_id": "P060",
+  "entities": [
+   {
+    "text": "LiftOver",
+    "type": "Tool"
+   },
+   {
+    "text": "TAGS_TO_REVERSE",
+    "type": "Option"
+   },
+   {
+    "text": "hg38",
+    "type": "Resource"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "LiftOver",
+    "relation": "HAS_OPTION",
+    "object": "TAGS_TO_REVERSE",
+    "evidence": "You should check the TAGS_TO_REVERSE parameter that was used during the LiftOver to be sure."
+   }
+  ]
+ },
+ {
+  "passage_id": "P061",
+  "entities": [
+   {
+    "text": "Familial_Cancer_Genes",
+    "type": "Resource"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P062",
+  "entities": [
+   {
+    "text": "VCF",
+    "type": "FileFormat"
+   },
+   {
+    "text": "GENCODE",
+    "type": "Resource"
+   },
+   {
+    "text": "FASTA",
+    "type": "FileFormat"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P063",
+  "entities": [
+   {
+    "text": "Funcotator",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P064",
+  "entities": [
+   {
+    "text": "Funcotator",
+    "type": "Tool"
+   },
+   {
+    "text": "--annotation-override",
+    "type": "Option"
+   },
+   {
+    "text": "--annotation-default",
+    "type": "Option"
+   },
+   {
+    "text": "--variant",
+    "type": "Option"
+   },
+   {
+    "text": "--reference",
+    "type": "Option"
+   },
+   {
+    "text": "--ref-version",
+    "type": "Option"
+   },
+   {
+    "text": "--data-sources-path",
+    "type": "Option"
+   },
+   {
+    "text": "--output",
+    "type": "Option"
+   },
+   {
+    "text": "--output-file-format",
+    "type": "Option"
+   },
+   {
+    "text": "VCF",
+    "type": "FileFormat"
+   },
+   {
+    "text": "MAF",
+    "type": "FileFormat"
+   },
+   {
+    "text": "hg19",
+    "type": "Resource"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "Funcotator",
+    "relation": "HAS_OPTION",
+    "object": "--annotation-override",
+    "evidence": "This parameter specifies an override value for an annotation."
+   },
+   {
+    "subject": "Funcotator",
+    "relation": "HAS_OPTION",
+    "object": "--annotation-default",
+    "evidence": "It is valid to provide both the `--annotation-override` and `--annotation-default` arguments to Funcotator, however the behavior of specifying an annotation-override and an annotation-default for the _same annotation field_ is undefined."
+   }
+  ]
+ },
+ {
+  "passage_id": "P065",
+  "entities": [
+   {
+    "text": "Funcotator",
+    "type": "Tool"
+   },
+   {
+    "text": "Gencode",
+    "type": "Resource"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P066",
+  "entities": [
+   {
+    "text": "Funcotator",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P067",
+  "entities": [
+   {
+    "text": "hg19",
+    "type": "Resource"
+   },
+   {
+    "text": "b37",
+    "type": "Resource"
+   },
+   {
+    "text": "GRCh37",
+    "type": "Resource"
+   },
+   {
+    "text": "humanG1Kv37",
+    "type": "Resource"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P068",
+  "entities": [
+   {
+    "text": "GRCh37",
+    "type": "Resource"
+   },
+   {
+    "text": "hg19",
+    "type": "Resource"
+   },
+   {
+    "text": "b37",
+    "type": "Resource"
+   },
+   {
+    "text": "HumanG1Kv37",
+    "type": "Resource"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P069",
+  "entities": [
+   {
+    "text": "hg19",
+    "type": "Resource"
+   },
+   {
+    "text": "GRCh37",
+    "type": "Resource"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P070",
+  "entities": [
+   {
+    "text": "funcotator.wdl",
+    "type": "Tool"
+   },
+   {
+    "text": "Cromwell",
+    "type": "Tool"
+   },
+   {
+    "text": "Cromshell",
+    "type": "Tool"
+   },
+   {
+    "text": "Terra/FireCloud",
+    "type": "Tool"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P071",
+  "entities": [
+   {
+    "text": "Funcotator WDL",
+    "type": "Tool"
+   },
+   {
+    "text": "gatk_docker",
+    "type": "Option"
+   },
+   {
+    "text": "ref_fasta",
+    "type": "Option"
+   },
+   {
+    "text": "ref_fasta_index",
+    "type": "Option"
+   },
+   {
+    "text": "ref_fasta_dict",
+    "type": "Option"
+   },
+   {
+    "text": "variant_vcf_to_funcotate",
+    "type": "Option"
+   },
+   {
+    "text": "variant_vcf_to_funcotate_index",
+    "type": "Option"
+   },
+   {
+    "text": "reference_version",
+    "type": "Option"
+   },
+   {
+    "text": "output_file_name",
+    "type": "Option"
+   },
+   {
+    "text": "output_format",
+    "type": "Option"
+   },
+   {
+    "text": "compress",
+    "type": "Option"
+   },
+   {
+    "text": "use_gnomad",
+    "type": "Option"
+   },
+   {
+    "text": "VCF",
+    "type": "FileFormat"
+   },
+   {
+    "text": "MAF",
+    "type": "FileFormat"
+   },
+   {
+    "text": "gnomAD",
+    "type": "Resource"
+   },
+   {
+    "text": "hg19",
+    "type": "Resource"
+   },
+   {
+    "text": "hg38",
+    "type": "Resource"
+   },
+   {
+    "text": "FASTA",
+    "type": "FileFormat"
+   }
+  ],
+  "relations": [
+   {
+    "subject": "Funcotator WDL",
+    "relation": "HAS_OPTION",
+    "object": "gatk_docker",
+    "evidence": "String gatk_docker - GATK Docker image in which to run"
+   },
+   {
+    "subject": "Funcotator WDL",
+    "relation": "HAS_OPTION",
+    "object": "ref_fasta",
+    "evidence": "File ref_fasta - Reference FASTA file."
+   },
+   {
+    "subject": "Funcotator WDL",
+    "relation": "HAS_OPTION",
+    "object": "ref_fasta_index",
+    "evidence": "File ref_fasta_index - Reference FASTA file index."
+   },
+   {
+    "subject": "Funcotator WDL",
+    "relation": "HAS_OPTION",
+    "object": "ref_fasta_dict",
+    "evidence": "File ref_fasta_dict - Reference FASTA file sequence dictionary."
+   },
+   {
+    "subject": "Funcotator WDL",
+    "relation": "HAS_OPTION",
+    "object": "variant_vcf_to_funcotate",
+    "evidence": "File variant_vcf_to_funcotate - Variant Context File (VCF) containing the variants to annotate."
+   },
+   {
+    "subject": "Funcotator WDL",
+    "relation": "HAS_OPTION",
+    "object": "variant_vcf_to_funcotate_index",
+    "evidence": "File variant_vcf_to_funcotate_index - Index file corresponding to the input Variant Context File (VCF) containing the variants to annotate."
+   },
+   {
+    "subject": "Funcotator WDL",
+    "relation": "HAS_OPTION",
+    "object": "reference_version",
+    "evidence": "String reference_version - Version of the reference being used."
+   },
+   {
+    "subject": "Funcotator WDL",
+    "relation": "HAS_OPTION",
+    "object": "output_file_name",
+    "evidence": "String output_file_name - Path to desired output file."
+   },
+   {
+    "subject": "Funcotator WDL",
+    "relation": "HAS_OPTION",
+    "object": "output_format",
+    "evidence": "String output_format - Output file format (either VCF or MAF)."
+   },
+   {
+    "subject": "Funcotator WDL",
+    "relation": "HAS_OPTION",
+    "object": "compress",
+    "evidence": "Boolean compress - Whether to compress the resulting output file."
+   },
+   {
+    "subject": "Funcotator WDL",
+    "relation": "HAS_OPTION",
+    "object": "use_gnomad",
+    "evidence": "Boolean use_gnomad - If true, will enable the gnomAD data sources in the data source tar.gz, if they exist."
+   },
+   {
+    "subject": "Funcotator WDL",
+    "relation": "ACCEPTS",
+    "object": "VCF",
+    "evidence": "File variant_vcf_to_funcotate - Variant Context File (VCF) containing the variants to annotate."
+   },
+   {
+    "subject": "Funcotator WDL",
+    "relation": "PRODUCES",
+    "object": "VCF",
+    "evidence": "String output_format - Output file format (either VCF or MAF)."
+   },
+   {
+    "subject": "Funcotator WDL",
+    "relation": "PRODUCES",
+    "object": "MAF",
+    "evidence": "String output_format - Output file format (either VCF or MAF)."
+   },
+   {
+    "subject": "Funcotator WDL",
+    "relation": "USES_RESOURCE",
+    "object": "gnomAD",
+    "evidence": "Boolean use_gnomad - If true, will enable the gnomAD data sources in the data source tar.gz, if they exist."
+   }
+  ]
+ },
+ {
+  "passage_id": "P072",
+  "entities": [
+   {
+    "text": "Funcotator",
+    "type": "Tool"
+   },
+   {
+    "text": "interval_list",
+    "type": "Option"
+   },
+   {
+    "text": "data_sources_tar_gz",
+    "type": "Option"
+   },
+   {
+    "text": "transcript_selection_mode",
+    "type": "Option"
+   },
+   {
+    "text": "transcript_selection_list",
+    "type": "Option"
+   },
+   {
+    "text": "annotation_defaults",
+    "type": "Option"
+   },
+   {
+    "text": "annotation_overrides",
+    "type": "Option"
+   },
+   {
+    "text": "gatk4_jar_override",
+    "type": "Option"
+   },
+   {
+    "text": "funcotator_extra_args",
+    "type": "Option"
+   }
+  ],
+  "relations": []
+ },
+ {
+  "passage_id": "P073",
+  "entities": [
+   {
+    "text": "PathSeq",
+    "type": "Tool"
+   },
+   {
+    "text": "GATK Resource Bundle",
+    "type": "Resource"
+   }
+  ],
+  "relations": []
+ }
+]

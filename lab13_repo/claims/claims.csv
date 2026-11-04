@@ -1,0 +1,23 @@
+id,claim,type,source,level,status,comment
+C01,Condel plugin computes the Consensus Deleteriousness score (COMPUTES_METRIC),факт,data/passages.jsonl:P008,V1,verified,цитата знайдена дослівно в уривку P008 (автоперевірка)
+C02,nf-core/sarek is a workflow designed to detect variants (PERFORMS),факт,data/passages.jsonl:P001,V1,verified,цитата знайдена дослівно в уривку P001 (автоперевірка)
+C03,-bg is a Nextflow option (HAS_OPTION),факт,data/passages.jsonl:P031,V1,verified,цитата знайдена дослівно в уривку P031 (автоперевірка)
+C04,aligned reads are coordinate sorted with samtools sort (PERFORMS),факт,data/passages.jsonl:P033,V1,verified,цитата знайдена дослівно в уривку P033 (автоперевірка)
+C05,Gold містить ≥150 тверджень у ≥20 документах,факт,eval/gold_stats.json,V2,verified,"554 тверджень (446 сущн. + 108 відн.), 22 документів; відношень окремо 108 < 150 — зазначено в картці"
+C06,"κ відношень між двома анотаторами ≥ 0,6",факт,scripts/build_gold.py,V4,verified,"κ=0.708 на 2727 кандидатах; завищений негативами, позитивна згода 0.72"
+C07,"Правило: короткі прапорці (-R) — аліас довгої форми (--regions), одне твердження",правило,llm_log/raw/adjudication.json,V2,pending,рішення LLM-адʼюдикатора; студент має підтвердити вибірково
+C08,"Правило: WDL-параметри належать 'Funcotator WDL', не 'Funcotator' (D053–D060)",правило,llm_log/raw/adjudication.json,V2,pending,"рішення LLM-адʼюдикатора, може бути переглянуте; впливає на HAS_OPTION метрики"
+C09,"Схема: 6 типів сутностей і 7 відношень відповідають ЛР7 (usesInput, produces, …)",правило,docs/extraction_schema.md,V2,verified,типи/обмеження закодовані в src/common.py і перевіряються валідатором у extract_llm.py та тестами
+C10,На test B (LLM) кращий за A за F1 сутностей,факт,eval/test_summary.json,V4,verified,"B 0.714 vs A 0.591 (один прогін, без довірчих інтервалів)"
+C11,На test A кращий за B за F1 відношень,факт,eval/test_summary.json,V4,verified,A 0.545 vs B 0.411; різниця зумовлена HAS_OPTION
+C12,"Гібрид-політика, обрана на dev, покращує результат на test",гіпотеза,eval/test_summary.json,V4,rejected,сутності 0.676 < B 0.714; відношення = B (0.411): політика не узагальнилась
+C13,Постфактум-гібрид (правила для HAS_OPTION + LLM) дає найкращі відношення,гіпотеза,eval/test_posthoc_hybrid.json,V4,pending,"F1 відношень вищий, але підібраний після перегляду test — потрібна перевірка на нових документах"
+C14,LLM-екстрактор не фабрикує цитат,гіпотеза,eval/test_summary.json,V1,rejected,"усі evidence дослівні, але 0.274 тверджень без підтримки суб'єктом/об'єктом (напр. заголовок '### General Options:')"
+C15,Метод A не фабрикує цитат,факт,eval/test_summary.json,V1,verified,evidence = речення/рядок з уривка за побудовою; 0 непідтверджених
+C16,"Вартість B на документ ≈ $0,03",факт,eval/test_summary.json,V4,pending,"модельна оцінка (≈$0.0257), ціна $1/$5 за MTok згадана з пам'яті, не перевірена, реальних викликів API не було"
+C17,"Правило VEP → annotation прийняте (lift>4, p<0,01, bootstrap ≥0,8, ≥3 док.)",факт,eval/patterns_rules.csv,V4,verified,рахується скриптом scripts/patterns.py (seed 13)
+C18,Правило singularity → docker відображає доменну закономірність,гіпотеза,docs/patterns.md,V2,rejected,"статистично стійке, але пояснюється документаційною спільністю (профілі Nextflow), не доменним знанням — класифіковано як тривіальне"
+C19,bcftools → VCF — стійка закономірність,гіпотеза,eval/patterns_rules.csv,V4,rejected,"перестановковий p=0,76, bootstrap 0,33"
+C20,"Граф містить провенанс (source, offset, model, confidence) для кожного ребра",факт,data/graph_load.cypher,V2,verified,"181 ребер у FalkorDB, evidence-запит повертає source/start/end/model/confidence"
+C21,Модель haiku як екстрактор незалежна від анотаторів sonnet,гіпотеза,docs/gold_card.md,V2,rejected,"різні моделі, але одна родина; незалежність не гарантована — це обмеження, а не доведена властивість"
+C22,Ціни та лімітів Anthropic API відомі зі свіжих джерел,факт,—,V1,rejected,не перевірялось через інтернет; цифри в аналізі вартості позначені як припущення
