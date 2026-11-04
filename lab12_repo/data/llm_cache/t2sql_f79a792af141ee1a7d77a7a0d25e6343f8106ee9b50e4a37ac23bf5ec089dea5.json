@@ -1,0 +1,1 @@
+{"text": "REFUSE: the schema has no patient age or birth date column (dim_sample holds sample_code, cohort, tissue, platform, batch, qc_status), so the average age cannot be computed."}

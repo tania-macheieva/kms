@@ -1,0 +1,230 @@
+{
+ "loaded": "2026-10-28 21:18:57",
+ "first": {
+  "nodes": 370,
+  "rels": 757,
+  "by_label": {
+   "Annotation": 248,
+   "AnnotationType": 6,
+   "Concept": 16,
+   "DataFile": 2,
+   "Diagnosis": 2,
+   "Gene": 4,
+   "GenePanel": 1,
+   "Instrument": 1,
+   "Person": 8,
+   "Procedure": 2,
+   "Sample": 3,
+   "Situation": 6,
+   "Threshold": 7,
+   "Variant": 64
+  },
+  "by_type": {
+   "APPLIES_TO": 5,
+   "CARRIES": 1,
+   "CHECKS": 7,
+   "DERIVED_FROM": 1,
+   "FROM_SAMPLE": 64,
+   "GENERATED_BY": 2,
+   "GUARD_CLASS": 6,
+   "HAS_ANNOTATION": 248,
+   "HAS_DIAGNOSIS": 2,
+   "HAS_MEMBER": 4,
+   "HAS_PARENT": 8,
+   "HAS_PROBAND": 1,
+   "HAS_SIBLING": 3,
+   "HAS_THRESHOLD": 7,
+   "INSTANCE_OF": 72,
+   "LOCATED_IN": 64,
+   "OF_TYPE": 248,
+   "REQUIRES": 1,
+   "SUBCLASS_OF": 13
+  }
+ },
+ "second": {
+  "nodes": 370,
+  "rels": 757,
+  "by_label": {
+   "Annotation": 248,
+   "AnnotationType": 6,
+   "Concept": 16,
+   "DataFile": 2,
+   "Diagnosis": 2,
+   "Gene": 4,
+   "GenePanel": 1,
+   "Instrument": 1,
+   "Person": 8,
+   "Procedure": 2,
+   "Sample": 3,
+   "Situation": 6,
+   "Threshold": 7,
+   "Variant": 64
+  },
+  "by_type": {
+   "APPLIES_TO": 5,
+   "CARRIES": 1,
+   "CHECKS": 7,
+   "DERIVED_FROM": 1,
+   "FROM_SAMPLE": 64,
+   "GENERATED_BY": 2,
+   "GUARD_CLASS": 6,
+   "HAS_ANNOTATION": 248,
+   "HAS_DIAGNOSIS": 2,
+   "HAS_MEMBER": 4,
+   "HAS_PARENT": 8,
+   "HAS_PROBAND": 1,
+   "HAS_SIBLING": 3,
+   "HAS_THRESHOLD": 7,
+   "INSTANCE_OF": 72,
+   "LOCATED_IN": 64,
+   "OF_TYPE": 248,
+   "REQUIRES": 1,
+   "SUBCLASS_OF": 13
+  }
+ },
+ "ms_first": 44,
+ "ms_second": 34,
+ "identical": true,
+ "after_violation": {
+  "nodes": 370,
+  "rels": 757
+ },
+ "constraints": [
+  [
+   "UNIQUE",
+   "Threshold",
+   [
+    "id"
+   ],
+   "NODE",
+   "OPERATIONAL"
+  ],
+  [
+   "UNIQUE",
+   "Sample",
+   [
+    "code"
+   ],
+   "NODE",
+   "OPERATIONAL"
+  ],
+  [
+   "UNIQUE",
+   "Annotation",
+   [
+    "id"
+   ],
+   "NODE",
+   "OPERATIONAL"
+  ],
+  [
+   "UNIQUE",
+   "Person",
+   [
+    "name"
+   ],
+   "NODE",
+   "OPERATIONAL"
+  ],
+  [
+   "UNIQUE",
+   "Gene",
+   [
+    "symbol"
+   ],
+   "NODE",
+   "OPERATIONAL"
+  ],
+  [
+   "UNIQUE",
+   "Variant",
+   [
+    "id"
+   ],
+   "NODE",
+   "OPERATIONAL"
+  ]
+ ],
+ "indexes": [
+  [
+   "Threshold",
+   [
+    "id"
+   ],
+   [
+    "RANGE"
+   ],
+   "NODE",
+   "OPERATIONAL"
+  ],
+  [
+   "Sample",
+   [
+    "code"
+   ],
+   [
+    "RANGE"
+   ],
+   "NODE",
+   "OPERATIONAL"
+  ],
+  [
+   "Annotation",
+   [
+    "id",
+    "name",
+    "value"
+   ],
+   [
+    "RANGE"
+   ],
+   "NODE",
+   "OPERATIONAL"
+  ],
+  [
+   "Person",
+   [
+    "name",
+    "ageYears"
+   ],
+   [
+    "RANGE"
+   ],
+   "NODE",
+   "OPERATIONAL"
+  ],
+  [
+   "Gene",
+   [
+    "symbol"
+   ],
+   [
+    "RANGE"
+   ],
+   "NODE",
+   "OPERATIONAL"
+  ],
+  [
+   "Variant",
+   [
+    "id",
+    "type"
+   ],
+   [
+    "RANGE"
+   ],
+   "NODE",
+   "OPERATIONAL"
+  ]
+ ],
+ "violation": {
+  "Variant.id": {
+   "query": "CREATE (:Variant {id: 'VAR-001', type: 'SNP'})",
+   "error": "unique constraint violation on node of type Variant"
+  },
+  "Gene.symbol": {
+   "query": "CREATE (:Gene {symbol: 'BRCA1'})",
+   "error": "unique constraint violation on node of type Gene"
+  }
+ }
+}

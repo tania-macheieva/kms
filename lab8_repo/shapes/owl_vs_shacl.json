@@ -1,0 +1,23 @@
+{
+ "hermit_defective": {
+  "consistent": true
+ },
+ "hermit_wrong_type": {
+  "consistent": false,
+  "message": "Exception in thread \"main\" org.semanticweb.owlapi.reasoner.InconsistentOntologyException: Inconsistent ontology\n\tat org.semanticweb.HermiT.Reasoner.throwInconsistentOntologyExceptionIfNecessary(Reasoner.java:2164)\n\tat org.semanticweb.HermiT.Reasoner.checkPreConditions(Reasoner.java:2154)\n\tat org.sem",
+  "olena_inferred_gene": false
+ },
+ "shacl_wrong_type": {
+  "conforms": false,
+  "violations": [
+   {
+    "severity": "Violation",
+    "focus": "dkh:VAR-107",
+    "path": "dkh:locatedIn",
+    "component": "Class",
+    "value": "dkh:Olena",
+    "message": "Варіант має бути прив'язаний принаймні до одного гена (клас Gene)."
+   }
+  ]
+ }
+}

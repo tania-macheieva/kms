@@ -1,0 +1,559 @@
+{
+ "openapi": "3.1.0",
+ "info": {
+  "title": "Domain Knowledge Hub RAG API",
+  "description": "\nRAG chatbot over the Domain Knowledge Hub (biomedical data analysis): hybrid search (BM25 + dense, RRF) + optional re-ranking + knowledge-graph sub-graph.\nEvery answer starts from a **status** (`ANSWER`, `NO_ANSWER`, `CONFLICT`, `BLOCKED`) and cites sources as `[id]`; unknown ids are removed by an automatic check.\n\n**Auth**: header `X-API-Key`. The key determines the role: `reader` (public), `analyst` (public+internal), `clinician` (public+internal+restricted).\n**Limits**: per-key token bucket (default 10 requests / 60 s), `429` with `Retry-After`.\n",
+  "version": "lab11"
+ },
+ "paths": {
+  "/ask": {
+   "post": {
+    "tags": [
+     "chat"
+    ],
+    "summary": "Ask a question",
+    "operationId": "ask_ask_post",
+    "parameters": [
+     {
+      "name": "x-api-key",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "description": "API key; determines the role",
+       "title": "X-Api-Key"
+      },
+      "description": "API key; determines the role"
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/AskRequest"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/AskResponse"
+        }
+       }
+      }
+     },
+     "401": {
+      "description": "missing/invalid API key",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Error"
+        }
+       }
+      }
+     },
+     "429": {
+      "description": "rate limit exceeded (see Retry-After)",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Error"
+        }
+       }
+      }
+     },
+     "503": {
+      "description": "LLM backend unavailable",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Error"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/sources/{source_id}": {
+   "get": {
+    "tags": [
+     "sources"
+    ],
+    "summary": "Get a source chunk by id",
+    "operationId": "source_sources__source_id__get",
+    "parameters": [
+     {
+      "name": "source_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "minLength": 3,
+       "maxLength": 120,
+       "pattern": "^[A-Za-z0-9_.#:\\-]+$",
+       "description": "chunk id, e.g. `bcftools_manual#h019` (use %23 for `#`)",
+       "title": "Source Id"
+      },
+      "description": "chunk id, e.g. `bcftools_manual#h019` (use %23 for `#`)"
+     },
+     {
+      "name": "x-api-key",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "description": "API key; determines the role",
+       "title": "X-Api-Key"
+      },
+      "description": "API key; determines the role"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/SourceResponse"
+        }
+       }
+      }
+     },
+     "401": {
+      "description": "missing/invalid API key",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Error"
+        }
+       }
+      }
+     },
+     "429": {
+      "description": "rate limit exceeded (see Retry-After)",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Error"
+        }
+       }
+      }
+     },
+     "403": {
+      "description": "source above the role's sensitivity",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Error"
+        }
+       }
+      }
+     },
+     "404": {
+      "description": "unknown id",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Error"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/health": {
+   "get": {
+    "tags": [
+     "ops"
+    ],
+    "summary": "Liveness (no auth)",
+    "operationId": "health_health_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Health"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "components": {
+  "schemas": {
+   "AskRequest": {
+    "properties": {
+     "question": {
+      "type": "string",
+      "maxLength": 500,
+      "minLength": 3,
+      "title": "Question",
+      "description": "Question in natural language (3-500 characters)",
+      "examples": [
+       "What does the merge-logic option of bcftools annotate do?"
+      ]
+     },
+     "k": {
+      "type": "integer",
+      "maximum": 8.0,
+      "minimum": 1.0,
+      "title": "K",
+      "description": "number of text chunks passed to the LLM",
+      "default": 5
+     },
+     "use_graph": {
+      "type": "boolean",
+      "title": "Use Graph",
+      "description": "add the knowledge-graph sub-graph to the prompt",
+      "default": true
+     }
+    },
+    "type": "object",
+    "required": [
+     "question"
+    ],
+    "title": "AskRequest"
+   },
+   "AskResponse": {
+    "properties": {
+     "request_id": {
+      "type": "string",
+      "title": "Request Id"
+     },
+     "status": {
+      "type": "string",
+      "enum": [
+       "ANSWER",
+       "NO_ANSWER",
+       "CONFLICT",
+       "BLOCKED"
+      ],
+      "title": "Status"
+     },
+     "answer": {
+      "type": "string",
+      "title": "Answer"
+     },
+     "citations": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Citations",
+      "description": "ids cited in the answer (all validated against the context)"
+     },
+     "sources": {
+      "items": {
+       "$ref": "#/components/schemas/SourceRef"
+      },
+      "type": "array",
+      "title": "Sources",
+      "description": "sources that were in the context (after the role filter)"
+     },
+     "role": {
+      "type": "string",
+      "title": "Role"
+     },
+     "backend": {
+      "type": "string",
+      "title": "Backend"
+     },
+     "usage": {
+      "$ref": "#/components/schemas/Usage"
+     }
+    },
+    "type": "object",
+    "required": [
+     "request_id",
+     "status",
+     "answer",
+     "citations",
+     "sources",
+     "role",
+     "backend",
+     "usage"
+    ],
+    "title": "AskResponse"
+   },
+   "Error": {
+    "properties": {
+     "detail": {
+      "type": "string",
+      "title": "Detail"
+     }
+    },
+    "type": "object",
+    "required": [
+     "detail"
+    ],
+    "title": "Error"
+   },
+   "HTTPValidationError": {
+    "properties": {
+     "detail": {
+      "items": {
+       "$ref": "#/components/schemas/ValidationError"
+      },
+      "type": "array",
+      "title": "Detail"
+     }
+    },
+    "type": "object",
+    "title": "HTTPValidationError"
+   },
+   "Health": {
+    "properties": {
+     "status": {
+      "type": "string",
+      "const": "ok",
+      "title": "Status"
+     },
+     "backend": {
+      "type": "string",
+      "title": "Backend"
+     },
+     "chunks": {
+      "type": "integer",
+      "title": "Chunks"
+     },
+     "graph": {
+      "type": "boolean",
+      "title": "Graph"
+     },
+     "version": {
+      "type": "string",
+      "title": "Version",
+      "default": "lab11"
+     }
+    },
+    "type": "object",
+    "required": [
+     "status",
+     "backend",
+     "chunks",
+     "graph"
+    ],
+    "title": "Health"
+   },
+   "SourceRef": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "title": "Id"
+     },
+     "kind": {
+      "type": "string",
+      "title": "Kind"
+     },
+     "doc_id": {
+      "type": "string",
+      "title": "Doc Id"
+     },
+     "section": {
+      "type": "string",
+      "title": "Section",
+      "default": ""
+     },
+     "sensitivity": {
+      "type": "string",
+      "title": "Sensitivity"
+     },
+     "source_url": {
+      "type": "string",
+      "title": "Source Url",
+      "default": ""
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "kind",
+     "doc_id",
+     "sensitivity"
+    ],
+    "title": "SourceRef"
+   },
+   "SourceResponse": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "title": "Id"
+     },
+     "kind": {
+      "type": "string",
+      "title": "Kind"
+     },
+     "doc_id": {
+      "type": "string",
+      "title": "Doc Id"
+     },
+     "section": {
+      "type": "string",
+      "title": "Section",
+      "default": ""
+     },
+     "sensitivity": {
+      "type": "string",
+      "title": "Sensitivity"
+     },
+     "source_url": {
+      "type": "string",
+      "title": "Source Url",
+      "default": ""
+     },
+     "text": {
+      "type": "string",
+      "title": "Text"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "kind",
+     "doc_id",
+     "sensitivity",
+     "text"
+    ],
+    "title": "SourceResponse"
+   },
+   "Usage": {
+    "properties": {
+     "input_tokens": {
+      "type": "integer",
+      "title": "Input Tokens"
+     },
+     "output_tokens": {
+      "type": "integer",
+      "title": "Output Tokens"
+     },
+     "retrieve_ms": {
+      "type": "number",
+      "title": "Retrieve Ms"
+     },
+     "graph_ms": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Graph Ms"
+     },
+     "total_ms": {
+      "type": "number",
+      "title": "Total Ms"
+     }
+    },
+    "type": "object",
+    "required": [
+     "input_tokens",
+     "output_tokens",
+     "retrieve_ms",
+     "total_ms"
+    ],
+    "title": "Usage"
+   },
+   "ValidationError": {
+    "properties": {
+     "loc": {
+      "items": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "integer"
+        }
+       ]
+      },
+      "type": "array",
+      "title": "Location"
+     },
+     "msg": {
+      "type": "string",
+      "title": "Message"
+     },
+     "type": {
+      "type": "string",
+      "title": "Error Type"
+     },
+     "input": {
+      "title": "Input"
+     },
+     "ctx": {
+      "type": "object",
+      "title": "Context"
+     }
+    },
+    "type": "object",
+    "required": [
+     "loc",
+     "msg",
+     "type"
+    ],
+    "title": "ValidationError"
+   }
+  }
+ },
+ "tags": [
+  {
+   "name": "chat",
+   "description": "question answering"
+  },
+  {
+   "name": "sources",
+   "description": "source lookup"
+  },
+  {
+   "name": "ops",
+   "description": "service state"
+  }
+ ]
+}

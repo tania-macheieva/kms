@@ -1,0 +1,8 @@
+from,to,source,confidence,validFrom
+HF-01,FS_gt_200_indel,gatk,1.0,2026-10-26
+HF-01,FS_gt_60_snp,gatk,1.0,2026-10-26
+HF-01,MQRankSum_lt_-12.5,gatk,1.0,2026-10-26
+HF-01,MQ_lt_40,gatk,1.0,2026-10-26
+HF-01,QD_lt_2,gatk,1.0,2026-10-26
+HF-01,ReadPosRankSum_lt_-8,gatk,1.0,2026-10-26
+HF-01,SOR_gt_3,gatk,1.0,2026-10-26

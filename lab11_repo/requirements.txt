@@ -1,0 +1,13 @@
+# Python 3.13 used for all reported numbers
+numpy==2.5.3
+onnxruntime==1.29.0
+tokenizers==0.23.3
+faiss-cpu==1.15.1
+rank-bm25==0.2.2
+falkordblite==0.11.0
+fastapi==0.162.0
+starlette==1.6.0
+pydantic==2.13.5
+uvicorn==0.53.0
+httpx==0.28.1
+pytest==9.1.1

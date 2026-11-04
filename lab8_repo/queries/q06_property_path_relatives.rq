@@ -1,0 +1,9 @@
+# CQ11-CQ13: хто є родичем пробанда Olena через ланцюжок «батьки/діти/сиблінги» (скільки кроків угору)?
+# Тип: property path  ( ^ інверсія, + один чи більше кроків, | альтернатива, / послідовність )
+SELECT DISTINCT ?name
+WHERE {
+  dkh:Olena (dkh:hasParent|dkh:hasChild|dkh:hasSibling|^dkh:hasParent|^dkh:hasChild)+ ?r .
+  ?r rdfs:label ?name .
+  FILTER (?r != dkh:Olena)
+}
+ORDER BY ?name

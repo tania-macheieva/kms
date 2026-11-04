@@ -1,0 +1,99 @@
+{
+ "valid": {
+  "conforms": true,
+  "results": [
+   {
+    "severity": "Warning",
+    "focus": "dkh:VAR-002",
+    "path": "dkh:hasAnnotation",
+    "component": "MinCount",
+    "value": "",
+    "message": "Неповний набір анотацій: для жорсткої фільтрації потрібні QD, FS, SOR, MQ."
+   },
+   {
+    "severity": "Warning",
+    "focus": "dkh:VAR-003",
+    "path": "dkh:hasAnnotation",
+    "component": "MinCount",
+    "value": "",
+    "message": "Неповний набір анотацій: для жорсткої фільтрації потрібні QD, FS, SOR, MQ."
+   },
+   {
+    "severity": "Warning",
+    "focus": "dkh:VAR-004",
+    "path": "dkh:hasAnnotation",
+    "component": "MinCount",
+    "value": "",
+    "message": "Неповний набір анотацій: для жорсткої фільтрації потрібні QD, FS, SOR, MQ."
+   }
+  ]
+ },
+ "defective": {
+  "conforms": false,
+  "results": [
+   {
+    "severity": "Violation",
+    "focus": "dkh:Marta",
+    "path": "dkh:hasAgeYears",
+    "component": "MaxInclusive",
+    "value": "391",
+    "message": "Вік — ціле число від 0 до 120."
+   },
+   {
+    "severity": "Violation",
+    "focus": "dkh:VAR-105",
+    "path": "dkh:locatedIn",
+    "component": "MinCount",
+    "value": "",
+    "message": "Варіант має бути прив'язаний принаймні до одного гена (клас Gene)."
+   },
+   {
+    "severity": "Violation",
+    "focus": "dkh:VAR-106",
+    "path": "dkh:hasVariantId",
+    "component": "Pattern",
+    "value": "variant_106",
+    "message": "У варіанта має бути рівно один ідентифікатор виду VAR-123 (рядок)."
+   },
+   {
+    "severity": "Warning",
+    "focus": "dkh:VAR-002",
+    "path": "dkh:hasAnnotation",
+    "component": "MinCount",
+    "value": "",
+    "message": "Неповний набір анотацій: для жорсткої фільтрації потрібні QD, FS, SOR, MQ."
+   },
+   {
+    "severity": "Warning",
+    "focus": "dkh:VAR-003",
+    "path": "dkh:hasAnnotation",
+    "component": "MinCount",
+    "value": "",
+    "message": "Неповний набір анотацій: для жорсткої фільтрації потрібні QD, FS, SOR, MQ."
+   },
+   {
+    "severity": "Warning",
+    "focus": "dkh:VAR-004",
+    "path": "dkh:hasAnnotation",
+    "component": "MinCount",
+    "value": "",
+    "message": "Неповний набір анотацій: для жорсткої фільтрації потрібні QD, FS, SOR, MQ."
+   }
+  ]
+ },
+ "stats": {
+  "node_shapes": 9,
+  "property_shapes": 18,
+  "constraints_by_type": {
+   "minCount": 15,
+   "maxCount": 7,
+   "datatype": 5,
+   "pattern": 2,
+   "class": 7,
+   "minInclusive": 3,
+   "in": 3,
+   "maxInclusive": 1
+  },
+  "constraints_total": 43
+ }
+}

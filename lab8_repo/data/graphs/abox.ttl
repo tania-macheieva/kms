@@ -1,0 +1,2815 @@
+@prefix dkh: <http://example.org/dkh/onto#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dkh:CT-01 a dkh:CascadeTesting,
+        owl:NamedIndividual ;
+    rdfs:label "CT-01"@en ;
+    dkh:appliesTo dkh:Andrii,
+        dkh:Halyna,
+        dkh:Marta,
+        dkh:Sofiia ;
+    dkh:hasMinTestingAge 18 ;
+    dkh:hasProband dkh:Olena ;
+    dkh:requires dkh:VAR-001 .
+
+dkh:HF-01 a dkh:HardFiltering,
+        owl:NamedIndividual ;
+    rdfs:label "HF-01"@en ;
+    dkh:appliesTo dkh:sample1_vcf ;
+    dkh:hasThreshold dkh:FS_gt_200_indel,
+        dkh:FS_gt_60_snp,
+        dkh:MQRankSum_lt_-12.5,
+        dkh:MQ_lt_40,
+        dkh:QD_lt_2,
+        dkh:ReadPosRankSum_lt_-8,
+        dkh:SOR_gt_3 .
+
+dkh:Situation_S01 a dkh:SituationTemplate,
+        owl:NamedIndividual ;
+    rdfs:label "S01 Низький QD"@en ;
+    dkh:guardClass dkh:LowQDVariant ;
+    dkh:hasAction dkh:S01_a_ApplyFlagAction ;
+    dkh:hasGuard "QD < 2" ;
+    dkh:hasInitialState dkh:S01_i_UnfilteredState ;
+    dkh:hasNewState dkh:S01_n_FlaggedState ;
+    dkh:triggeredBy dkh:S01_e_AnnotationComputedEvent .
+
+dkh:Situation_S02 a dkh:SituationTemplate,
+        owl:NamedIndividual ;
+    rdfs:label "S02 Високий FS у SNP"@en ;
+    dkh:guardClass dkh:HighFSSnpVariant ;
+    dkh:hasAction dkh:S02_a_ApplyFlagAction ;
+    dkh:hasGuard "FS > 60 і варіант є SNP" ;
+    dkh:hasInitialState dkh:S02_i_UnfilteredState ;
+    dkh:hasNewState dkh:S02_n_FlaggedState ;
+    dkh:triggeredBy dkh:S02_e_AnnotationComputedEvent .
+
+dkh:Situation_S03 a dkh:SituationTemplate,
+        owl:NamedIndividual ;
+    rdfs:label "S03 Прапорець FS на кінці екзона"@en ;
+    dkh:guardClass dkh:ExonEndVariant ;
+    dkh:hasAction dkh:S03_a_ReviewWithSORAction ;
+    dkh:hasGuard "єдиний прапорець — FS, варіант у кінці екзона, SOR ≤ 3" ;
+    dkh:hasInitialState dkh:S03_i_FlaggedState ;
+    dkh:hasNewState dkh:S03_n_UnfilteredState ;
+    dkh:triggeredBy dkh:S03_e_AnnotationComputedEvent .
+
+dkh:Situation_S04 a dkh:SituationTemplate,
+        owl:NamedIndividual ;
+    rdfs:label "S04 Вибір методу для малої панелі"@en ;
+    dkh:guardClass dkh:GenePanel ;
+    dkh:hasAction dkh:S04_a_SelectHardFilteringAction ;
+    dkh:hasGuard "панель мала: немає великого набору варіантів і підготовлених відомих ресурсів" ;
+    dkh:hasInitialState dkh:S04_i_UnfilteredState ;
+    dkh:hasNewState dkh:S04_n_UnfilteredState ;
+    dkh:triggeredBy dkh:S04_e_MethodChoiceEvent .
+
+dkh:Situation_S05 a dkh:SituationTemplate,
+        owl:NamedIndividual ;
+    rdfs:label "S05 Пропозиція тестування дорослому родичу"@en ;
+    dkh:guardClass dkh:AdultRelative ;
+    dkh:hasAction dkh:S05_a_OfferCascadeTestingAction ;
+    dkh:hasGuard "родич повнолітній (вік ≥ 18); починати з родичів першого ступеня (50%)" ;
+    dkh:hasInitialState dkh:S05_i_UntestedState ;
+    dkh:hasNewState dkh:S05_n_TestingOfferedState ;
+    dkh:triggeredBy dkh:S05_e_PathogenicVariantFoundEvent .
+
+dkh:Situation_S06 a dkh:SituationTemplate,
+        owl:NamedIndividual ;
+    rdfs:label "S06 Відкладення тестування неповнолітнього"@en ;
+    dkh:guardClass dkh:MinorRelative ;
+    dkh:hasAction dkh:S06_a_DeferTestingAction ;
+    dkh:hasGuard "вік родича < 18" ;
+    dkh:hasInitialState dkh:S06_i_UntestedState ;
+    dkh:hasNewState dkh:S06_n_TestingDeferredState ;
+    dkh:triggeredBy dkh:S06_e_TestingRequestedEvent .
+
+dkh:FS_gt_200_indel a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "FS > 200.0 (INDEL)"@en ;
+    dkh:forVariantType "INDEL" ;
+    dkh:hasComparisonOperator ">" ;
+    dkh:hasThresholdValue 200.0 ;
+    dkh:onAnnotationName "FS" .
+
+dkh:FS_gt_60_snp a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "FS > 60.0 (SNP)"@en ;
+    dkh:forVariantType "SNP" ;
+    dkh:hasComparisonOperator ">" ;
+    dkh:hasThresholdValue 60.0 ;
+    dkh:onAnnotationName "FS" .
+
+dkh:Iryna_OC a dkh:OvarianCancer,
+        owl:NamedIndividual ;
+    rdfs:label "ovarian cancer (Iryna)"@en .
+
+dkh:MQRankSum_lt_-12.5 a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "MQRankSum < -12.5 (all)"@en ;
+    dkh:forVariantType "all" ;
+    dkh:hasComparisonOperator "<" ;
+    dkh:hasThresholdValue -12.5 ;
+    dkh:onAnnotationName "MQRankSum" .
+
+dkh:MQ_lt_40 a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "MQ < 40.0 (all)"@en ;
+    dkh:forVariantType "all" ;
+    dkh:hasComparisonOperator "<" ;
+    dkh:hasThresholdValue 40.0 ;
+    dkh:onAnnotationName "MQ" .
+
+dkh:Olena_BC a dkh:BreastCancer,
+        owl:NamedIndividual ;
+    rdfs:label "breast cancer (Olena)"@en .
+
+dkh:QD_lt_2 a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "QD < 2.0 (all)"@en ;
+    dkh:forVariantType "all" ;
+    dkh:hasComparisonOperator "<" ;
+    dkh:hasThresholdValue 2.0 ;
+    dkh:onAnnotationName "QD" .
+
+dkh:ReadPosRankSum_lt_-8 a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "ReadPosRankSum < -8.0 (all)"@en ;
+    dkh:forVariantType "all" ;
+    dkh:hasComparisonOperator "<" ;
+    dkh:hasThresholdValue -8.0 ;
+    dkh:onAnnotationName "ReadPosRankSum" .
+
+dkh:S01_a_ApplyFlagAction a dkh:ApplyFlagAction,
+        owl:NamedIndividual ;
+    rdfs:label "S01: ApplyFlagAction"@en .
+
+dkh:S01_e_AnnotationComputedEvent a dkh:AnnotationComputedEvent,
+        owl:NamedIndividual ;
+    rdfs:label "S01: AnnotationComputedEvent"@en .
+
+dkh:S01_i_UnfilteredState a dkh:UnfilteredState,
+        owl:NamedIndividual ;
+    rdfs:label "S01: UnfilteredState"@en .
+
+dkh:S01_n_FlaggedState a dkh:FlaggedState,
+        owl:NamedIndividual ;
+    rdfs:label "S01: FlaggedState"@en .
+
+dkh:S02_a_ApplyFlagAction a dkh:ApplyFlagAction,
+        owl:NamedIndividual ;
+    rdfs:label "S02: ApplyFlagAction"@en .
+
+dkh:S02_e_AnnotationComputedEvent a dkh:AnnotationComputedEvent,
+        owl:NamedIndividual ;
+    rdfs:label "S02: AnnotationComputedEvent"@en .
+
+dkh:S02_i_UnfilteredState a dkh:UnfilteredState,
+        owl:NamedIndividual ;
+    rdfs:label "S02: UnfilteredState"@en .
+
+dkh:S02_n_FlaggedState a dkh:FlaggedState,
+        owl:NamedIndividual ;
+    rdfs:label "S02: FlaggedState"@en .
+
+dkh:S03_a_ReviewWithSORAction a dkh:ReviewWithSORAction,
+        owl:NamedIndividual ;
+    rdfs:label "S03: ReviewWithSORAction"@en .
+
+dkh:S03_e_AnnotationComputedEvent a dkh:AnnotationComputedEvent,
+        owl:NamedIndividual ;
+    rdfs:label "S03: AnnotationComputedEvent"@en .
+
+dkh:S03_i_FlaggedState a dkh:FlaggedState,
+        owl:NamedIndividual ;
+    rdfs:label "S03: FlaggedState"@en .
+
+dkh:S03_n_UnfilteredState a dkh:UnfilteredState,
+        owl:NamedIndividual ;
+    rdfs:label "S03: UnfilteredState"@en .
+
+dkh:S04_a_SelectHardFilteringAction a dkh:SelectHardFilteringAction,
+        owl:NamedIndividual ;
+    rdfs:label "S04: SelectHardFilteringAction"@en .
+
+dkh:S04_e_MethodChoiceEvent a dkh:MethodChoiceEvent,
+        owl:NamedIndividual ;
+    rdfs:label "S04: MethodChoiceEvent"@en .
+
+dkh:S04_i_UnfilteredState a dkh:UnfilteredState,
+        owl:NamedIndividual ;
+    rdfs:label "S04: UnfilteredState"@en .
+
+dkh:S04_n_UnfilteredState a dkh:UnfilteredState,
+        owl:NamedIndividual ;
+    rdfs:label "S04: UnfilteredState"@en .
+
+dkh:S05_a_OfferCascadeTestingAction a dkh:OfferCascadeTestingAction,
+        owl:NamedIndividual ;
+    rdfs:label "S05: OfferCascadeTestingAction"@en .
+
+dkh:S05_e_PathogenicVariantFoundEvent a dkh:PathogenicVariantFoundEvent,
+        owl:NamedIndividual ;
+    rdfs:label "S05: PathogenicVariantFoundEvent"@en .
+
+dkh:S05_i_UntestedState a dkh:UntestedState,
+        owl:NamedIndividual ;
+    rdfs:label "S05: UntestedState"@en .
+
+dkh:S05_n_TestingOfferedState a dkh:TestingOfferedState,
+        owl:NamedIndividual ;
+    rdfs:label "S05: TestingOfferedState"@en .
+
+dkh:S06_a_DeferTestingAction a dkh:DeferTestingAction,
+        owl:NamedIndividual ;
+    rdfs:label "S06: DeferTestingAction"@en .
+
+dkh:S06_e_TestingRequestedEvent a dkh:TestingRequestedEvent,
+        owl:NamedIndividual ;
+    rdfs:label "S06: TestingRequestedEvent"@en .
+
+dkh:S06_i_UntestedState a dkh:UntestedState,
+        owl:NamedIndividual ;
+    rdfs:label "S06: UntestedState"@en .
+
+dkh:S06_n_TestingDeferredState a dkh:TestingDeferredState,
+        owl:NamedIndividual ;
+    rdfs:label "S06: TestingDeferredState"@en .
+
+dkh:SOR_gt_3 a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "SOR > 3.0 (all)"@en ;
+    dkh:forVariantType "all" ;
+    dkh:hasComparisonOperator ">" ;
+    dkh:hasThresholdValue 3.0 ;
+    dkh:onAnnotationName "SOR" .
+
+dkh:Sofiia a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Sofiia"@en ;
+    dkh:hasAgeYears 17 ;
+    dkh:hasParent dkh:Olena .
+
+dkh:VAR-001_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-001"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 3.1 ;
+    dkh:isAnnotationOf dkh:VAR-001 .
+
+dkh:VAR-001_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-001"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 60.0 ;
+    dkh:isAnnotationOf dkh:VAR-001 .
+
+dkh:VAR-001_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-001"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 25.0 ;
+    dkh:isAnnotationOf dkh:VAR-001 .
+
+dkh:VAR-001_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-001"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 0.8 ;
+    dkh:isAnnotationOf dkh:VAR-001 .
+
+dkh:VAR-002 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-002"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-002_QualityByDepth ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-002" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-002_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-002"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 1.5 ;
+    dkh:isAnnotationOf dkh:VAR-002 .
+
+dkh:VAR-003 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-003"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-003_FisherStrandBias ;
+    dkh:hasVariantId "VAR-003" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-003_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-003"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 150.0 ;
+    dkh:isAnnotationOf dkh:VAR-003 .
+
+dkh:VAR-004_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-004"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 62.0 ;
+    dkh:isAnnotationOf dkh:VAR-004 .
+
+dkh:VAR-004_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-004"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 2.1 ;
+    dkh:isAnnotationOf dkh:VAR-004 .
+
+dkh:VAR-101_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-101"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 14.7 ;
+    dkh:isAnnotationOf dkh:VAR-101 .
+
+dkh:VAR-101_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-101"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 65.7 ;
+    dkh:isAnnotationOf dkh:VAR-101 .
+
+dkh:VAR-101_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-101"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 1.2 ;
+    dkh:isAnnotationOf dkh:VAR-101 .
+
+dkh:VAR-101_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-101"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 3.4 ;
+    dkh:isAnnotationOf dkh:VAR-101 .
+
+dkh:VAR-102_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-102"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 11.2 ;
+    dkh:isAnnotationOf dkh:VAR-102 .
+
+dkh:VAR-102_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-102"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 58.1 ;
+    dkh:isAnnotationOf dkh:VAR-102 .
+
+dkh:VAR-102_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-102"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 1.1 ;
+    dkh:isAnnotationOf dkh:VAR-102 .
+
+dkh:VAR-102_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-102"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 3.6 ;
+    dkh:isAnnotationOf dkh:VAR-102 .
+
+dkh:VAR-103_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-103"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 14.0 ;
+    dkh:isAnnotationOf dkh:VAR-103 .
+
+dkh:VAR-103_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-103"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 36.2 ;
+    dkh:isAnnotationOf dkh:VAR-103 .
+
+dkh:VAR-103_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-103"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 2.2 ;
+    dkh:isAnnotationOf dkh:VAR-103 .
+
+dkh:VAR-103_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-103"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 1.8 ;
+    dkh:isAnnotationOf dkh:VAR-103 .
+
+dkh:VAR-104_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-104"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 0.9 ;
+    dkh:isAnnotationOf dkh:VAR-104 .
+
+dkh:VAR-104_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-104"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 35.0 ;
+    dkh:isAnnotationOf dkh:VAR-104 .
+
+dkh:VAR-104_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-104"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 13.4 ;
+    dkh:isAnnotationOf dkh:VAR-104 .
+
+dkh:VAR-104_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-104"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 2.4 ;
+    dkh:isAnnotationOf dkh:VAR-104 .
+
+dkh:VAR-105_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-105"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 3.8 ;
+    dkh:isAnnotationOf dkh:VAR-105 .
+
+dkh:VAR-105_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-105"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 56.5 ;
+    dkh:isAnnotationOf dkh:VAR-105 .
+
+dkh:VAR-105_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-105"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 31.2 ;
+    dkh:isAnnotationOf dkh:VAR-105 .
+
+dkh:VAR-105_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-105"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 0.5 ;
+    dkh:isAnnotationOf dkh:VAR-105 .
+
+dkh:VAR-106_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-106"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 125.1 ;
+    dkh:isAnnotationOf dkh:VAR-106 .
+
+dkh:VAR-106_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-106"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 44.2 ;
+    dkh:isAnnotationOf dkh:VAR-106 .
+
+dkh:VAR-106_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-106"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 14.5 ;
+    dkh:isAnnotationOf dkh:VAR-106 .
+
+dkh:VAR-106_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-106"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 1.0 ;
+    dkh:isAnnotationOf dkh:VAR-106 .
+
+dkh:VAR-107_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-107"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 4.9 ;
+    dkh:isAnnotationOf dkh:VAR-107 .
+
+dkh:VAR-107_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-107"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 40.8 ;
+    dkh:isAnnotationOf dkh:VAR-107 .
+
+dkh:VAR-107_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-107"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 2.1 ;
+    dkh:isAnnotationOf dkh:VAR-107 .
+
+dkh:VAR-107_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-107"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 2.4 ;
+    dkh:isAnnotationOf dkh:VAR-107 .
+
+dkh:VAR-108_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-108"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 238.5 ;
+    dkh:isAnnotationOf dkh:VAR-108 .
+
+dkh:VAR-108_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-108"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 38.4 ;
+    dkh:isAnnotationOf dkh:VAR-108 .
+
+dkh:VAR-108_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-108"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 9.6 ;
+    dkh:isAnnotationOf dkh:VAR-108 .
+
+dkh:VAR-108_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-108"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 1.5 ;
+    dkh:isAnnotationOf dkh:VAR-108 .
+
+dkh:VAR-109_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-109"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 2.8 ;
+    dkh:isAnnotationOf dkh:VAR-109 .
+
+dkh:VAR-109_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-109"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 51.6 ;
+    dkh:isAnnotationOf dkh:VAR-109 .
+
+dkh:VAR-109_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-109"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 23.2 ;
+    dkh:isAnnotationOf dkh:VAR-109 .
+
+dkh:VAR-109_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-109"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 3.8 ;
+    dkh:isAnnotationOf dkh:VAR-109 .
+
+dkh:VAR-110_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-110"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 1.8 ;
+    dkh:isAnnotationOf dkh:VAR-110 .
+
+dkh:VAR-110_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-110"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 34.4 ;
+    dkh:isAnnotationOf dkh:VAR-110 .
+
+dkh:VAR-110_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-110"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 34.9 ;
+    dkh:isAnnotationOf dkh:VAR-110 .
+
+dkh:VAR-110_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-110"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 0.4 ;
+    dkh:isAnnotationOf dkh:VAR-110 .
+
+dkh:VAR-111_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-111"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 10.6 ;
+    dkh:isAnnotationOf dkh:VAR-111 .
+
+dkh:VAR-111_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-111"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 64.4 ;
+    dkh:isAnnotationOf dkh:VAR-111 .
+
+dkh:VAR-111_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-111"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 1.5 ;
+    dkh:isAnnotationOf dkh:VAR-111 .
+
+dkh:VAR-111_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-111"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 4.9 ;
+    dkh:isAnnotationOf dkh:VAR-111 .
+
+dkh:VAR-112_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-112"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 6.8 ;
+    dkh:isAnnotationOf dkh:VAR-112 .
+
+dkh:VAR-112_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-112"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 36.3 ;
+    dkh:isAnnotationOf dkh:VAR-112 .
+
+dkh:VAR-112_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-112"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 26.8 ;
+    dkh:isAnnotationOf dkh:VAR-112 .
+
+dkh:VAR-112_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-112"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 1.6 ;
+    dkh:isAnnotationOf dkh:VAR-112 .
+
+dkh:VAR-113_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-113"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 136.9 ;
+    dkh:isAnnotationOf dkh:VAR-113 .
+
+dkh:VAR-113_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-113"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 41.9 ;
+    dkh:isAnnotationOf dkh:VAR-113 .
+
+dkh:VAR-113_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-113"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 18.5 ;
+    dkh:isAnnotationOf dkh:VAR-113 .
+
+dkh:VAR-113_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-113"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 4.4 ;
+    dkh:isAnnotationOf dkh:VAR-113 .
+
+dkh:VAR-114_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-114"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 0.1 ;
+    dkh:isAnnotationOf dkh:VAR-114 .
+
+dkh:VAR-114_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-114"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 30.8 ;
+    dkh:isAnnotationOf dkh:VAR-114 .
+
+dkh:VAR-114_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-114"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 27.7 ;
+    dkh:isAnnotationOf dkh:VAR-114 .
+
+dkh:VAR-114_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-114"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 1.8 ;
+    dkh:isAnnotationOf dkh:VAR-114 .
+
+dkh:VAR-115_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-115"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 142.0 ;
+    dkh:isAnnotationOf dkh:VAR-115 .
+
+dkh:VAR-115_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-115"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 49.4 ;
+    dkh:isAnnotationOf dkh:VAR-115 .
+
+dkh:VAR-115_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-115"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 3.9 ;
+    dkh:isAnnotationOf dkh:VAR-115 .
+
+dkh:VAR-115_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-115"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 0.6 ;
+    dkh:isAnnotationOf dkh:VAR-115 .
+
+dkh:VAR-116_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-116"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 3.3 ;
+    dkh:isAnnotationOf dkh:VAR-116 .
+
+dkh:VAR-116_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-116"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 54.3 ;
+    dkh:isAnnotationOf dkh:VAR-116 .
+
+dkh:VAR-116_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-116"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 23.8 ;
+    dkh:isAnnotationOf dkh:VAR-116 .
+
+dkh:VAR-116_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-116"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 2.7 ;
+    dkh:isAnnotationOf dkh:VAR-116 .
+
+dkh:VAR-117_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-117"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 100.8 ;
+    dkh:isAnnotationOf dkh:VAR-117 .
+
+dkh:VAR-117_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-117"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 66.0 ;
+    dkh:isAnnotationOf dkh:VAR-117 .
+
+dkh:VAR-117_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-117"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 25.5 ;
+    dkh:isAnnotationOf dkh:VAR-117 .
+
+dkh:VAR-117_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-117"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 2.0 ;
+    dkh:isAnnotationOf dkh:VAR-117 .
+
+dkh:VAR-118_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-118"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 4.4 ;
+    dkh:isAnnotationOf dkh:VAR-118 .
+
+dkh:VAR-118_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-118"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 55.2 ;
+    dkh:isAnnotationOf dkh:VAR-118 .
+
+dkh:VAR-118_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-118"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 21.4 ;
+    dkh:isAnnotationOf dkh:VAR-118 .
+
+dkh:VAR-118_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-118"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 0.5 ;
+    dkh:isAnnotationOf dkh:VAR-118 .
+
+dkh:VAR-119_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-119"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 9.7 ;
+    dkh:isAnnotationOf dkh:VAR-119 .
+
+dkh:VAR-119_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-119"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 58.9 ;
+    dkh:isAnnotationOf dkh:VAR-119 .
+
+dkh:VAR-119_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-119"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 19.0 ;
+    dkh:isAnnotationOf dkh:VAR-119 .
+
+dkh:VAR-119_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-119"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 2.8 ;
+    dkh:isAnnotationOf dkh:VAR-119 .
+
+dkh:VAR-120_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-120"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 7.1 ;
+    dkh:isAnnotationOf dkh:VAR-120 .
+
+dkh:VAR-120_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-120"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 64.6 ;
+    dkh:isAnnotationOf dkh:VAR-120 .
+
+dkh:VAR-120_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-120"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 5.1 ;
+    dkh:isAnnotationOf dkh:VAR-120 .
+
+dkh:VAR-120_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-120"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 2.2 ;
+    dkh:isAnnotationOf dkh:VAR-120 .
+
+dkh:VAR-121_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-121"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 129.3 ;
+    dkh:isAnnotationOf dkh:VAR-121 .
+
+dkh:VAR-121_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-121"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 37.6 ;
+    dkh:isAnnotationOf dkh:VAR-121 .
+
+dkh:VAR-121_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-121"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 1.5 ;
+    dkh:isAnnotationOf dkh:VAR-121 .
+
+dkh:VAR-121_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-121"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 1.4 ;
+    dkh:isAnnotationOf dkh:VAR-121 .
+
+dkh:VAR-122_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-122"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 108.7 ;
+    dkh:isAnnotationOf dkh:VAR-122 .
+
+dkh:VAR-122_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-122"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 33.9 ;
+    dkh:isAnnotationOf dkh:VAR-122 .
+
+dkh:VAR-122_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-122"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 30.9 ;
+    dkh:isAnnotationOf dkh:VAR-122 .
+
+dkh:VAR-122_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-122"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 4.3 ;
+    dkh:isAnnotationOf dkh:VAR-122 .
+
+dkh:VAR-123_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-123"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 32.1 ;
+    dkh:isAnnotationOf dkh:VAR-123 .
+
+dkh:VAR-123_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-123"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 32.3 ;
+    dkh:isAnnotationOf dkh:VAR-123 .
+
+dkh:VAR-123_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-123"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 7.5 ;
+    dkh:isAnnotationOf dkh:VAR-123 .
+
+dkh:VAR-123_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-123"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 2.1 ;
+    dkh:isAnnotationOf dkh:VAR-123 .
+
+dkh:VAR-124_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-124"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 13.9 ;
+    dkh:isAnnotationOf dkh:VAR-124 .
+
+dkh:VAR-124_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-124"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 61.3 ;
+    dkh:isAnnotationOf dkh:VAR-124 .
+
+dkh:VAR-124_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-124"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 27.9 ;
+    dkh:isAnnotationOf dkh:VAR-124 .
+
+dkh:VAR-124_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-124"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 3.7 ;
+    dkh:isAnnotationOf dkh:VAR-124 .
+
+dkh:VAR-125_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-125"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 15.0 ;
+    dkh:isAnnotationOf dkh:VAR-125 .
+
+dkh:VAR-125_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-125"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 53.4 ;
+    dkh:isAnnotationOf dkh:VAR-125 .
+
+dkh:VAR-125_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-125"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 21.1 ;
+    dkh:isAnnotationOf dkh:VAR-125 .
+
+dkh:VAR-125_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-125"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 0.5 ;
+    dkh:isAnnotationOf dkh:VAR-125 .
+
+dkh:VAR-126_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-126"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 111.8 ;
+    dkh:isAnnotationOf dkh:VAR-126 .
+
+dkh:VAR-126_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-126"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 67.7 ;
+    dkh:isAnnotationOf dkh:VAR-126 .
+
+dkh:VAR-126_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-126"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 4.3 ;
+    dkh:isAnnotationOf dkh:VAR-126 .
+
+dkh:VAR-126_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-126"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 2.1 ;
+    dkh:isAnnotationOf dkh:VAR-126 .
+
+dkh:VAR-127_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-127"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 6.3 ;
+    dkh:isAnnotationOf dkh:VAR-127 .
+
+dkh:VAR-127_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-127"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 56.8 ;
+    dkh:isAnnotationOf dkh:VAR-127 .
+
+dkh:VAR-127_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-127"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 2.1 ;
+    dkh:isAnnotationOf dkh:VAR-127 .
+
+dkh:VAR-127_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-127"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 1.5 ;
+    dkh:isAnnotationOf dkh:VAR-127 .
+
+dkh:VAR-128_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-128"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 15.0 ;
+    dkh:isAnnotationOf dkh:VAR-128 .
+
+dkh:VAR-128_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-128"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 48.3 ;
+    dkh:isAnnotationOf dkh:VAR-128 .
+
+dkh:VAR-128_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-128"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 11.9 ;
+    dkh:isAnnotationOf dkh:VAR-128 .
+
+dkh:VAR-128_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-128"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 0.5 ;
+    dkh:isAnnotationOf dkh:VAR-128 .
+
+dkh:VAR-129_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-129"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 17.6 ;
+    dkh:isAnnotationOf dkh:VAR-129 .
+
+dkh:VAR-129_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-129"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 36.3 ;
+    dkh:isAnnotationOf dkh:VAR-129 .
+
+dkh:VAR-129_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-129"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 32.8 ;
+    dkh:isAnnotationOf dkh:VAR-129 .
+
+dkh:VAR-129_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-129"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 2.0 ;
+    dkh:isAnnotationOf dkh:VAR-129 .
+
+dkh:VAR-130_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-130"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 44.9 ;
+    dkh:isAnnotationOf dkh:VAR-130 .
+
+dkh:VAR-130_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-130"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 67.6 ;
+    dkh:isAnnotationOf dkh:VAR-130 .
+
+dkh:VAR-130_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-130"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 2.3 ;
+    dkh:isAnnotationOf dkh:VAR-130 .
+
+dkh:VAR-130_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-130"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 3.4 ;
+    dkh:isAnnotationOf dkh:VAR-130 .
+
+dkh:VAR-131_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-131"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 31.6 ;
+    dkh:isAnnotationOf dkh:VAR-131 .
+
+dkh:VAR-131_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-131"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 57.5 ;
+    dkh:isAnnotationOf dkh:VAR-131 .
+
+dkh:VAR-131_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-131"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 7.1 ;
+    dkh:isAnnotationOf dkh:VAR-131 .
+
+dkh:VAR-131_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-131"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 1.8 ;
+    dkh:isAnnotationOf dkh:VAR-131 .
+
+dkh:VAR-132_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-132"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 16.6 ;
+    dkh:isAnnotationOf dkh:VAR-132 .
+
+dkh:VAR-132_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-132"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 43.3 ;
+    dkh:isAnnotationOf dkh:VAR-132 .
+
+dkh:VAR-132_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-132"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 3.7 ;
+    dkh:isAnnotationOf dkh:VAR-132 .
+
+dkh:VAR-132_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-132"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 0.4 ;
+    dkh:isAnnotationOf dkh:VAR-132 .
+
+dkh:VAR-133_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-133"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 0.2 ;
+    dkh:isAnnotationOf dkh:VAR-133 .
+
+dkh:VAR-133_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-133"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 65.3 ;
+    dkh:isAnnotationOf dkh:VAR-133 .
+
+dkh:VAR-133_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-133"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 20.2 ;
+    dkh:isAnnotationOf dkh:VAR-133 .
+
+dkh:VAR-133_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-133"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 0.6 ;
+    dkh:isAnnotationOf dkh:VAR-133 .
+
+dkh:VAR-134_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-134"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 46.2 ;
+    dkh:isAnnotationOf dkh:VAR-134 .
+
+dkh:VAR-134_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-134"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 61.8 ;
+    dkh:isAnnotationOf dkh:VAR-134 .
+
+dkh:VAR-134_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-134"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 6.9 ;
+    dkh:isAnnotationOf dkh:VAR-134 .
+
+dkh:VAR-134_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-134"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 4.5 ;
+    dkh:isAnnotationOf dkh:VAR-134 .
+
+dkh:VAR-135_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-135"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 17.7 ;
+    dkh:isAnnotationOf dkh:VAR-135 .
+
+dkh:VAR-135_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-135"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 54.8 ;
+    dkh:isAnnotationOf dkh:VAR-135 .
+
+dkh:VAR-135_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-135"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 5.4 ;
+    dkh:isAnnotationOf dkh:VAR-135 .
+
+dkh:VAR-135_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-135"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 2.2 ;
+    dkh:isAnnotationOf dkh:VAR-135 .
+
+dkh:VAR-136_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-136"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 8.2 ;
+    dkh:isAnnotationOf dkh:VAR-136 .
+
+dkh:VAR-136_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-136"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 67.0 ;
+    dkh:isAnnotationOf dkh:VAR-136 .
+
+dkh:VAR-136_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-136"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 28.4 ;
+    dkh:isAnnotationOf dkh:VAR-136 .
+
+dkh:VAR-136_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-136"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 1.1 ;
+    dkh:isAnnotationOf dkh:VAR-136 .
+
+dkh:VAR-137_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-137"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 16.2 ;
+    dkh:isAnnotationOf dkh:VAR-137 .
+
+dkh:VAR-137_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-137"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 64.3 ;
+    dkh:isAnnotationOf dkh:VAR-137 .
+
+dkh:VAR-137_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-137"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 10.8 ;
+    dkh:isAnnotationOf dkh:VAR-137 .
+
+dkh:VAR-137_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-137"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 4.4 ;
+    dkh:isAnnotationOf dkh:VAR-137 .
+
+dkh:VAR-138_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-138"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 33.4 ;
+    dkh:isAnnotationOf dkh:VAR-138 .
+
+dkh:VAR-138_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-138"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 45.9 ;
+    dkh:isAnnotationOf dkh:VAR-138 .
+
+dkh:VAR-138_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-138"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 29.1 ;
+    dkh:isAnnotationOf dkh:VAR-138 .
+
+dkh:VAR-138_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-138"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 3.4 ;
+    dkh:isAnnotationOf dkh:VAR-138 .
+
+dkh:VAR-139_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-139"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 147.2 ;
+    dkh:isAnnotationOf dkh:VAR-139 .
+
+dkh:VAR-139_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-139"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 67.6 ;
+    dkh:isAnnotationOf dkh:VAR-139 .
+
+dkh:VAR-139_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-139"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 23.2 ;
+    dkh:isAnnotationOf dkh:VAR-139 .
+
+dkh:VAR-139_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-139"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 2.8 ;
+    dkh:isAnnotationOf dkh:VAR-139 .
+
+dkh:VAR-140_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-140"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 96.2 ;
+    dkh:isAnnotationOf dkh:VAR-140 .
+
+dkh:VAR-140_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-140"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 61.5 ;
+    dkh:isAnnotationOf dkh:VAR-140 .
+
+dkh:VAR-140_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-140"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 34.5 ;
+    dkh:isAnnotationOf dkh:VAR-140 .
+
+dkh:VAR-140_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-140"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 1.9 ;
+    dkh:isAnnotationOf dkh:VAR-140 .
+
+dkh:VAR-141_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-141"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 14.2 ;
+    dkh:isAnnotationOf dkh:VAR-141 .
+
+dkh:VAR-141_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-141"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 67.0 ;
+    dkh:isAnnotationOf dkh:VAR-141 .
+
+dkh:VAR-141_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-141"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 21.0 ;
+    dkh:isAnnotationOf dkh:VAR-141 .
+
+dkh:VAR-141_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-141"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 0.2 ;
+    dkh:isAnnotationOf dkh:VAR-141 .
+
+dkh:VAR-142_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-142"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 17.0 ;
+    dkh:isAnnotationOf dkh:VAR-142 .
+
+dkh:VAR-142_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-142"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 42.0 ;
+    dkh:isAnnotationOf dkh:VAR-142 .
+
+dkh:VAR-142_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-142"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 12.9 ;
+    dkh:isAnnotationOf dkh:VAR-142 .
+
+dkh:VAR-142_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-142"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 3.7 ;
+    dkh:isAnnotationOf dkh:VAR-142 .
+
+dkh:VAR-143_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-143"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 13.3 ;
+    dkh:isAnnotationOf dkh:VAR-143 .
+
+dkh:VAR-143_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-143"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 59.9 ;
+    dkh:isAnnotationOf dkh:VAR-143 .
+
+dkh:VAR-143_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-143"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 20.3 ;
+    dkh:isAnnotationOf dkh:VAR-143 .
+
+dkh:VAR-143_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-143"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 2.0 ;
+    dkh:isAnnotationOf dkh:VAR-143 .
+
+dkh:VAR-144_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-144"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 8.6 ;
+    dkh:isAnnotationOf dkh:VAR-144 .
+
+dkh:VAR-144_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-144"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 56.2 ;
+    dkh:isAnnotationOf dkh:VAR-144 .
+
+dkh:VAR-144_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-144"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 2.0 ;
+    dkh:isAnnotationOf dkh:VAR-144 .
+
+dkh:VAR-144_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-144"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 3.0 ;
+    dkh:isAnnotationOf dkh:VAR-144 .
+
+dkh:VAR-145_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-145"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 14.7 ;
+    dkh:isAnnotationOf dkh:VAR-145 .
+
+dkh:VAR-145_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-145"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 41.4 ;
+    dkh:isAnnotationOf dkh:VAR-145 .
+
+dkh:VAR-145_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-145"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 28.2 ;
+    dkh:isAnnotationOf dkh:VAR-145 .
+
+dkh:VAR-145_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-145"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 3.4 ;
+    dkh:isAnnotationOf dkh:VAR-145 .
+
+dkh:VAR-146_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-146"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 22.1 ;
+    dkh:isAnnotationOf dkh:VAR-146 .
+
+dkh:VAR-146_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-146"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 69.4 ;
+    dkh:isAnnotationOf dkh:VAR-146 .
+
+dkh:VAR-146_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-146"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 12.2 ;
+    dkh:isAnnotationOf dkh:VAR-146 .
+
+dkh:VAR-146_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-146"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 0.4 ;
+    dkh:isAnnotationOf dkh:VAR-146 .
+
+dkh:VAR-147_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-147"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 59.9 ;
+    dkh:isAnnotationOf dkh:VAR-147 .
+
+dkh:VAR-147_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-147"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 57.5 ;
+    dkh:isAnnotationOf dkh:VAR-147 .
+
+dkh:VAR-147_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-147"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 25.7 ;
+    dkh:isAnnotationOf dkh:VAR-147 .
+
+dkh:VAR-147_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-147"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 0.9 ;
+    dkh:isAnnotationOf dkh:VAR-147 .
+
+dkh:VAR-148_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-148"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 11.1 ;
+    dkh:isAnnotationOf dkh:VAR-148 .
+
+dkh:VAR-148_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-148"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 34.9 ;
+    dkh:isAnnotationOf dkh:VAR-148 .
+
+dkh:VAR-148_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-148"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 25.0 ;
+    dkh:isAnnotationOf dkh:VAR-148 .
+
+dkh:VAR-148_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-148"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 4.6 ;
+    dkh:isAnnotationOf dkh:VAR-148 .
+
+dkh:VAR-149_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-149"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 17.8 ;
+    dkh:isAnnotationOf dkh:VAR-149 .
+
+dkh:VAR-149_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-149"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 58.8 ;
+    dkh:isAnnotationOf dkh:VAR-149 .
+
+dkh:VAR-149_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-149"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 21.6 ;
+    dkh:isAnnotationOf dkh:VAR-149 .
+
+dkh:VAR-149_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-149"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 3.1 ;
+    dkh:isAnnotationOf dkh:VAR-149 .
+
+dkh:VAR-150_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-150"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 5.2 ;
+    dkh:isAnnotationOf dkh:VAR-150 .
+
+dkh:VAR-150_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-150"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 55.5 ;
+    dkh:isAnnotationOf dkh:VAR-150 .
+
+dkh:VAR-150_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-150"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 26.5 ;
+    dkh:isAnnotationOf dkh:VAR-150 .
+
+dkh:VAR-150_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-150"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 1.4 ;
+    dkh:isAnnotationOf dkh:VAR-150 .
+
+dkh:VAR-151_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-151"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 6.4 ;
+    dkh:isAnnotationOf dkh:VAR-151 .
+
+dkh:VAR-151_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-151"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 35.5 ;
+    dkh:isAnnotationOf dkh:VAR-151 .
+
+dkh:VAR-151_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-151"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 1.2 ;
+    dkh:isAnnotationOf dkh:VAR-151 .
+
+dkh:VAR-151_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-151"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 2.8 ;
+    dkh:isAnnotationOf dkh:VAR-151 .
+
+dkh:VAR-152_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-152"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 9.3 ;
+    dkh:isAnnotationOf dkh:VAR-152 .
+
+dkh:VAR-152_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-152"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 63.3 ;
+    dkh:isAnnotationOf dkh:VAR-152 .
+
+dkh:VAR-152_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-152"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 15.7 ;
+    dkh:isAnnotationOf dkh:VAR-152 .
+
+dkh:VAR-152_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-152"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 0.5 ;
+    dkh:isAnnotationOf dkh:VAR-152 .
+
+dkh:VAR-153_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-153"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 7.6 ;
+    dkh:isAnnotationOf dkh:VAR-153 .
+
+dkh:VAR-153_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-153"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 44.1 ;
+    dkh:isAnnotationOf dkh:VAR-153 .
+
+dkh:VAR-153_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-153"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 30.3 ;
+    dkh:isAnnotationOf dkh:VAR-153 .
+
+dkh:VAR-153_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-153"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 0.2 ;
+    dkh:isAnnotationOf dkh:VAR-153 .
+
+dkh:VAR-154_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-154"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 90.5 ;
+    dkh:isAnnotationOf dkh:VAR-154 .
+
+dkh:VAR-154_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-154"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 38.8 ;
+    dkh:isAnnotationOf dkh:VAR-154 .
+
+dkh:VAR-154_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-154"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 26.7 ;
+    dkh:isAnnotationOf dkh:VAR-154 .
+
+dkh:VAR-154_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-154"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 1.3 ;
+    dkh:isAnnotationOf dkh:VAR-154 .
+
+dkh:VAR-155_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-155"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 16.8 ;
+    dkh:isAnnotationOf dkh:VAR-155 .
+
+dkh:VAR-155_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-155"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 69.2 ;
+    dkh:isAnnotationOf dkh:VAR-155 .
+
+dkh:VAR-155_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-155"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 28.3 ;
+    dkh:isAnnotationOf dkh:VAR-155 .
+
+dkh:VAR-155_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-155"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 4.6 ;
+    dkh:isAnnotationOf dkh:VAR-155 .
+
+dkh:VAR-156_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-156"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 17.3 ;
+    dkh:isAnnotationOf dkh:VAR-156 .
+
+dkh:VAR-156_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-156"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 40.4 ;
+    dkh:isAnnotationOf dkh:VAR-156 .
+
+dkh:VAR-156_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-156"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 4.8 ;
+    dkh:isAnnotationOf dkh:VAR-156 .
+
+dkh:VAR-156_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-156"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 1.1 ;
+    dkh:isAnnotationOf dkh:VAR-156 .
+
+dkh:VAR-157_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-157"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 16.6 ;
+    dkh:isAnnotationOf dkh:VAR-157 .
+
+dkh:VAR-157_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-157"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 33.3 ;
+    dkh:isAnnotationOf dkh:VAR-157 .
+
+dkh:VAR-157_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-157"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 14.5 ;
+    dkh:isAnnotationOf dkh:VAR-157 .
+
+dkh:VAR-157_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-157"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 1.4 ;
+    dkh:isAnnotationOf dkh:VAR-157 .
+
+dkh:VAR-158_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-158"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 117.5 ;
+    dkh:isAnnotationOf dkh:VAR-158 .
+
+dkh:VAR-158_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-158"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 31.2 ;
+    dkh:isAnnotationOf dkh:VAR-158 .
+
+dkh:VAR-158_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-158"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 9.4 ;
+    dkh:isAnnotationOf dkh:VAR-158 .
+
+dkh:VAR-158_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-158"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 0.4 ;
+    dkh:isAnnotationOf dkh:VAR-158 .
+
+dkh:VAR-159_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-159"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 11.3 ;
+    dkh:isAnnotationOf dkh:VAR-159 .
+
+dkh:VAR-159_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-159"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 58.0 ;
+    dkh:isAnnotationOf dkh:VAR-159 .
+
+dkh:VAR-159_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-159"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 6.2 ;
+    dkh:isAnnotationOf dkh:VAR-159 .
+
+dkh:VAR-159_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-159"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 1.2 ;
+    dkh:isAnnotationOf dkh:VAR-159 .
+
+dkh:VAR-160_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-160"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 19.3 ;
+    dkh:isAnnotationOf dkh:VAR-160 .
+
+dkh:VAR-160_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-160"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 31.0 ;
+    dkh:isAnnotationOf dkh:VAR-160 .
+
+dkh:VAR-160_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-160"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 5.8 ;
+    dkh:isAnnotationOf dkh:VAR-160 .
+
+dkh:VAR-160_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-160"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 0.7 ;
+    dkh:isAnnotationOf dkh:VAR-160 .
+
+dkh:sample1_bam a dkh:BAMFile,
+        owl:NamedIndividual ;
+    rdfs:label "sample1.bam"@en ;
+    dkh:generatedBy dkh:Sequencer1 .
+
+dkh:sample1_vcf a dkh:VCFFile,
+        owl:NamedIndividual ;
+    rdfs:label "sample1.vcf"@en ;
+    dkh:derivedFrom dkh:sample1_bam ;
+    dkh:generatedBy dkh:Sequencer1 .
+
+dkh:Andrii a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Andrii"@en ;
+    dkh:hasAgeYears 40 .
+
+dkh:Maria a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Maria"@en ;
+    dkh:hasChild dkh:Halyna,
+        dkh:Iryna ;
+    dkh:isDeceased true .
+
+dkh:Marta a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Marta"@en ;
+    dkh:hasAgeYears 39 ;
+    dkh:hasParent dkh:Iryna,
+        dkh:Petro ;
+    dkh:hasSibling dkh:Olena .
+
+dkh:Petro a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Petro"@en ;
+    dkh:hasAgeYears 70 .
+
+dkh:Sequencer1 a dkh:Sequencer,
+        owl:NamedIndividual ;
+    rdfs:label "Sequencer1"@en .
+
+dkh:VAR-004 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-004"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-004_FisherStrandBias,
+        dkh:VAR-004_StrandOddsRatio ;
+    dkh:hasExonEndPosition true ;
+    dkh:hasVariantId "VAR-004" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:Halyna a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Halyna"@en ;
+    dkh:hasAgeYears 65 ;
+    dkh:hasChild dkh:Andrii ;
+    dkh:hasParent dkh:Maria .
+
+dkh:Iryna a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Iryna"@en ;
+    dkh:hasAgeYears 68 ;
+    dkh:hasDiagnosis dkh:Iryna_OC ;
+    dkh:hasParent dkh:Maria ;
+    dkh:hasSibling dkh:Halyna .
+
+dkh:Olena a dkh:Proband,
+        owl:NamedIndividual ;
+    rdfs:label "Olena"@en ;
+    dkh:carries dkh:VAR-001 ;
+    dkh:hasAgeYears 42 ;
+    dkh:hasDiagnosis dkh:Olena_BC ;
+    dkh:hasParent dkh:Iryna,
+        dkh:Petro ;
+    dkh:hasSibling dkh:Marta .
+
+dkh:HBOC-panel a dkh:GenePanel,
+        owl:NamedIndividual ;
+    rdfs:label "HBOC-panel"@en ;
+    dkh:hasMember dkh:BRCA1,
+        dkh:BRCA2,
+        dkh:PALB2,
+        dkh:TP53 .
+
+dkh:VAR-101 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-101"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-101_FisherStrandBias,
+        dkh:VAR-101_MappingQuality,
+        dkh:VAR-101_QualityByDepth,
+        dkh:VAR-101_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-101" ;
+    dkh:locatedIn dkh:BRCA1 .
+
+dkh:VAR-102 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-102"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-102_FisherStrandBias,
+        dkh:VAR-102_MappingQuality,
+        dkh:VAR-102_QualityByDepth,
+        dkh:VAR-102_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-102" ;
+    dkh:locatedIn dkh:TP53 .
+
+dkh:VAR-103 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-103"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-103_FisherStrandBias,
+        dkh:VAR-103_MappingQuality,
+        dkh:VAR-103_QualityByDepth,
+        dkh:VAR-103_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Pathogenic ;
+    dkh:hasVariantId "VAR-103" ;
+    dkh:locatedIn dkh:PALB2 .
+
+dkh:VAR-104 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-104"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-104_FisherStrandBias,
+        dkh:VAR-104_MappingQuality,
+        dkh:VAR-104_QualityByDepth,
+        dkh:VAR-104_StrandOddsRatio ;
+    dkh:hasExonEndPosition true ;
+    dkh:hasVariantId "VAR-104" ;
+    dkh:locatedIn dkh:TP53 .
+
+dkh:VAR-105 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-105"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-105_FisherStrandBias,
+        dkh:VAR-105_MappingQuality,
+        dkh:VAR-105_QualityByDepth,
+        dkh:VAR-105_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-105" ;
+    dkh:locatedIn dkh:PALB2 .
+
+dkh:VAR-106 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-106"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-106_FisherStrandBias,
+        dkh:VAR-106_MappingQuality,
+        dkh:VAR-106_QualityByDepth,
+        dkh:VAR-106_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-106" ;
+    dkh:locatedIn dkh:PALB2 .
+
+dkh:VAR-107 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-107"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-107_FisherStrandBias,
+        dkh:VAR-107_MappingQuality,
+        dkh:VAR-107_QualityByDepth,
+        dkh:VAR-107_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-107" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-108 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-108"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-108_FisherStrandBias,
+        dkh:VAR-108_MappingQuality,
+        dkh:VAR-108_QualityByDepth,
+        dkh:VAR-108_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-108" ;
+    dkh:locatedIn dkh:PALB2 .
+
+dkh:VAR-109 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-109"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-109_FisherStrandBias,
+        dkh:VAR-109_MappingQuality,
+        dkh:VAR-109_QualityByDepth,
+        dkh:VAR-109_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-109" ;
+    dkh:locatedIn dkh:TP53 .
+
+dkh:VAR-110 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-110"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-110_FisherStrandBias,
+        dkh:VAR-110_MappingQuality,
+        dkh:VAR-110_QualityByDepth,
+        dkh:VAR-110_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-110" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-111 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-111"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-111_FisherStrandBias,
+        dkh:VAR-111_MappingQuality,
+        dkh:VAR-111_QualityByDepth,
+        dkh:VAR-111_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-111" ;
+    dkh:locatedIn dkh:BRCA1 .
+
+dkh:VAR-112 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-112"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-112_FisherStrandBias,
+        dkh:VAR-112_MappingQuality,
+        dkh:VAR-112_QualityByDepth,
+        dkh:VAR-112_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-112" ;
+    dkh:locatedIn dkh:BRCA1 .
+
+dkh:VAR-113 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-113"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-113_FisherStrandBias,
+        dkh:VAR-113_MappingQuality,
+        dkh:VAR-113_QualityByDepth,
+        dkh:VAR-113_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-113" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-114 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-114"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-114_FisherStrandBias,
+        dkh:VAR-114_MappingQuality,
+        dkh:VAR-114_QualityByDepth,
+        dkh:VAR-114_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-114" ;
+    dkh:locatedIn dkh:PALB2 .
+
+dkh:VAR-115 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-115"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-115_FisherStrandBias,
+        dkh:VAR-115_MappingQuality,
+        dkh:VAR-115_QualityByDepth,
+        dkh:VAR-115_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-115" ;
+    dkh:locatedIn dkh:BRCA1 .
+
+dkh:VAR-116 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-116"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-116_FisherStrandBias,
+        dkh:VAR-116_MappingQuality,
+        dkh:VAR-116_QualityByDepth,
+        dkh:VAR-116_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-116" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-117 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-117"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-117_FisherStrandBias,
+        dkh:VAR-117_MappingQuality,
+        dkh:VAR-117_QualityByDepth,
+        dkh:VAR-117_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-117" ;
+    dkh:locatedIn dkh:TP53 .
+
+dkh:VAR-118 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-118"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-118_FisherStrandBias,
+        dkh:VAR-118_MappingQuality,
+        dkh:VAR-118_QualityByDepth,
+        dkh:VAR-118_StrandOddsRatio ;
+    dkh:hasExonEndPosition true ;
+    dkh:hasVariantId "VAR-118" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-119 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-119"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-119_FisherStrandBias,
+        dkh:VAR-119_MappingQuality,
+        dkh:VAR-119_QualityByDepth,
+        dkh:VAR-119_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-119" ;
+    dkh:locatedIn dkh:TP53 .
+
+dkh:VAR-120 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-120"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-120_FisherStrandBias,
+        dkh:VAR-120_MappingQuality,
+        dkh:VAR-120_QualityByDepth,
+        dkh:VAR-120_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-120" ;
+    dkh:locatedIn dkh:BRCA1 .
+
+dkh:VAR-121 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-121"@en ;
+    dkh:fromSample dkh:SAMPLE-B ;
+    dkh:hasAnnotation dkh:VAR-121_FisherStrandBias,
+        dkh:VAR-121_MappingQuality,
+        dkh:VAR-121_QualityByDepth,
+        dkh:VAR-121_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-121" ;
+    dkh:locatedIn dkh:TP53 .
+
+dkh:VAR-122 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-122"@en ;
+    dkh:fromSample dkh:SAMPLE-B ;
+    dkh:hasAnnotation dkh:VAR-122_FisherStrandBias,
+        dkh:VAR-122_MappingQuality,
+        dkh:VAR-122_QualityByDepth,
+        dkh:VAR-122_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-122" ;
+    dkh:locatedIn dkh:BRCA1 .
+
+dkh:VAR-123 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-123"@en ;
+    dkh:fromSample dkh:SAMPLE-B ;
+    dkh:hasAnnotation dkh:VAR-123_FisherStrandBias,
+        dkh:VAR-123_MappingQuality,
+        dkh:VAR-123_QualityByDepth,
+        dkh:VAR-123_StrandOddsRatio ;
+    dkh:hasExonEndPosition true ;
+    dkh:hasVariantId "VAR-123" ;
+    dkh:locatedIn dkh:TP53 .
+
+dkh:VAR-124 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-124"@en ;
+    dkh:fromSample dkh:SAMPLE-B ;
+    dkh:hasAnnotation dkh:VAR-124_FisherStrandBias,
+        dkh:VAR-124_MappingQuality,
+        dkh:VAR-124_QualityByDepth,
+        dkh:VAR-124_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-124" ;
+    dkh:locatedIn dkh:TP53 .
+
+dkh:VAR-125 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-125"@en ;
+    dkh:fromSample dkh:SAMPLE-B ;
+    dkh:hasAnnotation dkh:VAR-125_FisherStrandBias,
+        dkh:VAR-125_MappingQuality,
+        dkh:VAR-125_QualityByDepth,
+        dkh:VAR-125_StrandOddsRatio ;
+    dkh:hasExonEndPosition true ;
+    dkh:hasVariantId "VAR-125" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-126 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-126"@en ;
+    dkh:fromSample dkh:SAMPLE-B ;
+    dkh:hasAnnotation dkh:VAR-126_FisherStrandBias,
+        dkh:VAR-126_MappingQuality,
+        dkh:VAR-126_QualityByDepth,
+        dkh:VAR-126_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-126" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-127 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-127"@en ;
+    dkh:fromSample dkh:SAMPLE-B ;
+    dkh:hasAnnotation dkh:VAR-127_FisherStrandBias,
+        dkh:VAR-127_MappingQuality,
+        dkh:VAR-127_QualityByDepth,
+        dkh:VAR-127_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-127" ;
+    dkh:locatedIn dkh:PALB2 .
+
+dkh:VAR-128 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-128"@en ;
+    dkh:fromSample dkh:SAMPLE-B ;
+    dkh:hasAnnotation dkh:VAR-128_FisherStrandBias,
+        dkh:VAR-128_MappingQuality,
+        dkh:VAR-128_QualityByDepth,
+        dkh:VAR-128_StrandOddsRatio ;
+    dkh:hasExonEndPosition true ;
+    dkh:hasVariantId "VAR-128" ;
+    dkh:locatedIn dkh:BRCA1 .
+
+dkh:VAR-129 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-129"@en ;
+    dkh:fromSample dkh:SAMPLE-B ;
+    dkh:hasAnnotation dkh:VAR-129_FisherStrandBias,
+        dkh:VAR-129_MappingQuality,
+        dkh:VAR-129_QualityByDepth,
+        dkh:VAR-129_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-129" ;
+    dkh:locatedIn dkh:PALB2 .
+
+dkh:VAR-130 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-130"@en ;
+    dkh:fromSample dkh:SAMPLE-B ;
+    dkh:hasAnnotation dkh:VAR-130_FisherStrandBias,
+        dkh:VAR-130_MappingQuality,
+        dkh:VAR-130_QualityByDepth,
+        dkh:VAR-130_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-130" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-131 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-131"@en ;
+    dkh:fromSample dkh:SAMPLE-B ;
+    dkh:hasAnnotation dkh:VAR-131_FisherStrandBias,
+        dkh:VAR-131_MappingQuality,
+        dkh:VAR-131_QualityByDepth,
+        dkh:VAR-131_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Pathogenic ;
+    dkh:hasVariantId "VAR-131" ;
+    dkh:locatedIn dkh:PALB2 .
+
+dkh:VAR-132 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-132"@en ;
+    dkh:fromSample dkh:SAMPLE-B ;
+    dkh:hasAnnotation dkh:VAR-132_FisherStrandBias,
+        dkh:VAR-132_MappingQuality,
+        dkh:VAR-132_QualityByDepth,
+        dkh:VAR-132_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-132" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-133 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-133"@en ;
+    dkh:fromSample dkh:SAMPLE-B ;
+    dkh:hasAnnotation dkh:VAR-133_FisherStrandBias,
+        dkh:VAR-133_MappingQuality,
+        dkh:VAR-133_QualityByDepth,
+        dkh:VAR-133_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-133" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-134 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-134"@en ;
+    dkh:fromSample dkh:SAMPLE-B ;
+    dkh:hasAnnotation dkh:VAR-134_FisherStrandBias,
+        dkh:VAR-134_MappingQuality,
+        dkh:VAR-134_QualityByDepth,
+        dkh:VAR-134_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-134" ;
+    dkh:locatedIn dkh:BRCA1 .
+
+dkh:VAR-135 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-135"@en ;
+    dkh:fromSample dkh:SAMPLE-B ;
+    dkh:hasAnnotation dkh:VAR-135_FisherStrandBias,
+        dkh:VAR-135_MappingQuality,
+        dkh:VAR-135_QualityByDepth,
+        dkh:VAR-135_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-135" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-136 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-136"@en ;
+    dkh:fromSample dkh:SAMPLE-B ;
+    dkh:hasAnnotation dkh:VAR-136_FisherStrandBias,
+        dkh:VAR-136_MappingQuality,
+        dkh:VAR-136_QualityByDepth,
+        dkh:VAR-136_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-136" ;
+    dkh:locatedIn dkh:TP53 .
+
+dkh:VAR-137 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-137"@en ;
+    dkh:fromSample dkh:SAMPLE-B ;
+    dkh:hasAnnotation dkh:VAR-137_FisherStrandBias,
+        dkh:VAR-137_MappingQuality,
+        dkh:VAR-137_QualityByDepth,
+        dkh:VAR-137_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-137" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-138 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-138"@en ;
+    dkh:fromSample dkh:SAMPLE-B ;
+    dkh:hasAnnotation dkh:VAR-138_FisherStrandBias,
+        dkh:VAR-138_MappingQuality,
+        dkh:VAR-138_QualityByDepth,
+        dkh:VAR-138_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-138" ;
+    dkh:locatedIn dkh:PALB2 .
+
+dkh:VAR-139 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-139"@en ;
+    dkh:fromSample dkh:SAMPLE-B ;
+    dkh:hasAnnotation dkh:VAR-139_FisherStrandBias,
+        dkh:VAR-139_MappingQuality,
+        dkh:VAR-139_QualityByDepth,
+        dkh:VAR-139_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-139" ;
+    dkh:locatedIn dkh:BRCA1 .
+
+dkh:VAR-140 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-140"@en ;
+    dkh:fromSample dkh:SAMPLE-B ;
+    dkh:hasAnnotation dkh:VAR-140_FisherStrandBias,
+        dkh:VAR-140_MappingQuality,
+        dkh:VAR-140_QualityByDepth,
+        dkh:VAR-140_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-140" ;
+    dkh:locatedIn dkh:TP53 .
+
+dkh:VAR-141 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-141"@en ;
+    dkh:fromSample dkh:SAMPLE-C ;
+    dkh:hasAnnotation dkh:VAR-141_FisherStrandBias,
+        dkh:VAR-141_MappingQuality,
+        dkh:VAR-141_QualityByDepth,
+        dkh:VAR-141_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-141" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-142 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-142"@en ;
+    dkh:fromSample dkh:SAMPLE-C ;
+    dkh:hasAnnotation dkh:VAR-142_FisherStrandBias,
+        dkh:VAR-142_MappingQuality,
+        dkh:VAR-142_QualityByDepth,
+        dkh:VAR-142_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-142" ;
+    dkh:locatedIn dkh:PALB2 .
+
+dkh:VAR-143 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-143"@en ;
+    dkh:fromSample dkh:SAMPLE-C ;
+    dkh:hasAnnotation dkh:VAR-143_FisherStrandBias,
+        dkh:VAR-143_MappingQuality,
+        dkh:VAR-143_QualityByDepth,
+        dkh:VAR-143_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-143" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-144 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-144"@en ;
+    dkh:fromSample dkh:SAMPLE-C ;
+    dkh:hasAnnotation dkh:VAR-144_FisherStrandBias,
+        dkh:VAR-144_MappingQuality,
+        dkh:VAR-144_QualityByDepth,
+        dkh:VAR-144_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-144" ;
+    dkh:locatedIn dkh:TP53 .
+
+dkh:VAR-145 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-145"@en ;
+    dkh:fromSample dkh:SAMPLE-C ;
+    dkh:hasAnnotation dkh:VAR-145_FisherStrandBias,
+        dkh:VAR-145_MappingQuality,
+        dkh:VAR-145_QualityByDepth,
+        dkh:VAR-145_StrandOddsRatio ;
+    dkh:hasExonEndPosition true ;
+    dkh:hasVariantId "VAR-145" ;
+    dkh:locatedIn dkh:PALB2 .
+
+dkh:VAR-146 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-146"@en ;
+    dkh:fromSample dkh:SAMPLE-C ;
+    dkh:hasAnnotation dkh:VAR-146_FisherStrandBias,
+        dkh:VAR-146_MappingQuality,
+        dkh:VAR-146_QualityByDepth,
+        dkh:VAR-146_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-146" ;
+    dkh:locatedIn dkh:BRCA1 .
+
+dkh:VAR-147 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-147"@en ;
+    dkh:fromSample dkh:SAMPLE-C ;
+    dkh:hasAnnotation dkh:VAR-147_FisherStrandBias,
+        dkh:VAR-147_MappingQuality,
+        dkh:VAR-147_QualityByDepth,
+        dkh:VAR-147_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-147" ;
+    dkh:locatedIn dkh:BRCA1 .
+
+dkh:VAR-148 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-148"@en ;
+    dkh:fromSample dkh:SAMPLE-C ;
+    dkh:hasAnnotation dkh:VAR-148_FisherStrandBias,
+        dkh:VAR-148_MappingQuality,
+        dkh:VAR-148_QualityByDepth,
+        dkh:VAR-148_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-148" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-149 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-149"@en ;
+    dkh:fromSample dkh:SAMPLE-C ;
+    dkh:hasAnnotation dkh:VAR-149_FisherStrandBias,
+        dkh:VAR-149_MappingQuality,
+        dkh:VAR-149_QualityByDepth,
+        dkh:VAR-149_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-149" ;
+    dkh:locatedIn dkh:TP53 .
+
+dkh:VAR-150 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-150"@en ;
+    dkh:fromSample dkh:SAMPLE-C ;
+    dkh:hasAnnotation dkh:VAR-150_FisherStrandBias,
+        dkh:VAR-150_MappingQuality,
+        dkh:VAR-150_QualityByDepth,
+        dkh:VAR-150_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-150" ;
+    dkh:locatedIn dkh:TP53 .
+
+dkh:VAR-151 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-151"@en ;
+    dkh:fromSample dkh:SAMPLE-C ;
+    dkh:hasAnnotation dkh:VAR-151_FisherStrandBias,
+        dkh:VAR-151_MappingQuality,
+        dkh:VAR-151_QualityByDepth,
+        dkh:VAR-151_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-151" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-152 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-152"@en ;
+    dkh:fromSample dkh:SAMPLE-C ;
+    dkh:hasAnnotation dkh:VAR-152_FisherStrandBias,
+        dkh:VAR-152_MappingQuality,
+        dkh:VAR-152_QualityByDepth,
+        dkh:VAR-152_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Pathogenic ;
+    dkh:hasVariantId "VAR-152" ;
+    dkh:locatedIn dkh:TP53 .
+
+dkh:VAR-153 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-153"@en ;
+    dkh:fromSample dkh:SAMPLE-C ;
+    dkh:hasAnnotation dkh:VAR-153_FisherStrandBias,
+        dkh:VAR-153_MappingQuality,
+        dkh:VAR-153_QualityByDepth,
+        dkh:VAR-153_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-153" ;
+    dkh:locatedIn dkh:TP53 .
+
+dkh:VAR-154 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-154"@en ;
+    dkh:fromSample dkh:SAMPLE-C ;
+    dkh:hasAnnotation dkh:VAR-154_FisherStrandBias,
+        dkh:VAR-154_MappingQuality,
+        dkh:VAR-154_QualityByDepth,
+        dkh:VAR-154_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-154" ;
+    dkh:locatedIn dkh:TP53 .
+
+dkh:VAR-155 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-155"@en ;
+    dkh:fromSample dkh:SAMPLE-C ;
+    dkh:hasAnnotation dkh:VAR-155_FisherStrandBias,
+        dkh:VAR-155_MappingQuality,
+        dkh:VAR-155_QualityByDepth,
+        dkh:VAR-155_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-155" ;
+    dkh:locatedIn dkh:BRCA1 .
+
+dkh:VAR-156 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-156"@en ;
+    dkh:fromSample dkh:SAMPLE-C ;
+    dkh:hasAnnotation dkh:VAR-156_FisherStrandBias,
+        dkh:VAR-156_MappingQuality,
+        dkh:VAR-156_QualityByDepth,
+        dkh:VAR-156_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-156" ;
+    dkh:locatedIn dkh:PALB2 .
+
+dkh:VAR-157 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-157"@en ;
+    dkh:fromSample dkh:SAMPLE-C ;
+    dkh:hasAnnotation dkh:VAR-157_FisherStrandBias,
+        dkh:VAR-157_MappingQuality,
+        dkh:VAR-157_QualityByDepth,
+        dkh:VAR-157_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-157" ;
+    dkh:locatedIn dkh:BRCA1 .
+
+dkh:VAR-158 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-158"@en ;
+    dkh:fromSample dkh:SAMPLE-C ;
+    dkh:hasAnnotation dkh:VAR-158_FisherStrandBias,
+        dkh:VAR-158_MappingQuality,
+        dkh:VAR-158_QualityByDepth,
+        dkh:VAR-158_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-158" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-159 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-159"@en ;
+    dkh:fromSample dkh:SAMPLE-C ;
+    dkh:hasAnnotation dkh:VAR-159_FisherStrandBias,
+        dkh:VAR-159_MappingQuality,
+        dkh:VAR-159_QualityByDepth,
+        dkh:VAR-159_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-159" ;
+    dkh:locatedIn dkh:PALB2 .
+
+dkh:VAR-160 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-160"@en ;
+    dkh:fromSample dkh:SAMPLE-C ;
+    dkh:hasAnnotation dkh:VAR-160_FisherStrandBias,
+        dkh:VAR-160_MappingQuality,
+        dkh:VAR-160_QualityByDepth,
+        dkh:VAR-160_StrandOddsRatio ;
+    dkh:hasVariantId "VAR-160" ;
+    dkh:locatedIn dkh:PALB2 .
+
+dkh:VAR-001 a dkh:GermlineVariant,
+        dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-001"@en ;
+    dkh:fromSample dkh:SAMPLE-A ;
+    dkh:hasAnnotation dkh:VAR-001_FisherStrandBias,
+        dkh:VAR-001_MappingQuality,
+        dkh:VAR-001_QualityByDepth,
+        dkh:VAR-001_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Pathogenic ;
+    dkh:hasVariantId "VAR-001" ;
+    dkh:locatedIn dkh:BRCA1 .
+
+dkh:BRCA1 a dkh:Gene,
+        owl:NamedIndividual ;
+    rdfs:label "BRCA1"@en ;
+    dkh:hasGeneSymbol "BRCA1" ;
+    dkh:isMemberOf dkh:HBOC-panel ;
+    dkh:onChromosome "17" .
+
+dkh:PALB2 a dkh:Gene,
+        owl:NamedIndividual ;
+    rdfs:label "PALB2"@en ;
+    dkh:hasGeneSymbol "PALB2" ;
+    dkh:isMemberOf dkh:HBOC-panel ;
+    dkh:onChromosome "16" .
+
+dkh:TP53 a dkh:Gene,
+        owl:NamedIndividual ;
+    rdfs:label "TP53"@en ;
+    dkh:hasGeneSymbol "TP53" ;
+    dkh:isMemberOf dkh:HBOC-panel ;
+    dkh:onChromosome "17" .
+
+dkh:SAMPLE-B a dkh:Sample,
+        owl:NamedIndividual ;
+    rdfs:label "SAMPLE-B"@en ;
+    dkh:hasSampleCode "B" .
+
+dkh:SAMPLE-C a dkh:Sample,
+        owl:NamedIndividual ;
+    rdfs:label "SAMPLE-C"@en ;
+    dkh:hasSampleCode "C" .
+
+dkh:BRCA2 a dkh:Gene,
+        owl:NamedIndividual ;
+    rdfs:label "BRCA2"@en ;
+    dkh:hasGeneSymbol "BRCA2" ;
+    dkh:isMemberOf dkh:HBOC-panel ;
+    dkh:onChromosome "13" .
+
+dkh:SAMPLE-A a dkh:Sample,
+        owl:NamedIndividual ;
+    rdfs:label "SAMPLE-A"@en ;
+    dkh:hasSampleCode "A" .
+

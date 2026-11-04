@@ -1,0 +1,169 @@
+{
+ "dataset_version": "1.0.0",
+ "fact_rows": 20000,
+ "rejected": {
+  "bad_date": 1,
+  "depth_out_of_range": 1,
+  "duplicate_call_id": 1,
+  "null_gene": 1,
+  "unknown_sample": 1
+ },
+ "checks": [
+  {
+   "name": "raw_vs_loaded_reconciliation",
+   "sql": "SELECT (SELECT count(*) FROM stg_calls) - (SELECT count(*) FROM fact_variant_call) - (SELECT count(*) FROM rejected_calls)",
+   "value": 0,
+   "ok": true,
+   "note": "raw rows = loaded + rejected"
+  },
+  {
+   "name": "not_null_foreign_keys",
+   "sql": "SELECT count(*) FROM fact_variant_call WHERE date_key IS NULL OR sample_key IS NULL OR gene_key IS NULL OR pipeline_key IS NULL OR variant_type_key IS NULL OR origin_key IS NULL OR significance_key IS NULL",
+   "value": 0,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "name": "unique_call_id",
+   "sql": "SELECT count(*) - count(DISTINCT call_id) FROM fact_variant_call",
+   "value": 0,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "name": "range_read_depth_qual_af",
+   "sql": "SELECT count(*) FROM fact_variant_call WHERE read_depth NOT BETWEEN 1 AND 1000 OR qual NOT BETWEEN 0 AND 255 OR alt_fraction NOT BETWEEN 0 AND 1",
+   "value": 0,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "name": "flag_is_pass_binary",
+   "sql": "SELECT count(*) FROM fact_variant_call WHERE is_pass NOT IN (0,1)",
+   "value": 0,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "name": "dates_in_calendar_2025_2026",
+   "sql": "SELECT count(*) FROM fact_variant_call f LEFT JOIN dim_date d USING (date_key) WHERE d.date_key IS NULL OR d.year NOT IN (2025, 2026)",
+   "value": 0,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "name": "orphans_fact_variant_call.sample_key",
+   "sql": "SELECT count(*) FROM fact_variant_call f LEFT JOIN dim_sample d ON f.sample_key = d.sample_key WHERE d.sample_key IS NULL",
+   "value": 0,
+   "ok": true,
+   "note": "no orphans"
+  },
+  {
+   "name": "orphans_fact_variant_call.gene_key",
+   "sql": "SELECT count(*) FROM fact_variant_call f LEFT JOIN dim_gene d ON f.gene_key = d.gene_key WHERE d.gene_key IS NULL",
+   "value": 0,
+   "ok": true,
+   "note": "no orphans"
+  },
+  {
+   "name": "orphans_fact_variant_call.pipeline_key",
+   "sql": "SELECT count(*) FROM fact_variant_call f LEFT JOIN dim_pipeline d ON f.pipeline_key = d.pipeline_key WHERE d.pipeline_key IS NULL",
+   "value": 0,
+   "ok": true,
+   "note": "no orphans"
+  },
+  {
+   "name": "orphans_fact_variant_call.variant_type_key",
+   "sql": "SELECT count(*) FROM fact_variant_call f LEFT JOIN dim_taxon d ON f.variant_type_key = d.taxon_key WHERE d.taxon_key IS NULL",
+   "value": 0,
+   "ok": true,
+   "note": "no orphans"
+  },
+  {
+   "name": "orphans_fact_variant_call.origin_key",
+   "sql": "SELECT count(*) FROM fact_variant_call f LEFT JOIN dim_taxon d ON f.origin_key = d.taxon_key WHERE d.taxon_key IS NULL",
+   "value": 0,
+   "ok": true,
+   "note": "no orphans"
+  },
+  {
+   "name": "orphans_fact_variant_call.significance_key",
+   "sql": "SELECT count(*) FROM fact_variant_call f LEFT JOIN dim_taxon d ON f.significance_key = d.taxon_key WHERE d.taxon_key IS NULL",
+   "value": 0,
+   "ok": true,
+   "note": "no orphans"
+  },
+  {
+   "name": "orphans_fact_variant_call.date_key",
+   "sql": "SELECT count(*) FROM fact_variant_call f LEFT JOIN dim_date d ON f.date_key = d.date_key WHERE d.date_key IS NULL",
+   "value": 0,
+   "ok": true,
+   "note": "no orphans"
+  },
+  {
+   "name": "orphans_fact_pipeline_day.pipeline_key",
+   "sql": "SELECT count(*) FROM fact_pipeline_day f LEFT JOIN dim_pipeline d ON f.pipeline_key = d.pipeline_key WHERE d.pipeline_key IS NULL",
+   "value": 0,
+   "ok": true,
+   "note": "no orphans"
+  },
+  {
+   "name": "taxon_role_variant_type_under_C022",
+   "sql": "SELECT count(*) FROM fact_variant_call f JOIN dim_taxon t ON t.taxon_key = f.variant_type_key WHERE t.facet_label <> 'genetic variant' OR NOT t.is_leaf",
+   "value": 0,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "name": "taxon_role_origin_under_C029",
+   "sql": "SELECT count(*) FROM fact_variant_call f JOIN dim_taxon t ON t.taxon_key = f.origin_key WHERE t.facet_label <> 'Variant by origin'",
+   "value": 0,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "name": "taxon_role_significance_under_C032",
+   "sql": "SELECT count(*) FROM fact_variant_call f JOIN dim_taxon t ON t.taxon_key = f.significance_key WHERE t.facet_label <> 'Variant by clinical significance'",
+   "value": 0,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "name": "scd2_no_overlap_per_family",
+   "sql": "SELECT count(*) FROM dim_pipeline a JOIN dim_pipeline b ON a.family = b.family AND a.pipeline_key < b.pipeline_key AND a.valid_from <= b.valid_to AND b.valid_from <= a.valid_to",
+   "value": 0,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "name": "scd2_one_current_per_family",
+   "sql": "SELECT count(*) FROM (SELECT family FROM dim_pipeline GROUP BY 1 HAVING sum(is_current::INT) <> 1)",
+   "value": 0,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "name": "pipeline_day_complete_4_per_day",
+   "sql": "SELECT count(*) FROM (SELECT date_key FROM fact_pipeline_day GROUP BY 1 HAVING count(*) <> 4)",
+   "value": 0,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "name": "iri_unique_and_wellformed",
+   "sql": "SELECT count(*) FROM dim_taxon WHERE iri NOT LIKE 'http://example.org/knowledge-hub/biomed/C%'",
+   "value": 0,
+   "ok": true,
+   "note": ""
+  },
+  {
+   "name": "quarantine_detected_defects",
+   "sql": "SELECT count(*) FROM rejected_calls",
+   "value": 5,
+   "ok": true,
+   "note": "5 dirty rows injected by the generator must be caught"
+  }
+ ],
+ "passed": 22,
+ "total": 22
+}

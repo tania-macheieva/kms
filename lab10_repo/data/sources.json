@@ -1,0 +1,125 @@
+{
+ "sarek_readme": {
+  "sha": "6e9b164daa2a54c98f7dda538645d340c561ac24",
+  "date": "2026-10-26"
+ },
+ "sarek_usage": {
+  "sha": "6e9b164daa2a54c98f7dda538645d340c561ac24",
+  "date": "2026-10-26"
+ },
+ "sarek_output": {
+  "sha": "6e9b164daa2a54c98f7dda538645d340c561ac24",
+  "date": "2026-10-26"
+ },
+ "sarek_vc_intro": {
+  "sha": "6e9b164daa2a54c98f7dda538645d340c561ac24",
+  "date": "2026-10-26"
+ },
+ "sarek_vc_theory": {
+  "sha": "6e9b164daa2a54c98f7dda538645d340c561ac24",
+  "date": "2026-10-26"
+ },
+ "sarek_vc_sarek": {
+  "sha": "6e9b164daa2a54c98f7dda538645d340c561ac24",
+  "date": "2026-10-26"
+ },
+ "sarek_vc_interp": {
+  "sha": "6e9b164daa2a54c98f7dda538645d340c561ac24",
+  "date": "2026-10-26"
+ },
+ "sarek_citations": {
+  "sha": "6e9b164daa2a54c98f7dda538645d340c561ac24",
+  "date": "2026-10-26"
+ },
+ "rare_readme": {
+  "sha": "b504e038ba5ac97f30558ae9f64df17e707a268a",
+  "date": "2026-10-07"
+ },
+ "rare_usage": {
+  "sha": "b504e038ba5ac97f30558ae9f64df17e707a268a",
+  "date": "2026-10-07"
+ },
+ "rare_output": {
+  "sha": "b504e038ba5ac97f30558ae9f64df17e707a268a",
+  "date": "2026-10-07"
+ },
+ "rare_citations": {
+  "sha": "b504e038ba5ac97f30558ae9f64df17e707a268a",
+  "date": "2026-10-07"
+ },
+ "bcftools_readme": {
+  "sha": "b62c1bda5bf8a6e0a343e2671e5f5abebfc1bcac",
+  "date": "2026-10-27"
+ },
+ "bcftools_manual": {
+  "sha": "b62c1bda5bf8a6e0a343e2671e5f5abebfc1bcac",
+  "date": "2026-10-27"
+ },
+ "gatk_readme": {
+  "sha": "0cde69eed30339f5978cbb1ac6e5cf3662f9e1f8",
+  "date": "2026-08-17"
+ },
+ "gatk_mutect2_wdl": {
+  "sha": "0cde69eed30339f5978cbb1ac6e5cf3662f9e1f8",
+  "date": "2026-08-17"
+ },
+ "gatk_cnv_germline": {
+  "sha": "0cde69eed30339f5978cbb1ac6e5cf3662f9e1f8",
+  "date": "2026-08-17"
+ },
+ "gatk_cnv_somatic": {
+  "sha": "0cde69eed30339f5978cbb1ac6e5cf3662f9e1f8",
+  "date": "2026-08-17"
+ },
+ "gatk_funcotator_wdl": {
+  "sha": "0cde69eed30339f5978cbb1ac6e5cf3662f9e1f8",
+  "date": "2026-08-17"
+ },
+ "gatk_pathseq_wdl": {
+  "sha": "0cde69eed30339f5978cbb1ac6e5cf3662f9e1f8",
+  "date": "2026-08-17"
+ },
+ "gatk_docker": {
+  "sha": "0cde69eed30339f5978cbb1ac6e5cf3662f9e1f8",
+  "date": "2026-08-17"
+ },
+ "gatk_funco_tutorial": {
+  "sha": "0cde69eed30339f5978cbb1ac6e5cf3662f9e1f8",
+  "date": "2026-08-17"
+ },
+ "gatk_funco_spec": {
+  "sha": "0cde69eed30339f5978cbb1ac6e5cf3662f9e1f8",
+  "date": "2026-08-17"
+ },
+ "gatk_funco_refdiff": {
+  "sha": "0cde69eed30339f5978cbb1ac6e5cf3662f9e1f8",
+  "date": "2026-08-17"
+ },
+ "int_cq_scope": {
+  "date": "2026-10-21"
+ },
+ "int_rules": {
+  "date": "2026-10-21"
+ },
+ "int_reasoner": {
+  "date": "2026-10-26"
+ },
+ "int_onto_eval": {
+  "date": "2026-10-26"
+ },
+ "int_situations": {
+  "date": "2026-10-25"
+ },
+ "int_sparql": {
+  "date": "2026-10-27"
+ },
+ "int_shacl": {
+  "date": "2026-10-27"
+ },
+ "int_cq_map": {
+  "date": "2026-10-28"
+ },
+ "int_cypher": {
+  "date": "2026-10-28"
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "loaded": "2026-11-04 17:19:50",
+ "pyoxigraph": "0.5.13",
+ "kb_version": "kb-0.1.0",
+ "graphs": {
+  "abox": 2438,
+  "inferred": 520,
+  "links": 85,
+  "tbox": 1382
+ },
+ "total_quads": 4425,
+ "files": {
+  "tbox": [
+   "data/graphs/tbox.ttl",
+   1382,
+   "2c94060e88c6"
+  ],
+  "abox": [
+   "data/graphs/abox.ttl",
+   2438,
+   "4cd5e0d30f05"
+  ],
+  "inferred": [
+   "data/graphs/inferred.ttl",
+   520,
+   "718af7766f49"
+  ],
+  "links": [
+   "data/links.ttl",
+   85,
+   "4e7217dca445"
+  ]
+ }
+}

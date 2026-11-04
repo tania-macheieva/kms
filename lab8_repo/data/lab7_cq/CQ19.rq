@@ -1,0 +1,15 @@
+# id: CQ19
+# question: Ризик яких раків підвищує патогенний варіант?
+# lab4_cq: CQ11–CQ14
+# expect: ["breast cancer", "ovarian cancer"]
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?answer WHERE {
+  ?c rdfs:label "pathogenic variant"@en .
+  ?c rdfs:subClassOf ?r .
+  ?r owl:onProperty ?p ; owl:someValuesFrom ?f .
+  ?p rdfs:label "increases_risk_of"@en .
+  ?f rdfs:label ?answer . FILTER(lang(?answer) = "en")
+}

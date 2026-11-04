@@ -1,0 +1,13 @@
+{
+"t17": "```cypher\nMATCH (v:Variant {type: 'SNP'})-[:HAS_ANNOTATION]->(a:Annotation {name: 'FS'})\nWHERE a.value > 60\nRETURN count(DISTINCT v) AS cnt\n```",
+"t18": "```cypher\nMATCH (:GenePanel {name: 'HBOC-panel'})-[:HAS_MEMBER]->(g:Gene)\nOPTIONAL MATCH (v:Variant)-[:LOCATED_IN]->(g)\nWHERE v.clinicalSignificance = 'Pathogenic'\nRETURN g.symbol AS symbol, count(v) AS pathogenicVariants\n```",
+"t19": "```cypher\nMATCH (v:Variant)-[:FROM_SAMPLE]->(s:Sample)\nMATCH (v)-[:HAS_ANNOTATION]->(a:Annotation {name: 'SOR'})\nRETURN s.code AS sample, avg(a.value) AS avgSOR\n```",
+"t20": "```cypher\nMATCH (a:Person {name: 'Olena'}), (b:Person {name: 'Maria'})\nMATCH p = shortestPath((a)-[:HAS_PARENT*]->(b))\nRETURN length(p) AS steps\n```",
+"t21": "```cypher\nMATCH (v:Variant)-[:LOCATED_IN]->(:Gene {symbol: 'PALB2'})\nWHERE v.clinicalSignificance IS NULL\nRETURN v.id AS id\n```",
+"t22": "```cypher\nMATCH (v:Variant)-[:HAS_ANNOTATION]->(a1:Annotation {name: 'QD'})\nMATCH (v)-[:HAS_ANNOTATION]->(a2:Annotation {name: 'SOR'})\nWHERE a1.value < 2 AND a2.value > 3\nRETURN DISTINCT v.id AS id\n```",
+"t23": "```cypher\nMATCH ()-[r]->()\nRETURN count(DISTINCT r.source) AS cnt\n```",
+"t24": "```cypher\nMATCH (p:Person)-[:INSTANCE_OF]->(c:Concept)\nWHERE c.probability = 0.5\nRETURN DISTINCT p.name AS name\n```",
+"t25": "```cypher\nMATCH (o:Person {name: 'Olena'})\nWITH o.community AS comm\nMATCH (n)\nWHERE n.community = comm\nRETURN comm AS community, count(n) AS size\n```",
+"t26": "```cypher\nMATCH (p:Procedure)-[:APPLIES_TO]->(f:DataFile)-[:DERIVED_FROM*0..]->(:DataFile {id: 'sample1_bam'})\nRETURN DISTINCT p.id AS id\n```",
+"t27": "```cypher\nMATCH (v:Variant)-[:FROM_SAMPLE]->(s:Sample)\nMATCH (v)-[:HAS_ANNOTATION]->(a:Annotation {name: 'QD'})\nWHERE a.value < 2\nRETURN s.code AS sample, count(DISTINCT v) AS cnt\n```"
+}

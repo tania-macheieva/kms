@@ -1,0 +1,638 @@
+[
+ {
+  "id": "B:T01",
+  "claims": [
+   {
+    "text": "-l/--merge-logic defines how multiple annotation values are combined when several regions overlap a record",
+    "verdict": "supported",
+    "cited": [
+     "bcftools_manual#h019"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "Rules are first, append, append-missing, unique, sum, avg, min, max with the stated meanings",
+    "verdict": "supported",
+    "cited": [
+     "bcftools_manual#h019"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "sum applies to numeric fields only",
+    "verdict": "supported",
+    "cited": [
+     "bcftools_manual#h019"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "avg applies to numeric fields only",
+    "verdict": "unsupported",
+    "cited": [
+     "bcftools_manual#h019"
+    ],
+    "citation_ok": false
+   },
+   {
+    "text": "The merge-logic option is experimental",
+    "verdict": "supported",
+    "cited": [
+     "bcftools_manual#h019"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "It is intended for BED or TAB-delimited annotation files and works only when REF and ALT or BEG and END columns are present",
+    "verdict": "supported",
+    "cited": [],
+    "citation_ok": null
+   },
+   {
+    "text": "Multiple rules can be comma-separated or given repeatedly",
+    "verdict": "supported",
+    "cited": [
+     "bcftools_manual#h019"
+    ],
+    "citation_ok": true
+   }
+  ],
+  "note": "Context says numeric-only for sum only, not avg."
+ },
+ {
+  "id": "B:T02",
+  "claims": [
+   {
+    "text": "Two tools in the context predict variant effects",
+    "verdict": "supported",
+    "cited": [],
+    "citation_ok": null
+   },
+   {
+    "text": "VEP (based on Ensembl) determines effects of SNPs, indels, structural variants and CNVs",
+    "verdict": "supported",
+    "cited": [
+     "sarek_output#h060"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "snpEff annotates and predicts effects of variants on genes, such as amino acid changes",
+    "verdict": "supported",
+    "cited": [
+     "sarek_output#h059"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "VEP VCF header records software version and versions of databases such as ClinVar or dbSNP",
+    "verdict": "supported",
+    "cited": [
+     "sarek_output#h060"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "VEP header describes the consequence annotation format in the INFO field",
+    "verdict": "supported",
+    "cited": [
+     "sarek_output#h060"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "snpEff VCF header records software version and command line used",
+    "verdict": "supported",
+    "cited": [
+     "sarek_output#h059"
+    ],
+    "citation_ok": true
+   }
+  ],
+  "note": "All claims directly supported."
+ },
+ {
+  "id": "B:T03",
+  "claims": [
+   {
+    "text": "Oncotator is an older functional annotation tool developed by The Broad Institute",
+    "verdict": "supported",
+    "cited": [
+     "gatk_funco_tutorial#h031"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "Funcotator and Oncotator are fundamentally different with some similarities",
+    "verdict": "supported",
+    "cited": [
+     "gatk_funco_tutorial#h031"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "The author maintains a direct comparison should not be made",
+    "verdict": "supported",
+    "cited": [
+     "gatk_funco_tutorial#h031"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "Funcotator is a functional annotation tool in the core GATK toolset",
+    "verdict": "supported",
+    "cited": [
+     "gatk_mutect2_wdl#h002"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "Funcotator labels each variant with one of twenty-three classifications",
+    "verdict": "supported",
+    "cited": [
+     "gatk_mutect2_wdl#h002"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "Funcotator annotates from data sources such as GENCODE, dbSNP, gnomAD and COSMIC",
+    "verdict": "supported",
+    "cited": [
+     "gatk_mutect2_wdl#h002"
+    ],
+    "citation_ok": true
+   }
+  ],
+  "note": "Well supported and appropriately hedged about which tool is newer."
+ },
+ {
+  "id": "B:T04",
+  "claims": [
+   {
+    "text": "NGSCheckMate uses commonly heterozygous SNPs to detect sample mislabelling",
+    "verdict": "supported",
+    "cited": [
+     "sarek_output#h066"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "NGSCheckMate output lists matched comparisons with correlation and a dendrogram",
+    "verdict": "supported",
+    "cited": [
+     "sarek_output#h066"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "bcftools gtcheck checks sample identity; with -g query samples are checked against the -g file, without -g all query samples are cross-checked",
+    "verdict": "supported",
+    "cited": [
+     "bcftools_manual#h057"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "Pairs can be selected with -p or -P",
+    "verdict": "supported",
+    "cited": [
+     "bcftools_manual#h059"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "--n-matches limits output to the top matches",
+    "verdict": "supported",
+    "cited": [
+     "bcftools_manual#h059"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "The discordance score equals mismatching genotypes only for GT-vs-GT matching",
+    "verdict": "supported",
+    "cited": [
+     "bcftools_manual#h057"
+    ],
+    "citation_ok": true
+   }
+  ],
+  "note": "All supported with correct citations."
+ },
+ {
+  "id": "B:T05",
+  "claims": [
+   {
+    "text": "build_docker_remote.sh builds the GATK4 image using Google Cloud Build, useful if you cannot build locally",
+    "verdict": "supported",
+    "cited": [
+     "gatk_docker#h001"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "First run gcloud config set project <PROJECT> with a project that has Cloud Build access",
+    "verdict": "supported",
+    "cited": [
+     "gatk_docker#h001"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "Then run sudo bash build_docker_remote.sh -e ${GITHUB_TAG} -d ${STAGING_DIR}",
+    "verdict": "supported",
+    "cited": [
+     "gatk_docker#h004"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "The image is tagged us.gcr.io/broad-dsde-methods/broad-gatk-snapshots/gatk-remote-builds:<USERNAME>-<GITHUB_TAG>-<GIT_HASH> and uploaded to GCR",
+    "verdict": "supported",
+    "cited": [
+     "gatk_docker#h004"
+    ],
+    "citation_ok": false
+   },
+   {
+    "text": "For gatkbase the remote script is build_docker_base_cloud.sh <docker_image_version>",
+    "verdict": "supported",
+    "cited": [
+     "gatk_docker#h011"
+    ],
+    "citation_ok": true
+   }
+  ],
+  "note": "Tag format is in h003, not cited h004."
+ },
+ {
+  "id": "B:T06",
+  "claims": [
+   {
+    "text": "In a small tutorial dataset some annotations have insufficient data or no variance, so filtering options must be limited to a subset of annotations",
+    "verdict": "supported",
+    "cited": [
+     "sarek_vc_sarek#h007"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "The tutorial data include only 2 samples",
+    "verdict": "supported",
+    "cited": [
+     "sarek_vc_sarek#h003"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "Running VQSR on such a small dataset causes issues with some annotations, so the step uses fewer parameters",
+    "verdict": "supported",
+    "cited": [
+     "sarek_vc_sarek#h003"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "INDEL recalibrator uses -an QD -an FS -an SOR -an DP and SNP uses -an QD -an MQ -an FS -an SOR",
+    "verdict": "supported",
+    "cited": [
+     "sarek_vc_sarek#h007"
+    ],
+    "citation_ok": true
+   }
+  ],
+  "note": "All supported."
+ },
+ {
+  "id": "B:T07",
+  "claims": [
+   {
+    "text": "vcfanno annotates a VCF with any number of INFO fields from any number of VCFs",
+    "verdict": "supported",
+    "cited": [
+     "rare_output#h023"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "vcfanno uses a simple configuration file specifying source files, fields and how they are added to the query VCF",
+    "verdict": "supported",
+    "cited": [
+     "rare_output#h023"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "SnpSift is set up with a CSV samplesheet of annotation databases",
+    "verdict": "supported",
+    "cited": [
+     "sarek_usage#h071"
+    ],
+    "citation_ok": true
+   }
+  ],
+  "note": "All supported."
+ },
+ {
+  "id": "B:T08",
+  "claims": [
+   {
+    "text": "The -G option requires per-sample FORMAT/QS or FORMAT/AD tags generated by bcftools mpileup with -a QS or -a AD",
+    "verdict": "supported",
+    "cited": [
+     "bcftools_manual#h023"
+    ],
+    "citation_ok": false
+   },
+   {
+    "text": "A plugin is run like a normal command with its name prefixed by +, or as bcftools plugin NAME",
+    "verdict": "supported",
+    "cited": [
+     "bcftools_manual#h095"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "General options come first, then --, then plugin-specific options",
+    "verdict": "supported",
+    "cited": [
+     "bcftools_manual#h095"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "A normal command takes [OPTIONS] FILE, e.g. bcftools call '[OPTIONS] FILE'",
+    "verdict": "supported",
+    "cited": [
+     "bcftools_manual#h023"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "Some plugins do not accept the common options and implement their own parameters",
+    "verdict": "supported",
+    "cited": [
+     "bcftools_manual#h095"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "Examples are bcftools +counts in.vcf and bcftools plugin counts in.vcf",
+    "verdict": "supported",
+    "cited": [
+     "bcftools_manual#h103"
+    ],
+    "citation_ok": true
+   }
+  ],
+  "note": "-G claim is in h026, miscited as h023."
+ },
+ {
+  "id": "B:T09",
+  "claims": [
+   {
+    "text": "The GATK jar is at /gatk/gatk.jar inside the GATK4 docker image",
+    "verdict": "supported",
+    "cited": [
+     "gatk_docker#h002"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "build_docker_remote.sh builds the GATK4 image remotely with Google Cloud Build",
+    "verdict": "supported",
+    "cited": [
+     "gatk_docker#h001"
+    ],
+    "citation_ok": true
+   }
+  ],
+  "note": "Both supported."
+ },
+ {
+  "id": "B:T10",
+  "claims": [
+   {
+    "text": "Install git-lfs and run git lfs install",
+    "verdict": "supported",
+    "cited": [
+     "gatk_readme#h025",
+     "gatk_readme#h002"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "Run git lfs pull from the root of the GATK clone to download large test data, about 5 GB",
+    "verdict": "supported",
+    "cited": [
+     "gatk_readme#h025",
+     "gatk_readme#h002"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "A full git clone is required because the build needs git-lfs files in src/main/resources/large",
+    "verdict": "supported",
+    "cited": [
+     "gatk_readme#h008"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "These files are packaged inside the GATK jar and used by tools at runtime",
+    "verdict": "supported",
+    "cited": [
+     "gatk_readme#h008"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "A zipped source archive alone is not buildable",
+    "verdict": "supported",
+    "cited": [
+     "gatk_readme#h008"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "Files in src/test/resources/large are needed only by the test suite, not for building",
+    "verdict": "supported",
+    "cited": [
+     "gatk_readme#h008"
+    ],
+    "citation_ok": true
+   }
+  ],
+  "note": "All supported."
+ },
+ {
+  "id": "B:T11",
+  "claims": [
+   {
+    "text": "For INDEL variants the FS threshold is FS > 200.0",
+    "verdict": "supported",
+    "cited": [
+     "G:Threshold:FS_gt_200_indel"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "For SNP variants the FS threshold is FS > 60.0",
+    "verdict": "supported",
+    "cited": [
+     "G:Threshold:FS_gt_60_snp"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "Both thresholds belong to hard-filtering procedure HF-01 and come from source gatk",
+    "verdict": "supported",
+    "cited": [
+     "G:Procedure:HF-01"
+    ],
+    "citation_ok": true
+   }
+  ],
+  "note": "Graph facts match."
+ },
+ {
+  "id": "B:T12",
+  "claims": [
+   {
+    "text": "HF-01 (HardFiltering) has the threshold SOR_gt_3 (SOR > 3.0, all variant types)",
+    "verdict": "supported",
+    "cited": [
+     "G:Procedure:HF-01",
+     "G:Threshold:SOR_gt_3"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "Seven thresholds are linked to HF-01: SOR_gt_3, FS_gt_200_indel, FS_gt_60_snp, MQRankSum_lt_-12.5, MQ_lt_40, QD_lt_2, ReadPosRankSum_lt_-8",
+    "verdict": "supported",
+    "cited": [
+     "G:Procedure:HF-01"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "The total may be eight",
+    "verdict": "unsupported",
+    "cited": [],
+    "citation_ok": null
+   }
+  ],
+  "note": "Eight is speculation; omitted neighbour not shown to be a threshold."
+ },
+ {
+  "id": "B:T13",
+  "claims": [
+   {
+    "text": "sample1.vcf was derived from sample1.bam",
+    "verdict": "supported",
+    "cited": [
+     "G:DataFile:sample1_vcf"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "sample1.vcf was generated by instrument Sequencer1",
+    "verdict": "supported",
+    "cited": [
+     "G:DataFile:sample1_vcf",
+     "G:Instrument:Sequencer1"
+    ],
+    "citation_ok": true
+   }
+  ],
+  "note": "Supported by graph edges."
+ },
+ {
+  "id": "B:T14",
+  "claims": [
+   {
+    "text": "VAR-001 is located in gene BRCA1",
+    "verdict": "supported",
+    "cited": [
+     "G:Variant:VAR-001"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "HBOC-panel includes BRCA1",
+    "verdict": "supported",
+    "cited": [
+     "G:GenePanel:HBOC-panel"
+    ],
+    "citation_ok": true
+   }
+  ],
+  "note": "Both supported."
+ },
+ {
+  "id": "B:T15",
+  "claims": [
+   {
+    "text": "sample1.vcf is DERIVED_FROM sample1.bam",
+    "verdict": "supported",
+    "cited": [
+     "G:DataFile:sample1_vcf"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "HF-01 (HardFiltering) APPLIES_TO sample1.vcf, so is affected through it",
+    "verdict": "supported",
+    "cited": [
+     "G:Procedure:HF-01"
+    ],
+    "citation_ok": true
+   }
+  ],
+  "note": "Supported; absence statement ignored."
+ },
+ {
+  "id": "B:T16",
+  "claims": [
+   {
+    "text": "Olena's parents are Iryna and Petro",
+    "verdict": "supported",
+    "cited": [
+     "G:Person:Olena"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "Her sibling is Marta, the only sibling listed",
+    "verdict": "supported",
+    "cited": [
+     "G:Person:Olena"
+    ],
+    "citation_ok": true
+   }
+  ],
+  "note": "Supported by HAS_PARENT/HAS_SIBLING edges."
+ },
+ {
+  "id": "B:T17",
+  "claims": [
+   {
+    "text": "CT-01, a CascadeTesting procedure, REQUIRES VAR-001",
+    "verdict": "supported",
+    "cited": [
+     "G:Procedure:CT-01"
+    ],
+    "citation_ok": true
+   },
+   {
+    "text": "Its minimum testing age is 18",
+    "verdict": "supported",
+    "cited": [
+     "G:Procedure:CT-01"
+    ],
+    "citation_ok": true
+   }
+  ],
+  "note": "Supported."
+ }
+]

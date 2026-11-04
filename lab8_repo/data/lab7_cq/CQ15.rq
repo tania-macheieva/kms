@@ -1,0 +1,11 @@
+# id: CQ15
+# question: Кого з родичів не можна тестувати зараз через вік < 18?
+# lab4_cq: CQ15
+# expect: ["Sofiia"]
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?answer WHERE {
+  ?x rdfs:label ?answer ; ?p ?age . FILTER(datatype(?age) IN (xsd:integer, xsd:int, xsd:nonNegativeInteger) && ?age < 18)
+}

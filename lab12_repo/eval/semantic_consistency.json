@@ -1,0 +1,51 @@
+{
+ "checks": [
+  {
+   "question": "What is the pass rate by year?",
+   "paths": {
+    "semantic layer": 2,
+    "hand SQL": 2,
+    "pandas": 2
+   },
+   "consistent": true,
+   "note": ""
+  },
+  {
+   "question": "What is the average call quality per tool version?",
+   "paths": {
+    "semantic layer": 8,
+    "hand SQL (q13-style)": 8,
+    "pandas": 8
+   },
+   "consistent": true,
+   "note": ""
+  },
+  {
+   "question": "What share of calls is pathogenic, per gene?",
+   "paths": {
+    "semantic layer": 10,
+    "hand SQL (label)": 10,
+    "pandas (by key of IRI C033)": 10
+   },
+   "consistent": true,
+   "note": ""
+  },
+  {
+   "question": "What is the average daily queue backlog per month?",
+   "paths": {
+    "semantic layer": 21,
+    "OLAP file q14": 21,
+    "pandas": 21
+   },
+   "consistent": true,
+   "note": ""
+  }
+ ],
+ "naive_vs_correct": {
+  "note": "small here; grows when group sizes are unbalanced",
+  "naive_average_of_monthly_pass_rates": 57.15,
+  "ratio_of_sums_pass_rate": 57.4,
+  "difference_pp": -0.25
+ },
+ "validate_errors": []
+}

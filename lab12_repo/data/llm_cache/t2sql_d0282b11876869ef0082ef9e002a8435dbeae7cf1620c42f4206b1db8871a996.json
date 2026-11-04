@@ -1,0 +1,1 @@
+{"text": "WITH q AS (SELECT d.year, d.quarter, count(*) AS calls FROM fact_variant_call f JOIN dim_date d ON f.date_key = d.date_key GROUP BY d.year, d.quarter) SELECT year, quarter, calls, round(100.0 * (calls - LAG(calls) OVER (ORDER BY year, quarter)) / LAG(calls) OVER (ORDER BY year, quarter), 1) AS growth_pct_vs_prev_quarter FROM q ORDER BY year, quarter"}

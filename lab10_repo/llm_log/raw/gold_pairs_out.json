@@ -1,0 +1,110 @@
+{
+ "pairs": [
+  {
+   "pair_id": "gatk_funco_refdiff#h004+gatk_funco_refdiff#h005",
+   "chunk_a": "gatk_funco_refdiff#h004",
+   "chunk_b": "gatk_funco_refdiff#h005",
+   "query": "What is the MD5 checksum of the human_g1k_v37 reference, and what contig name does hg19 use for the unplaced contig GL000222.1?",
+   "evidence_a": "The *humanG1Kv37* (`human_g1k_v37.fasta`, MD5sum: `0ce84c872fc0072a885926823dcd0338`) reference is equivalent to b37, with the exception that it does not contain the decoy sequence for human herpesvirus 4 type 1 (named _NC_007605_).",
+   "evidence_b": "6fe9abac455169f50470f5a6b01d0f59 GL000222.1 GL000222.1 chrUn_gl000222 GL000222.1"
+  },
+  {
+   "pair_id": "sarek_vc_interp#h004+sarek_vc_interp#h000",
+   "chunk_a": "sarek_vc_interp#h004",
+   "chunk_b": "sarek_vc_interp#h000",
+   "query": "When interpreting a clinical case with only a few individuals, which gene harboured the stop-gained variant that was checked against the constraint database versions?",
+   "evidence_a": "If we search them one by one, we will see that one in particular occurs on a gene (COL6A1) which was previously reported as constrained for loss of function variants in the database version 2.1:",
+   "evidence_b": "When only a few individuals are involved, and in particular in clinical contexts, the goal will be to interpret the findings in light of different sources of information and pinpoint a causative variant for the investigated phenotype."
+  },
+  {
+   "pair_id": "bcftools_manual#h025+bcftools_manual#h095",
+   "chunk_a": "bcftools_manual#h025",
+   "chunk_b": "bcftools_manual#h095",
+   "query": "Which FORMAT fields can bcftools call emit per sample, and how is a bcftools plugin invoked compared with a normal command?",
+   "evidence_a": "comma-separated list of FORMAT fields to output for each sample.",
+   "evidence_b": "the same way as normal commands only their name is prefixed with \"+\"."
+  },
+  {
+   "pair_id": "rare_usage#h014+rare_usage#h036",
+   "chunk_a": "rare_usage#h014",
+   "chunk_b": "rare_usage#h036",
+   "query": "What kind of interval list files does the raredisease pipeline expect for whole genome and chromosome Y QC, and how can I pass extra arguments for a tool the pipeline does not expose by default?",
+   "evidence_a": "These files are Picard's style interval list files, comprising the entire genome or only the chromosome Y.",
+   "evidence_b": "Fortunately, nf-core pipelines provide some freedom to users to insert additional parameters that the pipeline does not include by default."
+  },
+  {
+   "pair_id": "gatk_readme#h025+gatk_readme#h008",
+   "chunk_a": "gatk_readme#h025",
+   "chunk_b": "gatk_readme#h008",
+   "query": "How do I download the large test data tracked by git-lfs, and why is a full git clone needed to build GATK?",
+   "evidence_a": "To manually retrieve the large test data, run `git lfs pull` from the root of your GATK git clone.",
+   "evidence_b": "Note that you *must* have a full git clone in order to build GATK, including the git-lfs files in `src/main/resources/large`."
+  },
+  {
+   "pair_id": "gatk_funco_tutorial#h028+gatk_funco_tutorial#h042",
+   "chunk_a": "gatk_funco_tutorial#h028",
+   "chunk_b": "gatk_funco_tutorial#h042",
+   "query": "Is Gencode annotation optional in Funcotator, and what happens to a data source value when an annotation override is supplied for the same field?",
+   "evidence_a": "Gencode is currently required, so Funcotator will create these annotations for all input variants.",
+   "evidence_b": "This parameter specifies an override value for an annotation. If the annotation were to be added to a variant by a data source, the value for that annotation would be replaced with the value specified in the annotation override."
+  },
+  {
+   "pair_id": "sarek_output#h017+sarek_output#h049",
+   "chunk_a": "sarek_output#h017",
+   "chunk_b": "sarek_output#h049",
+   "query": "In which situations should base quality score recalibration be disabled in Sarek, and which Control-FREEC output file lists beta allele frequencies?",
+   "evidence_a": "Notably, this should be turned off when having UMI tagged reads or using DragMap (see here) as mapper.",
+   "evidence_b": "file with beta allele frequencies for each possibly heterozygous SNP position"
+  },
+  {
+   "pair_id": "gatk_mutect2_wdl#h010+gatk_mutect2_wdl#h009",
+   "chunk_a": "gatk_mutect2_wdl#h010",
+   "chunk_b": "gatk_mutect2_wdl#h009",
+   "query": "Which Mutect2 WDL input holds the tumor BAM path in the single pair workflow, and what values may be given for the sequencing source in the multi-sample workflow?",
+   "evidence_a": "``Mutect2.tumor_bam`` -- File path or storage location (depending on backend) of the tumor bam file.",
+   "evidence_b": "``Mutect2_Multi.sequence_source`` -- (optional) ``WGS`` or ``WXS`` for whole genome or whole exome sequencing, respectively."
+  },
+  {
+   "pair_id": "gatk_docker#h002+gatk_docker#h001",
+   "chunk_a": "gatk_docker#h002",
+   "chunk_b": "gatk_docker#h001",
+   "query": "Where is the GATK jar located inside the GATK4 docker image, and which script builds the image remotely with Google Cloud Build?",
+   "evidence_a": "This is the image where the actual GATK4 resides. Location: ``/gatk/gatk.jar``",
+   "evidence_b": "``build_docker_remote.sh`` is a script to create the full gatk4 docker image using google cloud build remotely."
+  },
+  {
+   "pair_id": "sarek_readme#h001+sarek_readme#h008",
+   "chunk_a": "sarek_readme#h001",
+   "chunk_b": "sarek_readme#h008",
+   "query": "Which tools does Sarek use for sequencing QC and trimming, and what DOI should I use to cite a specific version of the pipeline?",
+   "evidence_a": "- Sequencing quality control and trimming (enabled by `--trim_fastq`) (`FastQC`, `fastp`)",
+   "evidence_b": "You can cite the sarek zenodo record for a specific version using the following doi: 10.5281/zenodo.3476425"
+  }
+ ],
+ "unanswerable": [
+  {
+   "query": "What minimum genotype quality (GQ) threshold should be used to call a variant pathogenic in a clinical report?"
+  },
+  {
+   "query": "How many CPU hours does GATK HaplotypeCaller need for a 30x whole genome sample?"
+  },
+  {
+   "query": "What is the recommended VQSR truth sensitivity tranche for filtering indels in exome data?"
+  },
+  {
+   "query": "How do I run Strelka2 with a custom config file for somatic indel calling?"
+  },
+  {
+   "query": "What allele frequency cutoff does ACMG use to classify a variant as benign stand-alone?"
+  },
+  {
+   "query": "How can I merge gVCFs from 10,000 samples using GLnexus with memory limits?"
+  },
+  {
+   "query": "What is the expected transition/transversion ratio for whole genome SNP calls?"
+  },
+  {
+   "query": "How do I phase VCF genotypes with SHAPEIT5 using a reference panel?"
+  }
+ ]
+}

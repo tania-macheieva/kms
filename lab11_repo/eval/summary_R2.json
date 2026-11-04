@@ -1,0 +1,24 @@
+{
+ "text": {
+  "correct": 3,
+  "facts": 11,
+  "facts_total": 34,
+  "in_tokens": 2447.3333333333335,
+  "out_tokens": 36.25,
+  "abstain": 8,
+  "gold_cited": 0,
+  "gold_nodes": 17,
+  "gold_ctx": 0
+ },
+ "graph": {
+  "correct": 10,
+  "facts": 32,
+  "facts_total": 34,
+  "in_tokens": 2966.75,
+  "out_tokens": 61.083333333333336,
+  "abstain": 0,
+  "gold_cited": 15,
+  "gold_nodes": 17,
+  "gold_ctx": 17
+ }
+}

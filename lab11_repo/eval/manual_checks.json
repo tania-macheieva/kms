@@ -1,0 +1,28 @@
+{
+ "reviewer": "LLM-reviewer (Claude, ЛР11 session), claim-by-claim against the cited context shown in the prompt; NOT the generator or judge instance; V3 confirmation by the student is pending",
+ "checked": [
+  "T01",
+  "T03",
+  "T05",
+  "T06",
+  "T09",
+  "T11",
+  "T13",
+  "T15",
+  "T17",
+  "T24",
+  "T27",
+  "T30",
+  "T32"
+ ],
+ "overrides": {
+  "T32:1": "unsupported"
+ },
+ "notes": {
+  "T05": "agree: judge flagged citation (tag format is in h003, answer cites h001) -> citation_ok=false confirmed",
+  "T11": "agree: 3rd claim 'sub-graph was truncated' is not in context (truncated=False) -> unsupported confirmed",
+  "T27": "3rd claim 'the two values differ' is a derived comparison of two supported values -> supported",
+  "T24": "answer partially covers plugin 'contrast' (present in h099) and states the rest is not covered -> supported, but status NO_ANSWER expected (gold label debatable)",
+  "T32": "DISAGREE with judge on claim 1: context says only 'sum ... numeric fields only'; 'avg' numeric-only is an unsupported generalisation (generator error + lenient judge). The B-run judge flagged the same error in B:T01 but missed it in B:T33 => judge inconsistency"
+ }
+}

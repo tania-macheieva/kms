@@ -1,0 +1,1 @@
+{"text": "SELECT count(*) AS call_count FROM fact_variant_call f JOIN dim_taxon o ON f.origin_key = o.taxon_key WHERE o.label = 'somatic variant'"}

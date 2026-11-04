@@ -1,0 +1,373 @@
+{
+ "pairs": [
+  {
+   "id": "P1",
+   "title": "SNP-варіанти з QD < 2",
+   "sparql": "SELECT DISTINCT ?id WHERE { ?v a dkh:SNP ; dkh:hasVariantId ?id ; dkh:hasAnnotation ?a . ?a dkh:hasAnnotationName \"QD\" ; dkh:hasNumericValue ?x . FILTER (?x < 2.0) }",
+   "cypher": "MATCH (v:Variant {type:'SNP'})-[:HAS_ANNOTATION]->(a:Annotation {name:'QD'}) WHERE a.value < 2.0 RETURN DISTINCT v.id",
+   "sparql_rows": [
+    [
+     "VAR-002"
+    ],
+    [
+     "VAR-101"
+    ],
+    [
+     "VAR-102"
+    ],
+    [
+     "VAR-111"
+    ],
+    [
+     "VAR-151"
+    ]
+   ],
+   "cypher_rows": [
+    [
+     "VAR-002"
+    ],
+    [
+     "VAR-101"
+    ],
+    [
+     "VAR-102"
+    ],
+    [
+     "VAR-111"
+    ],
+    [
+     "VAR-151"
+    ]
+   ],
+   "equal": true,
+   "sparql_ms": 0.19,
+   "cypher_ms": 0.57,
+   "sparql_len": [
+    165,
+    27
+   ],
+   "cypher_len": [
+    117,
+    11
+   ]
+  },
+  {
+   "id": "P2",
+   "title": "Кількість варіантів і середній QD по зразках (внутрішнє з'єднання з анотацією QD)",
+   "sparql": "SELECT ?c (COUNT(DISTINCT ?v) AS ?n) (ROUND(AVG(?x) * 100) / 100 AS ?avg) WHERE { ?v dkh:fromSample ?s ; dkh:hasAnnotation ?a . ?s dkh:hasSampleCode ?c . ?a dkh:hasAnnotationName \"QD\" ; dkh:hasNumericValue ?x } GROUP BY ?c",
+   "cypher": "MATCH (v:Variant)-[:FROM_SAMPLE]->(s:Sample), (v)-[:HAS_ANNOTATION]->(a:Annotation {name:'QD'}) RETURN s.code, count(DISTINCT v), round(avg(a.value) * 100) / 100",
+   "sparql_rows": [
+    [
+     "A",
+     "22",
+     "15.14"
+    ],
+    [
+     "B",
+     "20",
+     "15.58"
+    ],
+    [
+     "C",
+     "20",
+     "16.92"
+    ]
+   ],
+   "cypher_rows": [
+    [
+     "A",
+     "22",
+     "15.14"
+    ],
+    [
+     "B",
+     "20",
+     "15.58"
+    ],
+    [
+     "C",
+     "20",
+     "16.92"
+    ]
+   ],
+   "equal": true,
+   "sparql_ms": 0.36,
+   "cypher_ms": 0.72,
+   "sparql_len": [
+    222,
+    36
+   ],
+   "cypher_len": [
+    161,
+    13
+   ]
+  },
+  {
+   "id": "P3",
+   "title": "Предки Olena (транзитивно)",
+   "sparql": "SELECT DISTINCT ?l WHERE { dkh:Olena dkh:hasParent+ ?p . ?p rdfs:label ?l }",
+   "cypher": "MATCH (:Person {name:'Olena'})-[:HAS_PARENT*1..]->(p:Person) RETURN DISTINCT p.name",
+   "sparql_rows": [
+    [
+     "Iryna"
+    ],
+    [
+     "Maria"
+    ],
+    [
+     "Petro"
+    ]
+   ],
+   "cypher_rows": [
+    [
+     "Iryna"
+    ],
+    [
+     "Maria"
+    ],
+    [
+     "Petro"
+    ]
+   ],
+   "equal": true,
+   "sparql_ms": 0.06,
+   "cypher_ms": 0.21,
+   "sparql_len": [
+    75,
+    13
+   ],
+   "cypher_len": [
+    83,
+    6
+   ]
+  },
+  {
+   "id": "P4",
+   "title": "Кількість варіантів у кожному гені",
+   "sparql": "SELECT ?l (COUNT(DISTINCT ?v) AS ?n) WHERE { ?v dkh:locatedIn ?g . ?g rdfs:label ?l } GROUP BY ?l",
+   "cypher": "MATCH (v:Variant)-[:LOCATED_IN]->(g:Gene) RETURN g.symbol, count(DISTINCT v)",
+   "sparql_rows": [
+    [
+     "BRCA1",
+     "14"
+    ],
+    [
+     "BRCA2",
+     "20"
+    ],
+    [
+     "PALB2",
+     "14"
+    ],
+    [
+     "TP53",
+     "16"
+    ]
+   ],
+   "cypher_rows": [
+    [
+     "BRCA1",
+     "14"
+    ],
+    [
+     "BRCA2",
+     "20"
+    ],
+    [
+     "PALB2",
+     "14"
+    ],
+    [
+     "TP53",
+     "16"
+    ]
+   ],
+   "equal": true,
+   "sparql_ms": 0.15,
+   "cypher_ms": 0.36,
+   "sparql_len": [
+    97,
+    19
+   ],
+   "cypher_len": [
+    76,
+    6
+   ]
+  },
+  {
+   "id": "P5",
+   "title": "Родичі зі ступенем, шансом успадкування, віком і можливістю тестування (≥ 18)",
+   "sparql": "SELECT DISTINCT ?name ?class ?prob ?age ?can WHERE { ?p dkh:hasAgeYears ?age ; rdfs:label ?name ; a ?class . ?class rdfs:subClassOf ?r . ?r owl:onProperty dkh:hasInheritanceProbability ; owl:hasValue ?prob . dkh:CT-01 dkh:hasMinTestingAge ?min . BIND (IF(?age >= ?min, \"так\", \"ні\") AS ?can) }",
+   "cypher": "MATCH (p:Person)-[:INSTANCE_OF]->(k:Concept) WHERE k.probability IS NOT NULL MATCH (c:Procedure {id:'CT-01'}) RETURN p.name, k.name, k.probability, p.ageYears, CASE WHEN p.ageYears >= c.minTestingAge THEN 'так' ELSE 'ні' END",
+   "sparql_rows": [
+    [
+     "Andrii",
+     "ThirdDegreeRelative",
+     "0.125",
+     "40",
+     "так"
+    ],
+    [
+     "Halyna",
+     "SecondDegreeRelative",
+     "0.25",
+     "65",
+     "так"
+    ],
+    [
+     "Iryna",
+     "FirstDegreeRelative",
+     "0.5",
+     "68",
+     "так"
+    ],
+    [
+     "Marta",
+     "FirstDegreeRelative",
+     "0.5",
+     "39",
+     "так"
+    ],
+    [
+     "Petro",
+     "FirstDegreeRelative",
+     "0.5",
+     "70",
+     "так"
+    ],
+    [
+     "Sofiia",
+     "FirstDegreeRelative",
+     "0.5",
+     "17",
+     "ні"
+    ]
+   ],
+   "cypher_rows": [
+    [
+     "Andrii",
+     "ThirdDegreeRelative",
+     "0.125",
+     "40",
+     "так"
+    ],
+    [
+     "Halyna",
+     "SecondDegreeRelative",
+     "0.25",
+     "65",
+     "так"
+    ],
+    [
+     "Iryna",
+     "FirstDegreeRelative",
+     "0.5",
+     "68",
+     "так"
+    ],
+    [
+     "Maria",
+     "SecondDegreeRelative",
+     "0.25",
+     "",
+     "ні"
+    ],
+    [
+     "Marta",
+     "FirstDegreeRelative",
+     "0.5",
+     "39",
+     "так"
+    ],
+    [
+     "Petro",
+     "FirstDegreeRelative",
+     "0.5",
+     "70",
+     "так"
+    ],
+    [
+     "Sofiia",
+     "FirstDegreeRelative",
+     "0.5",
+     "17",
+     "ні"
+    ]
+   ],
+   "equal": false,
+   "sparql_ms": 0.21,
+   "cypher_ms": 0.31,
+   "sparql_len": [
+    292,
+    43
+   ],
+   "cypher_len": [
+    224,
+    25
+   ]
+  }
+ ],
+ "extra": {
+  "P2_cypher_all_variants": [
+   [
+    "A",
+    "24",
+    "15.14"
+   ],
+   [
+    "B",
+    "20",
+    "15.58"
+   ],
+   [
+    "C",
+    "20",
+    "16.92"
+   ]
+  ],
+  "P5_cypher_with_age": [
+   [
+    "Andrii",
+    "ThirdDegreeRelative",
+    "0.125",
+    "40",
+    "так"
+   ],
+   [
+    "Halyna",
+    "SecondDegreeRelative",
+    "0.25",
+    "65",
+    "так"
+   ],
+   [
+    "Iryna",
+    "FirstDegreeRelative",
+    "0.5",
+    "68",
+    "так"
+   ],
+   [
+    "Marta",
+    "FirstDegreeRelative",
+    "0.5",
+    "39",
+    "так"
+   ],
+   [
+    "Petro",
+    "FirstDegreeRelative",
+    "0.5",
+    "70",
+    "так"
+   ],
+   [
+    "Sofiia",
+    "FirstDegreeRelative",
+    "0.5",
+    "17",
+    "ні"
+   ]
+  ]
+ }
+}

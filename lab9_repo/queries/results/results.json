@@ -1,0 +1,326 @@
+{
+ "c01_snp_low_qd.cypher": {
+  "vars": [
+   "variant",
+   "qd"
+  ],
+  "rows": [
+   [
+    "VAR-102",
+    "1.1"
+   ],
+   [
+    "VAR-101",
+    "1.2"
+   ],
+   [
+    "VAR-151",
+    "1.2"
+   ],
+   [
+    "VAR-002",
+    "1.5"
+   ],
+   [
+    "VAR-111",
+    "1.5"
+   ]
+  ],
+  "ms_median": 0.43
+ },
+ "c02_flags_per_variant.cypher": {
+  "vars": [
+   "variant",
+   "nFlags",
+   "flags"
+  ],
+  "rows": [
+   [
+    "VAR-122",
+    "3",
+    "[FS_gt_60_snp, MQ_lt_40, SOR_gt_3]"
+   ],
+   [
+    "VAR-101",
+    "2",
+    "[QD_lt_2, SOR_gt_3]"
+   ],
+   [
+    "VAR-102",
+    "2",
+    "[QD_lt_2, SOR_gt_3]"
+   ],
+   [
+    "VAR-108",
+    "2",
+    "[FS_gt_200_indel, MQ_lt_40]"
+   ],
+   [
+    "VAR-111",
+    "2",
+    "[QD_lt_2, SOR_gt_3]"
+   ],
+   [
+    "VAR-121",
+    "2",
+    "[MQ_lt_40, QD_lt_2]"
+   ],
+   [
+    "VAR-148",
+    "2",
+    "[MQ_lt_40, SOR_gt_3]"
+   ],
+   [
+    "VAR-151",
+    "2",
+    "[MQ_lt_40, QD_lt_2]"
+   ],
+   [
+    "VAR-158",
+    "2",
+    "[FS_gt_60_snp, MQ_lt_40]"
+   ],
+   [
+    "VAR-002",
+    "1",
+    "[QD_lt_2]"
+   ]
+  ],
+  "ms_median": 1.91
+ },
+ "c03_per_sample_stats.cypher": {
+  "vars": [
+   "sample",
+   "variants",
+   "avgQD",
+   "minQD",
+   "maxQD"
+  ],
+  "rows": [
+   [
+    "A",
+    "24",
+    "15.14",
+    "1.1",
+    "34.9"
+   ],
+   [
+    "B",
+    "20",
+    "15.58",
+    "1.5",
+    "34.5"
+   ],
+   [
+    "C",
+    "20",
+    "16.92",
+    "1.2",
+    "30.3"
+   ]
+  ],
+  "ms_median": 2.7
+ },
+ "c04_genes_optional_pathogenic.cypher": {
+  "vars": [
+   "gene",
+   "pathogenic",
+   "ids"
+  ],
+  "rows": [
+   [
+    "PALB2",
+    "2",
+    "[VAR-103, VAR-131]"
+   ],
+   [
+    "BRCA1",
+    "1",
+    "[VAR-001]"
+   ],
+   [
+    "TP53",
+    "1",
+    "[VAR-152]"
+   ],
+   [
+    "BRCA2",
+    "0",
+    "[]"
+   ]
+  ],
+  "ms_median": 0.57
+ },
+ "c05_relatives_varlen.cypher": {
+  "vars": [
+   "relative",
+   "steps"
+  ],
+  "rows": [
+   [
+    "Iryna",
+    "1"
+   ],
+   [
+    "Marta",
+    "1"
+   ],
+   [
+    "Petro",
+    "1"
+   ],
+   [
+    "Sofiia",
+    "1"
+   ],
+   [
+    "Halyna",
+    "2"
+   ],
+   [
+    "Maria",
+    "2"
+   ],
+   [
+    "Andrii",
+    "3"
+   ]
+  ],
+  "ms_median": 0.55
+ },
+ "c06_shortest_path.cypher": {
+  "vars": [
+   "hops",
+   "line"
+  ],
+  "rows": [
+   [
+    "2",
+    "[Olena, Iryna, Maria]"
+   ]
+  ],
+  "ms_median": 0.27
+ },
+ "c07_relative_eligibility.cypher": {
+  "vars": [
+   "person",
+   "degree",
+   "probability",
+   "age",
+   "canTest"
+  ],
+  "rows": [
+   [
+    "Marta",
+    "FirstDegreeRelative",
+    "0.5",
+    "39",
+    "так"
+   ],
+   [
+    "Sofiia",
+    "FirstDegreeRelative",
+    "0.5",
+    "17",
+    "ні"
+   ],
+   [
+    "Halyna",
+    "SecondDegreeRelative",
+    "0.25",
+    "65",
+    "так"
+   ],
+   [
+    "Andrii",
+    "ThirdDegreeRelative",
+    "0.125",
+    "40",
+    "так"
+   ]
+  ],
+  "ms_median": 0.31
+ },
+ "c08_concept_hierarchy.cypher": {
+  "vars": [
+   "concept",
+   "variants"
+  ],
+  "rows": [
+   [
+    "GeneticVariant",
+    "64"
+   ],
+   [
+    "SNP",
+    "46"
+   ],
+   [
+    "Indel",
+    "18"
+   ]
+  ],
+  "ms_median": 0.36
+ },
+ "c09_impact_threshold.cypher": {
+  "vars": [
+   "gene",
+   "variantsAffected"
+  ],
+  "rows": [
+   [
+    "BRCA2",
+    "18"
+   ],
+   [
+    "TP53",
+    "16"
+   ],
+   [
+    "BRCA1",
+    "14"
+   ],
+   [
+    "PALB2",
+    "14"
+   ]
+  ],
+  "ms_median": 0.56
+ },
+ "c10_impact_bam.cypher": {
+  "vars": [
+   "derivedFile",
+   "procedure",
+   "thresholdsToRecheck",
+   "thresholds"
+  ],
+  "rows": [
+   [
+    "sample1_vcf",
+    "HF-01",
+    "7",
+    "[FS_gt_200_indel, FS_gt_60_snp, MQRankSum_lt_-12.5, MQ_lt_40, QD_lt_2, ReadPosRankSum_lt_-8, SOR_gt_3]"
+   ]
+  ],
+  "ms_median": 0.32
+ },
+ "c11_proband_panel_path.cypher": {
+  "vars": [
+   "proband",
+   "variant",
+   "significance",
+   "gene",
+   "panel"
+  ],
+  "rows": [
+   [
+    "Olena",
+    "VAR-001",
+    "Pathogenic",
+    "BRCA1",
+    "HBOC-panel"
+   ]
+  ],
+  "ms_median": 0.34
+ }
+}

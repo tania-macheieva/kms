@@ -1,0 +1,3660 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dkh: <http://example.org/dkh/onto#> .
+@prefix ex5: <http://example.org/knowledge-hub/biomed/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/dkh/onto> a owl:Ontology ;
+    dct:creator "Студент (власник моделі); чернетки — Claude (LLM), перевірка — студент" ;
+    dct:description "Навчальна онтологія; статус довіри: чернетка, не перевірена експертом-медиком; не для клінічного використання."@uk ;
+    dct:source "GATK Team, Hard-filtering germline short variants; CDC, About Cascade Testing; таксономія ЛР5; карта ЛР6 v2" ;
+    dct:title "Domain Knowledge Hub: онтологія контролю якості геномних варіантів і каскадного тестування"@uk ;
+    owl:versionIRI <http://example.org/dkh/onto/0.1.0> ;
+    owl:versionInfo "0.1.0" ;
+    skos:note "Повторне використання: skos:closeMatch до таксономії ЛР5 (ex5:), skos:exactMatch/closeMatch до MeSH (URI перевірено MeSH Lookup API у ЛР5)." .
+
+dkh:Bohdan a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Bohdan"@en ;
+    dkh:hasAgeYears 33 ;
+    dkh:hasParent dkh:Zoriana .
+
+dkh:CT-01 a dkh:CascadeTesting,
+        owl:NamedIndividual ;
+    rdfs:label "CT-01"@en ;
+    dkh:appliesTo dkh:Andrii,
+        dkh:Halyna,
+        dkh:Marta,
+        dkh:Sofiia ;
+    dkh:requires dkh:VAR-001 .
+
+dkh:CT_B a dkh:CascadeTesting,
+        owl:NamedIndividual ;
+    rdfs:label "CT-B"@en ;
+    dkh:appliesTo dkh:Nadiia,
+        dkh:Taras,
+        dkh:Yana ;
+    dkh:requires dkh:VAR-032 .
+
+dkh:FlaggedVariant a owl:Class ;
+    rdfs:label "flagged variant"@en,
+        "варіант із прапорцем"@uk ;
+    rdfs:subClassOf dkh:GeneticVariant ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:unionOf ( dkh:LowQDVariant dkh:HighFSSnpVariant dkh:HighFSIndelVariant [ a owl:Class ;
+                        owl:intersectionOf ( dkh:GeneticVariant [ a owl:Restriction ;
+                                    owl:onProperty dkh:hasAnnotation ;
+                                    owl:someValuesFrom [ a owl:Class ;
+                                            owl:intersectionOf ( dkh:StrandOddsRatio [ a owl:Restriction ;
+                                                        owl:onProperty dkh:hasNumericValue ;
+                                                        owl:someValuesFrom [ a rdfs:Datatype ;
+                                                                owl:onDatatype xsd:decimal ;
+                                                                owl:withRestrictions ( [ xsd:minExclusive 3.0 ] ) ] ] ) ] ] ) ] [ a owl:Class ;
+                        owl:intersectionOf ( dkh:GeneticVariant [ a owl:Restriction ;
+                                    owl:onProperty dkh:hasAnnotation ;
+                                    owl:someValuesFrom [ a owl:Class ;
+                                            owl:intersectionOf ( dkh:MappingQuality [ a owl:Restriction ;
+                                                        owl:onProperty dkh:hasNumericValue ;
+                                                        owl:someValuesFrom [ a rdfs:Datatype ;
+                                                                owl:onDatatype xsd:decimal ;
+                                                                owl:withRestrictions ( [ xsd:maxExclusive 40.0 ] ) ] ] ) ] ] ) ] [ a owl:Class ;
+                        owl:intersectionOf ( dkh:GeneticVariant [ a owl:Restriction ;
+                                    owl:onProperty dkh:hasAnnotation ;
+                                    owl:someValuesFrom [ a owl:Class ;
+                                            owl:intersectionOf ( dkh:MQRankSum [ a owl:Restriction ;
+                                                        owl:onProperty dkh:hasNumericValue ;
+                                                        owl:someValuesFrom [ a rdfs:Datatype ;
+                                                                owl:onDatatype xsd:decimal ;
+                                                                owl:withRestrictions ( [ xsd:maxExclusive -12.5 ] ) ] ] ) ] ] ) ] [ a owl:Class ;
+                        owl:intersectionOf ( dkh:GeneticVariant [ a owl:Restriction ;
+                                    owl:onProperty dkh:hasAnnotation ;
+                                    owl:someValuesFrom [ a owl:Class ;
+                                            owl:intersectionOf ( dkh:ReadPosRankSum [ a owl:Restriction ;
+                                                        owl:onProperty dkh:hasNumericValue ;
+                                                        owl:someValuesFrom [ a rdfs:Datatype ;
+                                                                owl:onDatatype xsd:decimal ;
+                                                                owl:withRestrictions ( [ xsd:maxExclusive -8.0 ] ) ] ] ) ] ] ) ] ) ] ;
+    skos:definition "Варіант із прапорцем — це генетичний варіант, що порушує щонайменше один поріг жорсткої фільтрації й тому підлягає відхиленню."@uk .
+
+dkh:HF-01 a dkh:HardFiltering,
+        owl:NamedIndividual ;
+    rdfs:label "HF-01"@en ;
+    dkh:appliesTo dkh:sample1_vcf ;
+    dkh:hasThreshold dkh:FS_gt_200_indel,
+        dkh:FS_gt_60_snp,
+        dkh:MQRankSum_lt_-12.5,
+        dkh:MQ_lt_40,
+        dkh:QD_lt_2,
+        dkh:ReadPosRankSum_lt_-8,
+        dkh:SOR_gt_3 .
+
+dkh:Oleh a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Oleh"@en ;
+    dkh:hasAgeYears 31 ;
+    dkh:hasParent dkh:Lidiia ;
+    dkh:hasSibling dkh:Kateryna .
+
+dkh:Situation_S01 a dkh:SituationTemplate,
+        owl:NamedIndividual ;
+    rdfs:label "S01 Низький QD"@en ;
+    dkh:guardClass dkh:LowQDVariant ;
+    dkh:hasAction dkh:S01_a_ApplyFlagAction ;
+    dkh:hasGuard "QD < 2" ;
+    dkh:hasInitialState dkh:S01_i_UnfilteredState ;
+    dkh:hasNewState dkh:S01_n_FlaggedState ;
+    dkh:triggeredBy dkh:S01_e_AnnotationComputedEvent .
+
+dkh:Situation_S02 a dkh:SituationTemplate,
+        owl:NamedIndividual ;
+    rdfs:label "S02 Високий FS у SNP"@en ;
+    dkh:guardClass dkh:HighFSSnpVariant ;
+    dkh:hasAction dkh:S02_a_ApplyFlagAction ;
+    dkh:hasGuard "FS > 60 і варіант є SNP" ;
+    dkh:hasInitialState dkh:S02_i_UnfilteredState ;
+    dkh:hasNewState dkh:S02_n_FlaggedState ;
+    dkh:triggeredBy dkh:S02_e_AnnotationComputedEvent .
+
+dkh:Situation_S03 a dkh:SituationTemplate,
+        owl:NamedIndividual ;
+    rdfs:label "S03 Прапорець FS на кінці екзона"@en ;
+    dkh:guardClass dkh:ExonEndVariant ;
+    dkh:hasAction dkh:S03_a_ReviewWithSORAction ;
+    dkh:hasGuard "єдиний прапорець — FS, варіант у кінці екзона, SOR ≤ 3" ;
+    dkh:hasInitialState dkh:S03_i_FlaggedState ;
+    dkh:hasNewState dkh:S03_n_UnfilteredState ;
+    dkh:triggeredBy dkh:S03_e_AnnotationComputedEvent .
+
+dkh:Situation_S04 a dkh:SituationTemplate,
+        owl:NamedIndividual ;
+    rdfs:label "S04 Вибір методу для малої панелі"@en ;
+    dkh:guardClass dkh:GenePanel ;
+    dkh:hasAction dkh:S04_a_SelectHardFilteringAction ;
+    dkh:hasGuard "панель мала: немає великого набору варіантів і підготовлених відомих ресурсів" ;
+    dkh:hasInitialState dkh:S04_i_UnfilteredState ;
+    dkh:hasNewState dkh:S04_n_UnfilteredState ;
+    dkh:triggeredBy dkh:S04_e_MethodChoiceEvent .
+
+dkh:Situation_S05 a dkh:SituationTemplate,
+        owl:NamedIndividual ;
+    rdfs:label "S05 Пропозиція тестування дорослому родичу"@en ;
+    dkh:guardClass dkh:AdultRelative ;
+    dkh:hasAction dkh:S05_a_OfferCascadeTestingAction ;
+    dkh:hasGuard "родич повнолітній (вік ≥ 18); починати з родичів першого ступеня (50%)" ;
+    dkh:hasInitialState dkh:S05_i_UntestedState ;
+    dkh:hasNewState dkh:S05_n_TestingOfferedState ;
+    dkh:triggeredBy dkh:S05_e_PathogenicVariantFoundEvent .
+
+dkh:Situation_S06 a dkh:SituationTemplate,
+        owl:NamedIndividual ;
+    rdfs:label "S06 Відкладення тестування неповнолітнього"@en ;
+    dkh:guardClass dkh:MinorRelative ;
+    dkh:hasAction dkh:S06_a_DeferTestingAction ;
+    dkh:hasGuard "вік родича < 18" ;
+    dkh:hasInitialState dkh:S06_i_UntestedState ;
+    dkh:hasNewState dkh:S06_n_TestingDeferredState ;
+    dkh:triggeredBy dkh:S06_e_TestingRequestedEvent .
+
+dkh:carries a owl:ObjectProperty ;
+    rdfs:label "carries"@en,
+        "несе"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:GeneticVariant ;
+    skos:definition "Особа є носієм варіанта."@uk .
+
+dkh:detects a owl:ObjectProperty ;
+    rdfs:label "detects"@en,
+        "виявляє"@uk ;
+    rdfs:domain dkh:Procedure ;
+    rdfs:range dkh:GeneticVariant ;
+    skos:definition "Процедура виявляє варіант."@uk .
+
+dkh:forVariantType a owl:DatatypeProperty ;
+    rdfs:label "for variant type"@en,
+        "для типу варіанта"@uk ;
+    rdfs:domain dkh:FilterThreshold ;
+    rdfs:range xsd:string ;
+    skos:definition "SNP, INDEL або всі."@uk .
+
+dkh:guardClass a owl:AnnotationProperty ;
+    rdfs:label "guard class"@en .
+
+dkh:hasAction a owl:ObjectProperty ;
+    rdfs:label "has action"@en,
+        "має дію"@uk ;
+    rdfs:domain dkh:SituationTemplate ;
+    rdfs:range dkh:Action ;
+    skos:definition "Дія/наслідок шаблона."@uk .
+
+dkh:hasComparisonOperator a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has comparison operator"@en,
+        "має оператор порівняння"@uk ;
+    rdfs:domain dkh:FilterThreshold ;
+    rdfs:range xsd:string ;
+    skos:definition "«<» або «>»."@uk .
+
+dkh:hasCousin a owl:ObjectProperty ;
+    rdfs:label "has cousin"@en,
+        "має двоюрідного родича"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Person ;
+    rdfs:subPropertyOf dkh:isThirdDegreeRelativeOf ;
+    owl:propertyChainAxiom ( dkh:hasAuntOrUncle dkh:hasChild ) ;
+    skos:definition "Ланцюг hasAuntOrUncle∘hasChild."@uk .
+
+dkh:hasDiagnosis a owl:ObjectProperty ;
+    rdfs:label "has diagnosis"@en,
+        "має діагноз"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Disease ;
+    skos:definition "Особі встановлено діагноз."@uk .
+
+dkh:hasGrandparent a owl:ObjectProperty ;
+    rdfs:label "has grandparent"@en,
+        "має бабусю/дідуся"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Person ;
+    rdfs:subPropertyOf dkh:isSecondDegreeRelativeOf ;
+    owl:propertyChainAxiom ( dkh:hasParent dkh:hasParent ) ;
+    skos:definition "Ланцюг hasParent∘hasParent."@uk .
+
+dkh:hasGuard a owl:DatatypeProperty ;
+    rdfs:label "has guard"@en,
+        "має умову (guard)"@uk ;
+    rdfs:domain dkh:SituationTemplate ;
+    rdfs:range xsd:string ;
+    skos:definition "Умова спрацювання."@uk .
+
+dkh:hasInitialState a owl:ObjectProperty ;
+    rdfs:label "has initial state"@en,
+        "має початковий стан"@uk ;
+    rdfs:domain dkh:SituationTemplate ;
+    rdfs:range dkh:State ;
+    skos:definition "Початковий стан шаблона."@uk .
+
+dkh:hasNewState a owl:ObjectProperty ;
+    rdfs:label "has new state"@en,
+        "має новий стан"@uk ;
+    rdfs:domain dkh:SituationTemplate ;
+    rdfs:range dkh:State ;
+    skos:definition "Новий стан шаблона."@uk .
+
+dkh:hasThreshold a owl:ObjectProperty ;
+    rdfs:label "has threshold"@en,
+        "має поріг"@uk ;
+    rdfs:domain dkh:Procedure ;
+    rdfs:range dkh:FilterThreshold ;
+    skos:definition "Процедура використовує поріг."@uk .
+
+dkh:hasThresholdValue a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has threshold value"@en,
+        "має значення порога"@uk ;
+    rdfs:domain dkh:FilterThreshold ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Граничне значення."@uk .
+
+dkh:hasVariantId a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has variant id"@en,
+        "має ідентифікатор варіанта"@uk ;
+    rdfs:domain dkh:GeneticVariant ;
+    rdfs:range xsd:string ;
+    skos:definition "Ідентифікатор."@uk .
+
+dkh:isDeceased a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "is deceased"@en,
+        "померла/помер"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Ознака, що особа померла (ідея запозичена з чернетки LLM)."@uk .
+
+dkh:locatedIn a owl:ObjectProperty ;
+    rdfs:label "located in"@en,
+        "розташований у"@uk ;
+    rdfs:domain dkh:GeneticVariant ;
+    rdfs:range dkh:Gene ;
+    skos:definition "Варіант розташований у гені."@uk .
+
+dkh:onAnnotationName a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "on annotation name"@en,
+        "для анотації"@uk ;
+    rdfs:domain dkh:FilterThreshold ;
+    rdfs:range xsd:string ;
+    skos:definition "Назва анотації (QD, FS…)."@uk .
+
+dkh:produces a owl:ObjectProperty ;
+    rdfs:label "produces"@en,
+        "створює"@uk ;
+    rdfs:domain dkh:Procedure ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( dkh:DataArtifact dkh:GeneticVariant ) ] ;
+    skos:definition "Процедура створює дані чи варіанти."@uk .
+
+dkh:recordedIn a owl:ObjectProperty ;
+    rdfs:label "recorded in"@en ;
+    rdfs:comment "Додано в ЛР8 (збагачення даних): варіант записано у VCF-файлі."@uk ;
+    rdfs:domain dkh:GeneticVariant ;
+    rdfs:range dkh:VCFFile .
+
+dkh:triggeredBy a owl:ObjectProperty ;
+    rdfs:label "triggered by"@en,
+        "ініціюється подією"@uk ;
+    rdfs:domain dkh:SituationTemplate ;
+    rdfs:range dkh:Event ;
+    skos:definition "Подія шаблона."@uk .
+
+dkh:DeferTestingAction a owl:Class ;
+    rdfs:label "defer testing action"@en,
+        "дія «відкласти тестування»"@uk ;
+    rdfs:subClassOf dkh:Action ;
+    skos:definition "Дія «відкласти тестування» — це дія, що відкладає тестування до повноліття."@uk .
+
+dkh:Exon a owl:Class ;
+    rdfs:label "exon"@en,
+        "екзон"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dkh:partOf ;
+            owl:someValuesFrom dkh:Gene ],
+        dkh:BiologicalEntity ;
+    skos:closeMatch ex5:C009 ;
+    skos:definition "Екзон — це біологічна сутність, що є ділянкою гена, яка зберігається у зрілій РНК."@uk .
+
+dkh:FS_gt_200_indel a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "FS > 200.0 (INDEL)"@en ;
+    dkh:forVariantType "INDEL" ;
+    dkh:hasComparisonOperator ">" ;
+    dkh:hasThresholdValue 200.0 ;
+    dkh:onAnnotationName "FS" .
+
+dkh:FS_gt_60_snp a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "FS > 60.0 (SNP)"@en ;
+    dkh:forVariantType "SNP" ;
+    dkh:hasComparisonOperator ">" ;
+    dkh:hasThresholdValue 60.0 ;
+    dkh:onAnnotationName "FS" .
+
+dkh:FamilyHistory a owl:Class ;
+    rdfs:label "family history"@en,
+        "родинний анамнез"@uk ;
+    rdfs:subClassOf dkh:DataArtifact ;
+    skos:closeMatch ex5:C088 ;
+    skos:definition "Родинний анамнез — це артефакт даних, що описує випадки захворювань серед родичів особи."@uk .
+
+dkh:FilteredState a owl:Class ;
+    rdfs:label "filtered state"@en,
+        "відфільтрований стан"@uk ;
+    rdfs:subClassOf dkh:State ;
+    skos:definition "Відфільтрований стан — це стан, в якому варіант відхилено."@uk .
+
+dkh:GeneticCounseling a owl:Class ;
+    rdfs:label "genetic counseling"@en,
+        "генетичне консультування"@uk ;
+    rdfs:subClassOf dkh:Procedure ;
+    skos:closeMatch ex5:C070 ;
+    skos:definition "Генетичне консультування — це процедура, що пояснює пацієнту й родині результати та ризики тестування."@uk ;
+    skos:exactMatch <http://id.nlm.nih.gov/mesh/D005817> .
+
+dkh:GermlineVariant a owl:Class ;
+    rdfs:label "germline variant"@en,
+        "зародковий варіант"@uk ;
+    rdfs:subClassOf dkh:GeneticVariant ;
+    skos:closeMatch ex5:C030 ;
+    skos:definition "Зародковий варіант — це генетичний варіант, що наявний у клітинах зародкової лінії й успадковується."@uk .
+
+dkh:HighFSIndelVariant a owl:Class ;
+    rdfs:label "high FS indel"@en,
+        "INDEL із високим FS"@uk ;
+    rdfs:subClassOf dkh:Indel ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:Indel [ a owl:Restriction ;
+                        owl:onProperty dkh:hasAnnotation ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:intersectionOf ( dkh:FisherStrandBias [ a owl:Restriction ;
+                                            owl:onProperty dkh:hasNumericValue ;
+                                            owl:someValuesFrom [ a rdfs:Datatype ;
+                                                    owl:onDatatype xsd:decimal ;
+                                                    owl:withRestrictions ( [ xsd:minExclusive 200.0 ] ) ] ] ) ] ] ) ] ;
+    skos:definition "INDEL із високим FS — це вставка-делеція, що має анотацію FS зі значенням більше 200."@uk .
+
+dkh:Iryna_OC a dkh:OvarianCancer,
+        owl:NamedIndividual ;
+    rdfs:label "ovarian cancer (Iryna)"@en .
+
+dkh:Kateryna a dkh:Person,
+        dkh:Proband,
+        owl:NamedIndividual ;
+    rdfs:label "Kateryna"@en ;
+    dkh:carries dkh:VAR-025 ;
+    dkh:hasAgeYears 35 ;
+    dkh:hasDiagnosis dkh:Kateryna_dx ;
+    dkh:hasParent dkh:Lidiia .
+
+dkh:Kateryna_dx a dkh:OvarianCancer,
+        owl:NamedIndividual ;
+    rdfs:label "OvarianCancer (Kateryna)"@en .
+
+dkh:LowQDAnnotation a owl:Class ;
+    rdfs:label "low QD annotation"@en,
+        "низька анотація QD"@uk ;
+    rdfs:subClassOf dkh:QualityByDepth ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:QualityByDepth [ a owl:Restriction ;
+                        owl:onProperty dkh:hasNumericValue ;
+                        owl:someValuesFrom [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:decimal ;
+                                owl:withRestrictions ( [ xsd:maxExclusive 2.0 ] ) ] ] ) ] ;
+    skos:definition "Низька анотація QD — це якість на глибину, зі значенням менше 2."@uk .
+
+dkh:MQRankSum_lt_-12.5 a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "MQRankSum < -12.5 (all)"@en ;
+    dkh:forVariantType "all" ;
+    dkh:hasComparisonOperator "<" ;
+    dkh:hasThresholdValue -12.5 ;
+    dkh:onAnnotationName "MQRankSum" .
+
+dkh:MQ_lt_40 a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "MQ < 40.0 (all)"@en ;
+    dkh:forVariantType "all" ;
+    dkh:hasComparisonOperator "<" ;
+    dkh:hasThresholdValue 40.0 ;
+    dkh:onAnnotationName "MQ" .
+
+dkh:MethodChoiceEvent a owl:Class ;
+    rdfs:label "method choice event"@en,
+        "подія вибору методу"@uk ;
+    rdfs:subClassOf dkh:Event ;
+    skos:definition "Подія вибору методу — це подія, в якій потрібно вибрати метод фільтрації для набору даних."@uk .
+
+dkh:Nadiia a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Nadiia"@en ;
+    dkh:hasAgeYears 48 ;
+    dkh:hasParent dkh:Mykola,
+        dkh:Vira ;
+    dkh:hasSibling dkh:Pavlo .
+
+dkh:OfferCascadeTestingAction a owl:Class ;
+    rdfs:label "offer cascade testing action"@en,
+        "дія «запропонувати каскадне тестування»"@uk ;
+    rdfs:subClassOf dkh:Action ;
+    skos:definition "Дія «запропонувати каскадне тестування» — це дія, що пропонує тестування родичу."@uk .
+
+dkh:Olena_BC a dkh:BreastCancer,
+        owl:NamedIndividual ;
+    rdfs:label "breast cancer (Olena)"@en .
+
+dkh:PathogenicVariant a owl:Class ;
+    rdfs:label "pathogenic variant"@en,
+        "патогенний варіант"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dkh:increasesRiskOf ;
+            owl:someValuesFrom dkh:OvarianCancer ],
+        [ a owl:Restriction ;
+            owl:onProperty dkh:increasesRiskOf ;
+            owl:someValuesFrom dkh:BreastCancer ],
+        dkh:GeneticVariant ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:GeneticVariant [ a owl:Restriction ;
+                        owl:onProperty dkh:hasClinicalSignificance ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:oneOf ( dkh:Pathogenic ) ] ] ) ] ;
+    skos:closeMatch ex5:C033 ;
+    skos:definition "Патогенний варіант — це генетичний варіант, якому приписано клінічне значення «патогенний»."@uk .
+
+dkh:PathogenicVariantFoundEvent a owl:Class ;
+    rdfs:label "pathogenic variant found event"@en,
+        "подія виявлення патогенного варіанта"@uk ;
+    rdfs:subClassOf dkh:Event ;
+    skos:definition "Подія виявлення патогенного варіанта — це подія, в якій у пробанда виявлено патогенний варіант."@uk .
+
+dkh:Pavlo_dx a dkh:BreastCancer,
+        owl:NamedIndividual ;
+    rdfs:label "BreastCancer (Pavlo)"@en .
+
+dkh:QD_lt_2 a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "QD < 2.0 (all)"@en ;
+    dkh:forVariantType "all" ;
+    dkh:hasComparisonOperator "<" ;
+    dkh:hasThresholdValue 2.0 ;
+    dkh:onAnnotationName "QD" .
+
+dkh:ReadDepth a owl:Class ;
+    rdfs:label "read depth"@en,
+        "глибина покриття"@uk ;
+    rdfs:subClassOf dkh:QualityAnnotation ;
+    skos:closeMatch ex5:C099 ;
+    skos:definition "Глибина покриття — це анотація якості, що рахує кількість прочитань, які покривають позицію."@uk .
+
+dkh:ReadPosRankSum_lt_-8 a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "ReadPosRankSum < -8.0 (all)"@en ;
+    dkh:forVariantType "all" ;
+    dkh:hasComparisonOperator "<" ;
+    dkh:hasThresholdValue -8.0 ;
+    dkh:onAnnotationName "ReadPosRankSum" .
+
+dkh:ReviewWithSORAction a owl:Class ;
+    rdfs:label "review with SOR action"@en,
+        "дія «перевірити SOR»"@uk ;
+    rdfs:subClassOf dkh:Action ;
+    skos:definition "Дія «перевірити SOR» — це дія, що додатково перевіряє SOR для варіанта в кінці екзона."@uk .
+
+dkh:RiskAssessment a owl:Class ;
+    rdfs:label "risk assessment"@en,
+        "оцінка ризику"@uk ;
+    rdfs:subClassOf dkh:Procedure ;
+    skos:closeMatch ex5:C071 ;
+    skos:definition "Оцінка ризику — це процедура, що оцінює ймовірність захворювання за варіантами й родинним анамнезом."@uk .
+
+dkh:S01_a_ApplyFlagAction a dkh:ApplyFlagAction,
+        owl:NamedIndividual ;
+    rdfs:label "S01: ApplyFlagAction"@en .
+
+dkh:S01_e_AnnotationComputedEvent a dkh:AnnotationComputedEvent,
+        owl:NamedIndividual ;
+    rdfs:label "S01: AnnotationComputedEvent"@en .
+
+dkh:S01_i_UnfilteredState a dkh:UnfilteredState,
+        owl:NamedIndividual ;
+    rdfs:label "S01: UnfilteredState"@en .
+
+dkh:S01_n_FlaggedState a dkh:FlaggedState,
+        owl:NamedIndividual ;
+    rdfs:label "S01: FlaggedState"@en .
+
+dkh:S02_a_ApplyFlagAction a dkh:ApplyFlagAction,
+        owl:NamedIndividual ;
+    rdfs:label "S02: ApplyFlagAction"@en .
+
+dkh:S02_e_AnnotationComputedEvent a dkh:AnnotationComputedEvent,
+        owl:NamedIndividual ;
+    rdfs:label "S02: AnnotationComputedEvent"@en .
+
+dkh:S02_i_UnfilteredState a dkh:UnfilteredState,
+        owl:NamedIndividual ;
+    rdfs:label "S02: UnfilteredState"@en .
+
+dkh:S02_n_FlaggedState a dkh:FlaggedState,
+        owl:NamedIndividual ;
+    rdfs:label "S02: FlaggedState"@en .
+
+dkh:S03_a_ReviewWithSORAction a dkh:ReviewWithSORAction,
+        owl:NamedIndividual ;
+    rdfs:label "S03: ReviewWithSORAction"@en .
+
+dkh:S03_e_AnnotationComputedEvent a dkh:AnnotationComputedEvent,
+        owl:NamedIndividual ;
+    rdfs:label "S03: AnnotationComputedEvent"@en .
+
+dkh:S03_i_FlaggedState a dkh:FlaggedState,
+        owl:NamedIndividual ;
+    rdfs:label "S03: FlaggedState"@en .
+
+dkh:S03_n_UnfilteredState a dkh:UnfilteredState,
+        owl:NamedIndividual ;
+    rdfs:label "S03: UnfilteredState"@en .
+
+dkh:S04_a_SelectHardFilteringAction a dkh:SelectHardFilteringAction,
+        owl:NamedIndividual ;
+    rdfs:label "S04: SelectHardFilteringAction"@en .
+
+dkh:S04_e_MethodChoiceEvent a dkh:MethodChoiceEvent,
+        owl:NamedIndividual ;
+    rdfs:label "S04: MethodChoiceEvent"@en .
+
+dkh:S04_i_UnfilteredState a dkh:UnfilteredState,
+        owl:NamedIndividual ;
+    rdfs:label "S04: UnfilteredState"@en .
+
+dkh:S04_n_UnfilteredState a dkh:UnfilteredState,
+        owl:NamedIndividual ;
+    rdfs:label "S04: UnfilteredState"@en .
+
+dkh:S05_a_OfferCascadeTestingAction a dkh:OfferCascadeTestingAction,
+        owl:NamedIndividual ;
+    rdfs:label "S05: OfferCascadeTestingAction"@en .
+
+dkh:S05_e_PathogenicVariantFoundEvent a dkh:PathogenicVariantFoundEvent,
+        owl:NamedIndividual ;
+    rdfs:label "S05: PathogenicVariantFoundEvent"@en .
+
+dkh:S05_i_UntestedState a dkh:UntestedState,
+        owl:NamedIndividual ;
+    rdfs:label "S05: UntestedState"@en .
+
+dkh:S05_n_TestingOfferedState a dkh:TestingOfferedState,
+        owl:NamedIndividual ;
+    rdfs:label "S05: TestingOfferedState"@en .
+
+dkh:S06_a_DeferTestingAction a dkh:DeferTestingAction,
+        owl:NamedIndividual ;
+    rdfs:label "S06: DeferTestingAction"@en .
+
+dkh:S06_e_TestingRequestedEvent a dkh:TestingRequestedEvent,
+        owl:NamedIndividual ;
+    rdfs:label "S06: TestingRequestedEvent"@en .
+
+dkh:S06_i_UntestedState a dkh:UntestedState,
+        owl:NamedIndividual ;
+    rdfs:label "S06: UntestedState"@en .
+
+dkh:S06_n_TestingDeferredState a dkh:TestingDeferredState,
+        owl:NamedIndividual ;
+    rdfs:label "S06: TestingDeferredState"@en .
+
+dkh:SOR_gt_3 a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "SOR > 3.0 (all)"@en ;
+    dkh:forVariantType "all" ;
+    dkh:hasComparisonOperator ">" ;
+    dkh:hasThresholdValue 3.0 ;
+    dkh:onAnnotationName "SOR" .
+
+dkh:SecondDegreeRelative a owl:Class ;
+    rdfs:label "second-degree relative"@en,
+        "родич другого ступеня"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue 0.25 ;
+            owl:onProperty dkh:hasInheritanceProbability ],
+        dkh:Relative ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:Person [ a owl:Restriction ;
+                        owl:onProperty dkh:isSecondDegreeRelativeOf ;
+                        owl:someValuesFrom dkh:Proband ] ) ] ;
+    skos:definition "Родич другого ступеня — це родич, що є бабусею/дідусем, тіткою/дядьком або зведеним братом/сестрою пробанда."@uk .
+
+dkh:SelectHardFilteringAction a owl:Class ;
+    rdfs:label "select hard filtering action"@en,
+        "дія «обрати жорстку фільтрацію»"@uk ;
+    rdfs:subClassOf dkh:Action ;
+    skos:definition "Дія «обрати жорстку фільтрацію» — це дія, що обирає hard filtering замість VQSR."@uk .
+
+dkh:SequenceAlignment a owl:Class ;
+    rdfs:label "sequence alignment"@en,
+        "вирівнювання послідовностей"@uk ;
+    rdfs:subClassOf dkh:Procedure ;
+    skos:closeMatch ex5:C059 ;
+    skos:definition "Вирівнювання послідовностей — це процедура, що зіставляє прочитання з еталонним геномом."@uk .
+
+dkh:Sofiia a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Sofiia"@en ;
+    dkh:hasAgeYears 17 ;
+    dkh:hasParent dkh:Olena .
+
+dkh:Taras a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Taras"@en ;
+    dkh:hasAgeYears 15 ;
+    dkh:hasParent dkh:Pavlo .
+
+dkh:TestingRequestedEvent a owl:Class ;
+    rdfs:label "testing requested event"@en,
+        "подія запиту тестування"@uk ;
+    rdfs:subClassOf dkh:Event ;
+    skos:definition "Подія запиту тестування — це подія, в якій розглядається тестування конкретного родича."@uk .
+
+dkh:ThirdDegreeRelative a owl:Class ;
+    rdfs:label "third-degree relative"@en,
+        "родич третього ступеня"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue 0.125 ;
+            owl:onProperty dkh:hasInheritanceProbability ],
+        dkh:Relative ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:Person [ a owl:Restriction ;
+                        owl:onProperty dkh:isThirdDegreeRelativeOf ;
+                        owl:someValuesFrom dkh:Proband ] ) ] ;
+    skos:definition "Родич третього ступеня — це родич, що є двоюрідним або більш віддаленим родичем пробанда."@uk .
+
+dkh:VAR-001_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-001"@en ;
+    dkh:hasNumericValue 3.1 ;
+    dkh:isAnnotationOf dkh:VAR-001 .
+
+dkh:VAR-001_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-001"@en ;
+    dkh:hasNumericValue 60.0 ;
+    dkh:isAnnotationOf dkh:VAR-001 .
+
+dkh:VAR-001_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-001"@en ;
+    dkh:hasNumericValue 25.0 ;
+    dkh:isAnnotationOf dkh:VAR-001 .
+
+dkh:VAR-001_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-001"@en ;
+    dkh:hasNumericValue 0.8 ;
+    dkh:isAnnotationOf dkh:VAR-001 .
+
+dkh:VAR-002 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-002"@en ;
+    dkh:hasAnnotation dkh:VAR-002_QualityByDepth ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-002" ;
+    dkh:locatedIn dkh:BRCA2 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-002_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-002"@en ;
+    dkh:hasNumericValue 1.5 ;
+    dkh:isAnnotationOf dkh:VAR-002 .
+
+dkh:VAR-003 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-003"@en ;
+    dkh:hasAnnotation dkh:VAR-003_FisherStrandBias ;
+    dkh:hasVariantId "VAR-003" ;
+    dkh:locatedIn dkh:BRCA2 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-003_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-003"@en ;
+    dkh:hasNumericValue 150.0 ;
+    dkh:isAnnotationOf dkh:VAR-003 .
+
+dkh:VAR-004_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-004"@en ;
+    dkh:hasNumericValue 62.0 ;
+    dkh:isAnnotationOf dkh:VAR-004 .
+
+dkh:VAR-004_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-004"@en ;
+    dkh:hasNumericValue 2.1 ;
+    dkh:isAnnotationOf dkh:VAR-004 .
+
+dkh:VAR-005_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-005"@en ;
+    dkh:hasNumericValue 54.1 ;
+    dkh:isAnnotationOf dkh:VAR-005 .
+
+dkh:VAR-005_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-005"@en ;
+    dkh:hasNumericValue 32.7 ;
+    dkh:isAnnotationOf dkh:VAR-005 .
+
+dkh:VAR-005_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-005"@en ;
+    dkh:hasNumericValue 25.9 ;
+    dkh:isAnnotationOf dkh:VAR-005 .
+
+dkh:VAR-005_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-005"@en ;
+    dkh:hasNumericValue 4.0 ;
+    dkh:isAnnotationOf dkh:VAR-005 .
+
+dkh:VAR-006_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-006"@en ;
+    dkh:hasNumericValue 15.9 ;
+    dkh:isAnnotationOf dkh:VAR-006 .
+
+dkh:VAR-006_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-006"@en ;
+    dkh:hasNumericValue 46.9 ;
+    dkh:isAnnotationOf dkh:VAR-006 .
+
+dkh:VAR-006_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-006"@en ;
+    dkh:hasNumericValue 1.4 ;
+    dkh:isAnnotationOf dkh:VAR-006 .
+
+dkh:VAR-006_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-006"@en ;
+    dkh:hasNumericValue 3.0 ;
+    dkh:isAnnotationOf dkh:VAR-006 .
+
+dkh:VAR-007_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-007"@en ;
+    dkh:hasNumericValue 22.2 ;
+    dkh:isAnnotationOf dkh:VAR-007 .
+
+dkh:VAR-007_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-007"@en ;
+    dkh:hasNumericValue 53.7 ;
+    dkh:isAnnotationOf dkh:VAR-007 .
+
+dkh:VAR-007_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-007"@en ;
+    dkh:hasNumericValue 15.1 ;
+    dkh:isAnnotationOf dkh:VAR-007 .
+
+dkh:VAR-007_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-007"@en ;
+    dkh:hasNumericValue 1.1 ;
+    dkh:isAnnotationOf dkh:VAR-007 .
+
+dkh:VAR-008_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-008"@en ;
+    dkh:hasNumericValue 3.5 ;
+    dkh:isAnnotationOf dkh:VAR-008 .
+
+dkh:VAR-008_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-008"@en ;
+    dkh:hasNumericValue 33.9 ;
+    dkh:isAnnotationOf dkh:VAR-008 .
+
+dkh:VAR-008_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-008"@en ;
+    dkh:hasNumericValue 9.6 ;
+    dkh:isAnnotationOf dkh:VAR-008 .
+
+dkh:VAR-008_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-008"@en ;
+    dkh:hasNumericValue 2.2 ;
+    dkh:isAnnotationOf dkh:VAR-008 .
+
+dkh:VAR-009_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-009"@en ;
+    dkh:hasNumericValue 94.0 ;
+    dkh:isAnnotationOf dkh:VAR-009 .
+
+dkh:VAR-009_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-009"@en ;
+    dkh:hasNumericValue 32.2 ;
+    dkh:isAnnotationOf dkh:VAR-009 .
+
+dkh:VAR-009_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-009"@en ;
+    dkh:hasNumericValue 31.0 ;
+    dkh:isAnnotationOf dkh:VAR-009 .
+
+dkh:VAR-009_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-009"@en ;
+    dkh:hasNumericValue 1.0 ;
+    dkh:isAnnotationOf dkh:VAR-009 .
+
+dkh:VAR-010_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-010"@en ;
+    dkh:hasNumericValue 36.3 ;
+    dkh:isAnnotationOf dkh:VAR-010 .
+
+dkh:VAR-010_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-010"@en ;
+    dkh:hasNumericValue 35.0 ;
+    dkh:isAnnotationOf dkh:VAR-010 .
+
+dkh:VAR-010_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-010"@en ;
+    dkh:hasNumericValue 13.6 ;
+    dkh:isAnnotationOf dkh:VAR-010 .
+
+dkh:VAR-010_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-010"@en ;
+    dkh:hasNumericValue 3.8 ;
+    dkh:isAnnotationOf dkh:VAR-010 .
+
+dkh:VAR-011_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-011"@en ;
+    dkh:hasNumericValue 13.7 ;
+    dkh:isAnnotationOf dkh:VAR-011 .
+
+dkh:VAR-011_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-011"@en ;
+    dkh:hasNumericValue 35.1 ;
+    dkh:isAnnotationOf dkh:VAR-011 .
+
+dkh:VAR-011_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-011"@en ;
+    dkh:hasNumericValue 21.5 ;
+    dkh:isAnnotationOf dkh:VAR-011 .
+
+dkh:VAR-011_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-011"@en ;
+    dkh:hasNumericValue 3.3 ;
+    dkh:isAnnotationOf dkh:VAR-011 .
+
+dkh:VAR-012_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-012"@en ;
+    dkh:hasNumericValue 65.7 ;
+    dkh:isAnnotationOf dkh:VAR-012 .
+
+dkh:VAR-012_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-012"@en ;
+    dkh:hasNumericValue 42.4 ;
+    dkh:isAnnotationOf dkh:VAR-012 .
+
+dkh:VAR-012_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-012"@en ;
+    dkh:hasNumericValue 2.4 ;
+    dkh:isAnnotationOf dkh:VAR-012 .
+
+dkh:VAR-012_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-012"@en ;
+    dkh:hasNumericValue 3.7 ;
+    dkh:isAnnotationOf dkh:VAR-012 .
+
+dkh:VAR-013_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-013"@en ;
+    dkh:hasNumericValue 36.7 ;
+    dkh:isAnnotationOf dkh:VAR-013 .
+
+dkh:VAR-013_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-013"@en ;
+    dkh:hasNumericValue 37.6 ;
+    dkh:isAnnotationOf dkh:VAR-013 .
+
+dkh:VAR-013_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-013"@en ;
+    dkh:hasNumericValue 32.1 ;
+    dkh:isAnnotationOf dkh:VAR-013 .
+
+dkh:VAR-013_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-013"@en ;
+    dkh:hasNumericValue 1.3 ;
+    dkh:isAnnotationOf dkh:VAR-013 .
+
+dkh:VAR-014_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-014"@en ;
+    dkh:hasNumericValue 17.5 ;
+    dkh:isAnnotationOf dkh:VAR-014 .
+
+dkh:VAR-014_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-014"@en ;
+    dkh:hasNumericValue 45.8 ;
+    dkh:isAnnotationOf dkh:VAR-014 .
+
+dkh:VAR-014_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-014"@en ;
+    dkh:hasNumericValue 14.3 ;
+    dkh:isAnnotationOf dkh:VAR-014 .
+
+dkh:VAR-014_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-014"@en ;
+    dkh:hasNumericValue 4.5 ;
+    dkh:isAnnotationOf dkh:VAR-014 .
+
+dkh:VAR-015_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-015"@en ;
+    dkh:hasNumericValue 47.7 ;
+    dkh:isAnnotationOf dkh:VAR-015 .
+
+dkh:VAR-015_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-015"@en ;
+    dkh:hasNumericValue 48.5 ;
+    dkh:isAnnotationOf dkh:VAR-015 .
+
+dkh:VAR-015_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-015"@en ;
+    dkh:hasNumericValue 24.0 ;
+    dkh:isAnnotationOf dkh:VAR-015 .
+
+dkh:VAR-015_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-015"@en ;
+    dkh:hasNumericValue 1.9 ;
+    dkh:isAnnotationOf dkh:VAR-015 .
+
+dkh:VAR-016_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-016"@en ;
+    dkh:hasNumericValue 54.5 ;
+    dkh:isAnnotationOf dkh:VAR-016 .
+
+dkh:VAR-016_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-016"@en ;
+    dkh:hasNumericValue 38.3 ;
+    dkh:isAnnotationOf dkh:VAR-016 .
+
+dkh:VAR-016_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-016"@en ;
+    dkh:hasNumericValue 25.4 ;
+    dkh:isAnnotationOf dkh:VAR-016 .
+
+dkh:VAR-016_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-016"@en ;
+    dkh:hasNumericValue 2.5 ;
+    dkh:isAnnotationOf dkh:VAR-016 .
+
+dkh:VAR-017_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-017"@en ;
+    dkh:hasNumericValue 70.1 ;
+    dkh:isAnnotationOf dkh:VAR-017 .
+
+dkh:VAR-017_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-017"@en ;
+    dkh:hasNumericValue 45.5 ;
+    dkh:isAnnotationOf dkh:VAR-017 .
+
+dkh:VAR-017_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-017"@en ;
+    dkh:hasNumericValue 33.4 ;
+    dkh:isAnnotationOf dkh:VAR-017 .
+
+dkh:VAR-017_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-017"@en ;
+    dkh:hasNumericValue 1.3 ;
+    dkh:isAnnotationOf dkh:VAR-017 .
+
+dkh:VAR-018_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-018"@en ;
+    dkh:hasNumericValue 12.2 ;
+    dkh:isAnnotationOf dkh:VAR-018 .
+
+dkh:VAR-018_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-018"@en ;
+    dkh:hasNumericValue 46.7 ;
+    dkh:isAnnotationOf dkh:VAR-018 .
+
+dkh:VAR-018_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-018"@en ;
+    dkh:hasNumericValue 21.5 ;
+    dkh:isAnnotationOf dkh:VAR-018 .
+
+dkh:VAR-018_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-018"@en ;
+    dkh:hasNumericValue 3.5 ;
+    dkh:isAnnotationOf dkh:VAR-018 .
+
+dkh:VAR-019_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-019"@en ;
+    dkh:hasNumericValue 228.5 ;
+    dkh:isAnnotationOf dkh:VAR-019 .
+
+dkh:VAR-019_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-019"@en ;
+    dkh:hasNumericValue 39.5 ;
+    dkh:isAnnotationOf dkh:VAR-019 .
+
+dkh:VAR-019_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-019"@en ;
+    dkh:hasNumericValue 32.6 ;
+    dkh:isAnnotationOf dkh:VAR-019 .
+
+dkh:VAR-019_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-019"@en ;
+    dkh:hasNumericValue 3.8 ;
+    dkh:isAnnotationOf dkh:VAR-019 .
+
+dkh:VAR-020_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-020"@en ;
+    dkh:hasNumericValue 42.6 ;
+    dkh:isAnnotationOf dkh:VAR-020 .
+
+dkh:VAR-020_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-020"@en ;
+    dkh:hasNumericValue 50.5 ;
+    dkh:isAnnotationOf dkh:VAR-020 .
+
+dkh:VAR-020_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-020"@en ;
+    dkh:hasNumericValue 34.2 ;
+    dkh:isAnnotationOf dkh:VAR-020 .
+
+dkh:VAR-020_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-020"@en ;
+    dkh:hasNumericValue 0.7 ;
+    dkh:isAnnotationOf dkh:VAR-020 .
+
+dkh:VAR-021_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-021"@en ;
+    dkh:hasNumericValue 241.5 ;
+    dkh:isAnnotationOf dkh:VAR-021 .
+
+dkh:VAR-021_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-021"@en ;
+    dkh:hasNumericValue 51.4 ;
+    dkh:isAnnotationOf dkh:VAR-021 .
+
+dkh:VAR-021_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-021"@en ;
+    dkh:hasNumericValue 33.8 ;
+    dkh:isAnnotationOf dkh:VAR-021 .
+
+dkh:VAR-021_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-021"@en ;
+    dkh:hasNumericValue 3.4 ;
+    dkh:isAnnotationOf dkh:VAR-021 .
+
+dkh:VAR-022_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-022"@en ;
+    dkh:hasNumericValue 31.5 ;
+    dkh:isAnnotationOf dkh:VAR-022 .
+
+dkh:VAR-022_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-022"@en ;
+    dkh:hasNumericValue 40.5 ;
+    dkh:isAnnotationOf dkh:VAR-022 .
+
+dkh:VAR-022_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-022"@en ;
+    dkh:hasNumericValue 18.4 ;
+    dkh:isAnnotationOf dkh:VAR-022 .
+
+dkh:VAR-022_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-022"@en ;
+    dkh:hasNumericValue 1.2 ;
+    dkh:isAnnotationOf dkh:VAR-022 .
+
+dkh:VAR-023_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-023"@en ;
+    dkh:hasNumericValue 18.3 ;
+    dkh:isAnnotationOf dkh:VAR-023 .
+
+dkh:VAR-023_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-023"@en ;
+    dkh:hasNumericValue 56.6 ;
+    dkh:isAnnotationOf dkh:VAR-023 .
+
+dkh:VAR-023_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-023"@en ;
+    dkh:hasNumericValue 22.3 ;
+    dkh:isAnnotationOf dkh:VAR-023 .
+
+dkh:VAR-023_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-023"@en ;
+    dkh:hasNumericValue 4.1 ;
+    dkh:isAnnotationOf dkh:VAR-023 .
+
+dkh:VAR-024_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-024"@en ;
+    dkh:hasNumericValue 74.8 ;
+    dkh:isAnnotationOf dkh:VAR-024 .
+
+dkh:VAR-024_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-024"@en ;
+    dkh:hasNumericValue 44.7 ;
+    dkh:isAnnotationOf dkh:VAR-024 .
+
+dkh:VAR-024_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-024"@en ;
+    dkh:hasNumericValue 5.1 ;
+    dkh:isAnnotationOf dkh:VAR-024 .
+
+dkh:VAR-024_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-024"@en ;
+    dkh:hasNumericValue 2.7 ;
+    dkh:isAnnotationOf dkh:VAR-024 .
+
+dkh:VAR-025_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-025"@en ;
+    dkh:hasNumericValue 106.9 ;
+    dkh:isAnnotationOf dkh:VAR-025 .
+
+dkh:VAR-025_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-025"@en ;
+    dkh:hasNumericValue 31.7 ;
+    dkh:isAnnotationOf dkh:VAR-025 .
+
+dkh:VAR-025_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-025"@en ;
+    dkh:hasNumericValue 12.7 ;
+    dkh:isAnnotationOf dkh:VAR-025 .
+
+dkh:VAR-025_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-025"@en ;
+    dkh:hasNumericValue 3.9 ;
+    dkh:isAnnotationOf dkh:VAR-025 .
+
+dkh:VAR-026_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-026"@en ;
+    dkh:hasNumericValue 19.9 ;
+    dkh:isAnnotationOf dkh:VAR-026 .
+
+dkh:VAR-026_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-026"@en ;
+    dkh:hasNumericValue 43.9 ;
+    dkh:isAnnotationOf dkh:VAR-026 .
+
+dkh:VAR-026_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-026"@en ;
+    dkh:hasNumericValue 30.2 ;
+    dkh:isAnnotationOf dkh:VAR-026 .
+
+dkh:VAR-026_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-026"@en ;
+    dkh:hasNumericValue 1.0 ;
+    dkh:isAnnotationOf dkh:VAR-026 .
+
+dkh:VAR-027_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-027"@en ;
+    dkh:hasNumericValue 68.9 ;
+    dkh:isAnnotationOf dkh:VAR-027 .
+
+dkh:VAR-027_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-027"@en ;
+    dkh:hasNumericValue 31.6 ;
+    dkh:isAnnotationOf dkh:VAR-027 .
+
+dkh:VAR-027_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-027"@en ;
+    dkh:hasNumericValue 15.8 ;
+    dkh:isAnnotationOf dkh:VAR-027 .
+
+dkh:VAR-027_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-027"@en ;
+    dkh:hasNumericValue 2.6 ;
+    dkh:isAnnotationOf dkh:VAR-027 .
+
+dkh:VAR-028_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-028"@en ;
+    dkh:hasNumericValue 126.3 ;
+    dkh:isAnnotationOf dkh:VAR-028 .
+
+dkh:VAR-028_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-028"@en ;
+    dkh:hasNumericValue 42.4 ;
+    dkh:isAnnotationOf dkh:VAR-028 .
+
+dkh:VAR-028_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-028"@en ;
+    dkh:hasNumericValue 6.2 ;
+    dkh:isAnnotationOf dkh:VAR-028 .
+
+dkh:VAR-028_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-028"@en ;
+    dkh:hasNumericValue 1.1 ;
+    dkh:isAnnotationOf dkh:VAR-028 .
+
+dkh:VAR-029_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-029"@en ;
+    dkh:hasNumericValue 36.4 ;
+    dkh:isAnnotationOf dkh:VAR-029 .
+
+dkh:VAR-029_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-029"@en ;
+    dkh:hasNumericValue 59.7 ;
+    dkh:isAnnotationOf dkh:VAR-029 .
+
+dkh:VAR-029_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-029"@en ;
+    dkh:hasNumericValue 27.6 ;
+    dkh:isAnnotationOf dkh:VAR-029 .
+
+dkh:VAR-029_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-029"@en ;
+    dkh:hasNumericValue 2.0 ;
+    dkh:isAnnotationOf dkh:VAR-029 .
+
+dkh:VAR-030_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-030"@en ;
+    dkh:hasNumericValue 191.3 ;
+    dkh:isAnnotationOf dkh:VAR-030 .
+
+dkh:VAR-030_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-030"@en ;
+    dkh:hasNumericValue 39.7 ;
+    dkh:isAnnotationOf dkh:VAR-030 .
+
+dkh:VAR-030_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-030"@en ;
+    dkh:hasNumericValue 2.5 ;
+    dkh:isAnnotationOf dkh:VAR-030 .
+
+dkh:VAR-030_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-030"@en ;
+    dkh:hasNumericValue 0.5 ;
+    dkh:isAnnotationOf dkh:VAR-030 .
+
+dkh:VAR-031_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-031"@en ;
+    dkh:hasNumericValue 40.6 ;
+    dkh:isAnnotationOf dkh:VAR-031 .
+
+dkh:VAR-031_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-031"@en ;
+    dkh:hasNumericValue 32.1 ;
+    dkh:isAnnotationOf dkh:VAR-031 .
+
+dkh:VAR-031_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-031"@en ;
+    dkh:hasNumericValue 2.5 ;
+    dkh:isAnnotationOf dkh:VAR-031 .
+
+dkh:VAR-031_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-031"@en ;
+    dkh:hasNumericValue 3.9 ;
+    dkh:isAnnotationOf dkh:VAR-031 .
+
+dkh:VAR-032_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-032"@en ;
+    dkh:hasNumericValue 47.6 ;
+    dkh:isAnnotationOf dkh:VAR-032 .
+
+dkh:VAR-032_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-032"@en ;
+    dkh:hasNumericValue 43.0 ;
+    dkh:isAnnotationOf dkh:VAR-032 .
+
+dkh:VAR-032_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-032"@en ;
+    dkh:hasNumericValue 9.0 ;
+    dkh:isAnnotationOf dkh:VAR-032 .
+
+dkh:VAR-032_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-032"@en ;
+    dkh:hasNumericValue 2.9 ;
+    dkh:isAnnotationOf dkh:VAR-032 .
+
+dkh:VAR-033_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-033"@en ;
+    dkh:hasNumericValue 31.7 ;
+    dkh:isAnnotationOf dkh:VAR-033 .
+
+dkh:VAR-033_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-033"@en ;
+    dkh:hasNumericValue 39.3 ;
+    dkh:isAnnotationOf dkh:VAR-033 .
+
+dkh:VAR-033_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-033"@en ;
+    dkh:hasNumericValue 8.7 ;
+    dkh:isAnnotationOf dkh:VAR-033 .
+
+dkh:VAR-033_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-033"@en ;
+    dkh:hasNumericValue 3.1 ;
+    dkh:isAnnotationOf dkh:VAR-033 .
+
+dkh:VAR-034_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-034"@en ;
+    dkh:hasNumericValue 5.9 ;
+    dkh:isAnnotationOf dkh:VAR-034 .
+
+dkh:VAR-034_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-034"@en ;
+    dkh:hasNumericValue 38.2 ;
+    dkh:isAnnotationOf dkh:VAR-034 .
+
+dkh:VAR-034_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-034"@en ;
+    dkh:hasNumericValue 34.9 ;
+    dkh:isAnnotationOf dkh:VAR-034 .
+
+dkh:VAR-034_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-034"@en ;
+    dkh:hasNumericValue 1.1 ;
+    dkh:isAnnotationOf dkh:VAR-034 .
+
+dkh:VAR-035_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-035"@en ;
+    dkh:hasNumericValue 182.9 ;
+    dkh:isAnnotationOf dkh:VAR-035 .
+
+dkh:VAR-035_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-035"@en ;
+    dkh:hasNumericValue 60.6 ;
+    dkh:isAnnotationOf dkh:VAR-035 .
+
+dkh:VAR-035_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-035"@en ;
+    dkh:hasNumericValue 29.3 ;
+    dkh:isAnnotationOf dkh:VAR-035 .
+
+dkh:VAR-035_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-035"@en ;
+    dkh:hasNumericValue 2.8 ;
+    dkh:isAnnotationOf dkh:VAR-035 .
+
+dkh:VAR-036_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-036"@en ;
+    dkh:hasNumericValue 75.1 ;
+    dkh:isAnnotationOf dkh:VAR-036 .
+
+dkh:VAR-036_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-036"@en ;
+    dkh:hasNumericValue 33.6 ;
+    dkh:isAnnotationOf dkh:VAR-036 .
+
+dkh:VAR-036_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-036"@en ;
+    dkh:hasNumericValue 23.4 ;
+    dkh:isAnnotationOf dkh:VAR-036 .
+
+dkh:VAR-036_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-036"@en ;
+    dkh:hasNumericValue 0.8 ;
+    dkh:isAnnotationOf dkh:VAR-036 .
+
+dkh:VAR-037_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-037"@en ;
+    dkh:hasNumericValue 55.0 ;
+    dkh:isAnnotationOf dkh:VAR-037 .
+
+dkh:VAR-037_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-037"@en ;
+    dkh:hasNumericValue 45.7 ;
+    dkh:isAnnotationOf dkh:VAR-037 .
+
+dkh:VAR-037_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-037"@en ;
+    dkh:hasNumericValue 12.3 ;
+    dkh:isAnnotationOf dkh:VAR-037 .
+
+dkh:VAR-037_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-037"@en ;
+    dkh:hasNumericValue 3.9 ;
+    dkh:isAnnotationOf dkh:VAR-037 .
+
+dkh:VAR-038_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-038"@en ;
+    dkh:hasNumericValue 26.7 ;
+    dkh:isAnnotationOf dkh:VAR-038 .
+
+dkh:VAR-038_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-038"@en ;
+    dkh:hasNumericValue 60.4 ;
+    dkh:isAnnotationOf dkh:VAR-038 .
+
+dkh:VAR-038_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-038"@en ;
+    dkh:hasNumericValue 2.0 ;
+    dkh:isAnnotationOf dkh:VAR-038 .
+
+dkh:VAR-038_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-038"@en ;
+    dkh:hasNumericValue 0.8 ;
+    dkh:isAnnotationOf dkh:VAR-038 .
+
+dkh:VAR-039_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-039"@en ;
+    dkh:hasNumericValue 75.6 ;
+    dkh:isAnnotationOf dkh:VAR-039 .
+
+dkh:VAR-039_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-039"@en ;
+    dkh:hasNumericValue 34.6 ;
+    dkh:isAnnotationOf dkh:VAR-039 .
+
+dkh:VAR-039_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-039"@en ;
+    dkh:hasNumericValue 4.4 ;
+    dkh:isAnnotationOf dkh:VAR-039 .
+
+dkh:VAR-039_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-039"@en ;
+    dkh:hasNumericValue 3.2 ;
+    dkh:isAnnotationOf dkh:VAR-039 .
+
+dkh:VAR-040_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-040"@en ;
+    dkh:hasNumericValue 29.2 ;
+    dkh:isAnnotationOf dkh:VAR-040 .
+
+dkh:VAR-040_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-040"@en ;
+    dkh:hasNumericValue 60.1 ;
+    dkh:isAnnotationOf dkh:VAR-040 .
+
+dkh:VAR-040_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-040"@en ;
+    dkh:hasNumericValue 1.9 ;
+    dkh:isAnnotationOf dkh:VAR-040 .
+
+dkh:VAR-040_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-040"@en ;
+    dkh:hasNumericValue 4.2 ;
+    dkh:isAnnotationOf dkh:VAR-040 .
+
+dkh:VAR-041_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-041"@en ;
+    dkh:hasNumericValue 44.8 ;
+    dkh:isAnnotationOf dkh:VAR-041 .
+
+dkh:VAR-041_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-041"@en ;
+    dkh:hasNumericValue 60.2 ;
+    dkh:isAnnotationOf dkh:VAR-041 .
+
+dkh:VAR-041_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-041"@en ;
+    dkh:hasNumericValue 12.7 ;
+    dkh:isAnnotationOf dkh:VAR-041 .
+
+dkh:VAR-041_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-041"@en ;
+    dkh:hasNumericValue 4.0 ;
+    dkh:isAnnotationOf dkh:VAR-041 .
+
+dkh:VAR-042_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-042"@en ;
+    dkh:hasNumericValue 6.4 ;
+    dkh:isAnnotationOf dkh:VAR-042 .
+
+dkh:VAR-042_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-042"@en ;
+    dkh:hasNumericValue 40.3 ;
+    dkh:isAnnotationOf dkh:VAR-042 .
+
+dkh:VAR-042_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-042"@en ;
+    dkh:hasNumericValue 30.9 ;
+    dkh:isAnnotationOf dkh:VAR-042 .
+
+dkh:VAR-042_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-042"@en ;
+    dkh:hasNumericValue 3.4 ;
+    dkh:isAnnotationOf dkh:VAR-042 .
+
+dkh:VAR-043_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-043"@en ;
+    dkh:hasNumericValue 10.1 ;
+    dkh:isAnnotationOf dkh:VAR-043 .
+
+dkh:VAR-043_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-043"@en ;
+    dkh:hasNumericValue 36.2 ;
+    dkh:isAnnotationOf dkh:VAR-043 .
+
+dkh:VAR-043_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-043"@en ;
+    dkh:hasNumericValue 13.7 ;
+    dkh:isAnnotationOf dkh:VAR-043 .
+
+dkh:VAR-043_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-043"@en ;
+    dkh:hasNumericValue 2.2 ;
+    dkh:isAnnotationOf dkh:VAR-043 .
+
+dkh:VAR-044_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-044"@en ;
+    dkh:hasNumericValue 171.6 ;
+    dkh:isAnnotationOf dkh:VAR-044 .
+
+dkh:VAR-044_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-044"@en ;
+    dkh:hasNumericValue 38.6 ;
+    dkh:isAnnotationOf dkh:VAR-044 .
+
+dkh:VAR-044_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-044"@en ;
+    dkh:hasNumericValue 8.2 ;
+    dkh:isAnnotationOf dkh:VAR-044 .
+
+dkh:VAR-044_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-044"@en ;
+    dkh:hasNumericValue 1.9 ;
+    dkh:isAnnotationOf dkh:VAR-044 .
+
+dkh:VAR-045_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-045"@en ;
+    dkh:hasNumericValue 42.9 ;
+    dkh:isAnnotationOf dkh:VAR-045 .
+
+dkh:VAR-045_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-045"@en ;
+    dkh:hasNumericValue 33.6 ;
+    dkh:isAnnotationOf dkh:VAR-045 .
+
+dkh:VAR-045_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-045"@en ;
+    dkh:hasNumericValue 34.3 ;
+    dkh:isAnnotationOf dkh:VAR-045 .
+
+dkh:VAR-045_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-045"@en ;
+    dkh:hasNumericValue 4.2 ;
+    dkh:isAnnotationOf dkh:VAR-045 .
+
+dkh:VAR-046_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-046"@en ;
+    dkh:hasNumericValue 113.0 ;
+    dkh:isAnnotationOf dkh:VAR-046 .
+
+dkh:VAR-046_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-046"@en ;
+    dkh:hasNumericValue 39.7 ;
+    dkh:isAnnotationOf dkh:VAR-046 .
+
+dkh:VAR-046_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-046"@en ;
+    dkh:hasNumericValue 4.2 ;
+    dkh:isAnnotationOf dkh:VAR-046 .
+
+dkh:VAR-046_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-046"@en ;
+    dkh:hasNumericValue 3.3 ;
+    dkh:isAnnotationOf dkh:VAR-046 .
+
+dkh:VAR-047_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-047"@en ;
+    dkh:hasNumericValue 34.9 ;
+    dkh:isAnnotationOf dkh:VAR-047 .
+
+dkh:VAR-047_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-047"@en ;
+    dkh:hasNumericValue 55.0 ;
+    dkh:isAnnotationOf dkh:VAR-047 .
+
+dkh:VAR-047_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-047"@en ;
+    dkh:hasNumericValue 2.0 ;
+    dkh:isAnnotationOf dkh:VAR-047 .
+
+dkh:VAR-047_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-047"@en ;
+    dkh:hasNumericValue 2.4 ;
+    dkh:isAnnotationOf dkh:VAR-047 .
+
+dkh:VAR-048_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-048"@en ;
+    dkh:hasNumericValue 49.9 ;
+    dkh:isAnnotationOf dkh:VAR-048 .
+
+dkh:VAR-048_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-048"@en ;
+    dkh:hasNumericValue 33.9 ;
+    dkh:isAnnotationOf dkh:VAR-048 .
+
+dkh:VAR-048_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-048"@en ;
+    dkh:hasNumericValue 32.3 ;
+    dkh:isAnnotationOf dkh:VAR-048 .
+
+dkh:VAR-048_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-048"@en ;
+    dkh:hasNumericValue 3.1 ;
+    dkh:isAnnotationOf dkh:VAR-048 .
+
+dkh:VAR-049_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-049"@en ;
+    dkh:hasNumericValue 33.1 ;
+    dkh:isAnnotationOf dkh:VAR-049 .
+
+dkh:VAR-049_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-049"@en ;
+    dkh:hasNumericValue 59.2 ;
+    dkh:isAnnotationOf dkh:VAR-049 .
+
+dkh:VAR-049_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-049"@en ;
+    dkh:hasNumericValue 10.7 ;
+    dkh:isAnnotationOf dkh:VAR-049 .
+
+dkh:VAR-049_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-049"@en ;
+    dkh:hasNumericValue 2.0 ;
+    dkh:isAnnotationOf dkh:VAR-049 .
+
+dkh:VAR-050_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-050"@en ;
+    dkh:hasNumericValue 24.3 ;
+    dkh:isAnnotationOf dkh:VAR-050 .
+
+dkh:VAR-050_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-050"@en ;
+    dkh:hasNumericValue 54.4 ;
+    dkh:isAnnotationOf dkh:VAR-050 .
+
+dkh:VAR-050_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-050"@en ;
+    dkh:hasNumericValue 29.3 ;
+    dkh:isAnnotationOf dkh:VAR-050 .
+
+dkh:VAR-050_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-050"@en ;
+    dkh:hasNumericValue 1.1 ;
+    dkh:isAnnotationOf dkh:VAR-050 .
+
+dkh:VAR-051_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-051"@en ;
+    dkh:hasNumericValue 63.5 ;
+    dkh:isAnnotationOf dkh:VAR-051 .
+
+dkh:VAR-051_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-051"@en ;
+    dkh:hasNumericValue 52.8 ;
+    dkh:isAnnotationOf dkh:VAR-051 .
+
+dkh:VAR-051_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-051"@en ;
+    dkh:hasNumericValue 18.1 ;
+    dkh:isAnnotationOf dkh:VAR-051 .
+
+dkh:VAR-051_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-051"@en ;
+    dkh:hasNumericValue 4.3 ;
+    dkh:isAnnotationOf dkh:VAR-051 .
+
+dkh:VAR-052_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-052"@en ;
+    dkh:hasNumericValue 76.2 ;
+    dkh:isAnnotationOf dkh:VAR-052 .
+
+dkh:VAR-052_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-052"@en ;
+    dkh:hasNumericValue 39.6 ;
+    dkh:isAnnotationOf dkh:VAR-052 .
+
+dkh:VAR-052_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-052"@en ;
+    dkh:hasNumericValue 3.7 ;
+    dkh:isAnnotationOf dkh:VAR-052 .
+
+dkh:VAR-052_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-052"@en ;
+    dkh:hasNumericValue 1.2 ;
+    dkh:isAnnotationOf dkh:VAR-052 .
+
+dkh:VAR-053_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-053"@en ;
+    dkh:hasNumericValue 199.8 ;
+    dkh:isAnnotationOf dkh:VAR-053 .
+
+dkh:VAR-053_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-053"@en ;
+    dkh:hasNumericValue 57.5 ;
+    dkh:isAnnotationOf dkh:VAR-053 .
+
+dkh:VAR-053_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-053"@en ;
+    dkh:hasNumericValue 21.6 ;
+    dkh:isAnnotationOf dkh:VAR-053 .
+
+dkh:VAR-053_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-053"@en ;
+    dkh:hasNumericValue 2.2 ;
+    dkh:isAnnotationOf dkh:VAR-053 .
+
+dkh:VAR-054_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-054"@en ;
+    dkh:hasNumericValue 71.4 ;
+    dkh:isAnnotationOf dkh:VAR-054 .
+
+dkh:VAR-054_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-054"@en ;
+    dkh:hasNumericValue 57.4 ;
+    dkh:isAnnotationOf dkh:VAR-054 .
+
+dkh:VAR-054_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-054"@en ;
+    dkh:hasNumericValue 24.2 ;
+    dkh:isAnnotationOf dkh:VAR-054 .
+
+dkh:VAR-054_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-054"@en ;
+    dkh:hasNumericValue 3.9 ;
+    dkh:isAnnotationOf dkh:VAR-054 .
+
+dkh:VAR-055_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-055"@en ;
+    dkh:hasNumericValue 144.9 ;
+    dkh:isAnnotationOf dkh:VAR-055 .
+
+dkh:VAR-055_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-055"@en ;
+    dkh:hasNumericValue 33.8 ;
+    dkh:isAnnotationOf dkh:VAR-055 .
+
+dkh:VAR-055_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-055"@en ;
+    dkh:hasNumericValue 16.5 ;
+    dkh:isAnnotationOf dkh:VAR-055 .
+
+dkh:VAR-055_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-055"@en ;
+    dkh:hasNumericValue 4.1 ;
+    dkh:isAnnotationOf dkh:VAR-055 .
+
+dkh:VAR-056_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-056"@en ;
+    dkh:hasNumericValue 60.4 ;
+    dkh:isAnnotationOf dkh:VAR-056 .
+
+dkh:VAR-056_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-056"@en ;
+    dkh:hasNumericValue 55.3 ;
+    dkh:isAnnotationOf dkh:VAR-056 .
+
+dkh:VAR-056_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-056"@en ;
+    dkh:hasNumericValue 11.4 ;
+    dkh:isAnnotationOf dkh:VAR-056 .
+
+dkh:VAR-056_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-056"@en ;
+    dkh:hasNumericValue 2.1 ;
+    dkh:isAnnotationOf dkh:VAR-056 .
+
+dkh:VAR-057_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-057"@en ;
+    dkh:hasNumericValue 117.0 ;
+    dkh:isAnnotationOf dkh:VAR-057 .
+
+dkh:VAR-057_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-057"@en ;
+    dkh:hasNumericValue 56.0 ;
+    dkh:isAnnotationOf dkh:VAR-057 .
+
+dkh:VAR-057_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-057"@en ;
+    dkh:hasNumericValue 30.2 ;
+    dkh:isAnnotationOf dkh:VAR-057 .
+
+dkh:VAR-057_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-057"@en ;
+    dkh:hasNumericValue 3.4 ;
+    dkh:isAnnotationOf dkh:VAR-057 .
+
+dkh:VAR-058_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-058"@en ;
+    dkh:hasNumericValue 18.8 ;
+    dkh:isAnnotationOf dkh:VAR-058 .
+
+dkh:VAR-058_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-058"@en ;
+    dkh:hasNumericValue 57.7 ;
+    dkh:isAnnotationOf dkh:VAR-058 .
+
+dkh:VAR-058_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-058"@en ;
+    dkh:hasNumericValue 25.1 ;
+    dkh:isAnnotationOf dkh:VAR-058 .
+
+dkh:VAR-058_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-058"@en ;
+    dkh:hasNumericValue 1.6 ;
+    dkh:isAnnotationOf dkh:VAR-058 .
+
+dkh:VAR-059_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-059"@en ;
+    dkh:hasNumericValue 33.2 ;
+    dkh:isAnnotationOf dkh:VAR-059 .
+
+dkh:VAR-059_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-059"@en ;
+    dkh:hasNumericValue 44.4 ;
+    dkh:isAnnotationOf dkh:VAR-059 .
+
+dkh:VAR-059_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-059"@en ;
+    dkh:hasNumericValue 7.9 ;
+    dkh:isAnnotationOf dkh:VAR-059 .
+
+dkh:VAR-059_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-059"@en ;
+    dkh:hasNumericValue 1.6 ;
+    dkh:isAnnotationOf dkh:VAR-059 .
+
+dkh:VAR-060_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-060"@en ;
+    dkh:hasNumericValue 68.5 ;
+    dkh:isAnnotationOf dkh:VAR-060 .
+
+dkh:VAR-060_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-060"@en ;
+    dkh:hasNumericValue 41.8 ;
+    dkh:isAnnotationOf dkh:VAR-060 .
+
+dkh:VAR-060_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-060"@en ;
+    dkh:hasNumericValue 24.5 ;
+    dkh:isAnnotationOf dkh:VAR-060 .
+
+dkh:VAR-060_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-060"@en ;
+    dkh:hasNumericValue 3.5 ;
+    dkh:isAnnotationOf dkh:VAR-060 .
+
+dkh:VQSR a owl:Class ;
+    rdfs:label "variant quality score recalibration"@en,
+        "рекалібрування якості варіантів (VQSR)"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dkh:requires ;
+            owl:someValuesFrom dkh:LargeVariantSet ],
+        [ a owl:Restriction ;
+            owl:onProperty dkh:requires ;
+            owl:someValuesFrom dkh:CuratedKnownVariants ],
+        dkh:VariantFiltering ;
+    skos:closeMatch ex5:C064 ;
+    skos:definition "Рекалібрування якості варіантів (VQSR) — це фільтрація варіантів, що навчає модель на великому наборі варіантів і відомих ресурсах."@uk .
+
+dkh:VariantCalling a owl:Class ;
+    rdfs:label "variant calling"@en,
+        "виклик варіантів"@uk ;
+    rdfs:subClassOf dkh:Procedure ;
+    skos:closeMatch ex5:C060 ;
+    skos:definition "Виклик варіантів — це процедура, що визначає варіанти за вирівняними прочитаннями."@uk .
+
+dkh:Yana a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Yana"@en ;
+    dkh:hasAgeYears 22 ;
+    dkh:hasParent dkh:Pavlo .
+
+dkh:appliesTo a owl:ObjectProperty ;
+    rdfs:label "applies_to"@en,
+        "застосовується до"@uk ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( dkh:Procedure dkh:QualityMeasure ) ] ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( dkh:GeneticVariant dkh:DataArtifact dkh:Person ) ] ;
+    skos:definition "Процедура чи показник застосовується до об'єкта."@uk .
+
+dkh:derivedFrom a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "derived from"@en,
+        "походить від"@uk ;
+    rdfs:domain dkh:DataFile ;
+    rdfs:range dkh:DataFile ;
+    skos:definition "Файл отримано з іншого файла (походження, транзитивно)."@uk .
+
+dkh:generatedBy a owl:ObjectProperty ;
+    rdfs:label "generated by"@en,
+        "створено сенсором"@uk ;
+    rdfs:domain dkh:DataFile ;
+    rdfs:range dkh:Sensor ;
+    skos:definition "Файл створено сенсором (секвенатором)."@uk .
+
+dkh:hasAncestor a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "has ancestor"@en,
+        "має предка"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Person ;
+    skos:definition "Транзитивний зв'язок «предок»."@uk .
+
+dkh:hasAuntOrUncle a owl:ObjectProperty ;
+    rdfs:label "has aunt or uncle"@en,
+        "має тітку/дядька"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Person ;
+    rdfs:subPropertyOf dkh:isSecondDegreeRelativeOf ;
+    owl:propertyChainAxiom ( dkh:hasParent dkh:hasSibling ) ;
+    skos:definition "Ланцюг hasParent∘hasSibling."@uk .
+
+dkh:hasExonEndPosition a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has exon end position"@en,
+        "розташований на кінці екзона"@uk ;
+    rdfs:domain dkh:GeneticVariant ;
+    rdfs:range xsd:boolean ;
+    skos:definition "true, якщо варіант на кінці екзона."@uk .
+
+dkh:hasPart a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "has part"@en,
+        "має частину"@uk ;
+    rdfs:domain dkh:BiologicalEntity ;
+    rdfs:range dkh:BiologicalEntity ;
+    skos:definition "Обернена до partOf."@uk .
+
+dkh:hasSibling a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "has sibling"@en,
+        "має брата/сестру"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Person ;
+    rdfs:subPropertyOf dkh:isFirstDegreeRelativeOf ;
+    skos:definition "Рідний брат або сестра."@uk .
+
+dkh:isAnnotationOf a owl:ObjectProperty ;
+    rdfs:label "is annotation of"@en,
+        "є анотацією варіанта"@uk ;
+    rdfs:domain dkh:QualityAnnotation ;
+    rdfs:range dkh:GeneticVariant ;
+    skos:definition "Обернена до hasAnnotation."@uk .
+
+dkh:isMemberOf a owl:ObjectProperty ;
+    rdfs:label "is member of"@en,
+        "є елементом"@uk ;
+    rdfs:domain dkh:Gene ;
+    rdfs:range dkh:GenePanel ;
+    skos:definition "Обернена до hasMember."@uk .
+
+dkh:partOf a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "part_of"@en,
+        "є складовою"@uk ;
+    rdfs:domain dkh:BiologicalEntity ;
+    rdfs:range dkh:BiologicalEntity ;
+    owl:inverseOf dkh:hasPart ;
+    skos:definition "Об'єкт є частиною цілого (транзитивно)."@uk .
+
+dkh:sample1_bam a dkh:BAMFile,
+        owl:NamedIndividual ;
+    rdfs:label "sample1.bam"@en ;
+    dkh:generatedBy dkh:Sequencer1 .
+
+dkh:sample2_bam a dkh:BAMFile,
+        owl:NamedIndividual ;
+    rdfs:label "sample2.bam"@en ;
+    dkh:generatedBy dkh:Sequencer1 .
+
+dkh:sample3_bam a dkh:BAMFile,
+        owl:NamedIndividual ;
+    rdfs:label "sample3.bam"@en ;
+    dkh:generatedBy dkh:Sequencer1 .
+
+dkh:AdultRelative a owl:Class ;
+    rdfs:label "adult relative"@en,
+        "дорослий родич"@uk ;
+    rdfs:subClassOf dkh:Relative ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:Relative [ a owl:Restriction ;
+                        owl:onProperty dkh:hasAgeYears ;
+                        owl:someValuesFrom [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:minInclusive 18 ] ) ] ] ) ] ;
+    skos:definition "Дорослий родич — це родич, якому щонайменше 18 років."@uk .
+
+dkh:Andrii a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Andrii"@en ;
+    dkh:hasAgeYears 40 .
+
+dkh:ApplyFlagAction a owl:Class ;
+    rdfs:label "apply flag action"@en,
+        "дія «поставити прапорець»"@uk ;
+    rdfs:subClassOf dkh:Action ;
+    skos:definition "Дія «поставити прапорець» — це дія, що позначає варіант прапорцем порогу."@uk .
+
+dkh:Cancer a owl:Class ;
+    rdfs:label "cancer"@en,
+        "рак"@uk ;
+    rdfs:subClassOf dkh:Disease ;
+    skos:definition "Рак — це захворювання, що характеризується неконтрольованим ростом клітин."@uk .
+
+dkh:CascadeTesting a owl:Class ;
+    rdfs:label "cascade testing"@en,
+        "каскадне тестування"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dkh:recommendedFor ;
+            owl:someValuesFrom dkh:FirstDegreeRelative ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dkh:Relative ;
+            owl:onProperty dkh:appliesTo ],
+        [ a owl:Restriction ;
+            owl:onProperty dkh:requires ;
+            owl:someValuesFrom dkh:PathogenicVariant ],
+        dkh:GeneticTesting ;
+    skos:closeMatch ex5:C069 ;
+    skos:definition "Каскадне тестування — це генетичне тестування, що пропонують родичам пробанда після виявлення в нього патогенного варіанта."@uk .
+
+dkh:CuratedKnownVariants a owl:Class ;
+    rdfs:label "curated known variants"@en,
+        "підготовлені відомі варіанти"@uk ;
+    rdfs:subClassOf dkh:DataArtifact ;
+    skos:definition "Підготовлені відомі варіанти — це артефакт даних, що є перевіреним ресурсом відомих варіантів для навчання VQSR."@uk .
+
+dkh:ExonEndVariant a owl:Class ;
+    rdfs:label "variant at exon end"@en,
+        "варіант у кінці екзона"@uk ;
+    rdfs:subClassOf dkh:GeneticVariant ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:GeneticVariant [ a owl:Restriction ;
+                        owl:hasValue true ;
+                        owl:onProperty dkh:hasExonEndPosition ] ) ] ;
+    skos:definition "Варіант у кінці екзона — це генетичний варіант, розташований на кінці екзона."@uk .
+
+dkh:FirstDegreeRelative a owl:Class ;
+    rdfs:label "first-degree relative"@en,
+        "родич першого ступеня"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue 0.5 ;
+            owl:onProperty dkh:hasInheritanceProbability ],
+        dkh:Relative ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:Person [ a owl:Restriction ;
+                        owl:onProperty dkh:isFirstDegreeRelativeOf ;
+                        owl:someValuesFrom dkh:Proband ] ) ] ;
+    skos:definition "Родич першого ступеня — це родич, що є батьком/матір'ю, дитиною або рідним братом/сестрою пробанда."@uk .
+
+dkh:GeneticTesting a owl:Class ;
+    rdfs:label "genetic testing"@en,
+        "генетичне тестування"@uk ;
+    rdfs:subClassOf dkh:Procedure ;
+    skos:closeMatch ex5:C068 ;
+    skos:definition "Генетичне тестування — це процедура, що виявляє варіанти в генах пацієнта."@uk .
+
+dkh:HardFiltering a owl:Class ;
+    rdfs:label "hard filtering"@en,
+        "жорстка фільтрація"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dkh:usesInput ;
+            owl:someValuesFrom dkh:StrandOddsRatio ],
+        [ a owl:Restriction ;
+            owl:onProperty dkh:usesInput ;
+            owl:someValuesFrom dkh:RankSumAnnotation ],
+        [ a owl:Restriction ;
+            owl:onProperty dkh:usesInput ;
+            owl:someValuesFrom dkh:MappingQuality ],
+        [ a owl:Restriction ;
+            owl:onProperty dkh:recommendedFor ;
+            owl:someValuesFrom dkh:GenePanel ],
+        [ a owl:Restriction ;
+            owl:onProperty dkh:usesInput ;
+            owl:someValuesFrom dkh:FisherStrandBias ],
+        [ a owl:Restriction ;
+            owl:onProperty dkh:usesInput ;
+            owl:someValuesFrom dkh:QualityByDepth ],
+        dkh:VariantFiltering ;
+    skos:closeMatch ex5:C063 ;
+    skos:definition "Жорстка фільтрація — це фільтрація варіантів, що відкидає варіанти за фіксованими порогами анотацій."@uk .
+
+dkh:HighFSSnpVariant a owl:Class ;
+    rdfs:label "high FS SNP"@en,
+        "SNP із високим FS"@uk ;
+    rdfs:subClassOf dkh:SNP ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:SNP [ a owl:Restriction ;
+                        owl:onProperty dkh:hasAnnotation ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:intersectionOf ( dkh:FisherStrandBias [ a owl:Restriction ;
+                                            owl:onProperty dkh:hasNumericValue ;
+                                            owl:someValuesFrom [ a rdfs:Datatype ;
+                                                    owl:onDatatype xsd:decimal ;
+                                                    owl:withRestrictions ( [ xsd:minExclusive 60.0 ] ) ] ] ) ] ] ) ] ;
+    skos:definition "SNP із високим FS — це однонуклеотидний поліморфізм, що має анотацію FS зі значенням більше 60."@uk .
+
+dkh:LargeVariantSet a owl:Class ;
+    rdfs:label "large variant set"@en,
+        "великий набір варіантів"@uk ;
+    rdfs:subClassOf dkh:DataArtifact ;
+    skos:definition "Великий набір варіантів — це артефакт даних, достатньо великий, щоб навчити модель VQSR."@uk .
+
+dkh:Lidiia a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Lidiia"@en ;
+    dkh:hasAgeYears 60 ;
+    dkh:hasParent dkh:Stefa ;
+    dkh:hasSibling dkh:Zoriana .
+
+dkh:LowQDVariant a owl:Class ;
+    rdfs:label "low QD variant"@en,
+        "варіант із низьким QD"@uk ;
+    rdfs:subClassOf dkh:GeneticVariant ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:GeneticVariant [ a owl:Restriction ;
+                        owl:onProperty dkh:hasAnnotation ;
+                        owl:someValuesFrom dkh:LowQDAnnotation ] ) ] ;
+    skos:definition "Варіант із низьким QD — це генетичний варіант, що має анотацію QD зі значенням менше 2."@uk .
+
+dkh:MQRankSum a owl:Class ;
+    rdfs:label "MQRankSum"@en,
+        "MQRankSum"@uk ;
+    rdfs:subClassOf dkh:RankSumAnnotation ;
+    skos:definition "MQRankSum — це тест суми рангів, що порівнює якості картування прочитань референсного й альтернативного алелів."@uk .
+
+dkh:Maria a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Maria"@en ;
+    dkh:hasChild dkh:Halyna,
+        dkh:Iryna ;
+    dkh:isDeceased true .
+
+dkh:Marta a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Marta"@en ;
+    dkh:hasAgeYears 39 ;
+    dkh:hasParent dkh:Iryna,
+        dkh:Petro ;
+    dkh:hasSibling dkh:Olena .
+
+dkh:MinorRelative a owl:Class ;
+    rdfs:label "minor relative"@en,
+        "неповнолітній родич"@uk ;
+    rdfs:subClassOf dkh:Relative ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( dkh:Relative [ a owl:Restriction ;
+                        owl:onProperty dkh:hasAgeYears ;
+                        owl:someValuesFrom [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:maxExclusive 18 ] ) ] ] ) ] ;
+    skos:definition "Неповнолітній родич — це родич, якому менше 18 років."@uk .
+
+dkh:Mykola a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Mykola"@en ;
+    dkh:hasAgeYears 79 ;
+    dkh:isDeceased true .
+
+dkh:Olena a dkh:Proband,
+        owl:NamedIndividual ;
+    rdfs:label "Olena"@en ;
+    dkh:carries dkh:VAR-001 ;
+    dkh:hasAgeYears 42 ;
+    dkh:hasDiagnosis dkh:Olena_BC ;
+    dkh:hasParent dkh:Iryna,
+        dkh:Petro ;
+    dkh:hasSibling dkh:Marta .
+
+dkh:Petro a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Petro"@en ;
+    dkh:hasAgeYears 70 .
+
+dkh:ReadPosRankSum a owl:Class ;
+    rdfs:label "ReadPosRankSum"@en,
+        "ReadPosRankSum"@uk ;
+    rdfs:subClassOf dkh:RankSumAnnotation ;
+    skos:definition "ReadPosRankSum — це тест суми рангів, що порівнює позиції алелів у прочитаннях."@uk .
+
+dkh:Sequencer a owl:Class ;
+    rdfs:label "sequencer"@en,
+        "секвенатор"@uk ;
+    rdfs:subClassOf dkh:Sensor ;
+    skos:definition "Секвенатор — це сенсор, що зчитує послідовність ДНК і породжує прочитання."@uk .
+
+dkh:Stefa a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Stefa"@en ;
+    dkh:hasAgeYears 85 ;
+    dkh:isDeceased true .
+
+dkh:TestingDeferredState a owl:Class ;
+    rdfs:label "testing deferred state"@en,
+        "стан відкладеного тестування"@uk ;
+    rdfs:subClassOf dkh:State ;
+    skos:definition "Стан відкладеного тестування — це стан, в якому тестування відкладено."@uk .
+
+dkh:TestingOfferedState a owl:Class ;
+    rdfs:label "testing offered state"@en,
+        "стан запропонованого тестування"@uk ;
+    rdfs:subClassOf dkh:State ;
+    skos:definition "Стан запропонованого тестування — це стан, в якому родичу запропоновано тестування."@uk .
+
+dkh:VAR-004 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-004"@en ;
+    dkh:hasAnnotation dkh:VAR-004_FisherStrandBias,
+        dkh:VAR-004_StrandOddsRatio ;
+    dkh:hasExonEndPosition true ;
+    dkh:hasVariantId "VAR-004" ;
+    dkh:locatedIn dkh:BRCA2 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:Vira a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Vira"@en ;
+    dkh:hasAgeYears 77 .
+
+dkh:Zoriana a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Zoriana"@en ;
+    dkh:hasAgeYears 58 ;
+    dkh:hasParent dkh:Stefa .
+
+dkh:hasAgeYears a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has age (years)"@en,
+        "має вік (роки)"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range xsd:integer ;
+    skos:definition "Вік у роках."@uk .
+
+dkh:hasChild a owl:ObjectProperty ;
+    rdfs:label "has child"@en,
+        "має дитину"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Person ;
+    rdfs:subPropertyOf dkh:isFirstDegreeRelativeOf ;
+    skos:definition "Обернена до hasParent."@uk .
+
+dkh:hasClinicalSignificance a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has clinical significance"@en,
+        "має клінічне значення"@uk ;
+    rdfs:domain dkh:GeneticVariant ;
+    rdfs:range dkh:ClinicalSignificance ;
+    skos:definition "Висновок про клінічне значення варіанта."@uk .
+
+dkh:increasesRiskOf a owl:ObjectProperty ;
+    rdfs:label "increases_risk_of"@en,
+        "підвищує ризик"@uk ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( dkh:GeneticVariant dkh:Gene ) ] ;
+    rdfs:range dkh:Disease ;
+    skos:definition "Варіант чи ген підвищує ймовірність захворювання."@uk .
+
+dkh:isThirdDegreeRelativeOf a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "is third-degree relative of"@en,
+        "є родичем третього ступеня"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Person ;
+    skos:definition "Симетричний зв'язок третього ступеня."@uk .
+
+dkh:AnnotationComputedEvent a owl:Class ;
+    rdfs:label "annotation computed event"@en,
+        "подія обчислення анотації"@uk ;
+    rdfs:subClassOf dkh:Event ;
+    skos:definition "Подія обчислення анотації — це подія, в якій для варіанта обчислено значення анотації якості."@uk .
+
+dkh:Halyna a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Halyna"@en ;
+    dkh:hasAgeYears 65 ;
+    dkh:hasChild dkh:Andrii ;
+    dkh:hasParent dkh:Maria .
+
+dkh:Iryna a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Iryna"@en ;
+    dkh:hasAgeYears 68 ;
+    dkh:hasDiagnosis dkh:Iryna_OC ;
+    dkh:hasParent dkh:Maria ;
+    dkh:hasSibling dkh:Halyna .
+
+dkh:Pavlo a dkh:Person,
+        dkh:Proband,
+        owl:NamedIndividual ;
+    rdfs:label "Pavlo"@en ;
+    dkh:carries dkh:VAR-032 ;
+    dkh:hasAgeYears 51 ;
+    dkh:hasDiagnosis dkh:Pavlo_dx ;
+    dkh:hasParent dkh:Mykola,
+        dkh:Vira .
+
+dkh:Sensor a owl:Class ;
+    rdfs:label "sensor"@en,
+        "сенсор"@uk ;
+    skos:definition "Сенсор — це сутність, що вимірює фізичну величину й породжує вихідні дані."@uk .
+
+dkh:UntestedState a owl:Class ;
+    rdfs:label "untested state"@en,
+        "нетестований стан"@uk ;
+    rdfs:subClassOf dkh:State ;
+    skos:definition "Нетестований стан — це стан, в якому родича ще не протестовано."@uk .
+
+dkh:VariantFiltering a owl:Class ;
+    rdfs:label "variant filtering"@en,
+        "фільтрація варіантів"@uk ;
+    rdfs:subClassOf dkh:Procedure ;
+    skos:closeMatch ex5:C062 ;
+    skos:definition "Фільтрація варіантів — це процедура, що відкидає варіанти за значеннями анотацій."@uk .
+
+dkh:hasInheritanceProbability a owl:DatatypeProperty ;
+    rdfs:label "has inheritance probability"@en,
+        "має ймовірність успадкування"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Шанс мати ту саму зміну."@uk .
+
+dkh:hasMember a owl:ObjectProperty ;
+    rdfs:label "has member"@en,
+        "має елемент"@uk ;
+    rdfs:domain dkh:GenePanel ;
+    rdfs:range dkh:Gene ;
+    owl:inverseOf dkh:isMemberOf ;
+    skos:definition "Панель містить ген."@uk .
+
+dkh:isSecondDegreeRelativeOf a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "is second-degree relative of"@en,
+        "є родичем другого ступеня"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Person ;
+    skos:definition "Симетричний зв'язок другого ступеня."@uk .
+
+dkh:recommendedFor a owl:ObjectProperty ;
+    rdfs:label "recommended_for"@en,
+        "рекомендована для"@uk ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( dkh:Procedure dkh:QualityMeasure ) ] ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( dkh:Person dkh:DataArtifact dkh:GeneticVariant ) ] ;
+    skos:definition "Джерело рекомендує процедуру для об'єкта."@uk .
+
+dkh:requires a owl:ObjectProperty ;
+    rdfs:label "requires"@en,
+        "потребує"@uk ;
+    rdfs:domain dkh:Procedure ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( dkh:GeneticVariant dkh:DataArtifact ) ] ;
+    skos:definition "Для процедури необхідна передумова."@uk .
+
+dkh:BreastCancer a owl:Class ;
+    rdfs:label "breast cancer"@en,
+        "рак молочної залози"@uk ;
+    rdfs:subClassOf dkh:Cancer ;
+    skos:closeMatch ex5:C111,
+        <http://id.nlm.nih.gov/mesh/D001943> ;
+    skos:definition "Рак молочної залози — це рак, що виникає в тканині молочної залози."@uk .
+
+dkh:Disease a owl:Class ;
+    rdfs:label "disease"@en,
+        "захворювання"@uk ;
+    skos:definition "Захворювання — це сутність, що є порушенням здоров'я людини."@uk .
+
+dkh:FlaggedState a owl:Class ;
+    rdfs:label "flagged state"@en,
+        "стан з прапорцем"@uk ;
+    rdfs:subClassOf dkh:State ;
+    skos:definition "Стан з прапорцем — це стан, в якому варіант порушив поріг."@uk .
+
+dkh:HBOC-panel a dkh:GenePanel,
+        owl:NamedIndividual ;
+    rdfs:label "HBOC-panel"@en ;
+    dkh:hasMember dkh:BRCA1,
+        dkh:BRCA2,
+        dkh:PALB2,
+        dkh:TP53 .
+
+dkh:OvarianCancer a owl:Class ;
+    rdfs:label "ovarian cancer"@en,
+        "рак яєчників"@uk ;
+    rdfs:subClassOf dkh:Cancer ;
+    skos:closeMatch ex5:C112,
+        <http://id.nlm.nih.gov/mesh/D010051> ;
+    skos:definition "Рак яєчників — це рак, що виникає в тканині яєчників."@uk .
+
+dkh:RankSumAnnotation a owl:Class ;
+    rdfs:label "rank sum test"@en,
+        "тест суми рангів"@uk ;
+    rdfs:subClassOf dkh:QualityAnnotation ;
+    skos:closeMatch ex5:C100 ;
+    skos:definition "Тест суми рангів — це анотація якості, що порівнює розподіл якостей для алелів за рангами."@uk .
+
+dkh:VAR-005 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-005"@en ;
+    dkh:hasAnnotation dkh:VAR-005_FisherStrandBias,
+        dkh:VAR-005_MappingQuality,
+        dkh:VAR-005_QualityByDepth,
+        dkh:VAR-005_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-005" ;
+    dkh:locatedIn dkh:BRCA1 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-006 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-006"@en ;
+    dkh:hasAnnotation dkh:VAR-006_FisherStrandBias,
+        dkh:VAR-006_MappingQuality,
+        dkh:VAR-006_QualityByDepth,
+        dkh:VAR-006_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-006" ;
+    dkh:locatedIn dkh:BRCA1 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-007 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-007"@en ;
+    dkh:hasAnnotation dkh:VAR-007_FisherStrandBias,
+        dkh:VAR-007_MappingQuality,
+        dkh:VAR-007_QualityByDepth,
+        dkh:VAR-007_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-007" ;
+    dkh:locatedIn dkh:PALB2 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-008 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-008"@en ;
+    dkh:hasAnnotation dkh:VAR-008_FisherStrandBias,
+        dkh:VAR-008_MappingQuality,
+        dkh:VAR-008_QualityByDepth,
+        dkh:VAR-008_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-008" ;
+    dkh:locatedIn dkh:TP53 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-009 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-009"@en ;
+    dkh:hasAnnotation dkh:VAR-009_FisherStrandBias,
+        dkh:VAR-009_MappingQuality,
+        dkh:VAR-009_QualityByDepth,
+        dkh:VAR-009_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-009" ;
+    dkh:locatedIn dkh:BRCA1 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-010 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-010"@en ;
+    dkh:hasAnnotation dkh:VAR-010_FisherStrandBias,
+        dkh:VAR-010_MappingQuality,
+        dkh:VAR-010_QualityByDepth,
+        dkh:VAR-010_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-010" ;
+    dkh:locatedIn dkh:PALB2 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-011 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-011"@en ;
+    dkh:hasAnnotation dkh:VAR-011_FisherStrandBias,
+        dkh:VAR-011_MappingQuality,
+        dkh:VAR-011_QualityByDepth,
+        dkh:VAR-011_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-011" ;
+    dkh:locatedIn dkh:PALB2 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-012 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-012"@en ;
+    dkh:hasAnnotation dkh:VAR-012_FisherStrandBias,
+        dkh:VAR-012_MappingQuality,
+        dkh:VAR-012_QualityByDepth,
+        dkh:VAR-012_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-012" ;
+    dkh:locatedIn dkh:BRCA2 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-013 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-013"@en ;
+    dkh:hasAnnotation dkh:VAR-013_FisherStrandBias,
+        dkh:VAR-013_MappingQuality,
+        dkh:VAR-013_QualityByDepth,
+        dkh:VAR-013_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-013" ;
+    dkh:locatedIn dkh:PALB2 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-014 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-014"@en ;
+    dkh:hasAnnotation dkh:VAR-014_FisherStrandBias,
+        dkh:VAR-014_MappingQuality,
+        dkh:VAR-014_QualityByDepth,
+        dkh:VAR-014_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-014" ;
+    dkh:locatedIn dkh:PALB2 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-015 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-015"@en ;
+    dkh:hasAnnotation dkh:VAR-015_FisherStrandBias,
+        dkh:VAR-015_MappingQuality,
+        dkh:VAR-015_QualityByDepth,
+        dkh:VAR-015_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-015" ;
+    dkh:locatedIn dkh:BRCA1 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-016 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-016"@en ;
+    dkh:hasAnnotation dkh:VAR-016_FisherStrandBias,
+        dkh:VAR-016_MappingQuality,
+        dkh:VAR-016_QualityByDepth,
+        dkh:VAR-016_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasExonEndPosition true ;
+    dkh:hasVariantId "VAR-016" ;
+    dkh:locatedIn dkh:PALB2 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-017 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-017"@en ;
+    dkh:hasAnnotation dkh:VAR-017_FisherStrandBias,
+        dkh:VAR-017_MappingQuality,
+        dkh:VAR-017_QualityByDepth,
+        dkh:VAR-017_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-017" ;
+    dkh:locatedIn dkh:BRCA1 ;
+    dkh:recordedIn dkh:sample2_vcf .
+
+dkh:VAR-018 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-018"@en ;
+    dkh:hasAnnotation dkh:VAR-018_FisherStrandBias,
+        dkh:VAR-018_MappingQuality,
+        dkh:VAR-018_QualityByDepth,
+        dkh:VAR-018_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-018" ;
+    dkh:locatedIn dkh:BRCA1 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-019 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-019"@en ;
+    dkh:hasAnnotation dkh:VAR-019_FisherStrandBias,
+        dkh:VAR-019_MappingQuality,
+        dkh:VAR-019_QualityByDepth,
+        dkh:VAR-019_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasExonEndPosition true ;
+    dkh:hasVariantId "VAR-019" ;
+    dkh:locatedIn dkh:BRCA1 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-020 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-020"@en ;
+    dkh:hasAnnotation dkh:VAR-020_FisherStrandBias,
+        dkh:VAR-020_MappingQuality,
+        dkh:VAR-020_QualityByDepth,
+        dkh:VAR-020_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-020" ;
+    dkh:locatedIn dkh:BRCA1 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-021 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-021"@en ;
+    dkh:hasAnnotation dkh:VAR-021_FisherStrandBias,
+        dkh:VAR-021_MappingQuality,
+        dkh:VAR-021_QualityByDepth,
+        dkh:VAR-021_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-021" ;
+    dkh:locatedIn dkh:BRCA2 ;
+    dkh:recordedIn dkh:sample2_vcf .
+
+dkh:VAR-022 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-022"@en ;
+    dkh:hasAnnotation dkh:VAR-022_FisherStrandBias,
+        dkh:VAR-022_MappingQuality,
+        dkh:VAR-022_QualityByDepth,
+        dkh:VAR-022_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-022" ;
+    dkh:locatedIn dkh:TP53 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-023 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-023"@en ;
+    dkh:hasAnnotation dkh:VAR-023_FisherStrandBias,
+        dkh:VAR-023_MappingQuality,
+        dkh:VAR-023_QualityByDepth,
+        dkh:VAR-023_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasExonEndPosition true ;
+    dkh:hasVariantId "VAR-023" ;
+    dkh:locatedIn dkh:BRCA2 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-024 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-024"@en ;
+    dkh:hasAnnotation dkh:VAR-024_FisherStrandBias,
+        dkh:VAR-024_MappingQuality,
+        dkh:VAR-024_QualityByDepth,
+        dkh:VAR-024_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-024" ;
+    dkh:locatedIn dkh:BRCA2 ;
+    dkh:recordedIn dkh:sample2_vcf .
+
+dkh:VAR-026 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-026"@en ;
+    dkh:hasAnnotation dkh:VAR-026_FisherStrandBias,
+        dkh:VAR-026_MappingQuality,
+        dkh:VAR-026_QualityByDepth,
+        dkh:VAR-026_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-026" ;
+    dkh:locatedIn dkh:BRCA1 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-027 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-027"@en ;
+    dkh:hasAnnotation dkh:VAR-027_FisherStrandBias,
+        dkh:VAR-027_MappingQuality,
+        dkh:VAR-027_QualityByDepth,
+        dkh:VAR-027_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-027" ;
+    dkh:locatedIn dkh:PALB2 ;
+    dkh:recordedIn dkh:sample2_vcf .
+
+dkh:VAR-028 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-028"@en ;
+    dkh:hasAnnotation dkh:VAR-028_FisherStrandBias,
+        dkh:VAR-028_MappingQuality,
+        dkh:VAR-028_QualityByDepth,
+        dkh:VAR-028_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-028" ;
+    dkh:locatedIn dkh:BRCA1 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-029 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-029"@en ;
+    dkh:hasAnnotation dkh:VAR-029_FisherStrandBias,
+        dkh:VAR-029_MappingQuality,
+        dkh:VAR-029_QualityByDepth,
+        dkh:VAR-029_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-029" ;
+    dkh:locatedIn dkh:TP53 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-030 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-030"@en ;
+    dkh:hasAnnotation dkh:VAR-030_FisherStrandBias,
+        dkh:VAR-030_MappingQuality,
+        dkh:VAR-030_QualityByDepth,
+        dkh:VAR-030_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-030" ;
+    dkh:locatedIn dkh:TP53 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-031 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-031"@en ;
+    dkh:hasAnnotation dkh:VAR-031_FisherStrandBias,
+        dkh:VAR-031_MappingQuality,
+        dkh:VAR-031_QualityByDepth,
+        dkh:VAR-031_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-031" ;
+    dkh:locatedIn dkh:TP53 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-033 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-033"@en ;
+    dkh:hasAnnotation dkh:VAR-033_FisherStrandBias,
+        dkh:VAR-033_MappingQuality,
+        dkh:VAR-033_QualityByDepth,
+        dkh:VAR-033_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-033" ;
+    dkh:locatedIn dkh:PALB2 ;
+    dkh:recordedIn dkh:sample2_vcf .
+
+dkh:VAR-034 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-034"@en ;
+    dkh:hasAnnotation dkh:VAR-034_FisherStrandBias,
+        dkh:VAR-034_MappingQuality,
+        dkh:VAR-034_QualityByDepth,
+        dkh:VAR-034_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-034" ;
+    dkh:locatedIn dkh:BRCA1 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-035 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-035"@en ;
+    dkh:hasAnnotation dkh:VAR-035_FisherStrandBias,
+        dkh:VAR-035_MappingQuality,
+        dkh:VAR-035_QualityByDepth,
+        dkh:VAR-035_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-035" ;
+    dkh:locatedIn dkh:BRCA1 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-036 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-036"@en ;
+    dkh:hasAnnotation dkh:VAR-036_FisherStrandBias,
+        dkh:VAR-036_MappingQuality,
+        dkh:VAR-036_QualityByDepth,
+        dkh:VAR-036_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-036" ;
+    dkh:locatedIn dkh:BRCA1 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-037 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-037"@en ;
+    dkh:hasAnnotation dkh:VAR-037_FisherStrandBias,
+        dkh:VAR-037_MappingQuality,
+        dkh:VAR-037_QualityByDepth,
+        dkh:VAR-037_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-037" ;
+    dkh:locatedIn dkh:BRCA2 ;
+    dkh:recordedIn dkh:sample2_vcf .
+
+dkh:VAR-038 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-038"@en ;
+    dkh:hasAnnotation dkh:VAR-038_FisherStrandBias,
+        dkh:VAR-038_MappingQuality,
+        dkh:VAR-038_QualityByDepth,
+        dkh:VAR-038_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-038" ;
+    dkh:locatedIn dkh:BRCA1 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-039 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-039"@en ;
+    dkh:hasAnnotation dkh:VAR-039_FisherStrandBias,
+        dkh:VAR-039_MappingQuality,
+        dkh:VAR-039_QualityByDepth,
+        dkh:VAR-039_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-039" ;
+    dkh:locatedIn dkh:TP53 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-040 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-040"@en ;
+    dkh:hasAnnotation dkh:VAR-040_FisherStrandBias,
+        dkh:VAR-040_MappingQuality,
+        dkh:VAR-040_QualityByDepth,
+        dkh:VAR-040_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-040" ;
+    dkh:locatedIn dkh:PALB2 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-041 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-041"@en ;
+    dkh:hasAnnotation dkh:VAR-041_FisherStrandBias,
+        dkh:VAR-041_MappingQuality,
+        dkh:VAR-041_QualityByDepth,
+        dkh:VAR-041_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-041" ;
+    dkh:locatedIn dkh:PALB2 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-042 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-042"@en ;
+    dkh:hasAnnotation dkh:VAR-042_FisherStrandBias,
+        dkh:VAR-042_MappingQuality,
+        dkh:VAR-042_QualityByDepth,
+        dkh:VAR-042_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-042" ;
+    dkh:locatedIn dkh:BRCA2 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-043 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-043"@en ;
+    dkh:hasAnnotation dkh:VAR-043_FisherStrandBias,
+        dkh:VAR-043_MappingQuality,
+        dkh:VAR-043_QualityByDepth,
+        dkh:VAR-043_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-043" ;
+    dkh:locatedIn dkh:BRCA2 ;
+    dkh:recordedIn dkh:sample2_vcf .
+
+dkh:VAR-044 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-044"@en ;
+    dkh:hasAnnotation dkh:VAR-044_FisherStrandBias,
+        dkh:VAR-044_MappingQuality,
+        dkh:VAR-044_QualityByDepth,
+        dkh:VAR-044_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-044" ;
+    dkh:locatedIn dkh:PALB2 ;
+    dkh:recordedIn dkh:sample2_vcf .
+
+dkh:VAR-045 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-045"@en ;
+    dkh:hasAnnotation dkh:VAR-045_FisherStrandBias,
+        dkh:VAR-045_MappingQuality,
+        dkh:VAR-045_QualityByDepth,
+        dkh:VAR-045_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-045" ;
+    dkh:locatedIn dkh:PALB2 ;
+    dkh:recordedIn dkh:sample2_vcf .
+
+dkh:VAR-046 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-046"@en ;
+    dkh:hasAnnotation dkh:VAR-046_FisherStrandBias,
+        dkh:VAR-046_MappingQuality,
+        dkh:VAR-046_QualityByDepth,
+        dkh:VAR-046_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-046" ;
+    dkh:locatedIn dkh:BRCA2 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-047 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-047"@en ;
+    dkh:hasAnnotation dkh:VAR-047_FisherStrandBias,
+        dkh:VAR-047_MappingQuality,
+        dkh:VAR-047_QualityByDepth,
+        dkh:VAR-047_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-047" ;
+    dkh:locatedIn dkh:BRCA1 ;
+    dkh:recordedIn dkh:sample2_vcf .
+
+dkh:VAR-048 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-048"@en ;
+    dkh:hasAnnotation dkh:VAR-048_FisherStrandBias,
+        dkh:VAR-048_MappingQuality,
+        dkh:VAR-048_QualityByDepth,
+        dkh:VAR-048_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-048" ;
+    dkh:locatedIn dkh:BRCA2 ;
+    dkh:recordedIn dkh:sample2_vcf .
+
+dkh:VAR-049 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-049"@en ;
+    dkh:hasAnnotation dkh:VAR-049_FisherStrandBias,
+        dkh:VAR-049_MappingQuality,
+        dkh:VAR-049_QualityByDepth,
+        dkh:VAR-049_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-049" ;
+    dkh:locatedIn dkh:PALB2 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-050 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-050"@en ;
+    dkh:hasAnnotation dkh:VAR-050_FisherStrandBias,
+        dkh:VAR-050_MappingQuality,
+        dkh:VAR-050_QualityByDepth,
+        dkh:VAR-050_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-050" ;
+    dkh:locatedIn dkh:BRCA2 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-051 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-051"@en ;
+    dkh:hasAnnotation dkh:VAR-051_FisherStrandBias,
+        dkh:VAR-051_MappingQuality,
+        dkh:VAR-051_QualityByDepth,
+        dkh:VAR-051_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-051" ;
+    dkh:locatedIn dkh:PALB2 ;
+    dkh:recordedIn dkh:sample2_vcf .
+
+dkh:VAR-052 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-052"@en ;
+    dkh:hasAnnotation dkh:VAR-052_FisherStrandBias,
+        dkh:VAR-052_MappingQuality,
+        dkh:VAR-052_QualityByDepth,
+        dkh:VAR-052_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-052" ;
+    dkh:locatedIn dkh:PALB2 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-053 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-053"@en ;
+    dkh:hasAnnotation dkh:VAR-053_FisherStrandBias,
+        dkh:VAR-053_MappingQuality,
+        dkh:VAR-053_QualityByDepth,
+        dkh:VAR-053_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Pathogenic ;
+    dkh:hasVariantId "VAR-053" ;
+    dkh:locatedIn dkh:BRCA2 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-054 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-054"@en ;
+    dkh:hasAnnotation dkh:VAR-054_FisherStrandBias,
+        dkh:VAR-054_MappingQuality,
+        dkh:VAR-054_QualityByDepth,
+        dkh:VAR-054_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-054" ;
+    dkh:locatedIn dkh:TP53 ;
+    dkh:recordedIn dkh:sample2_vcf .
+
+dkh:VAR-055 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-055"@en ;
+    dkh:hasAnnotation dkh:VAR-055_FisherStrandBias,
+        dkh:VAR-055_MappingQuality,
+        dkh:VAR-055_QualityByDepth,
+        dkh:VAR-055_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-055" ;
+    dkh:locatedIn dkh:BRCA2 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-056 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-056"@en ;
+    dkh:hasAnnotation dkh:VAR-056_FisherStrandBias,
+        dkh:VAR-056_MappingQuality,
+        dkh:VAR-056_QualityByDepth,
+        dkh:VAR-056_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-056" ;
+    dkh:locatedIn dkh:TP53 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-057 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-057"@en ;
+    dkh:hasAnnotation dkh:VAR-057_FisherStrandBias,
+        dkh:VAR-057_MappingQuality,
+        dkh:VAR-057_QualityByDepth,
+        dkh:VAR-057_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-057" ;
+    dkh:locatedIn dkh:TP53 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-058 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-058"@en ;
+    dkh:hasAnnotation dkh:VAR-058_FisherStrandBias,
+        dkh:VAR-058_MappingQuality,
+        dkh:VAR-058_QualityByDepth,
+        dkh:VAR-058_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-058" ;
+    dkh:locatedIn dkh:TP53 ;
+    dkh:recordedIn dkh:sample3_vcf .
+
+dkh:VAR-059 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-059"@en ;
+    dkh:hasAnnotation dkh:VAR-059_FisherStrandBias,
+        dkh:VAR-059_MappingQuality,
+        dkh:VAR-059_QualityByDepth,
+        dkh:VAR-059_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-059" ;
+    dkh:locatedIn dkh:BRCA2 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-060 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-060"@en ;
+    dkh:hasAnnotation dkh:VAR-060_FisherStrandBias,
+        dkh:VAR-060_MappingQuality,
+        dkh:VAR-060_QualityByDepth,
+        dkh:VAR-060_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-060" ;
+    dkh:locatedIn dkh:TP53 ;
+    dkh:recordedIn dkh:sample2_vcf .
+
+dkh:hasParent a owl:ObjectProperty ;
+    rdfs:label "has parent"@en,
+        "має батька/матір"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Person ;
+    rdfs:subPropertyOf dkh:hasAncestor,
+        dkh:isFirstDegreeRelativeOf ;
+    owl:inverseOf dkh:hasChild ;
+    skos:definition "Біологічний батько або мати."@uk .
+
+dkh:isFirstDegreeRelativeOf a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "is first-degree relative of"@en,
+        "є родичем першого ступеня"@uk ;
+    rdfs:domain dkh:Person ;
+    rdfs:range dkh:Person ;
+    skos:definition "Симетричний зв'язок першого ступеня."@uk .
+
+dkh:BAMFile a owl:Class ;
+    rdfs:label "BAM file"@en,
+        "файл BAM"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dkh:generatedBy ;
+            owl:someValuesFrom dkh:Sequencer ],
+        dkh:DataFile ;
+    skos:closeMatch ex5:C081 ;
+    skos:definition "Файл BAM — це файл даних, у форматі BAM, що містить вирівняні прочитання."@uk .
+
+dkh:ClinicalSignificance a owl:Class ;
+    rdfs:label "clinical significance"@en,
+        "клінічне значення"@uk ;
+    skos:definition "Клінічне значення — це сутність, що позначає висновок про вплив варіанта на здоров'я (наприклад, патогенний, доброякісний)."@uk .
+
+dkh:Pathogenic a dkh:ClinicalSignificance,
+        owl:NamedIndividual ;
+    rdfs:label "pathogenic"@en .
+
+dkh:QualityMeasure a owl:Class ;
+    rdfs:label "quality measure"@en,
+        "міра якості"@uk ;
+    skos:closeMatch ex5:C093 ;
+    skos:definition "Міра якості — це сутність, що кількісно характеризує якість даних чи варіанта."@uk .
+
+dkh:VAR-025 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-025"@en ;
+    dkh:hasAnnotation dkh:VAR-025_FisherStrandBias,
+        dkh:VAR-025_MappingQuality,
+        dkh:VAR-025_QualityByDepth,
+        dkh:VAR-025_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Pathogenic ;
+    dkh:hasVariantId "VAR-025" ;
+    dkh:locatedIn dkh:TP53 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VCFFile a owl:Class ;
+    rdfs:label "VCF file"@en,
+        "файл VCF"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dkh:derivedFrom ;
+            owl:someValuesFrom dkh:BAMFile ],
+        dkh:DataFile ;
+    skos:closeMatch ex5:C082 ;
+    skos:definition "Файл VCF — це файл даних, у форматі VCF, що містить варіанти й їхні анотації."@uk .
+
+dkh:usesInput a owl:ObjectProperty ;
+    rdfs:label "uses_input"@en,
+        "використовує вхід"@uk ;
+    rdfs:domain dkh:Procedure ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( dkh:QualityMeasure dkh:DataArtifact ) ] ;
+    skos:definition "Процедура використовує показник або дані як вхід."@uk .
+
+dkh:DataFile a owl:Class ;
+    rdfs:label "data file"@en,
+        "файл даних"@uk ;
+    rdfs:subClassOf dkh:DataArtifact ;
+    skos:definition "Файл даних — це артефакт даних, що зберігається як файл певного формату."@uk .
+
+dkh:Event a owl:Class ;
+    rdfs:label "event"@en,
+        "подія"@uk ;
+    skos:definition "Подія — це сутність, що відбувається в момент часу й змінює стан ситуації."@uk .
+
+dkh:GenePanel a owl:Class ;
+    rdfs:label "gene panel"@en,
+        "генна панель"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dkh:hasMember ;
+            owl:someValuesFrom dkh:Gene ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onClass dkh:Gene ;
+            owl:onProperty dkh:hasMember ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dkh:Gene ;
+            owl:onProperty dkh:hasMember ],
+        dkh:DataArtifact ;
+    skos:closeMatch ex5:C014 ;
+    skos:definition "Генна панель — це артефакт даних, що є фіксованим набором генів для спільного тестування."@uk .
+
+dkh:Sequencer1 a dkh:Sequencer,
+        owl:NamedIndividual ;
+    rdfs:label "Sequencer1"@en .
+
+dkh:UnfilteredState a owl:Class ;
+    rdfs:label "unfiltered state"@en,
+        "нефільтрований стан"@uk ;
+    rdfs:subClassOf dkh:State ;
+    skos:definition "Нефільтрований стан — це стан, в якому варіант ще не перевірено порогами."@uk .
+
+dkh:VAR-001 a dkh:GermlineVariant,
+        dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-001"@en ;
+    dkh:hasAnnotation dkh:VAR-001_FisherStrandBias,
+        dkh:VAR-001_MappingQuality,
+        dkh:VAR-001_QualityByDepth,
+        dkh:VAR-001_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Pathogenic ;
+    dkh:hasVariantId "VAR-001" ;
+    dkh:locatedIn dkh:BRCA1 ;
+    dkh:recordedIn dkh:sample1_vcf .
+
+dkh:VAR-032 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-032"@en ;
+    dkh:hasAnnotation dkh:VAR-032_FisherStrandBias,
+        dkh:VAR-032_MappingQuality,
+        dkh:VAR-032_QualityByDepth,
+        dkh:VAR-032_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Pathogenic ;
+    dkh:hasVariantId "VAR-032" ;
+    dkh:locatedIn dkh:BRCA2 ;
+    dkh:recordedIn dkh:sample2_vcf .
+
+dkh:Action a owl:Class ;
+    rdfs:label "action"@en,
+        "дія"@uk ;
+    skos:definition "Дія — це сутність, що виконує система чи фахівець у відповідь на подію."@uk .
+
+dkh:BiologicalEntity a owl:Class ;
+    rdfs:label "biological entity"@en,
+        "біологічна сутність"@uk ;
+    skos:closeMatch ex5:C002 ;
+    skos:definition "Біологічна сутність — це сутність, що є об'єктом живої природи на молекулярному рівні."@uk .
+
+dkh:Proband a owl:Class ;
+    rdfs:label "proband"@en,
+        "пробанд"@uk ;
+    rdfs:subClassOf dkh:Person ;
+    skos:closeMatch ex5:C105 ;
+    skos:definition "Пробанд — це особа, з якої починається аналіз сім'ї."@uk .
+
+dkh:hasAnnotation a owl:ObjectProperty ;
+    rdfs:label "has_annotation"@en,
+        "має анотацію"@uk ;
+    rdfs:domain dkh:GeneticVariant ;
+    rdfs:range dkh:QualityAnnotation ;
+    owl:inverseOf dkh:isAnnotationOf ;
+    skos:definition "Варіант має числовий показник якості."@uk .
+
+dkh:hasNumericValue a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "has numeric value"@en,
+        "має числове значення"@uk ;
+    rdfs:domain dkh:QualityAnnotation ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Числове значення анотації."@uk .
+
+dkh:QualityAnnotation a owl:Class ;
+    rdfs:label "quality annotation"@en,
+        "анотація якості"@uk ;
+    rdfs:subClassOf dkh:QualityMeasure ;
+    skos:closeMatch ex5:C061 ;
+    skos:definition "Анотація якості — це міра якості, що є числовим показником, записаним для варіанта у VCF."@uk .
+
+dkh:Relative a owl:Class ;
+    rdfs:label "relative"@en,
+        "родич"@uk ;
+    rdfs:subClassOf dkh:Person ;
+    skos:closeMatch ex5:C106 ;
+    skos:definition "Родич — це особа, що пов'язана спорідненістю з пробандом."@uk .
+
+dkh:State a owl:Class ;
+    rdfs:label "state"@en,
+        "стан"@uk ;
+    skos:definition "Стан — це сутність, що описує становище об'єкта в певний момент часу."@uk .
+
+dkh:DataArtifact a owl:Class ;
+    rdfs:label "data artifact"@en,
+        "артефакт даних"@uk ;
+    skos:closeMatch ex5:C077 ;
+    skos:definition "Артефакт даних — це сутність, що є збереженим набором даних чи інформації."@uk .
+
+dkh:SituationTemplate a owl:Class ;
+    rdfs:label "situation template"@en,
+        "шаблон ситуації"@uk ;
+    skos:definition "Шаблон ситуації — це сутність, що описує пару «початковий стан — подія — умова — новий стан — дія»."@uk .
+
+dkh:FilterThreshold a owl:Class ;
+    rdfs:label "filter threshold"@en,
+        "поріг фільтрації"@uk ;
+    skos:definition "Поріг фільтрації — це сутність, що задає граничне значення анотації для відхилення варіанта."@uk .
+
+dkh:Gene a owl:Class ;
+    rdfs:label "gene"@en,
+        "ген"@uk ;
+    rdfs:subClassOf dkh:BiologicalEntity ;
+    skos:closeMatch ex5:C006 ;
+    skos:definition "Ген — це біологічна сутність, що є ділянкою геному, яка кодує функціональний продукт."@uk ;
+    skos:exactMatch <http://id.nlm.nih.gov/mesh/D005796> .
+
+dkh:TP53 a dkh:Gene,
+        owl:NamedIndividual ;
+    rdfs:label "TP53"@en ;
+    dkh:isMemberOf dkh:HBOC-panel .
+
+dkh:Procedure a owl:Class ;
+    rdfs:label "procedure"@en,
+        "процедура"@uk ;
+    skos:closeMatch ex5:C048 ;
+    skos:definition "Процедура — це сутність, що є цілеспрямованою послідовністю дій над даними чи пацієнтом."@uk .
+
+dkh:sample2_vcf a dkh:VCFFile,
+        owl:NamedIndividual ;
+    rdfs:label "sample2.vcf"@en ;
+    dkh:derivedFrom dkh:sample2_bam ;
+    dkh:generatedBy dkh:Sequencer1 .
+
+dkh:PALB2 a dkh:Gene,
+        owl:NamedIndividual ;
+    rdfs:label "PALB2"@en ;
+    dkh:isMemberOf dkh:HBOC-panel .
+
+dkh:BRCA1 a dkh:Gene,
+        owl:NamedIndividual ;
+    rdfs:label "BRCA1"@en ;
+    dkh:isMemberOf dkh:HBOC-panel .
+
+dkh:BRCA2 a dkh:Gene,
+        owl:NamedIndividual ;
+    rdfs:label "BRCA2"@en ;
+    dkh:isMemberOf dkh:HBOC-panel .
+
+dkh:Indel a owl:Class ;
+    rdfs:label "insertion-deletion"@en,
+        "вставка-делеція"@uk ;
+    rdfs:subClassOf dkh:GeneticVariant ;
+    skos:closeMatch ex5:C024 ;
+    skos:definition "Вставка-делеція — це генетичний варіант, що є вставкою або делецією нуклеотидів."@uk .
+
+dkh:sample3_vcf a dkh:VCFFile,
+        owl:NamedIndividual ;
+    rdfs:label "sample3.vcf"@en ;
+    dkh:derivedFrom dkh:sample3_bam ;
+    dkh:generatedBy dkh:Sequencer1 .
+
+dkh:sample1_vcf a dkh:VCFFile,
+        owl:NamedIndividual ;
+    rdfs:label "sample1.vcf"@en ;
+    dkh:derivedFrom dkh:sample1_bam ;
+    dkh:generatedBy dkh:Sequencer1 .
+
+dkh:GeneticVariant a owl:Class ;
+    rdfs:label "genetic variant"@en,
+        "генетичний варіант"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass dkh:ClinicalSignificance ;
+            owl:onProperty dkh:hasClinicalSignificance ] ;
+    skos:closeMatch ex5:C022 ;
+    skos:definition "Генетичний варіант — це сутність, що є відмінністю послідовності ДНК від еталона в конкретній позиції геному."@uk .
+
+dkh:SNP a owl:Class ;
+    rdfs:label "single nucleotide polymorphism"@en,
+        "однонуклеотидний поліморфізм"@uk ;
+    rdfs:subClassOf dkh:GeneticVariant ;
+    skos:closeMatch ex5:C023 ;
+    skos:definition "Однонуклеотидний поліморфізм — це генетичний варіант, що змінює один нуклеотид."@uk ;
+    skos:exactMatch <http://id.nlm.nih.gov/mesh/D020641> .
+
+dkh:Person a owl:Class ;
+    rdfs:label "person"@en,
+        "особа"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onClass dkh:Person ;
+            owl:onProperty dkh:hasParent ] ;
+    skos:closeMatch ex5:C103 ;
+    skos:definition "Особа — це сутність, що є людиною (в онтології — вигаданою, синтетичною)."@uk .
+
+dkh:Benign a dkh:ClinicalSignificance,
+        owl:NamedIndividual ;
+    rdfs:label "benign"@en .
+
+dkh:MappingQuality a owl:Class ;
+    rdfs:label "mapping quality"@en,
+        "якість картування"@uk ;
+    rdfs:subClassOf dkh:QualityAnnotation ;
+    skos:closeMatch ex5:C098 ;
+    skos:definition "Якість картування — це анотація якості, що описує надійність вирівнювання прочитання до еталона."@uk .
+
+dkh:StrandOddsRatio a owl:Class ;
+    rdfs:label "strand odds ratio"@en,
+        "співвідношення шансів ланцюгів"@uk ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dkh:recommendedFor ;
+            owl:someValuesFrom dkh:ExonEndVariant ],
+        dkh:QualityAnnotation ;
+    skos:closeMatch ex5:C097 ;
+    skos:definition "Співвідношення шансів ланцюгів — це анотація якості, що оцінює зміщення за ланцюгами й менше штрафує кінці екзонів."@uk .
+
+dkh:QualityByDepth a owl:Class ;
+    rdfs:label "quality by depth"@en,
+        "якість на глибину"@uk ;
+    rdfs:subClassOf dkh:QualityAnnotation ;
+    skos:closeMatch ex5:C095 ;
+    skos:definition "Якість на глибину — це анотація якості, що нормує якість варіанта на глибину покриття."@uk .
+
+dkh:FisherStrandBias a owl:Class ;
+    rdfs:label "Fisher strand bias"@en,
+        "зміщення ланцюга за Фішером"@uk ;
+    rdfs:subClassOf dkh:QualityAnnotation ;
+    skos:closeMatch ex5:C096 ;
+    skos:definition "Зміщення ланцюга за Фішером — це анотація якості, що вимірює зміщення за ланцюгами ДНК за тестом Фішера."@uk .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:MQRankSum dkh:ReadPosRankSum ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:FirstDegreeRelative dkh:SecondDegreeRelative dkh:ThirdDegreeRelative ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:SNP dkh:Indel ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:QualityByDepth dkh:FisherStrandBias dkh:StrandOddsRatio dkh:MappingQuality dkh:RankSumAnnotation dkh:ReadDepth ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:HardFiltering dkh:VQSR ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:VariantFiltering dkh:VariantCalling dkh:SequenceAlignment dkh:GeneticTesting dkh:GeneticCounseling dkh:RiskAssessment ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:DataFile dkh:GenePanel dkh:FamilyHistory dkh:LargeVariantSet dkh:CuratedKnownVariants ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:BreastCancer dkh:OvarianCancer ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:Proband dkh:Relative ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:AdultRelative dkh:MinorRelative ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:VCFFile dkh:BAMFile ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:Gene dkh:Exon ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:UnfilteredState dkh:FlaggedState dkh:FilteredState dkh:UntestedState dkh:TestingOfferedState dkh:TestingDeferredState ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( dkh:BiologicalEntity dkh:GeneticVariant dkh:QualityMeasure dkh:FilterThreshold dkh:Procedure dkh:DataArtifact dkh:Person dkh:Disease dkh:ClinicalSignificance dkh:Event dkh:State dkh:Action dkh:Sensor dkh:SituationTemplate ) .
+

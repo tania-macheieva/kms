@@ -1,0 +1,9 @@
+name,ageYears,sex,deceased,proband
+Andrii,40,,,false
+Halyna,65,,,false
+Iryna,68,,,false
+Maria,,,true,false
+Marta,39,,,false
+Olena,42,,,true
+Petro,70,,,false
+Sofiia,17,,,false

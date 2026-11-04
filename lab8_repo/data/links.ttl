@@ -1,0 +1,121 @@
+@prefix dkh: <http://example.org/dkh/onto#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+
+dkh:matchConfidence a owl:AnnotationProperty ;
+    rdfs:label "match confidence"@en .
+
+dkh:matchVerification a owl:AnnotationProperty ;
+    rdfs:label "match verification"@en .
+
+<urn:dkh:link:BRCA1-Q227339> a rdf:Statement ;
+    dkh:matchConfidence "medium" ;
+    dkh:matchVerification "V1: мітка збігається зі списком пошуку Wikidata 2026-10-27; сторінку не відкрито" ;
+    rdf:object wd:Q227339 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject dkh:BRCA1 ;
+    rdfs:comment "мітка збігається; у Wikidata ген і білок — окремі елементи, не з'ясовано, який саме Q227339; тому closeMatch, не sameAs"@uk .
+
+<urn:dkh:link:BRCA2-Q17853272> a rdf:Statement ;
+    dkh:matchConfidence "low-medium" ;
+    dkh:matchVerification "V1: мітка збігається зі списком пошуку Wikidata 2026-10-27; сторінку не відкрито" ;
+    rdf:object wd:Q17853272 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject dkh:BRCA2 ;
+    rdfs:comment "мітка збігається, але є другий кандидат Q421651 «BRCA2 DNA repair associated»; який із двох — ген, не перевірено"@uk .
+
+<urn:dkh:link:BreastCancer-Q128581> a rdf:Statement ;
+    dkh:matchConfidence "medium-high" ;
+    dkh:matchVerification "V1: мітка збігається зі списком пошуку Wikidata 2026-10-27; сторінку не відкрито" ;
+    rdf:object wd:Q128581 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject dkh:BreastCancer ;
+    rdfs:comment "мітки збігаються; ми також маємо MeSH Breast Neoplasms (ЛР5) — узгоджується"@uk .
+
+<urn:dkh:link:Exon-Q373027> a rdf:Statement ;
+    dkh:matchConfidence "medium" ;
+    dkh:matchVerification "V1: мітка збігається зі списком пошуку Wikidata 2026-10-27; сторінку не відкрито" ;
+    rdf:object wd:Q373027 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject dkh:Exon ;
+    rdfs:comment "мітки збігаються; у пошуку є омоніми (прізвища, ExxonMobil) — вибрано запис саме з міткою «exon», тип не перевірено"@uk .
+
+<urn:dkh:link:Gene-Q7187> a rdf:Statement ;
+    dkh:matchConfidence "medium-high" ;
+    dkh:matchVerification "V1: мітка збігається зі списком пошуку Wikidata 2026-10-27; сторінку не відкрито" ;
+    rdf:object wd:Q7187 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject dkh:Gene ;
+    rdfs:comment "мітки збігаються; тип/опис сторінки не перевірено, тому closeMatch, а не exactMatch"@uk .
+
+<urn:dkh:link:GeneticCounseling-Q1124169> a rdf:Statement ;
+    dkh:matchConfidence "medium-high" ;
+    dkh:matchVerification "V1: мітка збігається зі списком пошуку Wikidata 2026-10-27; сторінку не відкрито" ;
+    rdf:object wd:Q1124169 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject dkh:GeneticCounseling ;
+    rdfs:comment "мітки збігаються; MeSH Genetic Counseling (ЛР5)"@uk .
+
+<urn:dkh:link:OvarianCancer-Q172341> a rdf:Statement ;
+    dkh:matchConfidence "medium-high" ;
+    dkh:matchVerification "V1: мітка збігається зі списком пошуку Wikidata 2026-10-27; сторінку не відкрито" ;
+    rdf:object wd:Q172341 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject dkh:OvarianCancer ;
+    rdfs:comment "мітки збігаються; MeSH Ovarian Neoplasms (ЛР5)"@uk .
+
+<urn:dkh:link:SNP-Q501128> a rdf:Statement ;
+    dkh:matchConfidence "medium-high" ;
+    dkh:matchVerification "V1: мітка збігається зі списком пошуку Wikidata 2026-10-27; сторінку не відкрито" ;
+    rdf:object wd:Q501128 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject dkh:SNP ;
+    rdfs:comment "мітки збігаються з точністю до дефіса"@uk .
+
+<urn:dkh:link:VCFFile-Q7915770> a rdf:Statement ;
+    dkh:matchConfidence "low" ;
+    dkh:matchVerification "V1: мітка збігається зі списком пошуку Wikidata 2026-10-27; сторінку не відкрито" ;
+    rdf:object wd:Q7915770 ;
+    rdf:predicate skos:relatedMatch ;
+    rdf:subject dkh:VCFFile ;
+    rdfs:comment "наш клас — файл у форматі, Wikidata — формат: не еквівалент, лише пов'язане поняття"@uk .
+
+dkh:BRCA1 skos:closeMatch wd:Q227339 .
+
+dkh:BRCA2 skos:closeMatch wd:Q17853272 .
+
+dkh:BreastCancer skos:closeMatch wd:Q128581 .
+
+dkh:Exon skos:closeMatch wd:Q373027 .
+
+dkh:Gene skos:closeMatch wd:Q7187 .
+
+dkh:GeneticCounseling skos:closeMatch wd:Q1124169 .
+
+dkh:OvarianCancer skos:closeMatch wd:Q172341 .
+
+dkh:SNP skos:closeMatch wd:Q501128 .
+
+dkh:VCFFile skos:relatedMatch wd:Q7915770 .
+
+wd:Q1124169 rdfs:label "genetic counseling"@en .
+
+wd:Q128581 rdfs:label "breast cancer"@en .
+
+wd:Q172341 rdfs:label "ovarian cancer"@en .
+
+wd:Q17853272 rdfs:label "BRCA2"@en .
+
+wd:Q227339 rdfs:label "BRCA1"@en .
+
+wd:Q373027 rdfs:label "exon"@en .
+
+wd:Q501128 rdfs:label "single-nucleotide polymorphism"@en .
+
+wd:Q7187 rdfs:label "gene"@en .
+
+wd:Q7915770 rdfs:label "Variant Call Format"@en .
+

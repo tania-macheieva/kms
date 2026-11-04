@@ -1,0 +1,10 @@
+# ДОВІДКОВО: запуск справжнього Neo4j 5 для повторення роботи (у середовищі, де виконано ЛР, Docker був недоступний — НЕ перевірялось).
+services:
+  neo4j:
+    image: neo4j:5.26-community
+    ports: ["7474:7474", "7687:7687"]
+    environment:
+      NEO4J_AUTH: neo4j/CHANGE_ME_LOCALLY        # пароль задайте самі; у репозиторій секрети не комітяться
+      NEO4J_PLUGINS: '["graph-data-science"]'
+    volumes:
+      - ./data:/var/lib/neo4j/import             # CSV для LOAD CSV 'file:///…'

@@ -1,0 +1,1 @@
+{"text": "SELECT count(DISTINCT f.sample_key) AS sample_count FROM fact_variant_call f JOIN dim_gene g ON f.gene_key = g.gene_key JOIN dim_taxon sg ON f.significance_key = sg.taxon_key WHERE g.gene_symbol = 'BRCA1' AND sg.label = 'pathogenic variant'"}

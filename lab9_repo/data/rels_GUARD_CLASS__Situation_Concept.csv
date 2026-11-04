@@ -1,0 +1,7 @@
+from,to,source,confidence,validFrom
+Situation_S01,LowQDVariant,lab7-abox,1.0,2026-10-26
+Situation_S02,HighFSSnpVariant,lab7-abox,1.0,2026-10-26
+Situation_S03,ExonEndVariant,lab7-abox,1.0,2026-10-26
+Situation_S04,GenePanel,lab7-abox,1.0,2026-10-26
+Situation_S05,AdultRelative,lab7-abox,1.0,2026-10-26
+Situation_S06,MinorRelative,lab7-abox,1.0,2026-10-26

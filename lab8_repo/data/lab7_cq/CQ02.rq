@@ -1,0 +1,12 @@
+# id: CQ02
+# question: За якого FS SNP відкидають?
+# lab4_cq: CQ02
+# expect: ["60"]
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?answer WHERE {
+  ?t rdfs:label ?l ; ?hv ?answer .
+  FILTER(datatype(?answer) IN (xsd:decimal, xsd:integer, xsd:double, xsd:float) && !CONTAINS(LCASE(STR(?l)), "var-") && CONTAINS(LCASE(STR(?l)), "fs") && CONTAINS(LCASE(STR(?l)), "snp"))
+}

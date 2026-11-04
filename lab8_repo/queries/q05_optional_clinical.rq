@@ -1,0 +1,10 @@
+# CQ05/CQ17: варіанти зразка A у генах панелі з необов'язковою клінічною значущістю
+# Тип: OPTIONAL (варіанти без значущості не зникають з відповіді)
+SELECT DISTINCT ?id ?geneLabel ?significance
+WHERE {
+  ?v dkh:fromSample dkh:SAMPLE-A ; dkh:hasVariantId ?id ; dkh:locatedIn ?g .
+  ?g rdfs:label ?geneLabel .
+  OPTIONAL { ?v dkh:hasClinicalSignificance ?significance }
+  FILTER (?id <= "VAR-110")
+}
+ORDER BY ?id

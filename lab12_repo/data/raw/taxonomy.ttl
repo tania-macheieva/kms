@@ -1,0 +1,1504 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.org/knowledge-hub/biomed/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+ex:C004 a skos:Concept ;
+    skos:altLabel "whole genome"@en ;
+    skos:broader ex:C003 ;
+    skos:definition "Повний набір спадкового матеріалу (ДНК) організму."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C004" ;
+    skos:prefLabel "genome"@en,
+        "геном"@uk .
+
+ex:C005 a skos:Concept ;
+    skos:broader ex:C003 ;
+    skos:definition "Структура з ДНК і білків, що несе гени; у людини 23 пари."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C005" ;
+    skos:prefLabel "chromosome"@en,
+        "хромосома"@uk .
+
+ex:C007 a skos:Concept ;
+    skos:broader ex:C006 ;
+    skos:definition "Ген репарації ДНК; патогенні варіанти підвищують ризик раку молочної залози й яєчників."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C007" ;
+    skos:prefLabel "BRCA1"@en,
+        "BRCA1"@uk .
+
+ex:C008 a skos:Concept ;
+    skos:broader ex:C006 ;
+    skos:definition "Ген репарації ДНК; патогенні варіанти підвищують ризик раку молочної залози й яєчників."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C008" ;
+    skos:prefLabel "BRCA2"@en,
+        "BRCA2"@uk .
+
+ex:C009 a skos:Concept ;
+    skos:broader ex:C003 ;
+    skos:definition "Ділянка гена, що лишається в зрілій РНК і може кодувати білок."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C009" ;
+    skos:prefLabel "exon"@en,
+        "екзон"@uk .
+
+ex:C010 a skos:Concept ;
+    skos:broader ex:C003 ;
+    skos:definition "Ділянка гена, що видаляється зі зрілої РНК під час сплайсингу."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C010" ;
+    skos:prefLabel "intron"@en,
+        "інтрон"@uk .
+
+ex:C011 a skos:Concept ;
+    skos:broader ex:C003 ;
+    skos:definition "Сукупність усіх екзонів геному."@uk ;
+    skos:exactMatch <http://id.nlm.nih.gov/mesh/D059472> ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C011" ;
+    skos:prefLabel "exome"@en,
+        "екзом"@uk .
+
+ex:C012 a skos:Concept ;
+    skos:altLabel "RNA transcript"@en ;
+    skos:broader ex:C003 ;
+    skos:definition "Молекула РНК, синтезована на матриці ДНК."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C012" ;
+    skos:prefLabel "transcript"@en,
+        "транскрипт"@uk .
+
+ex:C013 a skos:Concept ;
+    skos:broader ex:C003 ;
+    skos:definition "Сукупність усіх РНК-транскриптів клітини чи тканини."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C013" ;
+    skos:prefLabel "transcriptome"@en,
+        "транскриптом"@uk .
+
+ex:C014 a skos:Concept ;
+    skos:altLabel "gene panel test"@en,
+        "targeted panel"@en ;
+    skos:broader ex:C003 ;
+    skos:definition "Набір вибраних генів, що аналізуються разом."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C014" ;
+    skos:prefLabel "gene panel"@en,
+        "генна панель"@uk .
+
+ex:C016 a skos:Concept ;
+    skos:broader ex:C015 ;
+    skos:definition "Органічна сполука, мономер білків."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C016" ;
+    skos:prefLabel "amino acid"@en,
+        "амінокислота"@uk .
+
+ex:C017 a skos:Concept ;
+    skos:broader ex:C015 ;
+    skos:definition "Короткий ланцюжок амінокислот."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C017" ;
+    skos:prefLabel "peptide"@en,
+        "пептид"@uk .
+
+ex:C018 a skos:Concept ;
+    skos:broader ex:C015 ;
+    skos:definition "Біополімер із амінокислот, що виконує структурні й функціональні ролі."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C018" ;
+    skos:prefLabel "protein"@en,
+        "білок"@uk .
+
+ex:C019 a skos:Concept ;
+    skos:altLabel "domain"@en ;
+    skos:broader ex:C015 ;
+    skos:definition "Структурно й функціонально відокремлена частина білка."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C019" ;
+    skos:prefLabel "protein domain"@en,
+        "білковий домен"@uk .
+
+ex:C020 a skos:Concept ;
+    skos:broader ex:C015 ;
+    skos:definition "Сукупність усіх білків клітини, тканини чи організму."@uk ;
+    skos:exactMatch <http://id.nlm.nih.gov/mesh/D020543> ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C020" ;
+    skos:prefLabel "proteome"@en,
+        "протеом"@uk .
+
+ex:C023 a skos:Concept ;
+    skos:altLabel "SNP"@en,
+        "SNV"@en,
+        "single nucleotide variant"@en ;
+    skos:broader ex:C022 ;
+    skos:definition "Заміна одного нуклеотида в певній позиції геному."@uk ;
+    skos:exactMatch <http://id.nlm.nih.gov/mesh/D020641> ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C023" ;
+    skos:prefLabel "single nucleotide polymorphism"@en,
+        "однонуклеотидний поліморфізм"@uk .
+
+ex:C024 a skos:Concept ;
+    skos:altLabel "indel"@en,
+        "insertion deletion"@en ;
+    skos:broader ex:C022 ;
+    skos:definition "Вставка або видалення невеликого числа нуклеотидів у послідовності."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C024" ;
+    skos:prefLabel "insertion-deletion"@en,
+        "інсерція-делеція"@uk .
+
+ex:C025 a skos:Concept ;
+    skos:altLabel "SV"@en ;
+    skos:broader ex:C022 ;
+    skos:definition "Велика зміна геному (від ~50 нуклеотидів): делеція, дуплікація, інверсія, транслокація."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C025" ;
+    skos:prefLabel "structural variant"@en,
+        "структурний варіант"@uk .
+
+ex:C026 a skos:Concept ;
+    skos:altLabel "CNV"@en,
+        "copy number variant"@en ;
+    skos:broader ex:C022 ;
+    skos:definition "Зміна кількості копій ділянки геному відносно референсу."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C026" ;
+    skos:prefLabel "copy number variation"@en,
+        "варіація числа копій"@uk .
+
+ex:C027 a skos:Concept ;
+    skos:broader ex:C022 ;
+    skos:definition "Стійка зміна послідовності ДНК."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C027" ;
+    skos:prefLabel "mutation"@en,
+        "мутація"@uk .
+
+ex:C028 a skos:Concept ;
+    skos:broader ex:C022 ;
+    skos:definition "Одна з альтернативних форм гена або ділянки ДНК у певному локусі."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C028" ;
+    skos:prefLabel "allele"@en,
+        "алель"@uk .
+
+ex:C030 a skos:Concept ;
+    skos:altLabel "hereditary variant"@en,
+        "inherited variant"@en ;
+    skos:broader ex:C029 ;
+    skos:definition "Варіант у статевих клітинах, що передається нащадкам і присутній у всіх клітинах організму."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C030" ;
+    skos:prefLabel "germline variant"@en,
+        "germline-варіант"@uk .
+
+ex:C031 a skos:Concept ;
+    skos:altLabel "somatic mutation"@en ;
+    skos:broader ex:C029 ;
+    skos:definition "Варіант, набутий у соматичній клітині, не спадковий."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C031" ;
+    skos:prefLabel "somatic variant"@en,
+        "соматичний варіант"@uk .
+
+ex:C033 a skos:Concept ;
+    skos:altLabel "disease-causing variant"@en ;
+    skos:broader ex:C032 ;
+    skos:definition "Варіант, що за доказами спричиняє захворювання або підвищує ризик."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C033" ;
+    skos:prefLabel "pathogenic variant"@en,
+        "патогенний варіант"@uk .
+
+ex:C034 a skos:Concept ;
+    skos:broader ex:C032 ;
+    skos:definition "Варіант, що за доказами не спричиняє захворювання."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C034" ;
+    skos:prefLabel "benign variant"@en,
+        "доброякісний варіант"@uk .
+
+ex:C035 a skos:Concept ;
+    skos:altLabel "VUS"@en ;
+    skos:broader ex:C032 ;
+    skos:definition "Варіант, клінічне значення якого поки не встановлено."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C035" ;
+    skos:prefLabel "variant of uncertain significance"@en,
+        "варіант невизначеного значення"@uk .
+
+ex:C038 a skos:Concept ;
+    skos:broader ex:C037 ;
+    skos:definition "Склад алелів особи в певному локусі або в усьому геномі."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C038" ;
+    skos:prefLabel "genotype"@en,
+        "генотип"@uk .
+
+ex:C039 a skos:Concept ;
+    skos:broader ex:C037 ;
+    skos:definition "Спостережувані ознаки організму, результат взаємодії генотипу й середовища."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C039" ;
+    skos:prefLabel "phenotype"@en,
+        "фенотип"@uk .
+
+ex:C040 a skos:Concept ;
+    skos:broader ex:C037 ;
+    skos:definition "Частка носіїв варіанта, у яких проявляється ознака."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C040" ;
+    skos:prefLabel "penetrance"@en,
+        "пенетрантність"@uk .
+
+ex:C041 a skos:Concept ;
+    skos:broader ex:C037 ;
+    skos:definition "Тип успадкування, за якого достатньо однієї копії варіанта, щоб проявилась ознака."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C041" ;
+    skos:prefLabel "autosomal dominant inheritance"@en,
+        "аутосомно-домінантне успадкування"@uk .
+
+ex:C043 a skos:Concept ;
+    skos:broader ex:C042 ;
+    skos:definition "Процес, у якому інформація гена використовується для синтезу продукту."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C043" ;
+    skos:prefLabel "gene expression"@en,
+        "експресія гена"@uk .
+
+ex:C044 a skos:Concept ;
+    skos:altLabel "methylation"@en ;
+    skos:broader ex:C042 ;
+    skos:definition "Додавання метильної групи до ДНК; епігенетичний механізм."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C044" ;
+    skos:prefLabel "DNA methylation"@en,
+        "метилювання ДНК"@uk .
+
+ex:C045 a skos:Concept ;
+    skos:altLabel "PTM"@en ;
+    skos:broader ex:C042 ;
+    skos:definition "Хімічна зміна білка після синтезу."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C045" ;
+    skos:prefLabel "post-translational modification"@en,
+        "посттрансляційна модифікація"@uk .
+
+ex:C046 a skos:Concept ;
+    skos:altLabel "PPI"@en ;
+    skos:broader ex:C042 ;
+    skos:definition "Фізичний чи функціональний контакт двох білків."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C046" ;
+    skos:prefLabel "protein-protein interaction"@en,
+        "білок-білкова взаємодія"@uk .
+
+ex:C047 a skos:Concept ;
+    skos:altLabel "protein level"@en,
+        "protein quantity"@en ;
+    skos:broader ex:C042 ;
+    skos:definition "Кількість білка в зразку (відносна чи абсолютна)."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C047" ;
+    skos:prefLabel "protein abundance"@en,
+        "рівень білка"@uk .
+
+ex:C051 a skos:Concept ;
+    skos:altLabel "NGS"@en,
+        "high-throughput sequencing"@en ;
+    skos:broader ex:C050 ;
+    skos:definition "Масово-паралельне секвенування ДНК або РНК."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C051" ;
+    skos:prefLabel "next-generation sequencing"@en,
+        "секвенування наступного покоління"@uk .
+
+ex:C052 a skos:Concept ;
+    skos:altLabel "WGS"@en ;
+    skos:broader ex:C050 ;
+    skos:definition "Секвенування всього геному особи."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C052" ;
+    skos:prefLabel "whole genome sequencing"@en,
+        "секвенування повного геному"@uk .
+
+ex:C053 a skos:Concept ;
+    skos:altLabel "WES"@en ;
+    skos:broader ex:C050 ;
+    skos:definition "Секвенування лише кодувальних ділянок геному."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C053" ;
+    skos:prefLabel "whole exome sequencing"@en,
+        "секвенування екзому"@uk .
+
+ex:C054 a skos:Concept ;
+    skos:altLabel "RNA-seq"@en ;
+    skos:broader ex:C050 ;
+    skos:definition "Секвенування РНК для оцінки транскриптому й експресії генів."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C054" ;
+    skos:prefLabel "RNA sequencing"@en,
+        "секвенування РНК"@uk .
+
+ex:C056 a skos:Concept ;
+    skos:altLabel "LC-MS/MS"@en,
+        "MS/MS"@en ;
+    skos:broader ex:C055 ;
+    skos:definition "Мас-спектрометрія з фрагментацією іонів для визначення послідовності пептидів."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C056" ;
+    skos:prefLabel "tandem mass spectrometry"@en,
+        "тандемна мас-спектрометрія"@uk .
+
+ex:C057 a skos:Concept ;
+    skos:altLabel "lab test"@en ;
+    skos:broader ex:C049 ;
+    skos:definition "Аналіз зразка для отримання клінічно значущого результату."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C057" ;
+    skos:prefLabel "laboratory test"@en,
+        "лабораторне дослідження"@uk .
+
+ex:C059 a skos:Concept ;
+    skos:altLabel "mapping"@en,
+        "read alignment"@en ;
+    skos:broader ex:C058 ;
+    skos:definition "Зіставлення ридів із позиціями референсного геному."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C059" ;
+    skos:prefLabel "sequence alignment"@en,
+        "вирівнювання послідовностей"@uk .
+
+ex:C060 a skos:Concept ;
+    skos:altLabel "variant detection"@en ;
+    skos:broader ex:C058 ;
+    skos:definition "Визначення варіантів за вирівняними ридами."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C060" ;
+    skos:prefLabel "variant calling"@en,
+        "виклик варіантів"@uk .
+
+ex:C061 a skos:Concept ;
+    skos:broader ex:C058 ;
+    skos:definition "Додавання до варіантів відомостей про ген, наслідок і частоту."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C061" ;
+    skos:prefLabel "variant annotation"@en,
+        "анотація варіантів"@uk .
+
+ex:C063 a skos:Concept ;
+    skos:altLabel "hard-filtering"@en ;
+    skos:broader ex:C062 ;
+    skos:definition "Фільтрація варіантів за фіксованими порогами окремих анотацій."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C063" ;
+    skos:prefLabel "hard filtering"@en,
+        "жорстка фільтрація"@uk .
+
+ex:C064 a skos:Concept ;
+    skos:altLabel "VQSR"@en ;
+    skos:broader ex:C062 ;
+    skos:definition "Фільтрація моделлю, навченою на відомих варіантах (GATK)."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C064" ;
+    skos:prefLabel "variant quality score recalibration"@en,
+        "рекалібрація оцінок якості варіантів"@uk .
+
+ex:C065 a skos:Concept ;
+    skos:broader ex:C058 ;
+    skos:definition "Визначення білків за спектрами через зіставлення з базою послідовностей."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C065" ;
+    skos:prefLabel "protein identification"@en,
+        "ідентифікація білків"@uk .
+
+ex:C066 a skos:Concept ;
+    skos:altLabel "kNN search"@en,
+        "similarity search"@en ;
+    skos:broader ex:C058 ;
+    skos:definition "Пошук об'єктів, найближчих до запиту у векторному просторі."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C066" ;
+    skos:prefLabel "nearest neighbor search"@en,
+        "пошук найближчих сусідів"@uk .
+
+ex:C069 a skos:Concept ;
+    skos:broader ex:C068 ;
+    skos:definition "Послідовне тестування родичів носія відомого патогенного варіанта."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C069" ;
+    skos:prefLabel "cascade testing"@en,
+        "каскадне тестування"@uk .
+
+ex:C070 a skos:Concept ;
+    skos:broader ex:C067 ;
+    skos:definition "Допомога особі у розумінні генетичного ризику й варіантів дій."@uk ;
+    skos:exactMatch <http://id.nlm.nih.gov/mesh/D005817> ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C070" ;
+    skos:prefLabel "genetic counseling"@en,
+        "генетичне консультування"@uk .
+
+ex:C071 a skos:Concept ;
+    skos:broader ex:C067 ;
+    skos:definition "Оцінювання ймовірності виникнення захворювання."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C071" ;
+    skos:prefLabel "risk assessment"@en,
+        "оцінка ризику"@uk .
+
+ex:C072 a skos:Concept ;
+    skos:broader ex:C067 ;
+    skos:definition "Дослідження за участю людей для оцінки втручання."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C072" ;
+    skos:prefLabel "clinical trial"@en,
+        "клінічне випробування"@uk .
+
+ex:C074 a skos:Concept ;
+    skos:broader ex:C073 ;
+    skos:definition "Дослідження геномів, їхньої структури й варіації."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C074" ;
+    skos:prefLabel "genomics"@en,
+        "геноміка"@uk .
+
+ex:C075 a skos:Concept ;
+    skos:broader ex:C073 ;
+    skos:definition "Масштабне дослідження білків та їхніх функцій."@uk ;
+    skos:exactMatch <http://id.nlm.nih.gov/mesh/D040901> ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C075" ;
+    skos:prefLabel "proteomics"@en,
+        "протеоміка"@uk .
+
+ex:C076 a skos:Concept ;
+    skos:broader ex:C073 ;
+    skos:definition "Вивчення спадкових змін активності генів без зміни послідовності ДНК."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C076" ;
+    skos:prefLabel "epigenetics"@en,
+        "епігенетика"@uk .
+
+ex:C079 a skos:Concept ;
+    skos:altLabel "read"@en,
+        "sequence read"@en ;
+    skos:broader ex:C078 ;
+    skos:definition "Короткий фрагмент послідовності, отриманий секвенатором."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C079" ;
+    skos:prefLabel "sequencing read"@en,
+        "прочитання секвенування"@uk .
+
+ex:C080 a skos:Concept ;
+    skos:altLabel "FASTQ"@en ;
+    skos:broader ex:C078 ;
+    skos:definition "Формат для ридів із оцінками якості символів."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C080" ;
+    skos:prefLabel "FASTQ file"@en,
+        "файл FASTQ"@uk .
+
+ex:C081 a skos:Concept ;
+    skos:altLabel "BAM"@en,
+        "alignment file"@en ;
+    skos:broader ex:C078 ;
+    skos:definition "Бінарний формат вирівняних ридів."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C081" ;
+    skos:prefLabel "BAM file"@en,
+        "файл BAM"@uk .
+
+ex:C082 a skos:Concept ;
+    skos:altLabel "VCF"@en,
+        "variant call format"@en ;
+    skos:broader ex:C078 ;
+    skos:definition "Текстовий формат для варіантів та їхніх анотацій."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C082" ;
+    skos:prefLabel "VCF file"@en,
+        "файл VCF"@uk .
+
+ex:C083 a skos:Concept ;
+    skos:altLabel "reference assembly"@en ;
+    skos:broader ex:C078 ;
+    skos:definition "Еталонна послідовність геному виду, з якою порівнюють вибірки."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C083" ;
+    skos:prefLabel "reference genome"@en,
+        "референсний геном"@uk .
+
+ex:C084 a skos:Concept ;
+    skos:altLabel "spectrum"@en ;
+    skos:broader ex:C078 ;
+    skos:definition "Розподіл інтенсивності іонів за відношенням маси до заряду."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C084" ;
+    skos:prefLabel "mass spectrum"@en,
+        "мас-спектр"@uk .
+
+ex:C086 a skos:Concept ;
+    skos:altLabel "EHR"@en,
+        "EMR"@en,
+        "electronic medical record"@en ;
+    skos:broader ex:C085 ;
+    skos:definition "Цифровий запис медичних даних пацієнта."@uk ;
+    skos:exactMatch <http://id.nlm.nih.gov/mesh/D057286> ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C086" ;
+    skos:prefLabel "electronic health record"@en,
+        "електронна медична картка"@uk .
+
+ex:C087 a skos:Concept ;
+    skos:broader ex:C085 ;
+    skos:definition "Вільнотекстовий запис лікаря у медичній документації."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C087" ;
+    skos:prefLabel "clinical note"@en,
+        "клінічна нотатка"@uk .
+
+ex:C088 a skos:Concept ;
+    skos:broader ex:C085 ;
+    skos:definition "Відомості про захворювання у родичів пацієнта."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C088" ;
+    skos:prefLabel "family history"@en,
+        "сімейний анамнез"@uk .
+
+ex:C090 a skos:Concept ;
+    skos:broader ex:C089 ;
+    skos:definition "Дані, що описують інші дані."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C090" ;
+    skos:prefLabel "metadata"@en,
+        "метадані"@uk .
+
+ex:C091 a skos:Concept ;
+    skos:altLabel "schema"@en ;
+    skos:broader ex:C089 ;
+    skos:definition "Формальний опис структури даних."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C091" ;
+    skos:prefLabel "data schema"@en,
+        "схема даних"@uk .
+
+ex:C092 a skos:Concept ;
+    skos:altLabel "lineage"@en,
+        "provenance"@en ;
+    skos:broader ex:C089 ;
+    skos:definition "Відомості про джерело й історію перетворень даних."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C092" ;
+    skos:prefLabel "data provenance"@en,
+        "походження даних"@uk .
+
+ex:C095 a skos:Concept ;
+    skos:altLabel "QD"@en ;
+    skos:broader ex:C094 ;
+    skos:definition "Оцінка якості варіанта, нормована на глибину покриття."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C095" ;
+    skos:prefLabel "quality by depth"@en,
+        "якість на глибину"@uk .
+
+ex:C096 a skos:Concept ;
+    skos:altLabel "FS"@en,
+        "FisherStrand"@en ;
+    skos:broader ex:C094 ;
+    skos:definition "Оцінка нерівномірності підтримки варіанта прямим і зворотним ланцюгами."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C096" ;
+    skos:prefLabel "Fisher strand bias"@en,
+        "зміщення ланцюга за Фішером"@uk .
+
+ex:C097 a skos:Concept ;
+    skos:altLabel "SOR"@en,
+        "StrandOddsRatio"@en ;
+    skos:broader ex:C094 ;
+    skos:definition "Оцінка зміщення ланцюга, стійкіша до високого покриття."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C097" ;
+    skos:prefLabel "strand odds ratio"@en,
+        "відношення шансів ланцюгів"@uk .
+
+ex:C098 a skos:Concept ;
+    skos:altLabel "MAPQ"@en,
+        "MQ"@en ;
+    skos:broader ex:C094 ;
+    skos:definition "Оцінка впевненості в позиції вирівнювання рида."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C098" ;
+    skos:prefLabel "mapping quality"@en,
+        "якість вирівнювання"@uk .
+
+ex:C099 a skos:Concept ;
+    skos:altLabel "DP"@en,
+        "coverage"@en,
+        "depth"@en ;
+    skos:broader ex:C094 ;
+    skos:definition "Кількість ридів, що перекривають позицію геному."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C099" ;
+    skos:prefLabel "read depth"@en,
+        "глибина покриття"@uk .
+
+ex:C100 a skos:Concept ;
+    skos:altLabel "MQRankSum"@en,
+        "ReadPosRankSum"@en,
+        "Wilcoxon rank sum test"@en ;
+    skos:broader ex:C094 ;
+    skos:definition "Непараметричний тест порівняння двох груп; у GATK порівнює ріди з референсним та альтернативним алелем."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C100" ;
+    skos:prefLabel "rank sum test"@en,
+        "тест суми рангів"@uk .
+
+ex:C101 a skos:Concept ;
+    skos:broader ex:C093 ;
+    skos:definition "Придатність даних до використання: повнота, точність, узгодженість."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C101" ;
+    skos:prefLabel "data quality"@en,
+        "якість даних"@uk .
+
+ex:C105 a skos:Concept ;
+    skos:altLabel "index patient"@en ;
+    skos:broader ex:C104 ;
+    skos:definition "Особа, з якої починається вивчення родини в генетичному дослідженні."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C105" ;
+    skos:prefLabel "proband"@en,
+        "пробанд"@uk .
+
+ex:C106 a skos:Concept ;
+    skos:altLabel "family member"@en ;
+    skos:broader ex:C103 ;
+    skos:definition "Особа, пов'язана з пробандом спорідненістю."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C106" ;
+    skos:prefLabel "relative"@en,
+        "родич"@uk .
+
+ex:C108 a skos:Concept ;
+    skos:broader ex:C107 ;
+    skos:definition "Висновок про захворювання за результатами обстеження."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C108" ;
+    skos:prefLabel "diagnosis"@en,
+        "діагноз"@uk .
+
+ex:C109 a skos:Concept ;
+    skos:altLabel "clinical sign"@en ;
+    skos:broader ex:C107 ;
+    skos:definition "Ознака захворювання, яку відчуває або виявляє пацієнт."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C109" ;
+    skos:prefLabel "symptom"@en,
+        "симптом"@uk .
+
+ex:C111 a skos:Concept ;
+    skos:broader ex:C110 ;
+    skos:closeMatch <http://id.nlm.nih.gov/mesh/D001943> ;
+    skos:definition "Злоякісна пухлина молочної залози."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C111" ;
+    skos:prefLabel "breast cancer"@en,
+        "рак молочної залози"@uk .
+
+ex:C112 a skos:Concept ;
+    skos:broader ex:C110 ;
+    skos:closeMatch <http://id.nlm.nih.gov/mesh/D010051> ;
+    skos:definition "Злоякісна пухлина яєчників."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C112" ;
+    skos:prefLabel "ovarian cancer"@en,
+        "рак яєчників"@uk .
+
+ex:C113 a skos:Concept ;
+    skos:broader ex:C107 ;
+    skos:definition "Вимірювана ознака, що відображає біологічний процес чи стан хвороби."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C113" ;
+    skos:prefLabel "biomarker"@en,
+        "біомаркер"@uk .
+
+ex:C115 a skos:Concept ;
+    skos:altLabel "therapy"@en ;
+    skos:broader ex:C114 ;
+    skos:definition "Втручання для усунення або полегшення хвороби."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C115" ;
+    skos:prefLabel "treatment"@en,
+        "лікування"@uk .
+
+ex:C116 a skos:Concept ;
+    skos:altLabel "PARP inhibitors"@en ;
+    skos:broader ex:C114 ;
+    skos:definition "Клас таргетних препаратів, що блокують ферменти PARP; застосовують за мутацій BRCA."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C116" ;
+    skos:prefLabel "PARP inhibitor"@en,
+        "інгібітор PARP"@uk .
+
+ex:C118 a skos:Concept ;
+    skos:broader ex:C117 ;
+    skos:definition "Добровільна згода пацієнта після пояснення суті процедури чи дослідження."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C118" ;
+    skos:prefLabel "informed consent"@en,
+        "інформована згода"@uk .
+
+ex:C119 a skos:Concept ;
+    skos:altLabel "anonymization"@en ;
+    skos:broader ex:C117 ;
+    skos:definition "Видалення ознак, що дозволяють ідентифікувати особу в даних."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C119" ;
+    skos:prefLabel "de-identification"@en,
+        "деідентифікація"@uk .
+
+ex:C120 a skos:Concept ;
+    skos:altLabel "privacy"@en ;
+    skos:broader ex:C117 ;
+    skos:definition "Захист персональних даних від несанкціонованого доступу."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C120" ;
+    skos:prefLabel "data privacy"@en,
+        "приватність даних"@uk .
+
+ex:C124 a skos:Concept ;
+    skos:altLabel "GO"@en ;
+    skos:broader ex:C123 ;
+    skos:definition "Онтологія функцій генів, біологічних процесів і клітинних компонентів."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C124" ;
+    skos:prefLabel "Gene Ontology"@en,
+        "Gene Ontology"@uk .
+
+ex:C125 a skos:Concept ;
+    skos:altLabel "HPO"@en ;
+    skos:broader ex:C123 ;
+    skos:definition "Онтологія фенотипових ознак людини."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C125" ;
+    skos:prefLabel "Human Phenotype Ontology"@en,
+        "Human Phenotype Ontology"@uk .
+
+ex:C127 a skos:Concept ;
+    skos:altLabel "MeSH"@en ;
+    skos:broader ex:C126 ;
+    skos:definition "Контрольований словник медичних тем Національної медичної бібліотеки США."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C127" ;
+    skos:prefLabel "Medical Subject Headings"@en,
+        "MeSH"@uk .
+
+ex:C128 a skos:Concept ;
+    skos:altLabel "SNOMED"@en ;
+    skos:broader ex:C126 ;
+    skos:definition "Систематизована клінічна термінологія."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C128" ;
+    skos:prefLabel "SNOMED CT"@en,
+        "SNOMED CT"@uk .
+
+ex:C129 a skos:Concept ;
+    skos:broader ex:C122 ;
+    skos:definition "Словник понять із зв'язками еквівалентності, ієрархії й асоціації."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C129" ;
+    skos:prefLabel "thesaurus"@en,
+        "тезаурус"@uk .
+
+ex:C130 a skos:Concept ;
+    skos:altLabel "classification hierarchy"@en ;
+    skos:broader ex:C122 ;
+    skos:definition "Ієрархічна класифікація понять на основі зв'язку «загальне—часткове»."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C130" ;
+    skos:prefLabel "taxonomy"@en,
+        "таксономія"@uk .
+
+ex:C131 a skos:Concept ;
+    skos:broader ex:C122 ;
+    skos:definition "Граф сутностей і зв'язків, що репрезентує знання."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C131" ;
+    skos:prefLabel "knowledge graph"@en,
+        "граф знань"@uk .
+
+ex:C133 a skos:Concept ;
+    skos:broader ex:C132 ;
+    skos:definition "Публічний архів інтерпретацій клінічної значущості варіантів."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C133" ;
+    skos:prefLabel "ClinVar"@en,
+        "ClinVar"@uk .
+
+ex:C134 a skos:Concept ;
+    skos:broader ex:C132 ;
+    skos:definition "Ресурс послідовностей і функціональної анотації білків."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C134" ;
+    skos:prefLabel "UniProt"@en,
+        "UniProt"@uk .
+
+ex:C135 a skos:Concept ;
+    skos:broader ex:C132 ;
+    skos:definition "Публічна база коротких генетичних варіантів."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C135" ;
+    skos:prefLabel "dbSNP"@en,
+        "dbSNP"@uk .
+
+ex:C137 a skos:Concept ;
+    skos:altLabel "SQL database"@en ;
+    skos:broader ex:C136 ;
+    skos:definition "База даних із таблицями й зв'язками між ними."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C137" ;
+    skos:prefLabel "relational database"@en,
+        "реляційна база даних"@uk .
+
+ex:C138 a skos:Concept ;
+    skos:altLabel "graph DB"@en ;
+    skos:broader ex:C136 ;
+    skos:definition "База даних, що зберігає вузли й ребра та оптимізована під обхід зв'язків."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C138" ;
+    skos:prefLabel "graph database"@en,
+        "графова база даних"@uk .
+
+ex:C139 a skos:Concept ;
+    skos:altLabel "vector DB"@en,
+        "vector store"@en ;
+    skos:broader ex:C136 ;
+    skos:definition "База даних для зберігання embeddings і пошуку за схожістю."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C139" ;
+    skos:prefLabel "vector database"@en,
+        "векторна база даних"@uk .
+
+ex:C141 a skos:Concept ;
+    skos:altLabel "vector embedding"@en,
+        "vector representation"@en ;
+    skos:broader ex:C140 ;
+    skos:definition "Числовий вектор, що кодує семантику об'єкта."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C141" ;
+    skos:prefLabel "embedding"@en,
+        "embedding"@uk .
+
+ex:C142 a skos:Concept ;
+    skos:broader ex:C140 ;
+    skos:definition "Міра близькості значень двох об'єктів."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C142" ;
+    skos:prefLabel "semantic similarity"@en,
+        "семантична схожість"@uk .
+
+ex:C143 a skos:Concept ;
+    skos:altLabel "RDF"@en ;
+    skos:broader ex:C140 ;
+    skos:definition "Модель даних у вигляді триплетів «суб'єкт—предикат—об'єкт»."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C143" ;
+    skos:prefLabel "Resource Description Framework"@en,
+        "RDF"@uk .
+
+ex:C144 a skos:Concept ;
+    skos:altLabel "SKOS"@en ;
+    skos:broader ex:C140 ;
+    skos:definition "Модель W3C для публікації таксономій і тезаурусів у вигляді RDF."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C144" ;
+    skos:prefLabel "Simple Knowledge Organization System"@en,
+        "SKOS"@uk .
+
+ex:C145 a skos:Concept ;
+    skos:altLabel "SPARQL query language"@en ;
+    skos:broader ex:C140 ;
+    skos:definition "Мова запитів до RDF-графів."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C145" ;
+    skos:prefLabel "SPARQL"@en,
+        "SPARQL"@uk .
+
+ex:C147 a skos:Concept ;
+    skos:altLabel "expert system"@en ;
+    skos:broader ex:C146 ;
+    skos:definition "Система, що виводить рішення застосуванням правил."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C147" ;
+    skos:prefLabel "rule-based system"@en,
+        "система на правилах"@uk .
+
+ex:C148 a skos:Concept ;
+    skos:altLabel "IF-THEN rule"@en ;
+    skos:broader ex:C146 ;
+    skos:definition "Правило вигляду «ЯКЩО умова ТО дія»."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C148" ;
+    skos:prefLabel "production rule"@en,
+        "продукційне правило"@uk .
+
+ex:C149 a skos:Concept ;
+    skos:altLabel "reasoner"@en,
+        "rule engine"@en ;
+    skos:broader ex:C146 ;
+    skos:definition "Компонент, що застосовує правила до фактів для виведення висновків."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C149" ;
+    skos:prefLabel "inference engine"@en,
+        "рушій виведення"@uk .
+
+ex:C150 a skos:Concept ;
+    skos:broader ex:C146 ;
+    skos:definition "Структура знань із іменованими слотами та значеннями за замовчуванням."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C150" ;
+    skos:prefLabel "frame"@en,
+        "фрейм"@uk .
+
+ex:C151 a skos:Concept ;
+    skos:altLabel "CQ"@en ;
+    skos:broader ex:C146 ;
+    skos:definition "Запитання, на яке база знань має вміти відповісти."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C151" ;
+    skos:prefLabel "competency question"@en,
+        "компетентнісне запитання"@uk .
+
+ex:C153 a skos:Concept ;
+    skos:broader ex:C152 ;
+    skos:definition "Об'єднання даних з різних джерел у єдиний погляд."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C153" ;
+    skos:prefLabel "data integration"@en,
+        "інтеграція даних"@uk .
+
+ex:C154 a skos:Concept ;
+    skos:altLabel "ETL pipeline"@en,
+        "pipeline"@en ;
+    skos:broader ex:C152 ;
+    skos:definition "Послідовність кроків обробки даних від джерела до результату."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:notation "C154" ;
+    skos:prefLabel "data pipeline"@en,
+        "конвеєр даних"@uk .
+
+ex:C055 a skos:Concept ;
+    skos:altLabel "MS"@en ;
+    skos:broader ex:C049 ;
+    skos:definition "Метод вимірювання відношення маси до заряду іонів."@uk ;
+    skos:exactMatch <http://id.nlm.nih.gov/mesh/D013058> ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C056 ;
+    skos:notation "C055" ;
+    skos:prefLabel "mass spectrometry"@en,
+        "мас-спектрометрія"@uk .
+
+ex:C068 a skos:Concept ;
+    skos:altLabel "genetic test"@en ;
+    skos:broader ex:C067 ;
+    skos:definition "Аналіз ДНК для виявлення варіантів, пов'язаних із хворобою."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C069 ;
+    skos:notation "C068" ;
+    skos:prefLabel "genetic testing"@en,
+        "генетичне тестування"@uk .
+
+ex:C104 a skos:Concept ;
+    skos:broader ex:C103 ;
+    skos:definition "Особа, що отримує медичну допомогу."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C105 ;
+    skos:notation "C104" ;
+    skos:prefLabel "patient"@en,
+        "пацієнт"@uk .
+
+ex:C002 a skos:Concept ;
+    skos:broader ex:C001 ;
+    skos:definition "Біологічна сутність — об'єкт живої природи на молекулярному рівні."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C003,
+        ex:C015 ;
+    skos:notation "C002" ;
+    skos:prefLabel "Biological entity"@en,
+        "Біологічна сутність"@uk .
+
+ex:C006 a skos:Concept ;
+    skos:broader ex:C003 ;
+    skos:definition "Ділянка ДНК, що кодує продукт (білок або РНК) і є одиницею спадковості."@uk ;
+    skos:exactMatch <http://id.nlm.nih.gov/mesh/D005796> ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C007,
+        ex:C008 ;
+    skos:notation "C006" ;
+    skos:prefLabel "gene"@en,
+        "ген"@uk .
+
+ex:C029 a skos:Concept ;
+    skos:broader ex:C021 ;
+    skos:definition "Класифікація варіантів за походженням: спадкові чи набуті."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C030,
+        ex:C031 ;
+    skos:notation "C029" ;
+    skos:prefLabel "Variant by origin"@en,
+        "Варіант за походженням"@uk .
+
+ex:C036 a skos:Concept ;
+    skos:broader ex:C001 ;
+    skos:definition "Властивість або процес біологічної системи, що спостерігається чи вимірюється."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C037,
+        ex:C042 ;
+    skos:notation "C036" ;
+    skos:prefLabel "Biological property"@en,
+        "Біологічна властивість"@uk .
+
+ex:C062 a skos:Concept ;
+    skos:broader ex:C058 ;
+    skos:definition "Відсіювання ненадійних варіантів за анотаціями якості."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C063,
+        ex:C064 ;
+    skos:notation "C062" ;
+    skos:prefLabel "variant filtering"@en,
+        "фільтрація варіантів"@uk .
+
+ex:C093 a skos:Concept ;
+    skos:broader ex:C001 ;
+    skos:definition "Показник, за яким оцінюють якість варіантів або даних."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C094,
+        ex:C101 ;
+    skos:notation "C093" ;
+    skos:prefLabel "Measure of quality"@en,
+        "Міра якості"@uk .
+
+ex:C103 a skos:Concept ;
+    skos:broader ex:C102 ;
+    skos:definition "Особа в контексті генетичного дослідження родини."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C104,
+        ex:C106 ;
+    skos:notation "C103" ;
+    skos:prefLabel "Person"@en,
+        "Особа"@uk .
+
+ex:C110 a skos:Concept ;
+    skos:broader ex:C107 ;
+    skos:definition "Рак, що виникає через успадкований патогенний варіант."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C111,
+        ex:C112 ;
+    skos:notation "C110" ;
+    skos:prefLabel "hereditary cancer"@en,
+        "спадковий рак"@uk .
+
+ex:C114 a skos:Concept ;
+    skos:broader ex:C102 ;
+    skos:definition "Лікувальне втручання або лікарський засіб."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C115,
+        ex:C116 ;
+    skos:notation "C114" ;
+    skos:prefLabel "Therapy"@en,
+        "Терапія"@uk .
+
+ex:C123 a skos:Concept ;
+    skos:broader ex:C122 ;
+    skos:definition "Формальна специфікація понять предметної області та зв'язків між ними."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C124,
+        ex:C125 ;
+    skos:notation "C123" ;
+    skos:prefLabel "ontology"@en,
+        "онтологія"@uk .
+
+ex:C126 a skos:Concept ;
+    skos:broader ex:C122 ;
+    skos:definition "Узгоджений перелік термінів із фіксованим значенням."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C127,
+        ex:C128 ;
+    skos:notation "C126" ;
+    skos:prefLabel "controlled vocabulary"@en,
+        "контрольований словник"@uk .
+
+ex:C152 a skos:Concept ;
+    skos:broader ex:C121 ;
+    skos:definition "Етапи роботи з даними в інформаційних системах."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C153,
+        ex:C154 ;
+    skos:notation "C152" ;
+    skos:prefLabel "Data engineering"@en,
+        "Інженерія даних"@uk .
+
+ex:C021 a skos:Concept ;
+    skos:broader ex:C001 ;
+    skos:definition "Відмінності послідовності ДНК між особами або від референсу та їх характеристики."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C022,
+        ex:C029,
+        ex:C032 ;
+    skos:notation "C021" ;
+    skos:prefLabel "Genetic variation"@en,
+        "Генетична варіація"@uk .
+
+ex:C032 a skos:Concept ;
+    skos:broader ex:C021 ;
+    skos:definition "Класифікація варіантів за доведеним клінічним значенням."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C033,
+        ex:C034,
+        ex:C035 ;
+    skos:notation "C032" ;
+    skos:prefLabel "Variant by clinical significance"@en,
+        "Варіант за клінічною значущістю"@uk .
+
+ex:C048 a skos:Concept ;
+    skos:broader ex:C001 ;
+    skos:definition "Спосіб дії: лабораторний, обчислювальний або клінічний."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C049,
+        ex:C058,
+        ex:C067 ;
+    skos:notation "C048" ;
+    skos:prefLabel "Method and procedure"@en,
+        "Метод і процедура"@uk .
+
+ex:C049 a skos:Concept ;
+    skos:broader ex:C048 ;
+    skos:definition "Експериментальний метод аналізу зразків."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C050,
+        ex:C055,
+        ex:C057 ;
+    skos:notation "C049" ;
+    skos:prefLabel "Laboratory method"@en,
+        "Лабораторний метод"@uk .
+
+ex:C073 a skos:Concept ;
+    skos:broader ex:C001 ;
+    skos:definition "Галузь науки, об'єкт вивчення якої — певний тип біомолекул."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C074,
+        ex:C075,
+        ex:C076 ;
+    skos:notation "C073" ;
+    skos:prefLabel "Research field"@en,
+        "Галузь досліджень"@uk .
+
+ex:C077 a skos:Concept ;
+    skos:broader ex:C001 ;
+    skos:definition "Дані й артефакти: файли, записи, метадані."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C078,
+        ex:C085,
+        ex:C089 ;
+    skos:notation "C077" ;
+    skos:prefLabel "Data and artifact"@en,
+        "Дані й артефакти"@uk .
+
+ex:C085 a skos:Concept ;
+    skos:broader ex:C077 ;
+    skos:definition "Записи, що описують пацієнта та його родину."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C086,
+        ex:C087,
+        ex:C088 ;
+    skos:notation "C085" ;
+    skos:prefLabel "Clinical data"@en,
+        "Клінічні дані"@uk .
+
+ex:C089 a skos:Concept ;
+    skos:broader ex:C077 ;
+    skos:definition "Дані, що описують інші дані (метадані, схема, походження)."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C090,
+        ex:C091,
+        ex:C092 ;
+    skos:notation "C089" ;
+    skos:prefLabel "Data about data"@en,
+        "Дані про дані"@uk .
+
+ex:C117 a skos:Concept ;
+    skos:broader ex:C102 ;
+    skos:definition "Правова чи етична гарантія захисту особи й даних."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C118,
+        ex:C119,
+        ex:C120 ;
+    skos:notation "C117" ;
+    skos:prefLabel "Ethical and legal safeguard"@en,
+        "Етична й правова гарантія"@uk .
+
+ex:C132 a skos:Concept ;
+    skos:broader ex:C121 ;
+    skos:definition "Публічний ресурс біомедичних даних."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C133,
+        ex:C134,
+        ex:C135 ;
+    skos:notation "C132" ;
+    skos:prefLabel "Data resource"@en,
+        "Ресурс даних"@uk .
+
+ex:C136 a skos:Concept ;
+    skos:broader ex:C121 ;
+    skos:definition "Тип бази даних за моделлю даних."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C137,
+        ex:C138,
+        ex:C139 ;
+    skos:notation "C136" ;
+    skos:prefLabel "Database technology"@en,
+        "Технологія баз даних"@uk .
+
+ex:C037 a skos:Concept ;
+    skos:broader ex:C036 ;
+    skos:definition "Властивості, пов'язані з передачею й проявом ознак."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C038,
+        ex:C039,
+        ex:C040,
+        ex:C041 ;
+    skos:notation "C037" ;
+    skos:prefLabel "Heredity"@en,
+        "Спадковість"@uk .
+
+ex:C050 a skos:Concept ;
+    skos:altLabel "sequencing"@en ;
+    skos:broader ex:C049 ;
+    skos:definition "Визначення порядку нуклеотидів у молекулі ДНК."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C051,
+        ex:C052,
+        ex:C053,
+        ex:C054 ;
+    skos:notation "C050" ;
+    skos:prefLabel "DNA sequencing"@en,
+        "секвенування ДНК"@uk .
+
+ex:C067 a skos:Concept ;
+    skos:broader ex:C048 ;
+    skos:definition "Крок клінічного процесу, пов'язаний із генетичними даними."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C068,
+        ex:C070,
+        ex:C071,
+        ex:C072 ;
+    skos:notation "C067" ;
+    skos:prefLabel "Clinical procedure"@en,
+        "Клінічна процедура"@uk .
+
+ex:C102 a skos:Concept ;
+    skos:broader ex:C001 ;
+    skos:definition "Поняття клінічної ситуації: особа, стан, терапія, захист прав."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C103,
+        ex:C107,
+        ex:C114,
+        ex:C117 ;
+    skos:notation "C102" ;
+    skos:prefLabel "Clinical concept"@en,
+        "Клінічне поняття"@uk .
+
+ex:C107 a skos:Concept ;
+    skos:broader ex:C102 ;
+    skos:definition "Клінічний стан: діагноз, симптом, хвороба, маркер."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C108,
+        ex:C109,
+        ex:C110,
+        ex:C113 ;
+    skos:notation "C107" ;
+    skos:prefLabel "Condition"@en,
+        "Клінічний стан"@uk .
+
+ex:C015 a skos:Concept ;
+    skos:broader ex:C002 ;
+    skos:definition "Сутність білкового рівня: від амінокислоти до протеому."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C016,
+        ex:C017,
+        ex:C018,
+        ex:C019,
+        ex:C020 ;
+    skos:notation "C015" ;
+    skos:prefLabel "Protein-level entity"@en,
+        "Сутність білкового рівня"@uk .
+
+ex:C042 a skos:Concept ;
+    skos:broader ex:C036 ;
+    skos:definition "Молекулярні процеси та їх вимірювані показники."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C043,
+        ex:C044,
+        ex:C045,
+        ex:C046,
+        ex:C047 ;
+    skos:notation "C042" ;
+    skos:prefLabel "Molecular activity"@en,
+        "Молекулярна активність"@uk .
+
+ex:C122 a skos:Concept ;
+    skos:broader ex:C121 ;
+    skos:definition "Система організації знань: від словника до графа знань."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C123,
+        ex:C126,
+        ex:C129,
+        ex:C130,
+        ex:C131 ;
+    skos:notation "C122" ;
+    skos:prefLabel "Knowledge organization system"@en,
+        "Система організації знань"@uk .
+
+ex:C140 a skos:Concept ;
+    skos:broader ex:C121 ;
+    skos:definition "Способи подання даних і порівняння об'єктів."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C141,
+        ex:C142,
+        ex:C143,
+        ex:C144,
+        ex:C145 ;
+    skos:notation "C140" ;
+    skos:prefLabel "Representation and similarity"@en,
+        "Подання й схожість"@uk .
+
+ex:C146 a skos:Concept ;
+    skos:broader ex:C121 ;
+    skos:definition "Елементи побудови систем на знаннях."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C147,
+        ex:C148,
+        ex:C149,
+        ex:C150,
+        ex:C151 ;
+    skos:notation "C146" ;
+    skos:prefLabel "Knowledge engineering"@en,
+        "Інженерія знань"@uk .
+
+ex:C022 a skos:Concept ;
+    skos:altLabel "genomic variant"@en,
+        "variant"@en ;
+    skos:broader ex:C021 ;
+    skos:definition "Відмінність послідовності ДНК від референсної."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C023,
+        ex:C024,
+        ex:C025,
+        ex:C026,
+        ex:C027,
+        ex:C028 ;
+    skos:notation "C022" ;
+    skos:prefLabel "genetic variant"@en,
+        "генетичний варіант"@uk .
+
+ex:C058 a skos:Concept ;
+    skos:broader ex:C048 ;
+    skos:definition "Крок обчислювальної обробки даних."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C059,
+        ex:C060,
+        ex:C061,
+        ex:C062,
+        ex:C065,
+        ex:C066 ;
+    skos:notation "C058" ;
+    skos:prefLabel "Computational procedure"@en,
+        "Обчислювальна процедура"@uk .
+
+ex:C078 a skos:Concept ;
+    skos:broader ex:C077 ;
+    skos:definition "Дані геномних і протеомних вимірювань на різних стадіях обробки."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C079,
+        ex:C080,
+        ex:C081,
+        ex:C082,
+        ex:C083,
+        ex:C084 ;
+    skos:notation "C078" ;
+    skos:prefLabel "Omics data"@en,
+        "Омікс-дані"@uk .
+
+ex:C094 a skos:Concept ;
+    skos:broader ex:C093 ;
+    skos:definition "Анотація виклику варіанта, що кількісно характеризує його підтримку ридами."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C095,
+        ex:C096,
+        ex:C097,
+        ex:C098,
+        ex:C099,
+        ex:C100 ;
+    skos:notation "C094" ;
+    skos:prefLabel "Variant call annotation"@en,
+        "Анотація виклику варіанта"@uk .
+
+ex:C121 a skos:Concept ;
+    skos:broader ex:C001 ;
+    skos:definition "Поняття інженерії знань та інформаційних технологій."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C122,
+        ex:C132,
+        ex:C136,
+        ex:C140,
+        ex:C146,
+        ex:C152 ;
+    skos:notation "C121" ;
+    skos:prefLabel "Knowledge and information technology"@en,
+        "Знання та інформаційні технології"@uk .
+
+ex:C001 a skos:Concept ;
+    skos:definition "Кореневе поняття: усе, що стосується аналізу біомедичних даних."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C002,
+        ex:C021,
+        ex:C036,
+        ex:C048,
+        ex:C073,
+        ex:C077,
+        ex:C093,
+        ex:C102,
+        ex:C121 ;
+    skos:notation "C001" ;
+    skos:prefLabel "Biomedical data analysis"@en,
+        "Аналіз біомедичних даних"@uk ;
+    skos:topConceptOf ex:scheme .
+
+ex:C003 a skos:Concept ;
+    skos:broader ex:C002 ;
+    skos:definition "Елемент геному або сукупність таких елементів."@uk ;
+    skos:inScheme ex:scheme ;
+    skos:narrower ex:C004,
+        ex:C005,
+        ex:C006,
+        ex:C009,
+        ex:C010,
+        ex:C011,
+        ex:C012,
+        ex:C013,
+        ex:C014 ;
+    skos:notation "C003" ;
+    skos:prefLabel "Genomic element"@en,
+        "Елемент геному"@uk .
+
+ex:scheme a skos:ConceptScheme ;
+    dct:description "Підсумкова таксономія з гібриду експертної, LLM- та кластерної версій; визначення — чернетки LLM."@uk ;
+    dct:title "Biomedical data analysis taxonomy (Lab 5)"@en,
+        "Біомедична таксономія ЛР5 (Medicine / biomedical data analysis)"@uk ;
+    skos:hasTopConcept ex:C001 .
+

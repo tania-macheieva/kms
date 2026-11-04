@@ -1,0 +1,18 @@
+{
+"t01": "```cypher\nMATCH (v:Variant {type: 'SNP'})-[:HAS_ANNOTATION]->(a:Annotation {name: 'QD'})\nWHERE a.value < 2\nRETURN DISTINCT v.id\n```",
+"t02": "```cypher\nMATCH (v:Variant)-[:FROM_SAMPLE]->(s:Sample {code: 'B'})\nRETURN count(DISTINCT v) AS cnt\n```",
+"t03": "```cypher\nMATCH (:GenePanel {name: 'HBOC-panel'})-[:HAS_MEMBER]->(g:Gene)\nRETURN g.symbol\n```",
+"t04": "```cypher\nMATCH (v:Variant {id: 'VAR-103'})\nRETURN v.clinicalSignificance = 'Pathogenic' AS isPathogenic\n```",
+"t05": "```cypher\nMATCH (v:Variant)-[:LOCATED_IN]->(g:Gene)\nRETURN g.symbol AS symbol, count(DISTINCT v) AS cnt\n```",
+"t06": "```cypher\nMATCH (a:Annotation {name: 'FS'})\nRETURN max(a.value) AS maxFS\n```",
+"t07": "```cypher\nMATCH (v:Variant)-[:LOCATED_IN]->(:Gene {symbol: 'TP53'})\nRETURN DISTINCT v.id\n```",
+"t08": "```cypher\nMATCH (p:Person {name: 'Sofiia'})\nRETURN p.ageYears\n```",
+"t09": "```cypher\nMATCH (:Person {name: 'Olena'})-[:HAS_PARENT]->(p:Person)\nRETURN DISTINCT p.name\n```",
+"t10": "```cypher\nMATCH (p:Person)\nWHERE p.ageYears > 60\nRETURN p.name\n```",
+"t11": "```cypher\nMATCH (v:Variant {clinicalSignificance: 'Pathogenic'})\nRETURN v.id\n```",
+"t12": "```cypher\nMATCH (:Person {name: 'Olena'})-[:HAS_PARENT*1..]->(a:Person)\nRETURN DISTINCT a.name\n```",
+"t13": "```cypher\nMATCH (v:Variant)-[:HAS_ANNOTATION]->(a:Annotation {name: 'MQ'})\nRETURN v.id\nORDER BY a.value ASC\nLIMIT 1\n```",
+"t14": "```cypher\nMATCH (v:Variant)-[:LOCATED_IN]->(g:Gene)\nWITH g, count(DISTINCT v) AS cnt\nWHERE cnt > 15\nRETURN g.symbol\n```",
+"t15": "```cypher\nMATCH ()-[r]->()\nWHERE r.source = 'hermit'\nRETURN count(r) AS cnt\n```",
+"t16": "```cypher\nMATCH (t:Threshold)-[:CHECKS]->(:AnnotationType {name: 'FS'})\nRETURN DISTINCT t.id\n```"
+}

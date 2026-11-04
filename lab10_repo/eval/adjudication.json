@@ -1,0 +1,77 @@
+[
+ {
+  "key": "Q29|sarek_output#h027",
+  "A": 0,
+  "B": 1,
+  "final": 1,
+  "qid": "Q29",
+  "span": 0,
+  "quote": "classifies each tensor using a convolutional neural network and finally reports the results in a standard VCF or gVCF file",
+  "why": "Same DeepVariant description as the gold chunk in rare_output; equally answers the question -> B right, gold extended."
+ },
+ {
+  "key": "Q31|sarek_vc_interp#h002",
+  "A": 0,
+  "B": 1,
+  "final": 0,
+  "why": "Section intro; no zcat/HIGH filtering step -> keyword query not answered; A kept."
+ },
+ {
+  "key": "Q31|sarek_vc_interp#h003",
+  "A": 0,
+  "B": 1,
+  "final": 0,
+  "why": "Shows a HIGH-impact record but not how to search for it (no zcat command); A kept."
+ },
+ {
+  "key": "Q31|sarek_vc_interp#h005",
+  "A": 0,
+  "B": 1,
+  "final": 0,
+  "why": "Conclusion paragraph about COL6A1; not the filtering command; A kept."
+ },
+ {
+  "key": "Q38|rare_output#h023",
+  "A": 0,
+  "B": 1,
+  "final": 1,
+  "qid": "Q38",
+  "span": 0,
+  "quote": "It uses a simple configuration file to allow the user to specify the source annotation files and fields",
+  "why": "Duplicate vcfanno description in another section of the same document; fully answers the question -> B right, gold extended."
+ },
+ {
+  "key": "Q42|int_sparql#h000",
+  "A": 0,
+  "B": 1,
+  "final": 0,
+  "why": "Coverage table only lists which queries use property paths; does not show the relatives query; A kept."
+ },
+ {
+  "key": "Q42|int_sparql#h007",
+  "A": 0,
+  "B": 1,
+  "final": 0,
+  "why": "q07 finds ANCESTORS (hasParent+), the question asks for RELATIVES (q06); A kept."
+ },
+ {
+  "key": "Q48|bcftools_manual#h103",
+  "A": 0,
+  "B": 1,
+  "final": 1,
+  "qid": "Q48",
+  "span": 1,
+  "quote": "Run a plugin using the abbreviated \"+\" notation",
+  "why": "Example block shows how a plugin is invoked (+NAME) vs a normal command; answers the second half -> B right, gold extended."
+ },
+ {
+  "key": "Q54|gatk_docker#h004",
+  "A": 0,
+  "B": 1,
+  "final": 1,
+  "qid": "Q54",
+  "span": 1,
+  "quote": "This will attempt to build the docker remotely using google cloud build.",
+  "why": "Names build_docker_remote.sh and explains remote Cloud Build; answers the second half -> B right, gold extended."
+ }
+]

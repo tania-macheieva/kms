@@ -1,0 +1,14 @@
+{
+"d02": "SELECT (COUNT(DISTINCT ?v) AS ?n) WHERE { ?v a dkh:GeneticVariant ; dkh:fromSample ?s . ?s dkh:hasSampleCode \"B\" . }",
+"d04": "ASK { ?v dkh:hasVariantId \"VAR-103\" ; dkh:hasClinicalSignificance ?cs . ?cs rdfs:label ?l . FILTER(STR(?l) = \"Pathogenic\") }",
+"d06": "SELECT (MAX(?val) AS ?maxFS) WHERE { ?v dkh:hasAnnotation ?a . ?a dkh:hasAnnotationName \"FS\" ; dkh:hasNumericValue ?val . }",
+"d08": "SELECT ?age WHERE { ?p a dkh:Person ; rdfs:label ?l ; dkh:hasAgeYears ?age . FILTER(STR(?l) = \"Sofiia\") }",
+"d10": "SELECT ?childLabel WHERE { ?m a dkh:Person ; rdfs:label ?ml . FILTER(STR(?ml) = \"Maria\") ?m dkh:hasChild ?c . ?c rdfs:label ?childLabel . }",
+"d12": "SELECT ?val WHERE { ?t a dkh:FilterThreshold ; dkh:onAnnotationName \"FS\" ; dkh:hasThresholdValue ?val . }",
+"d14": "SELECT (COUNT(DISTINCT ?a) AS ?n) WHERE { ?a a dkh:QualityAnnotation ; dkh:hasAnnotationName \"QD\" . }",
+"d16": "SELECT DISTINCT ?id WHERE { ?v a dkh:Indel ; dkh:hasVariantId ?id ; dkh:fromSample ?s . ?s dkh:hasSampleCode \"A\" . }",
+"d18": "ASK { ?v a dkh:GeneticVariant ; dkh:locatedIn ?g ; dkh:hasClinicalSignificance ?cs . ?g dkh:hasGeneSymbol \"BRCA1\" . ?cs rdfs:label ?l . FILTER(STR(?l) = \"Benign\") }",
+"h02": "SELECT ?id WHERE { ?v dkh:hasVariantId ?id ; dkh:hasAnnotation ?a . ?a dkh:hasAnnotationName \"MQ\" ; dkh:hasNumericValue ?val . } ORDER BY ASC(?val) LIMIT 1",
+"h04": "SELECT ?label WHERE { ?v a dkh:GeneticVariant ; dkh:locatedIn ?g . ?g rdfs:label ?label . } GROUP BY ?g ?label HAVING (COUNT(DISTINCT ?v) > 15)",
+"h06": "SELECT ?p WHERE { dkh:SecondDegreeRelative dkh:hasInheritanceProbability ?p . }"
+}

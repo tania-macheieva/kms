@@ -1,0 +1,1194 @@
+{
+ "@context": {
+  "dkh": "http://example.org/dkh/onto#",
+  "owl": "http://www.w3.org/2002/07/owl#",
+  "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+  "xsd": "http://www.w3.org/2001/XMLSchema#"
+ },
+ "@graph": [
+  {
+   "@id": "dkh:S03_i_FlaggedState",
+   "@type": [
+    "dkh:FlaggedState",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S03: FlaggedState"
+   }
+  },
+  {
+   "@id": "dkh:Petro",
+   "@type": [
+    "dkh:Person",
+    "owl:NamedIndividual"
+   ],
+   "dkh:hasAgeYears": 70,
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "Petro"
+   }
+  },
+  {
+   "@id": "dkh:HBOC-panel",
+   "@type": [
+    "dkh:GenePanel",
+    "owl:NamedIndividual"
+   ],
+   "dkh:hasMember": [
+    {
+     "@id": "dkh:BRCA1"
+    },
+    {
+     "@id": "dkh:BRCA2"
+    },
+    {
+     "@id": "dkh:PALB2"
+    },
+    {
+     "@id": "dkh:TP53"
+    }
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "HBOC-panel"
+   }
+  },
+  {
+   "@id": "dkh:Situation_S03",
+   "@type": [
+    "dkh:SituationTemplate",
+    "owl:NamedIndividual"
+   ],
+   "dkh:guardClass": {
+    "@id": "dkh:ExonEndVariant"
+   },
+   "dkh:hasAction": {
+    "@id": "dkh:S03_a_ReviewWithSORAction"
+   },
+   "dkh:hasGuard": "єдиний прапорець — FS, варіант у кінці екзона, SOR ≤ 3",
+   "dkh:hasInitialState": {
+    "@id": "dkh:S03_i_FlaggedState"
+   },
+   "dkh:hasNewState": {
+    "@id": "dkh:S03_n_UnfilteredState"
+   },
+   "dkh:triggeredBy": {
+    "@id": "dkh:S03_e_AnnotationComputedEvent"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S03 Прапорець FS на кінці екзона"
+   }
+  },
+  {
+   "@id": "dkh:S01_a_ApplyFlagAction",
+   "@type": [
+    "dkh:ApplyFlagAction",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S01: ApplyFlagAction"
+   }
+  },
+  {
+   "@id": "dkh:Iryna",
+   "@type": [
+    "dkh:Person",
+    "owl:NamedIndividual"
+   ],
+   "dkh:hasAgeYears": 68,
+   "dkh:hasDiagnosis": {
+    "@id": "dkh:Iryna_OC"
+   },
+   "dkh:hasParent": {
+    "@id": "dkh:Maria"
+   },
+   "dkh:hasSibling": {
+    "@id": "dkh:Halyna"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "Iryna"
+   }
+  },
+  {
+   "@id": "dkh:VAR-001_MappingQuality",
+   "@type": [
+    "dkh:MappingQuality",
+    "owl:NamedIndividual"
+   ],
+   "dkh:hasAnnotationName": "MQ",
+   "dkh:hasNumericValue": {
+    "@type": "xsd:decimal",
+    "@value": "60.0"
+   },
+   "dkh:isAnnotationOf": {
+    "@id": "dkh:VAR-001"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "MappingQuality of VAR-001"
+   }
+  },
+  {
+   "@id": "dkh:sample1_vcf",
+   "@type": [
+    "dkh:VCFFile",
+    "owl:NamedIndividual"
+   ],
+   "dkh:derivedFrom": {
+    "@id": "dkh:sample1_bam"
+   },
+   "dkh:generatedBy": {
+    "@id": "dkh:Sequencer1"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "sample1.vcf"
+   }
+  },
+  {
+   "@id": "dkh:MQ_lt_40",
+   "@type": [
+    "dkh:FilterThreshold",
+    "owl:NamedIndividual"
+   ],
+   "dkh:forVariantType": "all",
+   "dkh:hasComparisonOperator": "<",
+   "dkh:hasThresholdValue": {
+    "@type": "xsd:decimal",
+    "@value": "40.0"
+   },
+   "dkh:onAnnotationName": "MQ",
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "MQ < 40.0 (all)"
+   }
+  },
+  {
+   "@id": "dkh:MQRankSum_lt_-12.5",
+   "@type": [
+    "dkh:FilterThreshold",
+    "owl:NamedIndividual"
+   ],
+   "dkh:forVariantType": "all",
+   "dkh:hasComparisonOperator": "<",
+   "dkh:hasThresholdValue": {
+    "@type": "xsd:decimal",
+    "@value": "-12.5"
+   },
+   "dkh:onAnnotationName": "MQRankSum",
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "MQRankSum < -12.5 (all)"
+   }
+  },
+  {
+   "@id": "dkh:Marta",
+   "@type": [
+    "dkh:Person",
+    "owl:NamedIndividual"
+   ],
+   "dkh:hasAgeYears": 39,
+   "dkh:hasParent": [
+    {
+     "@id": "dkh:Iryna"
+    },
+    {
+     "@id": "dkh:Petro"
+    }
+   ],
+   "dkh:hasSibling": {
+    "@id": "dkh:Olena"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "Marta"
+   }
+  },
+  {
+   "@id": "dkh:S05_i_UntestedState",
+   "@type": [
+    "dkh:UntestedState",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S05: UntestedState"
+   }
+  },
+  {
+   "@id": "dkh:S05_a_OfferCascadeTestingAction",
+   "@type": [
+    "dkh:OfferCascadeTestingAction",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S05: OfferCascadeTestingAction"
+   }
+  },
+  {
+   "@id": "dkh:ReadPosRankSum_lt_-8",
+   "@type": [
+    "dkh:FilterThreshold",
+    "owl:NamedIndividual"
+   ],
+   "dkh:forVariantType": "all",
+   "dkh:hasComparisonOperator": "<",
+   "dkh:hasThresholdValue": {
+    "@type": "xsd:decimal",
+    "@value": "-8.0"
+   },
+   "dkh:onAnnotationName": "ReadPosRankSum",
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "ReadPosRankSum < -8.0 (all)"
+   }
+  },
+  {
+   "@id": "dkh:VAR-003",
+   "@type": [
+    "dkh:Indel",
+    "owl:NamedIndividual"
+   ],
+   "dkh:fromSample": {
+    "@id": "dkh:SAMPLE-A"
+   },
+   "dkh:hasAnnotation": {
+    "@id": "dkh:VAR-003_FisherStrandBias"
+   },
+   "dkh:hasVariantId": "VAR-003",
+   "dkh:locatedIn": {
+    "@id": "dkh:BRCA2"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "VAR-003"
+   }
+  },
+  {
+   "@id": "dkh:Sofiia",
+   "@type": [
+    "dkh:Person",
+    "owl:NamedIndividual"
+   ],
+   "dkh:hasAgeYears": 17,
+   "dkh:hasParent": {
+    "@id": "dkh:Olena"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "Sofiia"
+   }
+  },
+  {
+   "@id": "dkh:Maria",
+   "@type": [
+    "dkh:Person",
+    "owl:NamedIndividual"
+   ],
+   "dkh:hasChild": [
+    {
+     "@id": "dkh:Halyna"
+    },
+    {
+     "@id": "dkh:Iryna"
+    }
+   ],
+   "dkh:isDeceased": true,
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "Maria"
+   }
+  },
+  {
+   "@id": "dkh:S06_a_DeferTestingAction",
+   "@type": [
+    "dkh:DeferTestingAction",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S06: DeferTestingAction"
+   }
+  },
+  {
+   "@id": "dkh:VAR-001_QualityByDepth",
+   "@type": [
+    "dkh:QualityByDepth",
+    "owl:NamedIndividual"
+   ],
+   "dkh:hasAnnotationName": "QD",
+   "dkh:hasNumericValue": {
+    "@type": "xsd:decimal",
+    "@value": "25.0"
+   },
+   "dkh:isAnnotationOf": {
+    "@id": "dkh:VAR-001"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "QualityByDepth of VAR-001"
+   }
+  },
+  {
+   "@id": "dkh:S01_n_FlaggedState",
+   "@type": [
+    "dkh:FlaggedState",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S01: FlaggedState"
+   }
+  },
+  {
+   "@id": "dkh:S04_a_SelectHardFilteringAction",
+   "@type": [
+    "dkh:SelectHardFilteringAction",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S04: SelectHardFilteringAction"
+   }
+  },
+  {
+   "@id": "dkh:S06_n_TestingDeferredState",
+   "@type": [
+    "dkh:TestingDeferredState",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S06: TestingDeferredState"
+   }
+  },
+  {
+   "@id": "dkh:S01_i_UnfilteredState",
+   "@type": [
+    "dkh:UnfilteredState",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S01: UnfilteredState"
+   }
+  },
+  {
+   "@id": "dkh:S01_e_AnnotationComputedEvent",
+   "@type": [
+    "dkh:AnnotationComputedEvent",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S01: AnnotationComputedEvent"
+   }
+  },
+  {
+   "@id": "dkh:VAR-001_FisherStrandBias",
+   "@type": [
+    "dkh:FisherStrandBias",
+    "owl:NamedIndividual"
+   ],
+   "dkh:hasAnnotationName": "FS",
+   "dkh:hasNumericValue": {
+    "@type": "xsd:decimal",
+    "@value": "3.1"
+   },
+   "dkh:isAnnotationOf": {
+    "@id": "dkh:VAR-001"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "FisherStrandBias of VAR-001"
+   }
+  },
+  {
+   "@id": "dkh:Olena",
+   "@type": [
+    "dkh:Proband",
+    "owl:NamedIndividual"
+   ],
+   "dkh:carries": {
+    "@id": "dkh:VAR-001"
+   },
+   "dkh:hasAgeYears": 42,
+   "dkh:hasDiagnosis": {
+    "@id": "dkh:Olena_BC"
+   },
+   "dkh:hasParent": [
+    {
+     "@id": "dkh:Iryna"
+    },
+    {
+     "@id": "dkh:Petro"
+    }
+   ],
+   "dkh:hasSibling": {
+    "@id": "dkh:Marta"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "Olena"
+   }
+  },
+  {
+   "@id": "dkh:S04_i_UnfilteredState",
+   "@type": [
+    "dkh:UnfilteredState",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S04: UnfilteredState"
+   }
+  },
+  {
+   "@id": "dkh:S05_e_PathogenicVariantFoundEvent",
+   "@type": [
+    "dkh:PathogenicVariantFoundEvent",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S05: PathogenicVariantFoundEvent"
+   }
+  },
+  {
+   "@id": "dkh:S03_e_AnnotationComputedEvent",
+   "@type": [
+    "dkh:AnnotationComputedEvent",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S03: AnnotationComputedEvent"
+   }
+  },
+  {
+   "@id": "dkh:CT-01",
+   "@type": [
+    "dkh:CascadeTesting",
+    "owl:NamedIndividual"
+   ],
+   "dkh:appliesTo": [
+    {
+     "@id": "dkh:Andrii"
+    },
+    {
+     "@id": "dkh:Halyna"
+    },
+    {
+     "@id": "dkh:Marta"
+    },
+    {
+     "@id": "dkh:Sofiia"
+    }
+   ],
+   "dkh:hasMinTestingAge": 18,
+   "dkh:hasProband": {
+    "@id": "dkh:Olena"
+   },
+   "dkh:requires": {
+    "@id": "dkh:VAR-001"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "CT-01"
+   }
+  },
+  {
+   "@id": "dkh:Situation_S01",
+   "@type": [
+    "dkh:SituationTemplate",
+    "owl:NamedIndividual"
+   ],
+   "dkh:guardClass": {
+    "@id": "dkh:LowQDVariant"
+   },
+   "dkh:hasAction": {
+    "@id": "dkh:S01_a_ApplyFlagAction"
+   },
+   "dkh:hasGuard": "QD < 2",
+   "dkh:hasInitialState": {
+    "@id": "dkh:S01_i_UnfilteredState"
+   },
+   "dkh:hasNewState": {
+    "@id": "dkh:S01_n_FlaggedState"
+   },
+   "dkh:triggeredBy": {
+    "@id": "dkh:S01_e_AnnotationComputedEvent"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S01 Низький QD"
+   }
+  },
+  {
+   "@id": "dkh:Situation_S02",
+   "@type": [
+    "dkh:SituationTemplate",
+    "owl:NamedIndividual"
+   ],
+   "dkh:guardClass": {
+    "@id": "dkh:HighFSSnpVariant"
+   },
+   "dkh:hasAction": {
+    "@id": "dkh:S02_a_ApplyFlagAction"
+   },
+   "dkh:hasGuard": "FS > 60 і варіант є SNP",
+   "dkh:hasInitialState": {
+    "@id": "dkh:S02_i_UnfilteredState"
+   },
+   "dkh:hasNewState": {
+    "@id": "dkh:S02_n_FlaggedState"
+   },
+   "dkh:triggeredBy": {
+    "@id": "dkh:S02_e_AnnotationComputedEvent"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S02 Високий FS у SNP"
+   }
+  },
+  {
+   "@id": "dkh:S02_n_FlaggedState",
+   "@type": [
+    "dkh:FlaggedState",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S02: FlaggedState"
+   }
+  },
+  {
+   "@id": "dkh:S04_e_MethodChoiceEvent",
+   "@type": [
+    "dkh:MethodChoiceEvent",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S04: MethodChoiceEvent"
+   }
+  },
+  {
+   "@id": "dkh:VAR-001",
+   "@type": [
+    "dkh:GermlineVariant",
+    "dkh:SNP",
+    "owl:NamedIndividual"
+   ],
+   "dkh:fromSample": {
+    "@id": "dkh:SAMPLE-A"
+   },
+   "dkh:hasAnnotation": [
+    {
+     "@id": "dkh:VAR-001_FisherStrandBias"
+    },
+    {
+     "@id": "dkh:VAR-001_MappingQuality"
+    },
+    {
+     "@id": "dkh:VAR-001_QualityByDepth"
+    },
+    {
+     "@id": "dkh:VAR-001_StrandOddsRatio"
+    }
+   ],
+   "dkh:hasClinicalSignificance": {
+    "@id": "dkh:Pathogenic"
+   },
+   "dkh:hasVariantId": "VAR-001",
+   "dkh:locatedIn": {
+    "@id": "dkh:BRCA1"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "VAR-001"
+   }
+  },
+  {
+   "@id": "dkh:PALB2",
+   "@type": [
+    "dkh:Gene",
+    "owl:NamedIndividual"
+   ],
+   "dkh:hasGeneSymbol": "PALB2",
+   "dkh:isMemberOf": {
+    "@id": "dkh:HBOC-panel"
+   },
+   "dkh:onChromosome": "16",
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "PALB2"
+   }
+  },
+  {
+   "@id": "dkh:S04_n_UnfilteredState",
+   "@type": [
+    "dkh:UnfilteredState",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S04: UnfilteredState"
+   }
+  },
+  {
+   "@id": "dkh:Iryna_OC",
+   "@type": [
+    "dkh:OvarianCancer",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "ovarian cancer (Iryna)"
+   }
+  },
+  {
+   "@id": "dkh:S06_e_TestingRequestedEvent",
+   "@type": [
+    "dkh:TestingRequestedEvent",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S06: TestingRequestedEvent"
+   }
+  },
+  {
+   "@id": "dkh:HF-01",
+   "@type": [
+    "dkh:HardFiltering",
+    "owl:NamedIndividual"
+   ],
+   "dkh:appliesTo": {
+    "@id": "dkh:sample1_vcf"
+   },
+   "dkh:hasThreshold": [
+    {
+     "@id": "dkh:FS_gt_200_indel"
+    },
+    {
+     "@id": "dkh:FS_gt_60_snp"
+    },
+    {
+     "@id": "dkh:MQRankSum_lt_-12.5"
+    },
+    {
+     "@id": "dkh:MQ_lt_40"
+    },
+    {
+     "@id": "dkh:QD_lt_2"
+    },
+    {
+     "@id": "dkh:ReadPosRankSum_lt_-8"
+    },
+    {
+     "@id": "dkh:SOR_gt_3"
+    }
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "HF-01"
+   }
+  },
+  {
+   "@id": "dkh:S02_i_UnfilteredState",
+   "@type": [
+    "dkh:UnfilteredState",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S02: UnfilteredState"
+   }
+  },
+  {
+   "@id": "dkh:BRCA1",
+   "@type": [
+    "dkh:Gene",
+    "owl:NamedIndividual"
+   ],
+   "dkh:hasGeneSymbol": "BRCA1",
+   "dkh:isMemberOf": {
+    "@id": "dkh:HBOC-panel"
+   },
+   "dkh:onChromosome": "17",
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "BRCA1"
+   }
+  },
+  {
+   "@id": "dkh:Olena_BC",
+   "@type": [
+    "dkh:BreastCancer",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "breast cancer (Olena)"
+   }
+  },
+  {
+   "@id": "dkh:S06_i_UntestedState",
+   "@type": [
+    "dkh:UntestedState",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S06: UntestedState"
+   }
+  },
+  {
+   "@id": "dkh:FS_gt_200_indel",
+   "@type": [
+    "dkh:FilterThreshold",
+    "owl:NamedIndividual"
+   ],
+   "dkh:forVariantType": "INDEL",
+   "dkh:hasComparisonOperator": ">",
+   "dkh:hasThresholdValue": {
+    "@type": "xsd:decimal",
+    "@value": "200.0"
+   },
+   "dkh:onAnnotationName": "FS",
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "FS > 200.0 (INDEL)"
+   }
+  },
+  {
+   "@id": "dkh:S02_e_AnnotationComputedEvent",
+   "@type": [
+    "dkh:AnnotationComputedEvent",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S02: AnnotationComputedEvent"
+   }
+  },
+  {
+   "@id": "dkh:VAR-003_FisherStrandBias",
+   "@type": [
+    "dkh:FisherStrandBias",
+    "owl:NamedIndividual"
+   ],
+   "dkh:hasAnnotationName": "FS",
+   "dkh:hasNumericValue": {
+    "@type": "xsd:decimal",
+    "@value": "150.0"
+   },
+   "dkh:isAnnotationOf": {
+    "@id": "dkh:VAR-003"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "FisherStrandBias of VAR-003"
+   }
+  },
+  {
+   "@id": "dkh:VAR-002",
+   "@type": [
+    "dkh:SNP",
+    "owl:NamedIndividual"
+   ],
+   "dkh:fromSample": {
+    "@id": "dkh:SAMPLE-A"
+   },
+   "dkh:hasAnnotation": {
+    "@id": "dkh:VAR-002_QualityByDepth"
+   },
+   "dkh:hasClinicalSignificance": {
+    "@id": "dkh:Benign"
+   },
+   "dkh:hasVariantId": "VAR-002",
+   "dkh:locatedIn": {
+    "@id": "dkh:BRCA2"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "VAR-002"
+   }
+  },
+  {
+   "@id": "dkh:Situation_S04",
+   "@type": [
+    "dkh:SituationTemplate",
+    "owl:NamedIndividual"
+   ],
+   "dkh:guardClass": {
+    "@id": "dkh:GenePanel"
+   },
+   "dkh:hasAction": {
+    "@id": "dkh:S04_a_SelectHardFilteringAction"
+   },
+   "dkh:hasGuard": "панель мала: немає великого набору варіантів і підготовлених відомих ресурсів",
+   "dkh:hasInitialState": {
+    "@id": "dkh:S04_i_UnfilteredState"
+   },
+   "dkh:hasNewState": {
+    "@id": "dkh:S04_n_UnfilteredState"
+   },
+   "dkh:triggeredBy": {
+    "@id": "dkh:S04_e_MethodChoiceEvent"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S04 Вибір методу для малої панелі"
+   }
+  },
+  {
+   "@id": "dkh:BRCA2",
+   "@type": [
+    "dkh:Gene",
+    "owl:NamedIndividual"
+   ],
+   "dkh:hasGeneSymbol": "BRCA2",
+   "dkh:isMemberOf": {
+    "@id": "dkh:HBOC-panel"
+   },
+   "dkh:onChromosome": "13",
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "BRCA2"
+   }
+  },
+  {
+   "@id": "dkh:sample1_bam",
+   "@type": [
+    "dkh:BAMFile",
+    "owl:NamedIndividual"
+   ],
+   "dkh:generatedBy": {
+    "@id": "dkh:Sequencer1"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "sample1.bam"
+   }
+  },
+  {
+   "@id": "dkh:VAR-004_FisherStrandBias",
+   "@type": [
+    "dkh:FisherStrandBias",
+    "owl:NamedIndividual"
+   ],
+   "dkh:hasAnnotationName": "FS",
+   "dkh:hasNumericValue": {
+    "@type": "xsd:decimal",
+    "@value": "62.0"
+   },
+   "dkh:isAnnotationOf": {
+    "@id": "dkh:VAR-004"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "FisherStrandBias of VAR-004"
+   }
+  },
+  {
+   "@id": "dkh:TP53",
+   "@type": [
+    "dkh:Gene",
+    "owl:NamedIndividual"
+   ],
+   "dkh:hasGeneSymbol": "TP53",
+   "dkh:isMemberOf": {
+    "@id": "dkh:HBOC-panel"
+   },
+   "dkh:onChromosome": "17",
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "TP53"
+   }
+  },
+  {
+   "@id": "dkh:FS_gt_60_snp",
+   "@type": [
+    "dkh:FilterThreshold",
+    "owl:NamedIndividual"
+   ],
+   "dkh:forVariantType": "SNP",
+   "dkh:hasComparisonOperator": ">",
+   "dkh:hasThresholdValue": {
+    "@type": "xsd:decimal",
+    "@value": "60.0"
+   },
+   "dkh:onAnnotationName": "FS",
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "FS > 60.0 (SNP)"
+   }
+  },
+  {
+   "@id": "dkh:Sequencer1",
+   "@type": [
+    "dkh:Sequencer",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "Sequencer1"
+   }
+  },
+  {
+   "@id": "dkh:VAR-001_StrandOddsRatio",
+   "@type": [
+    "dkh:StrandOddsRatio",
+    "owl:NamedIndividual"
+   ],
+   "dkh:hasAnnotationName": "SOR",
+   "dkh:hasNumericValue": {
+    "@type": "xsd:decimal",
+    "@value": "0.8"
+   },
+   "dkh:isAnnotationOf": {
+    "@id": "dkh:VAR-001"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "StrandOddsRatio of VAR-001"
+   }
+  },
+  {
+   "@id": "dkh:VAR-004",
+   "@type": [
+    "dkh:SNP",
+    "owl:NamedIndividual"
+   ],
+   "dkh:fromSample": {
+    "@id": "dkh:SAMPLE-A"
+   },
+   "dkh:hasAnnotation": [
+    {
+     "@id": "dkh:VAR-004_FisherStrandBias"
+    },
+    {
+     "@id": "dkh:VAR-004_StrandOddsRatio"
+    }
+   ],
+   "dkh:hasExonEndPosition": true,
+   "dkh:hasVariantId": "VAR-004",
+   "dkh:locatedIn": {
+    "@id": "dkh:BRCA2"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "VAR-004"
+   }
+  },
+  {
+   "@id": "dkh:S03_a_ReviewWithSORAction",
+   "@type": [
+    "dkh:ReviewWithSORAction",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S03: ReviewWithSORAction"
+   }
+  },
+  {
+   "@id": "dkh:Situation_S05",
+   "@type": [
+    "dkh:SituationTemplate",
+    "owl:NamedIndividual"
+   ],
+   "dkh:guardClass": {
+    "@id": "dkh:AdultRelative"
+   },
+   "dkh:hasAction": {
+    "@id": "dkh:S05_a_OfferCascadeTestingAction"
+   },
+   "dkh:hasGuard": "родич повнолітній (вік ≥ 18); починати з родичів першого ступеня (50%)",
+   "dkh:hasInitialState": {
+    "@id": "dkh:S05_i_UntestedState"
+   },
+   "dkh:hasNewState": {
+    "@id": "dkh:S05_n_TestingOfferedState"
+   },
+   "dkh:triggeredBy": {
+    "@id": "dkh:S05_e_PathogenicVariantFoundEvent"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S05 Пропозиція тестування дорослому родичу"
+   }
+  },
+  {
+   "@id": "dkh:S05_n_TestingOfferedState",
+   "@type": [
+    "dkh:TestingOfferedState",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S05: TestingOfferedState"
+   }
+  },
+  {
+   "@id": "dkh:VAR-004_StrandOddsRatio",
+   "@type": [
+    "dkh:StrandOddsRatio",
+    "owl:NamedIndividual"
+   ],
+   "dkh:hasAnnotationName": "SOR",
+   "dkh:hasNumericValue": {
+    "@type": "xsd:decimal",
+    "@value": "2.1"
+   },
+   "dkh:isAnnotationOf": {
+    "@id": "dkh:VAR-004"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "StrandOddsRatio of VAR-004"
+   }
+  },
+  {
+   "@id": "dkh:S03_n_UnfilteredState",
+   "@type": [
+    "dkh:UnfilteredState",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S03: UnfilteredState"
+   }
+  },
+  {
+   "@id": "dkh:SOR_gt_3",
+   "@type": [
+    "dkh:FilterThreshold",
+    "owl:NamedIndividual"
+   ],
+   "dkh:forVariantType": "all",
+   "dkh:hasComparisonOperator": ">",
+   "dkh:hasThresholdValue": {
+    "@type": "xsd:decimal",
+    "@value": "3.0"
+   },
+   "dkh:onAnnotationName": "SOR",
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "SOR > 3.0 (all)"
+   }
+  },
+  {
+   "@id": "dkh:S02_a_ApplyFlagAction",
+   "@type": [
+    "dkh:ApplyFlagAction",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S02: ApplyFlagAction"
+   }
+  },
+  {
+   "@id": "dkh:VAR-002_QualityByDepth",
+   "@type": [
+    "dkh:QualityByDepth",
+    "owl:NamedIndividual"
+   ],
+   "dkh:hasAnnotationName": "QD",
+   "dkh:hasNumericValue": {
+    "@type": "xsd:decimal",
+    "@value": "1.5"
+   },
+   "dkh:isAnnotationOf": {
+    "@id": "dkh:VAR-002"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "QualityByDepth of VAR-002"
+   }
+  },
+  {
+   "@id": "dkh:Situation_S06",
+   "@type": [
+    "dkh:SituationTemplate",
+    "owl:NamedIndividual"
+   ],
+   "dkh:guardClass": {
+    "@id": "dkh:MinorRelative"
+   },
+   "dkh:hasAction": {
+    "@id": "dkh:S06_a_DeferTestingAction"
+   },
+   "dkh:hasGuard": "вік родича < 18",
+   "dkh:hasInitialState": {
+    "@id": "dkh:S06_i_UntestedState"
+   },
+   "dkh:hasNewState": {
+    "@id": "dkh:S06_n_TestingDeferredState"
+   },
+   "dkh:triggeredBy": {
+    "@id": "dkh:S06_e_TestingRequestedEvent"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "S06 Відкладення тестування неповнолітнього"
+   }
+  },
+  {
+   "@id": "dkh:Andrii",
+   "@type": [
+    "dkh:Person",
+    "owl:NamedIndividual"
+   ],
+   "dkh:hasAgeYears": 40,
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "Andrii"
+   }
+  },
+  {
+   "@id": "dkh:QD_lt_2",
+   "@type": [
+    "dkh:FilterThreshold",
+    "owl:NamedIndividual"
+   ],
+   "dkh:forVariantType": "all",
+   "dkh:hasComparisonOperator": "<",
+   "dkh:hasThresholdValue": {
+    "@type": "xsd:decimal",
+    "@value": "2.0"
+   },
+   "dkh:onAnnotationName": "QD",
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "QD < 2.0 (all)"
+   }
+  },
+  {
+   "@id": "dkh:Halyna",
+   "@type": [
+    "dkh:Person",
+    "owl:NamedIndividual"
+   ],
+   "dkh:hasAgeYears": 65,
+   "dkh:hasChild": {
+    "@id": "dkh:Andrii"
+   },
+   "dkh:hasParent": {
+    "@id": "dkh:Maria"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "Halyna"
+   }
+  }
+ ]
+}

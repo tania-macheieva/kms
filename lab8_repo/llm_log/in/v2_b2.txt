@@ -1,0 +1,169 @@
+Ти пишеш SPARQL-запити до RDF-графа знань (біомедичні дані: варіанти, гени, родичі). Префікси dkh:, rdf:, rdfs:, owl:, xsd: додаються автоматично.
+
+Правила (виведені з аналізу помилок першої версії промпту на dev-питаннях):
+1. Використовуй лише класи, властивості та індивіди зі схеми нижче; не вигадуй імен.
+2. Граф НЕ містить повного виведення (reasoning): типи dkh:GeneticVariant, dkh:QualityAnnotation та інші надкласи присутні лише для частини вузлів. Тому не добирай вузли через `a <надклас>`. Замість цього спирайся на властивості: варіант — це вузол із dkh:hasVariantId; анотація — вузол із dkh:hasAnnotationName і dkh:hasNumericValue; типи SNP/Indel (dkh:SNP, dkh:Indel) явно задані для варіантів.
+3. Анотації якості: ?v dkh:hasAnnotation ?a . ?a dkh:hasAnnotationName "QD" ; dkh:hasNumericValue ?x (імена "QD", "FS", "SOR", "MQ"; числа — xsd:decimal).
+4. Клінічна значущість — це індивід (dkh:Pathogenic, dkh:Benign), у нього НЕМАЄ rdfs:label; порівнюй IRI напряму: ?v dkh:hasClinicalSignificance dkh:Pathogenic.
+5. Дані зберігаються у кількох іменованих графах, тож дублікати рядків можливі: у SELECT завжди пиши DISTINCT, а в підрахунках COUNT(DISTINCT ...).
+6. Повертай лише ті стовпці, про які запитано (наприклад, лише ідентифікатор, без IRI вузла).
+7. Мітки (назви) мають вигляд rdfs:label.
+
+Приклади (не з тестового набору):
+Питання: Які варіанти мають значення SOR більше за 3? Виведіть ідентифікатори.
+SELECT DISTINCT ?id WHERE { ?v dkh:hasVariantId ?id ; dkh:hasAnnotation ?a . ?a dkh:hasAnnotationName "SOR" ; dkh:hasNumericValue ?x . FILTER (?x > 3.0) }
+Питання: Скільки анотацій має ім'я MQ?
+SELECT (COUNT(DISTINCT ?a) AS ?n) WHERE { ?a dkh:hasAnnotationName "MQ" }
+
+# Класи (Class [SubClassOf])
+dkh:Action
+dkh:AdultRelative [⊑ dkh:Relative]
+dkh:AnnotationComputedEvent [⊑ dkh:Event]
+dkh:ApplyFlagAction [⊑ dkh:Action]
+dkh:BAMFile [⊑ dkh:DataFile]
+dkh:BiologicalEntity
+dkh:BreastCancer [⊑ dkh:Cancer]
+dkh:Cancer [⊑ dkh:Disease]
+dkh:CascadeTesting [⊑ dkh:GeneticTesting]
+dkh:ClinicalSignificance
+dkh:CuratedKnownVariants [⊑ dkh:DataArtifact]
+dkh:DataArtifact
+dkh:DataFile [⊑ dkh:DataArtifact]
+dkh:DeferTestingAction [⊑ dkh:Action]
+dkh:Disease
+dkh:Event
+dkh:Exon [⊑ dkh:BiologicalEntity]
+dkh:ExonEndVariant [⊑ dkh:GeneticVariant]
+dkh:FamilyHistory [⊑ dkh:DataArtifact]
+dkh:FilterThreshold
+dkh:FilteredState [⊑ dkh:State]
+dkh:FirstDegreeRelative [⊑ dkh:Relative]
+dkh:FisherStrandBias [⊑ dkh:QualityAnnotation]
+dkh:FlaggedState [⊑ dkh:State]
+dkh:FlaggedVariant [⊑ dkh:GeneticVariant]
+dkh:Gene [⊑ dkh:BiologicalEntity]
+dkh:GenePanel [⊑ dkh:DataArtifact]
+dkh:GeneticCounseling [⊑ dkh:Procedure]
+dkh:GeneticTesting [⊑ dkh:Procedure]
+dkh:GeneticVariant
+dkh:GermlineVariant [⊑ dkh:GeneticVariant]
+dkh:HardFiltering [⊑ dkh:VariantFiltering]
+dkh:HighFSIndelVariant [⊑ dkh:Indel]
+dkh:HighFSSnpVariant [⊑ dkh:SNP]
+dkh:Indel [⊑ dkh:GeneticVariant]
+dkh:LargeVariantSet [⊑ dkh:DataArtifact]
+dkh:LowQDAnnotation [⊑ dkh:QualityByDepth]
+dkh:LowQDVariant [⊑ dkh:GeneticVariant]
+dkh:MQRankSum [⊑ dkh:RankSumAnnotation]
+dkh:MappingQuality [⊑ dkh:QualityAnnotation]
+dkh:MethodChoiceEvent [⊑ dkh:Event]
+dkh:MinorRelative [⊑ dkh:Relative]
+dkh:OfferCascadeTestingAction [⊑ dkh:Action]
+dkh:OvarianCancer [⊑ dkh:Cancer]
+dkh:PathogenicVariant [⊑ dkh:GeneticVariant]
+dkh:PathogenicVariantFoundEvent [⊑ dkh:Event]
+dkh:Person
+dkh:Proband [⊑ dkh:Person]
+dkh:Procedure
+dkh:QualityAnnotation [⊑ dkh:QualityMeasure]
+dkh:QualityByDepth [⊑ dkh:QualityAnnotation]
+dkh:QualityMeasure
+dkh:RankSumAnnotation [⊑ dkh:QualityAnnotation]
+dkh:ReadDepth [⊑ dkh:QualityAnnotation]
+dkh:ReadPosRankSum [⊑ dkh:RankSumAnnotation]
+dkh:Relative [⊑ dkh:Person]
+dkh:ReviewWithSORAction [⊑ dkh:Action]
+dkh:RiskAssessment [⊑ dkh:Procedure]
+dkh:SNP [⊑ dkh:GeneticVariant]
+dkh:Sample
+dkh:SecondDegreeRelative [⊑ dkh:Relative]
+dkh:SelectHardFilteringAction [⊑ dkh:Action]
+dkh:Sensor
+dkh:SequenceAlignment [⊑ dkh:Procedure]
+dkh:Sequencer [⊑ dkh:Sensor]
+dkh:SituationTemplate
+dkh:SomaticVariant [⊑ dkh:GeneticVariant]
+dkh:State
+dkh:StrandOddsRatio [⊑ dkh:QualityAnnotation]
+dkh:TestingDeferredState [⊑ dkh:State]
+dkh:TestingOfferedState [⊑ dkh:State]
+dkh:TestingRequestedEvent [⊑ dkh:Event]
+dkh:ThirdDegreeRelative [⊑ dkh:Relative]
+dkh:UnfilteredState [⊑ dkh:State]
+dkh:UntestedState [⊑ dkh:State]
+dkh:VCFFile [⊑ dkh:DataFile]
+dkh:VQSR [⊑ dkh:VariantFiltering]
+dkh:VariantCalling [⊑ dkh:Procedure]
+dkh:VariantFiltering [⊑ dkh:Procedure]
+# Властивості (property: domain → range)
+dkh:appliesTo (object): xsd:n1989488a353f44e794016bb4d9e955e5b139 → xsd:n1989488a353f44e794016bb4d9e955e5b142
+dkh:carries (object): dkh:Person → dkh:GeneticVariant
+dkh:derivedFrom (object): dkh:DataFile → dkh:DataFile
+dkh:detects (object): dkh:Procedure → dkh:GeneticVariant
+dkh:fromSample (object): dkh:GeneticVariant → dkh:Sample
+dkh:generatedBy (object): dkh:DataFile → dkh:Sensor
+dkh:hasAction (object): dkh:SituationTemplate → dkh:Action
+dkh:hasAncestor (object): dkh:Person → dkh:Person
+dkh:hasAnnotation (object): dkh:GeneticVariant → dkh:QualityAnnotation
+dkh:hasAuntOrUncle (object): dkh:Person → dkh:Person
+dkh:hasChild (object): dkh:Person → dkh:Person
+dkh:hasClinicalSignificance (object): dkh:GeneticVariant → dkh:ClinicalSignificance
+dkh:hasCousin (object): dkh:Person → dkh:Person
+dkh:hasDiagnosis (object): dkh:Person → dkh:Disease
+dkh:hasGrandparent (object): dkh:Person → dkh:Person
+dkh:hasInitialState (object): dkh:SituationTemplate → dkh:State
+dkh:hasMember (object): dkh:GenePanel → dkh:Gene
+dkh:hasNewState (object): dkh:SituationTemplate → dkh:State
+dkh:hasParent (object): dkh:Person → dkh:Person
+dkh:hasPart (object): dkh:BiologicalEntity → dkh:BiologicalEntity
+dkh:hasProband (object): dkh:CascadeTesting → dkh:Proband
+dkh:hasSibling (object): dkh:Person → dkh:Person
+dkh:hasThreshold (object): dkh:Procedure → dkh:FilterThreshold
+dkh:increasesRiskOf (object): xsd:n1989488a353f44e794016bb4d9e955e5b159 → dkh:Disease
+dkh:isAnnotationOf (object): dkh:QualityAnnotation → dkh:GeneticVariant
+dkh:isFirstDegreeRelativeOf (object): dkh:Person → dkh:Person
+dkh:isMemberOf (object): dkh:Gene → dkh:GenePanel
+dkh:isSecondDegreeRelativeOf (object): dkh:Person → dkh:Person
+dkh:isThirdDegreeRelativeOf (object): dkh:Person → dkh:Person
+dkh:locatedIn (object): dkh:GeneticVariant → dkh:Gene
+dkh:partOf (object): dkh:BiologicalEntity → dkh:BiologicalEntity
+dkh:produces (object): dkh:Procedure → xsd:n1989488a353f44e794016bb4d9e955e5b57
+dkh:recommendedFor (object): xsd:n1989488a353f44e794016bb4d9e955e5b163 → xsd:n1989488a353f44e794016bb4d9e955e5b166
+dkh:requires (object): dkh:Procedure → xsd:n1989488a353f44e794016bb4d9e955e5b170
+dkh:triggeredBy (object): dkh:SituationTemplate → dkh:Event
+dkh:usesInput (object): dkh:Procedure → xsd:n1989488a353f44e794016bb4d9e955e5b176
+dkh:forVariantType (data): dkh:FilterThreshold → xsd:string
+dkh:hasAgeYears (data): dkh:Person → xsd:integer
+dkh:hasAnnotationName (data): dkh:QualityAnnotation → xsd:string
+dkh:hasComparisonOperator (data): dkh:FilterThreshold → xsd:string
+dkh:hasExonEndPosition (data): dkh:GeneticVariant → xsd:boolean
+dkh:hasGeneSymbol (data): dkh:Gene → xsd:string
+dkh:hasGuard (data): dkh:SituationTemplate → xsd:string
+dkh:hasInheritanceProbability (data): dkh:Person → xsd:decimal
+dkh:hasMinTestingAge (data): dkh:CascadeTesting → xsd:integer
+dkh:hasNumericValue (data): dkh:QualityAnnotation → xsd:decimal
+dkh:hasSampleCode (data): ? → xsd:string
+dkh:hasSex (data): dkh:Person → xsd:string
+dkh:hasThresholdValue (data): dkh:FilterThreshold → xsd:decimal
+dkh:hasVariantId (data): dkh:GeneticVariant → xsd:string
+dkh:isDeceased (data): dkh:Person → xsd:boolean
+dkh:onAnnotationName (data): dkh:FilterThreshold → xsd:string
+dkh:onChromosome (data): dkh:Gene → xsd:string
+
+Завдання: для питання користувача напиши один SPARQL 1.1 запит. Поверни лише запит у блоці ```sparql.
+
+
+
+Питання (для КОЖНОГО окремо напиши запит; відповідай незалежно одне від одного):
+d02: Скільки варіантів належить зразку з кодом B?
+d04: Чи має варіант VAR-103 клінічну значущість Pathogenic?
+d06: Яке найбільше значення FS серед усіх варіантів?
+d08: Скільки років Sofiia?
+d10: Хто є дітьми Maria? Виведіть мітки.
+d12: Які числові значення мають пороги фільтрації для анотації FS?
+d14: Скільки існує анотацій з іменем QD?
+d16: Які Indel-варіанти належать зразку A? Виведіть ідентифікатори.
+d18: Чи існує варіант у гені BRCA1 із клінічною значущістю Benign?
+h02: Який варіант має найменше значення MQ? Виведіть його ідентифікатор.
+h04: Які гени мають більше п'ятнадцяти варіантів? Виведіть мітки.
+h06: Який шанс успадкування (hasInheritanceProbability) визначено для класу SecondDegreeRelative?

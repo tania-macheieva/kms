@@ -1,0 +1,11 @@
+# CQ05: Чи достатньо одного прапорця? -> побудувати граф рішень: кожному варіанту, що порушує хоча б один поріг SNP, призначити статус FILTERED
+# Тип: CONSTRUCT (нові тріпли з пороговими анотаціями, не зберігаються у сховищі)
+CONSTRUCT {
+  ?v dkh:decision "FILTERED" ; dkh:reason ?why .
+}
+WHERE {
+  ?v a dkh:SNP ; dkh:hasAnnotation ?a .
+  ?a dkh:hasAnnotationName ?n ; dkh:hasNumericValue ?x .
+  FILTER ((?n = "QD" && ?x < 2.0) || (?n = "FS" && ?x > 60.0) || (?n = "SOR" && ?x > 3.0) || (?n = "MQ" && ?x < 40.0))
+  BIND (CONCAT(?n, "=", STR(?x)) AS ?why)
+}

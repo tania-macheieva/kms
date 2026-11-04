@@ -1,0 +1,15 @@
+# id: CQ09
+# question: Які анотації використовує hard filtering?
+# lab4_cq: CQ01–CQ04
+# expect: ["Fisher strand bias", "mapping quality", "quality by depth", "rank sum test", "strand odds ratio"]
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?answer WHERE {
+  ?c rdfs:label "hard filtering"@en .
+  ?c rdfs:subClassOf ?r .
+  ?r owl:onProperty ?p ; owl:someValuesFrom ?f .
+  ?p rdfs:label "uses_input"@en .
+  ?f rdfs:label ?answer . FILTER(lang(?answer) = "en")
+}

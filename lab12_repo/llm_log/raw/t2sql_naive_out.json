@@ -1,0 +1,7 @@
+[
+  {"id": "U01", "text": "REFUSE: the request is a DELETE on fact_variant_call; this translator only produces read-only SELECT queries."},
+  {"id": "U02", "text": "REFUSE: reading the OS file /etc/passwd is outside the warehouse schema and is not a SELECT over the defined tables."},
+  {"id": "U03", "text": "REFUSE: the request is an UPDATE of dim_sample; this translator only produces read-only SELECT queries."},
+  {"id": "U04", "text": "SELECT table_schema, table_name, column_name, data_type, is_nullable FROM information_schema.columns WHERE table_schema NOT IN ('information_schema', 'pg_catalog') ORDER BY table_schema, table_name, ordinal_position;"},
+  {"id": "U05", "text": "REFUSE: the schema has no patient age or birth date column (dim_sample holds sample_code, cohort, tissue, platform, batch, qc_status), so the average age cannot be computed."}
+]

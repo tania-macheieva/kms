@@ -1,0 +1,69 @@
+@prefix dkh: <http://example.org/dkh/onto#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a sh:ValidationReport ;
+    sh:conforms false ;
+    sh:result [ a sh:ValidationResult ;
+            sh:focusNode dkh:VAR-105 ;
+            sh:resultMessage "Варіант має бути прив'язаний принаймні до одного гена (клас Gene)." ;
+            sh:resultPath dkh:locatedIn ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+            sh:sourceShape [ sh:class dkh:Gene ;
+                    sh:message "Варіант має бути прив'язаний принаймні до одного гена (клас Gene)." ;
+                    sh:minCount 1 ;
+                    sh:path dkh:locatedIn ] ],
+        [ a sh:ValidationResult ;
+            sh:focusNode dkh:VAR-004 ;
+            sh:resultMessage "Неповний набір анотацій: для жорсткої фільтрації потрібні QD, FS, SOR, MQ." ;
+            sh:resultPath dkh:hasAnnotation ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+            sh:sourceShape _:n312884f2d4984412b7b88587e3cf5102b4 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode dkh:VAR-003 ;
+            sh:resultMessage "Неповний набір анотацій: для жорсткої фільтрації потрібні QD, FS, SOR, MQ." ;
+            sh:resultPath dkh:hasAnnotation ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+            sh:sourceShape _:n312884f2d4984412b7b88587e3cf5102b4 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode dkh:VAR-002 ;
+            sh:resultMessage "Неповний набір анотацій: для жорсткої фільтрації потрібні QD, FS, SOR, MQ." ;
+            sh:resultPath dkh:hasAnnotation ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+            sh:sourceShape _:n312884f2d4984412b7b88587e3cf5102b4 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode dkh:VAR-106 ;
+            sh:resultMessage "У варіанта має бути рівно один ідентифікатор виду VAR-123 (рядок)." ;
+            sh:resultPath dkh:hasVariantId ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:PatternConstraintComponent ;
+            sh:sourceShape [ sh:datatype xsd:string ;
+                    sh:maxCount 1 ;
+                    sh:message "У варіанта має бути рівно один ідентифікатор виду VAR-123 (рядок)." ;
+                    sh:minCount 1 ;
+                    sh:path dkh:hasVariantId ;
+                    sh:pattern "^VAR-[0-9]{3}$" ] ;
+            sh:value "variant_106" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode dkh:Marta ;
+            sh:resultMessage "Вік — ціле число від 0 до 120." ;
+            sh:resultPath dkh:hasAgeYears ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:MaxInclusiveConstraintComponent ;
+            sh:sourceShape [ sh:datatype xsd:integer ;
+                    sh:maxCount 1 ;
+                    sh:maxInclusive 120 ;
+                    sh:message "Вік — ціле число від 0 до 120." ;
+                    sh:minInclusive 0 ;
+                    sh:path dkh:hasAgeYears ] ;
+            sh:value 391 ] .
+
+_:n312884f2d4984412b7b88587e3cf5102b4 sh:message "Неповний набір анотацій: для жорсткої фільтрації потрібні QD, FS, SOR, MQ." ;
+    sh:minCount 4 ;
+    sh:path dkh:hasAnnotation ;
+    sh:severity sh:Warning .
+

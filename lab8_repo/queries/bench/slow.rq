@@ -1,0 +1,8 @@
+# «Наївний» запит: змінні предикати + фільтри за IRI та STR() — оптимізатор не може використати індекс за предикатом/літералом
+SELECT (COUNT(DISTINCT ?v) AS ?n)
+WHERE {
+  ?a ?p ?x .
+  ?v ?q ?a .
+  ?a ?r ?nm .
+  FILTER (?p = dkh:hasNumericValue && ?q = dkh:hasAnnotation && ?r = dkh:hasAnnotationName && STR(?nm) = "QD" && ?x < 2.0)
+}

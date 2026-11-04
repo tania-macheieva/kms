@@ -1,0 +1,11 @@
+# id: CQ10
+# question: Які варіанти зразка підлягають відхиленню (мають прапорець)?
+# lab4_cq: CQ05
+# expect: ["VAR-002", "VAR-004"]
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?answer WHERE {
+  ?v rdf:type/rdfs:subClassOf* ?c . ?c rdfs:label "flagged variant"@en . ?v rdfs:label ?answer
+}

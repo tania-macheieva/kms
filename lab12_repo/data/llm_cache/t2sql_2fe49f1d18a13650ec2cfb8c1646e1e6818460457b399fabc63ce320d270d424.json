@@ -1,0 +1,1 @@
+{"text": "REFUSE: the request is an UPDATE of dim_sample; this translator only produces read-only SELECT queries."}

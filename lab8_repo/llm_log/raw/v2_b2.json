@@ -1,0 +1,14 @@
+{
+"d02": "```sparql\nSELECT (COUNT(DISTINCT ?v) AS ?n) WHERE { ?v dkh:hasVariantId ?id ; dkh:fromSample ?s . ?s dkh:hasSampleCode \"B\" }\n```",
+"d04": "```sparql\nASK { ?v dkh:hasVariantId \"VAR-103\" ; dkh:hasClinicalSignificance dkh:Pathogenic }\n```",
+"d06": "```sparql\nSELECT (MAX(?x) AS ?max) WHERE { ?v dkh:hasVariantId ?id ; dkh:hasAnnotation ?a . ?a dkh:hasAnnotationName \"FS\" ; dkh:hasNumericValue ?x }\n```",
+"d08": "```sparql\nSELECT DISTINCT ?age WHERE { ?p rdfs:label \"Sofiia\" ; dkh:hasAgeYears ?age }\n```",
+"d10": "```sparql\nSELECT DISTINCT ?label WHERE { ?m rdfs:label \"Maria\" ; dkh:hasChild ?c . ?c rdfs:label ?label }\n```",
+"d12": "```sparql\nSELECT DISTINCT ?val WHERE { ?t dkh:onAnnotationName \"FS\" ; dkh:hasThresholdValue ?val }\n```",
+"d14": "```sparql\nSELECT (COUNT(DISTINCT ?a) AS ?n) WHERE { ?a dkh:hasAnnotationName \"QD\" }\n```",
+"d16": "```sparql\nSELECT DISTINCT ?id WHERE { ?v a dkh:Indel ; dkh:hasVariantId ?id ; dkh:fromSample ?s . ?s dkh:hasSampleCode \"A\" }\n```",
+"d18": "```sparql\nASK { ?v dkh:hasVariantId ?id ; dkh:locatedIn ?g ; dkh:hasClinicalSignificance dkh:Benign . ?g dkh:hasGeneSymbol \"BRCA1\" }\n```",
+"h02": "```sparql\nSELECT DISTINCT ?id WHERE { ?v dkh:hasVariantId ?id ; dkh:hasAnnotation ?a . ?a dkh:hasAnnotationName \"MQ\" ; dkh:hasNumericValue ?x . { SELECT (MIN(?y) AS ?m) WHERE { ?v2 dkh:hasVariantId ?i2 ; dkh:hasAnnotation ?a2 . ?a2 dkh:hasAnnotationName \"MQ\" ; dkh:hasNumericValue ?y } } FILTER (?x = ?m) }\n```",
+"h04": "```sparql\nSELECT DISTINCT ?label WHERE { ?g a dkh:Gene ; rdfs:label ?label . { SELECT ?g (COUNT(DISTINCT ?v) AS ?n) WHERE { ?v dkh:hasVariantId ?id ; dkh:locatedIn ?g } GROUP BY ?g HAVING (COUNT(DISTINCT ?v) > 15) } }\n```",
+"h06": "```sparql\nSELECT DISTINCT ?p WHERE { ?r a dkh:SecondDegreeRelative ; dkh:hasInheritanceProbability ?p }\n```"
+}

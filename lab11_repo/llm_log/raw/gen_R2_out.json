@@ -1,0 +1,18 @@
+[
+ {"id": "R2-001", "text": "STATUS: NO_ANSWER\nThe provided sources do not contain the thresholds checked for the FS annotation."},
+ {"id": "R2-002", "text": "STATUS: NO_ANSWER\nThe provided sources do not contain the SOR_gt_3 threshold or any procedure that uses it."},
+ {"id": "R2-003", "text": "STATUS: NO_ANSWER\nThe provided sources do not contain the list of genes that belong to the HBOC panel."},
+ {"id": "R2-004", "text": "STATUS: NO_ANSWER\nThe provided sources do not contain information about which file sample1.vcf was derived from or which instrument generated it."},
+ {"id": "R2-005", "text": "STATUS: NO_ANSWER\nThe provided sources do not contain information about variant VAR-001, its gene, or any panel."},
+ {"id": "R2-006", "text": "STATUS: NO_ANSWER\nThe provided sources do not describe which downstream data files and procedures depend on sample1.bam."},
+ {"id": "R2-007", "text": "STATUS: ANSWER\nOlena's parents are Iryna and Petro, which the sources state are direct parents [int_sparql#h007]. The sources do not identify Olena's sibling: the undirected path query lists Marta at one step without stating the relationship type [int_cypher#h005]."},
+ {"id": "R2-008", "text": "STATUS: ANSWER\nOlena carries variant VAR-001, which is classified as Pathogenic, and it is located in the gene BRCA1 [int_cypher#h011]."},
+ {"id": "R2-009", "text": "STATUS: ANSWER\nIryna belongs to the FirstDegreeRelative class, with an inheritance probability of 0.5 [int_sparql#h008] [int_reasoner#h002]. The provided sources do not contain Iryna's diagnosis, so that part is not covered."},
+ {"id": "R2-010", "text": "STATUS: NO_ANSWER\nThe provided sources do not contain information about which procedure requires VAR-001 or its minimum testing age."},
+ {"id": "R2-011", "text": "STATUS: ANSWER\nCT-01 applies to Marta, Sofiia, Halyna and Andrii [int_cypher#h007]. Among first-degree relatives, it applies to Marta and Sofiia [int_onto_eval#h009]."},
+ {"id": "R2-012", "text": "STATUS: NO_ANSWER\nThe provided sources do not describe the hard filtering procedure HF-01 or its annotation thresholds."},
+ {"id": "R2-013", "text": "STATUS: ANSWER\nThe HBOC panel includes the genes BRCA1, BRCA2, PALB2 and TP53 [G:GenePanel:HBOC-panel]."},
+ {"id": "R2-014", "text": "STATUS: ANSWER\nOlena carries variant VAR-001 [G:Person:Olena]. The variant is a Pathogenic SNP located in the gene BRCA1 [G:Variant:VAR-001]."},
+ {"id": "R2-015", "text": "STATUS: ANSWER\nIryna's diagnosis is ovarian cancer [G:Diagnosis:Iryna_OC]. She is an instance of the FirstDegreeRelative concept [G:Person:Iryna], which has an inheritance probability of 0.5 [G:Concept:FirstDegreeRelative]."},
+ {"id": "R2-016", "text": "STATUS: ANSWER\nCT-01 applies to Andrii, Halyna, Marta and Sofiia [G:Procedure:CT-01], consistent with [int_cypher#h007]."}
+]

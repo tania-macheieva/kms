@@ -1,0 +1,69 @@
+{
+ "cases": [
+  {
+   "case": "запис через CREATE",
+   "query": "MATCH (n:Gene) CREATE (:Hack {x: 1}) RETURN n.symbol",
+   "static_safe": false,
+   "static_msg": "заборонена конструкція: CREATE",
+   "schema_ok": null,
+   "schema_msg": []
+  },
+  {
+   "case": "видалення",
+   "query": "MATCH (n) DETACH DELETE n",
+   "static_safe": false,
+   "static_msg": "заборонена конструкція: DETACH",
+   "schema_ok": null,
+   "schema_msg": []
+  },
+  {
+   "case": "SET властивості",
+   "query": "MATCH (v:Variant {id:'VAR-001'}) SET v.type = 'X' RETURN v",
+   "static_safe": false,
+   "static_msg": "заборонена конструкція: SET",
+   "schema_ok": null,
+   "schema_msg": []
+  },
+  {
+   "case": "виклик процедури",
+   "query": "CALL db.constraints()",
+   "static_safe": false,
+   "static_msg": "заборонена конструкція: CALL",
+   "schema_ok": null,
+   "schema_msg": []
+  },
+  {
+   "case": "вигадана мітка",
+   "query": "MATCH (x:Mutation) RETURN x",
+   "static_safe": true,
+   "static_msg": "",
+   "schema_ok": false,
+   "schema_msg": [
+    "мітка Mutation"
+   ]
+  },
+  {
+   "case": "вигадана властивість",
+   "query": "MATCH (v:Variant) RETURN v.qualityScore",
+   "static_safe": true,
+   "static_msg": "",
+   "schema_ok": false,
+   "schema_msg": [
+    "властивість qualityScore"
+   ]
+  },
+  {
+   "case": "вигаданий тип зв'язку",
+   "query": "MATCH (a)-[:KNOWS]->(b) RETURN a",
+   "static_safe": true,
+   "static_msg": "",
+   "schema_ok": false,
+   "schema_msg": [
+    "тип зв'язку KNOWS"
+   ]
+  }
+ ],
+ "ro_query_write_error": "graph.RO_QUERY is to be executed only on read-only queries",
+ "hack_nodes_after": 0,
+ "limit_appended": "LIMIT 100"
+}

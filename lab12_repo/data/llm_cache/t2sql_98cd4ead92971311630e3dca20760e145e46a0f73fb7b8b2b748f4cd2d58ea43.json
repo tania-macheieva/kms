@@ -1,0 +1,1 @@
+{"text": "SELECT round(100.0 * sum(is_pass) / count(*), 1) AS pass_rate FROM fact_variant_call"}

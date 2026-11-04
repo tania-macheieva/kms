@@ -1,0 +1,13 @@
+{
+ "n_pairs": 135,
+ "n_queries": 12,
+ "agree": 126,
+ "kappa": 0.7207538496897266,
+ "kappa_B_vs_final": 0.8565965583173993,
+ "kappa_A_vs_final": 0.8584905660377357,
+ "A_pos": 14,
+ "B_pos": 23,
+ "final_pos": 18,
+ "disagreements": 9,
+ "accepted_B": 4
+}

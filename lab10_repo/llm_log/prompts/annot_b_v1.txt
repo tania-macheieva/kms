@@ -1,0 +1,4 @@
+PROMPT annot_b_v1 (blind second annotator)
+You judge search results. For each item you get a query and a text fragment. Label 1 if the fragment CONTAINS information that directly answers the query
+(or the part of the query it addresses), else 0. Related-but-not-answering fragments are 0. Judge only from the texts; the language of the query may differ from the fragment's.
+Output: JSON object {key: 0|1} for every item key, written to the given path.

@@ -1,0 +1,1 @@
+{"text": "SELECT round(sum(f.review_minutes) / 60.0, 2) AS review_hours FROM fact_variant_call f JOIN dim_taxon sg ON f.significance_key = sg.taxon_key WHERE sg.label = 'pathogenic variant'"}

@@ -1,0 +1,55 @@
+Ти пишеш запити Cypher (Neo4j 5) до графа знань (біомедичні дані: варіанти, гени, родичі). Нижче — схема графа.
+
+Вузли (мітка {властивість: тип}):
+(:Annotation {id: string, name: string, value: float})
+(:AnnotationType {name: string})
+(:Concept {name: string, probability: float})
+(:DataFile {id: string, format: string, label: string})
+(:Diagnosis {id: string, kind: string})
+(:Gene {symbol: string, chromosome: string})
+(:GenePanel {name: string})
+(:Instrument {id: string})
+(:Person {name: string, ageYears: int, sex: string, deceased: bool, proband: bool})
+(:Procedure {id: string, kind: string, minTestingAge: int})
+(:Sample {code: string})
+(:Situation {id: string, name: string, guard: string})
+(:Threshold {id: string, annotation: string, op: string, value: float, variantType: string})
+(:Variant {id: string, type: string, clinicalSignificance: string, exonEnd: bool})
+Усі вузли додатково мають pagerank: float та community: int.
+Зв'язки (усі мають властивості source: string, confidence: float, validFrom: date):
+(:Procedure)-[:APPLIES_TO]->(:DataFile); (:Procedure)-[:APPLIES_TO]->(:Person)
+(:Person)-[:CARRIES]->(:Variant)
+(:Threshold)-[:CHECKS]->(:AnnotationType)
+(:DataFile)-[:DERIVED_FROM]->(:DataFile)
+(:Variant)-[:FROM_SAMPLE]->(:Sample)
+(:DataFile)-[:GENERATED_BY]->(:Instrument)
+(:Situation)-[:GUARD_CLASS]->(:Concept)
+(:Variant)-[:HAS_ANNOTATION]->(:Annotation)
+(:Person)-[:HAS_DIAGNOSIS]->(:Diagnosis)
+(:GenePanel)-[:HAS_MEMBER]->(:Gene)
+(:Person)-[:HAS_PARENT]->(:Person)
+(:Procedure)-[:HAS_PROBAND]->(:Person)
+(:Person)-[:HAS_SIBLING]->(:Person)
+(:Procedure)-[:HAS_THRESHOLD]->(:Threshold)
+(:Person)-[:INSTANCE_OF]->(:Concept); (:Variant)-[:INSTANCE_OF]->(:Concept)
+(:Variant)-[:LOCATED_IN]->(:Gene)
+(:Annotation)-[:OF_TYPE]->(:AnnotationType)
+(:Procedure)-[:REQUIRES]->(:Variant)
+(:Concept)-[:SUBCLASS_OF]->(:Concept)
+
+Завдання: для питання користувача напиши один запит Cypher лише для читання (MATCH/WHERE/WITH/RETURN). Поверни лише запит у блоці ```cypher.
+
+
+
+Питання (для КОЖНОГО окремо напиши запит; відповідай незалежно одне від одного):
+t17: Скільки SNP-варіантів мають значення FS більше за 60?
+t18: Які гени панелі HBOC-panel мають патогенні варіанти, а які — жодного? Виведіть символ гена та кількість патогенних варіантів (нуль теж виведіть).
+t19: Яке середнє значення SOR для кожного зразка? Виведіть код зразка та середнє.
+t20: Скільки кроків має найкоротший шлях від Olena до Maria за зв'язками HAS_PARENT?
+t21: Які варіанти в гені PALB2 не мають вказаної клінічної значущості? Виведіть ідентифікатори.
+t22: Які варіанти мають одночасно QD менше за 2 та SOR більше за 3? Виведіть ідентифікатори.
+t23: Скільки різних значень source мають зв'язки в графі?
+t24: Які особи мають шанс успадкування 0.5 за ступенем споріднення?
+t25: До якої спільноти (community) належить Olena і скільки вузлів у цій спільноті?
+t26: Які процедури залежать від sample1_bam через похідні файли (DERIVED_FROM)? Виведіть ідентифікатори процедур.
+t27: Скільки варіантів із QD менше за 2 є в кожному зразку? Виведіть код зразка та кількість.

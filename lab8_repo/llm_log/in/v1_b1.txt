@@ -1,0 +1,155 @@
+Ти пишеш SPARQL-запити до RDF-графа знань (біомедичні дані: варіанти, гени, родичі). Нижче — схема графа.
+Префікси dkh:, rdf:, rdfs:, owl:, xsd: додаються автоматично, їх у запиті можна не оголошувати.
+
+# Класи (Class [SubClassOf])
+dkh:Action
+dkh:AdultRelative [⊑ dkh:Relative]
+dkh:AnnotationComputedEvent [⊑ dkh:Event]
+dkh:ApplyFlagAction [⊑ dkh:Action]
+dkh:BAMFile [⊑ dkh:DataFile]
+dkh:BiologicalEntity
+dkh:BreastCancer [⊑ dkh:Cancer]
+dkh:Cancer [⊑ dkh:Disease]
+dkh:CascadeTesting [⊑ dkh:GeneticTesting]
+dkh:ClinicalSignificance
+dkh:CuratedKnownVariants [⊑ dkh:DataArtifact]
+dkh:DataArtifact
+dkh:DataFile [⊑ dkh:DataArtifact]
+dkh:DeferTestingAction [⊑ dkh:Action]
+dkh:Disease
+dkh:Event
+dkh:Exon [⊑ dkh:BiologicalEntity]
+dkh:ExonEndVariant [⊑ dkh:GeneticVariant]
+dkh:FamilyHistory [⊑ dkh:DataArtifact]
+dkh:FilterThreshold
+dkh:FilteredState [⊑ dkh:State]
+dkh:FirstDegreeRelative [⊑ dkh:Relative]
+dkh:FisherStrandBias [⊑ dkh:QualityAnnotation]
+dkh:FlaggedState [⊑ dkh:State]
+dkh:FlaggedVariant [⊑ dkh:GeneticVariant]
+dkh:Gene [⊑ dkh:BiologicalEntity]
+dkh:GenePanel [⊑ dkh:DataArtifact]
+dkh:GeneticCounseling [⊑ dkh:Procedure]
+dkh:GeneticTesting [⊑ dkh:Procedure]
+dkh:GeneticVariant
+dkh:GermlineVariant [⊑ dkh:GeneticVariant]
+dkh:HardFiltering [⊑ dkh:VariantFiltering]
+dkh:HighFSIndelVariant [⊑ dkh:Indel]
+dkh:HighFSSnpVariant [⊑ dkh:SNP]
+dkh:Indel [⊑ dkh:GeneticVariant]
+dkh:LargeVariantSet [⊑ dkh:DataArtifact]
+dkh:LowQDAnnotation [⊑ dkh:QualityByDepth]
+dkh:LowQDVariant [⊑ dkh:GeneticVariant]
+dkh:MQRankSum [⊑ dkh:RankSumAnnotation]
+dkh:MappingQuality [⊑ dkh:QualityAnnotation]
+dkh:MethodChoiceEvent [⊑ dkh:Event]
+dkh:MinorRelative [⊑ dkh:Relative]
+dkh:OfferCascadeTestingAction [⊑ dkh:Action]
+dkh:OvarianCancer [⊑ dkh:Cancer]
+dkh:PathogenicVariant [⊑ dkh:GeneticVariant]
+dkh:PathogenicVariantFoundEvent [⊑ dkh:Event]
+dkh:Person
+dkh:Proband [⊑ dkh:Person]
+dkh:Procedure
+dkh:QualityAnnotation [⊑ dkh:QualityMeasure]
+dkh:QualityByDepth [⊑ dkh:QualityAnnotation]
+dkh:QualityMeasure
+dkh:RankSumAnnotation [⊑ dkh:QualityAnnotation]
+dkh:ReadDepth [⊑ dkh:QualityAnnotation]
+dkh:ReadPosRankSum [⊑ dkh:RankSumAnnotation]
+dkh:Relative [⊑ dkh:Person]
+dkh:ReviewWithSORAction [⊑ dkh:Action]
+dkh:RiskAssessment [⊑ dkh:Procedure]
+dkh:SNP [⊑ dkh:GeneticVariant]
+dkh:Sample
+dkh:SecondDegreeRelative [⊑ dkh:Relative]
+dkh:SelectHardFilteringAction [⊑ dkh:Action]
+dkh:Sensor
+dkh:SequenceAlignment [⊑ dkh:Procedure]
+dkh:Sequencer [⊑ dkh:Sensor]
+dkh:SituationTemplate
+dkh:SomaticVariant [⊑ dkh:GeneticVariant]
+dkh:State
+dkh:StrandOddsRatio [⊑ dkh:QualityAnnotation]
+dkh:TestingDeferredState [⊑ dkh:State]
+dkh:TestingOfferedState [⊑ dkh:State]
+dkh:TestingRequestedEvent [⊑ dkh:Event]
+dkh:ThirdDegreeRelative [⊑ dkh:Relative]
+dkh:UnfilteredState [⊑ dkh:State]
+dkh:UntestedState [⊑ dkh:State]
+dkh:VCFFile [⊑ dkh:DataFile]
+dkh:VQSR [⊑ dkh:VariantFiltering]
+dkh:VariantCalling [⊑ dkh:Procedure]
+dkh:VariantFiltering [⊑ dkh:Procedure]
+# Властивості (property: domain → range)
+dkh:appliesTo (object): xsd:nfb50c3930b33481ab5a379143b66a25fb139 → xsd:nfb50c3930b33481ab5a379143b66a25fb142
+dkh:carries (object): dkh:Person → dkh:GeneticVariant
+dkh:derivedFrom (object): dkh:DataFile → dkh:DataFile
+dkh:detects (object): dkh:Procedure → dkh:GeneticVariant
+dkh:fromSample (object): dkh:GeneticVariant → dkh:Sample
+dkh:generatedBy (object): dkh:DataFile → dkh:Sensor
+dkh:hasAction (object): dkh:SituationTemplate → dkh:Action
+dkh:hasAncestor (object): dkh:Person → dkh:Person
+dkh:hasAnnotation (object): dkh:GeneticVariant → dkh:QualityAnnotation
+dkh:hasAuntOrUncle (object): dkh:Person → dkh:Person
+dkh:hasChild (object): dkh:Person → dkh:Person
+dkh:hasClinicalSignificance (object): dkh:GeneticVariant → dkh:ClinicalSignificance
+dkh:hasCousin (object): dkh:Person → dkh:Person
+dkh:hasDiagnosis (object): dkh:Person → dkh:Disease
+dkh:hasGrandparent (object): dkh:Person → dkh:Person
+dkh:hasInitialState (object): dkh:SituationTemplate → dkh:State
+dkh:hasMember (object): dkh:GenePanel → dkh:Gene
+dkh:hasNewState (object): dkh:SituationTemplate → dkh:State
+dkh:hasParent (object): dkh:Person → dkh:Person
+dkh:hasPart (object): dkh:BiologicalEntity → dkh:BiologicalEntity
+dkh:hasProband (object): dkh:CascadeTesting → dkh:Proband
+dkh:hasSibling (object): dkh:Person → dkh:Person
+dkh:hasThreshold (object): dkh:Procedure → dkh:FilterThreshold
+dkh:increasesRiskOf (object): xsd:nfb50c3930b33481ab5a379143b66a25fb159 → dkh:Disease
+dkh:isAnnotationOf (object): dkh:QualityAnnotation → dkh:GeneticVariant
+dkh:isFirstDegreeRelativeOf (object): dkh:Person → dkh:Person
+dkh:isMemberOf (object): dkh:Gene → dkh:GenePanel
+dkh:isSecondDegreeRelativeOf (object): dkh:Person → dkh:Person
+dkh:isThirdDegreeRelativeOf (object): dkh:Person → dkh:Person
+dkh:locatedIn (object): dkh:GeneticVariant → dkh:Gene
+dkh:partOf (object): dkh:BiologicalEntity → dkh:BiologicalEntity
+dkh:produces (object): dkh:Procedure → xsd:nfb50c3930b33481ab5a379143b66a25fb57
+dkh:recommendedFor (object): xsd:nfb50c3930b33481ab5a379143b66a25fb163 → xsd:nfb50c3930b33481ab5a379143b66a25fb166
+dkh:requires (object): dkh:Procedure → xsd:nfb50c3930b33481ab5a379143b66a25fb170
+dkh:triggeredBy (object): dkh:SituationTemplate → dkh:Event
+dkh:usesInput (object): dkh:Procedure → xsd:nfb50c3930b33481ab5a379143b66a25fb176
+dkh:forVariantType (data): dkh:FilterThreshold → xsd:string
+dkh:hasAgeYears (data): dkh:Person → xsd:integer
+dkh:hasAnnotationName (data): dkh:QualityAnnotation → xsd:string
+dkh:hasComparisonOperator (data): dkh:FilterThreshold → xsd:string
+dkh:hasExonEndPosition (data): dkh:GeneticVariant → xsd:boolean
+dkh:hasGeneSymbol (data): dkh:Gene → xsd:string
+dkh:hasGuard (data): dkh:SituationTemplate → xsd:string
+dkh:hasInheritanceProbability (data): dkh:Person → xsd:decimal
+dkh:hasMinTestingAge (data): dkh:CascadeTesting → xsd:integer
+dkh:hasNumericValue (data): dkh:QualityAnnotation → xsd:decimal
+dkh:hasSampleCode (data): ? → xsd:string
+dkh:hasSex (data): dkh:Person → xsd:string
+dkh:hasThresholdValue (data): dkh:FilterThreshold → xsd:decimal
+dkh:hasVariantId (data): dkh:GeneticVariant → xsd:string
+dkh:isDeceased (data): dkh:Person → xsd:boolean
+dkh:onAnnotationName (data): dkh:FilterThreshold → xsd:string
+dkh:onChromosome (data): dkh:Gene → xsd:string
+
+Завдання: для питання користувача напиши один SPARQL 1.1 запит. Поверни лише запит.
+
+
+
+Питання (для КОЖНОГО окремо напиши запит; відповідай незалежно одне від одного):
+d01: Які SNP-варіанти мають значення QD менше за 2? Виведіть їхні ідентифікатори (hasVariantId).
+d03: Які гени (їхні мітки rdfs:label) входять до панелі HBOC-panel?
+d05: Скільки варіантів розташовано в кожному гені? Виведіть мітку гена та кількість.
+d07: Які варіанти розташовані в гені TP53? Виведіть їхні ідентифікатори.
+d09: Хто є батьками Olena? Виведіть мітки.
+d11: Які варіанти мають клінічну значущість Pathogenic? Виведіть ідентифікатори.
+d13: Які особи старші за 60 років? Виведіть мітки.
+d15: Яке середнє значення SOR для кожного зразка? Виведіть код зразка та середнє.
+d17: Які SNP-варіанти мають FS більше за 60?
+h01: Хто є предками Olena (батьки, їхні батьки тощо)? Виведіть мітки.
+h03: Скільки Indel-варіантів у зразку C?
+h05: Які варіанти в гені PALB2 не мають вказаної клінічної значущості? Виведіть ідентифікатори.

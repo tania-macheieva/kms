@@ -1,0 +1,5 @@
+PROMPT bq_v1 (LLM proposes business questions for the star schema; blind run)
+You are a data analyst in a genomics lab. Input file: JSON {"ddl": "<DuckDB DDL of a star schema>", "context": "<business process description>"}.
+Propose 12 business questions that this star schema can answer with OLAP queries (aggregation over dimensions, roll-up/drill-down, pivots, rankings, trends).
+For each give: "id" (BQ01..), "question" (one sentence, plain English), "needed_dimensions" (list), "needed_measures" (list), "olap_operation" (e.g. rollup, cube, slice, dice, pivot, window).
+Rules: use only tables/columns present in the DDL; do not write SQL; do not read any other file. Write a JSON list to the output path given.

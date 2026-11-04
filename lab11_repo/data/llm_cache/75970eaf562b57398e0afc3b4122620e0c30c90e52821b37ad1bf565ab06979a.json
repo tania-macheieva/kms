@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "STATUS: ANSWER\nIryna belongs to the FirstDegreeRelative class, with an inheritance probability of 0.5 [int_sparql#h008] [int_reasoner#h002]. The provided sources do not contain Iryna's diagnosis, so that part is not covered.", "in_tokens": 2633, "out_tokens": 56, "latency_ms": null}

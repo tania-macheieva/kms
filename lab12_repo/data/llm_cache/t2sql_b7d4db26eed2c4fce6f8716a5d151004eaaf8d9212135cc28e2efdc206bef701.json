@@ -1,0 +1,1 @@
+{"text": "SELECT s.sample_code, count(*) AS call_count FROM fact_variant_call f JOIN dim_sample s ON f.sample_key = s.sample_key GROUP BY s.sample_code HAVING count(*) > 85 ORDER BY call_count DESC"}

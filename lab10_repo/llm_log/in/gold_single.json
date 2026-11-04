@@ -1,0 +1,324 @@
+[
+ {
+  "chunk_id": "gatk_readme#h015",
+  "kind": "keyword",
+  "doc": "gatk_readme",
+  "section": "Running GATK4 > Running GATK4 Spark tools locally:",
+  "text": "gatk_readme — Running GATK4 > Running GATK4 Spark tools locally:\n#### Running GATK4 Spark tools locally:\n\n* GATK4 Spark tools can be run in local mode (without a cluster). In this mode, Spark will run the tool\n in multiple parallel execution threads using the cores in your CPU. You can control how many threads\n Spark will use via the `--spark-master` argument.\n\n* Examples:\n\n Run `PrintReadsSpark` with 4 threads on your local machine:\n ```\n ./gatk PrintReadsSpark -I src/test/resources/large/CEUTrio.HiSeq.WGS.b37.NA12878.20.21.bam -O output.bam \\\n -- \\\n --spark-runner LOCAL --spark-master 'local[4]'\n ```\n Run `PrintReadsSpark` with as many worker threads as there are logical cores on your local machine:\n ```\n ./gatk PrintReadsSpark -I src/test/resources/large/CEUTrio.HiSeq.WGS.b37.NA12878.20.21.bam -O output.bam \\\n -- \\\n --spark-runner LOCAL --spark-master 'local[*]'\n ```\n\n* Note that the Spark-specific arguments are separated from the tool-specific arguments by a `--`."
+ },
+ {
+  "chunk_id": "sarek_output#h060",
+  "kind": "paraphrase",
+  "doc": "sarek_output",
+  "section": "Variant annotation > VEP",
+  "text": "sarek_output — Variant annotation > VEP\n### VEP\n\nVEP (Variant Effect Predictor), based on `Ensembl`, is a tool to determine the effects of all sorts of variants, including SNPs, indels, structural variants, CNVs.\nThe generated VCF header contains the software version, also the version numbers for additional databases like Clinvar or dbSNP used in the VEP line.\nThe format of the consequence annotations is also in the VCF header describing the `INFO` field.\nFor further reading and documentation see the VEP manual.\n\nCurrently, it contains:\n\n- _Consequence_: impact of the variation, if there is any\n- _Codons_: the codon change, i.e. cGt/cAt\n- _Amino_acids_: change in amino acids, i.e. R/H if there is any\n- _Gene_: ENSEMBL gene name\n- _SYMBOL_: gene symbol\n- _Feature_: actual transcript name\n- _EXON_: affected exon\n- _PolyPhen_: prediction based on PolyPhen\n- _SIFT_: prediction by SIFT\n- _Protein_position_: Relative position of amino acid in protein\n- _BIOTYPE_: Biotype of transcript or regulatory feature\n\nplus any additional fields selected via the plugins: Condel, dbNSFP, LOFTEE, Mastermind, Phenotypes, SpliceAI, SpliceRegion.\n\n Output files for all samples\n\n**Output directory: `{outdir}/annotation/{sample,tumorsample_vs_normalsample}`**\n\n- `{sample,tumorsample_vs_normalsample}.<variantcaller>_VEP.ann.vcf.gz` and `{sample,tumorsample_vs_normalsample}.<variantcaller>_VEP.ann.vcf.gz.tbi`\n - VCF with tabix index"
+ },
+ {
+  "chunk_id": "sarek_usage#h037",
+  "kind": "paraphrase",
+  "doc": "Introduction",
+  "section": "Core Nextflow arguments > Which variant calling tool is implemented for which data type?",
+  "text": "Introduction — Core Nextflow arguments > Which variant calling tool is implemented for which data type?\n| GATK Mutect2 | x | x | x | - | x | x |\n| indexcov | x | - | - | x | - | x |\n| lofreq | x | x | x | - | x | - |\n| Manta | x | x | x | x | x | x |\n| mpileup | x | x | x | x | x | - |\n| MSIsensor2 | x | x | x | - | x | - |\n| MSIsensorPro | x | x | x | - | - | x |\n| MuSE | x | x | x | - | - | x |\n| Parabricks DeepSomatic (GPU) | x | x | - | - | - | x |\n| Parabricks DeepVariant (GPU) | x | x | x | x | - | - |\n| Parabricks HaplotypeCaller (GPU) | x | x | x | x | - | - |\n| Strelka | x | x | - | - | - | x |\n| TIDDIT | x | x | x | x | x | x |\n| Varlociraptor | x | x | x | x | x | x |"
+ },
+ {
+  "chunk_id": "sarek_usage#h041",
+  "kind": "paraphrase",
+  "doc": "Introduction",
+  "section": "Core Nextflow arguments > How to run ASCAT with whole-exome sequencing data? > How to generate ASCAT resources for exome or targeted sequencing",
+  "text": "Introduction — Core Nextflow arguments > How to run ASCAT with whole-exome sequencing data? > How to generate ASCAT resources for exome or targeted sequencing\n3. Copy the `targets_with_chr.bed` and `GC_G1000_on_target_hg38.txt` files into the newly created `battenberg_loci_on_target_hg38` folder before running the next set of steps.\n\n ```bash\n cp GC_G1000_on_target_hg38.txt battenberg/1000G_loci_hg38/battenberg_loci_on_target_hg38\n cp targets_with_chr.bed battenberg/1000G_loci_hg38/battenberg_loci_on_target_hg38/targets_with_chr.bed\n ```\n\n **If** you are using the Battenberg-provided files (as obtained in step 2), run the following code, **then skip ahead to step 4**:\n\n ```bash\n cd battenberg/1000G_loci_hg38/battenberg_loci_on_target_hg38/\n rm -f *chrstring*\n rm 1kg.phase3.v5a_GRCh38nounref_loci_chr23.txt\n\n for i in {1..22} X\n do\n awk '{ print $1 \"\\t\" $2-1 \"\\t\" $2 }' 1kg.phase3.v5a_GRCh38nounref_loci_chr${i}.txt > chr${i}.bed\n grep \"^${i}_\" GC_G1000_on_target_hg38.txt | awk '{ print \"chr\" $1 }' > chr${i}.txt\n bedtools intersect -a chr${i}.bed -b targets_with_chr.bed | awk '{ print $1 \"_\" $3 }' > chr${i}_on_target.txt\n n=`wc -l chr${i}_on_target.txt | awk '{ print $1 }'`\n count=$((n * 3 / 10))\n grep -xf chr${i}.txt chr${i}_on_target.txt > chr${i}.temp\n shuf -n $count chr${i}_on_target.txt >> chr${i}.temp\n sort -n -k2 -t '_' chr${i}.temp | uniq | awk 'BEGIN { FS=\"_\" } ; { print $1 \"\\t\" $2 }' > battenberg_loci_on_target_hg38_chr${i}.txt\n done\n\n zip battenberg_loci_on_target_hg38.zip battenberg_loci_on_target_hg38_chr*.txt\n ```\n\n **If** you are using the ASCAT-provided 1000G loci and alleles files, continue here:"
+ },
+ {
+  "chunk_id": "rare_output#h034",
+  "kind": "keyword",
+  "doc": "rare_output",
+  "section": "Pipeline overview > Mitochondrial analysis > Alignment and variant calling > VEP",
+  "text": "rare_output — Pipeline overview > Mitochondrial analysis > Alignment and variant calling > VEP\n##### VEP\n\nVEP determines the effect of your variants on genes, transcripts, and protein sequence, as well as regulatory regions.\n\n Output files\n\n- `annotate_snv/mitochondria`\n - `<case_id>_mitochondria_vcfanno_<cadd_vep|vep>.vcf.gz`: file containing mitochondrial annotations.\n - `<case_id>_mitochondria_vcfanno_<cadd_vep|vep>.vcf.gz.tbi`: index of the file containing mitochondrial annotations.\n\n\n#### Filter_vep\n\nfilter_vep from VEP is used to subset the variants based on a list of HGNC ID:s. Typical use case is that you want to filter your results to only include variants in a predefined set of clinically relevant genes. This step is optional and can be disabled by using the flag `--skip_subworkflows generate_clinical_set`. You will always get the complete VCF together with the clinical VCF."
+ },
+ {
+  "chunk_id": "sarek_output#h013",
+  "kind": "paraphrase",
+  "doc": "sarek_output",
+  "section": "Preprocessing > Preparation of input files (FastQ or (u)BAM) > Sentieon BWA mem",
+  "text": "sarek_output — Preprocessing > Preparation of input files (FastQ or (u)BAM) > Sentieon BWA mem\n#### Sentieon BWA mem\n\nSentieon bwa mem is a subroutine for mapping low-divergent sequences against a large reference genome. It is part of the proprietary software package DNAseq from Sentieon.\n\nThe aligned reads are coordinate-sorted with Sentieon.\n\n Output files for all mappers and samples\n\nThe alignment files (BAM or CRAM) produced by the chosen aligner are not published by default. CRAM output files will not be saved in the output-folder (`outdir`), unless the flag `--save_mapped` is used. BAM output can be selected by setting the flag `--save_output_as_bam`.\n\n**Output directory: `{outdir}/preprocessing/mapped/<sample>/`**\n\n- if `--save_mapped`: `<sample>.sorted.cram` and `<sample>.sorted.cram.crai`\n - CRAM file and index\n\n- if `--save_mapped --save_output_as_bam`: `<sample>.sorted.bam` and `<sample>.sorted.bam.bai`\n - BAM file and index"
+ },
+ {
+  "chunk_id": "rare_usage#h029",
+  "kind": "uk_cross",
+  "doc": "nf-core/raredisease: Usage",
+  "section": "Other Nextflow hidden files, like history of pipeline logs. > Best practices",
+  "text": "nf-core/raredisease: Usage — Other Nextflow hidden files, like history of pipeline logs. > Best practices\n- **Reproducibility:** Specify a pipeline version when running the pipeline on your data. This ensures that a specific version of the pipeline code and software are used when you run your pipeline. If you keep using the same tag, you'll be running the same version of the pipeline, even if there have been changes to the code since. First, go to the nf-core/raredisease releases page and find the latest pipeline version - numeric only (e.g. `1.3.1`). Then specify this when running the pipeline with `-r`, for example, `-r 1.3.1`. You can switch to another version by changing the number after the `-r` flag. The version number will be logged in reports when you run the pipeline. For example, you can view the version number at the bottom of the MultiQC reports.\n\nTo further assist in reproducibility, you can use share and reuse parameter files to repeat pipeline runs with the same settings without having to write out a command with every single parameter.\nTIP:\nIf you wish to share such profile (such as upload as supplementary material for academic publications), make sure to NOT include cluster specific paths to files, nor institutional specific profiles."
+ },
+ {
+  "chunk_id": "gatk_readme#h027",
+  "kind": "keyword",
+  "doc": "gatk_readme",
+  "section": "Running GATK4 > Setting up debugging in IntelliJ",
+  "text": "gatk_readme — Running GATK4 > Setting up debugging in IntelliJ\n#### Setting up debugging in IntelliJ\n\n* Follow the instructions above for creating an IntelliJ project for GATK\n\n* Go to Run -> \"Edit Configurations\", then click \"+\" and add a new \"Application\" configuration\n\n* Set the name of the new configuration to something like \"GATK debug\"\n\n* For \"Main class\", enter `org.broadinstitute.hellbender.Main`\n\n* Ensure that \"Use classpath of module:\" is set to use the \"gatk\" module's classpath\n\n* Enter the arguments for the command you want to debug in \"Program Arguments\"\n\n* Click \"Apply\"/\"Ok\"\n\n* Set breakpoints, etc., as desired, then select \"Run\" -> \"Debug\" -> \"GATK debug\" to start your debugging session\n\n* In future debugging sessions, you can simply adjust the \"Program Arguments\" in the \"GATK debug\" configuration as needed"
+ },
+ {
+  "chunk_id": "gatk_funco_tutorial#h035",
+  "kind": "keyword",
+  "doc": "Required and defaults to false.",
+  "section": "The Name or 0-based index of the column containing the end position for each row > 2.0 - Requirements",
+  "text": "Required and defaults to false. — The Name or 0-based index of the column containing the end position for each row > 2.0 - Requirements\n### 2.0 - Requirements\n1. Java 1.8\n2. A functioning GATK4 jar\n3. Reference genome (fasta files) with fai and dict files. Human references can be downloaded as part of the GATK resource bundle. Other references can be used but must be provided by the user.\n4. A local copy of the Funcotator data sources\n5. A VCF file containing variants to annotate."
+ },
+ {
+  "chunk_id": "sarek_vc_sarek#h002",
+  "kind": "keyword",
+  "doc": "Using Sarek for Variant Calling",
+  "section": "Using Sarek for Variant Calling > Experimental Design > Reference genome",
+  "text": "Using Sarek for Variant Calling — Using Sarek for Variant Calling > Experimental Design > Reference genome\n### Reference genome\n\nnf-core pipelines make use of the Illumina iGenomes collection as reference genomes.\nBefore starting the analysis, the user might want to check whether the genome they need is part of this collection.\nThey also might want to consider downloading the reference locally, when running on premises: this would be useful for multiple runs and to speed up the analysis. In this case the parameter `--igenomes_base` might be used to pass the root directory of the downloaded references.\n\nOne might also need to use custom files: in this case the user might either provide specific parameters at command line, or create a config file adding a new section to the `genome` object. See here for more details.\n\nWe will follow this specific approach in this tutorial, since the data we will be using have been simulated on chromosome 21 of the Human GRCh38 reference, and we have prepared fasta, indexes and annotation files containing only this chromosome locally."
+ },
+ {
+  "chunk_id": "sarek_readme#h006",
+  "kind": "keyword",
+  "doc": "sarek_readme",
+  "section": "Credits",
+  "text": "sarek_readme — Credits\n- Abhinav Sharma\n- Adam Talbot\n- Adrian Lärkeryd\n- Àitor Olivares\n- Alexander Peltzer\n- Alison Meynert\n- Anders Sune Pedersen\n- arontommi\n- BarryDigby\n- Bekir Ergüner\n- bjornnystedt\n- cgpu\n- Chela James\n- David Mas-Ponte\n- Edmund Miller\n- Famke Bäuerle\n- Francesco Lescai\n- Francisco Martínez\n- Gavin Mackenzie\n- Gisela Gabernet\n- Grant Neilson\n- gulfshores\n- Harshil Patel\n- Hongwei Ye\n- James A. Fellows Yates\n- Jesper Eisfeldt\n- Johannes Alneberg\n- Jonas Kjellin\n- José Fernández Navarro\n- Júlia Mir Pedrol\n- Ken Brewer\n- Lasse Westergaard Folkersen\n- Lucia Conde\n- Louis Le Nézet\n- Malin Larsson\n- Marcel Martin\n- Nick Smith\n- Nicolas Schcolnicov\n- Nilesh Tawari\n- Nils Homer\n- Olga Botvinnik\n- Oskar Wacker\n- pallolason\n- Paul Cantalupo\n- Peter Zoescher\n- Phil Ewels\n- Pierre Lindenbaum\n- Sabrina Krakau\n- Sam Minot\n- Sebastian-D\n- Silvia Morini\n- Simon Pearce\n- Solenne Correard\n- Susanne Jodoin\n- Szilveszter Juhos\n- Tobias Koch\n- Winni Kretzschmar\n- Patricie Skaláková"
+ },
+ {
+  "chunk_id": "gatk_funco_tutorial#h031",
+  "kind": "paraphrase",
+  "doc": "Required and defaults to false.",
+  "section": "The Name or 0-based index of the column containing the end position for each row > 1.3.2 - Annotations for Pre-Packaged Data Sources > 1.5 - Comparisons with Oncotator",
+  "text": "Required and defaults to false. — The Name or 0-based index of the column containing the end position for each row > 1.3.2 - Annotations for Pre-Packaged Data Sources > 1.5 - Comparisons with Oncotator\n#### 1.5 - Comparisons with Oncotator\nOncotator is an older functional annotation tool developed by The Broad Institute. Funcotator and Oncotator are fundamentally different tools with some similarities.\n\nWhile I maintain that a direct comparison should not be made, to address some inevitable questions some comparison highlights between Oncotator and Funcotator are in the following two tables:"
+ },
+ {
+  "chunk_id": "rare_usage#h005",
+  "kind": "paraphrase",
+  "doc": "nf-core/raredisease: Usage",
+  "section": "Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data",
+  "text": "nf-core/raredisease: Usage — Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data\n## Run nf-core/raredisease with your data\n\nRunning the pipeline involves three steps:\n\n1. Prepare a samplesheet\n2. Gather all required references\n3. Supply samplesheet and references, and run the command\n\n#### Samplesheet\n\nA samplesheet is used to provide information about the sample(s) to the pipeline in CSV format, including the path to the FASTQ files and other metadata such as sex and phenotype.\n\nThe nf-core/raredisease pipeline accepts FASTQ files, SPRING files, or BAM files as input. Currently, the pipeline does not support single-end data from Illumina. The pedigree information in the samplesheet (sex and phenotype) should be provided in the same format as a PED file, with sex indicated as 1 for male, 2 for female, and other for unknown.\n\n| Fields | Description |"
+ },
+ {
+  "chunk_id": "bcftools_manual#h092",
+  "kind": "paraphrase",
+  "doc": "Convert 23andme results into VCF",
+  "section": "Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools norm [OPTIONS] 'file.vcf.gz'",
+  "text": "Convert 23andme results into VCF — Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools norm [OPTIONS] 'file.vcf.gz'\n-g, --gff-annot FILE::\n when a GFF file is provided, follow HGVS 3'rule and right-align variants in transcripts on the forward\n strand. In case of overlapping transcripts, the default mode is to left-align the variant. For a\n description of the supported GFF3 file format see <<csq,bcftools csq>>.\n\n-i, --include EXPRESSION::\n normalize only input records for which EXPRESSION is true. For valid expressions see\n <<expressions,EXPRESSIONS>>. Note that duplicate removal ignores this option.\n\n--keep-sum TAG[,...]::\n keep vector sum constant when splitting multiallelic sites. Only AD tag\n is currently supported. See also https://github.com/samtools/bcftools/issues/360\n\n-m, --multiallelics -|+[snps|indels|both|any]::\n split multiallelic sites into biallelic records (-) or join\n biallelic sites into multiallelic records (+). An optional type string\n can follow which controls variant types which should be split or merged\n together: If only SNP records should be split or merged, specify snps; if\n both SNPs and indels should be merged separately into two records, specify\n both; if SNPs and indels should be merged into a single record, specify\n any.\n {nbsp} +\n {nbsp} +\n Note that multiallelic sites with both SNPs and indels will be split into\n biallelic sites with both -m -snps and -m -indels.\n\n--multi-overlaps '0'|'.'::\n use the reference ('0') or missing ('.') allele for overlapping alleles after\n splitting multiallelic sites"
+ },
+ {
+  "chunk_id": "bcftools_manual#h140",
+  "kind": "keyword",
+  "doc": "Convert 23andme results into VCF",
+  "section": "Replace missing genotypes with 0|0 > TERMINOLOGY",
+  "text": "Convert 23andme results into VCF — Replace missing genotypes with 0|0 > TERMINOLOGY\n## TERMINOLOGY\nThe program and the documentation uses the following terminology, multiple terms can be used\ninterchangeably for the same VCF record type\n\n## REF ALT\n C . .. reference allele / non-variant site / ref-only site\n C T .. SNP or SNV (single-nucleotide polymorphism or variant), used interchangeably\n CC TT .. MNP (multi-nucleotide polymorphism)\n CAAA C .. indel, deletion (regardless of length)\n C CAAA .. indel, insertion (regardless of length)\n C <> .. gVCF block, the allele <> is a placeholder for alternate allele possibly missed because of low coverage\n C <NON_REF> .. synonymous to <*>\n C * .. overlapping deletion\n C <INS> .. symbolic allele, known also as 'other [than above]'"
+ },
+ {
+  "chunk_id": "sarek_vc_sarek#h005",
+  "kind": "keyword",
+  "doc": "Using Sarek for Variant Calling",
+  "section": "Using Sarek for Variant Calling > Running Sarek Germline > Reference Genome",
+  "text": "Using Sarek for Variant Calling — Using Sarek for Variant Calling > Running Sarek Germline > Reference Genome\n### Reference Genome\n\nFollowing the considerations above, we will first of all edit the `nextflow.config` file in our working directory to add a new genome.\nIt is sufficient to add the following code to the `parameters` directive in the config.\n\n```groovy\nigenomes_base = '/workspace/gitpod/training/data/refs/'\ngenomes {\n\t'GRCh38chr21' {\n bwa = \"${params.igenomes_base}/sequence/Homo_sapiens_assembly38_chr21.fasta.{amb,ann,bwt,pac,sa}\"\n dbsnp = \"${params.igenomes_base}/annotations/dbsnp_146.hg38_chr21.vcf.gz\"\n dbsnp_tbi = \"${params.igenomes_base}/annotations/dbsnp_146.hg38_chr21.vcf.gz.tbi\"\n dbsnp_vqsr = '--resource:dbsnp,known=false,training=true,truth=false,prior=2.0 dbsnp_146.hg38_chr21.vcf.gz'\n dict = \"${params.igenomes_base}/sequence/Homo_sapiens_assembly38_chr21.dict\"\n fasta = \"${params.igenomes_base}/sequence/Homo_sapiens_assembly38_chr21.fasta\"\n fasta_fai = \"${params.igenomes_base}/sequence/Homo_sapiens_assembly38_chr21.fasta.fai\"\n germline_resource = \"${params.igenomes_base}/annotations/gnomAD.r2.1.1.GRCh38.PASS.AC.AF.only_chr21.vcf.gz\"\n germline_resource_tbi = \"${params.igenomes_base}/annotations/gnomAD.r2.1.1.GRCh38.PASS.AC.AF.only_chr21.vcf.gz.tbi\"\n known_snps = \"${params.igenomes_base}/annotations/1000G_phase1.snps.high_confidence.hg38_chr21.vcf.gz\"\n known_snps_tbi = \"${params.igenomes_base}/annotations/1000G_phase1.snps.high_confidence.hg38_chr21.vcf.gz.tbi\"\n known_snps_vqsr = '--resource:1000G,known=false,training=true,truth=true,prior=10.0 1000G_phase1.snps.high_confidence.hg38_chr21.vcf.gz'\n known_indels = \"${params.igenomes_base}/annotations/Mills_and_1000G_gold_standard.indels.hg38_chr21.vcf.gz\"\n known_indels_tbi = \"${params.igenomes_base}/annotations/Mills_and_1000G_gold_standard.indels.hg38_chr21.vcf.gz.tbi\"\n known_indels_vqsr = '--resource:mills,known=false,training=true,truth=true,prior=10.0 Mills_and_1000G_gold_standard.indels.hg38_chr21.vcf.gz'\n snpeff_db = '105'\n snpeff_genome = 'GRCh38'\n\t}\n}\n```"
+ },
+ {
+  "chunk_id": "gatk_readme#h030",
+  "kind": "keyword",
+  "doc": "gatk_readme",
+  "section": "Running GATK4 > Uploading Archives to Sonatype (to make them available via maven central)",
+  "text": "gatk_readme — Running GATK4 > Uploading Archives to Sonatype (to make them available via maven central)\n#### Uploading Archives to Sonatype (to make them available via maven central)\nTo upload snapshots to Sonatype you'll need the following:\n\n* You must have a registered account on the sonatype JIRA (and be approved as a gatk uploader)\n* You need to configure several additional properties in your `/~.gradle/gradle.properties` file\n\n* If you want to upload a release instead of a snapshot you will additionally need to have access to the gatk signing key and password\n\n```\n#needed for snapshot upload\nsonatypeUsername=<your sonatype username>\nsonatypePassword=<your sonatype password>\n\n#needed for signing a release\nsigning.keyId=<gatk key id>\nsigning.password=<gatk key password>\nsigning.secretKeyRingFile=/Users/<username>/.gnupg/secring.gpg\n```\n\nTo perform an upload, use\n```\n./gradlew uploadArchives\n```\n\nBuilds are considered snapshots by default. You can mark a build as a release build by setting `-Drelease=true`.\nThe archive name is based off of `git describe`."
+ },
+ {
+  "chunk_id": "rare_usage#h019",
+  "kind": "keyword",
+  "doc": "nf-core/raredisease: Usage",
+  "section": "Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data > Reference files and parameters > 7. SNV annotation & Ranking",
+  "text": "nf-core/raredisease: Usage — Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data > Reference files and parameters > 7. SNV annotation & Ranking\n##### 7. SNV annotation & Ranking\n\n| Mandatory | Optional |\n\n| genome 1 | reduced_penetrance 9 |\n| vcfanno_resources 2 | vcfanno_lua |\n| vcfanno_toml 3 | vep_filters/vep_filters_scout_fmt 10 |\n| vep_cache_version | cadd_resources 11 |\n| vep_cache 4 | run_vcfanno_db_sanity_check 12 |\n| gnomad_af 5 | |\n| score_config_snv 6 | |\n| variant_consequences_snv 7 | |\n| vep_plugin_files 8 | |\n\n 1 Genome version is used by VEP. You have the option to choose between GRCh37 and GRCh38.\n 2 Path to VCF files and their indices used by vcfanno. Sample file here.\n 3 Path to a vcfanno configuration file. Sample file here.\n 4 VEP caches can be downloaded here.\nVEP plugins may be installed in the cache directory, and the plugin pLI is mandatory to install. To supply files required by VEP plugins, use `vep_plugin_files` parameter.\nSee example cache here.\n 5 GnomAD VCF files can be downloaded from here. The option `gnomad_af` expects a tab-delimited file with\nno header and the following columns: `CHROM POS REF_ALLELE,ALT_ALLELE AF`. Sample file here.\n 6 Used by GENMOD for ranking the variants. Sample file here.\n 7 File containing list of SO terms listed in the order of severity from most severe to lease severe for annotating genomic and mitochondrial SNVs. Sample file here. You can learn more about these terms here."
+ },
+ {
+  "chunk_id": "bcftools_manual#h019",
+  "kind": "keyword",
+  "doc": "Convert 23andme results into VCF",
+  "section": "bcftools annotate '[OPTIONS] FILE'",
+  "text": "Convert 23andme results into VCF — bcftools annotate '[OPTIONS] FILE'\n-l, --merge-logic 'tag:first'|append|append-missing|unique|sum|avg|min|max[,...]::\n When multiple regions overlap a single record, this option defines how to treat multiple\n annotation values when setting tag in the destination file: use the first encountered value ignoring\n the rest (first); append allowing duplicates (append); append even if the appended value is missing,\n i.e. is a dot (append-missing); append discarding duplicate values (unique);\n sum the values (sum, numeric fields only); average the values (avg); use the minimum value (min) or\n the maximum (max).\n +\n Note that this option is intended for use with BED or TAB-delimited annotation files only. Moreover,\n it is effective only when either REF and ALT or BEG and END --columns are present .\n +\n Multiple rules can be given either as a comma-separated list or giving the option multiple times.\n This is an experimental feature.\n\n-m, --mark-sites [+-]TAG::\n annotate sites which are present (\"+\") or absent (\"-\") in the -a file with a new INFO/TAG flag\n\n--min-overlap ANN:VCF::\n minimum overlap required as a fraction of the variant in the annotation -a file (ANN), in the\n target VCF file (':VCF'), or both for reciprocal overlap ('ANN:VCF').\n By default overlaps of arbitrary length are sufficient.\n The option can be used only with the tab-delimited annotation -a file and with BEG and END\n columns present.\n\n--no-version::\n see <<common_options,Common Options>>\n\n-o, --output FILE::\n see <<common_options,Common Options>>\n\n-O, --output-type b|u|z|v[0-9]::\n see <<common_options,Common Options>>"
+ },
+ {
+  "chunk_id": "rare_usage#h023",
+  "kind": "keyword",
+  "doc": "nf-core/raredisease: Usage",
+  "section": "Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data > Reference files and parameters > 10. Mobile element calling",
+  "text": "nf-core/raredisease: Usage — Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data > Reference files and parameters > 10. Mobile element calling\n##### 10. Mobile element calling\n\n| Mandatory | Optional |\n\n| genome | |\n| mobile_element_references 1 | |\n\n 1 A TSV file that describes the references (BEDs) used by RetroSeq for calling mobile elements. Sample file here\n\n##### 11. Mobile element annotation\n\n| Mandatory | Optional |\n\n| genome | vep_filters/vep_filters_scout_fmt |\n| mobile_element_svdb_annotations 1 | |\n| vep_cache_version | |\n| vep_cache | |\n| variant_consequences_sv | |\n\n 1 A CSV file that describes the databases (VCFs) used by SVDB for annotating mobile elements with allele frequencies. Sample file here."
+ },
+ {
+  "chunk_id": "gatk_funco_tutorial#h002",
+  "kind": "keyword",
+  "doc": "Required and defaults to false.",
+  "section": "1 - Funcotator Background Information > 1.1 - Data Sources",
+  "text": "Required and defaults to false. — 1 - Funcotator Background Information > 1.1 - Data Sources\n### 1.1 - Data Sources\nData sources are expected to be in folders that are specified as input arguments. While multiple data source folders can be specified, **no two data sources can have the same name**.\n\n### 1.1.1 - Data Source Folders\n\nIn each main data source folder, there should be sub-directories for each individual data source, with further sub-directories for a specific reference (e.g. _hg19_, _hg38_, etc.). In the reference-specific data source directory, there is a configuration file detailing information about the data source and how to match it to a variant. This configuration file is required.\n\nAn example of a data source directory is the following:\n```\n dataSourcesFolder/\n Data_Source_1/\n hg19\n data_source_1.config\n data_source_1.data.file.one\n data_source_1.data.file.two\n data_source_1.data.file.three\n ...\n hg38\n data_source_1.config\n data_source_1.data.file.one\n data_source_1.data.file.two\n data_source_1.data.file.three\n ...\n Data_Source_2/\n hg19\n data_source_2.config\n data_source_2.data.file.one\n data_source_2.data.file.two\n data_source_2.data.file.three\n ...\n hg38\n data_source_2.config\n data_source_2.data.file.one\n data_source_2.data.file.two\n data_source_2.data.file.three\n ...\n ...\n```"
+ },
+ {
+  "chunk_id": "sarek_usage#h001",
+  "kind": "paraphrase",
+  "doc": "Introduction",
+  "section": "Introduction > Quickstart",
+  "text": "Introduction — Introduction > Quickstart\n## Quickstart\n\nThe typical command for running the pipeline is as follows:\n\n```bash\nnextflow run nf-core/sarek -r <VERSION> -profile <PROFILE> --input ./samplesheet.csv --outdir ./results --genome GATK.GRCh38 --tools <TOOLS>\n```\n\n`-r <VERSION>` is optional but strongly recommended for reproducibility and should match the latest version.\n\n`-profile <PROFILE>` is mandatory and should reflect either your own institutional profile or any pipeline profile specified in the profile section.\n\nThis documentation imply that any `nextflow run nf-core/sarek` command is run with the appropriate `-r` and `-profile` commands.\n\nThis will launch the pipeline and perform variant calling with the tools specified in `--tools`, see the parameter section for details on variant calling tools.\nIn the above example the pipeline runs with the `docker` configuration profile. See below for more information about profiles.\n\nNote that the pipeline will create the following files in your working directory:\n\n```bash\nwork # Directory containing the nextflow working files\n<OUTDIR> # Finished results in specified location (defined with --outdir)\n.nextflow_log # Log file from Nextflow"
+ },
+ {
+  "chunk_id": "bcftools_manual#h007",
+  "kind": "paraphrase",
+  "doc": "Convert 23andme results into VCF",
+  "section": "COMMANDS AND OPTIONS",
+  "text": "Convert 23andme results into VCF — COMMANDS AND OPTIONS\n-R, --regions-file FILE::\n Regions can be specified either on command line or in a VCF, BED, or\n tab-delimited file (the default). The columns of the tab-delimited file\n can contain either positions (two-column format: CHROM, POS) or intervals\n (three-column format: CHROM, BEG, END), but not both. Positions are 1-based\n and inclusive. The columns of the tab-delimited BED file are also\n CHROM, POS and END (trailing columns are ignored), but coordinates\n are 0-based, half-open. To indicate that a file be treated as BED rather\n than the 1-based tab-delimited file, the file must have the \".bed\" or\n \".bed.gz\" suffix (case-insensitive). Uncompressed files are stored in\n memory, while bgzip-compressed and tabix-indexed region files are streamed.\n Note that sequence names must match exactly, \"chr20\" is not the same as\n \"20\". Also note that chromosome ordering in FILE will be respected,\n the VCF will be processed in the order in which chromosomes first appear\n in FILE. However, within chromosomes, the VCF will always be\n processed in ascending genomic coordinate order no matter what order they\n appear in FILE. Note that overlapping regions in FILE can result in\n duplicated out of order positions in the output.\n This option requires indexed VCF/BCF files. Note that -R cannot be used\n in combination with -r."
+ },
+ {
+  "chunk_id": "sarek_usage#h015",
+  "kind": "uk_cross",
+  "doc": "Introduction",
+  "section": "Other nextflow hidden files, eg. history of pipeline runs and old logs. > Input: Sample sheet configurations > Start with variant calling (`--step variant_calling`) > Full samplesheet",
+  "text": "Introduction — Other nextflow hidden files, eg. history of pipeline runs and old logs. > Input: Sample sheet configurations > Start with variant calling (`--step variant_calling`) > Full samplesheet\n#### Full samplesheet\n\nIn this example, all possible columns are used including the `sex` and `status` information per patient:\n\n```bash\npatient,sex,status,sample,cram,crai\npatient1,XX,0,normal_sample,test_mapped.cram,test_mapped.cram.crai\npatient1,XX,1,tumor_sample,test2_mapped.cram,test2_mapped.cram.crai\npatient1,XX,1,relapse_sample,test3_mapped.cram,test3_mapped.cram.crai\n```\n\n### Start with annotation (`--step annotate`)\n\nFor starting from the annotation step, the CSV file must contain at least the columns `patient`, `sample`, `vcf`.\n\nAs Sarek will use bgzip and tabix to compress and index the annotated VCF files, it expects the input VCF files to be sorted and compressed.\n\nExample:\n\n```bash\npatient,sample,vcf\npatient1,test_sample,test.vcf.gz\n```\n\nThe Sarek-generated CSV file is stored under `results/csv/variantcalled.csv` and will automatically be used as an input when specifying the parameter `--step annotation`."
+ },
+ {
+  "chunk_id": "sarek_output#h015",
+  "kind": "keyword",
+  "doc": "sarek_output",
+  "section": "Preprocessing > Mark Duplicates > GATK MarkDuplicates (Spark)",
+  "text": "sarek_output — Preprocessing > Mark Duplicates > GATK MarkDuplicates (Spark)\n#### GATK MarkDuplicates (Spark)\n\nBy default, Sarek will use GATK MarkDuplicates.\n\nTo use the corresponding spark implementation `GATK MarkDuplicatesSpark`, please specify `--use_gatk_spark markduplicates`. The resulting files are converted to CRAM with either samtools, when GATK MarkDuplicates is used, or, implicitly, by GATK MarkDuplicatesSpark.\n\nThe resulting CRAM files are delivered to the users.\n\n Output files for all samples\n\n**Output directory: `{outdir}/preprocessing/markduplicates/<sample>/`**\n\n- `<sample>.md.cram` and `<sample>.md.cram.crai`\n - CRAM file and index\n- if `--save_output_as_bam`:\n - `<sample>.md.bam` and `<sample>.md.bam.bai`"
+ },
+ {
+  "chunk_id": "gatk_cnv_germline#h002",
+  "kind": "keyword",
+  "doc": "gatk_cnv_germline",
+  "section": "Which WDL should you use? > Required parameters in the germline cohort workflow",
+  "text": "gatk_cnv_germline — Which WDL should you use? > Required parameters in the germline cohort workflow\n#### Required parameters in the germline cohort workflow\n\nThe reference used must be the same between PoN and case samples.\n\n- ``CNVGermlineCohortWorkflow.cohort_entity_id`` -- Name of the cohort. Will be used as a prefix for output filenames.\n- ``CNVGermlineCohortWorkflow.contig_ploidy_priors`` -- TSV file containing prior probabilities for the ploidy of each contig, with column headers: CONTIG_NAME, PLOIDY_PRIOR_0, PLOIDY_PRIOR_1, ...\n- ``CNVGermlineCohortWorkflow.gatk_docker`` -- GATK Docker image (e.g., ``broadinstitute/gatk:latest``).\n- ``CNVGermlineCohortWorkflow.intervals`` -- Picard or GATK-style interval list. For WGS, this should typically only include the chromosomes of interest.\n- ``CNVGermlineCohortWorkflow.normal_bais`` -- List of BAI files. This list must correspond to `normal_bams`. For example, `[\"Sample1.bai\", \"Sample2.bai\"]`.\n- ``CNVGermlineCohortWorkflow.normal_bams`` -- List of BAM files. This list must correspond to `normal_bais`. For example, `[\"Sample1.bam\", \"Sample2.bam\"]`.\n- ``CNVGermlineCohortWorkflow.num_intervals_per_scatter`` -- Number of intervals (i.e., targets or bins) in each scatter for GermlineCNVCaller. If total number of intervals is not divisible by the value provided, the last scatter will contain the remainder.\n- ``CNVGermlineCohortWorkflow.ref_fasta_dict`` -- Path to reference dict file.\n- ``CNVGermlineCohortWorkflow.ref_fasta_fai`` -- Path to reference fasta fai file.\n- ``CNVGermlineCohortWorkflow.ref_fasta`` -- Path to reference fasta file.\n- ``CNVGermlineCohortWorkflow.maximum_number_events_per_sample`` -- Maximum number of events threshold for doing sample QC (recommended for WES is ~100)\n\nIn additional, there are optional workflow-level and task-level parameters that may be set by advanced users; for example:"
+ },
+ {
+  "chunk_id": "sarek_output#h066",
+  "kind": "paraphrase",
+  "doc": "sarek_output",
+  "section": "Variant annotation > BCFtools annotate > NGSCheckMate",
+  "text": "sarek_output — Variant annotation > BCFtools annotate > NGSCheckMate\n#### NGSCheckMate\n\nNGSCheckMate is a tool for determining whether samples come from the same genetic individual, using a set of commonly heterozygous SNPs. This enables for the detecting of sample mislabelling events. The output includes a text file indicating whether samples have matched or not according to the algorithm, as well as a dendrogram visualising these results.\n\n Output files for all samples\n\n**Output directory: `{outdir}/reports/ngscheckmate/`**\n\n- `ngscheckmate_all.txt`\n - Tab delimited text file listing all the comparisons made, whether they were considered as a match, with the correlation and a normalised depth.\n- `ngscheckmate_matched.txt`\n - Tab delimited text file listing only the comparison that were considered to match, with the correlation and a normalised depth.\n- `ngscheckmate_output_corr_matrix.txt`\n - Tab delimited text file containing a matrix of all correlations for all comparisons made.\n- `vcfs/<sample>.vcf.gz`\n - Set of vcf files for each sample. Contains calls for the set of SNP positions used to calculate sample relatedness."
+ },
+ {
+  "chunk_id": "sarek_vc_theory#h002",
+  "kind": "paraphrase",
+  "doc": "Calling Variants on Sequencing Data",
+  "section": "Calling Variants on Sequencing Data > Marking Duplicates",
+  "text": "Calling Variants on Sequencing Data — Calling Variants on Sequencing Data > Marking Duplicates\n## Marking Duplicates\n\nDuplicates are non-independent measurements of a sequence fragment.\n\nSince DNA fragmentation is theoretically random, reads originating from different fragments provide independent information. An algorithm can use this information to assess the support for different alleles.\nWhen these measurements however are not independent, the raw data might provide a biased support towards a specific allele.\n\nDuplicates can be caused by PCR during library preparation (library duplicates) or might occur during sequencing, when the instrument is reading the signal from different clusters (as in Illumina short read sequencing). These latter are called \"optical duplicates\".\n\nA specific step called \"marking duplicates\" identifies these identical pairs using their orientation and 5' position (before any clipping), which will be assumed to be coming from the same input DNA template: one representative pair is then chosen based on quality scores and other criteria, while the other ones are marked.\nMarked reads are then ignored in the following steps."
+ },
+ {
+  "chunk_id": "gatk_mutect2_wdl#h013",
+  "kind": "paraphrase",
+  "doc": "gatk_mutect2_wdl",
+  "section": "Functional annotation (Funcotator) > mutect2-replicate-validation",
+  "text": "gatk_mutect2_wdl — Functional annotation (Funcotator) > mutect2-replicate-validation\n#### mutect2-replicate-validation\n\n*This script is usually used by developers and evaluators only.*\n\nRecommended default values (where possible) are found in ``mutect2-replicate-validation_template.json``\n\n- ``Mutect2ReplicateValidation.gatk4_jar`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.is_run_orientation_bias_filter`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.Mutect2.onco_ds_tar_gz`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.scatter_count`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.intervals`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.is_run_oncotator`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.preemptible_attempts`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.oncotator_docker`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.pon`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.pon_index`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.gnomad`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.gnomad_index`` -- Please see parameter description above in the mutect2_multi_sample."
+ },
+ {
+  "chunk_id": "rare_output#h015",
+  "kind": "uk_cross",
+  "doc": "rare_output",
+  "section": "Pipeline overview > DeepVariant",
+  "text": "rare_output — Pipeline overview > DeepVariant\n#### DeepVariant\n\nDeepVariant is a deep learning-based variant caller that takes aligned reads, produces pileup image tensors from them, classifies each tensor using a convolutional neural network and finally reports the results in a standard VCF or gVCF file. Variant calls generated by DeepVariant are joint genotyped using GLnexus, and then normalized using bcftools norm. Only the normalized vcfs are placed in the output folder by default.\n\n**NB**: In case you are running the separate mitochondrial analysis, mitochondrial calls are filtered from the normalized vcfs before they are published using GATK SelectVariants.\n\n Output files\n\n- `call_snv/genome`\n - `<case_id>_snv.vcf.gz`: normalized vcf file containing no MT variants.\n - `<case_id>_snv.vcf.gz.tbi`: index of the vcf file containing no MT variants."
+ },
+ {
+  "chunk_id": "rare_output#h006",
+  "kind": "paraphrase",
+  "doc": "rare_output",
+  "section": "Pipeline overview > Sentieon Dedup",
+  "text": "rare_output — Pipeline overview > Sentieon Dedup\n##### Sentieon Dedup\n\nSentieon Dedup is the algorithm used by Sentieon's driver to remove duplicate reads. Only reads aligned by Sentieon's implementation of bwa are processed by this algorithm. By default, alignment files are published in bam format. To publish cram files instead, use `--save_all_mapped_as_cram` for the full (unfiltered) alignment, or `--save_noalt_mapped_as_cram` for the alt-filtered alignment (requires `--exclude_alt`).\n\n Output files from Alignment\n\n- `{outputdir}/alignment/`\n - `*_sorted_md.bam|*_sorted_md.cram`: Full (unfiltered) alignment file. Published as bam by default, or as cram when `--save_all_mapped_as_cram` is set.\n - `*_sorted_md_primary_contigs.cram`: Alt-filtered alignment file in cram format. Published when `--save_noalt_mapped_as_cram` is set (requires `--exclude_alt`). Contains only primary chromosomes (GRCh37: 1-22,X,Y,MT / GRCh38: chr1-chr22,chrX,chrY,chrM).\n - `*.bai|*.crai`: Index of the corresponding bam/cram file.\n - `*.metrics`: Text file containing the dedup metrics."
+ },
+ {
+  "chunk_id": "sarek_vc_interp#h004",
+  "kind": "keyword",
+  "doc": "Interpretation",
+  "section": "Interpretation > Finding Causative Variants",
+  "text": "Interpretation — Interpretation > Finding Causative Variants\n```bash\nzcat joint_germline_recalibrated_snpEff.ann.vcf.gz | grep PASS | grep HIGH | perl -nae 'if($F[10]=~/0\\/0/ && $F[9]=~/0\\/1/){print $_;}'\n```\n\nThis will results in the following list of variants:\n\n```bash\nchr21 44339194 rs769070783 T C 57.91 PASS AC=1;AF=0.25;AN=4;BaseQRankSum=-2.373;DB;DP=84;ExcessHet=0;FS=0;MLEAC=1;MLEAF=0.25;MQ=60;MQRankSum=0;POSITIVE_TRAIN_SITE;QD=3.41;ReadPosRankSum=-0.283;SOR=0.859;VQSLOD=198.85;culprit=FS;ANN=C|start_lost|HIGH|CFAP410|ENSG00000160226|transcript|ENST00000397956.7|protein_coding|1/7|c.1A>G|p.Met1?|200/1634|1/1128|1/375||,C|upstream_gene_variant|MODIFIER|ENSG00000232969|ENSG00000232969|transcript|ENST00000426029.1|pseudogene||n.-182T>C|||||182|,C|downstream_gene_variant|MODIFIER|ENSG00000184441|ENSG00000184441|transcript|ENST00000448927.1|pseudogene||n.*3343T>C|||||3343|;LOF=(CFAP410|ENSG00000160226|1|1.00) GT:AD:DP:GQ:PL 0/1:8,9:17:66:66,0,71 0/0:67,0:67:99:0,118,999\nchr21 44406660 rs139273180 C T 35.91 PASS AC=1;AF=0.25;AN=4;BaseQRankSum=-4.294;DB;DP=127;ExcessHet=0;FS=5.057;MLEAC=1;MLEAF=0.25;MQ=60;MQRankSum=0;POSITIVE_TRAIN_SITE;QD=0.51;ReadPosRankSum=0.526;SOR=1.09;VQSLOD=269.00;culprit=FS;ANN=T|stop_gained|HIGH|TRPM2|ENSG00000142185|transcript|ENST00000397932.6|protein_coding|19/33|c.2857C>T|p.Gln953*|2870/5216|2857/4662|953/1553||;LOF=(TRPM2|ENSG00000142185|1|1.00);NMD=(TRPM2|ENSG00000142185|1|1.00) GT:AD:DP:GQ:PL 0/1:48,22:71:44:44,0,950 0/0:51,0:51:99:0,100,899\nchr21 45989090 . C T 43.91 PASS AC=1;AF=0.25;AN=4;BaseQRankSum=2.65;DP=89;ExcessHet=0;FS=4.359;MLEAC=1;MLEAF=0.25;MQ=60;MQRankSum=0;QD=2.58;ReadPosRankSum=-1.071;SOR=1.863;VQSLOD=240.19;culprit=FS;ANN=T|stop_gained|HIGH|COL6A1|ENSG00000142156|transcript|ENST00000361866.8|protein_coding|9/35|c.811C>T|p.Arg271*|892/4203|811/3087|271/1028||;LOF=(COL6A1|ENSG00000142156|1|1.00);NMD=(COL6A1|ENSG00000142156|1|1.00) GT:AD:DP:GQ:PL 0/1:10,7:18:51:52,0,51 0/0:70,0:70:99:0,120,1800\n```\n\nIf we search them one by one, we will see that one in particular occurs on a gene (COL6A1) which was previously reported as constrained for loss of function variants in the database version 2.1:\n\nwhile the version 4.0 of the database, resulting from almost one million samples, reports the gene as _not_ constrained:\n\nWe can search for this variant in ClinVar by using an advanced search and limiting our search to both chromosome and base position, like indicated in figure below:\n\nThis will return two results: one deletion and one single nucleotide variant C>T corresponding to the one we called in the case individual:\n\nIf we click on the nomenclature of the variant we found, we will be able to access the data provided with the submission. In this page we can see that multiple submitters have provided an interpretation for this nonsense mutation (2 stars).\nUnder the section \"Submitted interpretations and evidence\" we can gather additional data on the clinical information that led the submitters to classify the variant as \"pathogenic\"."
+ },
+ {
+  "chunk_id": "gatk_docker#h009",
+  "kind": "paraphrase",
+  "doc": "REPLACE VALUE OF GITHUB_TAG WITH DESIRED VERSION",
+  "section": "Same as above except do not run the unit tests. > Run GATK4 gradle tests in existing latest tagged docker image",
+  "text": "REPLACE VALUE OF GITHUB_TAG WITH DESIRED VERSION — Same as above except do not run the unit tests. > Run GATK4 gradle tests in existing latest tagged docker image\n#### Run GATK4 gradle tests in existing latest tagged docker image\n\n*Note that the unit tests are run during a build of the Dockerfile*\n\nCurrently, this is a bit manual.\n\n```bash\n# bash is the default command for the docker image.\nsudo docker pull broadinstitute/gatk\nsudo docker run -i -t broadinstitute/gatk:latest"
+ },
+ {
+  "chunk_id": "gatk_docker#h003",
+  "kind": "paraphrase",
+  "doc": "REPLACE VALUE OF GITHUB_TAG WITH DESIRED VERSION",
+  "section": "REPLACE VALUE OF GITHUB_TAG WITH DESIRED VERSION",
+  "text": "REPLACE VALUE OF GITHUB_TAG WITH DESIRED VERSION — REPLACE VALUE OF GITHUB_TAG WITH DESIRED VERSION\n# REPLACE VALUE OF GITHUB_TAG WITH DESIRED VERSION\nexport GITHUB_TAG=1.0.0.0-alpha1.2.1\n\n# REPLACE with the directory where you'd like to clone the repo\nexport STAGING_DIR=~/tmp/tmp_build_docker_image/\n\nsudo bash build_docker.sh -e ${GITHUB_TAG} -p -d ${STAGING_DIR}\n```\n\n#### Create GATK4 docker image and upload into GCR\n\nThis will attempt to build the docker remotely using google cloud build and tag it with the following this format: `us.gcr.io/broad-dsde-methods/broad-gatk-snapshots/gatk-remote-builds:<USERNAME>-<GITHUB_TAG>-<GIT_HASH>`\n\nFrom this directory, run:\n\n```bash"
+ },
+ {
+  "chunk_id": "gatk_readme#h020",
+  "kind": "keyword",
+  "doc": "gatk_readme",
+  "section": "Running GATK4 > Bash Command-line Tab Completion (BETA)",
+  "text": "gatk_readme — Running GATK4 > Bash Command-line Tab Completion (BETA)\n#### Bash Command-line Tab Completion (BETA)\n\n* A tab completion bootstrap file for the bash shell is now included in releases. This file allows the command-line shell to complete GATK run options in a manner equivalent to built-in command-line tools (e.g. grep).\n\n* This tab completion functionality has only been tested in the bash shell, and is released as a beta feature.\n\n* To enable tab completion for the GATK, open a terminal window and source the included tab completion script:\n\n```\nsource gatk-completion.sh\n```\n\n* Sourcing this file will allow you to press the tab key twice to get a list of options available to add to your current GATK command. By default you will have to source this file once in each command-line session, then for the rest of the session the GATK tab completion functionality will be available. GATK tab completion will be available in that current command-line session only.\n\n* Note that you must have already started typing an invocation of the GATK (using gatk) for tab completion to initiate:\n\n```\n./gatk <TAB><TAB>\n```\n\n* We recommend adding a line to your bash settings file (i.e. your ~/.bashrc file) that sources the tab completion script. To add this line to your bash settings / bashrc file you can use the following command:\n\n```\necho \"source <PATH_TO>/gatk-completion.sh\" >> ~/.bashrc\n```\n\n* Where ```<PATH_TO>``` is the fully qualified path to the ```gatk-completion.sh``` script."
+ },
+ {
+  "chunk_id": "sarek_vc_sarek#h007",
+  "kind": "paraphrase",
+  "doc": "Using Sarek for Variant Calling",
+  "section": "Using Sarek for Variant Calling > Running Sarek Germline > Filtering parameters",
+  "text": "Using Sarek for Variant Calling — Using Sarek for Variant Calling > Running Sarek Germline > Filtering parameters\n### Filtering parameters\n\nAs we mentioned earlier, we will be using the VQSR filtering tool once the variants have been called.\nHowever, this tool should be used to take advantage of larger amount of variant annotations and improve filtering: when a small tutorial dataset is used, some of the annotations will not have sufficient data or might even have no variance.\nIn order to account for this, we have to change the filtering options and limit this approach to a subset of variant annotations.\n\nWe can do this by editing the process descriptors for the Sarek modules running VQSR for both single nucleotide variants and insertion/deletions.\n\n```groovy\nprocess {\n withName: 'VARIANTRECALIBRATOR_INDEL' {\n ext.prefix = { \"${meta.id}_INDEL\" }\n ext.args = \"-an QD -an FS -an SOR -an DP -mode INDEL\"\n publishDir = [\n enabled: false\n ]\n }\n\n withName: 'VARIANTRECALIBRATOR_SNP' {\n ext.prefix = { \"${meta.id}_SNP\" }\n ext.args = \"-an QD -an MQ -an FS -an SOR -mode SNP\"\n publishDir = [\n enabled: false\n ]\n }\n}\n```"
+ },
+ {
+  "chunk_id": "gatk_funco_tutorial#h032",
+  "kind": "paraphrase",
+  "doc": "Required and defaults to false.",
+  "section": "The Name or 0-based index of the column containing the end position for each row > 1.3.2 - Annotations for Pre-Packaged Data Sources > 1.5.1 - Funcotator / Oncotator Feature Comparison",
+  "text": "Required and defaults to false. — The Name or 0-based index of the column containing the end position for each row > 1.3.2 - Annotations for Pre-Packaged Data Sources > 1.5.1 - Funcotator / Oncotator Feature Comparison\n#### 1.5.1 - Funcotator / Oncotator Feature Comparison\n\n Funcotator Oncotator Notes\n Override values for annotations Yes Yes\n Default values for annotations Yes Yes\n VCF input Yes Yes\n VCF output Yes Yes Annotation format b/w Funcotator and Oncotator differ.\n MAF input No Yes\n MAF output Yes Yes\n TSV/maflite input No Yes\n Simple TSV output No Yes\n Removing datasources does not require developer Yes Yes\n hg38 support Yes No\n Cloud datasources Yes No All data sources supported\n Transcript override list Yes Yes\n Default config speed somatic (muts/min) (hg19)\n Default config speed germline (muts/min) (hg19) A very long time....\n Default config speed somatic (muts/min) (hg38) N/A\n Default config speed germline (muts/min) (hg38) N/A\n Documentation Tutorial; Specifications forum post; inclusion in workshop materials Minimal support in forum\n Manuscript Planned Yes\n HGVS support No Yes\n BigWig datasource support No Linux only"
+ },
+ {
+  "chunk_id": "sarek_vc_interp#h000",
+  "kind": "paraphrase",
+  "doc": "Interpretation",
+  "section": "Interpretation",
+  "text": "Interpretation — Interpretation\n# Interpretation\n\nOnce variants have been called, the following steps depend on the type of study and the experimental design.\nFor large population studies, like case-control association analyses, an appropriate large-scale statistical approach will be chosen and different statistical or analytical tools will be used to carry out the tertiary analyses.\n\nWhen only a few individuals are involved, and in particular in clinical contexts, the goal will be to interpret the findings in light of different sources of information and pinpoint a causative variant for the investigated phenotype."
+ },
+ {
+  "chunk_id": "rare_output#h032",
+  "kind": "paraphrase",
+  "doc": "rare_output",
+  "section": "Pipeline overview > Mitochondrial analysis > Alignment and variant calling > vcfanno",
+  "text": "rare_output — Pipeline overview > Mitochondrial analysis > Alignment and variant calling > vcfanno\n##### vcfanno\n\nvcfanno allows you to quickly annotate your VCF with any number of INFO fields from any number of VCFs. It uses a simple conf file to allow the user to specify the source annotation files and fields and how they will be added to the info of the query VCF. Values are pulled by name from the INFO field with special-cases of ID and FILTER to pull from those VCF columns. The output files are not published in the output folder, and is passed to vep for further annotation.\n\nWe recommend using vcfanno to annotate SNVs with precomputed CADD scores (files can be downloaded from here)."
+ },
+ {
+  "chunk_id": "gatk_funco_spec#h008",
+  "kind": "uk_cross",
+  "doc": "gatk_funco_spec",
+  "section": "1.1 Annotations for Pre-Packaged Data Sources > 1.1.1 - Gencode Annotation Specification",
+  "text": "gatk_funco_spec — 1.1 Annotations for Pre-Packaged Data Sources > 1.1.1 - Gencode Annotation Specification\n* _**Insertions**_\n `c.[POSITION OF BASE PRIOR TO INSERTION]_[POSITION OF BASE AFTER INSERTION]ins[BASES INSERTED]`\n E.g.:\n `c.2018_2019insAA`\n This indicates that the bases AA were inserted between bases 2018 and 2019 in the transcript associated with this variant allele.\n\n* _**Deletions of One Base**_\n `c.[POSITION OF BASE DELETED]del[BASE DELETED]`\n E.g.:\n `c2018delT`\n This indicates that the base T was deleted at position 2018 in the transcript associated with this variant allele.\n\n* _**Deletions of Multiple Bases**_\n `c.[POSITION OF FIRST BASE DELETED]_[POSITION OF LAST BASE DELETED]del[BASES DELETED]`\n E.g.:\n `c2018_2022delTTCAG`\n This indicates that the bases TTCAG were deleted from position 2018 to position 2022 in the transcript associated with this variant allele.\n\n* _**SNPs**_\n `c.[POSITION OF BASE CHANGED]>[NEW BASE]`\n E.g.:\n `c.1507T>G`\n This indicates that the base T was changed to G at position 1507 in the transcript associated with this variant allele.\n\n* _**MNPs (including DNPs, TNPs)**_\n `c.[POSITION OF FIRST BASE CHANGED]_[POSITION OF LAST BASE CHANGED]>[NEW BASES]`\n E.g.:\n `c.12899_12900AG>TA`\n This indicates that the bases AG were changed to TA from position 12899 to position 12900 in the transcript associated with this variant allele.\n\n* _**INTRONIC Variants**_\n For variants occuring in INTRONs, the cDNA string position indicates the offset from the exon boundary for the start of the variant. The whole string takes the form:\n `c.e[EXON NUMBER][+|-][BASES FROM EXON][REF ALLELE]>[ALT ALLELE]`\n E.g.:\n `c.e81-4TAA>A`\n This indicates that the bases TAA were changed to A starting four bases before exon 81 in the transcript associated with this variant allele."
+ },
+ {
+  "chunk_id": "gatk_pathseq_wdl#h002",
+  "kind": "keyword",
+  "doc": "gatk_pathseq_wdl",
+  "section": "Parameter descriptions",
+  "text": "gatk_pathseq_wdl — Parameter descriptions\n- ``PathSeqPipeline.ignored_alignment_contigs`` -- Array of contig names that will be ignored when filtering pre-aligned reads (see `is_host_aligned` above), e.g. \"chrEBV\".\n- ``PathSeqPipeline.PathSeqFilter.min_clipped_read_length`` -- Minimum read length after quality trimming. Increasing may increase microbial classification specificity but may reduce sensitivity (default 31)\n- ``PathSeqPipeline.PathSeqFilter.filter_duplicates`` -- If true, reads with identical sequences will be filtered (default true)\n- ``PathSeqPipeline.PathSeqFilter.skip_quality_filters`` -- If true, skips quality filtering steps (default false)\n- ``PathSeqPipeline.PathSeqFilter.skip_pre_bwa_repartition`` -- Advanced tuning parameter; recommended if the sample contains a large number (e.g. >10M) microbial reads (default false)\n- ``PathSeqPipeline.PathSeqFilter.filter_bwa_seed_length`` -- Sets host alignment MEM length. Reducing this value increases host read detection sensitivity but is slower (default 19)\n- ``PathSeqPipeline.PathSeqFilter.host_min_identity`` -- Minimum identity score for reads to be classified as host (default 30)\n- ``PathSeqPipeline.PathSeqScore.min_score_identity`` -- Fraction of bases aligned to count a microbe alignment in abundance scoring (default 0.9)"
+ },
+ {
+  "chunk_id": "gatk_funco_spec#h003",
+  "kind": "paraphrase",
+  "doc": "gatk_funco_spec",
+  "section": "1.1 Annotations for Pre-Packaged Data Sources > 1.1.1 - Gencode Annotation Specification",
+  "text": "gatk_funco_spec — 1.1 Annotations for Pre-Packaged Data Sources > 1.1.1 - Gencode Annotation Specification\n* `THREE_PRIME_UTR`\n Variant is on the 3'UTR for the chosen transcript\n Only valid for UTRs.\n\n* `IGR`\n Intergenic region. Does not overlap any transcript.\n Only valid for IGRs.\n\n* `FIVE_PRIME_FLANK`\n The variant is upstream of the chosen transcript\n Only valid for IGRs.\n\n* `THREE_PRIME_FLANK`\n The variant is downstream of the chosen transcript\n Only valid for IGRs.\n\n* `MISSENSE`\n The point mutation alters the protein structure by one amino acid.\n Can occur in Coding regions or Introns.\n\n* `NONSENSE`\n A premature stop codon is created by the variant.\n Can occur in Coding regions or Introns.\n\n* `NONSTOP`\n Variant removes stop codon.\n Can occur in Coding regions or Introns.\n\n* `SILENT`\n Variant is in coding region of the chosen transcript, but protein structure is identical.\n Can occur in Coding regions or Introns.\n\n* `SPLICE_SITE`\n The variant is within a configurable number of bases of a splice site. See the secondary classification to determine if it lies on the exon or intron side.\n Can occur in Coding regions or Introns.\n\n* `IN_FRAME_DEL`\n Deletion that keeps the sequence in frame.\n Can occur in Coding regions or Introns.\n\n* `IN_FRAME_INS`\n Insertion that keeps the sequence in frame.\n Can occur in Coding regions or Introns.\n\n* `FRAME_SHIFT_INS`\n Insertion that moves the coding sequence out of frame.\n Can occur in Coding regions or Introns.\n\n* `FRAME_SHIFT_DEL`\n Deletion that moves the sequence out of frame.\n Can occur in Coding regions or Introns.\n\n* `START_CODON_SNP`\n Point mutation that overlaps the start codon.\n Can occur in Coding regions."
+ },
+ {
+  "chunk_id": "int_sparql#h006",
+  "kind": "uk_internal",
+  "doc": "Результат 2. SPARQL-запити та їхні результати",
+  "section": "Тип: OPTIONAL (варіанти без значущості не зникають з відповіді) > 6. `q06_property_path_relatives.rq` — property path (|, ^, +)",
+  "text": "Результат 2. SPARQL-запити та їхні результати — Тип: OPTIONAL (варіанти без значущості не зникають з відповіді) > 6. `q06_property_path_relatives.rq` — property path (|, ^, +)\n## 6. `q06_property_path_relatives.rq` — property path (|, ^, +)\n\n**CQ:** CQ14, CQ16 — З кого починати тестування; що, якщо найближчий родич недоступний?\n\n```sparql\n# Тип: property path ( ^ інверсія, + один чи більше кроків, | альтернатива, / послідовність )\nSELECT DISTINCT ?name\nWHERE {\n dkh:Olena (dkh:hasParent|dkh:hasChild|dkh:hasSibling|^dkh:hasParent|^dkh:hasChild)+ ?r .\n ?r rdfs:label ?name .\n FILTER (?r != dkh:Olena)\n}\nORDER BY ?name\n```\n\n**Результат:**\n\n| name |\n\n| Andrii |\n| Halyna |\n| Iryna |\n| Maria |\n| Marta |\n| Petro |\n| Sofiia |\n\n**Час:** 157.03 мс\n\n**Інтерпретація:** Шлях (hasParent|hasChild|hasSibling|^hasParent|^hasChild)+ обходить родовід транзитивно: від пробанда Olena досяжні 7 осіб (Andrii, Halyna, Iryna, Maria, Marta, Petro, Sofiia). Один запит замінює вручну перелічені рівні зв'язків; зайняв найбільше часу (~100+ мс) через обчислення замикання."
+ },
+ {
+  "chunk_id": "int_onto_eval#h002",
+  "kind": "uk_internal",
+  "doc": "Порівняння з чернеткою LLM, OntoClean і CQ-тести (результат 5)",
+  "section": "Порівняння з чернеткою LLM, OntoClean і CQ-тести (результат 5) > 1. Таблиця порівняння",
+  "text": "Порівняння з чернеткою LLM, OntoClean і CQ-тести (результат 5) — Порівняння з чернеткою LLM, OntoClean і CQ-тести (результат 5) > 1. Таблиця порівняння\nЗауваження до таблиці. (0) Середня кількість властивостей рахується для предметних індивідів (без допоміжних індивідів шаблонів ситуацій). (1) Збіг рахується за нормалізованою англійською назвою; різні назви тієї самої властивості (наприклад, `has_age` проти `has age (years)`) бачаться як «різні». (2) «Пропуски» значною мірою — класи ситуацій і метаонтології (Event, State, Action, Sensor, SituationTemplate…), яких у завданні LLM не було; чесніше читати пропуски предметних класів: низькі пороги й означені класи (`low QD variant`, `high FS SNP`, `adult/minor relative`) — вони потрібні для виведення. (3) «Зайві» класи чернетки — переважно (122 з 127) усі вузли таксономії ЛР5, перенесені без відбору."
+ },
+ {
+  "chunk_id": "int_sparql#h000",
+  "kind": "uk_internal",
+  "doc": "Результат 2. SPARQL-запити та їхні результати",
+  "section": "Результат 2. SPARQL-запити та їхні результати",
+  "text": "Результат 2. SPARQL-запити та їхні результати — Результат 2. SPARQL-запити та їхні результати\n# Результат 2. SPARQL-запити та їхні результати\n\nСховище: pyoxigraph (локальне, персистентне), іменовані графи tbox/abox/inferred/links; запити виконуються над об'єднанням графів. Час — медіана 5 запусків на локальній машині (малий набір, тому абсолютні числа мало що кажуть). Результати згенеровано `scripts/run_queries.py`.\n\n## Покриття вимог\n\n| Вимога | Запит |\n\n| SELECT | q01, q08 |\n| ASK | q02 |\n| CONSTRUCT | q03 |\n| агрегація | q04, q07 |\n| OPTIONAL | q05, q07 |\n| FILTER | q01, q03, q05, q08 |\n| property path | q06, q07 |\n| federated (SERVICE → Wikidata-дзеркало) | q09 |"
+ },
+ {
+  "chunk_id": "int_cypher#h001",
+  "kind": "uk_internal",
+  "doc": "Результат 3. Запити Cypher та їхні результати",
+  "section": "Результат 3. Запити Cypher та їхні результати > 1. `c01_snp_low_qd.cypher` — MATCH, WHERE, ORDER BY",
+  "text": "Результат 3. Запити Cypher та їхні результати — Результат 3. Запити Cypher та їхні результати > 1. `c01_snp_low_qd.cypher` — MATCH, WHERE, ORDER BY\n## 1. `c01_snp_low_qd.cypher` — MATCH, WHERE, ORDER BY\n\n**CQ:** CQ01 — За якого QD SNP-варіант отримує прапорець LowQD?\n\n```cypher\n// CQ01: За якого QD SNP-варіант отримує прапорець LowQD? -> SNP із QD < 2.\n// Конструкції: MATCH з міткою та властивістю, фільтр WHERE, сортування.\nMATCH (v:Variant {type: 'SNP'})-[:HAS_ANNOTATION]->(a:Annotation {name: 'QD'})\nWHERE a.value < 2.0\nRETURN v.id AS variant, a.value AS qd\nORDER BY qd, variant\n```\n\n**Результат:**\n\n| variant | qd |\n\n| VAR-102 | 1.1 |\n| VAR-101 | 1.2 |\n| VAR-151 | 1.2 |\n| VAR-002 | 1.5 |\n| VAR-111 | 1.5 |\n\n**Час:** 0.43 мс\n\n**Інтерпретація:** 5 SNP-варіантів мають QD < 2 (1.1–1.5): VAR-102, VAR-101, VAR-151, VAR-002, VAR-111 — ті самі, що дав SPARQL-запит ЛР8 (q01). Варіант із QD = 2.0 не потрапляє (строге «<»)."
+ }
+]

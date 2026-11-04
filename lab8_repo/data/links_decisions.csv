@@ -1,0 +1,14 @@
+﻿our_term,our_iri,wikidata,wikidata_label,property,confidence,decision,label_match_V1,rationale
+gene,dkh:Gene,wd:Q7187,gene,skos:closeMatch,medium-high,accepted,1,"мітки збігаються; тип/опис сторінки не перевірено, тому closeMatch, а не exactMatch"
+breast cancer,dkh:BreastCancer,wd:Q128581,breast cancer,skos:closeMatch,medium-high,accepted,1,мітки збігаються; ми також маємо MeSH Breast Neoplasms (ЛР5) — узгоджується
+ovarian cancer,dkh:OvarianCancer,wd:Q172341,ovarian cancer,skos:closeMatch,medium-high,accepted,1,мітки збігаються; MeSH Ovarian Neoplasms (ЛР5)
+single nucleotide polymorphism,dkh:SNP,wd:Q501128,single-nucleotide polymorphism,skos:closeMatch,medium-high,accepted,1,мітки збігаються з точністю до дефіса
+genetic counseling,dkh:GeneticCounseling,wd:Q1124169,genetic counseling,skos:closeMatch,medium-high,accepted,1,мітки збігаються; MeSH Genetic Counseling (ЛР5)
+exon,dkh:Exon,wd:Q373027,exon,skos:closeMatch,medium,accepted,1,"мітки збігаються; у пошуку є омоніми (прізвища, ExxonMobil) — вибрано запис саме з міткою «exon», тип не перевірено"
+BRCA1,dkh:BRCA1,wd:Q227339,BRCA1,skos:closeMatch,medium,accepted,1,"мітка збігається; у Wikidata ген і білок — окремі елементи, не з'ясовано, який саме Q227339; тому closeMatch, не sameAs"
+BRCA2,dkh:BRCA2,wd:Q17853272,BRCA2,skos:closeMatch,low-medium,accepted,1,"мітка збігається, але є другий кандидат Q421651 «BRCA2 DNA repair associated»; який із двох — ген, не перевірено"
+VCF file,dkh:VCFFile,wd:Q7915770,Variant Call Format,skos:relatedMatch,low,accepted,0,"наш клас — файл у форматі, Wikidata — формат: не еквівалент, лише пов'язане поняття"
+single nucleotide polymorphism,dkh:SNP,wd:Q7391885,SNP array,skos:closeMatch,—,rejected,0,"«SNP array» — технологія (мікрочип) для виявлення SNP, не тип варіанта: мітка іншого поняття"
+pathogenic variant,dkh:PathogenicVariant,wd:Q4836333,BRCA mutation,skos:closeMatch,—,rejected,0,"«BRCA mutation» вужче (лише BRCA), а наш клас — будь-який патогенний варіант; зв'язок хибний за обсягом"
+hereditary cancer,"dkh:(ЛР6, не клас ЛР7)",wd:Q19000660,hereditary breast ovarian cancer,skos:closeMatch,—,rejected,0,"це конкретний синдром (HBOC), вужчий за «спадковий рак»"
+BRCA2,dkh:BRCA2,wd:Q421651,BRCA2 DNA repair associated,skos:closeMatch,—,rejected,0,другий елемент для того ж гена: неоднозначність; без відкритої сторінки (ген чи білок) обрати не можна — залишено перший збіг за точною міткою

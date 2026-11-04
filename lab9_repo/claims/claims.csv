@@ -1,0 +1,23 @@
+﻿id,claim,type,source,level,status,comment
+C01,Граф містить 370 вузлів і 757 зв'язків (≥100 / ≥200),fact,docs/import_log.md,V2,verified,два підрахунки: Cypher count і CSV-файли (test_graph)
+C02,Повторний імпорт (LOAD CSV + MERGE) не змінює кількості вузлів і зв'язків,fact,docs/import_log.md,V2,verified,розбивка за мітками й типами однакова
+C03,6 унікальних обмежень і 6 індексів створені,fact,docs/import_log.md,V2,verified,CALL db.constraints()/db.indexes(); аналог SHOW у Neo4j відсутній у FalkorDB
+C04,"Порушення унікальності (Variant.id, Gene.symbol) відхиляється сервером",fact,docs/import_log.md,V2,verified,повідомлення збережено; кількості після спроби не змінились
+C05,c01: 5 SNP із QD < 2,fact,docs/cypher_results.md,V2,verified,незалежний Python по CSV; збіг з SPARQL ЛР8
+C06,c02/c03/c04/c05/c09 збігаються з незалежним перерахунком,fact,queries/results/manual_verification.json,V2,verified,6 запитів; c05 ще й розібрано вручну на малому підграфі
+C07,Аналіз впливу: зміна QD_lt_2 зачіпає 62 варіанти в 4 генах,fact,docs/cypher_results.md,V2,verified,c09 + незалежний підрахунок
+C08,PageRank: топ-10 збігається зі складом networkx.pagerank,fact,docs/gds_report.md,V2,verified,перетин 10/10; порядок окремих позицій може відрізнятися
+C09,"Louvain дає 17 спільнот, модулярність 0.43",fact,docs/gds_report.md,V1,verified,"networkx, seed 42; не Neo4j GDS; одним прогоном"
+C10,Спільнота №7 — доменно змістовний родинний підграф,hypothesis,docs/gds_report.md,V1,pending,інтерпретація; решта спільнот — переважно артефакти хабів моделі
+C11,PageRank вузлів-типів анотацій відображає важливість показників для знань,hypothesis,docs/gds_report.md,V1,pending,"це наслідок структури моделі (хаб за конструкцією), а не знання про предметну область"
+C12,"Індекс Annotation(name,value) прискорює запит у ≈4–5× (≈15→≈3 мс; точні числа — docs/gds_report.md) на 20 тис. варіантів",fact,docs/gds_report.md,V2,verified,PROFILE: 80 000 → 1145 записів; один рушій і одна машина
+C13,Саме переписування запиту без індексу не прискорює,fact,docs/gds_report.md,V2,verified,15 vs 19 мс — у межах шуму
+C14,toFloat() у FalkorDB повертає float32-точність (1.1 → 1.10000002384186),fact,docs/cypher_results.md,V2,verified,відтворено запитом; обхід round(x*1000)/1000
+C15,text-to-Cypher: 25/27 (r1) і 26/27 (r2) правильних; помилки — E1 (стовпець) і E2 (діалект),fact,llm_log/eval_t2c_*.json,V2,verified,еталони складала та сама система → не V4
+C16,Помилка t20 — діалектна: той самий запит правильний у Neo4j 5,hypothesis,docs/sparql_vs_cypher.md,V1,pending,на Neo4j не запускалось
+C17,Два шари read-only (фільтр + RO_QUERY) блокують запис,fact,docs/evidence/t2c_safety.json,V2,verified,спроби CREATE/DELETE/SET/CALL відхилено; вузлів Hack = 0
+C18,Робота виконана в Neo4j 5 з GDS,fact,—,V1,rejected,виконано у FalkorDB; Louvain — networkx
+C19,Рольова модель Neo4j (reader) перевірена,fact,—,V1,rejected,Neo4j недоступний; описано лише як відповідник
+C20,Дані відображають реальну когорту,fact,scripts/build_csv.py,V1,rejected,"дані синтетичні (когорта ЛР8, seed 42)"
+C21,"SPARQL і Cypher дають однакові результати на 4 з 5 питань, розбіжності P2/P5 пояснено семантикою null/OPTIONAL",fact,docs/sparql_vs_cypher.md,V2,verified,виправлені варіанти збігаються
+C22,`confidence` (0.8/0.95/1.0) відображає достовірність фактів,hypothesis,docs/cq_mapping.md,V1,pending,"значення призначено за категорією походження, не статистична оцінка"

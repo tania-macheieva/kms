@@ -1,0 +1,1 @@
+{"text": "SELECT p.family, count(*) AS call_count FROM fact_variant_call f JOIN dim_pipeline p ON f.pipeline_key = p.pipeline_key GROUP BY p.family ORDER BY p.family"}

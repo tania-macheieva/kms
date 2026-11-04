@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "STATUS: ANSWER\nThe GATK jar is located at `/gatk/gatk.jar` inside the GATK4 docker image [gatk_docker#h002]. The script that builds the GATK4 image remotely with Google Cloud Build is `build_docker_remote.sh` [gatk_docker#h001].", "in_tokens": 1842, "out_tokens": 57, "latency_ms": null}

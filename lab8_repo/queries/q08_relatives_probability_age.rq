@@ -1,0 +1,11 @@
+# CQ11-CQ15: для кожного родича з відомим ступенем - шанс успадкування (з обмежень OWL у TBox), вік, чи можна тестувати (>= мін. віку)
+# Тип: SELECT + JOIN TBox/ABox + FILTER + BIND
+SELECT DISTINCT ?name ?class ?prob ?age ?canTest
+WHERE {
+  ?p dkh:hasAgeYears ?age ; rdfs:label ?name ; a ?class .
+  ?class rdfs:subClassOf ?r .
+  ?r owl:onProperty dkh:hasInheritanceProbability ; owl:hasValue ?prob .
+  dkh:CT-01 dkh:hasMinTestingAge ?min .
+  BIND (IF(?age >= ?min, "так", "ні") AS ?canTest)
+}
+ORDER BY DESC(?prob) ?name

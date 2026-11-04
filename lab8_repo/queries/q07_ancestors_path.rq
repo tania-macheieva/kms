@@ -1,0 +1,10 @@
+# Предки пробанда (транзитивний hasParent+) - ступінь «глибини» у родоводі
+# Тип: property path + агрегація
+SELECT ?ancestorName (COUNT(DISTINCT ?mid) AS ?intermediateGenerations)
+WHERE {
+  dkh:Olena dkh:hasParent+ ?anc .
+  ?anc rdfs:label ?ancestorName .
+  OPTIONAL { dkh:Olena dkh:hasParent+ ?mid . ?mid dkh:hasParent+ ?anc }
+}
+GROUP BY ?ancestorName
+ORDER BY ?ancestorName

@@ -1,0 +1,5 @@
+PROMPT gen_protocol_t2sql_v1 (offline generation of SQL by a blind model run)
+Input file: JSON {"system": "...", "items": [{"id": ..., "user": ...}, ...]}.
+For EACH item behave exactly as the component defined by "system" when it receives the message "user": produce its reply (one SQL SELECT, or 'REFUSE: <reason>').
+Use only the information inside the item. Do NOT run SQL, do NOT open any database or other file, do not use outside knowledge of the data.
+Write a JSON list [{"id": ..., "text": <reply>}, ...] (one entry per item) to the output path given.

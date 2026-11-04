@@ -1,0 +1,33 @@
+@prefix dkh: <http://example.org/dkh/onto#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a sh:ValidationReport ;
+    sh:conforms true ;
+    sh:result [ a sh:ValidationResult ;
+            sh:focusNode dkh:VAR-004 ;
+            sh:resultMessage "Неповний набір анотацій: для жорсткої фільтрації потрібні QD, FS, SOR, MQ." ;
+            sh:resultPath dkh:hasAnnotation ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+            sh:sourceShape _:n312884f2d4984412b7b88587e3cf5102b4 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode dkh:VAR-003 ;
+            sh:resultMessage "Неповний набір анотацій: для жорсткої фільтрації потрібні QD, FS, SOR, MQ." ;
+            sh:resultPath dkh:hasAnnotation ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+            sh:sourceShape _:n312884f2d4984412b7b88587e3cf5102b4 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode dkh:VAR-002 ;
+            sh:resultMessage "Неповний набір анотацій: для жорсткої фільтрації потрібні QD, FS, SOR, MQ." ;
+            sh:resultPath dkh:hasAnnotation ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+            sh:sourceShape _:n312884f2d4984412b7b88587e3cf5102b4 ] .
+
+_:n312884f2d4984412b7b88587e3cf5102b4 sh:message "Неповний набір анотацій: для жорсткої фільтрації потрібні QD, FS, SOR, MQ." ;
+    sh:minCount 4 ;
+    sh:path dkh:hasAnnotation ;
+    sh:severity sh:Warning .
+

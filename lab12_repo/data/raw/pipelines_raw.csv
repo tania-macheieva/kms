@@ -1,0 +1,9 @@
+family,tool,version,valid_from,valid_to,filter_procedure
+GATK,HaplotypeCaller,4.4.0.0,2025-01-01,2025-06-30,hard filtering
+GATK,HaplotypeCaller,4.5.0.0,2025-07-01,2026-02-28,hard filtering
+GATK,HaplotypeCaller,4.6.0.0,2026-03-01,9999-12-31,variant quality score recalibration
+BCFTOOLS,bcftools call,1.18,2025-01-01,2025-09-30,hard filtering
+BCFTOOLS,bcftools call,1.20,2025-10-01,9999-12-31,hard filtering
+STRELKA,Strelka2,2.9.10,2025-01-01,9999-12-31,hard filtering
+DEEPVARIANT,DeepVariant,1.6.1,2025-01-01,2026-01-14,hard filtering
+DEEPVARIANT,DeepVariant,1.8.0,2026-01-15,9999-12-31,hard filtering

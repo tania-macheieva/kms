@@ -1,0 +1,1 @@
+{"text": "SELECT count(*) AS call_count FROM fact_variant_call"}

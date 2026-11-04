@@ -1,0 +1,1 @@
+{"text": "REFUSE: the request is a DELETE on fact_variant_call; this translator only produces read-only SELECT queries."}

@@ -1,0 +1,452 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dkh: <http://example.org/dkh/onto#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dkh:CT-01 a dkh:CascadeTesting,
+        owl:NamedIndividual ;
+    rdfs:label "CT-01"@en ;
+    dkh:appliesTo dkh:Andrii,
+        dkh:Halyna,
+        dkh:Marta,
+        dkh:Sofiia ;
+    dkh:hasMinTestingAge 18 ;
+    dkh:hasProband dkh:Olena ;
+    dkh:requires dkh:VAR-001 .
+
+dkh:HF-01 a dkh:HardFiltering,
+        owl:NamedIndividual ;
+    rdfs:label "HF-01"@en ;
+    dkh:appliesTo dkh:sample1_vcf ;
+    dkh:hasThreshold dkh:FS_gt_200_indel,
+        dkh:FS_gt_60_snp,
+        dkh:MQRankSum_lt_-12.5,
+        dkh:MQ_lt_40,
+        dkh:QD_lt_2,
+        dkh:ReadPosRankSum_lt_-8,
+        dkh:SOR_gt_3 .
+
+dkh:Situation_S01 a dkh:SituationTemplate,
+        owl:NamedIndividual ;
+    rdfs:label "S01 Низький QD"@en ;
+    dkh:guardClass dkh:LowQDVariant ;
+    dkh:hasAction dkh:S01_a_ApplyFlagAction ;
+    dkh:hasGuard "QD < 2" ;
+    dkh:hasInitialState dkh:S01_i_UnfilteredState ;
+    dkh:hasNewState dkh:S01_n_FlaggedState ;
+    dkh:triggeredBy dkh:S01_e_AnnotationComputedEvent .
+
+dkh:Situation_S02 a dkh:SituationTemplate,
+        owl:NamedIndividual ;
+    rdfs:label "S02 Високий FS у SNP"@en ;
+    dkh:guardClass dkh:HighFSSnpVariant ;
+    dkh:hasAction dkh:S02_a_ApplyFlagAction ;
+    dkh:hasGuard "FS > 60 і варіант є SNP" ;
+    dkh:hasInitialState dkh:S02_i_UnfilteredState ;
+    dkh:hasNewState dkh:S02_n_FlaggedState ;
+    dkh:triggeredBy dkh:S02_e_AnnotationComputedEvent .
+
+dkh:Situation_S03 a dkh:SituationTemplate,
+        owl:NamedIndividual ;
+    rdfs:label "S03 Прапорець FS на кінці екзона"@en ;
+    dkh:guardClass dkh:ExonEndVariant ;
+    dkh:hasAction dkh:S03_a_ReviewWithSORAction ;
+    dkh:hasGuard "єдиний прапорець — FS, варіант у кінці екзона, SOR ≤ 3" ;
+    dkh:hasInitialState dkh:S03_i_FlaggedState ;
+    dkh:hasNewState dkh:S03_n_UnfilteredState ;
+    dkh:triggeredBy dkh:S03_e_AnnotationComputedEvent .
+
+dkh:Situation_S04 a dkh:SituationTemplate,
+        owl:NamedIndividual ;
+    rdfs:label "S04 Вибір методу для малої панелі"@en ;
+    dkh:guardClass dkh:GenePanel ;
+    dkh:hasAction dkh:S04_a_SelectHardFilteringAction ;
+    dkh:hasGuard "панель мала: немає великого набору варіантів і підготовлених відомих ресурсів" ;
+    dkh:hasInitialState dkh:S04_i_UnfilteredState ;
+    dkh:hasNewState dkh:S04_n_UnfilteredState ;
+    dkh:triggeredBy dkh:S04_e_MethodChoiceEvent .
+
+dkh:Situation_S05 a dkh:SituationTemplate,
+        owl:NamedIndividual ;
+    rdfs:label "S05 Пропозиція тестування дорослому родичу"@en ;
+    dkh:guardClass dkh:AdultRelative ;
+    dkh:hasAction dkh:S05_a_OfferCascadeTestingAction ;
+    dkh:hasGuard "родич повнолітній (вік ≥ 18); починати з родичів першого ступеня (50%)" ;
+    dkh:hasInitialState dkh:S05_i_UntestedState ;
+    dkh:hasNewState dkh:S05_n_TestingOfferedState ;
+    dkh:triggeredBy dkh:S05_e_PathogenicVariantFoundEvent .
+
+dkh:Situation_S06 a dkh:SituationTemplate,
+        owl:NamedIndividual ;
+    rdfs:label "S06 Відкладення тестування неповнолітнього"@en ;
+    dkh:guardClass dkh:MinorRelative ;
+    dkh:hasAction dkh:S06_a_DeferTestingAction ;
+    dkh:hasGuard "вік родича < 18" ;
+    dkh:hasInitialState dkh:S06_i_UntestedState ;
+    dkh:hasNewState dkh:S06_n_TestingDeferredState ;
+    dkh:triggeredBy dkh:S06_e_TestingRequestedEvent .
+
+<http://example.org/dkh/onto/data> a owl:Ontology ;
+    dct:description "Синтетичні індивіди (вигадані особи й варіанти) для перевірки онтології; персональних даних немає."@uk ;
+    owl:imports <http://example.org/dkh/onto> .
+
+dkh:FS_gt_200_indel a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "FS > 200.0 (INDEL)"@en ;
+    dkh:forVariantType "INDEL" ;
+    dkh:hasComparisonOperator ">" ;
+    dkh:hasThresholdValue 200.0 ;
+    dkh:onAnnotationName "FS" .
+
+dkh:FS_gt_60_snp a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "FS > 60.0 (SNP)"@en ;
+    dkh:forVariantType "SNP" ;
+    dkh:hasComparisonOperator ">" ;
+    dkh:hasThresholdValue 60.0 ;
+    dkh:onAnnotationName "FS" .
+
+dkh:Iryna_OC a dkh:OvarianCancer,
+        owl:NamedIndividual ;
+    rdfs:label "ovarian cancer (Iryna)"@en .
+
+dkh:MQRankSum_lt_-12.5 a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "MQRankSum < -12.5 (all)"@en ;
+    dkh:forVariantType "all" ;
+    dkh:hasComparisonOperator "<" ;
+    dkh:hasThresholdValue -12.5 ;
+    dkh:onAnnotationName "MQRankSum" .
+
+dkh:MQ_lt_40 a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "MQ < 40.0 (all)"@en ;
+    dkh:forVariantType "all" ;
+    dkh:hasComparisonOperator "<" ;
+    dkh:hasThresholdValue 40.0 ;
+    dkh:onAnnotationName "MQ" .
+
+dkh:Olena_BC a dkh:BreastCancer,
+        owl:NamedIndividual ;
+    rdfs:label "breast cancer (Olena)"@en .
+
+dkh:PALB2 a dkh:Gene,
+        owl:NamedIndividual ;
+    rdfs:label "PALB2"@en ;
+    dkh:hasGeneSymbol "PALB2" ;
+    dkh:isMemberOf dkh:HBOC-panel ;
+    dkh:onChromosome "16" .
+
+dkh:QD_lt_2 a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "QD < 2.0 (all)"@en ;
+    dkh:forVariantType "all" ;
+    dkh:hasComparisonOperator "<" ;
+    dkh:hasThresholdValue 2.0 ;
+    dkh:onAnnotationName "QD" .
+
+dkh:ReadPosRankSum_lt_-8 a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "ReadPosRankSum < -8.0 (all)"@en ;
+    dkh:forVariantType "all" ;
+    dkh:hasComparisonOperator "<" ;
+    dkh:hasThresholdValue -8.0 ;
+    dkh:onAnnotationName "ReadPosRankSum" .
+
+dkh:S01_a_ApplyFlagAction a dkh:ApplyFlagAction,
+        owl:NamedIndividual ;
+    rdfs:label "S01: ApplyFlagAction"@en .
+
+dkh:S01_e_AnnotationComputedEvent a dkh:AnnotationComputedEvent,
+        owl:NamedIndividual ;
+    rdfs:label "S01: AnnotationComputedEvent"@en .
+
+dkh:S01_i_UnfilteredState a dkh:UnfilteredState,
+        owl:NamedIndividual ;
+    rdfs:label "S01: UnfilteredState"@en .
+
+dkh:S01_n_FlaggedState a dkh:FlaggedState,
+        owl:NamedIndividual ;
+    rdfs:label "S01: FlaggedState"@en .
+
+dkh:S02_a_ApplyFlagAction a dkh:ApplyFlagAction,
+        owl:NamedIndividual ;
+    rdfs:label "S02: ApplyFlagAction"@en .
+
+dkh:S02_e_AnnotationComputedEvent a dkh:AnnotationComputedEvent,
+        owl:NamedIndividual ;
+    rdfs:label "S02: AnnotationComputedEvent"@en .
+
+dkh:S02_i_UnfilteredState a dkh:UnfilteredState,
+        owl:NamedIndividual ;
+    rdfs:label "S02: UnfilteredState"@en .
+
+dkh:S02_n_FlaggedState a dkh:FlaggedState,
+        owl:NamedIndividual ;
+    rdfs:label "S02: FlaggedState"@en .
+
+dkh:S03_a_ReviewWithSORAction a dkh:ReviewWithSORAction,
+        owl:NamedIndividual ;
+    rdfs:label "S03: ReviewWithSORAction"@en .
+
+dkh:S03_e_AnnotationComputedEvent a dkh:AnnotationComputedEvent,
+        owl:NamedIndividual ;
+    rdfs:label "S03: AnnotationComputedEvent"@en .
+
+dkh:S03_i_FlaggedState a dkh:FlaggedState,
+        owl:NamedIndividual ;
+    rdfs:label "S03: FlaggedState"@en .
+
+dkh:S03_n_UnfilteredState a dkh:UnfilteredState,
+        owl:NamedIndividual ;
+    rdfs:label "S03: UnfilteredState"@en .
+
+dkh:S04_a_SelectHardFilteringAction a dkh:SelectHardFilteringAction,
+        owl:NamedIndividual ;
+    rdfs:label "S04: SelectHardFilteringAction"@en .
+
+dkh:S04_e_MethodChoiceEvent a dkh:MethodChoiceEvent,
+        owl:NamedIndividual ;
+    rdfs:label "S04: MethodChoiceEvent"@en .
+
+dkh:S04_i_UnfilteredState a dkh:UnfilteredState,
+        owl:NamedIndividual ;
+    rdfs:label "S04: UnfilteredState"@en .
+
+dkh:S04_n_UnfilteredState a dkh:UnfilteredState,
+        owl:NamedIndividual ;
+    rdfs:label "S04: UnfilteredState"@en .
+
+dkh:S05_a_OfferCascadeTestingAction a dkh:OfferCascadeTestingAction,
+        owl:NamedIndividual ;
+    rdfs:label "S05: OfferCascadeTestingAction"@en .
+
+dkh:S05_e_PathogenicVariantFoundEvent a dkh:PathogenicVariantFoundEvent,
+        owl:NamedIndividual ;
+    rdfs:label "S05: PathogenicVariantFoundEvent"@en .
+
+dkh:S05_i_UntestedState a dkh:UntestedState,
+        owl:NamedIndividual ;
+    rdfs:label "S05: UntestedState"@en .
+
+dkh:S05_n_TestingOfferedState a dkh:TestingOfferedState,
+        owl:NamedIndividual ;
+    rdfs:label "S05: TestingOfferedState"@en .
+
+dkh:S06_a_DeferTestingAction a dkh:DeferTestingAction,
+        owl:NamedIndividual ;
+    rdfs:label "S06: DeferTestingAction"@en .
+
+dkh:S06_e_TestingRequestedEvent a dkh:TestingRequestedEvent,
+        owl:NamedIndividual ;
+    rdfs:label "S06: TestingRequestedEvent"@en .
+
+dkh:S06_i_UntestedState a dkh:UntestedState,
+        owl:NamedIndividual ;
+    rdfs:label "S06: UntestedState"@en .
+
+dkh:S06_n_TestingDeferredState a dkh:TestingDeferredState,
+        owl:NamedIndividual ;
+    rdfs:label "S06: TestingDeferredState"@en .
+
+dkh:SOR_gt_3 a dkh:FilterThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "SOR > 3.0 (all)"@en ;
+    dkh:forVariantType "all" ;
+    dkh:hasComparisonOperator ">" ;
+    dkh:hasThresholdValue 3.0 ;
+    dkh:onAnnotationName "SOR" .
+
+dkh:Sofiia a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Sofiia"@en ;
+    dkh:hasAgeYears 17 ;
+    dkh:hasParent dkh:Olena .
+
+dkh:TP53 a dkh:Gene,
+        owl:NamedIndividual ;
+    rdfs:label "TP53"@en ;
+    dkh:hasGeneSymbol "TP53" ;
+    dkh:isMemberOf dkh:HBOC-panel ;
+    dkh:onChromosome "17" .
+
+dkh:VAR-001_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-001"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 3.1 ;
+    dkh:isAnnotationOf dkh:VAR-001 .
+
+dkh:VAR-001_MappingQuality a dkh:MappingQuality,
+        owl:NamedIndividual ;
+    rdfs:label "MappingQuality of VAR-001"@en ;
+    dkh:hasAnnotationName "MQ" ;
+    dkh:hasNumericValue 60.0 ;
+    dkh:isAnnotationOf dkh:VAR-001 .
+
+dkh:VAR-001_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-001"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 25.0 ;
+    dkh:isAnnotationOf dkh:VAR-001 .
+
+dkh:VAR-001_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-001"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 0.8 ;
+    dkh:isAnnotationOf dkh:VAR-001 .
+
+dkh:VAR-002 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-002"@en ;
+    dkh:hasAnnotation dkh:VAR-002_QualityByDepth ;
+    dkh:hasClinicalSignificance dkh:Benign ;
+    dkh:hasVariantId "VAR-002" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-002_QualityByDepth a dkh:QualityByDepth,
+        owl:NamedIndividual ;
+    rdfs:label "QualityByDepth of VAR-002"@en ;
+    dkh:hasAnnotationName "QD" ;
+    dkh:hasNumericValue 1.5 ;
+    dkh:isAnnotationOf dkh:VAR-002 .
+
+dkh:VAR-003 a dkh:Indel,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-003"@en ;
+    dkh:hasAnnotation dkh:VAR-003_FisherStrandBias ;
+    dkh:hasVariantId "VAR-003" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:VAR-003_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-003"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 150.0 ;
+    dkh:isAnnotationOf dkh:VAR-003 .
+
+dkh:VAR-004_FisherStrandBias a dkh:FisherStrandBias,
+        owl:NamedIndividual ;
+    rdfs:label "FisherStrandBias of VAR-004"@en ;
+    dkh:hasAnnotationName "FS" ;
+    dkh:hasNumericValue 62.0 ;
+    dkh:isAnnotationOf dkh:VAR-004 .
+
+dkh:VAR-004_StrandOddsRatio a dkh:StrandOddsRatio,
+        owl:NamedIndividual ;
+    rdfs:label "StrandOddsRatio of VAR-004"@en ;
+    dkh:hasAnnotationName "SOR" ;
+    dkh:hasNumericValue 2.1 ;
+    dkh:isAnnotationOf dkh:VAR-004 .
+
+dkh:sample1_bam a dkh:BAMFile,
+        owl:NamedIndividual ;
+    rdfs:label "sample1.bam"@en ;
+    dkh:generatedBy dkh:Sequencer1 .
+
+dkh:sample1_vcf a dkh:VCFFile,
+        owl:NamedIndividual ;
+    rdfs:label "sample1.vcf"@en ;
+    dkh:derivedFrom dkh:sample1_bam ;
+    dkh:generatedBy dkh:Sequencer1 .
+
+dkh:Andrii a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Andrii"@en ;
+    dkh:hasAgeYears 40 .
+
+dkh:BRCA1 a dkh:Gene,
+        owl:NamedIndividual ;
+    rdfs:label "BRCA1"@en ;
+    dkh:hasGeneSymbol "BRCA1" ;
+    dkh:isMemberOf dkh:HBOC-panel ;
+    dkh:onChromosome "17" .
+
+dkh:Maria a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Maria"@en ;
+    dkh:hasChild dkh:Halyna,
+        dkh:Iryna ;
+    dkh:isDeceased true .
+
+dkh:Marta a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Marta"@en ;
+    dkh:hasAgeYears 39 ;
+    dkh:hasParent dkh:Iryna,
+        dkh:Petro ;
+    dkh:hasSibling dkh:Olena .
+
+dkh:Petro a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Petro"@en ;
+    dkh:hasAgeYears 70 .
+
+dkh:Sequencer1 a dkh:Sequencer,
+        owl:NamedIndividual ;
+    rdfs:label "Sequencer1"@en .
+
+dkh:VAR-004 a dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-004"@en ;
+    dkh:hasAnnotation dkh:VAR-004_FisherStrandBias,
+        dkh:VAR-004_StrandOddsRatio ;
+    dkh:hasExonEndPosition true ;
+    dkh:hasVariantId "VAR-004" ;
+    dkh:locatedIn dkh:BRCA2 .
+
+dkh:Halyna a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Halyna"@en ;
+    dkh:hasAgeYears 65 ;
+    dkh:hasChild dkh:Andrii ;
+    dkh:hasParent dkh:Maria .
+
+dkh:Iryna a dkh:Person,
+        owl:NamedIndividual ;
+    rdfs:label "Iryna"@en ;
+    dkh:hasAgeYears 68 ;
+    dkh:hasDiagnosis dkh:Iryna_OC ;
+    dkh:hasParent dkh:Maria ;
+    dkh:hasSibling dkh:Halyna .
+
+dkh:Olena a dkh:Proband,
+        owl:NamedIndividual ;
+    rdfs:label "Olena"@en ;
+    dkh:carries dkh:VAR-001 ;
+    dkh:hasAgeYears 42 ;
+    dkh:hasDiagnosis dkh:Olena_BC ;
+    dkh:hasParent dkh:Iryna,
+        dkh:Petro ;
+    dkh:hasSibling dkh:Marta .
+
+dkh:BRCA2 a dkh:Gene,
+        owl:NamedIndividual ;
+    rdfs:label "BRCA2"@en ;
+    dkh:hasGeneSymbol "BRCA2" ;
+    dkh:isMemberOf dkh:HBOC-panel ;
+    dkh:onChromosome "13" .
+
+dkh:HBOC-panel a dkh:GenePanel,
+        owl:NamedIndividual ;
+    rdfs:label "HBOC-panel"@en ;
+    dkh:hasMember dkh:BRCA1,
+        dkh:BRCA2,
+        dkh:PALB2,
+        dkh:TP53 .
+
+dkh:VAR-001 a dkh:GermlineVariant,
+        dkh:SNP,
+        owl:NamedIndividual ;
+    rdfs:label "VAR-001"@en ;
+    dkh:hasAnnotation dkh:VAR-001_FisherStrandBias,
+        dkh:VAR-001_MappingQuality,
+        dkh:VAR-001_QualityByDepth,
+        dkh:VAR-001_StrandOddsRatio ;
+    dkh:hasClinicalSignificance dkh:Pathogenic ;
+    dkh:hasVariantId "VAR-001" ;
+    dkh:locatedIn dkh:BRCA1 .
+

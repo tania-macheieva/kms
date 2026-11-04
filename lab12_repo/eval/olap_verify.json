@@ -1,0 +1,76 @@
+[
+ {
+  "check": "q01 2025-Q3 calls",
+  "sql": 2649.0,
+  "pandas": 2649,
+  "ok": 1.0
+ },
+ {
+  "check": "q01 2025-Q3 pass%",
+  "sql": 59.2,
+  "pandas": 59.2,
+  "ok": 1.0
+ },
+ {
+  "check": "q01 grand total calls",
+  "sql": 20000.0,
+  "pandas": 20000,
+  "ok": 1.0
+ },
+ {
+  "check": "q01 grand total pass%",
+  "sql": 57.4,
+  "pandas": 57.4,
+  "ok": 1.0
+ },
+ {
+  "check": "q03 HBOC/tumor calls",
+  "sql": 2985.0,
+  "pandas": 2985,
+  "ok": 1.0
+ },
+ {
+  "check": "q03 HBOC/tumor pass%",
+  "sql": 57.4,
+  "pandas": 57.4,
+  "ok": 1.0
+ },
+ {
+  "check": "q03 ALL/blood calls",
+  "sql": 10663.0,
+  "pandas": 10663,
+  "ok": 1.0
+ },
+ {
+  "check": "q09 top review minutes (pass)",
+  "sql": 509.1,
+  "pandas": 509.1,
+  "ok": 1.0,
+  "same_sample": true
+ },
+ {
+  "check": "q09 top review minutes (recheck)",
+  "sql": 392.2,
+  "pandas": 392.2,
+  "ok": 1.0,
+  "same_sample": true
+ },
+ {
+  "check": "q13 GATK 4.5 avg_qual",
+  "sql": 36.3,
+  "pandas": 36.3,
+  "ok": 1.0
+ },
+ {
+  "check": "q13 GATK 4.5 pass%",
+  "sql": 57.7,
+  "pandas": 57.7,
+  "ok": 1.0
+ },
+ {
+  "check": "q13 GATK 4.5 calls",
+  "sql": 2869.0,
+  "pandas": 2869,
+  "ok": 1.0
+ }
+]

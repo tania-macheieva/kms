@@ -1,0 +1,1 @@
+{"text": "SELECT s.cohort, round(100.0 * sum(CASE WHEN sg.label = 'pathogenic variant' THEN 1 ELSE 0 END) / count(*), 1) AS pathogenic_pct FROM fact_variant_call f JOIN dim_sample s ON f.sample_key = s.sample_key JOIN dim_taxon sg ON f.significance_key = sg.taxon_key WHERE f.is_pass = 1 GROUP BY s.cohort ORDER BY s.cohort"}

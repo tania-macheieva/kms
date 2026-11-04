@@ -1,0 +1,28 @@
+digraph schema {
+  rankdir=LR; nodesep=0.35; ranksep=0.9; fontname="Helvetica";
+  node [shape=record, style="rounded,filled", fillcolor="#EEF3FB", fontname="Helvetica", fontsize=10];
+  edge [fontname="Helvetica", fontsize=8, color="#555555"];
+  Variant [label="{Variant|id (UNIQUE)\ntype\nclinicalSignificance\nexonEnd}"];
+  Annotation [label="{Annotation|id (UNIQUE)\nname (idx)\nvalue (idx)}"];
+  AnnotationType [label="{AnnotationType|name}"];
+  Gene [label="{Gene|symbol (UNIQUE)\nchromosome}"];
+  GenePanel [label="{GenePanel|name}"];
+  Sample [label="{Sample|code (UNIQUE)}"];
+  Person [label="{Person|name (UNIQUE)\nageYears (idx)\nsex, deceased, proband}"];
+  Diagnosis [label="{Diagnosis|id\nkind}"];
+  Threshold [label="{Threshold|id (UNIQUE)\nannotation, op\nvalue, variantType}"];
+  Procedure [label="{Procedure|id\nkind\nminTestingAge}"];
+  DataFile [label="{DataFile|id\nformat}"];
+  Instrument [label="{Instrument|id}"];
+  Situation [label="{Situation|id\nname, guard}"];
+  Concept [label="{Concept|name\nprobability}", fillcolor="#FFF2CC"];
+  Variant -> Gene [label="LOCATED_IN"]; Variant -> Sample [label="FROM_SAMPLE"];
+  Variant -> Annotation [label="HAS_ANNOTATION"]; Annotation -> AnnotationType [label="OF_TYPE"];
+  Threshold -> AnnotationType [label="CHECKS"]; Procedure -> Threshold [label="HAS_THRESHOLD"];
+  GenePanel -> Gene [label="HAS_MEMBER"];
+  Person -> Person [label="HAS_PARENT / HAS_SIBLING"]; Person -> Variant [label="CARRIES"]; Person -> Diagnosis [label="HAS_DIAGNOSIS"];
+  Procedure -> Person [label="APPLIES_TO / HAS_PROBAND"]; Procedure -> Variant [label="REQUIRES"]; Procedure -> DataFile [label="APPLIES_TO"];
+  DataFile -> DataFile [label="DERIVED_FROM"]; DataFile -> Instrument [label="GENERATED_BY"];
+  Situation -> Concept [label="GUARD_CLASS"]; Variant -> Concept [label="INSTANCE_OF"]; Person -> Concept [label="INSTANCE_OF"]; Concept -> Concept [label="SUBCLASS_OF"];
+  prov [shape=note, fillcolor="#E2F0D9", label="Властивості походження на КОЖНОМУ зв'язку:\lsource (lab7-abox | synthetic-seed42 | gatk | cdc | hermit)\lconfidence (0.8 … 1.0)\lvalidFrom (date)\l"];
+}

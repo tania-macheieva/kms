@@ -1,0 +1,1 @@
+{"text": "SELECT p.family, round(sum(f.queue_backlog) / count(DISTINCT f.date_key), 1) AS avg_daily_backlog FROM fact_pipeline_day f JOIN dim_pipeline p ON f.pipeline_key = p.pipeline_key GROUP BY p.family ORDER BY avg_daily_backlog DESC LIMIT 1"}

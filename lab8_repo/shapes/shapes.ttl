@@ -1,0 +1,74 @@
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix dkh:  <http://example.org/dkh/onto#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix shp:  <http://example.org/dkh/shapes#> .
+
+# Версія: 1.0, 2026-10-27. Цільові вузли — екземпляри класів ЛР7 (у т. ч. підкласів: SNP, Indel — підкласи GeneticVariant).
+
+shp:VariantShape a sh:NodeShape ;
+    sh:targetClass dkh:GeneticVariant ;
+    sh:name "Варіант" ;
+    sh:property [ sh:path dkh:hasVariantId ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ;
+                  sh:pattern "^VAR-[0-9]{3}$" ;
+                  sh:message "У варіанта має бути рівно один ідентифікатор виду VAR-123 (рядок)." ] ;
+    sh:property [ sh:path dkh:locatedIn ; sh:minCount 1 ; sh:class dkh:Gene ;
+                  sh:message "Варіант має бути прив'язаний принаймні до одного гена (клас Gene)." ] ;
+    sh:property [ sh:path dkh:hasAnnotation ; sh:minCount 1 ; sh:class dkh:QualityAnnotation ;
+                  sh:message "Варіант має мати принаймні одну анотацію якості." ] .
+
+# Окрема «м'яка» вимога: повний набір для жорсткої фільтрації (QD, FS, SOR, MQ) — попередження, а не помилка.
+# Причина: приклади VAR-002…VAR-004 з ЛР7 мають неповний набір, і це відомо (див. docs/shacl_report.md).
+shp:FullAnnotationSetWarning a sh:NodeShape ;
+    sh:targetClass dkh:GeneticVariant ;
+    sh:property [ sh:path dkh:hasAnnotation ; sh:minCount 4 ; sh:severity sh:Warning ;
+                  sh:message "Неповний набір анотацій: для жорсткої фільтрації потрібні QD, FS, SOR, MQ." ] .
+
+shp:AnnotationShape a sh:NodeShape ;
+    sh:targetClass dkh:QualityAnnotation ;
+    sh:name "Анотація варіанта" ;
+    sh:property [ sh:path dkh:hasNumericValue ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:decimal ;
+                  sh:message "Анотація має рівно одне числове значення типу xsd:decimal." ] ;
+    sh:property [ sh:path dkh:hasAnnotationName ; sh:minCount 1 ; sh:in ( "QD" "FS" "SOR" "MQ" "MQRankSum" "ReadPosRankSum" ) ;
+                  sh:message "Ім'я анотації має бути одним із відомих GATK-показників." ] ;
+    sh:property [ sh:path dkh:isAnnotationOf ; sh:minCount 1 ; sh:class dkh:GeneticVariant ;
+                  sh:message "Анотація має належати варіанту." ] .
+
+shp:NonNegativeAnnotationShape a sh:NodeShape ;
+    sh:targetClass dkh:QualityByDepth, dkh:FisherStrandBias, dkh:StrandOddsRatio ;
+    sh:name "Невід'ємні показники" ;
+    sh:property [ sh:path dkh:hasNumericValue ; sh:minInclusive 0 ;
+                  sh:message "QD, FS і SOR не можуть бути від'ємними." ] .
+
+shp:PersonShape a sh:NodeShape ;
+    sh:targetClass dkh:Person ;
+    sh:name "Особа" ;
+    sh:property [ sh:path dkh:hasAgeYears ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 0 ; sh:maxInclusive 120 ;
+                  sh:message "Вік — ціле число від 0 до 120." ] ;
+    sh:property [ sh:path dkh:hasParent ; sh:maxCount 2 ; sh:class dkh:Person ;
+                  sh:message "Не більше двох біологічних батьків, кожен — особа." ] .
+
+shp:ThresholdShape a sh:NodeShape ;
+    sh:targetClass dkh:FilterThreshold ;
+    sh:name "Поріг фільтрації" ;
+    sh:property [ sh:path dkh:hasThresholdValue ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:decimal ] ;
+    sh:property [ sh:path dkh:hasComparisonOperator ; sh:minCount 1 ; sh:in ( "<" ">" ) ] ;
+    sh:property [ sh:path dkh:onAnnotationName ; sh:minCount 1 ; sh:in ( "QD" "FS" "SOR" "MQ" "MQRankSum" "ReadPosRankSum" ) ] .
+
+shp:CascadeTestingShape a sh:NodeShape ;
+    sh:targetClass dkh:CascadeTesting ;
+    sh:name "Каскадне тестування" ;
+    sh:property [ sh:path dkh:hasProband ; sh:minCount 1 ; sh:maxCount 1 ; sh:class dkh:Proband ] ;
+    sh:property [ sh:path dkh:hasMinTestingAge ; sh:minCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 0 ] ;
+    sh:property [ sh:path dkh:appliesTo ; sh:minCount 1 ; sh:class dkh:Person ] .
+
+shp:GenePanelShape a sh:NodeShape ;
+    sh:targetClass dkh:GenePanel ;
+    sh:name "Панель генів" ;
+    sh:property [ sh:path dkh:hasMember ; sh:minCount 1 ; sh:class dkh:Gene ;
+                  sh:message "Панель має містити принаймні один ген." ] .
+
+shp:SampleShape a sh:NodeShape ;
+    sh:targetClass dkh:Sample ;
+    sh:name "Зразок" ;
+    sh:property [ sh:path dkh:hasSampleCode ; sh:minCount 1 ; sh:maxCount 1 ; sh:pattern "^[A-Z]$" ] .

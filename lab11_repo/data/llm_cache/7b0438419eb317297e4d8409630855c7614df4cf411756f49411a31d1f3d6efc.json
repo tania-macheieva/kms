@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "STATUS: ANSWER\nThe procedure CT-01 (CascadeTesting) requires variant VAR-001 [G:Procedure:CT-01] [G:Variant:VAR-001]. Its minimum testing age is 18 [G:Procedure:CT-01].", "in_tokens": 3196, "out_tokens": 42, "latency_ms": null}

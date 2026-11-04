@@ -1,0 +1,1 @@
+{"text": "SELECT vt.label AS variant_type, median(f.read_depth) AS median_read_depth FROM fact_variant_call f JOIN dim_taxon vt ON f.variant_type_key = vt.taxon_key WHERE vt.facet_label = 'genetic variant' GROUP BY vt.label ORDER BY vt.label"}

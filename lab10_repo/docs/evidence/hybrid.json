@@ -1,0 +1,1024 @@
+{
+ "n_queries": 61,
+ "first_rank": {
+  "Q01": {
+   "bm25": 1,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q02": {
+   "bm25": 4,
+   "dense": 3,
+   "hybrid": 3,
+   "hybrid_rerank": 2
+  },
+  "Q03": {
+   "bm25": null,
+   "dense": 3,
+   "hybrid": 4,
+   "hybrid_rerank": 5
+  },
+  "Q04": {
+   "bm25": 5,
+   "dense": 3,
+   "hybrid": 4,
+   "hybrid_rerank": 3
+  },
+  "Q05": {
+   "bm25": 1,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 2
+  },
+  "Q06": {
+   "bm25": 1,
+   "dense": null,
+   "hybrid": 6,
+   "hybrid_rerank": 5
+  },
+  "Q07": {
+   "bm25": null,
+   "dense": null,
+   "hybrid": null,
+   "hybrid_rerank": null
+  },
+  "Q08": {
+   "bm25": 1,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q09": {
+   "bm25": 1,
+   "dense": null,
+   "hybrid": 4,
+   "hybrid_rerank": 3
+  },
+  "Q10": {
+   "bm25": 2,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q11": {
+   "bm25": 1,
+   "dense": 2,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q12": {
+   "bm25": null,
+   "dense": 2,
+   "hybrid": 10,
+   "hybrid_rerank": 2
+  },
+  "Q13": {
+   "bm25": 1,
+   "dense": 10,
+   "hybrid": 2,
+   "hybrid_rerank": 2
+  },
+  "Q14": {
+   "bm25": 1,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q15": {
+   "bm25": 1,
+   "dense": 2,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q16": {
+   "bm25": 1,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q17": {
+   "bm25": 1,
+   "dense": 2,
+   "hybrid": 1,
+   "hybrid_rerank": 2
+  },
+  "Q18": {
+   "bm25": 3,
+   "dense": 2,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q19": {
+   "bm25": 1,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q20": {
+   "bm25": 1,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q21": {
+   "bm25": 1,
+   "dense": null,
+   "hybrid": 2,
+   "hybrid_rerank": 2
+  },
+  "Q22": {
+   "bm25": 1,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q23": {
+   "bm25": null,
+   "dense": null,
+   "hybrid": null,
+   "hybrid_rerank": null
+  },
+  "Q24": {
+   "bm25": 1,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q25": {
+   "bm25": 1,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q26": {
+   "bm25": 1,
+   "dense": 7,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q27": {
+   "bm25": 1,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q28": {
+   "bm25": 3,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q29": {
+   "bm25": null,
+   "dense": 1,
+   "hybrid": 6,
+   "hybrid_rerank": 8
+  },
+  "Q30": {
+   "bm25": 4,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q31": {
+   "bm25": 2,
+   "dense": 1,
+   "hybrid": 2,
+   "hybrid_rerank": 1
+  },
+  "Q32": {
+   "bm25": null,
+   "dense": 2,
+   "hybrid": 4,
+   "hybrid_rerank": 1
+  },
+  "Q33": {
+   "bm25": 5,
+   "dense": 2,
+   "hybrid": 3,
+   "hybrid_rerank": 2
+  },
+  "Q34": {
+   "bm25": 1,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q35": {
+   "bm25": 2,
+   "dense": 3,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q36": {
+   "bm25": null,
+   "dense": null,
+   "hybrid": null,
+   "hybrid_rerank": null
+  },
+  "Q37": {
+   "bm25": 1,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q38": {
+   "bm25": 2,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q39": {
+   "bm25": null,
+   "dense": null,
+   "hybrid": null,
+   "hybrid_rerank": null
+  },
+  "Q40": {
+   "bm25": 2,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q41": {
+   "bm25": 1,
+   "dense": 3,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q42": {
+   "bm25": 4,
+   "dense": 2,
+   "hybrid": 2,
+   "hybrid_rerank": 2
+  },
+  "Q43": {
+   "bm25": 2,
+   "dense": 1,
+   "hybrid": 2,
+   "hybrid_rerank": 2
+  },
+  "Q44": {
+   "bm25": 4,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q45": {
+   "bm25": 1,
+   "dense": 2,
+   "hybrid": 1,
+   "hybrid_rerank": 3
+  },
+  "Q46": {
+   "bm25": 2,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q47": {
+   "bm25": 2,
+   "dense": 3,
+   "hybrid": 3,
+   "hybrid_rerank": 6
+  },
+  "Q48": {
+   "bm25": 4,
+   "dense": 4,
+   "hybrid": 3,
+   "hybrid_rerank": 5
+  },
+  "Q49": {
+   "bm25": 1,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q50": {
+   "bm25": 1,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q51": {
+   "bm25": 1,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 2
+  },
+  "Q52": {
+   "bm25": 1,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q53": {
+   "bm25": 2,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q54": {
+   "bm25": 1,
+   "dense": 1,
+   "hybrid": 1,
+   "hybrid_rerank": 1
+  },
+  "Q55": {
+   "bm25": 1,
+   "dense": 7,
+   "hybrid": 2,
+   "hybrid_rerank": 5
+  }
+ },
+ "wins": [
+  {
+   "qid": "Q48",
+   "query": "Which FORMAT fields can bcftools call emit per sample, and how is a bcftools plugin invoked compared with a normal command?",
+   "type": "multi_step",
+   "ranks": {
+    "bm25": 4,
+    "dense": 4,
+    "hybrid": 3,
+    "hybrid_rerank": 5
+   },
+   "gain": 1
+  },
+  {
+   "qid": "Q35",
+   "query": "Why do I need to change filtering settings when using a tiny tutorial dataset?",
+   "type": "paraphrase",
+   "ranks": {
+    "bm25": 2,
+    "dense": 3,
+    "hybrid": 1,
+    "hybrid_rerank": 1
+   },
+   "gain": 1
+  },
+  {
+   "qid": "Q18",
+   "query": "bcftools annotate merge-logic",
+   "type": "keyword",
+   "ranks": {
+    "bm25": 3,
+    "dense": 2,
+    "hybrid": 1,
+    "hybrid_rerank": 1
+   },
+   "gain": 1
+  }
+ ],
+ "losses": [
+  {
+   "qid": "Q12",
+   "query": "What are the stages of launching the rare disease workflow and what goes in the sample table?",
+   "type": "paraphrase",
+   "ranks": {
+    "bm25": null,
+    "dense": 2,
+    "hybrid": 10,
+    "hybrid_rerank": 2
+   },
+   "loss": 8
+  },
+  {
+   "qid": "Q29",
+   "query": "Як DeepVariant визначає варіанти та що відбувається з його викликами далі?",
+   "type": "uk_cross",
+   "ranks": {
+    "bm25": null,
+    "dense": 1,
+    "hybrid": 6,
+    "hybrid_rerank": 8
+   },
+   "loss": 5
+  },
+  {
+   "qid": "Q06",
+   "query": "How do I get the alignment files saved when using the proprietary mapper?",
+   "type": "paraphrase",
+   "ranks": {
+    "bm25": 1,
+    "dense": null,
+    "hybrid": 6,
+    "hybrid_rerank": 5
+   },
+   "loss": 5
+  },
+  {
+   "qid": "Q09",
+   "query": "Funcotator requirements Java reference",
+   "type": "keyword",
+   "ranks": {
+    "bm25": 1,
+    "dense": null,
+    "hybrid": 4,
+    "hybrid_rerank": 3
+   },
+   "loss": 3
+  },
+  {
+   "qid": "Q32",
+   "query": "How can I run the test suite inside an already pulled container image?",
+   "type": "paraphrase",
+   "ranks": {
+    "bm25": null,
+    "dense": 2,
+    "hybrid": 4,
+    "hybrid_rerank": 1
+   },
+   "loss": 2
+  },
+  {
+   "qid": "Q55",
+   "query": "Which tools does Sarek use for sequencing QC and trimming, and what DOI should I use to cite a specific version of the pipeline?",
+   "type": "multi_step",
+   "ranks": {
+    "bm25": 1,
+    "dense": 7,
+    "hybrid": 2,
+    "hybrid_rerank": 5
+   },
+   "loss": 1
+  }
+ ],
+ "rerank": {
+  "top5_set_changed": 47,
+  "top5_order_or_set_changed": 55,
+  "n": 55,
+  "first_hit_improved": 8,
+  "first_hit_worse": 9,
+  "examples": [
+   {
+    "qid": "Q04",
+    "query": "Where do I put the target regions and GC files when building ASCAT resources for exome data?",
+    "before": [
+     {
+      "row": 49,
+      "chunk_id": "sarek_usage#h040",
+      "section": "Core Nextflow arguments > How to run ASCAT with whole-exome ",
+      "text": "Introduction — Core Nextflow arguments > How to run ASCAT wi"
+     },
+     {
+      "row": 51,
+      "chunk_id": "sarek_usage#h042",
+      "section": "Core Nextflow arguments > How to run ASCAT with whole-exome ",
+      "text": "Introduction — Core Nextflow arguments > How to run ASCAT wi"
+     },
+     {
+      "row": 47,
+      "chunk_id": "sarek_usage#h038",
+      "section": "Core Nextflow arguments > How to run ASCAT with whole-exome ",
+      "text": "Introduction — Core Nextflow arguments > How to run ASCAT wi"
+     },
+     {
+      "row": 50,
+      "chunk_id": "sarek_usage#h041",
+      "section": "Core Nextflow arguments > How to run ASCAT with whole-exome ",
+      "text": "Introduction — Core Nextflow arguments > How to run ASCAT wi"
+     },
+     {
+      "row": 52,
+      "chunk_id": "sarek_usage#h043",
+      "section": "Core Nextflow arguments > How to run ASCAT with whole-exome ",
+      "text": "Introduction — Core Nextflow arguments > How to run ASCAT wi"
+     }
+    ],
+    "after": [
+     {
+      "row": 49,
+      "chunk_id": "sarek_usage#h040",
+      "section": "Core Nextflow arguments > How to run ASCAT with whole-exome ",
+      "text": "Introduction — Core Nextflow arguments > How to run ASCAT wi"
+     },
+     {
+      "row": 51,
+      "chunk_id": "sarek_usage#h042",
+      "section": "Core Nextflow arguments > How to run ASCAT with whole-exome ",
+      "text": "Introduction — Core Nextflow arguments > How to run ASCAT wi"
+     },
+     {
+      "row": 50,
+      "chunk_id": "sarek_usage#h041",
+      "section": "Core Nextflow arguments > How to run ASCAT with whole-exome ",
+      "text": "Introduction — Core Nextflow arguments > How to run ASCAT wi"
+     },
+     {
+      "row": 52,
+      "chunk_id": "sarek_usage#h043",
+      "section": "Core Nextflow arguments > How to run ASCAT with whole-exome ",
+      "text": "Introduction — Core Nextflow arguments > How to run ASCAT wi"
+     },
+     {
+      "row": 47,
+      "chunk_id": "sarek_usage#h038",
+      "section": "Core Nextflow arguments > How to run ASCAT with whole-exome ",
+      "text": "Introduction — Core Nextflow arguments > How to run ASCAT wi"
+     }
+    ]
+   },
+   {
+    "qid": "Q08",
+    "query": "IntelliJ debug configuration GATK",
+    "before": [
+     {
+      "row": 486,
+      "chunk_id": "gatk_readme#h027",
+      "section": "Running GATK4 > Setting up debugging in IntelliJ",
+      "text": "gatk_readme — Running GATK4 > Setting up debugging in Intell"
+     },
+     {
+      "row": 485,
+      "chunk_id": "gatk_readme#h026",
+      "section": "Running GATK4 > Creating a GATK project in the IntelliJ IDE ",
+      "text": "gatk_readme — Running GATK4 > Creating a GATK project in the"
+     },
+     {
+      "row": 488,
+      "chunk_id": "gatk_readme#h029",
+      "section": "Running GATK4 > Setting up profiling using JProfiler",
+      "text": "gatk_readme — Running GATK4 > Setting up profiling using JPr"
+     },
+     {
+      "row": 487,
+      "chunk_id": "gatk_readme#h028",
+      "section": "Running GATK4 > Updating the Intellij project when dependenc",
+      "text": "gatk_readme — Running GATK4 > Updating the Intellij project "
+     },
+     {
+      "row": 483,
+      "chunk_id": "gatk_readme#h024",
+      "section": "Running GATK4 > Testing GATK",
+      "text": "gatk_readme — Running GATK4 > Testing GATK * To run tests an"
+     }
+    ],
+    "after": [
+     {
+      "row": 486,
+      "chunk_id": "gatk_readme#h027",
+      "section": "Running GATK4 > Setting up debugging in IntelliJ",
+      "text": "gatk_readme — Running GATK4 > Setting up debugging in Intell"
+     },
+     {
+      "row": 485,
+      "chunk_id": "gatk_readme#h026",
+      "section": "Running GATK4 > Creating a GATK project in the IntelliJ IDE ",
+      "text": "gatk_readme — Running GATK4 > Creating a GATK project in the"
+     },
+     {
+      "row": 487,
+      "chunk_id": "gatk_readme#h028",
+      "section": "Running GATK4 > Updating the Intellij project when dependenc",
+      "text": "gatk_readme — Running GATK4 > Updating the Intellij project "
+     },
+     {
+      "row": 483,
+      "chunk_id": "gatk_readme#h024",
+      "section": "Running GATK4 > Testing GATK",
+      "text": "gatk_readme — Running GATK4 > Testing GATK * To run tests an"
+     },
+     {
+      "row": 488,
+      "chunk_id": "gatk_readme#h029",
+      "section": "Running GATK4 > Setting up profiling using JProfiler",
+      "text": "gatk_readme — Running GATK4 > Setting up profiling using JPr"
+     }
+    ]
+   }
+  ],
+  "rerank_in": 30,
+  "rerank_out": 5,
+  "ms_hybrid": 14.86442500001317,
+  "ms_rerank": 669.6966590000102,
+  "first_hit_example": {
+   "qid": "Q02",
+   "query": "Which tool predicts what effect a variant has, and what does it record in the VCF header?",
+   "before": 3,
+   "after": 2
+  }
+ },
+ "prefilter": {
+  "sensitivity": {
+   "query": "Яке сховище використовується для SPARQL-запитів?",
+   "no_filter": {
+    "public": 0,
+    "internal": 0,
+    "restricted": 10
+   },
+   "public_only": {
+    "public": 10,
+    "internal": 0,
+    "restricted": 0
+   },
+   "passed": true
+  },
+  "type": {
+   "query": "how to filter variants by expression",
+   "no_filter_types": {
+    "tutorial": 1,
+    "output-reference": 1,
+    "manual": 8
+   },
+   "manual_only": {
+    "manual": 10
+   },
+   "passed": true
+  },
+  "date": {
+   "query": "how do I run the pipeline",
+   "date_from": "2026-10-25",
+   "min_date_unfiltered": "2026-10-07",
+   "min_date_filtered": "2026-10-26",
+   "n": 10,
+   "passed": true
+  },
+  "combined_rerank": {
+   "query": "how to call variants with bcftools mpileup",
+   "results": [
+    {
+     "row": 317,
+     "chunk_id": "bcftools_manual#h002",
+     "section": "VARIANT CALLING",
+     "text": "Convert 23andme results into VCF — VARIANT CALLING ## VARIAN"
+    },
+    {
+     "row": 393,
+     "chunk_id": "bcftools_manual#h078",
+     "section": "Convert tab-delimited file into a sites-only VCF (no genotyp",
+     "text": "Convert 23andme results into VCF — Convert tab-delimited fil"
+    },
+    {
+     "row": 341,
+     "chunk_id": "bcftools_manual#h026",
+     "section": "bcftools call '[OPTIONS] FILE' > Input/output options:",
+     "text": "Convert 23andme results into VCF — bcftools call '[OPTIONS] "
+    },
+    {
+     "row": 389,
+     "chunk_id": "bcftools_manual#h074",
+     "section": "Convert tab-delimited file into a sites-only VCF (no genotyp",
+     "text": "Convert 23andme results into VCF — Convert tab-delimited fil"
+    },
+    {
+     "row": 404,
+     "chunk_id": "bcftools_manual#h089",
+     "section": "Convert tab-delimited file into a sites-only VCF (no genotyp",
+     "text": "Convert 23andme results into VCF — Convert tab-delimited fil"
+    }
+   ],
+   "passed": true
+  },
+  "prefilter_vs_postfilter": {
+   "matching_chunks": 77,
+   "returned": 10,
+   "post_filter_returned": 2,
+   "passed": true
+  }
+ },
+ "traces": [
+  {
+   "qid": "Q48",
+   "query": "Which FORMAT fields can bcftools call emit per sample, and how is a bcftools plugin invoked compared with a normal command?",
+   "evidence": [
+    "comma-separated list of FORMAT fields to output for each sample.",
+    "the same way as normal commands only their name is prefixed with \"+\"."
+   ],
+   "bm25": [
+    {
+     "row": 338,
+     "chunk_id": "bcftools_manual#h023",
+     "section": "bcftools call '[OPTIONS] FILE'",
+     "text": "Convert 23andme results into VCF — bcftools call '[OPTIONS] FILE' ## b",
+     "relevant": false
+    },
+    {
+     "row": 416,
+     "chunk_id": "bcftools_manual#h101",
+     "section": "Convert tab-delimited file into a sites-only VCF (no genotyp",
+     "text": "Convert 23andme results into VCF — Convert tab-delimited file into a s",
+     "relevant": false
+    },
+    {
+     "row": 324,
+     "chunk_id": "bcftools_manual#h009",
+     "section": "COMMANDS AND OPTIONS",
+     "text": "Convert 23andme results into VCF — COMMANDS AND OPTIONS -S, --samples-",
+     "relevant": false
+    }
+   ],
+   "dense": [
+    {
+     "row": 315,
+     "chunk_id": "bcftools_manual#h000",
+     "section": "NAME",
+     "text": "Convert 23andme results into VCF — NAME ## NAME bcftools - utilities f",
+     "relevant": false
+    },
+    {
+     "row": 125,
+     "chunk_id": "sarek_output#h025",
+     "section": "Variant Calling > SNVs and small indels > bcftools",
+     "text": "sarek_output — Variant Calling > SNVs and small indels > bcftools ####",
+     "relevant": false
+    },
+    {
+     "row": 338,
+     "chunk_id": "bcftools_manual#h023",
+     "section": "bcftools call '[OPTIONS] FILE'",
+     "text": "Convert 23andme results into VCF — bcftools call '[OPTIONS] FILE' ## b",
+     "relevant": false
+    }
+   ],
+   "hybrid": [
+    {
+     "row": 338,
+     "chunk_id": "bcftools_manual#h023",
+     "section": "bcftools call '[OPTIONS] FILE'",
+     "text": "Convert 23andme results into VCF — bcftools call '[OPTIONS] FILE' ## b",
+     "relevant": false
+    },
+    {
+     "row": 341,
+     "chunk_id": "bcftools_manual#h026",
+     "section": "bcftools call '[OPTIONS] FILE' > Input/output options:",
+     "text": "Convert 23andme results into VCF — bcftools call '[OPTIONS] FILE' > In",
+     "relevant": false
+    },
+    {
+     "row": 410,
+     "chunk_id": "bcftools_manual#h095",
+     "section": "Convert tab-delimited file into a sites-only VCF (no genotyp",
+     "text": "Convert 23andme results into VCF — Convert tab-delimited file into a s",
+     "relevant": true
+    }
+   ],
+   "ranks": {
+    "bm25": 4,
+    "dense": 4,
+    "hybrid": 3,
+    "hybrid_rerank": 5
+   }
+  },
+  {
+   "qid": "Q35",
+   "query": "Why do I need to change filtering settings when using a tiny tutorial dataset?",
+   "evidence": [
+    "However, this tool should be used to take advantage of larger amount of variant annotations and improve filtering: when a small tutorial dat"
+   ],
+   "bm25": [
+    {
+     "row": 193,
+     "chunk_id": "sarek_vc_sarek#h003",
+     "section": "Using Sarek for Variant Calling > Experimental Design > Inpu",
+     "text": "Using Sarek for Variant Calling — Using Sarek for Variant Calling > Ex",
+     "relevant": false
+    },
+    {
+     "row": 197,
+     "chunk_id": "sarek_vc_sarek#h007",
+     "section": "Using Sarek for Variant Calling > Running Sarek Germline > F",
+     "text": "Using Sarek for Variant Calling — Using Sarek for Variant Calling > Ru",
+     "relevant": true
+    },
+    {
+     "row": 224,
+     "chunk_id": "rare_usage#h003",
+     "section": "Other Nextflow hidden files, like history of pipeline logs.",
+     "text": "nf-core/raredisease: Usage — Other Nextflow hidden files, like history",
+     "relevant": false
+    }
+   ],
+   "dense": [
+    {
+     "row": 188,
+     "chunk_id": "sarek_vc_theory#h008",
+     "section": "Calling Variants on Sequencing Data > Calling Variants > Fil",
+     "text": "Calling Variants on Sequencing Data — Calling Variants on Sequencing D",
+     "relevant": false
+    },
+    {
+     "row": 371,
+     "chunk_id": "bcftools_manual#h056",
+     "section": "Convert tab-delimited file into a sites-only VCF (no genotyp",
+     "text": "Convert 23andme results into VCF — Convert tab-delimited file into a s",
+     "relevant": false
+    },
+    {
+     "row": 197,
+     "chunk_id": "sarek_vc_sarek#h007",
+     "section": "Using Sarek for Variant Calling > Running Sarek Germline > F",
+     "text": "Using Sarek for Variant Calling — Using Sarek for Variant Calling > Ru",
+     "relevant": true
+    }
+   ],
+   "hybrid": [
+    {
+     "row": 197,
+     "chunk_id": "sarek_vc_sarek#h007",
+     "section": "Using Sarek for Variant Calling > Running Sarek Germline > F",
+     "text": "Using Sarek for Variant Calling — Using Sarek for Variant Calling > Ru",
+     "relevant": true
+    },
+    {
+     "row": 193,
+     "chunk_id": "sarek_vc_sarek#h003",
+     "section": "Using Sarek for Variant Calling > Experimental Design > Inpu",
+     "text": "Using Sarek for Variant Calling — Using Sarek for Variant Calling > Ex",
+     "relevant": false
+    },
+    {
+     "row": 59,
+     "chunk_id": "sarek_usage#h050",
+     "section": "Core Nextflow arguments > How to create a panel-of-normals f",
+     "text": "Introduction — Core Nextflow arguments > How to create a panel-of-norm",
+     "relevant": false
+    }
+   ],
+   "ranks": {
+    "bm25": 2,
+    "dense": 3,
+    "hybrid": 1,
+    "hybrid_rerank": 1
+   }
+  },
+  {
+   "qid": "Q18",
+   "query": "bcftools annotate merge-logic",
+   "evidence": [
+    "-l, --merge-logic 'tag:first'|append|append-missing|unique|sum|avg|min|max[,...]::"
+   ],
+   "bm25": [
+    {
+     "row": 332,
+     "chunk_id": "bcftools_manual#h017",
+     "section": "bcftools annotate '[OPTIONS] FILE'",
+     "text": "Convert 23andme results into VCF — bcftools annotate '[OPTIONS] FILE' ",
+     "relevant": false
+    },
+    {
+     "row": 384,
+     "chunk_id": "bcftools_manual#h069",
+     "section": "Convert tab-delimited file into a sites-only VCF (no genotyp",
+     "text": "Convert 23andme results into VCF — Convert tab-delimited file into a s",
+     "relevant": false
+    },
+    {
+     "row": 334,
+     "chunk_id": "bcftools_manual#h019",
+     "section": "bcftools annotate '[OPTIONS] FILE'",
+     "text": "Convert 23andme results into VCF — bcftools annotate '[OPTIONS] FILE' ",
+     "relevant": true
+    }
+   ],
+   "dense": [
+    {
+     "row": 337,
+     "chunk_id": "bcftools_manual#h022",
+     "section": "bcftools annotate '[OPTIONS] FILE'",
+     "text": "Convert 23andme results into VCF — bcftools annotate '[OPTIONS] FILE' ",
+     "relevant": false
+    },
+    {
+     "row": 334,
+     "chunk_id": "bcftools_manual#h019",
+     "section": "bcftools annotate '[OPTIONS] FILE'",
+     "text": "Convert 23andme results into VCF — bcftools annotate '[OPTIONS] FILE' ",
+     "relevant": true
+    },
+    {
+     "row": 333,
+     "chunk_id": "bcftools_manual#h018",
+     "section": "bcftools annotate '[OPTIONS] FILE'",
+     "text": "Convert 23andme results into VCF — bcftools annotate '[OPTIONS] FILE' ",
+     "relevant": false
+    }
+   ],
+   "hybrid": [
+    {
+     "row": 334,
+     "chunk_id": "bcftools_manual#h019",
+     "section": "bcftools annotate '[OPTIONS] FILE'",
+     "text": "Convert 23andme results into VCF — bcftools annotate '[OPTIONS] FILE' ",
+     "relevant": true
+    },
+    {
+     "row": 332,
+     "chunk_id": "bcftools_manual#h017",
+     "section": "bcftools annotate '[OPTIONS] FILE'",
+     "text": "Convert 23andme results into VCF — bcftools annotate '[OPTIONS] FILE' ",
+     "relevant": false
+    },
+    {
+     "row": 331,
+     "chunk_id": "bcftools_manual#h016",
+     "section": "bcftools annotate '[OPTIONS] FILE'",
+     "text": "Convert 23andme results into VCF — bcftools annotate '[OPTIONS] FILE' ",
+     "relevant": false
+    }
+   ],
+   "ranks": {
+    "bm25": 3,
+    "dense": 2,
+    "hybrid": 1,
+    "hybrid_rerank": 1
+   }
+  },
+  {
+   "qid": "Q12",
+   "query": "What are the stages of launching the rare disease workflow and what goes in the sample table?",
+   "evidence": [
+    "A samplesheet is used to provide information about the sample(s) to the pipeline in CSV format, including the path to the FASTQ files and ot"
+   ],
+   "bm25": [
+    {
+     "row": 198,
+     "chunk_id": "sarek_vc_sarek#h008",
+     "section": "Using Sarek for Variant Calling > Running Sarek Germline > L",
+     "text": "Using Sarek for Variant Calling — Using Sarek for Variant Calling > Ru",
+     "relevant": false
+    },
+    {
+     "row": 222,
+     "chunk_id": "rare_usage#h001",
+     "section": "nf-core/raredisease: Usage > Introduction",
+     "text": "nf-core/raredisease: Usage — nf-core/raredisease: Usage > Introduction",
+     "relevant": false
+    },
+    {
+     "row": 215,
+     "chunk_id": "rare_readme#h000",
+     "section": "Introduction",
+     "text": "rare_readme — Introduction ## Introduction  **nf-core/raredisease** is",
+     "relevant": false
+    }
+   ],
+   "dense": [
+    {
+     "row": 215,
+     "chunk_id": "rare_readme#h000",
+     "section": "Introduction",
+     "text": "rare_readme — Introduction ## Introduction  **nf-core/raredisease** is",
+     "relevant": false
+    },
+    {
+     "row": 226,
+     "chunk_id": "rare_usage#h005",
+     "section": "Other Nextflow hidden files, like history of pipeline logs. ",
+     "text": "nf-core/raredisease: Usage — Other Nextflow hidden files, like history",
+     "relevant": true
+    },
+    {
+     "row": 222,
+     "chunk_id": "rare_usage#h001",
+     "section": "nf-core/raredisease: Usage > Introduction",
+     "text": "nf-core/raredisease: Usage — nf-core/raredisease: Usage > Introduction",
+     "relevant": false
+    }
+   ],
+   "hybrid": [
+    {
+     "row": 215,
+     "chunk_id": "rare_readme#h000",
+     "section": "Introduction",
+     "text": "rare_readme — Introduction ## Introduction  **nf-core/raredisease** is",
+     "relevant": false
+    },
+    {
+     "row": 222,
+     "chunk_id": "rare_usage#h001",
+     "section": "nf-core/raredisease: Usage > Introduction",
+     "text": "nf-core/raredisease: Usage — nf-core/raredisease: Usage > Introduction",
+     "relevant": false
+    },
+    {
+     "row": 22,
+     "chunk_id": "sarek_usage#h013",
+     "section": "Other nextflow hidden files, eg. history of pipeline runs an",
+     "text": "Introduction — Other nextflow hidden files, eg. history of pipeline ru",
+     "relevant": false
+    }
+   ],
+   "ranks": {
+    "bm25": null,
+    "dense": 2,
+    "hybrid": 10,
+    "hybrid_rerank": 2
+   }
+  }
+ ],
+ "win_loss_counts": {
+  "hybrid_better_than_both": 3,
+  "hybrid_worse_than_best_single": 14,
+  "equal": 38
+ },
+ "vs_dense": {
+  "better": 14,
+  "worse": 8
+ },
+ "vs_bm25": {
+  "better": 19,
+  "worse": 6
+ }
+}

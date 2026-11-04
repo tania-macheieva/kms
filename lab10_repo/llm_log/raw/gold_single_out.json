@@ -1,0 +1,278 @@
+[
+ {
+  "chunk_id": "gatk_readme#h015",
+  "kind": "keyword",
+  "query": "GATK Spark local mode threads",
+  "evidence": "GATK4 Spark tools can be run in local mode (without a cluster). In this mode, Spark will run the tool"
+ },
+ {
+  "chunk_id": "sarek_output#h060",
+  "kind": "paraphrase",
+  "query": "Which tool predicts what effect a variant has, and what does it record in the VCF header?",
+  "evidence": "VEP (Variant Effect Predictor), based on `Ensembl`, is a tool to determine the effects of all sorts of variants, including SNPs, indels, structural variants, CNVs."
+ },
+ {
+  "chunk_id": "sarek_usage#h037",
+  "kind": "paraphrase",
+  "query": "Which GPU-accelerated germline caller is supported and for which input types?",
+  "evidence": "| Parabricks HaplotypeCaller (GPU) | x | x | x | x | - | - |"
+ },
+ {
+  "chunk_id": "sarek_usage#h041",
+  "kind": "paraphrase",
+  "query": "Where do I put the target regions and GC files when building ASCAT resources for exome data?",
+  "evidence": "3. Copy the `targets_with_chr.bed` and `GC_G1000_on_target_hg38.txt` files into the newly created `battenberg_loci_on_target_hg38` folder before running the next set of steps."
+ },
+ {
+  "chunk_id": "rare_output#h034",
+  "kind": "keyword",
+  "query": "filter_vep HGNC ID list",
+  "evidence": "filter_vep from VEP is used to subset the variants based on a list of HGNC ID:s. Typical use case is that you want to filter your results to only include variants in a predefined set of clinically relevant genes. This step is optional and can be disabled by using the flag `--skip_subworkflows genera"
+ },
+ {
+  "chunk_id": "sarek_output#h013",
+  "kind": "paraphrase",
+  "query": "How do I get the alignment files saved when using the proprietary mapper?",
+  "evidence": "The alignment files (BAM or CRAM) produced by the chosen aligner are not published by default. CRAM output files will not be saved in the output-folder (`outdir`), unless the flag `--save_mapped` is used. BAM output can be selected by setting the flag `--save_output_as_bam`."
+ },
+ {
+  "chunk_id": "rare_usage#h029",
+  "kind": "uk_cross",
+  "query": "Як зафіксувати версію пайплайна для відтворюваності результатів?",
+  "evidence": "- **Reproducibility:** Specify a pipeline version when running the pipeline on your data. This ensures that a specific version of the pipeline code and software are used when you run your pipeline. If you keep using the same tag, you'll be running the same version of the pipeline, even if there have"
+ },
+ {
+  "chunk_id": "gatk_readme#h027",
+  "kind": "keyword",
+  "query": "IntelliJ debug configuration GATK",
+  "evidence": "Set the name of the new configuration to something like \"GATK debug\""
+ },
+ {
+  "chunk_id": "gatk_funco_tutorial#h035",
+  "kind": "keyword",
+  "query": "Funcotator requirements Java reference",
+  "evidence": "Reference genome (fasta files) with fai and dict files. Human references can be downloaded as part of the GATK resource bundle. Other references can be used but must be provided by the user."
+ },
+ {
+  "chunk_id": "sarek_vc_sarek#h002",
+  "kind": "keyword",
+  "query": "igenomes_base reference genome",
+  "evidence": "nf-core pipelines make use of the Illumina iGenomes collection as reference genomes."
+ },
+ {
+  "chunk_id": "sarek_readme#h006",
+  "kind": "keyword",
+  "query": "Sarek contributors Szilveszter Juhos",
+  "evidence": "- Szilveszter Juhos"
+ },
+ {
+  "chunk_id": "gatk_funco_tutorial#h031",
+  "kind": "paraphrase",
+  "query": "How does the newer annotation tool relate to the older Broad Institute one?",
+  "evidence": "Oncotator is an older functional annotation tool developed by The Broad Institute. Funcotator and Oncotator are fundamentally different tools with some similarities."
+ },
+ {
+  "chunk_id": "rare_usage#h005",
+  "kind": "paraphrase",
+  "query": "What are the stages of launching the rare disease workflow and what goes in the sample table?",
+  "evidence": "A samplesheet is used to provide information about the sample(s) to the pipeline in CSV format, including the path to the FASTQ files and other metadata such as sex and phenotype."
+ },
+ {
+  "chunk_id": "bcftools_manual#h092",
+  "kind": "paraphrase",
+  "query": "How do I right-align variants within transcripts using an annotation file?",
+  "evidence": "when a GFF file is provided, follow HGVS 3'rule and right-align variants in transcripts on the forward"
+ },
+ {
+  "chunk_id": "bcftools_manual#h140",
+  "kind": "keyword",
+  "query": "VCF terminology SNP MNP indel",
+  "evidence": "C <> .. gVCF block, the allele <> is a placeholder for alternate allele possibly missed because of low coverage"
+ },
+ {
+  "chunk_id": "sarek_vc_sarek#h005",
+  "kind": "keyword",
+  "query": "GRCh38chr21 custom genome config",
+  "evidence": "Following the considerations above, we will first of all edit the `nextflow.config` file in our working directory to add a new genome."
+ },
+ {
+  "chunk_id": "gatk_readme#h030",
+  "kind": "keyword",
+  "query": "Sonatype upload snapshots gradle",
+  "evidence": "You must have a registered account on the sonatype JIRA (and be approved as a gatk uploader)"
+ },
+ {
+  "chunk_id": "rare_usage#h019",
+  "kind": "keyword",
+  "query": "vep_cache_version genome SNV annotation",
+  "evidence": "1 Genome version is used by VEP. You have the option to choose between GRCh37 and GRCh38."
+ },
+ {
+  "chunk_id": "bcftools_manual#h019",
+  "kind": "keyword",
+  "query": "bcftools annotate merge-logic",
+  "evidence": "-l, --merge-logic 'tag:first'|append|append-missing|unique|sum|avg|min|max[,...]::"
+ },
+ {
+  "chunk_id": "rare_usage#h023",
+  "kind": "keyword",
+  "query": "mobile_element_references RetroSeq",
+  "evidence": "1 A TSV file that describes the references (BEDs) used by RetroSeq for calling mobile elements. Sample file here"
+ },
+ {
+  "chunk_id": "gatk_funco_tutorial#h002",
+  "kind": "keyword",
+  "query": "data source folders unique name",
+  "evidence": "Data sources are expected to be in folders that are specified as input arguments. While multiple data source folders can be specified, **no two data sources can have the same name**."
+ },
+ {
+  "chunk_id": "sarek_usage#h001",
+  "kind": "paraphrase",
+  "query": "What is the standard command to launch the variant calling pipeline and which options are required?",
+  "evidence": "`-profile <PROFILE>` is mandatory and should reflect either your own institutional profile or any pipeline profile specified in the profile section."
+ },
+ {
+  "chunk_id": "bcftools_manual#h007",
+  "kind": "paraphrase",
+  "query": "How can I give a list of regions as positions or as intervals in a file?",
+  "evidence": "can contain either positions (two-column format: CHROM, POS) or intervals"
+ },
+ {
+  "chunk_id": "sarek_usage#h015",
+  "kind": "uk_cross",
+  "query": "Які стовпці використовуються у повній таблиці зразків для запуску з кроку variant_calling?",
+  "evidence": "In this example, all possible columns are used including the `sex` and `status` information per patient:"
+ },
+ {
+  "chunk_id": "sarek_output#h015",
+  "kind": "keyword",
+  "query": "MarkDuplicatesSpark use_gatk_spark",
+  "evidence": "To use the corresponding spark implementation `GATK MarkDuplicatesSpark`, please specify `--use_gatk_spark markduplicates`. The resulting files are converted to CRAM with either samtools, when GATK MarkDuplicates is used, or, implicitly, by GATK MarkDuplicatesSpark."
+ },
+ {
+  "chunk_id": "gatk_cnv_germline#h002",
+  "kind": "keyword",
+  "query": "germline cohort workflow cohort_entity_id",
+  "evidence": "- ``CNVGermlineCohortWorkflow.cohort_entity_id`` -- Name of the cohort. Will be used as a prefix for output filenames."
+ },
+ {
+  "chunk_id": "sarek_output#h066",
+  "kind": "paraphrase",
+  "query": "How can I check that samples really come from the same person to catch mix-ups?",
+  "evidence": "NGSCheckMate is a tool for determining whether samples come from the same genetic individual, using a set of commonly heterozygous SNPs. This enables for the detecting of sample mislabelling events. The output includes a text file indicating whether samples have matched or not according to the algor"
+ },
+ {
+  "chunk_id": "sarek_vc_theory#h002",
+  "kind": "paraphrase",
+  "query": "Why can repeated reads from the same original fragment bias which allele is called?",
+  "evidence": "Since DNA fragmentation is theoretically random, reads originating from different fragments provide independent information. An algorithm can use this information to assess the support for different alleles."
+ },
+ {
+  "chunk_id": "gatk_mutect2_wdl#h013",
+  "kind": "paraphrase",
+  "query": "Which script is meant for developers to validate replicates and where are its recommended defaults?",
+  "evidence": "Recommended default values (where possible) are found in ``mutect2-replicate-validation_template.json``"
+ },
+ {
+  "chunk_id": "rare_output#h015",
+  "kind": "uk_cross",
+  "query": "Як DeepVariant визначає варіанти та що відбувається з його викликами далі?",
+  "evidence": "DeepVariant is a deep learning-based variant caller that takes aligned reads, produces pileup image tensors from them, classifies each tensor using a convolutional neural network and finally reports the results in a standard VCF or gVCF file. Variant calls generated by DeepVariant are joint genotype"
+ },
+ {
+  "chunk_id": "rare_output#h006",
+  "kind": "paraphrase",
+  "query": "How do I get CRAM instead of BAM from the commercial duplicate-removal step?",
+  "evidence": "By default, alignment files are published in bam format. To publish cram files instead, use `--save_all_mapped_as_cram` for the full (unfiltered) alignment, or `--save_noalt_mapped_as_cram` for the alt-filtered alignment (requires `--exclude_alt`)."
+ },
+ {
+  "chunk_id": "sarek_vc_interp#h004",
+  "kind": "keyword",
+  "query": "find causative variants HIGH zcat",
+  "evidence": "zcat joint_germline_recalibrated_snpEff.ann.vcf.gz | grep PASS | grep HIGH | perl -nae 'if($F[10]=~/0\\/0/ && $F[9]=~/0\\/1/){print $_;}'"
+ },
+ {
+  "chunk_id": "gatk_docker#h009",
+  "kind": "paraphrase",
+  "query": "How can I run the test suite inside an already pulled container image?",
+  "evidence": "*Note that the unit tests are run during a build of the Dockerfile*"
+ },
+ {
+  "chunk_id": "gatk_docker#h003",
+  "kind": "paraphrase",
+  "query": "How do I build a container image remotely in the cloud and how is it tagged?",
+  "evidence": "This will attempt to build the docker remotely using google cloud build and tag it with the following this format: `us.gcr.io/broad-dsde-methods/broad-gatk-snapshots/gatk-remote-builds:<USERNAME>-<GITHUB_TAG>-<GIT_HASH>`"
+ },
+ {
+  "chunk_id": "gatk_readme#h020",
+  "kind": "keyword",
+  "query": "bash tab completion gatk",
+  "evidence": "A tab completion bootstrap file for the bash shell is now included in releases. This file allows the command-line shell to complete GATK run options in a manner equivalent to built-in command-line tools (e.g. grep)."
+ },
+ {
+  "chunk_id": "sarek_vc_sarek#h007",
+  "kind": "paraphrase",
+  "query": "Why do I need to change filtering settings when using a tiny tutorial dataset?",
+  "evidence": "However, this tool should be used to take advantage of larger amount of variant annotations and improve filtering: when a small tutorial dataset is used, some of the annotations will not have sufficient data or might even have no variance."
+ },
+ {
+  "chunk_id": "gatk_funco_tutorial#h032",
+  "kind": "paraphrase",
+  "query": "Do the newer and older annotators produce the same format in VCF output?",
+  "evidence": "VCF output Yes Yes Annotation format b/w Funcotator and Oncotator differ."
+ },
+ {
+  "chunk_id": "sarek_vc_interp#h000",
+  "kind": "paraphrase",
+  "query": "What happens after variant calling in small clinical studies versus large population studies?",
+  "evidence": "When only a few individuals are involved, and in particular in clinical contexts, the goal will be to interpret the findings in light of different sources of information and pinpoint a causative variant for the investigated phenotype."
+ },
+ {
+  "chunk_id": "rare_output#h032",
+  "kind": "paraphrase",
+  "query": "Which tool adds fields from other VCF files using a configuration file?",
+  "evidence": "vcfanno allows you to quickly annotate your VCF with any number of INFO fields from any number of VCFs. It uses a simple conf file to allow the user to specify the source annotation files and fields and how they will be added to the info of the query VCF. Values are pulled by name from the INFO fiel"
+ },
+ {
+  "chunk_id": "gatk_funco_spec#h008",
+  "kind": "uk_cross",
+  "query": "Як у HGVS-нотації записується вставка основ у транскрипті?",
+  "evidence": "This indicates that the bases AA were inserted between bases 2018 and 2019 in the transcript associated with this variant allele."
+ },
+ {
+  "chunk_id": "gatk_pathseq_wdl#h002",
+  "kind": "keyword",
+  "query": "PathSeq min_clipped_read_length",
+  "evidence": "- ``PathSeqPipeline.PathSeqFilter.min_clipped_read_length`` -- Minimum read length after quality trimming. Increasing may increase microbial classification specificity but may reduce sensitivity (default 31)"
+ },
+ {
+  "chunk_id": "gatk_funco_spec#h003",
+  "kind": "paraphrase",
+  "query": "Which category applies when a variant is in a coding region but the protein stays unchanged?",
+  "evidence": "Variant is in coding region of the chosen transcript, but protein structure is identical."
+ },
+ {
+  "chunk_id": "int_sparql#h006",
+  "kind": "uk_internal",
+  "query": "Який запит використовує property path для пошуку родичів Олени?",
+  "evidence": "dkh:Olena (dkh:hasParent|dkh:hasChild|dkh:hasSibling|^dkh:hasParent|^dkh:hasChild)+ ?r ."
+ },
+ {
+  "chunk_id": "int_onto_eval#h002",
+  "kind": "uk_internal",
+  "query": "Чому порівняння властивостей з чернеткою LLM може вважати однакові властивості різними?",
+  "evidence": "(1) Збіг рахується за нормалізованою англійською назвою; різні назви тієї самої властивості (наприклад, `has_age` проти `has age (years)`) бачаться як «різні». (2) «Пропуски» значною мірою — класи ситуацій і метаонтології (Event, State, Action, Sensor, SituationTemplate…), яких у завданні LLM не бул"
+ },
+ {
+  "chunk_id": "int_sparql#h000",
+  "kind": "uk_internal",
+  "query": "Яке сховище використовується для SPARQL-запитів і як вимірювався час?",
+  "evidence": "Сховище: pyoxigraph (локальне, персистентне), іменовані графи tbox/abox/inferred/links; запити виконуються над об'єднанням графів. Час — медіана 5 запусків на локальній машині (малий набір, тому абсолютні числа мало що кажуть). Результати згенеровано `scripts/run_queries.py`."
+ },
+ {
+  "chunk_id": "int_cypher#h001",
+  "kind": "uk_internal",
+  "query": "За якого значення QD SNP-варіант отримує прапорець LowQD?",
+  "evidence": "// CQ01: За якого QD SNP-варіант отримує прапорець LowQD? -> SNP із QD < 2."
+ }
+]

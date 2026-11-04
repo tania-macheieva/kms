@@ -1,0 +1,11 @@
+# CQ08: який обсяг даних і яка якість по зразках? -> кількість варіантів, середні QD/FS по кожному зразку
+# Тип: агрегація (GROUP BY, COUNT, AVG, MIN, MAX) + HAVING
+SELECT ?sample (COUNT(DISTINCT ?v) AS ?variants) (ROUND(AVG(?qd)*100)/100 AS ?avgQD) (MIN(?qd) AS ?minQD) (MAX(?qd) AS ?maxQD)
+WHERE {
+  ?v dkh:fromSample ?s ; dkh:hasAnnotation ?a .
+  ?s dkh:hasSampleCode ?sample .
+  ?a dkh:hasAnnotationName "QD" ; dkh:hasNumericValue ?qd .
+}
+GROUP BY ?sample
+HAVING (COUNT(DISTINCT ?v) >= 1)
+ORDER BY ?sample

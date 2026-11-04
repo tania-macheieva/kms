@@ -1,0 +1,17 @@
+name,probability
+AdultRelative,
+DataArtifact,
+ExonEndVariant,
+FirstDegreeRelative,0.5
+GenePanel,
+GeneticVariant,
+HighFSSnpVariant,
+Indel,
+LowQDVariant,
+MinorRelative,
+Person,
+Proband,
+Relative,
+SNP,
+SecondDegreeRelative,0.25
+ThirdDegreeRelative,0.125

@@ -1,0 +1,11 @@
+# Python 3.13 used for all reported numbers
+duckdb==2.0.0
+pandas==3.0.5
+pyarrow==26.0.0
+numpy==2.5.3
+sqlglot==30.27.0
+PyYAML==6.0.3
+rdflib==7.6.0
+plotly==7.1.0
+matplotlib==3.11.2
+pytest==9.1.1

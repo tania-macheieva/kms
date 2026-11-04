@@ -1,0 +1,41 @@
+{
+ "dataset": "dkh_variant_calls",
+ "version": "1.0.0",
+ "generator": "etl/generate.py",
+ "seed": 42,
+ "generator_sha256": "44baf2fe9114372e960f90d286cadbfae0cdd2d5e45424b01bcffbb0dab34843",
+ "ddl_sha256": "bc331388e1fd6a485b3d333bdc00e8a672bf52085688016c59a24a16c9d4b9bc",
+ "taxonomy_source": "Lab 5 taxonomy_final.csv",
+ "taxonomy_sha256": "efa212cce3fa940f57a797dab00e721bdfde47bd19001c05ca6c4682cbc5384c",
+ "raw_sha256": {
+  "calls_raw.csv": "d09e59c27ae8c1110723fbabff5fbc8851240cc0c3a5fd90a1a85cd05293e9d2",
+  "samples_raw.csv": "bd2cb2b0e41992a1cb9776d0478b0fa464b1c15b863addbc22a6aa765f2f91e7",
+  "pipelines_raw.csv": "6f9feaa3cc9fe0520d34f20bcf0914dd96e78d83e95228f7d6a1ac761a62e749",
+  "genes_raw.csv": "ff0a6d8a4fbba8b17bc0e6b3307544734050b075475407e1e0122c47db83645c",
+  "pipeline_day_raw.csv": "e060c7e88aec9414642af722597196f8e72f891c9a7fd28ed37699a80eef53e0"
+ },
+ "row_counts": {
+  "dim_date": 730,
+  "dim_taxon": 154,
+  "dim_sample": 300,
+  "dim_gene": 10,
+  "dim_pipeline": 8,
+  "fact_variant_call": 20000,
+  "fact_pipeline_day": 2552,
+  "rejected_calls": 5
+ },
+ "parquet_sha256": {
+  "dim_date": "6d5218c6df7ea977d0d8208c90df4336439353b0580640989263d83daef262f8",
+  "dim_taxon": "9b73f1bc56f740ac12502be01d08ffaabcb57d852621adf6e451df66c0e0b97d",
+  "dim_sample": "fd63cdff20c43f920bbf818f03ef0c9ba7395d2f7e97bebb5be9e398aee2af23",
+  "dim_gene": "846379065701d1c0f4e5a6ce2d521bce68880d4212ff2d27240d6990ef71dbda",
+  "dim_pipeline": "1188a12e6079786b0ea2c877b11383c84f23c9fc5870646bb8ef2ccb9b630b05",
+  "fact_variant_call": "920a085f4af4a75d643e3deaeecdb9606847036add471ac1437da953d2b74ef8",
+  "fact_pipeline_day": "baebdcef376c2dcd5e39c82aa55f2d69fdcc800e5b06e0903547021cf64ca970",
+  "rejected_calls": "2310260213d3715790ad762d6609e0d921452c0d83ee8b70e6359d9387586463"
+ },
+ "duckdb": "2.0.0",
+ "pandas": "3.0.5",
+ "python": "3.13.16",
+ "synthetic": true
+}

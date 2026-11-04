@@ -1,0 +1,14 @@
+{
+"d01": "```sparql\nSELECT DISTINCT ?id WHERE { ?v a dkh:SNP ; dkh:hasVariantId ?id ; dkh:hasAnnotation ?a . ?a dkh:hasAnnotationName \"QD\" ; dkh:hasNumericValue ?x . FILTER (?x < 2.0) }\n```",
+"d03": "```sparql\nSELECT DISTINCT ?label WHERE { ?p rdfs:label \"HBOC-panel\" . { ?p dkh:hasMember ?g } UNION { ?g dkh:isMemberOf ?p } ?g rdfs:label ?label }\n```",
+"d05": "```sparql\nSELECT ?label (COUNT(DISTINCT ?v) AS ?n) WHERE { ?v dkh:hasVariantId ?id ; dkh:locatedIn ?g . ?g rdfs:label ?label } GROUP BY ?label\n```",
+"d07": "```sparql\nSELECT DISTINCT ?id WHERE { ?v dkh:hasVariantId ?id ; dkh:locatedIn ?g . { ?g rdfs:label \"TP53\" } UNION { ?g dkh:hasGeneSymbol \"TP53\" } }\n```",
+"d09": "```sparql\nSELECT DISTINCT ?label WHERE { ?c rdfs:label \"Olena\" ; dkh:hasParent ?p . ?p rdfs:label ?label }\n```",
+"d11": "```sparql\nSELECT DISTINCT ?id WHERE { ?v dkh:hasVariantId ?id ; dkh:hasClinicalSignificance dkh:Pathogenic }\n```",
+"d13": "```sparql\nSELECT DISTINCT ?label WHERE { ?p dkh:hasAgeYears ?age ; rdfs:label ?label . FILTER (?age > 60) }\n```",
+"d15": "```sparql\nSELECT ?code (AVG(?x) AS ?avg) WHERE { SELECT DISTINCT ?code ?a ?x WHERE { ?v dkh:fromSample ?s ; dkh:hasAnnotation ?a . ?s dkh:hasSampleCode ?code . ?a dkh:hasAnnotationName \"SOR\" ; dkh:hasNumericValue ?x } } GROUP BY ?code\n```",
+"d17": "```sparql\nSELECT DISTINCT ?id WHERE { ?v a dkh:SNP ; dkh:hasVariantId ?id ; dkh:hasAnnotation ?a . ?a dkh:hasAnnotationName \"FS\" ; dkh:hasNumericValue ?x . FILTER (?x > 60.0) }\n```",
+"h01": "```sparql\nSELECT DISTINCT ?label WHERE { ?c rdfs:label \"Olena\" ; dkh:hasParent+ ?p . ?p rdfs:label ?label }\n```",
+"h03": "```sparql\nSELECT (COUNT(DISTINCT ?v) AS ?n) WHERE { ?v a dkh:Indel ; dkh:hasVariantId ?id ; dkh:fromSample ?s . ?s dkh:hasSampleCode \"C\" }\n```",
+"h05": "```sparql\nSELECT DISTINCT ?id WHERE { ?v dkh:hasVariantId ?id ; dkh:locatedIn ?g . { ?g rdfs:label \"PALB2\" } UNION { ?g dkh:hasGeneSymbol \"PALB2\" } FILTER NOT EXISTS { ?v dkh:hasClinicalSignificance ?cs } }\n```"
+}

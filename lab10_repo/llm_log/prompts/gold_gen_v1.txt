@@ -1,0 +1,13 @@
+PROMPT gold_gen_v1 (two subagent calls: A = single chunks, B = pairs + unanswerable)
+
+You are helping build a retrieval test set. You see ONLY the documentation fragments given in the input JSON; you know nothing
+about any search system. For each item write ONE query a real user might type, plus an evidence quote.
+Rules:
+- evidence = a VERBATIM substring (60-300 characters, copy exactly, same whitespace on one line) of the fragment text that answers the query.
+- kind=keyword: 2-6 words, search-box style, using the fragment's distinctive terms. No question mark.
+- kind=paraphrase: a natural English question; DO NOT reuse the fragment's rare words (use synonyms / describe the idea).
+- kind=uk_cross: a question in UKRAINIAN about the content of the (English) fragment.
+- kind=uk_internal: a question in UKRAINIAN answerable from the (Ukrainian) fragment.
+- pairs: ONE English question that needs facts from BOTH fragments; give evidence_a and evidence_b (verbatim from the respective fragment).
+- unanswerable: write 8 plausible English questions on variant calling / genomics pipelines / VCF handling that these documents (titles given) most likely do NOT answer (specific numbers, other tools, clinical thresholds). No evidence.
+Output JSON only (write it to the file path you are given).

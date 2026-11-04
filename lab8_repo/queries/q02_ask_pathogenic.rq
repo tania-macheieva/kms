@@ -1,0 +1,6 @@
+# CQ14/CQ17: чи є в наборі патогенний варіант у гені з панелі HBOC (підстава запропонувати каскадне тестування)?
+# Тип: ASK
+ASK {
+  dkh:HBOC-panel dkh:hasMember ?gene .
+  ?v dkh:locatedIn ?gene ; dkh:hasClinicalSignificance dkh:Pathogenic .
+}

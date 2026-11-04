@@ -1,0 +1,86 @@
+[
+  {
+    "id": "BQ01",
+    "question": "How many variant calls passed filtering in each gene, and what share of each gene's calls passed?",
+    "needed_dimensions": ["dim_gene.gene_symbol"],
+    "needed_measures": ["fact_variant_call.call_count", "fact_variant_call.is_pass"],
+    "olap_operation": "rollup"
+  },
+  {
+    "id": "BQ02",
+    "question": "How does the number of variant calls change by year, quarter and month?",
+    "needed_dimensions": ["dim_date.year", "dim_date.quarter", "dim_date.month", "dim_date.month_name"],
+    "needed_measures": ["fact_variant_call.call_count"],
+    "olap_operation": "rollup"
+  },
+  {
+    "id": "BQ03",
+    "question": "How do germline and somatic variant call counts compare across chromosomes?",
+    "needed_dimensions": ["dim_gene.chromosome", "dim_taxon.label (via origin_key)"],
+    "needed_measures": ["fact_variant_call.call_count"],
+    "olap_operation": "pivot"
+  },
+  {
+    "id": "BQ04",
+    "question": "How are clinical significance labels distributed across variant types?",
+    "needed_dimensions": ["dim_taxon.label (via variant_type_key)", "dim_taxon.label (via significance_key)"],
+    "needed_measures": ["fact_variant_call.call_count"],
+    "olap_operation": "pivot"
+  },
+  {
+    "id": "BQ05",
+    "question": "Which samples accumulated the most review minutes, and how do they rank within their QC status group?",
+    "needed_dimensions": ["dim_sample.sample_code", "dim_sample.qc_status"],
+    "needed_measures": ["fact_variant_call.review_minutes"],
+    "olap_operation": "window"
+  },
+  {
+    "id": "BQ06",
+    "question": "What are the average read depth and average quality of calls for each pipeline tool and version?",
+    "needed_dimensions": ["dim_pipeline.tool", "dim_pipeline.version"],
+    "needed_measures": ["fact_variant_call.read_depth (average)", "fact_variant_call.qual (average)", "fact_variant_call.call_count"],
+    "olap_operation": "rollup"
+  },
+  {
+    "id": "BQ07",
+    "question": "How has the average alternate allele fraction changed quarter over quarter on each sequencing platform?",
+    "needed_dimensions": ["dim_date.year", "dim_date.quarter", "dim_sample.platform"],
+    "needed_measures": ["fact_variant_call.alt_fraction (average)"],
+    "olap_operation": "window"
+  },
+  {
+    "id": "BQ08",
+    "question": "Which pipeline families consumed the most CPU hours per month, and how did their average queue backlog trend over the same months?",
+    "needed_dimensions": ["dim_pipeline.family", "dim_date.year", "dim_date.month"],
+    "needed_measures": ["fact_pipeline_day.cpu_hours", "fact_pipeline_day.queue_backlog (average, semi-additive)"],
+    "olap_operation": "rollup"
+  },
+  {
+    "id": "BQ09",
+    "question": "Which cohort and tissue combinations have the highest proportion of passed variant calls?",
+    "needed_dimensions": ["dim_sample.cohort", "dim_sample.tissue"],
+    "needed_measures": ["fact_variant_call.is_pass", "fact_variant_call.call_count"],
+    "olap_operation": "dice"
+  },
+  {
+    "id": "BQ10",
+    "question": "Within each top-level variant category, how do call counts break down by facet and then by individual concept?",
+    "needed_dimensions": ["dim_taxon.top_label", "dim_taxon.facet_label", "dim_taxon.label"],
+    "needed_measures": ["fact_variant_call.call_count"],
+    "olap_operation": "cube"
+  },
+  {
+    "id": "BQ11",
+    "question": "How do review minutes on weekends compare with weekdays, broken down by day of the week?",
+    "needed_dimensions": ["dim_date.is_weekend", "dim_date.day_of_week"],
+    "needed_measures": ["fact_variant_call.review_minutes"],
+    "olap_operation": "slice"
+  },
+  {
+    "id": "BQ12",
+    "question": "What share of each quarter's pipeline runs was started by each pipeline family?",
+    "needed_dimensions": ["dim_pipeline.family", "dim_date.year", "dim_date.quarter"],
+    "needed_measures": ["fact_pipeline_day.runs_started"],
+    "olap_operation": "pivot"
+  }
+]

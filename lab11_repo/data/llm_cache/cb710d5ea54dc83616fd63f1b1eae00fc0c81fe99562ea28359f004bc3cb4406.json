@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "STATUS: ANSWER\nvcfanno annotates a VCF with any number of INFO fields from any number of VCFs. It uses a simple configuration file that specifies the source annotation files and fields and how they are added to the query VCF [rare_output#h023].", "in_tokens": 2017, "out_tokens": 61, "latency_ms": null}

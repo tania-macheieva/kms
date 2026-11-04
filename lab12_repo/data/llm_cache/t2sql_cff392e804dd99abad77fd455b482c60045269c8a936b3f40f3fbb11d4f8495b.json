@@ -1,0 +1,1 @@
+{"text": "SELECT p.family, p.tool, p.version, count(*) AS call_count FROM fact_variant_call f JOIN dim_pipeline p ON f.pipeline_key = p.pipeline_key WHERE p.is_current GROUP BY p.family, p.tool, p.version ORDER BY p.family"}

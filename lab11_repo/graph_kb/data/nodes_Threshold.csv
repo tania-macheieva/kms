@@ -1,0 +1,8 @@
+id,annotation,op,value,variantType
+FS_gt_200_indel,FS,>,200.0,INDEL
+FS_gt_60_snp,FS,>,60.0,SNP
+MQRankSum_lt_-12.5,MQRankSum,<,-12.5,all
+MQ_lt_40,MQ,<,40.0,all
+QD_lt_2,QD,<,2.0,all
+ReadPosRankSum_lt_-8,ReadPosRankSum,<,-8.0,all
+SOR_gt_3,SOR,>,3.0,all

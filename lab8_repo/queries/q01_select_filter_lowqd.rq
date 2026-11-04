@@ -1,0 +1,9 @@
+# CQ01: За якого QD SNP-варіант отримує прапорець LowQD? -> які SNP у когорті мають QD < 2
+# Типи: SELECT + FILTER
+SELECT DISTINCT ?variant ?qd
+WHERE {
+  ?variant a dkh:SNP ; dkh:hasAnnotation ?a .
+  ?a dkh:hasAnnotationName "QD" ; dkh:hasNumericValue ?qd .
+  FILTER (?qd < 2.0)
+}
+ORDER BY ?qd ?variant

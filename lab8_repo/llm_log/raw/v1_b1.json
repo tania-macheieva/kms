@@ -1,0 +1,14 @@
+{
+"d01": "SELECT DISTINCT ?id WHERE {\n  ?v a dkh:SNP ;\n     dkh:hasVariantId ?id ;\n     dkh:hasAnnotation ?a .\n  ?a dkh:hasAnnotationName \"QD\" ;\n     dkh:hasNumericValue ?val .\n  FILTER(?val < 2)\n}",
+"d03": "SELECT DISTINCT ?label WHERE {\n  ?p a dkh:GenePanel ;\n     rdfs:label ?pl ;\n     dkh:hasMember ?g .\n  FILTER(STR(?pl) = \"HBOC-panel\")\n  ?g rdfs:label ?label .\n}",
+"d05": "SELECT ?label (COUNT(DISTINCT ?v) AS ?n) WHERE {\n  ?v a/rdfs:subClassOf* dkh:GeneticVariant ;\n     dkh:locatedIn ?g .\n  ?g rdfs:label ?label .\n}\nGROUP BY ?g ?label",
+"d07": "SELECT DISTINCT ?id WHERE {\n  ?v dkh:locatedIn ?g ;\n     dkh:hasVariantId ?id .\n  ?g dkh:hasGeneSymbol \"TP53\" .\n}",
+"d09": "SELECT DISTINCT ?label WHERE {\n  ?c rdfs:label ?cl .\n  FILTER(STR(?cl) = \"Olena\")\n  ?c dkh:hasParent ?p .\n  ?p rdfs:label ?label .\n}",
+"d11": "SELECT DISTINCT ?id WHERE {\n  ?v dkh:hasVariantId ?id ;\n     dkh:hasClinicalSignificance ?cs .\n  ?cs rdfs:label ?l .\n  FILTER(STR(?l) = \"Pathogenic\")\n}",
+"d13": "SELECT DISTINCT ?label WHERE {\n  ?p a/rdfs:subClassOf* dkh:Person ;\n     dkh:hasAgeYears ?age ;\n     rdfs:label ?label .\n  FILTER(?age > 60)\n}",
+"d15": "SELECT ?code (AVG(?val) AS ?avg) WHERE {\n  ?v dkh:fromSample ?s ;\n     dkh:hasAnnotation ?a .\n  ?s dkh:hasSampleCode ?code .\n  ?a dkh:hasAnnotationName \"SOR\" ;\n     dkh:hasNumericValue ?val .\n}\nGROUP BY ?code",
+"d17": "SELECT DISTINCT ?v ?id WHERE {\n  ?v a dkh:SNP ;\n     dkh:hasAnnotation ?a .\n  OPTIONAL { ?v dkh:hasVariantId ?id }\n  ?a dkh:hasAnnotationName \"FS\" ;\n     dkh:hasNumericValue ?val .\n  FILTER(?val > 60)\n}",
+"h01": "SELECT DISTINCT ?label WHERE {\n  ?c rdfs:label ?cl .\n  FILTER(STR(?cl) = \"Olena\")\n  ?c dkh:hasParent+ ?a .\n  ?a rdfs:label ?label .\n}",
+"h03": "SELECT (COUNT(DISTINCT ?v) AS ?n) WHERE {\n  ?v a dkh:Indel ;\n     dkh:fromSample ?s .\n  ?s dkh:hasSampleCode \"C\" .\n}",
+"h05": "SELECT DISTINCT ?id WHERE {\n  ?v dkh:locatedIn ?g ;\n     dkh:hasVariantId ?id .\n  ?g dkh:hasGeneSymbol \"PALB2\" .\n  FILTER NOT EXISTS { ?v dkh:hasClinicalSignificance ?cs }\n}"
+}

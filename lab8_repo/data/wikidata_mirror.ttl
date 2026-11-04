@@ -1,0 +1,31 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+
+wd:Q1124169 rdfs:label "genetic counseling"@en .
+
+wd:Q128581 rdfs:label "breast cancer"@en .
+
+wd:Q172341 rdfs:label "ovarian cancer"@en .
+
+wd:Q17853272 rdfs:label "BRCA2"@en .
+
+wd:Q19000660 rdfs:label "hereditary breast ovarian cancer"@en .
+
+wd:Q227339 rdfs:label "BRCA1"@en .
+
+wd:Q373027 rdfs:label "exon"@en .
+
+wd:Q421651 rdfs:label "BRCA2 DNA repair associated"@en .
+
+wd:Q4836333 rdfs:label "BRCA mutation"@en .
+
+wd:Q501128 rdfs:label "single-nucleotide polymorphism"@en .
+
+wd:Q7187 rdfs:label "gene"@en .
+
+wd:Q7391885 rdfs:label "SNP array"@en .
+
+wd:Q7915770 rdfs:label "Variant Call Format"@en .
+
+<urn:dkh:mirror> rdfs:comment "Локальне дзеркало міток Wikidata: лише пари Q-id → мітка, зняті з результатів пошуку 2026-10-27. Не є вмістом Wikidata." .
+

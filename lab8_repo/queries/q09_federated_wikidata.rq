@@ -1,0 +1,12 @@
+# Федеративний запит: наші зв'язки (graph links) + мітки з Wikidata через SERVICE
+# Тип: federated query. Адреса ендпоїнта підставляється скриптом: {ENDPOINT} = реальний https://query.wikidata.org/sparql або локальне дзеркало
+SELECT ?term ?wd ?wdLabel ?prop
+WHERE {
+  ?term ?prop ?wd .
+  FILTER (?prop IN (skos:closeMatch, skos:relatedMatch) && STRSTARTS(STR(?wd), "http://www.wikidata.org/entity/"))
+  SERVICE <{ENDPOINT}> {
+    ?wd rdfs:label ?wdLabel .
+    FILTER (LANG(?wdLabel) = "en")
+  }
+}
+ORDER BY ?term

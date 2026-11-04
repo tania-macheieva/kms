@@ -1,0 +1,1 @@
+{"text": "SELECT p.version, round(avg(f.qual), 1) AS avg_qual FROM fact_variant_call f JOIN dim_pipeline p ON f.pipeline_key = p.pipeline_key WHERE p.family = 'GATK' GROUP BY p.version ORDER BY p.version"}

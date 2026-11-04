@@ -1,0 +1,121 @@
+[
+ {
+  "step": "initial build",
+  "rows": 688,
+  "alive": 688,
+  "docs": 33
+ },
+ {
+  "step": "1 upsert (modify doc: new section added)",
+  "doc": "gatk_docker",
+  "query": "How often is the nightly build cache of the demo image purged?",
+  "top5": [
+   "gatk_docker#h012",
+   "rare_usage#h028",
+   "rare_usage#h003",
+   "sarek_usage#h070",
+   "rare_usage#h008"
+  ],
+  "passed": true,
+  "rows": 701,
+  "alive": 689,
+  "dead_ratio": 0.017,
+  "tombstoned": 12,
+  "added": 13,
+  "before_top3": [
+   "rare_usage#h028",
+   "rare_usage#h003",
+   "sarek_usage#h070"
+  ]
+ },
+ {
+  "step": "2 upsert (modify doc: first half removed)",
+  "doc": "rare_citations",
+  "probe": " > Ewels PA, Peltzer A, Fillinger S, Patel H, Alneberg J, Wilm A, Garcia MU, Di Tommaso P, Nahnsen S. The nf-core framew",
+  "top5": [
+   "sarek_citations#h002",
+   "sarek_citations#h001",
+   "sarek_citations#h000",
+   "rare_usage#h017",
+   "sarek_vc_intro#h002"
+  ],
+  "passed": true,
+  "tombstoned": 6,
+  "added": 3,
+  "rows": 704,
+  "alive": 686,
+  "dead_ratio": 0.026
+ },
+ {
+  "step": "3 delete doc",
+  "doc": "sarek_citations",
+  "query": "sarek citations list of tools references MultiQC",
+  "top5": [
+   "sarek_output#h074",
+   "sarek_readme#h008",
+   "rare_output#h014",
+   "sarek_vc_sarek#h002",
+   "sarek_output#h063"
+  ],
+  "passed": true,
+  "tombstoned": 10,
+  "rows": 704,
+  "alive": 676,
+  "dead_ratio": 0.04
+ },
+ {
+  "step": "4 add new doc",
+  "doc": "gatk_spark_wdl",
+  "query": "How do I run the Spark WDL workflow on a Google Dataproc cluster?",
+  "top5": [
+   "gatk_spark_wdl#h001",
+   "gatk_spark_wdl#h003",
+   "gatk_spark_wdl#h002",
+   "gatk_spark_wdl#h004",
+   "gatk_spark_wdl#h000"
+  ],
+  "passed": true,
+  "rows": 709,
+  "alive": 681,
+  "dead_ratio": 0.039,
+  "added": 5
+ },
+ {
+  "step": "5 add new doc",
+  "doc": "gatk_spark_eval",
+  "query": "scripts for evaluating Spark tool performance on a cluster",
+  "top5": [
+   "gatk_spark_eval#h000",
+   "gatk_readme#h034",
+   "gatk_readme#h016",
+   "gatk_spark_eval#h001",
+   "gatk_spark_eval#h005"
+  ],
+  "passed": true,
+  "rows": 716,
+  "alive": 688,
+  "dead_ratio": 0.039,
+  "added": 7
+ },
+ {
+  "step": "6 filter citations after delete",
+  "top5": [
+   "rare_citations#h002",
+   "rare_citations#h000",
+   "rare_citations#h001"
+  ],
+  "passed": true
+ },
+ {
+  "step": "7 compact",
+  "rows_before": 716,
+  "rows_after": 688,
+  "alive": 688,
+  "ann_vs_exact_overlap_at5": 1.0,
+  "passed": true
+ },
+ {
+  "step": "8 save/load round trip",
+  "passed": true
+ }
+]

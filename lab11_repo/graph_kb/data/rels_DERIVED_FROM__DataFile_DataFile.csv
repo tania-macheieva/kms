@@ -1,0 +1,2 @@
+from,to,source,confidence,validFrom
+sample1_vcf,sample1_bam,lab7-abox,1.0,2026-10-26

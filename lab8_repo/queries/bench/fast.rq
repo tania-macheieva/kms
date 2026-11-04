@@ -1,0 +1,8 @@
+# Оптимізований запит: фіксовані предикати й літерал в об'єктній позиції, один фільтр за числом
+SELECT (COUNT(DISTINCT ?v) AS ?n)
+WHERE {
+  ?a dkh:hasAnnotationName "QD" ;
+     dkh:hasNumericValue ?x ;
+     dkh:isAnnotationOf ?v .
+  FILTER (?x < 2.0)
+}

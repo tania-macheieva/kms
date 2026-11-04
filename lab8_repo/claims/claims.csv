@@ -1,0 +1,25 @@
+﻿id,claim,type,source,level,status,comment
+C01,kb.ttl містить ≥300 тріплів (3923) і парситься rdflib,fact,data/load_log.md,V2,verified,повторне обчислення: rdflib Graph.parse + len; test_kb_store
+C02,COUNT у сторі за графами збігається з кількістю тріплів у файлах (разом 4425 з links),fact,docs/load_log.md,V2,verified,два незалежні підрахунки: pyoxigraph SELECT COUNT і rdflib
+C03,"JSON-LD містить 69 сутностей, roundtrip зберігає 377 тріплів",fact,data/kb.jsonld,V2,verified,повторний парсинг JSON-LD
+C04,"q01: 5 SNP із QD<2 (VAR-002,101,102,111,151)",fact,queries/results/results.json,V2,verified,звірено незалежним Python-кодом (scripts/verify_manual.py)
+C05,q04: розміри зразків 22/20/20 і середні QD 15.14/15.58/16.92,fact,queries/results/results.json,V2,verified,звірка; розбіжність 16.91/16.92 пояснена округленням (ROUND half up vs float)
+C06,q06: від Olena досяжні 7 осіб через родинні зв'язки,fact,queries/results/results.json,V2,verified,BFS у Python
+C07,q08: шанси 0.5/0.25/0.125 і «Sofiia не може тестуватись (17<18)»,fact,queries/results/results.json; ЛР4 CQ15 (CDC),V2,verified,"звірено; правило віку 18 береться з ЛР4, джерело не перевірялось повторно"
+C08,Оптимізований запит швидший у ≈4.8× на 900 тис. тріплів,fact,queries/results/bench.json,V2,verified,"5 запусків, однакова відповідь; один рушій і одна машина"
+C09,"Валідний набір проходить SHACL (conforms=True, 3 попередження)",fact,shapes/report_valid.ttl,V2,verified,pySHACL 0.40.1
+C10,Дефектний набір дає рівно 3 Violation за 3 вади,fact,shapes/report_defective.ttl,V2,verified,pySHACL
+C11,Сувора форма (minCount 4) була б порушена на VAR-002..004,fact,docs/shacl_report.md,V2,verified,відтворено першим прогоном; форму потім послаблено до Warning — підгонка під дані зафіксована
+C12,HermiT вважає дефектний набір узгодженим (OWL не бачить вад D1–D3),fact,shapes/owl_vs_shacl.json,V2,verified,запуск HermiT
+C13,Хибний тип locatedIn→Olena робить онтологію неузгодженою через дизʼюнктність Person/Gene,hypothesis,shapes/owl_vs_shacl.json,V1,pending,"факт неузгодженості підтверджено, причина (аксіоми) не розбиралась"
+C14,t2s v1: 16/24 правильних; v2: 18/24,fact,"llm_log/eval_v1.json, eval_v2.json",V2,verified,скрипт eval_t2s.py; еталони склала та сама система → не V4
+C15,Синтаксис і схема: 24/24 в обох версіях,fact,llm_log/eval_*.json,V2,verified,перевірку схеми підтверджено негативним тестом (dkh:hasQD)
+C16,Промпт v2 покращив точність text-to-SPARQL,hypothesis,docs/t2s_eval.md,V2,pending,+2 питання з 24 в межах шуму; один прогін; held-out без змін (4/6)
+C17,Правило 7 у v2 спричинило клас помилок E6 (мовний тег міток),hypothesis,llm_log/eval_v2.json,V2,pending,"узгоджується з 5 помилками, але v3 без правила 7 не запускалась"
+C18,Дані завантажено в Apache Jena Fuseki,fact,—,V1,rejected,не виконано: Docker/JAR недоступні; використано pyoxigraph
+C19,Федеративний запит виконано до справжньої Wikidata,fact,docs/links_verification.md,V1,rejected,SERVICE працював лише до локального дзеркала міток
+C20,9 зв'язків із Wikidata прийнято (closeMatch/relatedMatch),fact,data/links.ttl,V1,verified,збіг заголовка у списку пошуку; сторінки не відкривались
+C21,"dkh:SNP ↔ wd:Q7391885 «SNP array» — хибний зв'язок (технологія, не тип варіанта)",fact,data/links_decisions.csv,V1,verified,висновок з мітки; сторінку не відкрито
+C22,Q17853272 є геном BRCA2 (а не Q421651),hypothesis,data/links_decisions.csv,V1,pending,"два кандидати, вибір за порядком пошуку"
+C23,"Wikidata-ідентифікатори Q7187, Q128581, Q172341, Q501128, Q1124169, Q373027, Q227339, Q7915770 відповідають нашим поняттям",hypothesis,data/links_decisions.csv,V1,pending,лише збіг мітки; тип сутності не перевірено
+C24,Дані когорти (VAR-101…160) відображають реальні дані,fact,scripts/build_kb.py,V1,rejected,дані синтетичні (seed 42)

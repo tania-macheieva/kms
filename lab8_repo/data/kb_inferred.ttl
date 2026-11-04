@@ -1,0 +1,1163 @@
+@prefix dkh: <http://example.org/dkh/onto#> .
+
+dkh:BRCA1 a dkh:BiologicalEntity .
+
+dkh:BRCA2 a dkh:BiologicalEntity .
+
+dkh:CT-01 a dkh:GeneticTesting,
+        dkh:Procedure .
+
+dkh:CT_B a dkh:GeneticTesting,
+        dkh:Procedure .
+
+dkh:HBOC-panel a dkh:DataArtifact .
+
+dkh:HF-01 a dkh:Procedure,
+        dkh:VariantFiltering .
+
+dkh:Iryna_OC a dkh:Cancer,
+        dkh:Disease .
+
+dkh:Kateryna_dx a dkh:Cancer,
+        dkh:Disease .
+
+dkh:Olena_BC a dkh:Cancer,
+        dkh:Disease .
+
+dkh:PALB2 a dkh:BiologicalEntity .
+
+dkh:Pavlo_dx a dkh:Cancer,
+        dkh:Disease .
+
+dkh:S01_a_ApplyFlagAction a dkh:Action .
+
+dkh:S01_e_AnnotationComputedEvent a dkh:Event .
+
+dkh:S01_i_UnfilteredState a dkh:State .
+
+dkh:S01_n_FlaggedState a dkh:State .
+
+dkh:S02_a_ApplyFlagAction a dkh:Action .
+
+dkh:S02_e_AnnotationComputedEvent a dkh:Event .
+
+dkh:S02_i_UnfilteredState a dkh:State .
+
+dkh:S02_n_FlaggedState a dkh:State .
+
+dkh:S03_a_ReviewWithSORAction a dkh:Action .
+
+dkh:S03_e_AnnotationComputedEvent a dkh:Event .
+
+dkh:S03_i_FlaggedState a dkh:State .
+
+dkh:S03_n_UnfilteredState a dkh:State .
+
+dkh:S04_a_SelectHardFilteringAction a dkh:Action .
+
+dkh:S04_e_MethodChoiceEvent a dkh:Event .
+
+dkh:S04_i_UnfilteredState a dkh:State .
+
+dkh:S04_n_UnfilteredState a dkh:State .
+
+dkh:S05_a_OfferCascadeTestingAction a dkh:Action .
+
+dkh:S05_e_PathogenicVariantFoundEvent a dkh:Event .
+
+dkh:S05_i_UntestedState a dkh:State .
+
+dkh:S05_n_TestingOfferedState a dkh:State .
+
+dkh:S06_a_DeferTestingAction a dkh:Action .
+
+dkh:S06_e_TestingRequestedEvent a dkh:Event .
+
+dkh:S06_i_UntestedState a dkh:State .
+
+dkh:S06_n_TestingDeferredState a dkh:State .
+
+dkh:Sequencer1 a dkh:Sensor .
+
+dkh:TP53 a dkh:BiologicalEntity .
+
+dkh:VAR-001 a dkh:GeneticVariant,
+        dkh:PathogenicVariant .
+
+dkh:VAR-001_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-001_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-001_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-001_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-002 a dkh:FlaggedVariant,
+        dkh:GeneticVariant,
+        dkh:LowQDVariant .
+
+dkh:VAR-002_QualityByDepth a dkh:LowQDAnnotation,
+        dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-003 a dkh:GeneticVariant .
+
+dkh:VAR-003_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-004 a dkh:ExonEndVariant,
+        dkh:FlaggedVariant,
+        dkh:GeneticVariant,
+        dkh:HighFSSnpVariant .
+
+dkh:VAR-004_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-004_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-005 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-005_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-005_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-005_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-005_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-006 a dkh:FlaggedVariant,
+        dkh:GeneticVariant,
+        dkh:LowQDVariant .
+
+dkh:VAR-006_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-006_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-006_QualityByDepth a dkh:LowQDAnnotation,
+        dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-006_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-007 a dkh:GeneticVariant .
+
+dkh:VAR-007_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-007_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-007_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-007_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-008 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-008_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-008_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-008_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-008_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-009 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-009_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-009_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-009_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-009_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-010 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-010_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-010_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-010_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-010_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-011 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-011_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-011_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-011_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-011_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-012 a dkh:FlaggedVariant,
+        dkh:GeneticVariant,
+        dkh:HighFSSnpVariant .
+
+dkh:VAR-012_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-012_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-012_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-012_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-013 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-013_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-013_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-013_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-013_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-014 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-014_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-014_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-014_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-014_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-015 a dkh:GeneticVariant .
+
+dkh:VAR-015_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-015_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-015_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-015_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-016 a dkh:ExonEndVariant,
+        dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-016_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-016_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-016_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-016_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-017 a dkh:FlaggedVariant,
+        dkh:GeneticVariant,
+        dkh:HighFSSnpVariant .
+
+dkh:VAR-017_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-017_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-017_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-017_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-018 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-018_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-018_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-018_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-018_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-019 a dkh:ExonEndVariant,
+        dkh:FlaggedVariant,
+        dkh:GeneticVariant,
+        dkh:HighFSIndelVariant .
+
+dkh:VAR-019_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-019_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-019_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-019_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-020 a dkh:GeneticVariant .
+
+dkh:VAR-020_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-020_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-020_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-020_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-021 a dkh:FlaggedVariant,
+        dkh:GeneticVariant,
+        dkh:HighFSIndelVariant .
+
+dkh:VAR-021_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-021_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-021_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-021_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-022 a dkh:GeneticVariant .
+
+dkh:VAR-022_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-022_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-022_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-022_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-023 a dkh:ExonEndVariant,
+        dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-023_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-023_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-023_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-023_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-024 a dkh:FlaggedVariant,
+        dkh:GeneticVariant,
+        dkh:HighFSSnpVariant .
+
+dkh:VAR-024_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-024_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-024_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-024_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-025 a dkh:FlaggedVariant,
+        dkh:GeneticVariant,
+        dkh:PathogenicVariant .
+
+dkh:VAR-025_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-025_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-025_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-025_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-026 a dkh:GeneticVariant .
+
+dkh:VAR-026_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-026_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-026_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-026_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-027 a dkh:FlaggedVariant,
+        dkh:GeneticVariant,
+        dkh:HighFSSnpVariant .
+
+dkh:VAR-027_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-027_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-027_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-027_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-028 a dkh:GeneticVariant .
+
+dkh:VAR-028_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-028_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-028_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-028_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-029 a dkh:GeneticVariant .
+
+dkh:VAR-029_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-029_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-029_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-029_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-030 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-030_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-030_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-030_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-030_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-031 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-031_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-031_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-031_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-031_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-032 a dkh:GeneticVariant,
+        dkh:PathogenicVariant .
+
+dkh:VAR-032_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-032_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-032_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-032_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-033 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-033_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-033_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-033_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-033_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-034 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-034_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-034_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-034_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-034_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-035 a dkh:GeneticVariant .
+
+dkh:VAR-035_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-035_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-035_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-035_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-036 a dkh:FlaggedVariant,
+        dkh:GeneticVariant,
+        dkh:HighFSSnpVariant .
+
+dkh:VAR-036_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-036_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-036_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-036_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-037 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-037_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-037_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-037_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-037_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-038 a dkh:GeneticVariant .
+
+dkh:VAR-038_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-038_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-038_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-038_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-039 a dkh:FlaggedVariant,
+        dkh:GeneticVariant,
+        dkh:HighFSSnpVariant .
+
+dkh:VAR-039_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-039_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-039_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-039_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-040 a dkh:FlaggedVariant,
+        dkh:GeneticVariant,
+        dkh:LowQDVariant .
+
+dkh:VAR-040_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-040_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-040_QualityByDepth a dkh:LowQDAnnotation,
+        dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-040_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-041 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-041_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-041_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-041_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-041_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-042 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-042_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-042_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-042_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-042_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-043 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-043_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-043_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-043_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-043_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-044 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-044_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-044_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-044_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-044_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-045 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-045_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-045_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-045_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-045_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-046 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-046_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-046_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-046_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-046_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-047 a dkh:GeneticVariant .
+
+dkh:VAR-047_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-047_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-047_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-047_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-048 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-048_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-048_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-048_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-048_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-049 a dkh:GeneticVariant .
+
+dkh:VAR-049_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-049_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-049_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-049_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-050 a dkh:GeneticVariant .
+
+dkh:VAR-050_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-050_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-050_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-050_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-051 a dkh:FlaggedVariant,
+        dkh:GeneticVariant,
+        dkh:HighFSSnpVariant .
+
+dkh:VAR-051_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-051_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-051_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-051_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-052 a dkh:FlaggedVariant,
+        dkh:GeneticVariant,
+        dkh:HighFSSnpVariant .
+
+dkh:VAR-052_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-052_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-052_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-052_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-053 a dkh:GeneticVariant,
+        dkh:PathogenicVariant .
+
+dkh:VAR-053_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-053_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-053_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-053_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-054 a dkh:FlaggedVariant,
+        dkh:GeneticVariant,
+        dkh:HighFSSnpVariant .
+
+dkh:VAR-054_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-054_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-054_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-054_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-055 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-055_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-055_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-055_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-055_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-056 a dkh:FlaggedVariant,
+        dkh:GeneticVariant,
+        dkh:HighFSSnpVariant .
+
+dkh:VAR-056_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-056_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-056_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-056_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-057 a dkh:FlaggedVariant,
+        dkh:GeneticVariant .
+
+dkh:VAR-057_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-057_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-057_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-057_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-058 a dkh:GeneticVariant .
+
+dkh:VAR-058_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-058_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-058_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-058_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-059 a dkh:GeneticVariant .
+
+dkh:VAR-059_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-059_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-059_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-059_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-060 a dkh:FlaggedVariant,
+        dkh:GeneticVariant,
+        dkh:HighFSSnpVariant .
+
+dkh:VAR-060_FisherStrandBias a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-060_MappingQuality a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-060_QualityByDepth a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:VAR-060_StrandOddsRatio a dkh:QualityAnnotation,
+        dkh:QualityMeasure .
+
+dkh:sample1_bam a dkh:DataArtifact,
+        dkh:DataFile .
+
+dkh:sample1_vcf a dkh:DataArtifact,
+        dkh:DataFile .
+
+dkh:sample2_bam a dkh:DataArtifact,
+        dkh:DataFile .
+
+dkh:sample2_vcf a dkh:DataArtifact,
+        dkh:DataFile .
+
+dkh:sample3_bam a dkh:DataArtifact,
+        dkh:DataFile .
+
+dkh:sample3_vcf a dkh:DataArtifact,
+        dkh:DataFile .
+
+dkh:Pavlo dkh:hasChild dkh:Taras,
+        dkh:Yana ;
+    dkh:hasSibling dkh:Nadiia .
+
+dkh:Petro a dkh:AdultRelative,
+        dkh:FirstDegreeRelative,
+        dkh:Relative ;
+    dkh:hasChild dkh:Marta,
+        dkh:Olena ;
+    dkh:isSecondDegreeRelativeOf dkh:Sofiia .
+
+dkh:Andrii a dkh:AdultRelative,
+        dkh:Relative,
+        dkh:ThirdDegreeRelative ;
+    dkh:hasAncestor dkh:Maria ;
+    dkh:hasAuntOrUncle dkh:Iryna ;
+    dkh:hasCousin dkh:Marta,
+        dkh:Olena ;
+    dkh:hasGrandparent dkh:Maria ;
+    dkh:hasParent dkh:Halyna ;
+    dkh:isSecondDegreeRelativeOf dkh:Iryna,
+        dkh:Maria .
+
+dkh:Kateryna dkh:hasAncestor dkh:Stefa ;
+    dkh:hasAuntOrUncle dkh:Zoriana ;
+    dkh:hasCousin dkh:Bohdan ;
+    dkh:hasGrandparent dkh:Stefa ;
+    dkh:hasSibling dkh:Oleh ;
+    dkh:isSecondDegreeRelativeOf dkh:Stefa,
+        dkh:Zoriana .
+
+dkh:Lidiia a dkh:AdultRelative,
+        dkh:FirstDegreeRelative,
+        dkh:Relative ;
+    dkh:hasChild dkh:Kateryna,
+        dkh:Oleh ;
+    dkh:isSecondDegreeRelativeOf dkh:Bohdan .
+
+dkh:Sofiia a dkh:FirstDegreeRelative,
+        dkh:MinorRelative,
+        dkh:Relative ;
+    dkh:hasAncestor dkh:Iryna,
+        dkh:Maria,
+        dkh:Petro ;
+    dkh:hasAuntOrUncle dkh:Marta ;
+    dkh:hasGrandparent dkh:Iryna,
+        dkh:Petro ;
+    dkh:isSecondDegreeRelativeOf dkh:Iryna,
+        dkh:Marta,
+        dkh:Petro .
+
+dkh:Taras a dkh:FirstDegreeRelative,
+        dkh:MinorRelative,
+        dkh:Relative ;
+    dkh:hasAncestor dkh:Mykola,
+        dkh:Vira ;
+    dkh:hasAuntOrUncle dkh:Nadiia ;
+    dkh:hasGrandparent dkh:Mykola,
+        dkh:Vira ;
+    dkh:isSecondDegreeRelativeOf dkh:Mykola,
+        dkh:Nadiia,
+        dkh:Vira .
+
+dkh:Yana a dkh:AdultRelative,
+        dkh:FirstDegreeRelative,
+        dkh:Relative ;
+    dkh:hasAncestor dkh:Mykola,
+        dkh:Vira ;
+    dkh:hasAuntOrUncle dkh:Nadiia ;
+    dkh:hasGrandparent dkh:Mykola,
+        dkh:Vira ;
+    dkh:isSecondDegreeRelativeOf dkh:Mykola,
+        dkh:Nadiia,
+        dkh:Vira .
+
+dkh:Bohdan a dkh:AdultRelative,
+        dkh:Relative,
+        dkh:ThirdDegreeRelative ;
+    dkh:hasAncestor dkh:Stefa ;
+    dkh:hasAuntOrUncle dkh:Lidiia ;
+    dkh:hasCousin dkh:Kateryna,
+        dkh:Oleh ;
+    dkh:hasGrandparent dkh:Stefa ;
+    dkh:isSecondDegreeRelativeOf dkh:Lidiia,
+        dkh:Stefa .
+
+dkh:Halyna a dkh:AdultRelative,
+        dkh:Relative,
+        dkh:SecondDegreeRelative ;
+    dkh:hasSibling dkh:Iryna ;
+    dkh:isSecondDegreeRelativeOf dkh:Marta,
+        dkh:Olena .
+
+dkh:Oleh a dkh:AdultRelative,
+        dkh:FirstDegreeRelative,
+        dkh:Relative ;
+    dkh:hasAncestor dkh:Stefa ;
+    dkh:hasAuntOrUncle dkh:Zoriana ;
+    dkh:hasCousin dkh:Bohdan ;
+    dkh:hasGrandparent dkh:Stefa ;
+    dkh:isSecondDegreeRelativeOf dkh:Stefa,
+        dkh:Zoriana .
+
+dkh:Olena a dkh:Person ;
+    dkh:hasAncestor dkh:Maria ;
+    dkh:hasAuntOrUncle dkh:Halyna ;
+    dkh:hasChild dkh:Sofiia ;
+    dkh:hasCousin dkh:Andrii ;
+    dkh:hasGrandparent dkh:Maria ;
+    dkh:isSecondDegreeRelativeOf dkh:Halyna,
+        dkh:Maria .
+
+dkh:Zoriana a dkh:AdultRelative,
+        dkh:Relative,
+        dkh:SecondDegreeRelative ;
+    dkh:hasChild dkh:Bohdan ;
+    dkh:hasSibling dkh:Lidiia ;
+    dkh:isSecondDegreeRelativeOf dkh:Kateryna,
+        dkh:Oleh .
+
+dkh:Iryna a dkh:AdultRelative,
+        dkh:FirstDegreeRelative,
+        dkh:Relative ;
+    dkh:hasChild dkh:Marta,
+        dkh:Olena ;
+    dkh:isSecondDegreeRelativeOf dkh:Andrii,
+        dkh:Sofiia .
+
+dkh:Mykola a dkh:AdultRelative,
+        dkh:FirstDegreeRelative,
+        dkh:Relative ;
+    dkh:hasChild dkh:Nadiia,
+        dkh:Pavlo ;
+    dkh:isSecondDegreeRelativeOf dkh:Taras,
+        dkh:Yana .
+
+dkh:Vira a dkh:AdultRelative,
+        dkh:FirstDegreeRelative,
+        dkh:Relative ;
+    dkh:hasChild dkh:Nadiia,
+        dkh:Pavlo ;
+    dkh:isSecondDegreeRelativeOf dkh:Taras,
+        dkh:Yana .
+
+dkh:Marta a dkh:AdultRelative,
+        dkh:FirstDegreeRelative,
+        dkh:Relative ;
+    dkh:hasAncestor dkh:Maria ;
+    dkh:hasAuntOrUncle dkh:Halyna ;
+    dkh:hasCousin dkh:Andrii ;
+    dkh:hasGrandparent dkh:Maria ;
+    dkh:isSecondDegreeRelativeOf dkh:Halyna,
+        dkh:Maria,
+        dkh:Sofiia .
+
+dkh:Nadiia a dkh:AdultRelative,
+        dkh:FirstDegreeRelative,
+        dkh:Relative ;
+    dkh:isSecondDegreeRelativeOf dkh:Taras,
+        dkh:Yana .
+
+dkh:Stefa a dkh:AdultRelative,
+        dkh:Relative,
+        dkh:SecondDegreeRelative ;
+    dkh:hasChild dkh:Lidiia,
+        dkh:Zoriana ;
+    dkh:isSecondDegreeRelativeOf dkh:Bohdan,
+        dkh:Kateryna,
+        dkh:Oleh .
+
+dkh:Maria a dkh:Relative,
+        dkh:SecondDegreeRelative ;
+    dkh:isSecondDegreeRelativeOf dkh:Andrii,
+        dkh:Marta,
+        dkh:Olena .
+
