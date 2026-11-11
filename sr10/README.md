@@ -1,4 +1,4 @@
-# СР10 — експеримент з embeddings
+# Самостійна робота 10 — Експеримент з embeddings
 
 У папці збережено код, дані й результати; звіт DOCX/PDF не додається.
 
@@ -23,6 +23,6 @@
    `npm pack @ryanstark24/sfgraph-models@1.6.2 @coree-ai/coree-model-bge-small-en-v1.5@1.0.2 dsh-plugin-discover-model@0.1.0 counterparts-model-potion@0.1.0`
    Перевірте назви файлів у src/emb.py та README npm-пакетів; ці пакети не є частиною репозиторію.
 2. Встановіть залежності для експерименту: numpy, onnxruntime, tokenizers, rank-bm25.
-3. Із каталогу `sr10` запустіть `python -X utf8 src/exp.py` (Windows) або `python src/exp.py` (Linux). Скрипт перезапише `eval/results.json` та `eval/perq.json`.
+3. Із цієї папки (`10_SR`) запустіть `python -X utf8 src/exp.py` (Windows) або `python src/exp.py` (Linux). Скрипт перезапише `eval/results.json` та `eval/perq.json`.
 
 Не запускайте src/build_sr10.py, якщо потрібні лише код і дані: ця допоміжна програма створює оформлені файли, зокрема DOCX. Метрики вже збережені в eval/; новий прогін без ваг виконати неможливо.
