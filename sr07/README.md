@@ -22,4 +22,4 @@ HermiT-порівняння та OntoClean-аналіз збережені. `pit
 python -X utf8 code\build_xlsx.py
 ```
 
-Для повторного запуску reasoner див. `code/reason_runs.py`; середовище має мати Owlready2 і Java/HermiT. Якщо курс вимагає саме OOPS!, запустіть офіційний сервіс і збережіть його висновки окремо. Формальний звіт DOCX/PDF не додається.
+Для повторного запуску reasoner див. `code/reason_runs.py`; середовище має мати Owlready2 і Java/HermiT. Офіційний сервіс OOPS! у збережених результатах не використовувався. Формальний звіт DOCX/PDF не додається.
