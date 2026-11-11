@@ -1,0 +1,23 @@
+{
+ "batch": "explain_09",
+ "items": [
+  {
+   "key": "92e733ef4bf0a72f0207f59e4fc65cae184530aef6db5b954882c2025ea70f69",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «bcftools_manual#h113 · Replace missing genotypes with 0|0 > bcftools reheader [OPT…», бо ви читали «bcftools_manual#h061 · Convert tab-delimited file into a sites-only VCF (no genoty…», і обидва розділи згадують BCF (Format).\nФАКТИ: {\"cand_label\": \"bcftools_manual#h113 · Replace missing genotypes with 0|0 > bcftools reheader [OPT…\", \"kind\": \"entity\", \"via_label\": \"bcftools_manual#h061 · Convert tab-delimited file into a sites-only VCF (no genoty…\", \"entity\": \"BCF\", \"etype\": \"Format\"}"
+  },
+  {
+   "key": "a00c8f847f9642f28bd6ce92e2cfa9134e7014eeba8549270ef47bb019281889",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «bcftools_manual#h109 · Replace missing genotypes with 0|0 > bcftools query [OPTION…», бо ви читали «bcftools_manual#h060 · Convert tab-delimited file into a sites-only VCF (no genoty…», і обидва розділи згадують GT (Annotation).\nФАКТИ: {\"cand_label\": \"bcftools_manual#h109 · Replace missing genotypes with 0|0 > bcftools query [OPTION…\", \"kind\": \"entity\", \"via_label\": \"bcftools_manual#h060 · Convert tab-delimited file into a sites-only VCF (no genoty…\", \"entity\": \"GT\", \"etype\": \"Annotation\"}"
+  },
+  {
+   "key": "057a67cc1eb5d83a9fe3807c11de72b417f8a4f7f7f21b01f9e89204e8e9ec10",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «bcftools_manual#h105 · Replace missing genotypes with 0|0 > Plugins troubleshootin…», бо ви читали «bcftools_manual#h060 · Convert tab-delimited file into a sites-only VCF (no genoty…», і обидва розділи згадують VCF (Format).\nФАКТИ: {\"cand_label\": \"bcftools_manual#h105 · Replace missing genotypes with 0|0 > Plugins troubleshootin…\", \"kind\": \"entity\", \"via_label\": \"bcftools_manual#h060 · Convert tab-delimited file into a sites-only VCF (no genoty…\", \"entity\": \"VCF\", \"etype\": \"Format\"}"
+  }
+ ]
+}

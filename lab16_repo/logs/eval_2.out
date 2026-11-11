@@ -1,0 +1,2 @@
+seed 2: 60 users, 693 positives, 553s {'popularity': 0.092, 'graph': 0.07, 'knn': 0.078, 'hybrid-weighted': 0.128, 'hybrid-rrf': 0.092}
+saved eval/res_2.json

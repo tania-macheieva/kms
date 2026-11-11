@@ -1,0 +1,129 @@
+..................                                                       [100%]
+=============================== warnings summary ===============================
+.venv/lib/python3.13/site-packages/fastapi/testclient.py:1
+  /tmp/fresh/lab16_repo/.venv/lib/python3.13/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+18 passed, 1 warning in 2.00s
+Hub: {'chunks': 680, 'entities': 106, 'mentions': 2235, 'next': 641, 'same_as': 10} items: 680 users: 64
+
+=== 1. питання з відповіддю в Hub
+{
+ "status": "ANSWER",
+ "answer": "By **default, Funcotator uses the CANONICAL** transcript selection mode. Select a transcript to be reported with details with priority on canonical order according to the folowing list of selection criteria:",
+ "reason": "ok",
+ "citations": [
+  {
+   "id": "gatk_funco_tutorial#h038",
+   "source": "https://github.com/broadinstitute/gatk/blob/0cde69eed30339f5978cbb1ac6e5cf3662f9e1f8/docs/funcotator/forum_info/forum_post_tutorial.md",
+   "verified": true
+  }
+ ],
+ "coverage": 1.0,
+ "injection_removed": false
+}
+(0.00 s)
+
+=== 2. персональні рекомендації + пояснення з шляху в графі
+{
+ "user": "u001",
+ "role": "reader",
+ "history": [
+  "gatk_funco_refdiff#h004 · HumanG1Kv37",
+  "gatk_funco_refdiff#h005 · HumanG1Kv37",
+  "gatk_funco_tutorial#h018 · Required and defaults to false.",
+  "gatk_funco_tutorial#h019 · NCBI build version (either hg19 or hg38):",
+  "gatk_funco_spec#h014 · 1.1 Annotations for Pre-Packaged Data Sources > 1.1.1 - Gen…"
+ ],
+ "recommendations": [
+  {
+   "id": "gatk_funco_tutorial#h023",
+   "label": "gatk_funco_tutorial#h023 · The Name or 0-based index of the column containing the end…",
+   "explanation": "Рекомендовано «gatk_funco_tutorial#h023 · The Name or 0-based index of the column containing the end…», бо ви читали «gatk_funco_tutorial#h032 · The Name or 0-based index of the column containing the end…», і обидва розділи згадують MAF (Annotation).",
+   "explanation_source": "template",
+   "path_kind": "entity"
+  },
+  {
+   "id": "gatk_funco_tutorial#h025",
+   "label": "gatk_funco_tutorial#h025 · The Name or 0-based index of the column containing the end…",
+   "explanation": "Рекомендовано «gatk_funco_tutorial#h025 · The Name or 0-based index of the column containing the end…», бо ви читали «gatk_funco_tutorial#h032 · The Name or 0-based index of the column containing the end…», і обидва розділи згадують VCF (Format).",
+   "explanation_source": "template",
+   "path_kind": "entity"
+  },
+  {
+   "id": "gatk_funco_tutorial#h026",
+   "label": "gatk_funco_tutorial#h026 · The Name or 0-based index of the column containing the end…",
+   "explanation": "Рекомендовано «gatk_funco_tutorial#h026 · The Name or 0-based index of the column containing the end…», бо ви читали «gatk_funco_tutorial#h032 · The Name or 0-based index of the column containing the end…», і обидва розділи згадують MAF (Annotation).",
+   "explanation_source": "template",
+   "path_kind": "entity"
+  }
+ ]
+}
+(0.05 s)
+
+=== 3. питання, відповіді на яке в Hub немає («не знаю»)
+{
+ "status": "NO_ANSWER",
+ "answer": "Не знаю: у підтверджених джерелах Hub немає відповіді (покриття термінів запиту 0%, найкращий BM25 15.8).",
+ "reason": "low_coverage",
+ "citations": [],
+ "coverage": 0.0
+}
+(0.00 s)
+
+=== 4. атака: ін'єкція інструкцій у запиті
+{
+ "status": "REFUSED",
+ "answer": "Запит схожий на ін'єкцію інструкцій (спробу змінити правила або викрасти секрети); його не виконано.",
+ "reason": "injection_filter",
+ "citations": []
+}
+(0.00 s)
+
+=== 5. cold start: новий користувач (тема gatk) і новий документ
+{
+ "new_user": {
+  "strategy": "topic-popularity",
+  "recommendations": [
+   {
+    "id": "gatk_pathseq_wdl#h003",
+    "label": "gatk_pathseq_wdl#h003 · Parameter descriptions",
+    "explanation": "Рекомендовано «gatk_pathseq_wdl#h003 · Parameter descriptions»: один із найчитаніших розділів за темою gatk, яку ви обрали.",
+    "explanation_source": "template",
+    "path_kind": "topic"
+   },
+   {
+    "id": "gatk_readme#h034",
+    "label": "gatk_readme#h034 · Further Reading on Spark",
+    "explanation": "Рекомендовано «gatk_readme#h034 · Further Reading on Spark»: один із найчитаніших розділів за темою gatk, яку ви обрали.",
+    "explanation_source": "template",
+    "path_kind": "topic"
+   },
+   {
+    "id": "gatk_cnv_somatic#h002",
+    "label": "gatk_cnv_somatic#h002 · Which WDL should you use? > Required parameters in the soma…",
+    "explanation": "Рекомендовано «gatk_cnv_somatic#h002 · Which WDL should you use? > Required parameters in the soma…»: один із найчитаніших розділів за темою gatk, яку ви обрали.",
+    "explanation_source": "template",
+    "path_kind": "topic"
+   }
+  ]
+ },
+ "new_document": {
+  "id": "demo_note#h000",
+  "entities": [
+   "FS",
+   "GATK",
+   "QD",
+   "SNP",
+   "hard filtering"
+  ],
+  "verified": false,
+  "note": "new items are unverified until a curator approves; default recommendations (verified_only) do not show them"
+ }
+}
+(0.04 s)
+
+real	0m44.185s
+user	0m6.741s
+sys	0m0.859s

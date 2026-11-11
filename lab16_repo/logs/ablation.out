@@ -1,0 +1,32 @@
+0 {'tuned': 0.111, 'without_graph': 0.111, 'without_knn': 0.104, 'without_popularity': 0.079, 'equal(1,1,0.3)': 0.067}
+1 {'tuned': 0.145, 'without_graph': 0.145, 'without_knn': 0.066, 'without_popularity': 0.091, 'equal(1,1,0.3)': 0.124}
+2 {'tuned': 0.128, 'without_graph': 0.128, 'without_knn': 0.092, 'without_popularity': 0.078, 'equal(1,1,0.3)': 0.078}
+3 {'tuned': 0.154, 'without_graph': 0.154, 'without_knn': 0.096, 'without_popularity': 0.104, 'equal(1,1,0.3)': 0.106}
+4 {'tuned': 0.109, 'without_graph': 0.126, 'without_knn': 0.107, 'without_popularity': 0.095, 'equal(1,1,0.3)': 0.1}
+{
+ "tuned": {
+  "ndcg10": 0.1294134472547491,
+  "p5": 0.12496152811407049,
+  "coverage": 0.1946587537091988
+ },
+ "without_graph": {
+  "ndcg10": 0.13283323567672684,
+  "p5": 0.12813613128867368,
+  "coverage": 0.19940652818991098
+ },
+ "without_knn": {
+  "ndcg10": 0.09319307621152637,
+  "p5": 0.08789722894807642,
+  "coverage": 0.04302670623145401
+ },
+ "without_popularity": {
+  "ndcg10": 0.08932356052594333,
+  "p5": 0.08592897497982244,
+  "coverage": 0.24777448071216618
+ },
+ "equal(1,1,0.3)": {
+  "ndcg10": 0.0951780009474538,
+  "p5": 0.09732311003497444,
+  "coverage": 0.1572700296735905
+ }
+}

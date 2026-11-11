@@ -1,0 +1,17 @@
+# One command:  docker compose up --build        (API on http://localhost:8000, UI at /, OpenAPI at /docs)
+# The Hub graph (FalkorDB-lite), BM25 and the embeddings run inside the `api` container; no external service, no API keys are needed.
+services:
+  api:
+    build: .
+    ports: ["8000:8000"]
+    environment:
+      - PYTHONHASHSEED=0            # determinism; the LLM replay cache is read-only data inside the image (llm_cache/)
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  demo:                              # one-shot: prints the 5 demo queries against the running API (docs/demo_script.md)
+    build: .
+    command: ["python", "-m", "app.cli", "demo"]
+    profiles: ["demo"]

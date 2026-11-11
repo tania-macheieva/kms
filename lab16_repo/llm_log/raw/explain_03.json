@@ -1,0 +1,12 @@
+{
+"c6093fe41384bb814127e305334e158115cb9be5ee836a362f9b8083b2d10887": "Рекомендуємо «gatk_funco_refdiff#h008 · HumanG1Kv37», бо цей розділ суміжний із прочитаним вами розділом «gatk_funco_refdiff#h007 · HumanG1Kv37» у тому самому документі.",
+"8cce23a894bf5e330cab83b61f5d7a52c9835c3b42121fee3f2abc24fd2278ba": "Рекомендуємо «gatk_cnv_somatic#h002 · Which WDL should you use? > Required parameters in the soma…», бо ви читали «gatk_mutect2_wdl#h006 · Functional annotation (Funcotator) > mutect2_multi_sample», а обидва розділи згадують Docker (Tool).",
+"90d5f87f2734e073fd97b495acdd41bea1816e84cbc9717abf33d72621924c2f": "Рекомендуємо «gatk_funco_refdiff#h002 · hg19», бо ви читали «gatk_funco_refdiff#h004 · HumanG1Kv37», а обидва розділи згадують GRCh37 (Genome).",
+"d3f33e0e6bbbbb97d1a2c206d308b70f96424b94df2b95642af7703c219b2829": "Рекомендуємо «gatk_cnv_germline#h002 · Which WDL should you use? > Required parameters in the germ…», бо ви читали «gatk_mutect2_wdl#h006 · Functional annotation (Funcotator) > mutect2_multi_sample», а обидва розділи згадують Docker (Tool).",
+"ff0b52fc0af8bd5b993c67cd2345e06546a5e988d13fe43d4f4b37e411f53b49": "Рекомендуємо «gatk_funco_spec#h006 · 1.1 Annotations for Pre-Packaged Data Sources > 1.1.1 - Gen…», бо ви читали «gatk_mutect2_wdl#h006 · Functional annotation (Funcotator) > mutect2_multi_sample», а обидва розділи згадують annotation (Concept).",
+"7ee0a9a710d4b57bae0d92a4d2da5fa9a021551e6f1146964ab5126aa7256bc7": "Рекомендуємо «rare_citations#h002 · Pipeline tools», бо ви читали «rare_citations#h001 · Pipeline tools», а обидва розділи згадують DeepVariant (Tool).",
+"27ff47887344bc010bc4997ef453b2ff501ea5cbeb904e844809e5bdaca2131a": "Рекомендуємо «rare_citations#h003 · Pipeline tools», бо ви читали «rare_readme#h001 · Pipeline summary», а обидва розділи згадують DNAscope (Tool).",
+"c0064f4cadd0551267009b4ae1ca7ef6026e69b583788dcbadecb03e92d28a9f": "Рекомендуємо «rare_citations#h000 · Nextflow & nf-core», бо ви читали «rare_readme#h000 · Introduction», а обидва розділи згадують workflow (Concept).",
+"1116d5eccf349243d7424cb2eddb1784a769f68b601526ac38960efb52af087f": "Рекомендуємо «rare_citations#h004 · Pipeline tools», бо ви читали «rare_readme#h001 · Pipeline summary», а обидва розділи згадують VerifyBamID2 (Tool).",
+"99dcfb1c6268fae7df2d8a4c050304cda20269daf4701484bd68aefd67e4c7ad": "Рекомендуємо «rare_usage#h015 · Other Nextflow hidden files, like history of pipeline logs.…», бо ви читали «rare_readme#h000 · Introduction», а обидва розділи згадують workflow (Concept)."
+}

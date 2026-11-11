@@ -1,0 +1,65 @@
+{
+ "batch": "explain_06",
+ "items": [
+  {
+   "key": "b2e19375a4fcc1933a73b8b0c2256e2789573bec62bbad0e187c83d24a6e2d64",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «bcftools_manual#h080 · Convert tab-delimited file into a sites-only VCF (no genoty…», бо ви читали «bcftools_manual#h076 · Convert tab-delimited file into a sites-only VCF (no genoty…», і обидва розділи згадують mapping quality (Concept).\nФАКТИ: {\"cand_label\": \"bcftools_manual#h080 · Convert tab-delimited file into a sites-only VCF (no genoty…\", \"kind\": \"entity\", \"via_label\": \"bcftools_manual#h076 · Convert tab-delimited file into a sites-only VCF (no genoty…\", \"entity\": \"mapping quality\", \"etype\": \"Concept\"}"
+  },
+  {
+   "key": "f9d53faccd63653887ada3b353f0a7bc0a9348b834bfe934899695630b9f547d",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_usage#h014 · Other Nextflow hidden files, like history of pipeline logs.…»: він змістовно близький до прочитаного вами «rare_output#h020 · Pipeline overview > CNVnator - CNV calling» (косинусна подібність 0.788).\nФАКТИ: {\"cand_label\": \"rare_usage#h014 · Other Nextflow hidden files, like history of pipeline logs.…\", \"kind\": \"similar\", \"via_label\": \"rare_output#h020 · Pipeline overview > CNVnator - CNV calling\", \"cosine\": 0.788}"
+  },
+  {
+   "key": "6b7f97599fe90a61fa01dbae5ffd01db8643512188ca1877ed3f18633e3a7a77",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «bcftools_manual#h110 · Replace missing genotypes with 0|0 > bcftools query [OPTION…», бо ви читали «rare_output#h023 · Pipeline overview > vcfanno», і обидва розділи згадують VCF (Format).\nФАКТИ: {\"cand_label\": \"bcftools_manual#h110 · Replace missing genotypes with 0|0 > bcftools query [OPTION…\", \"kind\": \"entity\", \"via_label\": \"rare_output#h023 · Pipeline overview > vcfanno\", \"entity\": \"VCF\", \"etype\": \"Format\"}"
+  },
+  {
+   "key": "bda7b5ea1996eeabecc2ebbadc262d029e8448ff6892f26d3b1bb822e3623692",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «gatk_funco_refdiff#h010 · HumanG1Kv37» з того самого документа, що й прочитаний вами «gatk_funco_refdiff#h005 · HumanG1Kv37».\nФАКТИ: {\"cand_label\": \"gatk_funco_refdiff#h010 · HumanG1Kv37\", \"kind\": \"doc\", \"via_label\": \"gatk_funco_refdiff#h005 · HumanG1Kv37\"}"
+  },
+  {
+   "key": "f90b6c83ca67077d3ee6026cf0a510cfb27b6d2d93762f3ff44b716d516b9578",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «gatk_funco_refdiff#h009 · HumanG1Kv37» з того самого документа, що й прочитаний вами «gatk_funco_refdiff#h005 · HumanG1Kv37».\nФАКТИ: {\"cand_label\": \"gatk_funco_refdiff#h009 · HumanG1Kv37\", \"kind\": \"doc\", \"via_label\": \"gatk_funco_refdiff#h005 · HumanG1Kv37\"}"
+  },
+  {
+   "key": "13923361c5350e87751a41aac8a58a271de0721eea0de335e3aa441306257999",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «bcftools_manual#h113 · Replace missing genotypes with 0|0 > bcftools reheader [OPT…», бо ви читали «bcftools_manual#h109 · Replace missing genotypes with 0|0 > bcftools query [OPTION…», і обидва розділи згадують BCF (Format).\nФАКТИ: {\"cand_label\": \"bcftools_manual#h113 · Replace missing genotypes with 0|0 > bcftools reheader [OPT…\", \"kind\": \"entity\", \"via_label\": \"bcftools_manual#h109 · Replace missing genotypes with 0|0 > bcftools query [OPTION…\", \"entity\": \"BCF\", \"etype\": \"Format\"}"
+  },
+  {
+   "key": "7908577cb47c2509ee01401971d4bc8ba675b6b2c40bc1887c652a5778091222",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «bcftools_manual#h060 · Convert tab-delimited file into a sites-only VCF (no genoty…», бо ви читали «bcftools_manual#h109 · Replace missing genotypes with 0|0 > bcftools query [OPTION…», і обидва розділи згадують GT (Annotation).\nФАКТИ: {\"cand_label\": \"bcftools_manual#h060 · Convert tab-delimited file into a sites-only VCF (no genoty…\", \"kind\": \"entity\", \"via_label\": \"bcftools_manual#h109 · Replace missing genotypes with 0|0 > bcftools query [OPTION…\", \"entity\": \"GT\", \"etype\": \"Annotation\"}"
+  },
+  {
+   "key": "2f3b514b7df994f0bb1e7695357b3dffcbd8f9b060c5ea8a4ad5781e2eba804a",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «bcftools_manual#h112 · Replace missing genotypes with 0|0 > bcftools query [OPTION…», бо ви читали «bcftools_manual#h111 · Replace missing genotypes with 0|0 > bcftools query [OPTION…», і обидва розділи згадують AD (Annotation).\nФАКТИ: {\"cand_label\": \"bcftools_manual#h112 · Replace missing genotypes with 0|0 > bcftools query [OPTION…\", \"kind\": \"entity\", \"via_label\": \"bcftools_manual#h111 · Replace missing genotypes with 0|0 > bcftools query [OPTION…\", \"entity\": \"AD\", \"etype\": \"Annotation\"}"
+  },
+  {
+   "key": "f151704033191768fde814480999e6b3443de21af126cf6b04aefec1d1502179",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «bcftools_manual#h105 · Replace missing genotypes with 0|0 > Plugins troubleshootin…», бо ви читали «bcftools_manual#h018 · bcftools annotate '[OPTIONS] FILE'», і обидва розділи згадують VCF (Format).\nФАКТИ: {\"cand_label\": \"bcftools_manual#h105 · Replace missing genotypes with 0|0 > Plugins troubleshootin…\", \"kind\": \"entity\", \"via_label\": \"bcftools_manual#h018 · bcftools annotate '[OPTIONS] FILE'\", \"entity\": \"VCF\", \"etype\": \"Format\"}"
+  },
+  {
+   "key": "f8670b30d51ee1ce998871fba2a414345f64b96b95dc2bfec9574a789badb91c",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «bcftools_manual#h091 · Convert tab-delimited file into a sites-only VCF (no genoty…», бо ви читали «bcftools_manual#h109 · Replace missing genotypes with 0|0 > bcftools query [OPTION…», і обидва розділи згадують GT (Annotation).\nФАКТИ: {\"cand_label\": \"bcftools_manual#h091 · Convert tab-delimited file into a sites-only VCF (no genoty…\", \"kind\": \"entity\", \"via_label\": \"bcftools_manual#h109 · Replace missing genotypes with 0|0 > bcftools query [OPTION…\", \"entity\": \"GT\", \"etype\": \"Annotation\"}"
+  }
+ ]
+}

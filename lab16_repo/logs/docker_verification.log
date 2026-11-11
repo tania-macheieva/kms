@@ -1,0 +1,35 @@
+# docker verification 2026-11-08T17:09:54+00:00
+docker 29.9.2
+Docker Compose version v5.6.1
+
+#10 resolving provenance for metadata file
+#10 DONE 0.0s
+ Image lab16_repo-api Built 
+ Container lab16_repo-api-1 Creating 
+ Container lab16_repo-api-1 Created 
+ Container lab16_repo-api-1 Starting 
+ Container lab16_repo-api-1 Started 
+{"status":"ok","items":680,"users":64,"graph":{"chunks":680,"entities":106,"mentions":2235,"next":641,"same_as":10}}
+{"status":"NO_ANSWER","answer":"Не знаю: у підтверджених джерелах Hub немає відповіді (покриття термінів запиту 0%, найкращий BM25 15.8).","reason":"low_coverage","citations":[],"coverage":0.0}
+NAME               IMAGE            COMMAND                  SERVICE   CREATED          STATUS                             PORTS
+lab16_repo-api-1   lab16_repo-api   "python3 -m uvicorn …"   api       28 seconds ago   Up 25 seconds (health: starting)   
+
+# demo service
+Hub: {'chunks': 680, 'entities': 106, 'mentions': 2235, 'next': 641, 'same_as': 10} items: 680 users: 64
+=== 1. питання з відповіддю в Hub
+ "status": "ANSWER",
+(0.00 s)
+=== 2. персональні рекомендації + пояснення з шляху в графі
+(0.14 s)
+=== 3. питання, відповіді на яке в Hub немає («не знаю»)
+ "status": "NO_ANSWER",
+(0.00 s)
+=== 4. атака: ін'єкція інструкцій у запиті
+ "status": "REFUSED",
+(0.00 s)
+=== 5. cold start: новий користувач (тема gatk) і новий документ
+  "strategy": "topic-popularity",
+(0.07 s)
+ Container lab16_repo-api-1 Stopped 
+ Container lab16_repo-api-1 Removing 
+ Container lab16_repo-api-1 Removed 

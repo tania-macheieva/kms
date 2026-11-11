@@ -1,0 +1,9 @@
+# Verification override for a sandbox WITHOUT network/bridge (see README "Verification status"): docker compose -f docker-compose.yml -f docker-compose.offline.yml up --build -d
+services:
+  api:
+    build: {context: ., dockerfile: Dockerfile.offline}
+    network_mode: host
+    ports: !reset []
+  demo:
+    build: {context: ., dockerfile: Dockerfile.offline}
+    network_mode: host

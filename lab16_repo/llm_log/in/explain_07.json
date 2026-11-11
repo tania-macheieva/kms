@@ -1,0 +1,65 @@
+{
+ "batch": "explain_07",
+ "items": [
+  {
+   "key": "b9c3d1256229ba7d818eed6a68ac56ad7a7bc02070b6046ee0aeac14c8525838",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «bcftools_readme#h001 · Citing», бо ви читали «bcftools_readme#h003 · Support», і обидва розділи згадують BCFtools (Tool).\nФАКТИ: {\"cand_label\": \"bcftools_readme#h001 · Citing\", \"kind\": \"entity\", \"via_label\": \"bcftools_readme#h003 · Support\", \"entity\": \"BCFtools\", \"etype\": \"Tool\"}"
+  },
+  {
+   "key": "53aabe2e5f6b200363c4d500260de61549959f40c0044fba044b254619888633",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «bcftools_manual#h060 · Convert tab-delimited file into a sites-only VCF (no genoty…», бо ви читали «bcftools_manual#h052 · Convert tab-delimited file into a sites-only VCF (no genoty…», і обидва розділи згадують VCF (Format).\nФАКТИ: {\"cand_label\": \"bcftools_manual#h060 · Convert tab-delimited file into a sites-only VCF (no genoty…\", \"kind\": \"entity\", \"via_label\": \"bcftools_manual#h052 · Convert tab-delimited file into a sites-only VCF (no genoty…\", \"entity\": \"VCF\", \"etype\": \"Format\"}"
+  },
+  {
+   "key": "e2b6b5c570f8feed0deeeae38f52ea9413c3a7e412c8d889f20e26add54a52f6",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «bcftools_manual#h091 · Convert tab-delimited file into a sites-only VCF (no genoty…», бо ви читали «bcftools_manual#h052 · Convert tab-delimited file into a sites-only VCF (no genoty…», і обидва розділи згадують VCF (Format).\nФАКТИ: {\"cand_label\": \"bcftools_manual#h091 · Convert tab-delimited file into a sites-only VCF (no genoty…\", \"kind\": \"entity\", \"via_label\": \"bcftools_manual#h052 · Convert tab-delimited file into a sites-only VCF (no genoty…\", \"entity\": \"VCF\", \"etype\": \"Format\"}"
+  },
+  {
+   "key": "5766ee255ff547a390285d4762670821d44aed6fdba46b2455823a5b2b532daa",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «bcftools_manual#h048 · Convert tab-delimited file into a sites-only VCF (no genoty…», бо ви читали «bcftools_readme#h000 · Preamble», і обидва розділи згадують BCF (Format).\nФАКТИ: {\"cand_label\": \"bcftools_manual#h048 · Convert tab-delimited file into a sites-only VCF (no genoty…\", \"kind\": \"entity\", \"via_label\": \"bcftools_readme#h000 · Preamble\", \"entity\": \"BCF\", \"etype\": \"Format\"}"
+  },
+  {
+   "key": "831280eccf2ad35ffe335575a295fae46441dd8aa45839090d1314c717f8e8d7",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «gatk_mutect2_wdl#h004 · Functional annotation (Funcotator) > mutect2_multi_sample», бо ви читали «gatk_mutect2_wdl#h011 · Functional annotation (Funcotator) > mutect2 (single pair/s…», і обидва розділи згадують Mutect2 (Tool).\nФАКТИ: {\"cand_label\": \"gatk_mutect2_wdl#h004 · Functional annotation (Funcotator) > mutect2_multi_sample\", \"kind\": \"entity\", \"via_label\": \"gatk_mutect2_wdl#h011 · Functional annotation (Funcotator) > mutect2 (single pair/s…\", \"entity\": \"Mutect2\", \"etype\": \"Tool\"}"
+  },
+  {
+   "key": "68a440f654e17f1f23fd60b7c7b03021dd286ec2b429538e4a3b9e63aa61f257",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «gatk_mutect2_wdl#h015 · Functional annotation (Funcotator) > mutect2_multi_sample», бо ви читали «gatk_mutect2_wdl#h011 · Functional annotation (Funcotator) > mutect2 (single pair/s…», і обидва розділи згадують Mutect2 (Tool).\nФАКТИ: {\"cand_label\": \"gatk_mutect2_wdl#h015 · Functional annotation (Funcotator) > mutect2_multi_sample\", \"kind\": \"entity\", \"via_label\": \"gatk_mutect2_wdl#h011 · Functional annotation (Funcotator) > mutect2 (single pair/s…\", \"entity\": \"Mutect2\", \"etype\": \"Tool\"}"
+  },
+  {
+   "key": "735657b669ed4c84db2972fc04e58d3b5bbe3060a8845c82c60b520cd7169ed8",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «gatk_mutect2_wdl#h006 · Functional annotation (Funcotator) > mutect2_multi_sample», бо ви читали «gatk_mutect2_wdl#h011 · Functional annotation (Funcotator) > mutect2 (single pair/s…», і обидва розділи згадують Mutect2 (Tool).\nФАКТИ: {\"cand_label\": \"gatk_mutect2_wdl#h006 · Functional annotation (Funcotator) > mutect2_multi_sample\", \"kind\": \"entity\", \"via_label\": \"gatk_mutect2_wdl#h011 · Functional annotation (Funcotator) > mutect2 (single pair/s…\", \"entity\": \"Mutect2\", \"etype\": \"Tool\"}"
+  },
+  {
+   "key": "504dbb6323915d3848eacd0e0a0cfe31703b666db68c2e9d27620fc7d768cf10",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «gatk_mutect2_wdl#h013 · Functional annotation (Funcotator) > mutect2-replicate-vali…», бо ви читали «gatk_mutect2_wdl#h011 · Functional annotation (Funcotator) > mutect2 (single pair/s…», і обидва розділи згадують Mutect2 (Tool).\nФАКТИ: {\"cand_label\": \"gatk_mutect2_wdl#h013 · Functional annotation (Funcotator) > mutect2-replicate-vali…\", \"kind\": \"entity\", \"via_label\": \"gatk_mutect2_wdl#h011 · Functional annotation (Funcotator) > mutect2 (single pair/s…\", \"entity\": \"Mutect2\", \"etype\": \"Tool\"}"
+  },
+  {
+   "key": "a389c1f048529c6690e2136f9d2f9ec46376bb5f46e9acf2614b59a4d4caba10",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «gatk_mutect2_wdl#h007 · Functional annotation (Funcotator) > mutect2_multi_sample», бо ви читали «gatk_mutect2_wdl#h011 · Functional annotation (Funcotator) > mutect2 (single pair/s…», і обидва розділи згадують Mutect2 (Tool).\nФАКТИ: {\"cand_label\": \"gatk_mutect2_wdl#h007 · Functional annotation (Funcotator) > mutect2_multi_sample\", \"kind\": \"entity\", \"via_label\": \"gatk_mutect2_wdl#h011 · Functional annotation (Funcotator) > mutect2 (single pair/s…\", \"entity\": \"Mutect2\", \"etype\": \"Tool\"}"
+  },
+  {
+   "key": "3ac83224c5d8d78ad6280f5347e02983f114da86498b03753bb83b78dc913b0f",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «gatk_mutect2_wdl#h015 · Functional annotation (Funcotator) > mutect2_multi_sample», бо ви читали «gatk_mutect2_wdl#h006 · Functional annotation (Funcotator) > mutect2_multi_sample», і обидва розділи згадують Mutect2 (Tool).\nФАКТИ: {\"cand_label\": \"gatk_mutect2_wdl#h015 · Functional annotation (Funcotator) > mutect2_multi_sample\", \"kind\": \"entity\", \"via_label\": \"gatk_mutect2_wdl#h006 · Functional annotation (Funcotator) > mutect2_multi_sample\", \"entity\": \"Mutect2\", \"etype\": \"Tool\"}"
+  }
+ ]
+}

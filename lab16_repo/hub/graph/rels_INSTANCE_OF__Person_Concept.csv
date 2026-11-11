@@ -1,0 +1,9 @@
+from,to,source,confidence,validFrom
+Andrii,ThirdDegreeRelative,hermit,0.95,2026-10-26
+Halyna,SecondDegreeRelative,hermit,0.95,2026-10-26
+Iryna,FirstDegreeRelative,hermit,0.95,2026-10-26
+Maria,SecondDegreeRelative,hermit,0.95,2026-10-26
+Marta,FirstDegreeRelative,hermit,0.95,2026-10-26
+Olena,Proband,lab7-abox,1.0,2026-10-26
+Petro,FirstDegreeRelative,hermit,0.95,2026-10-26
+Sofiia,FirstDegreeRelative,hermit,0.95,2026-10-26

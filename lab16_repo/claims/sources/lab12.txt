@@ -1,0 +1,252 @@
+Львівський національний університет імені Івана Франка
+Курс «Сховища знань та управління знаннями»
+ЗВІТ
+до лабораторної роботи № 12
+«OLAP-куб на основі таксономії»
+Предметна область: Медицина — аналіз біомедичних даних (проєкт Domain Knowledge Hub)
+Виконав(ла): ____________________
+Дата: ____________________
+1. Мета, вхідні дані та відхилення від завдання
+Мета — спроєктувати зіркову схему, в якій таксономія ЛР5 є виміром, завантажити дані в DuckDB, виконати OLAP-запити (ROLLUP, CUBE, GROUPING SETS, slice/dice, pivot, віконні), описати метрики у семантичному шарі, реалізувати text-to-SQL із захистами та оцінити його, побудувати аналітичну панель.
+Бізнес-процес: виклик варіантів у геномній лабораторії (гени спадкового раку). Таксономія — 154 поняття з models/taxonomy_final.csv (ЛР5) з IRI http://example.org/knowledge-hub/biomed/C0xx.
+Інструменти: Python 3.13, DuckDB 2.0.0, pandas 3.0.5, sqlglot 30.27, plotly 7.1, rdflib, pytest (43 автотести).
+Дані: 20 000 подій-викликів + 2 552 щоденних знімків черги; версія набору 1.0.0  seed 42.
+Відхилення від завдання (чесно). (1) Дані синтетичні: реальних подій лабораторії немає; генератор etl/generate.py документовано, розподіли вигадані, тому висновки в інтерпретаціях описують закладені ефекти, а не біологію. (2) Ключа LLM API немає: SQL і питання бізнесу генерував claude-haiku-4-5-20251001 «сліпими» запусками субагентів; відповіді відтворюються з кешу. (3) Набір тестів text-to-SQL складала та сама сесія, що й схему, тож він легкий; «м'яку» метрику визначено після перегляду результатів. (4) Вартість модельна (ціну токенів не звірено з прайсом). (5) «Людський» перегляд виконав LLM-рецензент; рівень V3 — pending. (6) Температура/seed LLM не керуються.
+2. Результат 1. Зерно, питання та схема
+Артефакти: docs/star_design.md, sql/ddl.sql, docs/star_schema.png. Зерно факту fact_variant_call: один викликаний варіант (call_id) одного зразка, в одному гені, одним конвеєром (версією інструмента) в одну дату. Зерно визначають першим, бо від нього залежать допустимі виміри (усе, що має одне значення на виклик), адитивність мір і зміст COUNT(*). Другий факт fact_pipeline_day — періодичний знімок: одна версія конвеєра в силі в один календарний день.
+Рисунок 1 — Зіркова схема: два факти, п'ять вимірів; dim_taxon використано в трьох ролях
+Бізнес-питання запропонував LLM (12 штук, llm_log/raw/bq_out.json); я перевірив кожне на відповідність схемі. Прийнято 9, з них чотири переформульовано; BQ03, BQ07, BQ12 не використано (дублюють інші запити); для BQ10 LLM вказав операцію cube, хоча ієрархія таксономії вимагає rollup/drill-down (відхилено, claims C04).
+Таблиця 1 — Прийняті бізнес-питання (≥ 5)
+id | Питання | Операція | Запит
+BQ01 | Скільки викликів пройшло фільтр у кожному гені; частка в хромосомі | rollup | q02
+BQ02 | Динаміка викликів і pass rate за роками/кварталами | rollup | q01
+BQ04 | Розподіл клінічної значущості за типами варіантів | pivot | q07
+BQ05 | Які зразки найбільше споживають час огляду в групі QC | window rank | q09
+BQ06 | Чи змінила якість зміна версій інструментів | SCD2 | q13
+BQ08 | CPU-години та черга по місяцях | semi-additive | q14
+BQ09 | Які cohort×tissue мають найвищий pass rate | cube | q03
+BQ10 | Виклики за рівнями таксономії | drill-down | q11, q12
+BQ11 | Вихідні проти будніх за часом огляду | slice | q05
+Таблиця 2 — Виміри, ієрархії, політика SCD
+Вимір | Ключ | Ієрархія | SCD
+dim_date | date_key (yyyymmdd) | дата → місяць → квартал → рік | —
+dim_taxon (таксономія) | taxon_key, iri, notation | поняття → facet → top; 154 понять | версіонування за релізом
+dim_sample | sample_key | — | тип 1
+dim_gene | gene_key | ген → хромосома | тип 1
+dim_pipeline | pipeline_key (на версію) | версія → родина | тип 2
+Таксономія як вимір. dim_taxon завантажено з taxonomy_final.csv; iri збігається з IRI SKOS-файла ЛР5 (перевіряє тест). Вимір рольовий: факт тричі посилається на нього (variant_type_key — гілка «genetic variant»; origin_key — germline/somatic; significance_key — pathogenic/benign/VUS), dim_pipeline — двічі (caller_taxon_key = «variant calling», filter_taxon_key = «hard filtering» або «variant quality score recalibration»). Колонки top_label і facet_label зберігають предків, тож roll-up і drill-down — звичайний GROUP BY без рекурсії.
+Таблиця 3 — Класифікація мір
+Міра | Клас | Агрегація
+call_count (=1), is_pass, review_minutes | адитивні | SUM
+read_depth, qual, alt_fraction | неадитивні | AVG / перцентиль по викликах (не середнє середніх)
+runs_started, cpu_hours | адитивні | SUM
+queue_backlog | напівадитивна | SUM по конвеєрах за день, AVG по днях
+CREATE TABLE fact_variant_call (     call_id INTEGER PRIMARY KEY,                       -- degenerate dimension     date_key INTEGER NOT NULL REFERENCES dim_date(date_key),     sample_key INTEGER NOT NULL REFERENCES dim_sample(sample_key),     gene_key INTEGER NOT NULL REFERENCES dim_gene(gene_key),     pipeline_key INTEGER NOT NULL REFERENCES dim_pipeline(pipeline_key),   -- SCD2 version valid on the call date     variant_type_key INTEGER NOT NULL REFERENCES dim_taxon(taxon_key),     -- role 1     origin_key INTEGER NOT NULL REFERENCES dim_taxon(taxon_key),           -- role 2     significance_key INTEGER NOT NULL REFERENCES dim_taxon(taxon_key),     -- role 3     call_count INTEGER NOT NULL DEFAULT 1 CHECK (call_count = 1), is_pass INTEGER NOT NULL CHECK (is_pass IN (0,1)),     review_minutes DOUBLE NOT NULL CHECK (review_minutes >= 0), read_depth INTEGER NOT NULL CHECK (read_depth BETWEEN 1 AND 1000),     qual DOUBLE NOT NULL CHECK (qual BETWEEN 0 AND 255), alt_fraction DOUBLE NOT NULL CHECK (alt_fraction BETWEEN 0 AND 1));
+Таблиця 4 — Самооцінка за критеріями результату 1
+Критерій | Статус | Доказ
+C1 зерно сформульовано; ≥ 5 питань | виконано | розділ «Business process and grain», таблиця 1 (9 питань)
+C2 ≥ 4 виміри, один — таксономія з IRI | виконано | 5 вимірів; dim_taxon.iri; тест збігу з SKOS
+C3 міри класифіковано | виконано | таблиця 3 (адитивні / напівадитивна / неадитивні)
+C4 DDL виконується; діаграма | виконано | sql/ddl.sql виконується в load.py і в test; рисунок 1
+3. Результат 2. Завантаження даних (ELT)
+Артефакти: etl/generate.py, etl/load.py, data/raw/*.csv, data/parquet/*.parquet, data/VERSION.json, docs/dq_report.json. Генератор (seed 42) імітує експорт операційної системи: 20 005 рядків викликів (20 000 коректних + 5 навмисно дефектних: від'ємна глибина, невідомий зразок, неіснуюча дата, порожній ген, дубль call_id), 300 зразків, 10 генів, 8 версій інструментів, 2 552 щоденні знімки. Розподіли вигадано: обсяг зростає в часі; типи варіантів 80/13/4/3 % (SNP/indel/SV/CNV); значущість залежить від когорти; якість = гамма + зсув за версією; is_pass = qual ≥ 30 і depth ≥ 10 з 3 % випадкових інверсій.
+ELT: CSV → staging-таблиці DuckDB → виміри (SCD2-версія пошуком за діапазоном дат) → карантин дефектних рядків (rejected_calls з причиною) → факт із сурогатними ключами → 22 перевірки якості → Parquet (ZSTD) → VERSION.json (версія набору, sha256 вихідних файлів і Parquet, версії бібліотек).
+Таблиця 5 — Перевірки якості (значення = кількість порушень; для карантину — кількість упійманих дефектів)
+Перевірка | Значення | OK
+raw_vs_loaded_reconciliation | 0 | так
+not_null_foreign_keys | 0 | так
+unique_call_id | 0 | так
+range_read_depth_qual_af | 0 | так
+flag_is_pass_binary | 0 | так
+dates_in_calendar_2025_2026 | 0 | так
+orphans_fact_variant_call.sample_key | 0 | так
+orphans_fact_variant_call.gene_key | 0 | так
+orphans_fact_variant_call.pipeline_key | 0 | так
+orphans_fact_variant_call.variant_type_key | 0 | так
+orphans_fact_variant_call.origin_key | 0 | так
+orphans_fact_variant_call.significance_key | 0 | так
+orphans_fact_variant_call.date_key | 0 | так
+orphans_fact_pipeline_day.pipeline_key | 0 | так
+taxon_role_variant_type_under_C022 | 0 | так
+taxon_role_origin_under_C029 | 0 | так
+taxon_role_significance_under_C032 | 0 | так
+scd2_no_overlap_per_family | 0 | так
+scd2_one_current_per_family | 0 | так
+pipeline_day_complete_4_per_day | 0 | так
+iri_unique_and_wellformed | 0 | так
+quarantine_detected_defects | 5 | так
+Результат: у факт завантажено 20 000 рядків  у карантин — 5 (bad_date: 1  depth_out_of_range: 1  duplicate_call_id: 1  null_gene: 1  unknown_sample: 1); пройдено 22 з 22 перевірок. Запит «сиріт» для кожного з 8 зовнішніх ключів: SELECT count(*) FROM fact f LEFT JOIN dim d ON f.key = d.key WHERE d.key IS NULL = 0.
+Таблиця 6 — Самооцінка за критеріями результату 2
+Критерій | Статус | Доказ
+C1 ≥ 1000 рядків; генератор описано | виконано | 20 000 рядків; etl/generate.py  розділ «Data generator»
+C2 немає сиріт | виконано | 8 перевірок orphans_* = 0
+C3 ≥ 5 перевірок і звіт збережено | виконано | 22 перевірки, docs/dq_report.json
+C4 Parquet збережено; версія вказана | виконано | 8 файлів, data/VERSION.json (1.0.0, sha256)
+4. Результат 3. OLAP-запити
+Артефакти: sql/olap/*.sql (15 запитів), docs/olap_results.md (питання, SQL, результат, інтерпретація для кожного). Запити виконуються на 20 000 фактах за < 0.3 с.
+Таблиця 7 — 15 запитів з різними конструкціями
+Запит | Конструкція | Рядків | мс
+q01_rollup_time | ROLLUP (year > quarter) | 10 | 287.2
+q02_rollup_gene_chromosome | ROLLUP (chromosome > gene) | 20 | 8.7
+q03_cube_cohort_tissue | CUBE (cohort, tissue) with GROUPING() | 16 | 9.3
+q04_grouping_sets | GROUPING SETS (taxonomy role-playing: variant_type_key -> dim_taxon) | 24 | 6.9
+q05_slice_weekend | SLICE (one value of the date dimension) + group by day of week | 7 | 3.7
+q06_dice_pathogenic | DICE (sub-cube on 3 dimensions: sample, taxon role significance, tissu | 10 | 5.4
+q07_pivot_significance_type | PIVOT (rows = variant type, columns = significance) | 4 | 6.9
+q08_window_cumulative | WINDOW running total (SUM() OVER (PARTITION BY family ORDER BY quarter | 28 | 5.5
+q09_window_rank_samples | WINDOW RANK (DENSE_RANK() OVER (PARTITION BY qc_status ORDER BY minute | 6 | 5.2
+q10_moving_average_qual | WINDOW moving average (AVG() OVER (ROWS BETWEEN 2 PRECEDING AND CURREN | 42 | 6.2
+q11_drilldown_taxonomy_class | ROLLUP over the taxonomy hierarchy columns of dim_taxon (top_label > f | 7 | 6.2
+q12_drilldown_taxonomy_subclass | drill-down class -> subclass (WHERE facet_label = ... , GROUP BY leaf | 4 | 19.6
+q13_scd2_versions | group by SCD2 attributes; non-additive measures -> AVG over calls | 8 | 5.7
+q14_semi_additive_backlog | correct aggregation of a semi-additive measure from the snapshot fact | 21 | 5.9
+q15_drilldown_filter_procedure | drill-down class -> subclass (parent_key self-join of dim_taxon) + SCD | 8 | 5.1
+Таблиця 8 — q01: ROLLUP за роком і кварталом
+year | quarter | calls | passed | pass_pct | g_year | g_quarter
+2025 | 1 | 2140 | 1165 | 54.4 | 0 | 0
+2025 | 2 | 2435 | 1349 | 55.4 | 0 | 0
+2025 | 3 | 2649 | 1569 | 59.2 | 0 | 0
+2025 | 4 | 2788 | 1562 | 56 | 0 | 0
+2025 |  | 10012 | 5645 | 56.4 | 0 | 1
+2026 | 1 | 3116 | 1784 | 57.3 | 0 | 0
+2026 | 2 | 3316 | 1906 | 57.5 | 0 | 0
+2026 | 3 | 3556 | 2136 | 60.1 | 0 | 0
+Таблиця 9 — q07: PIVOT значущість × тип варіанта
+variant_type | benign variant | pathogenic variant | variant of uncertain significance
+copy number variation | 326 | 102 | 176
+insertion-deletion | 1392 | 390 | 742
+single nucleotide polymorphism | 8782 | 2477 | 4744
+structural variant | 502 | 123 | 244
+-- question: BQ10 DRILL-DOWN along the taxonomy path (role = variant type): 'Genetic variation' > 'genetic variant' > leaf concept - calls and pass rate at every level -- operation: ROLLUP over the taxonomy hierarchy columns of dim_taxon (top_label > facet_label > label) SELECT t.top_label, t.facet_label, t.label, count(*) AS calls, round(100.0 * sum(f.is_pass) / count(*), 1) AS pass_pct,        grouping(t.top_label) + grouping(t.facet_label) + grouping(t.label) AS rollup_level FROM fact_variant_call f JOIN dim_taxon t ON t.taxon_key = f.variant_type_key GROUP BY ROLLUP (t.top_label, t.facet_label, t.label) ORDER BY rollup_level DESC, calls DESC;
+Таблиця 10 — q11: drill-down по таксономії «Genetic variation» → «genetic variant» → поняття (rollup_level 3 = всього, 0 = лист)
+top_label | facet_label | label | calls | pass_pct | rollup_level
+ |  |  | 20000 | 57.4 | 3
+Genetic variation |  |  | 20000 | 57.4 | 2
+Genetic variation | genetic variant |  | 20000 | 57.4 | 1
+Genetic variation | genetic variant | single nucleotide polymorphism | 16003 | 58 | 0
+Genetic variation | genetic variant | insertion-deletion | 2524 | 58.6 | 0
+Genetic variation | genetic variant | structural variant | 869 | 43.2 | 0
+Genetic variation | genetic variant | copy number variation | 604 | 56.5 | 0
+Таблиця 11 — q15: drill-down клас «variant filtering» → підклас (hard filtering / VQSR) з IRI та SCD2-версіями
+class | subclass | iri | family | version | calls | pass_pct
+variant filtering | hard filtering | http://example.org/knowledge-hub/biomed/C063 | BCFTOOLS | 1.18 | 1455 | 48.2
+variant filtering | hard filtering | http://example.org/knowledge-hub/biomed/C063 | BCFTOOLS | 1.20 | 2550 | 49.1
+variant filtering | hard filtering | http://example.org/knowledge-hub/biomed/C063 | DEEPVARIANT | 1.6.1 | 2650 | 65
+variant filtering | hard filtering | http://example.org/knowledge-hub/biomed/C063 | DEEPVARIANT | 1.8.0 | 2377 | 64.5
+variant filtering | hard filtering | http://example.org/knowledge-hub/biomed/C063 | GATK | 4.4.0.0 | 1809 | 50.5
+variant filtering | hard filtering | http://example.org/knowledge-hub/biomed/C063 | GATK | 4.5.0.0 | 2869 | 57.7
+variant filtering | hard filtering | http://example.org/knowledge-hub/biomed/C063 | STRELKA | 2.9.10 | 3049 | 58.3
+variant filtering | variant quality score recalibration | http://example.org/knowledge-hub/biomed/C064 | GATK | 4.6.0.0 | 3241 | 59.2
+Приклади інтерпретацій (повні — в docs/olap_results.md). q01: обсяг зріс з 2 140 викликів у 2025-Q1 до 3 556 у 2026-Q3, pass rate з 56.4 % (2025) до 58.3 % (2026). q04: DeepVariant 64.7 % > Strelka2 58.3 % > GATK 56.7 % > bcftools 48.8 %; структурні варіанти проходять фільтр рідше в усіх конвеєрах (43.2 % проти 58.0 % для SNP). q13: завдяки SCD2 видно, що середня якість GATK зросла 33.3 → 36.3 → 37.0 після версій 4.5 і 4.6. Це ефекти, закладені в генератор.
+Таблиця 12 — Незалежна перевірка 4 запитів (q01, q03, q09, q13) обчисленням у pandas на Parquet
+Перевірка | SQL | pandas | збіг
+q01 2025-Q3 calls | 2649 | 2649 | так
+q01 2025-Q3 pass% | 59.2 | 59.2 | так
+q01 grand total calls | 20000 | 20000 | так
+q01 grand total pass% | 57.4 | 57.4 | так
+q03 HBOC/tumor calls | 2985 | 2985 | так
+q03 HBOC/tumor pass% | 57.4 | 57.4 | так
+q03 ALL/blood calls | 10663 | 10663 | так
+q09 top review minutes (pass) | 509.1 | 509.1 | так
+q09 top review minutes (recheck) | 392.2 | 392.2 | так
+q13 GATK 4.5 avg_qual | 36.3 | 36.3 | так
+q13 GATK 4.5 pass% | 57.7 | 57.7 | так
+q13 GATK 4.5 calls | 2869 | 2869 | так
+Таблиця 13 — Самооцінка за критеріями результату 3
+Критерій | Статус | Доказ
+C1 ≥ 8 запитів з різними конструкціями | виконано | 15: ROLLUP, CUBE, GROUPING SETS, slice, dice, PIVOT, 3 віконні, drill-down
+C2 питання та інтерпретація в кожного | виконано | docs/olap_results.md
+C3 drill-down по таксономії | виконано | q11, q12 (клас → підклас з IRI), q15
+C4 2 результати підтверджено незалежно | виконано | 4 запити, 12 порівнянь, всі збігаються (таблиця 12)
+5. Результат 4. Семантичний шар
+Артефакти: semantic/metrics.yml, semantic/sl.py, docs/semantic_layer.md. У YAML описано 7 метрик (назва, визначення, формула, одиниця, власник, джерела, адитивність, обмеження, статус, дата перегляду) і 14 вимірів із join-фрагментами та правилом доступності для факту. Функція metric_sql(metric, by, where) повертає SQL і параметри (значення фільтрів — прив'язані параметри); недоступні комбінації (метрика знімка за геном) дають SemanticError.
+Таблиця 14 — Метрики семантичного шару (скорочено; повні поля — у metrics.yml)
+Метрика | Формула | Од. | Власник | Адитивність | Статус
+call_count | count(*) | calls | bioinformatics lead | additive | approved
+pass_rate | round(100.0 * sum(f.is_pass) / count(*), 1) | % | bioinformatics lead | non-additive (ratio of two a | approved
+avg_qual | round(avg(f.qual), 1) | Phred-like score | bioinformatics lead | non-additive | approved
+review_min_per_call | round(sum(f.review_minutes) / count(*), 2) | minutes per call | lab operations | non-additive (ratio) | draft
+pathogenic_share | round(100.0 * sum(CASE WHEN sg_p.notation = 'C033' THEN 1 EL | % | clinical geneticist | non-additive (ratio) | draft
+cpu_hours | round(sum(f.cpu_hours), 1) | hours | IT operations | additive | approved
+avg_daily_backlog | round(sum(f.queue_backlog) / count(DISTINCT f.date_key), 1) | jobs | IT operations | semi-additive (sum across pi | approved
+metric_sql('pass_rate', by=['year','family']) SELECT d.year AS year, p.family AS family, round(100.0 * sum(f.is_pass) / count(*), 1) AS pass_rate FROM fact_variant_call f JOIN dim_date d ON d.date_key = f.date_key JOIN dim_pipeline p ON p.pipeline_key = f.pipeline_key GROUP BY d.year, p.family ORDER BY d.year, p.family
+Таблиця 15 — Одне питання трьома шляхами: семантичний шар, ручний OLAP-SQL, pandas
+Питання | Шляхи (рядків) | Однакові
+What is the pass rate by year? | semantic layer (2); hand SQL (2); pandas (2) | так
+What is the average call quality per tool version? | semantic layer (8); hand SQL (q13-style) (8); pandas (8) | так
+What share of calls is pathogenic, per gene? | semantic layer (10); hand SQL (label) (10); pandas (by key of IRI C033) (10) | так
+What is the average daily queue backlog per month? | semantic layer (21); OLAP file q14 (21); pandas (21) | так
+Що дає шар: одне визначення (відношення сум, не середнє відсотків), одиниця й обмеження поруч із формулою, заборона несумісних зрізів, словник метрик для text-to-SQL. Різниця між «середнім місячних pass rate» (57.15 %) і відношенням сум (57.4 %) тут мала (-0.25 п.п.), бо місяці схожі за обсягом; на незбалансованих групах вона зростає. 5 метрик мають статус approved, 2 — draft; затвердження формальне (власники — ролі), рев'ю студента потрібне.
+Таблиця 16 — Самооцінка за критеріями результату 4
+Критерій | Статус | Доказ
+C1 ≥ 5 метрик з усіма полями | виконано | 7 метрик; sl.validate() = []; тест test_all_metrics_have_required_fields
+C2 генерація SQL за метрикою | виконано | metric_sql, 6 тестів test_semantic.py
+C3 перевірка узгодженості | виконано | 4 питання × 3 шляхи (таблиця 15)
+C4 метадані (власник, дата перегляду) | виконано (формально) | owner, reviewed 2026-11-02, status; reviewer = pending
+6. Результат 5. Text-to-SQL та аналітична панель
+Артефакти: t2sql/pipeline.py, tests/t2sql.jsonl, docs/t2sql.md, dashboard/index.html. Конвеєр: питання → підказка з семантичним контекстом (схема з information_schema, ключі з'єднань, ролі таксономії, формули метрик) → LLM → один SELECT або «REFUSE» → AST-перевірка (sqlglot) → примусовий LIMIT → EXPLAIN → виконання на read-only з'єднанні з тайм-аутом.
+Таблиця 17 — Шари захисту text-to-SQL
+Шар захисту | Що робить | Чим перевірено
+правила в підказці | лише SELECT, лише схема й формули метрик, відмова на заборонене/безвідповідне, питання — недовірений вхід | питання U01–U05
+AST-перевірка (V2) | один оператор; корінь SELECT/UNION/WITH; без INSERT/UPDATE/DELETE/DDL/COPY/ATTACH/PRAGMA/SET; 7 дозволених таблиць; без табличних функцій (read_csv) та схем (information_schema); allow-list функцій | 20 шкідливих SQL у test_t2sql.py
+LIMIT | відсутній → 200, більший → 1000 | test_limit_enforced
+EXPLAIN | невідомі стовпці відсікаються до виконання | test_explain_catches_bad_column
+read-only | read_only=True, enable_external_access=false, lock_configuration=true | 3 тести
+тайм-аут | connection.interrupt() через 5 с | test_timeout (потрійне декартове з'єднання)
+def guard(sql):     trees = [t for t in sqlglot.parse(sql, read='duckdb') if t is not None]     if len(trees) != 1: raise GuardError('multiple_statements')     t = trees[0]     if not isinstance(t, (exp.Select, exp.Union, exp.With, exp.Subquery)): raise GuardError('not_select', type(t).__name__)     for tb in t.find_all(exp.Table):         if not isinstance(tb.this, exp.Identifier): raise GuardError('table_function', tb.sql())   # read_csv('x')         if tb.db or tb.catalog: raise GuardError('schema_qualified_table', tb.sql())             # information_schema.*         if tb.name.lower() not in ALLOWED_TABLES | cte_names: raise GuardError('table_not_allowed', tb.name)     for f in t.find_all(exp.Anonymous):         if f.name.lower() not in ALLOWED_FUNCS: raise GuardError('function_not_allowed', f.name)     return (t if has_limit(t, MAX_LIMIT) else t.limit(DEFAULT_LIMIT)).sql(dialect='duckdb')
+Таблиця 18 — Метрики text-to-SQL
+Метрика (23 питання) | Значення
+правильний результат (строго, збіг з еталонним SQL) | 15/18 = 83%
+правильний (м'яко: зайві стовпці, ±0.05; визначено ПІСЛЯ перегляду) | 18/18
+небезпечні/безвідповідні питання оброблено правильно | 5/5
+виконано небезпечних операторів (безпечних 100 %) | 0/23
+відмов моделі / блокувань guard / помилок виконання | 5 / 0 / 0
+середня вартість питання (модельна) | $0.00124 (1023 вх. + 44 вих. токенів)
+час guard+EXPLAIN+виконання, медіана / макс. | 8.1 / 29.9 мс
+Абляція: без правил безпеки в підказці модель з 5 небезпечних питань відмовила в 4, а одне (каталог information_schema) виконала як SELECT — його зупинила AST-перевірка (schema_qualified_table). Вибірка мала, тож це ілюстрація ролі guard, а не доказ.
+Таблиця 19 — Аналіз 3 помилок (строга метрика)
+id | Питання | Що не збіглося | Клас причини | Виправлення
+Z08 | сума годин огляду патогенних викликів | 617.95 проти 618.0: модель округлила до 2 знаків, еталон до 1 | неоднозначність специфікації | вказати точність у визначенні метрики
+Z14 | щомісячні CPU-години GATK 2026 | зайвий стовпець month_name | надмірна відповідь (нешкідлива) | підказка «лише запитані стовпці» / м'яке порівняння
+Z18 | поточна версія кожної родини й кількість викликів | зайвий стовпець tool | надмірна відповідь (нешкідлива) | те саме
+Жодна з трьох помилок не є хибним результатом по суті; набір складала та сама сесія, що й схему, без неоднозначних формулювань («останній квартал», «найкращий»), тож його слід читати як «конвеєр працює на типових питаннях», а не як бенчмарк. Першим кроком до надійнішої оцінки є незалежний, складніший набір із 50+ питань.
+Рисунок 2 — Панель (1/2): питання 1–4 з графіками та інтерпретаціями
+Рисунок 3 — Панель (2/2): питання 4–5
+Панель — самодостатній HTML (plotly вбудовано, працює офлайн): 5 питань, 5 візуалізацій (стовпці+лінія, теплова карта родина × тип варіанта, часовий ряд із позначками змін версій GATK, стовпчики за генами, CPU-години + черга). Кожна має інтерпретацію, обчислену з тих самих даних, і попередження, що дані синтетичні.
+Ризики й обмеження: (1) правдоподібний, але хибний SQL (неправильна роль таксономії, SUM неадитивної міри, множення рядків з'єднанням) — пом'якшено формулами метрик у контексті та порівнянням з еталоном, не усунуто; показувати SQL і визначення метрики поруч із числом; (2) ін'єкції та шкідливі питання — правило недовіреного вводу, AST allow-list, read-only без зовнішнього доступу; залишковий ризик: дозволений дорогий SELECT (тайм-аут і LIMIT обмежують шкоду); (3) розкриття даних — guard перевіряє таблиці, а не ролі: для реальних даних потрібні представлення за ролями (як у ЛР11) і заборона надсилати чутливі значення зовнішній LLM; (4) вартість і DoS — немає ліміту запитів і бюджету; (5) валідність оцінки — власний легкий набір, одна генерація, пост-хок м'яка метрика; (6) дрейф схеми й метрик — контекст будується з живої схеми та YAML.
+Таблиця 20 — Самооцінка за критеріями результату 5
+Критерій | Статус | Доказ
+C1 AST, read-only, LIMIT, тайм-аут | виконано | t2sql/pipeline.py, 28 тестів test_t2sql.py
+C2 метрики на ≥ 10 питаннях; 3 помилки | виконано | 18 + 5 питань, таблиці 18–19
+C3 панель ≥ 4 візуалізацій з інтерпретаціями | виконано | 5 візуалізацій, dashboard/index.html
+C4 ризики (≥ 3) | виконано | 6 ризиків (docs/t2sql.md)
+7. Протокол «LLM-експерт»
+Декларація використання ШІ. Інструмент: Claude у середовищі Claude Code. Ролі: (а) асистент у сесії (claude-sonnet-5-5) — схема, генератор, ELT, запити, семантичний шар, guard, панель, документи, звіт; (б) LLM-експерт, що пропонує питання бізнесу та SQL — claude-haiku-4-5-20251001 (сліпі запуски субагентів, без доступу до бази). Приклад запиту: «Propose 12 business questions that this star schema can answer… use only tables/columns present in the DDL» (llm_log/prompts/bq_v1.txt). Температура та seed не керуються. Перевірка: порівняння результатів з еталонним SQL (V4), AST-аналіз і read-only права (V2), EXPLAIN, незалежні обчислення в pandas, 43 автотести; пропозиції LLM відхилено або змінено там, де вони не відповідали схемі (BQ10). Ключі API не використано; персональних даних немає.
+Таблиця 21 — Журнал взаємодії з LLM (llm_log/log.csv)
+id | Призначення | Підказка | Рішення людини
+L12-01 | 12 бізнес-питань до зіркової схеми (без SQL) | bq_v1 | 9 прийнято (з правками BQ08–BQ11), BQ03/BQ07/BQ12 не використано (дублюють інші запити), BQ10: операцію cube замінено на rollup (claims C04)
+L12-02 | SQL для 23 тестових питань (18 звичайних + 5 небезпечних/безвідповідних) із сема | gen_protocol_t2sql_v1 | Прийнято без правок; виконання й порівняння з еталонним SQL автоматичне: 15/18 строго; усі 5 небезпечних відхилено моделлю
+L12-03 | Абляція: SQL для 5 небезпечних питань без захисних правил у підказці | naive prompt (без прав | 4 з 5 модель відмовила, U04 дала SELECT з information_schema — зупинено AST-перевіркою
+L12-04 | Дизайн схеми, генератор даних, ELT, OLAP-запити, семантичний шар, text-to-SQL gu | — (інтерактивні запити | Код запущено, 43 автотести пройдено; числа в docs/*.md обчислюються скриптами. Інтерпретації OLAP/панелі та класифікація помилок потребують
+claims/claims.csv: 22 тверджень; verified 13 (59%), rejected 2 (9%), pending 7 (32%). Рівні V2 (парсер, права, тести) і V4 (еталонні відповіді) досягнуто; V3 (людина) — лише формально, бо перегляд виконав LLM-рецензент. Pending: пам'ять моделі без звірки (хромосоми генів, версії інструментів, ціна токенів), гіпотези без статистичного тесту.
+Таблиця 22 — Відхилені твердження
+id | Твердження | Рівень | Статус | Чому
+C04 | Запропоноване LLM питання BQ10 має операцію «cube» | V3 | rejected | Ієрархія таксономії — це ROLLUP/drill-down, а не CUBE; операцію змінено (q11, q12)
+C05 | Перша версія генератора: черга (queue_backlog) зростає протягом усього періоду | V4 | rejected | Артефакт випадкового блукання з додатним дрейфом; генератор змінено на mean-reverting, числа q14 перераховано
+Джерела: Kimball R., Ross M. The Data Warehouse Toolkit, 3rd ed. (Wiley, 2013); Chaudhuri S., Dayal U. An Overview of Data Warehousing and OLAP Technology (SIGMOD Record, 1997); документація DuckDB (read-only режим, enable_external_access, interrupt, PIVOT, GROUPING SETS); документація sqlglot; Miles A., Bechhofer S. SKOS Reference (W3C, 2009); таксономія ЛР5 цього проєкту.
+8. Відповіді на контрольні питання
+Зерно факту — рівень деталізації одного рядка факту (тут: один викликаний варіант одного зразка конвеєром у дату). Його визначають першим, бо воно задає допустимі виміри, адитивність мір і зміст COUNT(*); змішування зерен призводить до подвійного підрахунку.
+Таксономія як вимір: dim_taxon (154 поняття, IRI як бізнес-ключ, parent_key, top_label/facet_label) у трьох ролях — тип варіанта, походження, значущість; плюс два посилання з dim_pipeline. Це дає roll-up/drill-down по ієрархії понять (q11, q12, q15) і зв'язок зі SKOS ЛР5 через IRI.
+Запит q01: ROLLUP (year, quarter) повертає рядки кварталів, підсумки по роках (g_quarter=1) і загальний підсумок (20 000 викликів, 57.4 % пройшли) за один прохід; grouping() відрізняє підсумкові рядки від NULL-значень. Pivot q07 розкладає значущість за стовпцями для кожного типу варіанта.
+Семантичний шар: одне перевірене визначення метрики (формула, одиниця, власник, обмеження), SQL генерується, а не пишеться вручну; різні шляхи дають однакові числа (4/4 перевірки), несумісні зрізи заборонені, словник метрик — основа для text-to-SQL.
+Ризики text-to-SQL: хибний, але правдоподібний SQL; ін'єкції; запис/читання файлів; дорогі запити; витік даних. Зменшено: контекст зі схемою та формулами метрик, AST allow-list (20/20 атак блоковано), лише SELECT, примусовий LIMIT, EXPLAIN, read-only без зовнішнього доступу, тайм-аут; виконано небезпечних операторів 0 з 23. Не усунуто: рольовий доступ до рядків, бюджет запитів, незалежна оцінка точності.
+9. Обмеження
+Дані синтетичні; усі «висновки» — ефекти генератора; хромосоми генів і версії інструментів не звірено з джерелами, дати версій вигадані.
+Одна версія таксономії (SCD для неї описано, не виконано); SCD2 застосовано лише до конвеєра.
+Тести text-to-SQL легкі, складені тією самою сесією, одна генерація на питання; м'яка метрика визначена після перегляду результатів; вартість модельна.
+«Людська» перевірка — LLM-рецензент; claims із V3 — pending.
+Немає рольового доступу до даних у text-to-SQL, немає ліміту запитів; семантичний шар — мінімальна власна реалізація (не dbt/Cube).
+Температура/seed LLM не керуються; відтворюваність забезпечує кеш відповідей.
+10. Запуск з нуля
+python3 -m venv .venv && . .venv/bin/activate     # Python 3.13 pip install -r requirements.txt                    # duckdb 2.0.0, pandas 3.0.5, sqlglot 30.27.0, plotly 7.1.0 ... bash scripts/run_all.sh                            # генерація даних (seed 42), ELT, OLAP, перевірки, 43 тести, документи, панель
+Гілка git: lab12 (у сесії git не ініціалізовано). Seed: 42 (генератор), PYTHONHASHSEED=0.

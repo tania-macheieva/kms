@@ -1,0 +1,14 @@
+items by sensitivity: {'public': 605, 'internal': 21, 'restricted': 54} | unverified: ['fx_sop_qd', 'fx_clinic_fs', 'fx_sop_sor', 'fx_gatk_java', 'fx_inject_1', 'fx_inject_2']
+history: sarek_vc_sarek#h007 (mentions QD, FS, SOR, SNP); candidates exclude already-read items; ranking = hybrid
+
+A reader,    verified_only=True : 601 candidates; by sensitivity {'public': 601}; unverified []; max age 83 d
+B reader,    verified_only=False: 604 candidates; by sensitivity {'public': 604}; unverified ['fx_gatk_java', 'fx_inject_2', 'fx_inject_1']; max age 83 d
+C analyst,   verified_only=True : 619 candidates; by sensitivity {'public': 601, 'internal': 18}; unverified []; max age 83 d
+D analyst,   verified_only=False: 625 candidates; by sensitivity {'public': 604, 'internal': 21}; unverified ['fx_sop_qd', 'fx_sop_sor', 'fx_clinic_fs', 'fx_gatk_java', 'fx_inject_2', 'fx_inject_1']; max age 83 d
+E clinician, verified_only=False: 679 candidates; by sensitivity {'public': 604, 'internal': 21, 'restricted': 54}; unverified ['fx_sop_qd', 'fx_sop_sor', 'fx_clinic_fs', 'fx_gatk_java', 'fx_inject_2', 'fx_inject_1']; max age 83 d
+F analyst,   verified_only=False, max_age_days=30 (freshness): 369 candidates; by sensitivity {'public': 351, 'internal': 18}; unverified []; max age 18 d
+G reader,    verified_only=True,  max_age_days=10: 0 candidates; by sensitivity {}; unverified []; max age - d
+
+Top-5 for reader: ['sarek_vc_sarek#h004', 'sarek_vc_intro#h000', 'sarek_vc_sarek#h005', 'sarek_vc_sarek#h000', 'sarek_vc_theory#h008']
+Top-5 for analyst without verification filter: [('sarek_vc_sarek#h004', True), ('sarek_vc_intro#h000', True), ('sarek_vc_sarek#h005', True), ('sarek_vc_sarek#h000', True), ('sarek_vc_theory#h008', True)]
+Rank of unverified items WITHOUT the verification filter (clinician, 679 candidates): {'fx_sop_qd': 391, 'fx_sop_sor': 588, 'fx_clinic_fs': 633, 'fx_gatk_java': 670, 'fx_inject_2': 675, 'fx_inject_1': 678}

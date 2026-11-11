@@ -1,0 +1,2 @@
+from,to,source,confidence,validFrom
+HF-01,sample1_vcf,gatk,1.0,2026-10-26

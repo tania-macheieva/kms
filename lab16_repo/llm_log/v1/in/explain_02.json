@@ -1,0 +1,65 @@
+{
+ "batch": "explain_02",
+ "items": [
+  {
+   "key": "51c9a3b5488a5ae922b91042d3ced6597e80242f5d49d52a9f7da3caa819e936",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_usage: Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data > Reference files and parameters > 2. QC stats from the alignment files», бо ви читали «rare_usage: nf-core/raredisease: Usage», і обидва розділи згадують Nextflow (Tool).\nФАКТИ: {\"cand_label\": \"rare_usage: Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data > Reference files and parameters > 2. QC stats from the alignment files\", \"kind\": \"entity\", \"via_label\": \"rare_usage: nf-core/raredisease: Usage\", \"entity\": \"Nextflow\", \"etype\": \"Tool\"}"
+  },
+  {
+   "key": "bd5139729fc2f6eb9786170e72744822b28ef26724fe5b1c0601b72333a6d3e9",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_usage: Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data > Reference files and parameters», бо ви читали «rare_usage: nf-core/raredisease: Usage», і обидва розділи згадують Nextflow (Tool).\nФАКТИ: {\"cand_label\": \"rare_usage: Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data > Reference files and parameters\", \"kind\": \"entity\", \"via_label\": \"rare_usage: nf-core/raredisease: Usage\", \"entity\": \"Nextflow\", \"etype\": \"Tool\"}"
+  },
+  {
+   "key": "ce2edf0fb4f1e5583b6bb90a384b9b043d2fe2c30deb7e01c6e13f7603114d70",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_usage: Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data > Reference files and parameters», бо ви читали «rare_output: Pipeline overview > Mitochondrial analysis > GENMOD», і обидва розділи згадують GENMOD (Tool).\nФАКТИ: {\"cand_label\": \"rare_usage: Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data > Reference files and parameters\", \"kind\": \"entity\", \"via_label\": \"rare_output: Pipeline overview > Mitochondrial analysis > GENMOD\", \"entity\": \"GENMOD\", \"etype\": \"Tool\"}"
+  },
+  {
+   "key": "df87a0faf1959f1686a3e922948dbdcd055b10ef3099ab443d9928ddf6144e84",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_usage: Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data», бо ви читали «rare_usage: nf-core/raredisease: Usage», і обидва розділи згадують Nextflow (Tool).\nФАКТИ: {\"cand_label\": \"rare_usage: Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data\", \"kind\": \"entity\", \"via_label\": \"rare_usage: nf-core/raredisease: Usage\", \"entity\": \"Nextflow\", \"etype\": \"Tool\"}"
+  },
+  {
+   "key": "09cb26e10fc707f27d0d8bd462680798f339757795981495dff1aee20c3be01c",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_usage: Other Nextflow hidden files, like history of pipeline logs. > Core Nextflow arguments > `-c`», бо ви читали «rare_usage: Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data > Reference files and parameters > 3. Repeat expansions», і обидва розділи згадують workflow (Concept).\nФАКТИ: {\"cand_label\": \"rare_usage: Other Nextflow hidden files, like history of pipeline logs. > Core Nextflow arguments > `-c`\", \"kind\": \"entity\", \"via_label\": \"rare_usage: Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data > Reference files and parameters > 3. Repeat expansions\", \"entity\": \"workflow\", \"etype\": \"Concept\"}"
+  },
+  {
+   "key": "fba22beda9949bf1af2ec92607ca80fadefe00fb4a94bb6b4b313b14f4fef2ec",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_citations: Pipeline tools», бо ви читали «rare_citations: Pipeline tools», і обидва розділи згадують structural variant (Concept).\nФАКТИ: {\"cand_label\": \"rare_citations: Pipeline tools\", \"kind\": \"entity\", \"via_label\": \"rare_citations: Pipeline tools\", \"entity\": \"structural variant\", \"etype\": \"Concept\"}"
+  },
+  {
+   "key": "9e5ccb69fb9365ba27611dcf46eb4d19de8f487e4808af1c2918085f3a4f2e7b",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_citations: Pipeline tools» з того самого документа, що й прочитаний вами «rare_citations: Pipeline tools».\nФАКТИ: {\"cand_label\": \"rare_citations: Pipeline tools\", \"kind\": \"doc\", \"via_label\": \"rare_citations: Pipeline tools\"}"
+  },
+  {
+   "key": "4f626facc32771290d645185dfb2a0b2e2fdf678c16736079eef112ce879a47f",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_citations: Nextflow & nf-core», бо ви читали «rare_citations: Pipeline tools», і обидва розділи згадують workflow (Concept).\nФАКТИ: {\"cand_label\": \"rare_citations: Nextflow & nf-core\", \"kind\": \"entity\", \"via_label\": \"rare_citations: Pipeline tools\", \"entity\": \"workflow\", \"etype\": \"Concept\"}"
+  },
+  {
+   "key": "6ce6d57a8fe3189d6f62d4d991ea33a6f0c92bbd324decbd5cf09871cbc32191",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_readme: Pipeline summary», бо ви читали «rare_citations: Pipeline tools», і обидва розділи згадують VerifyBamID2 (Tool).\nФАКТИ: {\"cand_label\": \"rare_readme: Pipeline summary\", \"kind\": \"entity\", \"via_label\": \"rare_citations: Pipeline tools\", \"entity\": \"VerifyBamID2\", \"etype\": \"Tool\"}"
+  },
+  {
+   "key": "ef2b5ccdd0291288f8feb601bef3115e7e8f78b8411d576e4bbfba140719bf9e",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_readme: Citations»: він змістовно близький до прочитаного вами «rare_citations: Pipeline tools» (косинусна подібність 0.844).\nФАКТИ: {\"cand_label\": \"rare_readme: Citations\", \"kind\": \"similar\", \"via_label\": \"rare_citations: Pipeline tools\", \"cosine\": 0.844}"
+  }
+ ]
+}

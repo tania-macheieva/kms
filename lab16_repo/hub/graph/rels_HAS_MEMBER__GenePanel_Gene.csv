@@ -1,0 +1,5 @@
+from,to,source,confidence,validFrom
+HBOC-panel,BRCA1,lab7-abox,1.0,2026-10-26
+HBOC-panel,BRCA2,lab7-abox,1.0,2026-10-26
+HBOC-panel,PALB2,lab7-abox,1.0,2026-10-26
+HBOC-panel,TP53,lab7-abox,1.0,2026-10-26

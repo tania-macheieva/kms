@@ -1,0 +1,408 @@
+Львівський національний університет імені Івана Франка
+Курс «Сховища знань та управління знаннями»
+ЗВІТ
+до лабораторної роботи № 7
+«Онтологія предметної області в Protégé та її формалізація»
+Предметна область: Медицина — аналіз біомедичних даних
+Виконав(ла): ____________________
+Дата: ____________________
+1. Мета, вхідні дані та інструменти
+Мета — формалізувати предметну область (таблиця класів, словник властивостей, ситуації), створити й наповнити OWL-онтологію, перевірити її reasoner'ом і CQ-тестами та порівняти з чернеткою онтології від LLM.
+Вхід: таксономія ЛР5 (154 вузли), карта й триплети ЛР6 v2 (72 триплети), 18 CQ ЛР4, тексти GATK та CDC.
+Інструменти: Python 3.13, rdflib 7.6.0 (побудова й парсинг Turtle, SPARQL), owlready2 0.51 з HermiT.jar (reasoner), OpenJDK 21, Graphviz (діаграма), pytest.
+Репозиторій lab07_repo: структуру і запуск описано в README.md і розділі 9.
+Важливо. Protégé в цьому середовищі недоступний. Онтологію створено скриптами (scripts/onto_model.py → build_onto.py), reasoner HermiT запущено з командного рядка Java; замість скріншотів Protégé у звіті — журнали HermiT. Файл models/onto.owl (Turtle) слід відкрити в Protégé і зробити скріншоти самостійно. «Експерт», автор чернетки онтології й оцінки OntoClean — LLM-асистент, експерта-людини не залучено.
+2. Результат 1. Таблиця класів і словник даних
+Артефакт: models/class_table.csv (78 класів: назва, визначення «рід + відмінність», батьківський клас, ключові властивості, джерело) і models/property_dictionary.csv (35 object і 16 data властивостей: тип, domain, range, характеристики). Обидва файли генеруються з одного джерела (scripts/onto_model.py), що виключає розбіжності з onto.owl.
+Таблиця 1 — Таблиця класів (≡ — означений клас, ⊑ — первинний)
+id | Клас | Батьківський | Визначення (рід + відмінність) | Тип
+BiologicalEntity | біологічна сутність | owl:Thing | Біологічна сутність — це сутність, що є об'єктом живої природи на молекулярному рівні. | ⊑
+Gene | ген | BiologicalEntity | Ген — це біологічна сутність, що є ділянкою геному, яка кодує функціональний продукт. | ⊑
+Exon | екзон | BiologicalEntity | Екзон — це біологічна сутність, що є ділянкою гена, яка зберігається у зрілій РНК. | ⊑
+GeneticVariant | генетичний варіант | owl:Thing | Генетичний варіант — це сутність, що є відмінністю послідовності ДНК від еталона в конкретній позиції геному. | ⊑
+SNP | однонуклеотидний поліморфізм | GeneticVariant | Однонуклеотидний поліморфізм — це генетичний варіант, що змінює один нуклеотид. | ⊑
+Indel | вставка-делеція | GeneticVariant | Вставка-делеція — це генетичний варіант, що є вставкою або делецією нуклеотидів. | ⊑
+GermlineVariant | зародковий варіант | GeneticVariant | Зародковий варіант — це генетичний варіант, що наявний у клітинах зародкової лінії й успадковується. | ⊑
+SomaticVariant | соматичний варіант | GeneticVariant | Соматичний варіант — це генетичний варіант, що виник у соматичних клітинах і не успадковується. | ⊑
+PathogenicVariant | патогенний варіант | GeneticVariant | Патогенний варіант — це генетичний варіант, якому приписано клінічне значення «патогенний». | ≡
+ExonEndVariant | варіант у кінці екзона | GeneticVariant | Варіант у кінці екзона — це генетичний варіант, розташований на кінці екзона. | ≡
+LowQDVariant | варіант із низьким QD | GeneticVariant | Варіант із низьким QD — це генетичний варіант, що має анотацію QD зі значенням менше 2. | ≡
+HighFSSnpVariant | SNP із високим FS | SNP | SNP із високим FS — це однонуклеотидний поліморфізм, що має анотацію FS зі значенням більше 60. | ≡
+HighFSIndelVariant | INDEL із високим FS | Indel | INDEL із високим FS — це вставка-делеція, що має анотацію FS зі значенням більше 200. | ≡
+FlaggedVariant | варіант із прапорцем | GeneticVariant | Варіант із прапорцем — це генетичний варіант, що порушує щонайменше один поріг жорсткої фільтрації й тому підлягає відхиленню. | ≡
+QualityMeasure | міра якості | owl:Thing | Міра якості — це сутність, що кількісно характеризує якість даних чи варіанта. | ⊑
+QualityAnnotation | анотація якості | QualityMeasure | Анотація якості — це міра якості, що є числовим показником, записаним для варіанта у VCF. | ⊑
+QualityByDepth | якість на глибину | QualityAnnotation | Якість на глибину — це анотація якості, що нормує якість варіанта на глибину покриття. | ⊑
+FisherStrandBias | зміщення ланцюга за Фішером | QualityAnnotation | Зміщення ланцюга за Фішером — це анотація якості, що вимірює зміщення за ланцюгами ДНК за тестом Фішера. | ⊑
+StrandOddsRatio | співвідношення шансів ланцюгів | QualityAnnotation | Співвідношення шансів ланцюгів — це анотація якості, що оцінює зміщення за ланцюгами й менше штрафує кінці екзонів. | ⊑
+MappingQuality | якість картування | QualityAnnotation | Якість картування — це анотація якості, що описує надійність вирівнювання прочитання до еталона. | ⊑
+RankSumAnnotation | тест суми рангів | QualityAnnotation | Тест суми рангів — це анотація якості, що порівнює розподіл якостей для алелів за рангами. | ⊑
+MQRankSum | MQRankSum | RankSumAnnotation | MQRankSum — це тест суми рангів, що порівнює якості картування прочитань референсного й альтернативного алелів. | ⊑
+ReadPosRankSum | ReadPosRankSum | RankSumAnnotation | ReadPosRankSum — це тест суми рангів, що порівнює позиції алелів у прочитаннях. | ⊑
+ReadDepth | глибина покриття | QualityAnnotation | Глибина покриття — це анотація якості, що рахує кількість прочитань, які покривають позицію. | ⊑
+LowQDAnnotation | низька анотація QD | QualityByDepth | Низька анотація QD — це якість на глибину, зі значенням менше 2. | ≡
+FilterThreshold | поріг фільтрації | owl:Thing | Поріг фільтрації — це сутність, що задає граничне значення анотації для відхилення варіанта. | ⊑
+Procedure | процедура | owl:Thing | Процедура — це сутність, що є цілеспрямованою послідовністю дій над даними чи пацієнтом. | ⊑
+VariantFiltering | фільтрація варіантів | Procedure | Фільтрація варіантів — це процедура, що відкидає варіанти за значеннями анотацій. | ⊑
+HardFiltering | жорстка фільтрація | VariantFiltering | Жорстка фільтрація — це фільтрація варіантів, що відкидає варіанти за фіксованими порогами анотацій. | ⊑
+VQSR | рекалібрування якості варіантів (VQSR) | VariantFiltering | Рекалібрування якості варіантів (VQSR) — це фільтрація варіантів, що навчає модель на великому наборі варіантів і відомих ресурсах. | ⊑
+VariantCalling | виклик варіантів | Procedure | Виклик варіантів — це процедура, що визначає варіанти за вирівняними прочитаннями. | ⊑
+SequenceAlignment | вирівнювання послідовностей | Procedure | Вирівнювання послідовностей — це процедура, що зіставляє прочитання з еталонним геномом. | ⊑
+GeneticTesting | генетичне тестування | Procedure | Генетичне тестування — це процедура, що виявляє варіанти в генах пацієнта. | ⊑
+CascadeTesting | каскадне тестування | GeneticTesting | Каскадне тестування — це генетичне тестування, що пропонують родичам пробанда після виявлення в нього патогенного варіанта. | ⊑
+GeneticCounseling | генетичне консультування | Procedure | Генетичне консультування — це процедура, що пояснює пацієнту й родині результати та ризики тестування. | ⊑
+RiskAssessment | оцінка ризику | Procedure | Оцінка ризику — це процедура, що оцінює ймовірність захворювання за варіантами й родинним анамнезом. | ⊑
+DataArtifact | артефакт даних | owl:Thing | Артефакт даних — це сутність, що є збереженим набором даних чи інформації. | ⊑
+DataFile | файл даних | DataArtifact | Файл даних — це артефакт даних, що зберігається як файл певного формату. | ⊑
+VCFFile | файл VCF | DataFile | Файл VCF — це файл даних, у форматі VCF, що містить варіанти й їхні анотації. | ⊑
+BAMFile | файл BAM | DataFile | Файл BAM — це файл даних, у форматі BAM, що містить вирівняні прочитання. | ⊑
+GenePanel | генна панель | DataArtifact | Генна панель — це артефакт даних, що є фіксованим набором генів для спільного тестування. | ⊑
+FamilyHistory | родинний анамнез | DataArtifact | Родинний анамнез — це артефакт даних, що описує випадки захворювань серед родичів особи. | ⊑
+LargeVariantSet | великий набір варіантів | DataArtifact | Великий набір варіантів — це артефакт даних, достатньо великий, щоб навчити модель VQSR. | ⊑
+CuratedKnownVariants | підготовлені відомі варіанти | DataArtifact | Підготовлені відомі варіанти — це артефакт даних, що є перевіреним ресурсом відомих варіантів для навчання VQSR. | ⊑
+Person | особа | owl:Thing | Особа — це сутність, що є людиною (в онтології — вигаданою, синтетичною). | ⊑
+Proband | пробанд | Person | Пробанд — це особа, з якої починається аналіз сім'ї. | ⊑
+Relative | родич | Person | Родич — це особа, що пов'язана спорідненістю з пробандом. | ⊑
+FirstDegreeRelative | родич першого ступеня | Relative | Родич першого ступеня — це родич, що є батьком/матір'ю, дитиною або рідним братом/сестрою пробанда. | ≡
+SecondDegreeRelative | родич другого ступеня | Relative | Родич другого ступеня — це родич, що є бабусею/дідусем, тіткою/дядьком або зведеним братом/сестрою пробанда. | ≡
+ThirdDegreeRelative | родич третього ступеня | Relative | Родич третього ступеня — це родич, що є двоюрідним або більш віддаленим родичем пробанда. | ≡
+AdultRelative | дорослий родич | Relative | Дорослий родич — це родич, якому щонайменше 18 років. | ≡
+MinorRelative | неповнолітній родич | Relative | Неповнолітній родич — це родич, якому менше 18 років. | ≡
+Disease | захворювання | owl:Thing | Захворювання — це сутність, що є порушенням здоров'я людини. | ⊑
+Cancer | рак | Disease | Рак — це захворювання, що характеризується неконтрольованим ростом клітин. | ⊑
+BreastCancer | рак молочної залози | Cancer | Рак молочної залози — це рак, що виникає в тканині молочної залози. | ⊑
+OvarianCancer | рак яєчників | Cancer | Рак яєчників — це рак, що виникає в тканині яєчників. | ⊑
+ClinicalSignificance | клінічне значення | owl:Thing | Клінічне значення — це сутність, що позначає висновок про вплив варіанта на здоров'я (наприклад, патогенний, доброякісний). | ⊑
+Event | подія | owl:Thing | Подія — це сутність, що відбувається в момент часу й змінює стан ситуації. | ⊑
+AnnotationComputedEvent | подія обчислення анотації | Event | Подія обчислення анотації — це подія, в якій для варіанта обчислено значення анотації якості. | ⊑
+PathogenicVariantFoundEvent | подія виявлення патогенного варіанта | Event | Подія виявлення патогенного варіанта — це подія, в якій у пробанда виявлено патогенний варіант. | ⊑
+MethodChoiceEvent | подія вибору методу | Event | Подія вибору методу — це подія, в якій потрібно вибрати метод фільтрації для набору даних. | ⊑
+TestingRequestedEvent | подія запиту тестування | Event | Подія запиту тестування — це подія, в якій розглядається тестування конкретного родича. | ⊑
+State | стан | owl:Thing | Стан — це сутність, що описує становище об'єкта в певний момент часу. | ⊑
+UnfilteredState | нефільтрований стан | State | Нефільтрований стан — це стан, в якому варіант ще не перевірено порогами. | ⊑
+FlaggedState | стан з прапорцем | State | Стан з прапорцем — це стан, в якому варіант порушив поріг. | ⊑
+FilteredState | відфільтрований стан | State | Відфільтрований стан — це стан, в якому варіант відхилено. | ⊑
+UntestedState | нетестований стан | State | Нетестований стан — це стан, в якому родича ще не протестовано. | ⊑
+TestingOfferedState | стан запропонованого тестування | State | Стан запропонованого тестування — це стан, в якому родичу запропоновано тестування. | ⊑
+TestingDeferredState | стан відкладеного тестування | State | Стан відкладеного тестування — це стан, в якому тестування відкладено. | ⊑
+Action | дія | owl:Thing | Дія — це сутність, що виконує система чи фахівець у відповідь на подію. | ⊑
+ApplyFlagAction | дія «поставити прапорець» | Action | Дія «поставити прапорець» — це дія, що позначає варіант прапорцем порогу. | ⊑
+ReviewWithSORAction | дія «перевірити SOR» | Action | Дія «перевірити SOR» — це дія, що додатково перевіряє SOR для варіанта в кінці екзона. | ⊑
+SelectHardFilteringAction | дія «обрати жорстку фільтрацію» | Action | Дія «обрати жорстку фільтрацію» — це дія, що обирає hard filtering замість VQSR. | ⊑
+OfferCascadeTestingAction | дія «запропонувати каскадне тестування» | Action | Дія «запропонувати каскадне тестування» — це дія, що пропонує тестування родичу. | ⊑
+DeferTestingAction | дія «відкласти тестування» | Action | Дія «відкласти тестування» — це дія, що відкладає тестування до повноліття. | ⊑
+Sensor | сенсор | owl:Thing | Сенсор — це сутність, що вимірює фізичну величину й породжує вихідні дані. | ⊑
+Sequencer | секвенатор | Sensor | Секвенатор — це сенсор, що зчитує послідовність ДНК і породжує прочитання. | ⊑
+SituationTemplate | шаблон ситуації | owl:Thing | Шаблон ситуації — це сутність, що описує пару «початковий стан — подія — умова — новий стан — дія». | ⊑
+Таблиця 2 — Словник властивостей (повні визначення — property_dictionary.csv)
+Властивість | Тип | Domain | Range | Характеристики
+hasAnnotation | object | GeneticVariant | QualityAnnotation | —
+isAnnotationOf | object | QualityAnnotation | GeneticVariant | —
+usesInput | object | Procedure | QualityMeasure ⊔ DataArtifact | —
+appliesTo | object | Procedure ⊔ QualityMeasure | GeneticVariant ⊔ DataArtifact ⊔ Person | —
+requires | object | Procedure | GeneticVariant ⊔ DataArtifact | —
+produces | object | Procedure | DataArtifact ⊔ GeneticVariant | —
+detects | object | Procedure | GeneticVariant | —
+increasesRiskOf | object | GeneticVariant ⊔ Gene | Disease | —
+recommendedFor | object | Procedure ⊔ QualityMeasure | Person ⊔ DataArtifact ⊔ GeneticVariant | —
+hasMember | object | GenePanel | Gene | —
+isMemberOf | object | Gene | GenePanel | —
+partOf | object | BiologicalEntity | BiologicalEntity | transitive
+hasPart | object | BiologicalEntity | BiologicalEntity | transitive
+locatedIn | object | GeneticVariant | Gene | —
+derivedFrom | object | DataFile | DataFile | transitive
+generatedBy | object | DataFile | Sensor | —
+hasProband | object | CascadeTesting | Proband | —
+hasThreshold | object | Procedure | FilterThreshold | —
+hasClinicalSignificance | object | GeneticVariant | ClinicalSignificance | functional
+hasDiagnosis | object | Person | Disease | —
+carries | object | Person | GeneticVariant | —
+hasAncestor | object | Person | Person | transitive
+hasParent | object | Person | Person | —
+hasChild | object | Person | Person | —
+hasSibling | object | Person | Person | symmetric
+hasGrandparent | object | Person | Person | —
+hasAuntOrUncle | object | Person | Person | —
+hasCousin | object | Person | Person | —
+isFirstDegreeRelativeOf | object | Person | Person | symmetric
+isSecondDegreeRelativeOf | object | Person | Person | symmetric
+isThirdDegreeRelativeOf | object | Person | Person | symmetric
+hasInitialState | object | SituationTemplate | State | —
+triggeredBy | object | SituationTemplate | Event | —
+hasNewState | object | SituationTemplate | State | —
+hasAction | object | SituationTemplate | Action | —
+hasNumericValue | data | QualityAnnotation | decimal | functional
+hasThresholdValue | data | FilterThreshold | decimal | functional
+hasComparisonOperator | data | FilterThreshold | string | functional
+onAnnotationName | data | FilterThreshold | string | functional
+forVariantType | data | FilterThreshold | string | —
+hasMinTestingAge | data | CascadeTesting | integer | functional
+hasInheritanceProbability | data | Person | decimal | —
+hasAgeYears | data | Person | integer | functional
+isDeceased | data | Person | boolean | functional
+hasAnnotationName | data | QualityAnnotation | string | functional
+hasGeneSymbol | data | Gene | string | functional
+onChromosome | data | Gene | string | functional
+hasSex | data | Person | string | functional
+hasVariantId | data | GeneticVariant | string | functional
+hasExonEndPosition | data | GeneticVariant | boolean | functional
+hasGuard | data | SituationTemplate | string | —
+2.1 Повторне використання
+SKOS (W3C): мітки skos:definition, зіставлення skos:closeMatch/exactMatch — обґрунтування: стандартна схема для таксономій, ЛР5 уже опубліковано як SKOS.
+Таксономія ЛР5 (ex5:C…): кожен клас, що має відповідний термін, зіставлено через skos:closeMatch (див. колонку reuse_mapping у class_table.csv) — зберігає зв'язок між таксономією й онтологією.
+MeSH: skos:exactMatch/closeMatch для gene, single nucleotide polymorphism, genetic counseling, breast cancer, ovarian cancer (URI й мітки перевірено MeSH Lookup API у ЛР5; смислову еквівалентність оцінила LLM).
+Не імпортовано (owl:imports) зовнішніх онтологій: мережа недоступна, а імпорт без доступу ламає відкриття. Спроби звірити ідентифікатори Sequence Ontology та EDAM не вдалися (ресурс поза allowlist), тому їх не використано.
+2.2 Перевірка визначень (кругові й «Насос — це насос»)
+Скрипт scripts/check_definitions.py перевіряє: (1) рід збігається з батьківським класом; (2) терміну немає у власній відмінності; (3) у графі «клас → класи, згадані у відмінності» немає циклів. Результат: Класів: 78; проблем формату/самопосилань: 0; циклів залежностей між визначеннями: 0.
+Таблиця 3 — Три приклади ручної перевірки визначень
+№ | Клас | Визначення | Перевірка вручну
+1 | Каскадне тестування | генетичне тестування, що пропонують родичам пробанда після виявлення в нього патогенного варіанта | посилається на Proband і Relative; жодне з них не посилається на CascadeTesting → циклу немає
+2 | Родич | особа, що пов'язана спорідненістю з пробандом | залежить від Proband; визначення Proband («особа, з якої починається аналіз родини») не згадує Relative → кругового визначення немає
+3 | Патогенний варіант | генетичний варіант, якому приписано клінічне значення «патогенний» | залежить від ClinicalSignificance; визначення останнього («висновок про вплив варіанта на здоров'я») не називає PathogenicVariant. Наївне «патогенний варіант — це варіант, що є патогенним» відхилено б як самопосилання
+Таблиця 4 — Самооцінка за критеріями результату 1
+Критерій | Статус | Доказ
+C1 ≥ 30 класів з визначеннями «рід + відмінність» | виконано | 78 класів (таблиця 1)
+C2 ≥ 10 object та ≥ 5 data властивостей з domain/range | виконано | 35 object, 16 data (таблиця 2)
+C3 ≥ 1 повторно використана онтологія/словник з обґрунтуванням | виконано | SKOS, таксономія ЛР5, MeSH (п. 2.1)
+C4 немає кругових визначень; 3 приклади | виконано | check_definitions.py: 0 проблем, 0 циклів; таблиця 3
+3. Результат 2. OWL-онтологія
+Артефакт: models/onto.owl (Turtle; 1373 триплети). Генерація: scripts/build_onto.py за описом у scripts/onto_model.py. Структура: 14 верхніх класів (біологічна сутність, генетичний варіант, міра якості, поріг, процедура, артефакт даних, особа, захворювання, клінічне значення, подія, стан, дія, сенсор, шаблон ситуації), ієрархія до 4 рівнів, 15 груп диз'юнктних класів (AllDisjointClasses), 12 означених (≡) класів: PathogenicVariant, ExonEndVariant, LowQDAnnotation/LowQDVariant, HighFSSnpVariant, HighFSIndelVariant, FlaggedVariant, ступені родичів (First/Second/ThirdDegreeRelative), AdultRelative/MinorRelative.
+Рисунок 1а — ієрархія класів (частина 1 із 3; червона рамка — означений клас)
+Рисунок 1б — ієрархія класів (частина 2 із 3)
+Рисунок 1в — ієрархія класів (частина 3 із 3); повна діаграма — docs/class_hierarchy.png/.svg
+Таблиця 5 — Аксіоми існування (∃), універсальності (∀) і кардинальні обмеження (24)
+№ | Аксіома (SubClassOf)
+1 | HardFiltering ⊑ ∃ usesInput.QualityByDepth
+2 | HardFiltering ⊑ ∃ usesInput.FisherStrandBias
+3 | HardFiltering ⊑ ∃ usesInput.StrandOddsRatio
+4 | HardFiltering ⊑ ∃ usesInput.MappingQuality
+5 | HardFiltering ⊑ ∃ usesInput.RankSumAnnotation
+6 | VQSR ⊑ ∃ requires.LargeVariantSet
+7 | VQSR ⊑ ∃ requires.CuratedKnownVariants
+8 | CascadeTesting ⊑ ∃ requires.PathogenicVariant
+9 | CascadeTesting ⊑ ∀ appliesTo.Relative
+10 | CascadeTesting ⊑ ∃ recommendedFor.FirstDegreeRelative
+11 | GenePanel ⊑ ∃ hasMember.Gene
+12 | GenePanel ⊑ ∀ hasMember.Gene
+13 | PathogenicVariant ⊑ ∃ increasesRiskOf.BreastCancer
+14 | PathogenicVariant ⊑ ∃ increasesRiskOf.OvarianCancer
+15 | HardFiltering ⊑ ∃ recommendedFor.GenePanel
+16 | StrandOddsRatio ⊑ ∃ recommendedFor.ExonEndVariant
+17 | VCFFile ⊑ ∃ derivedFrom.BAMFile
+18 | BAMFile ⊑ ∃ generatedBy.Sequencer
+19 | Exon ⊑ ∃ partOf.Gene
+20 | GenePanel ⊑ hasMember ≥ 2 Gene
+21 | CascadeTesting ⊑ hasProband = 1 Proband
+22 | CascadeTesting ⊑ hasMinTestingAge = 18
+23 | Person ⊑ hasParent ≤ 2 Person
+24 | GeneticVariant ⊑ hasClinicalSignificance ≤ 1 ClinicalSignificance
+Аксіоми існування (∃): 17; універсальності (∀): 2; кардинальні: hasMember ≥ 2, hasProband = 1, hasParent ≤ 2, hasClinicalSignificance ≤ 1 (4); hasValue: hasMinTestingAge = 18; ймовірності успадкування 0,5/0,25/0,125 на класах родичів. Пояснення однієї аксіоми (для захисту): «CascadeTesting ⊑ ∀ appliesTo.Relative» — якщо каскадне тестування застосовується до когось, цей хтось має бути родичем; тому, якщо до CT-01 додати Olena (пробанда), HermiT повідомить про суперечність через диз'юнктність Proband і Relative.
+Властивості: 35 object (транзитивні — partOf, hasPart, derivedFrom, hasAncestor; симетричні — hasSibling, isFirst/Second/ThirdDegreeRelativeOf; пари обернених — hasAnnotation/isAnnotationOf, hasMember/isMemberOf, partOf/hasPart, hasParent/hasChild; ланцюги: hasParent∘hasParent → hasGrandparent, hasParent∘hasSibling → hasAuntOrUncle, hasAuntOrUncle∘hasChild → hasCousin) і 16 data (decimal, integer, string, boolean; 12 функціональних).
+@prefix dct: <http://purl.org/dc/terms/> . @prefix dkh: <http://example.org/dkh/onto#> . @prefix ex5: <http://example.org/knowledge-hub/biomed/> . @prefix owl: <http://www.w3.org/2002/07/owl#> . @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . @prefix skos: <http://www.w3.org/2004/02/skos/core#> . @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .  <http://example.org/dkh/onto> a owl:Ontology ;     dct:creator "Студент (власник моделі); чернетки — Claude (LLM), перевірка — студент" ;     dct:description "Навчальна онтологія; статус довіри: чернетка, не перевірена експертом-медиком; не для клінічного використання."@uk ; … dkh:HighFSSnpVariant a owl:Class ;
+Рисунок 2 — початок models/onto.owl (заголовок онтології з версією, джерелами й статусом довіри).
+rdflib 7.6.0 python -c "import rdflib; g=rdflib.Graph().parse('models/onto.owl', format='turtle'); print(len(g))"  →  1373 триплетів, помилок немає python -c "import rdflib; g=rdflib.Graph().parse('models/onto_data.ttl', format='turtle'); print(len(g))"  →  376 триплетів, помилок немає python -c "import rdflib; g=rdflib.Graph().parse('models/llm_draft.ttl', format='turtle'); print(len(g))"  →  1723 триплетів, помилок немає python -c "import rdflib; g=rdflib.Graph().parse('models/onto_inferred.ttl', format='turtle'); print(len(g))"  →  62 триплетів, помилок немає
+Рисунок 3 — парсинг rdflib: команда і вивід (для .owl у форматі Turtle потрібен format='turtle').
+Таблиця 6 — Самооцінка за критеріями результату 2
+Критерій | Статус | Доказ
+C1 ≥ 30 класів, диз'юнктності, ≥ 3 аксіоми ∃/∀ | виконано | 78 класів; 15 груп диз'юнктності; 19 аксіом ∃/∀ (таблиця 5)
+C2 ≥ 10 object і ≥ 5 data; ≥ 2 з характеристиками | виконано | 35 / 16; транзитивні, симетричні, обернені, ланцюги
+C3 імпорт/мапінг ≥ 1 зовнішньої онтології | виконано (мапінг) | skos:closeMatch/exactMatch до MeSH і таксономії ЛР5; owl:imports не використано (немає мережі)
+C4 парситься rdflib без помилок | виконано | рисунок 3
+4. Результат 3. Індивіди та reasoner
+Артефакти: models/onto_data.ttl (генерує scripts/build_data.py), docs/reasoner_log.md (генерує scripts/reasoner_run.py). Індивіди — синтетичні (вигадані особи Olena, Marta, Iryna, Petro, Sofiia, Halyna, Andrii, Maria; варіанти VAR-001…VAR-004; гени BRCA1, BRCA2, PALB2, TP53; панель HBOC-panel; файли sample1.vcf/.bam; запуск фільтрації HF-01; каскадне тестування CT-01; сім порогів; анотації варіантів). Предметних індивідів — 39 (без допоміжних індивідів шаблонів ситуацій), у середньому 3,3 властивості на індивіда (діагноз і секвенатор мають 0–1).
+Таблиця 7 — Індивіди
+Група | Індивіди | Ключові властивості
+Родина (8) | Olena (пробанд), Marta, Iryna, Petro, Sofiia, Halyna, Andrii, Maria | hasParent, hasSibling, hasChild, hasAgeYears, hasSex, hasDiagnosis, carries
+Гени й панель (5) | BRCA1, BRCA2, PALB2, TP53, HBOC-panel | isMemberOf/hasMember, hasGeneSymbol, onChromosome
+Варіанти (4) і анотації (8) | VAR-001…VAR-004; QD, FS, SOR, MQ значення | locatedIn, hasVariantId, hasClinicalSignificance, hasExonEndPosition, hasAnnotation, hasNumericValue
+Пороги (7), HF-01, CT-01 | QD<2, FS>60 (SNP), FS>200 (INDEL), SOR>3, MQ<40, MQRankSum<−12.5, ReadPosRankSum<−8 | hasThresholdValue, hasComparisonOperator, onAnnotationName, forVariantType; HF-01 hasThreshold; CT-01 requires, appliesTo, hasProband, hasMinTestingAge
+Файли, діагнози, сенсор | sample1.bam, sample1.vcf, Sequencer1, Olena_BC, Iryna_OC | derivedFrom, generatedBy
+4.1 HermiT: узгодженість і класифікація
+Reasoner: HermiT (HermiT.jar з owlready2 0.51), Java 21; запуск `java -cp HermiT.jar org.semanticweb.HermiT.cli.CommandLine -c` (класифікація), `-I` (класифікація екземплярів). Результат: код завершення 0, необґрунтованих класів 0 — онтологія узгоджена. Повний вивід — docs/evidence/hermit_classify.txt, hermit_instances.txt.
+Таблиця 8 — Виведені типи індивідів (18; вимагалось ≥ 3)
+Індивід | Виведений тип | Чому (аксіома)
+Andrii | AdultRelative | Relative ⊓ ∃hasAgeYears.[≥ 18]
+Andrii | ThirdDegreeRelative | ланцюг hasAuntOrUncle∘hasChild = hasCousin ⊑ isThirdDegreeRelativeOf
+Halyna | AdultRelative | Relative ⊓ ∃hasAgeYears.[≥ 18]
+Halyna | SecondDegreeRelative | ланцюги hasParent∘hasParent, hasParent∘hasSibling ⊑ isSecondDegreeRelativeOf
+Iryna | AdultRelative | Relative ⊓ ∃hasAgeYears.[≥ 18]
+Iryna | FirstDegreeRelative | Person ⊓ ∃isFirstDegreeRelativeOf.Proband (зв'язок виведено з hasParent/hasSibling/hasChild)
+Maria | SecondDegreeRelative | ланцюги hasParent∘hasParent, hasParent∘hasSibling ⊑ isSecondDegreeRelativeOf
+Marta | AdultRelative | Relative ⊓ ∃hasAgeYears.[≥ 18]
+Marta | FirstDegreeRelative | Person ⊓ ∃isFirstDegreeRelativeOf.Proband (зв'язок виведено з hasParent/hasSibling/hasChild)
+Petro | AdultRelative | Relative ⊓ ∃hasAgeYears.[≥ 18]
+Petro | FirstDegreeRelative | Person ⊓ ∃isFirstDegreeRelativeOf.Proband (зв'язок виведено з hasParent/hasSibling/hasChild)
+Sofiia | FirstDegreeRelative | Person ⊓ ∃isFirstDegreeRelativeOf.Proband (зв'язок виведено з hasParent/hasSibling/hasChild)
+Sofiia | MinorRelative | Relative ⊓ ∃hasAgeYears.[< 18]
+VAR-001 | PathogenicVariant | GeneticVariant ⊓ ∃hasClinicalSignificance.{Pathogenic}
+VAR-002 | LowQDVariant | ∃hasAnnotation.(QualityByDepth ⊓ значення < 2)
+VAR-002_QualityByDepth | LowQDAnnotation | QualityByDepth ⊓ значення < 2
+VAR-004 | ExonEndVariant | GeneticVariant ⊓ hasExonEndPosition = true
+VAR-004 | HighFSSnpVariant | SNP ⊓ ∃hasAnnotation.(FisherStrandBias ⊓ значення > 60)
+Andrii hasAncestor Maria Andrii hasAuntOrUncle Iryna Andrii hasCousin Marta Andrii hasCousin Olena Andrii hasGrandparent Maria Andrii hasParent Halyna Andrii isSecondDegreeRelativeOf Iryna Andrii isSecondDegreeRelativeOf Maria Halyna hasSibling Iryna Halyna isSecondDegreeRelativeOf Marta Halyna isSecondDegreeRelativeOf Olena Iryna hasChild Marta Iryna hasChild Olena Iryna isSecondDegreeRelativeOf Andrii Iryna isSecondDegreeRelativeOf Sofiia Maria isSecondDegreeRelativeOf Andrii Maria isSecondDegreeRelativeOf Marta Maria isSecondDegreeRelativeOf Olena Marta hasAncestor Maria Marta hasAuntOrUncle Halyna Marta hasCousin Andrii Marta hasGrandparent Maria Marta isSecondDegreeRelativeOf Halyna Marta isSecondDegreeRelativeOf Maria Marta isSecondDegreeRelativeOf Sofiia
+Рисунок 4 — приклад виведених зв'язків між індивідами (44 нових; наприклад, hasAncestor, hasGrandparent, hasAuntOrUncle, hasCousin виведено з ланцюгів властивостей). Висновок: ступені спорідненості виводяться з родоводу, а не задаються вручну.
+4.2 Навмисна суперечність і її усунення
+Суперечність 1: індивід VAR-003 (INDEL) додатково оголошено SNP, а SNP і Indel диз'юнктні. `VAR-003 rdf:type dkh:SNP`.
+Exception in thread "main" org.semanticweb.owlapi.reasoner.InconsistentOntologyException: Inconsistent ontology 	at org.semanticweb.HermiT.Reasoner.throwInconsistentOntologyExceptionIfNecessary(Reasoner.java:2164) 	at org.semanticweb.HermiT.Reasoner.checkPreConditions(Reasoner.java:2154)
+Рисунок 5 — повідомлення HermiT (InconsistentOntologyException). Усунення: доданий триплет вилучено; повторний `-c` → код 0, онтологія знову узгоджена.
+Суперечність 2: Marta має трьох різних батьків, а Person ⊑ hasParent ≤ 2. `Marta hasParent Maria; Iryna, Petro, Maria — owl:differentFrom`.
+Exception in thread "main" org.semanticweb.owlapi.reasoner.InconsistentOntologyException: Inconsistent ontology 	at org.semanticweb.HermiT.Reasoner.throwInconsistentOntologyExceptionIfNecessary(Reasoner.java:2164) 	at org.semanticweb.HermiT.Reasoner.checkPreConditions(Reasoner.java:2154)
+Рисунок 6 — повідомлення HermiT (InconsistentOntologyException). Усунення: доданий триплет вилучено; повторний `-c` → код 0, онтологія знову узгоджена.
+Таблиця 9 — Самооцінка за критеріями результату 3
+Критерій | Статус | Доказ
+C1 ≥ 20 індивідів, ≥ 3 властивості в середньому | виконано | 39 предметних індивідів; середнє 3,3 (допоміжні індивіди шаблонів ситуацій не враховано)
+C2 онтологія узгоджена; ≥ 3 виведені твердження | виконано | узгоджена; 18 виведених типів і 44 зв'язки
+C3 навмисна суперечність і усунення | виконано | дві суперечності (диз'юнктність; кардинальність)
+C4 логи/скріни reasoner | частково | логи є (reasoner_log.md, evidence/); скріншотів Protégé немає
+5. Результат 4. Ситуації та метаонтологія
+Артефакти: models/situations.csv (6 шаблонів), models/model_meta.csv, екземпляри шаблонів у onto_data.ttl. Метакласи Event, State, Action, Sensor і SituationTemplate входять до онтології; кожен елемент шаблона — індивід відповідного класу, guard — клас-умова (анотація-властивість dkh:guardClass).
+Таблиця 10 — Шаблони ситуацій (усі елементи прив'язано до класів онтології; сенсор/джерело — у колонці sensor_or_source_class: Sequencer для S01–S03)
+id | Назва | Початковий стан | Подія | Guard | Новий стан | Дія | Наслідок
+S01 | Низький QD | dkh:UnfilteredState | dkh:AnnotationComputedEvent | QD < 2 [dkh:LowQDVariant] | dkh:FlaggedState | dkh:ApplyFlagAction | Варіант отримує прапорець LowQD; будь-який прапорець → варіант буде відхилено (FILTERED)
+S02 | Високий FS у SNP | dkh:UnfilteredState | dkh:AnnotationComputedEvent | FS > 60 і варіант є SNP [dkh:HighFSSnpVariant] | dkh:FlaggedState | dkh:ApplyFlagAction | Варіант отримує прапорець HighFS (для INDEL поріг 200)
+S03 | Прапорець FS на кінці екзона | dkh:FlaggedState | dkh:AnnotationComputedEvent | єдиний прапорець — FS, варіант у кінці екзона, SOR ≤ 3 [dkh:ExonEndVariant] | dkh:UnfilteredState | dkh:ReviewWithSORAction | Варіант не відкидають автоматично: додатково перевіряють SOR і передають на ручний перегляд (FS штрафує кінці екзонів)
+S04 | Вибір методу для малої панелі | dkh:UnfilteredState | dkh:MethodChoiceEvent | панель мала: немає великого набору варіантів і підготовлених відомих ресурсів [dkh:GenePanel] | dkh:UnfilteredState | dkh:SelectHardFilteringAction | Обрано hard filtering, бо VQSR потребує великого набору й відомих ресурсів
+S05 | Пропозиція тестування дорослому родичу | dkh:UntestedState | dkh:PathogenicVariantFoundEvent | родич повнолітній (вік ≥ 18); починати з родичів першого ступеня (50%) [dkh:AdultRelative] | dkh:TestingOfferedState | dkh:OfferCascadeTestingAction | Родичу пропонують тестування, першочергово — першого ступеня; консультування
+S06 | Відкладення тестування неповнолітнього | dkh:UntestedState | dkh:TestingRequestedEvent | вік родича < 18 [dkh:MinorRelative] | dkh:TestingDeferredState | dkh:DeferTestingAction | Тестування відкладено до 18 років (виняток — ризики раку в дитинстві, рішення консультанта)
+Таблиця 11 — Метадані моделі
+Поле | Значення
+model_name | Domain Knowledge Hub — онтологія QC варіантів і каскадного тестування
+version | 0.1.0
+owner | студент (власник моделі); контакт — у заголовку звіту
+created | 2026-10-25
+status_of_trust | чернетка; перевірено автоматично (HermiT, CQ-тести); експертом-медиком не перевірено; не для клінічного використання
+sources | GATK Team: Hard-filtering germline short variants; CDC: About Cascade Testing; ЛР4 (CQ), ЛР5 (таксономія), ЛР6 (карта v2)
+reused_vocabularies | SKOS (мітки/зіставлення), MeSH (URI перевірено у ЛР5), таксономія ЛР5 (skos:closeMatch)
+llm_involvement | Claude (claude-sonnet-5-5): чернетки класів, аксіом і ситуацій; журнал — llm_log/; твердження — claims/claims.csv
+namespace_note | http://example.org/dkh/onto# — заглушка
+== S01_VAR002: Ситуація S01 (низький QD): для яких варіантів спрацьовує guard-клас і яку дію/новий стан задає шаблон? PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX dkh: <http://example.org/dkh/onto#> SELECT ?variant ?action ?newState WHERE {   dkh:Situation_S01 dkh:guardClass ?gc ; dkh:hasAction ?a ; dkh:hasNewState ?n .   ?a rdf:type ?ac . ?n rdf:type ?nc . FILTER(?ac != <http://www.w3.org/2002/07/owl#NamedIndividual> && ?nc != <http://www.w3.org/2002/07/owl#NamedIndividual>)   ?v rdf:type/rdfs:subClassOf* ?gc . ?v rdfs:label ?variant . ?ac rdfs:label ?action . ?nc rdfs:label ?newState   FILTER(lang(?action)="en" && lang(?newState)="en") } Результат: [('VAR-002', 'apply flag action', 'flagged state')] Очікувано (перший стовпець): ['VAR-002'] → OK  == S03_VAR004: Ситуація S03 (FS на кінці екзона): який варіант потрапляє під guard-клас ExonEndVariant? PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX dkh: <http://example.org/dkh/onto#> SELECT ?variant WHERE { dkh:Situation_S03 dkh:guardClass ?gc . ?v rdf:type/rdfs:subClassOf* ?gc . ?v rdfs:label ?variant } Результат: [('VAR-004',)] Очікувано (перший стовпець): ['VAR-004'] → OK  == S06_Sofiia: Ситуація S06 (неповнолітній родич): для кого спрацьовує guard-клас MinorRelative? PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX dkh: <http://example.org/dkh/onto#> SELECT ?person ?action WHERE {   dkh:Situation_S06 dkh:guardClass ?gc ; dkh:hasAction ?a . ?a rdf:type ?ac . ?ac rdfs:label ?action .   FILTER(?ac != <http://www.w3.org/2002/07/owl#NamedIndividual>)   ?p rdf:type/rdfs:subClassOf* ?gc . ?p rdfs:label ?person   FILTER(lang(?action)="en") } Результат: [('Sofiia', 'defer testing action')] Очікувано (перший стовпець): ['Sofiia'] → OK
+Рисунок 7 — SPARQL-запити над онтологією та виведеними твердженнями: S01 (низький QD) → VAR-002 → дія ApplyFlagAction, новий стан FlaggedState; S06 (неповнолітній) → Sofiia → DeferTestingAction; S03 (кінець екзона) → VAR-004. Запити — tests/sparql_situations/*.rq (3 запити, 3 ситуації; вимагалось 2).
+Таблиця 12 — Самооцінка за критеріями результату 4
+Критерій | Статус | Доказ
+C1 ≥ 5 шаблонів з усіма полями | виконано | 6 шаблонів, жодне поле не порожнє (тест)
+C2 кожен елемент прив'язано до класу | виконано | колонки *_class; тест перевіряє існування класів в onto.owl
+C3 метадані моделі | виконано | таблиця 11
+C4 2 ситуації підтверджено запитами | виконано | S01, S03, S06 — рисунок 7
+6. Результат 5. Порівняння з чернеткою LLM та CQ-тести
+Артефакти: docs/onto_eval.md, tests/cq_sparql/*.rq (17 запитів), models/llm_draft.ttl. Чернетку створив окремий запуск LLM наосліп за таксономією, картою ЛР6 v2, CQ і сценарієм фактів (підказка — llm_log/prompts/step_llm_draft_prompt_v1.md); у Protégé її не завантажено — розібрано rdflib і перевірено HermiT (узгоджена, 0 необґрунтованих класів).
+Таблиця 13 — Порівняння: збіг/пропуски/зайві та кількісні показники
+Показник | Моя онтологія | Чернетка LLM
+Класи (іменовані, з англ. міткою) | 78 | 166
+Збіг за назвою | 40 | 40
+Пропуски (є в моїй, немає в чернетці) | — | 38
+Зайві (є в чернетці, немає в моїй) | — | 126
+з них: вузли таксономії ЛР5 | — | 121
+з них: нові класи | — | 5
+Об'єктні властивості | 35 | 32
+з domain | 35 | 0
+з range | 35 | 1
+Data-властивості (з range) | 16 (16) | 11 (11)
+Властивості: збіг за назвою | 15 | 15
+Обмеження someValuesFrom / allValuesFrom / hasValue | 37 / 2 / 5 | 49 / 4 / 5
+Кардинальні обмеження | 4 | 5
+Диз'юнктності | 15 | 11
+Означені (≡) класи | 12 | 1
+Транзитивні / симетричні / обернені / ланцюги | 4 / 4 / 4 / 3 | 0 / 0 / 10 / 0
+Індивіди (сер. властивостей) | 39 (3.31) | 52 (3.12)
+HermiT: узгоджена / необґрунтованих класів | так / 0 | так / 0
+Типів індивідів, виведених HermiT понад заявлені | 18 | 2
+Збіг класів за назвою — 40; пропуски (є в моїй, немає в чернетці) — 38, зокрема класи метаонтології й означені класи порогів; зайві — 126, із них 121 — вузли таксономії ЛР5, перенесені без відбору, 5 — нові (filter flag, filter status, filtering rule, hard filtering run, threshold). Властивості: збіг за назвою — 15, моїх без пари — 36, чернетки без пари — 28 (різниця значною мірою — іменування).
+Таблиця 14 — Помилки чернетки LLM (9 пунктів)
+№ | Помилка | Як виявлено | Наслідок
+1 | Усі 32 об'єктних властивостей без domain і range (0/1) | rdflib-підрахунок (compare_onto.py) | втрачено типи domain/range з каталогу відношень; помилки типів не виявляються reasoner'ом
+2 | `BRCA1`, `BRCA2` — одночасно класи й індивіди з типом «BRCA1» | перегляд індивідів | змішування класу та індивіда; клас без законних екземплярів (OntoClean)
+3 | `pathogenic variant` — первинний підклас `genetic variant` | OntoClean (анти-жорсткий клас) | перекласифікацію неможливо вивести; потрібне ручне редагування
+4 | Ступінь спорідненості — заявлений тип індивіда, а родинні зв'язки (`parent_of`, `sibling_of`, `cousin_of`) з ним не пов'язані | порівняння виведень HermiT: нових типів лише 2 проти 18 | reasoner не виводить ступінь; зміна родоводу не оновить класифікацію
+5 | `panelSize` має range `xsd:string` | перегляд властивостей | розмір панелі — число; помилка типу даних
+6 | `threshold ⊑ Measure of quality`, `gene panel ⊑ Genomic element`, `exon ⊑ Genomic element` без залежності | OntoClean | хибні is-a (різні критерії ідентичності)
+7 | 6 характеристик властивостей (`owl:TransitiveProperty` для part_of і derived_from, `owl:SymmetricProperty` для is_kin_of, sibling_of, cousin_of, `owl:FunctionalProperty` для has_filter_status) записано **як значення rdfs:label** (`rdfs:label "part_of"@en , owl:TransitiveProperty`), а не як типи | пошук у файлі + підрахунок характеристик (0 транзитивних/симетричних замість заявлених у нотатках) | фактично жодна характеристика не діє; нотатки автора чернетки твердять протилежне (помилка самозвіту LLM)
+8 | CQ19 (розбіжність моделювання, не помилка): чернетка зберігає «pathogenic variant → hereditary cancer» з карти v2, а в моїй онтології ризик виражено двома конкретними раками | CQ-запит | відповіді відрізняються через рішення про моделювання; у моїй онтології «hereditary cancer» не клас захворювання
+9 | Статуси фільтрації (`FILTERED`) призначено явно, а не виведено з порогів | нотатки + запит CQ10 | дублювання логіки; ризик розбіжності з порогами (хоча CQ10 пройдено)
+Таблиця 15 — OntoClean: 8 груп класів (R — жорсткість, I — ідентичність, U — єдність, D — залежність)
+Клас | R | I | U | D | Висновок для моєї онтології | Висновок для чернетки LLM
+Person (особа) | +R | +I | +U | −D | жорсткий, несе ідентичність; кореневий для ролей — коректно | relative ⊑ Person, proband ⊑ patient ⊑ Person — теж коректно за рігідністю
+Proband / Relative (ролі) | ~R | −I | −U | +D | анти-жорсткі ролі під жорстким Person — допустимо; родинні ступені зроблено означеними (≡ Person ⊓ ∃isFirstDegreeRelativeOf.Proband), тому роль виводиться, а не фіксується | ступінь спорідненості закладено як первинний тип індивіда (first-degree relative): при зміні родоводу тип не оновиться; proband ⊑ patient — пробанд не обов'язково пацієнт
+PathogenicVariant | ~R | −I | −U | +D | клінічна класифікація може змінитись (репрекласифікація) → анти-жорсткий; моделюю як означений клас за hasClinicalSignificance | pathogenic variant — первинний підклас genetic variant: анти-жорсткий клас під жорстким без можливості виведення; перекласифікація вимагає ручного видалення типу
+GeneticVariant / SNP / Indel | +R | +I | +U | −D | жорсткі: тип зміни не залежить від контексту; SNP ⊥ Indel — диз'юнктні, ідентичність спільна | аналогічно (is-a коректні), але SNP/Indel не диз'юнктні перевірено лише частково
+Gene vs «BRCA1» | +R | +I | +U | −D | Gene — клас, BRCA1/BRCA2/PALB2/TP53 — індивіди класу Gene: у BRCA1 немає власних екземплярів | BRCA1 і BRCA2 — класи (успадковано з таксономії ЛР5) і водночас індивіди з типом «BRCA1»: змішування класу та індивіда (punning без потреби); клас без законних екземплярів
+GenePanel | +R | +I | +U | −D | артефакт-колекція (дизайнована множина генів), ⊑ DataArtifact; hasMember ≥ 2 | gene panel ⊑ genomic element — панель не є елементом геному, а дизайнованим набором: хибний is-a (різні критерії ідентичності)
+FilterThreshold vs QualityMeasure | +R | +I | +U | −D | поріг — окремий клас (параметр процедури), не підклас міри якості | threshold ⊑ Measure of quality: поріг — значення параметра, не міра; різні критерії ідентичності (порушення правила ідентичності)
+Exon | +R | +I | +U | +D | існує лише як частина гена: ∃partOf.Gene (залежність відображено аксіомою) | exon ⊑ Genomic element без залежності від гена
+Зміни за OntoClean у моїй онтології: PathogenicVariant, ступені родичів і пороги стали означеними (≡) класами; гени — індивіди; GenePanel під DataArtifact; поріг — окремий клас; екзон має аксіому залежності. Невирішено: Proband і Relative лишено підкласами Person.
+Таблиця 16 — Результати CQ-запитів (SPARQL; ✓ — відповідь збігається з очікуваним)
+CQ | Питання | Очікувано | Моя | Чернетка LLM
+CQ01 | За якого QD варіант отримує прапорець LowQD? | ["2"] | ✓ | ✓
+CQ02 | За якого FS SNP відкидають? | ["60"] | ✓ | ✓
+CQ03 | Який поріг FS для INDEL? | ["200"] | ✓ | ✓
+CQ05 | Що потребує VQSR (чому для малих наборів hard filtering)? | ["curated known variants", "large variant set"] | ✓ | ✓
+CQ07 | Що рекомендовано для варіанта в кінці екзона, де FS штрафує? | ["strand odds ratio"] | ✓ | ✓
+CQ08 | Який метод фільтрації рекомендовано для малої панелі? | ["hard filtering"] | ✓ | ✓
+CQ09 | Які анотації використовує hard filtering? | ["Fisher strand bias", "mapping quality", "quality by depth", "rank sum test", "strand odds ratio"] | ✓ | ✓
+CQ10 | Які варіанти зразка підлягають відхиленню (мають прапорець)? | ["VAR-002", "VAR-004"] | ✓ | ✓
+CQ11 | Який шанс успадкування для родичів першого ступеня? | ["0.5"] | ✓ | ✓
+CQ12 | Який шанс успадкування для родичів другого ступеня? | ["0.25"] | ✓ | ✓
+CQ13 | Який шанс успадкування для родичів третього ступеня? | ["0.125"] | ✓ | ✓
+CQ14 | Яким родичам першого ступеня застосовується каскадне тестування CT-01 (з кого починати)? | ["Marta", "Sofiia"] | ✓ | ✓
+CQ15 | Кого з родичів не можна тестувати зараз через вік < 18? | ["Sofiia"] | ✓ | ✓
+CQ17 | Які гени входять до панелі HBOC-panel? | ["BRCA1", "BRCA2", "PALB2", "TP53"] | ✓ | ✓
+CQ18 | Які варіанти є патогенними? | ["VAR-001"] | ✓ | ✓
+CQ19 | Ризик яких раків підвищує патогенний варіант? | ["breast cancer", "ovarian cancer"] | ✓ | ✗ ["breast cancer", "hereditary cancer", "ovarian
+CQ20 | Яка процедура потребує патогенного варіанта? | ["cascade testing"] | ✓ | ✓
+Частка пройдених CQ: моя онтологія 17/17 = 100%; чернетка LLM 16/17 = 94% (не пройдено CQ19 — розбіжність моделювання про «hereditary cancer»). Застереження: CQ написано після моєї онтології й за мітками, які чернетці було задано, тож 100% — не незалежний еталон; чутливість запитів підтверджує тест (без аксіоми «VQSR requires …» CQ05 провалюється).
+# id: CQ05 # question: Що потребує VQSR (чому для малих наборів hard filtering)? # lab4_cq: CQ08 # expect: ["curated known variants", "large variant set"] PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT DISTINCT ?answer WHERE {   ?c rdfs:label "variant quality score recalibration"@en .   ?c rdfs:subClassOf ?r .   ?r owl:onProperty ?p ; owl:someValuesFrom ?f .   ?p rdfs:label "requires"@en .   ?f rdfs:label ?answer . FILTER(lang(?answer) = "en") }
+Рисунок 8 — приклад CQ-запиту (CQ05; очікувано: curated known variants, large variant set).
+6.1 Висновок: що взято з чернетки і що відкинуто
+Взято: (1) SomaticVariant, диз'юнктний із GermlineVariant — моя онтологія цю пару не мала; (2) кардинальність hasProband = 1 для CascadeTesting; (3) мінімальний вік тестування як data-значення (hasMinTestingAge = 18).
+Відкинуто: (1) усі 154 вузли таксономії як класи — 121 зайвий клас без користі для CQ; (2) BRCA1/BRCA2 як класи — гени мають бути індивідами (OntoClean); (3) об'єктні властивості без domain/range (0 із 32) і характеристики, записані як значення rdfs:label (тому реально 0 транзитивних/симетричних); (4) явно призначені статуси FILTERED замість виведення; (5) panelSize як рядок; (6) threshold як підклас міри якості.
+Поради з чернетки, які мало б сенс перевірити далі: використання індивіда-правила «будь-який прапорець → FILTERED» і явної властивості статусу фільтрації — не взято, бо означений клас FlaggedVariant виводить те саме.
+Таблиця 17 — Самооцінка за критеріями результату 5
+Критерій | Статус | Доказ
+C1 таблиця порівняння з числами | виконано | таблиця 13
+C2 ≥ 5 класів за OntoClean з висновками | виконано | 8 груп (таблиця 15); оцінки виставила LLM-асистент
+C3 ≥ 10 CQ; частка для двох онтологій | виконано | 17 CQ; 100% і 94% (таблиця 16)
+C4 висновок з ≥ 3 прикладів | виконано | п. 6.1: 3 взято, 6 відкинуто
+7. Протокол «LLM-експерт»
+Декларація використання ШІ. Інструмент: Claude (налаштований ідентифікатор claude-sonnet-5-5; фактична модель підагента могла відрізнятися). Призначення: чернетки класів, визначень, аксіом, властивостей, ситуацій, індивідів, скриптів і тестів; окремий наосліп-запуск для чернетки онтології; оцінки OntoClean. Приклад запиту: «Створи ЧЕРНЕТКУ OWL-онтології (Turtle) за таксономією, картою, CQ і фактами сценарію; ≥ 30 класів, ≥ 3 аксіоми ∃/∀…». Перевірка: rdflib-парсинг, HermiT (узгодженість, виведення, навмисні суперечності), SPARQL CQ-тести, автоперевірка визначень, звірка цитат з ЛР6. Температура/seed недоступні.
+Таблиця 18 — Журнал взаємодії (llm_log/log.csv: також дата, модель, параметри, рішення людини)
+Крок | Завдання | Підказка | Сирий вихід
+l7-draft | Чернетка OWL-онтології за таксономією, картою, CQ і сценарієм (наосліп) | llm_log/prompts/step_llm_draft_prompt_v1.md | llm_log/raw/step_llm_draft_raw_output.ttl; step_llm_draft_notes.md
+l7-model | Чернетки класів, аксіом, властивостей, ситуацій і скриптів (мій асистент у цій сесії) | —  (інтерактивний діалог; скрипти scripts/onto_model.py, build_onto.py, build_data.py) | scripts/*.py (сирі відповіді окремо не збережено)
+claims/claims.csv: 52 тверджень; підтверджено 34 (65%); відхилено 7; pending 11. Рівні (за завданням): V1 — джерело/цитата; V2 — парсер + reasoner; V3 — експерт-людина (не досягнуто жодним твердженням); V4 — CQ-тест.
+Таблиця 19 — Відхилені твердження з поясненням
+id | Відхилене твердження | Пояснення
+C041 | Чернетка LLM: part_of і derived_from транзитивні; is_kin_of, sibling_of, cousin_of симетричні; has_filter_status функціональна (з нотаток LLM) | у файлі ці характеристики записано як значення rdfs:label, а не як типи; rdflib/HermiT бачать 0 транзитивних і симетричних властивостей
+C042 | Чернетка LLM: усі об'єктні властивості типізовані за каталогом | 0 з 32 мають domain; 1 із 32 має range
+C043 | Чернетка LLM: BRCA1/BRCA2 — класи | гени — індивіди; змішування класу та індивіда (OntoClean); оцінка автора, не експерта-людини
+C044 | Чернетка LLM: pathogenic variant — первинний підклас genetic variant | анти-жорсткий клас; потрібен означений клас (оцінка автора)
+C045 | Чернетка LLM: panelSize — xsd:string | розмір — число
+C046 | Чернетка LLM: threshold ⊑ Measure of quality; gene panel ⊑ Genomic element | хибні is-a (OntoClean; оцінка автора)
+C047 | Чернетка LLM: статуси FILTERED призначено явно (VAR-002, VAR-004) | відповіді правильні, але дублюють пороги; в моїй онтології виводяться
+Таблиця 20 — Твердження, що очікують перевірки (переважно потребують експерта V3)
+id | Pending | Коментар
+C008 | Аксіома: CascadeTesting ⊑ ∃ requires.PathogenicVariant | HermiT: онтологія узгоджена; CQ CQ20 пройдено; джерело — твердження експерта, цитати немає (потрібна перевірка
+C010 | Аксіома: CascadeTesting ⊑ ∃ recommendedFor.FirstDegreeRelative | HermiT: онтологія узгоджена; CQ CQ14 пройдено; джерело — твердження експерта, цитати немає (потрібна перевірка
+C013 | Аксіома: PathogenicVariant ⊑ ∃ increasesRiskOf.BreastCancer | HermiT: онтологія узгоджена; CQ CQ19 пройдено; джерело — твердження експерта, цитати немає (потрібна перевірка
+C014 | Аксіома: PathogenicVariant ⊑ ∃ increasesRiskOf.OvarianCancer | HermiT: онтологія узгоджена; CQ CQ19 пройдено; джерело — твердження експерта, цитати немає (потрібна перевірка
+C015 | Аксіома: HardFiltering ⊑ ∃ recommendedFor.GenePanel | HermiT: онтологія узгоджена; CQ CQ08 пройдено; джерело — твердження експерта, цитати немає (потрібна перевірка
+C030 | Поріг FS > 200 для INDEL | CQ03 технічно пройдено (значення є в онтології), але саме значення з коментаря: потрібна перевірка за документ
+C036 | Шаблон ситуації S02 коректно описує стан-подію-guard-дію | запит не виконувався; логіка ідентична S01 для FS
+C038 | Шаблон ситуації S04 коректно описує стан-подію-guard-дію | запит не виконувався
+C039 | Шаблон ситуації S05 коректно описує стан-подію-guard-дію | запит не виконувався
+C051 | Мої визначення класів «рід + відмінність» складено з участю LLM | автоперевірка (самопосилання, цикли) пройдена; змістову точність має підтвердити експерт (V3)
+C052 | Повторне використання: skos:closeMatch/exactMatch до MeSH і таксономії ЛР5 доречні | існування URI й мітка перевірені в ЛР5; смислову еквівалентність оцінила LLM
+Джерела: GATK Team (Broad Institute), «Hard-filtering germline short variants» (sources/gatk_hard_filtering.txt); CDC, «About Cascade Testing» (sources/cdc_cascade_testing.txt); W3C OWL 2 Primer та SKOS Reference; Guarino N., Welty C. «Evaluating ontological decisions with OntoClean» (CACM, 2002; методика, з пам'яті); Noy N., McGuinness D. «Ontology Development 101» (2001); MeSH (NLM) https://id.nlm.nih.gov/mesh/; HermiT (Glimm et al., 2014).
+8. Відповіді на контрольні питання
+Онтологія — формальна специфікація концептуалізації: класи, властивості, аксіоми й індивіди з логічною семантикою, що дозволяє виведення. Таксономія — лише ієрархія «вужче—ширше». Схема БД фіксує структуру зберігання за припущенням закритого світу, без виведення.
+Reasoner (HermiT) перевірив: узгодженість; необґрунтованість класів (0); класифікацію — вивів ступені родичів (з hasParent/hasSibling), патогенність, прапорці LowQD/HighFS, дорослий/неповнолітній родич; на навмисних суперечностях повідомив про неузгодженість.
+Аксіома: CascadeTesting ⊑ ∃ requires.PathogenicVariant — кожне каскадне тестування потребує принаймні одного патогенного варіанта; або hasParent ≤ 2 — особа має не більше двох батьків (порушення дало суперечність 2).
+Шаблон ситуації — «початковий стан — подія — умова (guard) — новий стан — дія». Приклад S06: UntestedState + TestingRequestedEvent + вік < 18 → TestingDeferredState + DeferTestingAction; запит повертає Sofiia.
+Помилки чернетки LLM: властивості без domain/range, характеристики записані як label, гени як класи, патогенний варіант як первинний клас, panelSize як рядок, хибні is-a, явні статуси замість виведення (таблиця 14).
+9. Обмеження
+Protégé не використано (недоступний); скріншотів немає; owl:imports зовнішніх онтологій немає, є мапінг через SKOS.
+Експерт і автор чернетки — LLM; оцінки OntoClean, визначення класів і мапінги потребують перевірки людиною (рівень V3 не досягнуто).
+CQ написано після побудови моєї онтології; 100% не є незалежною оцінкою.
+Індивіди вигадані; хромосоми генів і склад панелі HBOC додано з загальних знань; FS > 200 для INDEL — з коментаря читача.
+Виняток «ризик раку в дитинстві» для віку тестування не моделюється.
+Навчальна онтологія, не для клінічного використання.
+10. Запуск з нуля
+pip install -r requirements.txt      # Python 3.13; Java (OpenJDK 21) і Graphviz `dot` у PATH python scripts/build_onto.py && python scripts/build_data.py python scripts/check_definitions.py && python scripts/check_parse.py python scripts/reasoner_run.py && python scripts/verify_situations.py python scripts/run_cq.py mine llm && python scripts/compare_onto.py && python scripts/build_eval_doc.py python scripts/build_claims_lab7.py && python scripts/draw_hierarchy.py python -m pytest -v        # 14 passed

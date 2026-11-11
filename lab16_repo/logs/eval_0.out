@@ -1,0 +1,2 @@
+seed 0: 59 users, 753 positives, 529s {'popularity': 0.104, 'graph': 0.052, 'knn': 0.079, 'hybrid-weighted': 0.111, 'hybrid-rrf': 0.091}
+saved eval/res_0.json

@@ -1,0 +1,210 @@
+Львівський національний університет імені Івана Франка
+Курс «Сховища знань та управління знаннями»
+ЗВІТ
+до лабораторної роботи № 8
+«RDF-сховище та SPARQL-запити»
+Предметна область: Медицина — аналіз біомедичних даних (проєкт Domain Knowledge Hub)
+Виконав(ла): ____________________
+Дата: ____________________
+1. Мета, вхідні дані та інструменти
+Мета — завантажити граф знань (онтологія ЛР7 + виведені твердження + синтетична когорта) у триплстор, написати SPARQL-запити до компетентнісних запитань, перевірити дані формами SHACL, оцінити генерацію SPARQL мовною моделлю й зв'язати терміни із зовнішнім джерелом (Wikidata).
+Вхід: онтологія ЛР7 (78 класів, 39 предметних індивідів), 18 CQ ЛР4, виведення HermiT (ЛР7).
+Інструменти: Python 3.13, pyoxigraph 0.5.13 (триплстор), rdflib 7.6.0, pySHACL 0.40.1, owlready2 0.51 з HermiT і Java 21, pytest.
+Репозиторій lab08_repo: структура і запуск — README.md та розділ 10; `bash scripts/run_all.sh` відтворює все з seed 42.
+Що відрізняється від завдання (чесно). (1) Замість Apache Jena Fuseki / GraphDB використано pyoxigraph — Docker і Maven у середовищі недоступні. (2) query.wikidata.org недоступний, тому федеративний запит виконано до локального дзеркала міток Wikidata, а не до справжньої Wikidata. (3) Сторінки Wikidata не вдалося відкрити: зв'язки перевірено лише за заголовками у списку пошуку (рівень V1). (4) «LLM» для text-to-SPARQL — субагенти тієї самої моделі; температуру й seed контролювати неможливо. (5) Еталони, запити та форми SHACL склала та сама система, а не незалежний експерт.
+2. Результат 1. Граф знань у триплсторі
+Артефакти: data/kb.ttl, data/graphs/{tbox,abox,inferred}.ttl, data/links.ttl, data/kb.jsonld, docs/load_log.md. `scripts/build_kb.py` об'єднує TBox/ABox ЛР7, додає синтетичну когорту (3 зразки × 20 варіантів VAR-101…160 з анотаціями QD, FS, SOR, MQ; 3 патогенні; seed 42) і виведені HermiT типи. `scripts/load_store.py` завантажує чотири іменовані графи (`urn:dkh:graph:tbox|abox|inferred|links`) у персистентне сховище та рахує COUNT.
+Таблиця 1 — Завантаження: усього 4425 квадів, збіг із файлами; kb.ttl — 3923 триплети
+Граф | Файл | Триплетів (rdflib) | COUNT у сторі | SHA-256 (12)
+tbox | data/graphs/tbox.ttl | 1382 | 1382 | 2c94060e88c6
+abox | data/graphs/abox.ttl | 2438 | 2438 | 4cd5e0d30f05
+inferred | data/graphs/inferred.ttl | 520 | 520 | 718af7766f49
+links | data/links.ttl | 85 | 85 | 4e7217dca445
+PREFIX dkh: <http://example.org/dkh/onto#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX skos: <http://www.w3.org/2004/02/skos/core#> PREFIX sh: <http://www.w3.org/ns/shacl#> PREFIX wd: <http://www.wikidata.org/entity/>
+Рисунок 1 — єдиний набір префіксів (scripts/store.py; ті самі в усіх Turtle-файлах). Версія графа — kb-0.1.0, дата завантаження 2026-10-27 11:02:29.
+SELECT (COUNT(*) AS ?n) WHERE { GRAPH ?g { ?s ?p ?o } }   →  4425  JSON-LD: data/kb.jsonld — 69 сутностей, 377 тріплетів; зворотний парсинг rdflib → 377. {  "@context": {   "dkh": "http://example.org/dkh/onto#",   "owl": "http://www.w3.org/2002/07/owl#",   "rdfs": "http://www.w3.org/2000/01/rdf-schema#",   "xsd": "http://www.w3.org/2001/XMLSchema#"  },  "@graph": [   {    "@id": "dkh:S02_n_FlaggedState",    "@type": [     "dkh:FlaggedState",     "owl:NamedIndividual"    ],    "rdfs:label": {     "@language": "en",     "@value": "S02: FlaggedState"    }   },   {    "@id": "dkh:Sequencer1",    "@type": [     "dkh:Sequencer",     "owl:NamedIndividual"    ],    "rdfs:la   …
+Рисунок 2 — підтвердження COUNT і початок JSON-LD (контекст dkh/rdfs/xsd/owl).
+Таблиця 2 — Самооцінка за критеріями результату 1
+Критерій | Статус | Доказ
+C1 ≥ 300 тріплетів, валідний rdflib-граф | виконано | 3923 тріплети; парситься (test_kb_store)
+C2 завантажено у триплстор + COUNT | виконано (інший стор) | pyoxigraph замість Fuseki/GraphDB; COUNT = сума за файлами
+C3 узгоджені префікси, версія/дата | виконано | рисунок 1; kb-0.1.0; load_log.md
+C4 JSON-LD для ≥ 20 сутностей | виконано | 69 сутностей, roundtrip 377
+3. Результат 2. SPARQL-запити
+Артефакти: queries/q01…q09.rq, queries/results/*.json, docs/sparql_results.md (генерується `scripts/run_queries.py`). Усього 9 запитів; кожен пов'язано з CQ ЛР4 (q09 — з доданим у ЛР8 CQ19).
+Таблиця 3 — Запити, типи, пов'язані CQ, розмір відповіді та час (медіана 5 запусків)
+Запит | Тип | CQ | Рядків | мс
+q01 select filter lowqd | SELECT, FILTER | CQ01 | 5 | 0.7
+q02 ask pathogenic | ASK | CQ14, CQ17 | 1 | 0.24
+q03 construct flagged | CONSTRUCT, FILTER, BIND | CQ05 | 56 | 5.84
+q04 aggregate per sample | агрегація (COUNT, AVG, MIN, MAX, GROUP BY, HAVING) | CQ08 | 3 | 2.35
+q05 optional clinical | OPTIONAL, FILTER | CQ14 | 14 | 0.7
+q06 property path relatives | property path (|, ^, +) | CQ14, CQ16 | 7 | 157.03
+q07 ancestors path | property path (+), агрегація, OPTIONAL | CQ13 | 3 | 0.37
+q08 relatives probability age | SELECT, JOIN TBox+ABox, FILTER/BIND | CQ11–CQ15 | 6 | 0.57
+q09 federated wikidata | federated (SERVICE) | CQ19 (додано у ЛР8) | 9 | 1.5
+# CQ11-CQ13: хто є родичем пробанда Olena через ланцюжок «батьки/діти/сиблінги» (скільки кроків угору)? # Тип: property path  ( ^ інверсія, + один чи більше кроків, | альтернатива, / послідовність ) SELECT DISTINCT ?name WHERE {   dkh:Olena (dkh:hasParent|dkh:hasChild|dkh:hasSibling|^dkh:hasParent|^dkh:hasChild)+ ?r .   ?r rdfs:label ?name .   FILTER (?r != dkh:Olena) } ORDER BY ?name
+Результат (q06): Andrii; Halyna; Iryna; Maria; Marta; Petro; Sofiia.
+Інтерпретація: Шлях (hasParent|hasChild|hasSibling|^hasParent|^hasChild)+ обходить родовід транзитивно: від пробанда Olena досяжні 7 осіб (Andrii, Halyna, Iryna, Maria, Marta, Petro, Sofiia). Один запит замінює вручну перелічені рівні зв'язків; зайняв найбільше часу (~100+ мс) через обчислення замикання.
+# CQ11-CQ15: для кожного родича з відомим ступенем - шанс успадкування (з обмежень OWL у TBox), вік, чи можна тестувати (>= мін. віку) # Тип: SELECT + JOIN TBox/ABox + FILTER + BIND SELECT DISTINCT ?name ?class ?prob ?age ?canTest WHERE {   ?p dkh:hasAgeYears ?age ; rdfs:label ?name ; a ?class .   ?class rdfs:subClassOf ?r .   ?r owl:onProperty dkh:hasInheritanceProbability ; owl:hasValue ?prob .   dkh:CT-01 dkh:hasMinTestingAge ?min .   BIND (IF(?age >= ?min, "так", "ні") AS ?canTest) } ORDER BY DESC(?prob) ?name
+Результат (q08): Iryna, dkh:FirstDegreeRelative, 0.5, 68, так; Marta, dkh:FirstDegreeRelative, 0.5, 39, так; Petro, dkh:FirstDegreeRelative, 0.5, 70, так; Sofiia, dkh:FirstDegreeRelative, 0.5, 17, ні; Halyna, dkh:SecondDegreeRelative, 0.25, 65, так; Andrii, dkh:ThirdDegreeRelative, 0.125, 40, так.
+Інтерпретація: З обмежень OWL у TBox (hasValue) береться шанс 0.5 / 0.25 / 0.125, з ABox — вік. Sofiia (17 років) має шанс 0.5, але тестування «ні» (мінімальний вік 18, CQ15); Halyna — 0.25, Andrii — 0.125 (верхня межа, CQ13). Maria не виведена, бо в ABox немає її віку.
+Приклад для захисту (property path, q06). Вираз `(dkh:hasParent|dkh:hasChild|dkh:hasSibling|^dkh:hasParent|^dkh:hasChild)+` — це один або більше кроків за будь-яким із родинних зв'язків; `^` обертає напрям (батько ← дитина), `|` — альтернатива, `+` — транзитивне замикання. Запит дає всіх осіб, досяжних від Olena (7), без перебору рівнів; `FILTER (?r != dkh:Olena)` прибирає саму пробанда (шлях може повернутися до неї).
+3.1 Оптимізація повільного запиту
+Задача: порахувати варіанти з QD < 2 на синтетичному наборі (seed 42): 50000 варіантів, 900000 тріплів. Обидва запити дають 2764.
+-- slow.rq (змінні предикати, STR(), фільтри за IRI) SELECT (COUNT(DISTINCT ?v) AS ?n) WHERE {   ?a ?p ?x .   ?v ?q ?a .   ?a ?r ?nm .   FILTER (?p = dkh:hasNumericValue && ?q = dkh:hasAnnotation && ?r = dkh:hasAnnotationName && STR(?nm) = "QD" && ?x < 2.0) }  -- fast.rq SELECT (COUNT(DISTINCT ?v) AS ?n) WHERE {   ?a dkh:hasAnnotationName "QD" ;      dkh:hasNumericValue ?x ;      dkh:isAnnotationOf ?v .   FILTER (?x < 2.0) }
+Рисунок 3 — час виконання, мс (прискорення ≈ 4.7×)
+Що зроблено: сталі предикати замість змінних із `FILTER(?p = …)`; літерал «QD» прямо в шаблоні замість `STR(?nm) = "QD"`; фільтр за числом лише над відібраними вузлами. Висновок обмежений одним рушієм, одним набором і однією машиною.
+3.2 Ручна перевірка
+Таблиця 4 — Звірка результатів запитів (4 запити, вимагалось ≥ 3)
+Запит | Спосіб перевірки | Збіг
+q01 | незалежний Python-обхід abox.ttl (rdflib, без SPARQL) | так
+q04 | те саме; кількості, середнє, мін, макс по зразках | так (після виправлення округлення)
+q06 | обхід у ширину по родинних зв'язках | так
+q08 | шанс за ступенем (inferred.ttl) і вік з abox.ttl | так
+Знахідка: перша звірка q04 показала розбіжність 16.91 / 16.92 для зразка C. Це не помилка запиту: середнє точно 16.915; SPARQL `ROUND` округлює половину вгору, а Python `round()` на float дав 16.91. Звірку виправлено (Decimal, ROUND_HALF_UP). Перевірка рівня V2, а не експертна (V3).
+Таблиця 5 — Самооцінка за критеріями результату 2
+Критерій | Статус | Доказ
+C1 ≥ 8 запитів із усіма типами (SELECT, ASK, CONSTRUCT, агрегація, OPTIONAL, FILTER, property path, federated) | виконано | таблиця 3; федеративний — до локального дзеркала
+C2 кожен запит пов'язано з CQ і інтерпретацією | виконано | docs/sparql_results.md
+C3 порівняння часу для оптимізованого запиту | виконано | 472.4 → 99.7 мс
+C4 ≥ 3 запити перевірено вручну | виконано (V2) | таблиця 4
+4. Результат 3. Форми SHACL
+Артефакти: shapes/shapes.ttl, shapes/report_valid.ttl, shapes/report_defective.ttl, docs/shacl_report.md. 9 вузлових форм, 18 форм властивостей, 43 обмежень: minCount — 15, maxCount — 7, datatype — 5, pattern — 2, class — 7, minInclusive — 3, in — 3, maxInclusive — 1. Інструмент: pySHACL 0.40.1.
+Таблиця 6 — Форми та обмеження
+Форма | Цільовий клас | Обмеження
+`AnnotationShape` | dkh:QualityAnnotation | `dkh:hasNumericValue`: minCount=1, maxCount=1, datatype=xsd:decimal; `dkh:hasAnnotationName`: minCount=1, in=(QD FS SOR MQ MQRankSum ReadPosRankSum); `dkh:isAnnotationOf`: minCount=1, class=dkh:GeneticVariant
+`CascadeTestingShape` | dkh:CascadeTesting | `dkh:hasProband`: minCount=1, maxCount=1, class=dkh:Proband; `dkh:hasMinTestingAge`: minCount=1, datatype=xsd:integer, minInclusive=0; `dkh:appliesTo`: minCount=1, class=dkh:Person
+`FullAnnotationSetWarning` | dkh:GeneticVariant | `dkh:hasAnnotation`: minCount=4 **(Warning)**
+`GenePanelShape` | dkh:GenePanel | `dkh:hasMember`: minCount=1, class=dkh:Gene
+`NonNegativeAnnotationShape` | dkh:QualityByDepth, dkh:FisherStrandBias, dkh:StrandOddsRatio | `dkh:hasNumericValue`: minInclusive=0
+`PersonShape` | dkh:Person | `dkh:hasAgeYears`: maxCount=1, datatype=xsd:integer, minInclusive=0, maxInclusive=120; `dkh:hasParent`: maxCount=2, class=dkh:Person
+`SampleShape` | dkh:Sample | `dkh:hasSampleCode`: minCount=1, maxCount=1, pattern=^[A-Z]$
+`ThresholdShape` | dkh:FilterThreshold | `dkh:hasThresholdValue`: minCount=1, maxCount=1, datatype=xsd:decimal; `dkh:hasComparisonOperator`: minCount=1, in=(< >); `dkh:onAnnotationName`: minCount=1, in=(QD FS SOR MQ MQRankSum ReadPosRankSum)
+`VariantShape` | dkh:GeneticVariant | `dkh:hasVariantId`: minCount=1, maxCount=1, datatype=xsd:string, pattern=^VAR-[0-9]{3}$; `dkh:locatedIn`: minCount=1, class=dkh:Gene; `dkh:hasAnnotation`: minCount=1, class=dkh:QualityAnnotation
+Валідний набір: conforms = True; Violation — 0; попередження — 3 (VAR-002…004 мають неповний набір анотацій). Чесно: перша версія форми вимагала 4 анотації й провалила валідний набір; я послабив її до Warning після побачених результатів, тобто форму підігнано під дані, і попередження залишено видимими.
+Таблиця 7 — Дефектний набір: conforms = False, 3 Violation + 3 Warning
+№ | Вада | Тип | Що змінено | Результат валідації
+D1 | варіант без гена | minCount | VAR-105: видалено locatedIn | Violation: dkh:VAR-105 / locatedIn / MinCount
+D2 | хибний формат id | pattern | VAR-106: hasVariantId = variant_106 | Violation: dkh:VAR-106 / hasVariantId / Pattern
+D3 | вік 391 рік | maxInclusive | Marta: hasAgeYears = 391 | Violation: dkh:Marta / hasAgeYears / MaxInclusive
+Violation dkh:Marta    dkh:hasAgeYears      MaxInclusive Violation dkh:VAR-105  dkh:locatedIn        MinCount Violation dkh:VAR-106  dkh:hasVariantId     Pattern Warning   dkh:VAR-002  dkh:hasAnnotation    MinCount Warning   dkh:VAR-003  dkh:hasAnnotation    MinCount Warning   dkh:VAR-004  dkh:hasAnnotation    MinCount
+Рисунок 4 — підсумок shapes/report_defective.ttl (скорочено до вузла, шляху й компонента).
+4.1 Чому SHACL, а не лише OWL
+OWL працює за припущенням відкритого світу: відсутність факту — це невідомість, а не помилка, і немає припущення унікальних імен. Тому, якщо варіант не має гена, міркувальник просто вважає, що ген існує, але не названий. SHACL працює за закритим світом і перевіряє дані «як є»: відсутня властивість, неправильний тип чи вік 391 — це порушення з точним вузлом і повідомленням. Отже, OWL призначений для виведення нових знань (класифікація, ступінь родича), а SHACL — для контролю якості даних перед завантаженням; вони доповнюють одне одного.
+Експеримент: HermiT на дефектному наборі D1–D3 — consistent = True (жодної вади OWL не бачить). Хибний тип (VAR-107 locatedIn Olena): HermiT — consistent = False (загальне «Inconsistent ontology», без вузла; причину імовірно дизʼюнктність Person/Gene, не розбирав), SHACL вказує вузол, шлях і значення.
+Таблиця 8 — Самооцінка за критеріями результату 3
+Критерій | Статус | Доказ
+C1 ≥ 5 форм, ≥ 8 обмежень різних типів | виконано | 9 форм, 43 обмежень (minCount, datatype, class, діапазон, pattern, in)
+C2 валідний набір проходить; дефектний ≥ 3 порушень | виконано | conforms=True; 3 Violation (+3 Warning)
+C3 звіти збережено й прокоментовано | виконано | shapes/report_*.ttl, docs/shacl_report.md
+C4 ≥ 3 речення «чому SHACL, а не OWL» | виконано | п. 4.1 + експеримент
+5. Результат 4. Text-to-SPARQL: оцінка
+Артефакти: tests/t2s.jsonl (24 питання: 18 dev + 6 held-out; еталонний запит і відповідь), scripts/t2s.py (конвеєр), scripts/eval_t2s.py, docs/t2s_eval.md, llm_log/{prompts,in,raw}/, llm_log/eval_*.json.
+Рисунок 5 — конвеєр: промпт зі схемою → LLM → парсер → перевірка синтаксису → перевірка схеми → виконання з LIMIT → порівняння з еталоном
+Схема в промпті — автоматично згенерований перелік 79 класів і 53 властивостей з domain/range. Перевірка «лише зі схеми» — усі IRI простору dkh: мають існувати в TBox/ABox. Результат виконується з `LIMIT 200` (для SELECT без власного LIMIT); таблиці порівнюються як множини рядків (незалежно від імен змінних і порядку). Генератори — окремі «сліпі» субагенти (бачили лише вхідний файл без еталонів і без коду перевірки). Поділ dev/held-out: промпт v2 писався лише за помилками v1 на dev-питаннях; першу чернетку v2, що підглядала у held-out, відхилено (журнал L8-05).
+Таблиця 9 — Метрики до (v1) і після (v2) покращення промпту
+Метрика | v1 всі | v2 всі | v1 dev | v2 dev | v1 held-out | v2 held-out
+Синтаксично коректний | 24/24 | 24/24 | 18/18 | 18/18 | 6/6 | 6/6
+Лише зі схеми | 24/24 | 24/24 | 18/18 | 18/18 | 6/6 | 6/6
+Правильний результат | 16/24 (67%) | 18/24 (75%) | 12/18 (67%) | 14/18 (78%) | 4/6 (67%) | 4/6 (67%)
+Рисунок 6 — частка правильних результатів
+Перші дві метрики — 100% в обох версіях, бо схема була в промпті; що перевірка схеми справді спрацьовує, показано негативним тестом (dkh:hasQD відхилено). Вирішальна метрика: 16 → 18 з 24 (dev 12 → 14; held-out 4 → 4). Різниця у 2 питання з 24 при одному прогоні й невідомій температурі — у межах шуму, тож покращення я не вважаю встановленим. v2 виправила 7 питань, але зламала 5 (клас E6).
+Таблиця 10 — Класи помилок (E1–E6)
+Клас | Опис | Реакція
+E1 | Немає виведення: вузли добираються через надклас (`a dkh:GeneticVariant`, `a dkh:QualityAnnotation`), а в сховищі ці типи є лише для частини вузлів | промпт: правило 2 (спиратися на властивості)
+E2 | Клінічна значущість — індивід без `rdfs:label`, а модель шукає її за міткою «Pathogenic» | промпт: правило 4 (порівнювати IRI)
+E3 | Немає `DISTINCT`: дані в кількох іменованих графах → дублікати (200, 200, 60, 60) | промпт: правило 5
+E4 | Зайвий стовпець у відповіді (`?v` разом з `?id`); результат за змістом правильний, але метрика порівнює таблиці суворо | промпт: правило 6; частково вада самої метрики
+E5 | Шанс успадкування записано в TBox як OWL-обмеження (`owl:onProperty/owl:hasValue`), а модель шукає пряму властивість у класу — із промпту цього не випливає | не виправлено: на dev-питаннях такого класу немає, тож правило в промпт не додавалось (щоб не підглядати у held-out)
+E6 | **Нова помилка, внесена v2**: правило 7 («мітки мають вигляд rdfs:label») підштовхнуло до пошуку особи за міткою `"Olena"`, а мітки в графі мають мовний тег (`"Olena"@en`), тому літерал без тегу не збігається | не виправлено у цій роботі; потрібна v3: шукати іменованих осіб/гени за IRI (`dkh:Olena`)
+Таблиця 11 — Усі помилки (14; вимагалось ≥ 5 з класифікацією)
+Версія | Питання | Клас | Деталь
+v1 | d02 (dev) | E1 | отримано [["9"]]; очікувалось [["20"]]
+v1 | d04 (dev) | E2 | отримано false; очікувалось true
+v1 | d11 (dev) | E2 | отримано []; очікувалось [["VAR-001"], ["VAR-103"], ["VAR-131"], ["VAR-152"]]
+v1 | d12 (dev) | E3 | отримано [["200"], ["200"], ["60"], ["60"]]; очікувалось [["200"], ["60"]]
+v1 | d14 (dev) | E1 | отримано [["0"]]; очікувалось [["62"]]
+v1 | d17 (dev) | E4 | отримано [["dkh:VAR-004", "VAR-004"], ["dkh:VAR-122", "VAR-122"], ["dkh:VAR-126", "VAR-126"], ["dkh:VAR-140",
+v1 | h04 (heldout) | E1 | отримано []; очікувалось [["BRCA2"], ["TP53"]]
+v1 | h06 (heldout) | E5 | отримано []; очікувалось [["0.25"]]
+v2 | d03 (dev) | E6 | отримано []; очікувалось [["BRCA1"], ["BRCA2"], ["PALB2"], ["TP53"]]
+v2 | d08 (dev) | E6 | отримано []; очікувалось [["17"]]
+v2 | d09 (dev) | E6 | отримано []; очікувалось [["Iryna"], ["Petro"]]
+v2 | d10 (dev) | E6 | отримано []; очікувалось [["Halyna"], ["Iryna"]]
+v2 | h01 (heldout) | E6 | отримано []; очікувалось [["Iryna"], ["Maria"], ["Petro"]]
+v2 | h06 (heldout) | E5 | отримано []; очікувалось [["0.25"]]
+SELECT DISTINCT ?label WHERE { ?c rdfs:label "Olena" ; dkh:hasParent ?p . ?p rdfs:label ?label }
+Рисунок 7 — приклад помилки E6 (v2, d09): запит за міткою "Olena" порожній, бо мітка в графі має мовний тег "Olena"@en. Помилку внесло правило 7 промпту v2.
+Таблиця 12 — Самооцінка за критеріями результату 4
+Критерій | Статус | Доказ
+C1 ≥ 15 питань з еталонами | виконано | 24 питання (18 dev + 6 held-out)
+C2 конвеєр промпт→LLM→парсер→схема→виконання з LIMIT | виконано | scripts/t2s.py; рисунок 5
+C3 три метрики до/після покращення | виконано | таблиця 9
+C4 ≥ 5 помилок з класифікацією | виконано | 13 помилок, 6 класів (таблиці 10–11)
+6. Результат 5. Зв'язки з Wikidata
+Артефакти: data/links.ttl (9 прийнятих зв'язків з анотаціями впевненості), data/links_decisions.csv (усі кандидати), docs/links_verification.md. Кандидатів знайдено веб-пошуком по Wikidata; сторінки сутностей відкрити не вдалося, тому перевірка — лише збіг заголовка у списку пошуку (V1). owl:sameAs і skos:exactMatch не використано: вони вимагають перевірки типу сутності.
+Таблиця 13 — Прийняті зв'язки
+Наш термін | Wikidata | Мітка Wikidata | Властивість | Впевненість
+dkh:Gene | wd:Q7187 | gene | skos:closeMatch | medium-high
+dkh:BreastCancer | wd:Q128581 | breast cancer | skos:closeMatch | medium-high
+dkh:OvarianCancer | wd:Q172341 | ovarian cancer | skos:closeMatch | medium-high
+dkh:SNP | wd:Q501128 | single-nucleotide polymorphism | skos:closeMatch | medium-high
+dkh:GeneticCounseling | wd:Q1124169 | genetic counseling | skos:closeMatch | medium-high
+dkh:Exon | wd:Q373027 | exon | skos:closeMatch | medium
+dkh:BRCA1 | wd:Q227339 | BRCA1 | skos:closeMatch | medium
+dkh:BRCA2 | wd:Q17853272 | BRCA2 | skos:closeMatch | low-medium
+dkh:VCFFile | wd:Q7915770 | Variant Call Format | skos:relatedMatch | low
+Таблиця 14 — Відхилені зв'язки (вимагалось ≥ 1)
+Наш термін | Кандидат | Мітка | Причина відхилення
+dkh:SNP | wd:Q7391885 | SNP array | «SNP array» — технологія (мікрочип) для виявлення SNP, не тип варіанта: мітка іншого поняття
+dkh:PathogenicVariant | wd:Q4836333 | BRCA mutation | «BRCA mutation» вужче (лише BRCA), а наш клас — будь-який патогенний варіант; зв'язок хибний за обсягом
+dkh:(ЛР6, не клас ЛР7) | wd:Q19000660 | hereditary breast ovarian cancer | це конкретний синдром (HBOC), вужчий за «спадковий рак»
+dkh:BRCA2 | wd:Q421651 | BRCA2 DNA repair associated | другий елемент для того ж гена: неоднозначність; без відкритої сторінки (ген чи білок) обрати не можна — залишено перший збіг за точною міткою
+Для захисту: відхилено dkh:SNP ↔ wd:Q7391885 «SNP array» — мітка містить «SNP», але це мікрочип (технологія), а не тип варіанта; пошук за словом дав би хибний зв'язок.
+# Федеративний запит: наші зв'язки (graph links) + мітки з Wikidata через SERVICE # Тип: federated query. Адреса ендпоїнта підставляється скриптом: {ENDPOINT} = реальний https://query.wikidata.org/sparql або локальне дзеркало SELECT ?term ?wd ?wdLabel ?prop WHERE {   ?term ?prop ?wd .   FILTER (?prop IN (skos:closeMatch, skos:relatedMatch) && STRSTARTS(STR(?wd), "http://www.wikidata.org/entity/"))   SERVICE <{ENDPOINT}> {     ?wd rdfs:label ?wdLabel .     FILTER (LANG(?wdLabel) = "en")   } } ORDER BY ?term  -- результат (9 рядків) dkh:BRCA1 | wd:Q227339 | BRCA1 | skos:closeMatch dkh:BRCA2 | wd:Q17853272 | BRCA2 | skos:closeMatch dkh:BreastCancer | wd:Q128581 | breast cancer | skos:closeMatch dkh:Exon | wd:Q373027 | exon | skos:closeMatch dkh:Gene | wd:Q7187 | gene | skos:closeMatch dkh:GeneticCounseling | wd:Q1124169 | genetic counseling | skos:closeMatch dkh:OvarianCancer | wd:Q172341 | ovarian cancer | skos:closeMatch dkh:SNP | wd:Q501128 | single-nucleotide polymorphism | skos:closeMatch dkh:VCFFile | wd:Q7915770 | Variant Call Format | skos:relatedMatch
+Рисунок 8 — федеративний запит і результат. SERVICE звернений до локального дзеркала міток (scripts/mock_wikidata.py), яке містить лише пари «Q-id → мітка» зі списку пошуку; це демонструє роботу федерації, але не є запитом до справжньої Wikidata, а збіг міток — коло, а не незалежне підтвердження. Для живого ендпоїнта: WIKIDATA_ENDPOINT=https://query.wikidata.org/sparql.
+Таблиця 15 — Самооцінка за критеріями результату 5
+Критерій | Статус | Доказ
+C1 ≥ 5 зв'язків із властивістю й обґрунтуванням та впевненістю | виконано | 9 зв'язків (closeMatch/relatedMatch)
+C2 перевірка V1 | виконано (поверхнево) | збіг заголовка у списку пошуку; сторінки не відкривались
+C3 ≥ 1 відхилений зв'язок із поясненням | виконано | 4 відхилено
+C4 працюючий федеративний запит | частково | працює до локального дзеркала, не до живої Wikidata
+7. Протокол «LLM-експерт»
+Декларація використання ШІ. Інструмент: Claude (налаштований ідентифікатор claude-sonnet-5-5; фактична модель субагентів могла відрізнятися). Призначення: складання питань, еталонних запитів, форм SHACL, скриптів і звіту; окремі «сліпі» запуски для генерації SPARQL (v1, v2). Температура й seed не задавались (немає такої можливості) — результати не відтворюються байт-у-байт. Ключів API немає; усі дані синтетичні, персональні дані зовнішнім сервісам не передавались. Веб-пошук використано лише для пошуку Q-id кандидатів.
+Таблиця 16 — Журнал взаємодії з LLM (llm_log/log.csv)
+id | Призначення | Версія промпту | Сирий вихід | Рішення
+L8-01 | text-to-SPARQL: пакет 1 (12 питань, сліпий субагент) | v1 | llm_log/raw/v1_b1.json | прийнято до оцінки; усі відповіді оцінено скриптом, нічого не виправлялось вручну
+L8-02 | text-to-SPARQL: пакет 2 (12 питань) | v1 | llm_log/raw/v1_b2.json | прийнято до оцінки
+L8-03 | text-to-SPARQL: пакет 1 після покращення промпту | v2 | llm_log/raw/v2_b1.json | прийнято до оцінки; 5 відповідей хибні (клас E6)
+L8-04 | text-to-SPARQL: пакет 2 | v2 | llm_log/raw/v2_b2.json | прийнято до оцінки
+L8-05 | перша чернетка v2 (правила 7 і 9 — про path і MIN/ORDER BY) написана до аналізу помилок v1 | v2-чернетка | (не збережена; замінена) | ВІДХИЛЕНО самим автором: чернетка підглядала у held-out (h01, h02, h06), порушуючи поділ d
+L8-06 | SPARQL-запити q01–q09, форми SHACL, еталони для t2s, скрипти — складені самою моделлю в сесії (не окремі генерації) | — | queries/, shapes/shapes.ttl, tests/t2s.jsonl | прийнято після автоперевірок (тести, ручна звірка Python-кодом); студент має переглянути п
+L8-07 | пошук Q-id кандидатів у Wikidata | — | docs/links_verification.md | прийнято 9, відхилено 4 (див. links_decisions.csv)
+claims/claims.csv: 24 тверджень; підтверджено 16 (67%), відхилено 3 (12%), pending 5 (21%). Рівні: V1 — поверхнева перевірка; V2 — повторне обчислення/автотест; V3 — незалежний експерт; V4 — незалежні еталони. Рівнів V3 і V4 не досягнуто: метрики text-to-SPARQL обчислено на 24 питаннях, але еталони складала та сама система, тому чесний рівень — V2.
+Таблиця 17 — Відхилені й відкриті твердження
+id | Статус | Твердження | Коментар
+C13 | pending | Хибний тип locatedIn→Olena робить онтологію неузгодженою через дизʼюнктність Per | факт неузгодженості підтверджено, причина (аксіоми) не розбиралась
+C16 | pending | Промпт v2 покращив точність text-to-SPARQL | +2 питання з 24 в межах шуму; один прогін; held-out без змін (4/6)
+C17 | pending | Правило 7 у v2 спричинило клас помилок E6 (мовний тег міток) | узгоджується з 5 помилками, але v3 без правила 7 не запускалась
+C18 | rejected | Дані завантажено в Apache Jena Fuseki | не виконано: Docker/JAR недоступні; використано pyoxigraph
+C19 | rejected | Федеративний запит виконано до справжньої Wikidata | SERVICE працював лише до локального дзеркала міток
+C22 | pending | Q17853272 є геном BRCA2 (а не Q421651) | два кандидати, вибір за порядком пошуку
+C23 | pending | Wikidata-ідентифікатори Q7187, Q128581, Q172341, Q501128, Q1124169, Q373027, Q22 | лише збіг мітки; тип сутності не перевірено
+C24 | rejected | Дані когорти (VAR-101…160) відображають реальні дані | дані синтетичні (seed 42)
+Джерела: W3C — RDF 1.1 Concepts, SPARQL 1.1 Query Language, SHACL; документація pyoxigraph, pySHACL; Wikidata (пошук Q-id, 2026-10-27); ЛР4–ЛР7 (CQ, онтологія); GATK Team «Hard-filtering germline short variants»; CDC «About Cascade Testing».
+8. Відповіді на контрольні питання
+RDF-тріплет — твердження «суб'єкт — предикат — об'єкт». IRI глобально ідентифікує ресурс (суб'єкт, предикат, іноді об'єкт), тому графи з різних джерел зливаються без колізій; літерал — значення з типом. Приклад: dkh:VAR-103 dkh:hasClinicalSignificance dkh:Pathogenic.
+SHACL vs OWL: OWL — відкритий світ, виведення нового; SHACL — закритий світ, контроль наявних даних (п. 4.1 з експериментом).
+Запит q06 (property path) пояснено в п. 3.
+Як перевірено запити LLM: схему перевіряє парсер (IRI мають існувати), результат виконано й порівняно з еталоном, обчисленим виконанням еталонного запиту; кілька еталонів звірено вручну за abox.ttl. Обмеження: еталони склала та сама система, тож це не незалежна перевірка.
+Відхилено зв'язок dkh:SNP ↔ wd:Q7391885 «SNP array»: це мікрочип, а не тип варіанта (п. 6).
+9. Обмеження
+pyoxigraph замість Fuseki/GraphDB; федеративний запит — до локального дзеркала, не до Wikidata.
+Зв'язки з Wikidata — лише V1; DBpedia і CWE не шукались.
+Метрики text-to-SPARQL: 24 питання, один прогін кожної версії, температура невідома; покращення v1→v2 в межах шуму; v2 внесла нову помилку E6.
+Форми SHACL послаблено (Warning) після побачених результатів — підгонка під дані.
+Дані синтетичні; еталони й запити склала та сама система; V3/V4 не досягнуто.
+Час запитів виміряно на малому наборі й одному рушії.
+10. Запуск з нуля
+python3 -m venv .venv && . .venv/bin/activate pip install -r requirements.txt     # pyoxigraph 0.5.13, rdflib 7.6.0, pyshacl 0.40.1, owlready2 0.51, pytest; потрібна Java 17+ bash scripts/run_all.sh             # seed 42; будує граф, сховище, запити, SHACL, оцінку t2s, звіти python3 -m pytest -q tests          # 12 passed # живий Wikidata: WIKIDATA_ENDPOINT=https://query.wikidata.org/sparql python3 scripts/run_queries.py

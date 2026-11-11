@@ -1,0 +1,7 @@
+# VERIFICATION-ONLY variant (no `RUN pip install`): used where the container has no network. The base image python:3.13-slim must already contain the
+# packages of requirements.txt. The regular Dockerfile (with pip install) is the one users build.
+FROM python:3.13-slim
+WORKDIR /app
+COPY . .
+ENV PYTHONUNBUFFERED=1 PYTHONPATH=/app
+CMD ["python3", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

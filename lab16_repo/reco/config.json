@@ -1,0 +1,18 @@
+{
+ "graph": {
+  "ent_w": 1.0,
+  "next_w": 1.0,
+  "doc_w": 0.5,
+  "half_life": 7.0
+ },
+ "knn": {
+  "m": 3,
+  "half_life": 28.0
+ },
+ "hyb_w": {
+  "graph": 0.0,
+  "knn": 0.5,
+  "popularity": 0.3
+ },
+ "note": "tuned on validation window (history<day49, positives day49-62) of generator seed 0; hybrid = weighted min-max fusion"
+}

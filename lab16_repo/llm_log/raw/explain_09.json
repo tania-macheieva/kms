@@ -1,0 +1,5 @@
+{
+  "92e733ef4bf0a72f0207f59e4fc65cae184530aef6db5b954882c2025ea70f69": "Рекомендовано розділ «bcftools_manual#h113 · Replace missing genotypes with 0|0 > bcftools reheader [OPT…», оскільки ви читали розділ «bcftools_manual#h061 · Convert tab-delimited file into a sites-only VCF (no genoty…», і обидва розділи згадують BCF (Format).",
+  "a00c8f847f9642f28bd6ce92e2cfa9134e7014eeba8549270ef47bb019281889": "Рекомендовано розділ «bcftools_manual#h109 · Replace missing genotypes with 0|0 > bcftools query [OPTION…», оскільки ви читали розділ «bcftools_manual#h060 · Convert tab-delimited file into a sites-only VCF (no genoty…», і обидва розділи згадують GT (Annotation).",
+  "057a67cc1eb5d83a9fe3807c11de72b417f8a4f7f7f21b01f9e89204e8e9ec10": "Рекомендовано розділ «bcftools_manual#h105 · Replace missing genotypes with 0|0 > Plugins troubleshootin…», оскільки ви читали розділ «bcftools_manual#h060 · Convert tab-delimited file into a sites-only VCF (no genoty…», і обидва розділи згадують VCF (Format)."
+}

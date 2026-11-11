@@ -1,0 +1,65 @@
+{
+ "batch": "explain_02",
+ "items": [
+  {
+   "key": "a761577072a1bca6fdca96f9a4c9a50718675354f0e9fae61a78554710815384",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_usage#h014 · Other Nextflow hidden files, like history of pipeline logs.…», бо ви читали «rare_usage#h000 · nf-core/raredisease: Usage», і обидва розділи згадують Nextflow (Tool).\nФАКТИ: {\"cand_label\": \"rare_usage#h014 · Other Nextflow hidden files, like history of pipeline logs.…\", \"kind\": \"entity\", \"via_label\": \"rare_usage#h000 · nf-core/raredisease: Usage\", \"entity\": \"Nextflow\", \"etype\": \"Tool\"}"
+  },
+  {
+   "key": "58fd2df497cb80c4ec4838c4b0e32d418b12faf21a490ff46e85840c7711bae8",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_usage#h010 · Other Nextflow hidden files, like history of pipeline logs.…», бо ви читали «rare_usage#h000 · nf-core/raredisease: Usage», і обидва розділи згадують Nextflow (Tool).\nФАКТИ: {\"cand_label\": \"rare_usage#h010 · Other Nextflow hidden files, like history of pipeline logs.…\", \"kind\": \"entity\", \"via_label\": \"rare_usage#h000 · nf-core/raredisease: Usage\", \"entity\": \"Nextflow\", \"etype\": \"Tool\"}"
+  },
+  {
+   "key": "754582712202876cd6f084c1e151dca27a573a92d40f7fef5078eb39c7489668",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_usage#h012 · Other Nextflow hidden files, like history of pipeline logs.…», бо ви читали «rare_output#h035 · Pipeline overview > Mitochondrial analysis > GENMOD», і обидва розділи згадують GENMOD (Tool).\nФАКТИ: {\"cand_label\": \"rare_usage#h012 · Other Nextflow hidden files, like history of pipeline logs.…\", \"kind\": \"entity\", \"via_label\": \"rare_output#h035 · Pipeline overview > Mitochondrial analysis > GENMOD\", \"entity\": \"GENMOD\", \"etype\": \"Tool\"}"
+  },
+  {
+   "key": "a5640bdc1c9cfba34289a3a8d21a7f99d99a74196b33474978ce05b6792bc40e",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_usage#h008 · Other Nextflow hidden files, like history of pipeline logs.…», бо ви читали «rare_usage#h000 · nf-core/raredisease: Usage», і обидва розділи згадують Nextflow (Tool).\nФАКТИ: {\"cand_label\": \"rare_usage#h008 · Other Nextflow hidden files, like history of pipeline logs.…\", \"kind\": \"entity\", \"via_label\": \"rare_usage#h000 · nf-core/raredisease: Usage\", \"entity\": \"Nextflow\", \"etype\": \"Tool\"}"
+  },
+  {
+   "key": "ea0f40a5b3eb3afc0935634e198b58c04e71f256e63bd28cdbd76818e9254aa6",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_usage#h034 · Other Nextflow hidden files, like history of pipeline logs.…», бо ви читали «rare_usage#h015 · Other Nextflow hidden files, like history of pipeline logs.…», і обидва розділи згадують workflow (Concept).\nФАКТИ: {\"cand_label\": \"rare_usage#h034 · Other Nextflow hidden files, like history of pipeline logs.…\", \"kind\": \"entity\", \"via_label\": \"rare_usage#h015 · Other Nextflow hidden files, like history of pipeline logs.…\", \"entity\": \"workflow\", \"etype\": \"Concept\"}"
+  },
+  {
+   "key": "4a8d86f4cbaa8c0e4d053f14dd772e9895c7125d88b0f859ada7393281b09839",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_citations#h002 · Pipeline tools», бо ви читали «rare_citations#h004 · Pipeline tools», і обидва розділи згадують structural variant (Concept).\nФАКТИ: {\"cand_label\": \"rare_citations#h002 · Pipeline tools\", \"kind\": \"entity\", \"via_label\": \"rare_citations#h004 · Pipeline tools\", \"entity\": \"structural variant\", \"etype\": \"Concept\"}"
+  },
+  {
+   "key": "b670370a9522f901c4758a9a3cf183eaf7d3b33825f47e2c45807974d892fb70",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_citations#h001 · Pipeline tools» з того самого документа, що й прочитаний вами «rare_citations#h003 · Pipeline tools».\nФАКТИ: {\"cand_label\": \"rare_citations#h001 · Pipeline tools\", \"kind\": \"doc\", \"via_label\": \"rare_citations#h003 · Pipeline tools\"}"
+  },
+  {
+   "key": "e8e9f14178f526812ed206e831414181851426850ddf5e364e6cfd59330209d1",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_citations#h000 · Nextflow & nf-core», бо ви читали «rare_citations#h003 · Pipeline tools», і обидва розділи згадують workflow (Concept).\nФАКТИ: {\"cand_label\": \"rare_citations#h000 · Nextflow & nf-core\", \"kind\": \"entity\", \"via_label\": \"rare_citations#h003 · Pipeline tools\", \"entity\": \"workflow\", \"etype\": \"Concept\"}"
+  },
+  {
+   "key": "f98448f57654776401e738d5f11758ac079075135188d24e8b13e9eb19ff244e",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_readme#h001 · Pipeline summary», бо ви читали «rare_citations#h004 · Pipeline tools», і обидва розділи згадують VerifyBamID2 (Tool).\nФАКТИ: {\"cand_label\": \"rare_readme#h001 · Pipeline summary\", \"kind\": \"entity\", \"via_label\": \"rare_citations#h004 · Pipeline tools\", \"entity\": \"VerifyBamID2\", \"etype\": \"Tool\"}"
+  },
+  {
+   "key": "5b3dbf3f80fae49a703daadb7cda7803d0e9a7aad83bbfd649a73a8920933803",
+   "tag": "explain",
+   "system": "Ти перефразовуєш пояснення рекомендації українською ОДНИМ реченням. Дозволено використовувати ЛИШЕ факти з шаблону: не додавай жодних сутностей, назв, чисел чи тверджень, яких немає в шаблоні. Назви розділів у «лапках», назви сутностей (GATK, bcftools тощо) та числа залиш без змін. Виведи лише перефразоване речення.",
+   "user": "ШАБЛОН: Рекомендовано «rare_readme#h005 · Citations»: він змістовно близький до прочитаного вами «rare_citations#h003 · Pipeline tools» (косинусна подібність 0.844).\nФАКТИ: {\"cand_label\": \"rare_readme#h005 · Citations\", \"kind\": \"similar\", \"via_label\": \"rare_citations#h003 · Pipeline tools\", \"cosine\": 0.844}"
+  }
+ ]
+}

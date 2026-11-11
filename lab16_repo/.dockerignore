@@ -1,0 +1,5 @@
+.git
+eval/res_*.json
+logs
+__pycache__
+*.docx

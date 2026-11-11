@@ -1,0 +1,295 @@
+Львівський національний університет імені Івана Франка
+Курс «Сховища знань та управління знаннями»
+ЗВІТ
+до лабораторної роботи № 6
+«Семантична мережа та концептуальна карта»
+Предметна область: Медицина — аналіз біомедичних даних
+Виконав(ла): ____________________
+Дата: ____________________
+1. Мета, вхідні дані та інструменти
+Мета — побудувати семантичну мережу предметної області у вигляді концептуальної карти за Новаком, порівняти карту експерта, карту з триплетів LLM і карту «колеги» за рубрикою, виміряти узгодженість оцінювачів і точність LLM, а потім зібрати виправлену об'єднану карту v2 з переліком змін.
+Вхід: таксономія ЛР5 (121 термін, 9 типів рівня 1), компетентнісні запитання ЛР4 (18 CQ), два тексти (GATK hard-filtering, ≈ 2 стор.; CDC cascade testing, ≈ 2 стор.).
+Інструменти: Python 3.13, Graphviz 2.43 (розкладка й PNG), власний експорт у draw.io (координати з Graphviz), networkx 3.6.1, openpyxl 3.1.5, scipy, scikit-learn, pytest. CmapTools не використано.
+Репозиторій: lab06_repo (структура й запуск — у README.md і розділі 10).
+Важливе застереження. «Експерт», «колега» та обидва оцінювачі рубрики — це запуски LLM (незалежні, наосліп, але та сама модель), а не люди. Тому показники узгодженості слід читати як технічну демонстрацію методики; для захисту потрібні реальна карта колеги й людина-оцінювач (колонку для неї залишено в cmap_rubric.xlsx).
+2. Результат 1. Фокусне питання, parking lot і каталог відношень
+Артефакт: docs/cmap_focus.md. Фокусне питання (відкрите, змістовне, задає межі карти):
+«Як якість анотацій варіантів і родинний генетичний ризик перетворюються на рішення — які варіанти відкинути під час жорсткої фільтрації і яких родичів пробанда з BRCA1/BRCA2 тестувати в першу чергу?»
+Таблиця 1 — Parking lot: 39 понять і екземплярів, від загальних (рівень 1) до конкретних (рівень 4)
+№ | Поняття | Рівень | Тип (ЛР5, рівень 1) | Кластер
+1 | gene | 1 | Biological entity | Геноміка й дані
+2 | genetic testing | 1 | Method and procedure | Клінічне тестування
+3 | genetic variant | 1 | Genetic variation | Геноміка й дані
+4 | hereditary cancer | 1 | Clinical concept | Клінічне тестування
+5 | risk assessment | 1 | Method and procedure | Клінічне тестування
+6 | variant filtering | 1 | Method and procedure | Контроль якості
+7 | BAM file | 2 | Data and artifact | Геноміка й дані
+8 | VCF file | 2 | Data and artifact | Геноміка й дані
+9 | breast cancer | 2 | Clinical concept | Клінічне тестування
+10 | cascade testing | 2 | Method and procedure | Клінічне тестування
+11 | family history | 2 | Data and artifact | Клінічне тестування
+12 | gene panel | 2 | Biological entity | Геноміка й дані
+13 | genetic counseling | 2 | Method and procedure | Клінічне тестування
+14 | germline variant | 2 | Genetic variation | Геноміка й дані
+15 | hard filtering | 2 | Method and procedure | Контроль якості
+16 | ovarian cancer | 2 | Clinical concept | Клінічне тестування
+17 | pathogenic variant | 2 | Genetic variation | Геноміка й дані
+18 | proband | 2 | Clinical concept | Клінічне тестування
+19 | relative | 2 | Clinical concept | Клінічне тестування
+20 | sequence alignment | 2 | Method and procedure | Геноміка й дані
+21 | variant calling | 2 | Method and procedure | Геноміка й дані
+22 | variant quality score recalibration | 2 | Method and procedure | Контроль якості
+23 | BRCA1 | 3 | Biological entity | Геноміка й дані
+24 | BRCA2 | 3 | Biological entity | Геноміка й дані
+25 | Fisher strand bias | 3 | Measure of quality | Контроль якості
+26 | exon | 3 | Biological entity | Контроль якості
+27 | insertion-deletion | 3 | Genetic variation | Геноміка й дані
+28 | mapping quality | 3 | Measure of quality | Контроль якості
+29 | quality by depth | 3 | Measure of quality | Контроль якості
+30 | rank sum test | 3 | Measure of quality | Контроль якості
+31 | read depth | 3 | Measure of quality | Контроль якості
+32 | single nucleotide polymorphism | 3 | Genetic variation | Геноміка й дані
+33 | strand odds ratio | 3 | Measure of quality | Контроль якості
+34 | QD < 2 | 4 | Measure of quality | Контроль якості
+35 | FS > 60 (SNP) | 4 | Measure of quality | Контроль якості
+36 | SOR > 3 | 4 | Measure of quality | Контроль якості
+37 | MQ < 40 | 4 | Measure of quality | Контроль якості
+38 | рідний брат/сестра: 50% | 4 | Clinical concept | Клінічне тестування
+39 | двоюрідний родич: до 12,5% | 4 | Clinical concept | Клінічне тестування
+Таблиця 2 — Каталог із 12 типів відношень (визначення, domain → range, приклад)
+№ | Відношення | У карті | Визначення | Domain → range (типи ЛР5) | Приклад
+1 | `is_a` | є різновидом | Вужче поняття є різновидом (підкласом) ширшого; для екземплярів — є прикладом класу. | той самий тип | hard filtering is_a variant filtering
+2 | `part_of` | є складовою | Об'єкт є частиною цілого (структурно чи функціонально). | будь-який → будь-який | gene part_of gene panel
+3 | `has_annotation` | має показник | Варіант, дані чи сутність характеризуються вимірюваним показником якості. | Genetic variation, Data and artifact, Biological entity → Measure of quality | genetic variant has_annotation quality by depth
+4 | `increases_risk_of` | підвищує ризик | Генетична сутність або властивість підвищує ймовірність захворювання. | Genetic variation, Biological entity, Biological property → Clinical concept | pathogenic variant increases_risk_of hereditary cancer
+5 | `is_kin_of` | є родичем | Особа перебуває у спорідненості з іншою особою (родич — пробанд). | Clinical concept → Clinical concept | relative is_kin_of proband
+6 | `uses_input` | використовує | Процедура чи показник використовує як вхід дані, показник або сутність. | Method and procedure, Measure of quality → Data and artifact, Measure of quality, Genetic variation, Biological entity, Knowledge and information technology | hard filtering uses_input Fisher strand bias
+7 | `produces` | створює | Процедура створює дані, варіанти чи показники як результат. | Method and procedure → Data and artifact, Genetic variation, Measure of quality | variant calling produces VCF file
+8 | `applies_to` | застосовується до | Процедура чи показник застосовується до об'єкта (дані, варіант, особа). | Method and procedure, Measure of quality → Genetic variation, Data and artifact, Biological entity, Clinical concept, Measure of quality | cascade testing applies_to relative
+9 | `requires` | потребує | Для виконання процедури необхідна передумова: дані, варіант, інша процедура. | Method and procedure → Data and artifact, Method and procedure, Genetic variation, Clinical concept, Biological entity, Knowledge and information technology | cascade testing requires pathogenic variant
+10 | `recommended_for` | рекомендований для | Джерело рекомендує процедуру або показник для певного випадку чи об'єкта. | Method and procedure, Measure of quality → Biological entity, Data and artifact, Clinical concept, Genetic variation | hard filtering recommended_for gene panel
+11 | `detects` | виявляє | Метод або процедура виявляє варіант, сутність чи стан. | Method and procedure → Genetic variation, Biological entity, Clinical concept | genetic testing detects pathogenic variant
+12 | `has_example` | має приклад | Поняття має конкретний приклад (екземпляр, порогове значення, випадок). | будь-який → будь-який | quality by depth has_example «QD < 2»
+Чому саме ці відношення. Каталог закритий і невеликий (12), кожне відношення має визначення й допустимі типи domain/range із таксономії ЛР5. is_a і part_of — структурна основа; has_annotation, uses_input, applies_to, requires, produces — процес контролю якості; increases_risk_of, is_kin_of, recommended_for, detects — клінічна гілка; has_example прив'язує числові пороги й імовірності як екземпляри. Універсального «related to» немає навмисно (його частка в картах — 0%).
+Таблиця 3 — Покриття компетентнісних запитань ЛР4 картою v1
+CQ | Запитання | Покриття | Пропозиції в карті
+CQ01 | За якого QD SNP-варіант отримує прапорець LowQD? | повністю | P44
+CQ02 | За якого FS SNP відкидають? | повністю | P45
+CQ04 | Які значення SOR, MQ, MQRankSum призводять до прапорців? | частково (SOR, MQ; без MQRankSum) | P46, P47
+CQ07 | Чому варіант на кінці екзона з лише LowFS не слід просто відкидати? | частково (зв'язок SOR—екзон) | P26
+CQ08 | Який метод фільтрації обрати для малої панелі? | повністю | P27, P16
+CQ11 | Який шанс успадкування для рідного брата/сестри? | повністю | P48
+CQ13 | Який шанс для двоюрідних і далі? | повністю | P49
+CQ14 | З кого починати тестування і чому? | частково (каскад застосовується до родичів) | P37
+CQ17 | Чи буде користь від універсальної панелі без «родинного» варіанта? | ні (поза картою) | —
+CQ15 | Чи можна тестувати 17-річного родича? | ні (вік поза картою) | —
+Після виправлень v2 додатково покрито CQ15 (вік тестування ≥ 18 років), CQ03–CQ04 (пороги MQRankSum, ReadPosRankSum, INDEL) і CQ12/CQ14 (ступені спорідненості).
+Таблиця 4 — Самооцінка за критеріями результату 1
+Критерій | Статус | Доказ
+C1 фокусне питання відкрите й змістовне | виконано | розділ 1 docs/cmap_focus.md
+C2 ≥ 25 понять, від загальних до часткових | виконано | 39 рядків, рівні 1–4 (таблиця 1)
+C3 8–12 відношень із визначеннями | виконано | 12 відношень (таблиця 2)
+C4 ≥ 5 CQ з ЛР4 покрито | виконано | повністю 5 CQ, частково 3 (таблиця 3)
+3. Результат 2. Експертна концептуальна карта v1
+Артефакти: models/cmap_expert.json/.png/.drawio (генерація — scripts/build_expert_map.py; спільні функції — scripts/map_tools.py). Карта має 33 понять, 6 екземплярів, 49 підписаних пропозицій і 5 крос-зв'язків; частка «related to» — 0%. Кластери: «Геноміка й дані», «Контроль якості варіантів», «Клінічне тестування» (кольори); крос-зв'язки — червоний пунктир; екземпляри — жовті еліпси.
+Рисунок 1а — експертна карта v1 (ліва половина)
+Рисунок 1б — експертна карта v1 (права половина); повне зображення — models/cmap_expert.png, редагована версія — .drawio
+Таблиця 5 — Розподіл пропозицій v1 за відношеннями
+Відношення | Кількість
+is_a | 11
+uses_input | 9
+has_example | 6
+applies_to | 5
+has_annotation | 4
+recommended_for | 3
+increases_risk_of | 3
+produces | 2
+detects | 2
+requires | 2
+part_of | 1
+is_kin_of | 1
+Таблиця 6 — Крос-зв'язки між кластерами (≥ 3 вимагається)
+Крос-зв'язок | Пояснення
+variant filtering —applies_to→ VCF file | Поєднує кластер контролю якості з файлами результатів виклику варіантів: фільтрація працює над VCF.
+hard filtering —recommended_for→ gene panel | Поєднує контроль якості з типом тесту: для малих панелей (і немодельних організмів) доводиться використовувати hard filtering.
+pathogenic variant —increases_risk_of→ hereditary cancer | Зв'язує геномну гілку з клінічною: патогенний варіант (BRCA1/BRCA2) підвищує ризик спадкового раку.
+genetic testing —detects→ pathogenic variant | Клінічне тестування виявляє той самий тип варіантів, що аналізують у геномному конвеєрі.
+cascade testing —requires→ pathogenic variant | Каскадне тестування можливе лише коли в пробанда вже відомий патогенний варіант.
+Екземпляри (has_example): QD < 2; FS > 60 (SNP); SOR > 3; MQ < 40; рідний брат/сестра: 50%; двоюрідний родич: до 12,5%.
+Експорти: PNG (Graphviz), draw.io XML (координати з dot -Tjson), JSON. Карта відтворюється командою python scripts/build_expert_map.py.
+Таблиця 7 — Самооцінка за критеріями результату 2
+Критерій | Статус | Доказ
+C1 ≥ 25 понять, ≥ 30 підписаних пропозицій | виконано | 33 + 6 екз.; 49 пропозицій
+C2 «related to» ≤ 10% | виконано | 0%
+C3 ≥ 3 пояснені крос-зв'язки | виконано | 5 (таблиця 6)
+C4 ≥ 5 екземплярів і експорти | виконано | 6 екземплярів; .png, .drawio, .json
+4. Результат 3. Триплети від LLM і перевірка
+Артефакти: models/triples_llm.jsonl (дослівний вихід LLM + додані s_type, o_type, checks), models/cmap_llm.png, scripts/check_triples.py, docs/evidence/triples_check.txt, llm_log/prompts/step3_prompt_v1.md (вхідні файли підказки збережено; дослівний текст запиту не зберігся — це зазначено у файлі).
+Підказка (v1) містить закритий список відношень із каталогу, словник понять ЛР5, фокусне питання, вимогу давати дослівний evidence і source, та окремий список unmapped для тверджень, які не вкладаються в каталог. Виконавець не бачив експертної карти й правил перевірки типів. Схема триплета: id, s, p, o, evidence, source.
+{"id": "L001", "s": "hard filtering", "p": "is_a", "o": "variant filtering",  "evidence": "Hard-filtering consists of choosing specific thresholds for one or more annotations", "source": "gatk"}
+Отримано 41 триплетів (gatk 24, cdc 17) і 17 unmapped (llm_log/raw/step3_unmapped_raw_output.json). Перевірки (scripts/check_triples.py):
+V1 (цитата): нормалізована evidence є підрядком тексту джерела (регістр, пробіли, дефіси). Підтверджено 41/41 = 100%.
+V2 (типи): domain/range відношення мають відповідати типу ЛР5 рівня 1 суб'єкта й об'єкта; is_a — лише в межах одного типу. Коректних 40/41 = 98%; без жодної помилки 36/41 = 88%.
+Ручний семантичний перегляд (data/triples_manual_review.json) знайшов ще 7 проблем, яких автоперевірки не бачать; з ними частка триплетів, підтриманих текстом, — 29/41 = 71%.
+Таблиця 8 — Помилки триплетів LLM, класифіковано (12 випадків; вимагалось ≥ 3)
+ID | Триплет | Клас | Опис помилки
+L007 | quality by depth —has_example→ QD < 2 | E5 | об'єкт «QD < 2» — літерал
+L016 | strand odds ratio —has_example→ SOR > 3 | E5 | об'єкт «SOR > 3» — літерал
+L017 | mapping quality —has_example→ MQ < 40 | E5 | об'єкт «MQ < 40» — літерал
+L018 | Fisher strand bias —has_example→ FS > 60 | E5 | об'єкт «FS > 60» — літерал
+L041 | genetic counseling —produces→ risk assessment | E3 | range produces: Method and procedure не дозволено
+L033 | cascade testing —detects→ BRCA1 | E7 (ручна) | cascade testing detects BRCA1: шукають варіанти в гені, а не сам ген (змішування гена та варіанта в ньому)
+L034 | cascade testing —detects→ BRCA2 | E7 (ручна) | те саме для BRCA2
+L038 | genetic testing —detects→ BRCA1 | E7 (ручна) | genetic testing detects BRCA1: об'єкт має бути pathogenic variant у BRCA1
+L039 | genetic testing —detects→ BRCA2 | E7 (ручна) | те саме для BRCA2
+L011 | rank sum test —applies_to→ allele | E8 (ручна) | rank sum test applies_to allele: тест порівнює якості вирівнювання ридів (mapping quality), а allele — лише умова порівняння
+L020 | hard filtering —applies_to→ germline variant | E9 (ручна) | слабка підстава: evidence — лише заголовок статті «Hard-filtering germline short variants»
+L012 | variant calling —produces→ VCF file | E9 (ручна) | evidence описує інструмент GenotypeGVCFs, а не виклик варіантів як процедуру загалом
+Класи: E3 — порушення range; E5 — літерал замість поняття в has_example (причина — приклад у моєму каталозі показував значення «QD < 2»; у v2 такі значення подано як екземпляри-поняття); E7 — змішування гена й варіанта (detects BRCA1 замість «патогенний варіант у BRCA1»); E8 — неточний об'єкт; E9 — слабка підстава (цитата описує інструмент, а не твердження).
+Рисунок 2 — граф триплетів LLM (41 ребро; червоний пунктир — помилки автоперевірки, помаранчеві — ручний перегляд)
+Таблиця 9 — Самооцінка за критеріями результату 3
+Критерій | Статус | Доказ
+C1 ≥ 40 триплетів, ≥ 2 тексти, schema | виконано | 41 триплет; 2 джерела; id/s/p/o/evidence/source
+C2 підказка із закритим списком, evidence, unmapped | виконано | step3_prompt_v1.md (структура), unmapped — 17
+C3 quote-check зі часткою; type-check з ≥ 3 помилками | виконано | 100% цитат; 5 автоматичних + 7 ручних помилок, класифіковано
+C4 візуалізація графа | виконано | рисунок 2
+5. Результат 4. Оцінювання за рубрикою Новака
+Артефакт: docs/cmap_rubric.xlsx (аркуші: Рубрика; Оцінки — з формулами; Узгодженість; Зауваження; Precision-Recall; Статистика карт). Створення — scripts/build_rubric_xlsx.py; метрики — scripts/eval_maps.py. Рубрика — п'ять критеріїв 0–4: D1 пропозиції, D2 ієрархія, D3 крос-зв'язки, D4 приклади, D5 покриття CQ (повний текст — аркуш «Рубрика»).
+Оцінювані карти: власна (експертна v1), LLM-карта (з триплетів) і карта «колеги». Карту «колеги» створив незалежний запуск LLM наосліп із тих самих текстів (не людина). Двох оцінювачів — теж запуски LLM; кожен бачив три карти без підписів (випадкові літери), не мав доступу до відповіді іншого й до метрик.
+Таблиця 10 — Оцінки двох оцінювачів
+Карта | Оцінювач | D1 | D2 | D3 | D4 | D5 | Сума /20
+Власна (v1) | R1 | 3 | 3 | 3 | 4 | 3 | 16
+Власна (v1) | R2 | 3 | 4 | 4 | 4 | 3 | 18
+LLM-карта | R1 | 3 | 2 | 1 | 2 | 1 | 9
+LLM-карта | R2 | 3 | 3 | 3 | 2 | 1 | 12
+«Колега» (LLM) | R1 | 3 | 3 | 4 | 4 | 3 | 17
+«Колега» (LLM) | R2 | 3 | 4 | 4 | 4 | 3 | 18
+Таблиця 11 — Узгодженість оцінювачів (15 пар оцінок)
+Показник | Значення | Інтерпретація
+Середня |різниця| | 0.40 | розходження 0,4 бала зі шкали 0–4 — малі
+Точний збіг / в межах 1 | 67% / 93% | дві третини оцінок ідентичні, лише одна пара розійшлась більше ніж на 1
+Пірсон / Спірмен | 0.76 / 0.76 | сильна позитивна кореляція
+Квадратичний κ | 0.68 | «суттєва» узгодженість (0,61–0,80)
+Розбіжність за критеріями | D2 = 1,0; D3 = 1,0; інші 0 | сперечаються про глибину ієрархії та «нетривіальність» крос-зв'язків
+Порядок карт | R1: колега > власна > LLM; R2: власна > колега > LLM | обидва ставлять LLM-карту останньою
+Висновок: узгодженість висока, але завищена спільним походженням оцінювачів; найслабше узгоджені критерії, що потребують тлумачення (D2, D3). Для захисту варто додати оцінку людини.
+Таблиця 12 — По 3 зауваження на карту
+Карта | Зауваження оцінювача
+Власна (v1) | Додати окремі прапорці й пороги: FS > 200 для INDEL (відрізняти від FS > 60 для SNP), MQRankSum < −12,5, а також правило «будь-який прапорець → FILTERED» (CQ03–CQ05).
+Власна (v1) | Додати 25% для зведеного брата, тітки/дядька, бабусі/дідуся та рівні спорідненості (first/second/third-degree relative), а також логіку пріоритету: тестувати спершу найближчих доступних родичів, далі наступних; умову віку 18 років (CQ12, CQ14–CQ16).
+Власна (v1) | Виправити неточні або слабкі пропозиції: «strand odds ratio — рекомендований для → exon» не пояснює, що FS штрафує кінці екзонів, тому SOR перевіряють додатково (REVIEW); BRCA1 пов'язано лише з breast cancer, а BRCA2 лише з ovarian cancer, тож додати відсутні зв'язки; прибрати тривіальне «VQSR потребує genetic variant» і замінити на «потребує великої кількості варіантів».
+LLM-карта | Геномна (фільтрація) і клінічна (BRCA, каскадне тестування) гілки майже не пов'язані: додайте пояснені крос-зв'язки, напр. cascade testing requires pathogenic variant, hard filtering recommended_for gene panel, щоб карта відповідала фокусному питанню про перехід від якості анотацій до рішення.
+LLM-карта | Немає жодних прикладів для родинного ризику (50 %, 25 %, 12,5 %) і порогів для MQRankSum, INDEL-FS, QD; додайте екземпляри через has_example та поняття first/second/third-degree relative, щоб покрити CQ03–CQ04 та CQ11–CQ14.
+LLM-карта | Є неточні або надлишкові пропозиції (rank sum test applies_to allele; variant quality score recalibration requires genetic variant; genetic variant has_annotation дублює hard filtering uses; BRCA1 increases_risk_of hereditary cancer дублює пару з раком молочної залози/яєчників); приберіть дублі й додайте логіку рішення: будь-який прапорець - відхилення, VQSR потребує багатьох варіантів, тому для малої панелі hard filtering.
+«Колега» (LLM) | Виправте неточні пропозиції: variant annotation produces quality by depth, genetic variant has_annotation rank sum test (це тест, а не показник варіанта), variant filtering recommended_for data quality (мета, а не рекомендація); також дублюються пари has_annotation та hard filtering uses.
+«Колега» (LLM) | Додайте відсутні пороги й правила рішення: FS > 200 для INDEL, MQRankSum < -12,5, будь-який прапорець - FILTERED, виняток для власних порогів, FS на кінцях екзонів з перевіркою SOR (REVIEW); це закриє CQ03–CQ07, CQ09, CQ10.
+«Колега» (LLM) | Додайте обмеження тестування родичів: вік від 18 років (виняток - дитячий рак), перехід до наступного доступного родича, потреба перевірити, що універсальна панель містить родинний варіант, і неавтоматичність каскаду при невідомій зміні (CQ15–CQ18); вирівняйте напрямок ієрархії (is_a/part_of) для послідовних рівнів.
+Таблиця 13 — Precision/recall (41 твердження LLM; перелік по твердженнях — аркуш «Precision-Recall»)
+Порівняння (s,p,o) | TP | Передбачено | Еталон | Precision | Recall | F1
+LLM-триплети vs експерт (strict) | 21 | 41 | 49 | 0.51 | 0.43 | 0.47
+«Колега» vs експерт (strict) | 27 | 53 | 49 | 0.51 | 0.55 | 0.53
+LLM, relaxed (без напрямку/типу p) | 23 | 41 | 49 | 0.56 | 0.47 | —
+Тлумачення: експертна карта — не повний еталон, тому precision занижений: частина LLM-триплетів (наприклад, BRCA1 → рак яєчників) справді є в тексті. Показник «текстово підтриманих» 71% точніше відображає якість. Recall 0,43 означає, що LLM пропустила багато експертних пропозицій (пороги, клінічні правила, крос-зв'язки).
+Таблиця 14 — Самооцінка за критеріями результату 4
+Критерій | Статус | Доказ
+C1 рубрика Новака з 5 критеріями | виконано | аркуш «Рубрика»
+C2 3 карти, 2 незалежні оцінювачі | частково | оцінювачі й «колега» — LLM; колонка для людини порожня
+C3 узгодженість з інтерпретацією; 3 зауваження на карту | виконано | таблиці 11–12
+C4 precision/recall на ≥ 30 твердженнях | виконано | 41 твердження, таблиця 13
+6. Результат 5. Об'єднана карта v2
+Артефакти: models/cmap_v2.json/.png/.drawio, models/triples_final.csv, docs/cmap_changes_v1_v2.md; створення — scripts/build_v2.py, перевірка — scripts/validate_v2.py. v2: 39 понять, 12 екземплярів, 72 пропозицій, 5 крос-зв'язків, «related to» 0%.
+Рисунок 3а — карта v2, частина 1 із 4 (повне зображення — models/cmap_v2.png)
+Рисунок 3б — карта v2, частина 2 із 4 (повне зображення — models/cmap_v2.png)
+Рисунок 3в — карта v2, частина 3 із 4 (повне зображення — models/cmap_v2.png)
+Рисунок 3г — карта v2, частина 4 із 4 (повне зображення — models/cmap_v2.png)
+Таблиця 15 — Зміни v1 → v2 (8; вимагалось ≥ 5, пов'язано із зауваженнями оцінювачів)
+№ | Що змінено | Причина | Джерело
+V2-01 | Видалено is_a «breast cancer/ovarian cancer → hereditary cancer»; зв'язок через підвищення ризику патогенним варіантом | не кожен рак спадковий; is_a перебільшував (зауваження R1 і R2 до експертної карти) | R1, R2
+V2-02 | BRCA1 і BRCA2 пов'язано з обома раками (раніше BRCA1 — лише з молочною залозою, BRCA2 — лише з яєчниками) | джерело CDC називає обидва гени для обох раків; неповнота v1 | R1, R2; триплети LLM L025–L028
+V2-03 | Додано ієрархію родичів (першого/другого/третього ступеня) з прикладами 50% / 25% / до 12,5%; каскадне тестування рекомендоване насамперед родичам першого ступеня | приклад «рідний брат/сестра: 50%» змішував клас і ймовірність; CQ12, CQ14 були непокриті | R1, R2
+V2-04 | Тривіальне «VQSR потребує genetic variant» замінено на «потребує великого набору варіантів» і «потребує відомих ресурсів варіантів» | тривіальна пропозиція, яка не пояснює вибір hard filtering для малих панелей (зауваження R2) | R1, R2; триплет L015
+V2-05 | Нечітке «SOR рекомендований для exon» замінено на правило екзонного кінця: FS штрафує такі варіанти, тому застосовують SOR | зауваження: зв'язок не пояснював причину (REVIEW у ЛР4) | R1, R2
+V2-06 | Додано приклади: FS > 200 (INDEL), MQRankSum < −12,5, ReadPosRankSum < −8, правило «будь-який прапорець → відкинути», вік ≥ 18 років | CQ03–CQ05, CQ15 були непокриті (зауваження R1, R2 до експертної й LLM-карт) | R1, R2
+V2-07 | До карти додано 9 підтверджених триплетів LLM (цитата знайдена, типи коректні, ручний перегляд пройдено) | карта колеги й LLM показали пропущені в v1 зв'язки (mapping quality → sequencing read, VQSR → VCF file, genetic testing → рак тощо) | R1, R2; триплети L009–L040
+V2-08 | Відхилено хибні триплети LLM: детекція генів замість варіантів (L033, L034, L038, L039), rank sum test → allele (L011), genetic counseling → risk assessment (L041), слабкі підстави (L020, L012) | помилки типів і семантики, виявлені перевіркою (див. docs/evidence/triples_check.txt і data/triples_manual_review.json) | перевірка триплетів
+triples_final.csv: 72 рядків, колонки s, p, o, source, status (+ evidence, s_type, o_type); порожніх полів немає (там, де цитати немає, стоїть «—»). Статуси: verified 34 (цитата знайдена в тексті й типи коректні), expert_asserted 37 (твердження експерта без цитати — потребує підтвердження), pending 1 (FS > 200 для INDEL — з коментаря читача). Джерела: {'expert+llm': 17, 'llm': 9, 'expert': 28, 'expert_v2': 18}.
+Таблиця 16 — Перші 25 рядків triples_final.csv (повний файл — 72 рядки)
+s | p | o | source | status
+cascade testing | applies_to | relative | expert+llm:cdc | verified
+cascade testing | detects | genetic variant | llm:cdc | verified
+cascade testing | is_a | genetic testing | expert | expert_asserted
+cascade testing | recommended_for | first-degree relative | expert_v2 | expert_asserted
+cascade testing | requires | pathogenic variant | expert | expert_asserted
+first-degree relative | has_example | рідні брати/сестри, батьки, діти: 50% | expert_v2 | expert_asserted
+first-degree relative | is_a | relative | expert_v2 | expert_asserted
+genetic counseling | applies_to | relative | llm:cdc | verified
+genetic counseling | recommended_for | relative | expert | expert_asserted
+genetic counseling | uses_input | family history | expert | expert_asserted
+genetic testing | applies_to | proband | expert | expert_asserted
+genetic testing | detects | pathogenic variant | expert | expert_asserted
+genetic testing | has_example | тестування лише дорослих (≥ 18 років) | expert_v2 | verified
+genetic testing | recommended_for | breast cancer | llm:cdc | verified
+genetic testing | recommended_for | ovarian cancer | llm:cdc | verified
+relative | is_kin_of | proband | expert+llm:cdc | verified
+risk assessment | applies_to | proband | expert | expert_asserted
+risk assessment | uses_input | family history | expert | expert_asserted
+second-degree relative | has_example | зведені брати/сестри, тітки/дядьки, бабусі/дідусі: 25% | expert_v2 | expert_asserted
+second-degree relative | is_a | relative | expert_v2 | expert_asserted
+third-degree relative | has_example | двоюрідні та віддалені родичі: до 12,5% | expert_v2 | expert_asserted
+third-degree relative | is_a | relative | expert_v2 | expert_asserted
+BRCA1 | increases_risk_of | breast cancer | expert+llm:cdc | verified
+BRCA1 | increases_risk_of | ovarian cancer | expert+llm:cdc | verified
+BRCA1 | is_a | gene | expert | expert_asserted
+Валідація (scripts/validate_v2.py): 100% відношень із каталогу; domain/range коректні для всіх пропозицій між поняттями (екземпляри має лише has_example); усі 51 поняття мають визначення; результат — «0 помилок».
+Таблиця 17 — Самооцінка за критеріями результату 5
+Критерій | Статус | Доказ
+C1 об'єднана карта v2, виправлено ≥ 5 зауважень | виконано | 6 виправлень + злиття 9 триплетів (таблиця 15)
+C2 CSV ≥ 60 рядків, усі колонки заповнені | виконано | 72 рядки
+C3 усі поняття мають визначення; 100% відношень з каталогу | виконано | validate_v2.py
+C4 перелік ≥ 5 змін із причинами | виконано | таблиця 15
+7. Протокол «LLM-експерт»
+Декларація використання ШІ. Інструмент: Claude (налаштований ідентифікатор claude-sonnet-5-5; фактична модель допоміжних запусків могла відрізнятися). Призначення: каталог відношень, фокусне питання, експертна карта v1, витяг триплетів із текстів, карта «колеги», два оцінювачі рубрики, код скриптів і тестів, чернетка звіту. Перевірка: скрипти (цитати, типи, схема), ручний семантичний перегляд, порівняння з експертною картою, тести. Температура/seed недоступні. Кожен вихід збережено в llm_log/raw/.
+Таблиця 18 — Журнал запусків LLM (llm_log/log.csv: дата, модель, параметри, підказка, сирий вихід, рішення)
+Крок | Завдання | Підказка | Рішення людини
+step3 | Витяг триплетів із 2 текстів із закритим каталогом відношень | prompt_v1 (llm_log/prompts/step3_prompt_v1.md) | 41 триплет; автоперевірка + ручний перегляд; 12 відхилено; очікує перегляду студентом
+step3b | Список неперенесених (unmapped) тверджень | prompt_v1 | 17 записів; використано як перелік прогалин каталогу; очікує перегляду студентом
+step4 | Карта «колеги» наосліп (без доступу до експертної) | prompt_v1 | Використано як третю карту для оцінювання; не є колегою-людиною; очікує перегляду студентом
+step5-R1 | Оцінювач 1 за рубрикою Новака | rubric_v1 | Зауваження враховано у v2; очікує перегляду студентом
+step5-R2 | Оцінювач 2 за рубрикою Новака (незалежно) | rubric_v1 | Перезапуск після помилки 429; зауваження враховано у v2; очікує перегляду студентом
+claims/claims.csv: 54 тверджень; підтверджено 39 (72%); відхилено 12; pending 3. Рівні перевірки: V1 — цитата в тексті; V2 — плюс типи; V3 — збіг із незалежним джерелом; V4 — людина за першоджерелом (жодного V4 ще немає).
+Таблиця 19 — Відхилені твердження з поясненням
+id | Відхилене твердження | Пояснення
+C007 | quality by depth —has_example→ QD < 2 | [L007] автоперевірка: E5
+C011 | rank sum test —applies_to→ allele | [L011] rank sum test applies_to allele: тест порівнює якості вирівнювання ридів (mapping quality), а allele — лише умова порівняння
+C012 | variant calling —produces→ VCF file | [L012] evidence описує інструмент GenotypeGVCFs, а не виклик варіантів як процедуру загалом
+C016 | strand odds ratio —has_example→ SOR > 3 | [L016] автоперевірка: E5
+C017 | mapping quality —has_example→ MQ < 40 | [L017] автоперевірка: E5
+C018 | Fisher strand bias —has_example→ FS > 60 | [L018] автоперевірка: E5
+C020 | hard filtering —applies_to→ germline variant | [L020] слабка підстава: evidence — лише заголовок статті «Hard-filtering germline short variants»
+C033 | cascade testing —detects→ BRCA1 | [L033] cascade testing detects BRCA1: шукають варіанти в гені, а не сам ген (змішування гена та варіанта в ньому)
+C034 | cascade testing —detects→ BRCA2 | [L034] те саме для BRCA2
+C038 | genetic testing —detects→ BRCA1 | [L038] genetic testing detects BRCA1: об'єкт має бути pathogenic variant у BRCA1
+C039 | genetic testing —detects→ BRCA2 | [L039] те саме для BRCA2
+C041 | genetic counseling —produces→ risk assessment | [L041] автоперевірка: E3
+Таблиця 20 — Твердження, що очікують перевірки
+id | Pending | Коментар
+C052 | FS > 200 для INDEL | значення з коментаря; перевірити за офіційною документацією GATK (потрібен V4)
+C053 | Карта «колеги» (запуск LLM) точніша за LLM-триплети за рубрикою | два незалежні запуски дали однаковий порядок; це не людська оцінка
+C054 | Визначення 121 терміна таксономії (ЛР5) коректні | визначення згенеровано/відредаговано з участю LLM; потрібна перевірка студентом за MeSH/EDAM
+Джерела: GATK Team (Broad Institute), «Hard-filtering germline short variants» (текст у sources/gatk_hard_filtering.txt); CDC, «Cascade testing / family testing for hereditary cancer» (sources/cdc_cascade_testing.txt); Novak J.D., Cañas A.J. «The Theory Underlying Concept Maps and How to Construct and Use Them» (методика карт; з пам'яті, не перевірялося повторно); таксономія й CQ — власні ЛР4–ЛР5.
+8. Відповіді на контрольні питання
+Концептуальна карта проти mind map: карта Новака — мережа понять із підписаними зв'язками-пропозиціями (дієслівними), ієрархією та крос-зв'язками між гілками; mind map — дерево навколо одного центру з асоціаціями без типізованих зв'язків.
+Роль фокусного питання: воно задає межі карти (що включати, що ні), відбирає поняття для parking lot і визначає, чи є карта корисною — її перевіряють через CQ.
+Відношення в каталозі: 12 типів із визначеннями й domain/range за типами ЛР5 — щоб зв'язки були однозначні, придатні до автоперевірки, а «related to» не маскував невизначеність. Обрані за двома кластерами (контроль якості, клінічне тестування) і міжкластерними зв'язками.
+Помилки LLM у триплетах: літерали замість понять (E5, причина — приклад у моїй підказці), порушення range (E3), змішування гена й варіанта (E7), неточний об'єкт (E8), слабка підстава (E9); 100% цитат знайдено, але лише 71% триплетів змістовно підтримано.
+Що змінилось у v2 і чому: прибрано хибні is_a (рак → спадковий рак), симетризовано BRCA1/2, додано ієрархію родичів і ймовірності, нетривіальні передумови VQSR, правило екзонного кінця, пороги й правила рішення, злито 9 перевірених триплетів — відповідно до зауважень оцінювачів (таблиця 15).
+9. Обмеження
+«Колега» й оцінювачі — LLM, а не люди; узгодженість завищена; потрібні реальна карта колеги й оцінка людини.
+Визначення понять — чернетки LLM із ЛР5; не перевірено людиною. Жодне твердження не має рівня V4.
+Precision/recall відносно експертної карти занижені (неповний еталон).
+FS > 200 для INDEL — з коментаря читача; потребує перевірки в документації GATK.
+Дослівний текст підказки для витягу триплетів не збережено — відновлено структуру.
+Дві карти (v1 і v2) великі; PNG розділено на частини для звіту; draw.io-файл придатний для редагування.
+Навчальна карта, не для клінічного використання.
+10. Запуск з нуля
+pip install -r requirements.txt          # Python 3.13, Graphviz `dot` у PATH python scripts/build_expert_map.py python scripts/check_triples.py --write python scripts/draw_triples_graph.py python scripts/eval_maps.py python scripts/build_v2.py python scripts/build_rubric_xlsx.py python scripts/build_claims.py python -m pytest -v        # 8 passed
