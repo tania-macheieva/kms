@@ -1,0 +1,2 @@
+{"proposal": "P1b10a8a7", "subject": "BRCA1", "predicate": "alias", "value": "RNF53", "source": "gatk_readme#h001", "accepted_at": "2026-11-07T18:37:15+00:00", "note": "staging only, not merged into the Hub"}
+{"proposal": "P49e020dc", "subject": "HF-01", "predicate": "note", "value": "Hard filtering is a fallback when VQSR is not applicable", "source": "https://gatk.broadinstitute.org/hc/en-us/articles/360035531112", "accepted_at": "2026-11-07T18:37:15+00:00", "note": "staging only, not merged into the Hub"}

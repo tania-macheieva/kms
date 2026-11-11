@@ -1,0 +1,112 @@
+# Semantic layer for the variant-calling warehouse. One definition per metric; SQL is generated from it (semantic/sl.py).
+version: 1.0
+reviewed: 2026-11-02
+reviewer: pending - draft prepared with LLM assistance, student review required (status draft metrics)
+status_values: [draft, approved, deprecated]
+
+facts:
+  call:   {table: fact_variant_call, alias: f, grain: "one called variant"}
+  pipe_day: {table: fact_pipeline_day, alias: f, grain: "one pipeline version per calendar day"}
+
+dimensions:                       # name -> join + column; 'facts' = which facts can use it
+  year:         {facts: [call, pipe_day], join: "JOIN dim_date d ON d.date_key = f.date_key", column: "d.year"}
+  quarter:      {facts: [call, pipe_day], join: "JOIN dim_date d ON d.date_key = f.date_key", column: "d.quarter"}
+  month:        {facts: [call, pipe_day], join: "JOIN dim_date d ON d.date_key = f.date_key", column: "d.month"}
+  is_weekend:   {facts: [call, pipe_day], join: "JOIN dim_date d ON d.date_key = f.date_key", column: "d.is_weekend"}
+  family:       {facts: [call, pipe_day], join: "JOIN dim_pipeline p ON p.pipeline_key = f.pipeline_key", column: "p.family"}
+  version:      {facts: [call, pipe_day], join: "JOIN dim_pipeline p ON p.pipeline_key = f.pipeline_key", column: "p.version"}
+  gene:         {facts: [call], join: "JOIN dim_gene g ON g.gene_key = f.gene_key", column: "g.gene_symbol"}
+  chromosome:   {facts: [call], join: "JOIN dim_gene g ON g.gene_key = f.gene_key", column: "g.chromosome"}
+  cohort:       {facts: [call], join: "JOIN dim_sample s ON s.sample_key = f.sample_key", column: "s.cohort"}
+  tissue:       {facts: [call], join: "JOIN dim_sample s ON s.sample_key = f.sample_key", column: "s.tissue"}
+  qc_status:    {facts: [call], join: "JOIN dim_sample s ON s.sample_key = f.sample_key", column: "s.qc_status"}
+  variant_type: {facts: [call], join: "JOIN dim_taxon vt ON vt.taxon_key = f.variant_type_key", column: "vt.label", taxonomy_role: "branch C022 genetic variant"}
+  origin:       {facts: [call], join: "JOIN dim_taxon og ON og.taxon_key = f.origin_key", column: "og.label", taxonomy_role: "branch C029 Variant by origin"}
+  significance: {facts: [call], join: "JOIN dim_taxon sg ON sg.taxon_key = f.significance_key", column: "sg.label", taxonomy_role: "branch C032 Variant by clinical significance"}
+
+metrics:
+  call_count:
+    label: Variant calls
+    definition: Number of called variants (rows of the fact at the grain "one call").
+    fact: call
+    expression: "count(*)"
+    unit: calls
+    owner: bioinformatics lead
+    sources: [fact_variant_call]
+    additivity: additive
+    limitations: Counts calls, not distinct variants or samples; the same variant in two samples is two calls. Rejected rows (quarantine) are not included.
+    status: approved
+    reviewed: 2026-11-02
+  pass_rate:
+    label: Pass rate
+    definition: Share of calls that passed the pipeline filter.
+    fact: call
+    expression: "round(100.0 * sum(f.is_pass) / count(*), 1)"
+    unit: "%"
+    owner: bioinformatics lead
+    sources: [fact_variant_call.is_pass]
+    additivity: non-additive (ratio of two additive sums)
+    limitations: Ratio of sums, never an average of group percentages. is_pass is a simplified flag (quality >= 30 and depth >= 10 in the synthetic data), not a clinical validation.
+    status: approved
+    reviewed: 2026-11-02
+  avg_qual:
+    label: Average call quality (QUAL)
+    definition: Mean QUAL over the calls in the group.
+    fact: call
+    expression: "round(avg(f.qual), 1)"
+    unit: Phred-like score
+    owner: bioinformatics lead
+    sources: [fact_variant_call.qual]
+    additivity: non-additive
+    limitations: Not comparable between callers (different QUAL calibration); mean of calls, not mean of monthly means.
+    status: approved
+    reviewed: 2026-11-02
+  review_min_per_call:
+    label: Review minutes per call
+    definition: Manual review time divided by the number of calls.
+    fact: call
+    expression: "round(sum(f.review_minutes) / count(*), 2)"
+    unit: minutes per call
+    owner: lab operations
+    sources: [fact_variant_call.review_minutes]
+    additivity: non-additive (ratio)
+    limitations: Only pathogenic and uncertain calls are reviewed, the denominator includes all calls; time is self-reported in the synthetic data.
+    status: draft
+    reviewed: 2026-11-02
+  pathogenic_share:
+    label: Pathogenic share
+    definition: Share of calls whose clinical significance is the taxonomy concept 'pathogenic variant' (C033).
+    fact: call
+    expression: "round(100.0 * sum(CASE WHEN sg_p.notation = 'C033' THEN 1 ELSE 0 END) / count(*), 1)"
+    extra_join: "JOIN dim_taxon sg_p ON sg_p.taxon_key = f.significance_key"
+    unit: "%"
+    owner: clinical geneticist
+    sources: [fact_variant_call.significance_key, dim_taxon (IRI .../C033)]
+    additivity: non-additive (ratio)
+    limitations: Classification is from the generator, not an ACMG assessment; do not use for any clinical decision.
+    status: draft
+    reviewed: 2026-11-02
+  cpu_hours:
+    label: CPU hours
+    definition: Compute time consumed by pipeline runs.
+    fact: pipe_day
+    expression: "round(sum(f.cpu_hours), 1)"
+    unit: hours
+    owner: IT operations
+    sources: [fact_pipeline_day.cpu_hours]
+    additivity: additive
+    limitations: Synthetic estimate; only the 4 pipeline families.
+    status: approved
+    reviewed: 2026-11-02
+  avg_daily_backlog:
+    label: Average daily queue backlog
+    definition: Queue backlog summed over the pipelines in a day, averaged over the days of the period.
+    fact: pipe_day
+    expression: "round(sum(f.queue_backlog) / count(DISTINCT f.date_key), 1)"
+    unit: jobs
+    owner: IT operations
+    sources: [fact_pipeline_day.queue_backlog]
+    additivity: semi-additive (sum across pipelines, average across time)
+    limitations: Must not be summed over days; if a family is filtered out the value is the backlog of the remaining families.
+    status: approved
+    reviewed: 2026-11-02

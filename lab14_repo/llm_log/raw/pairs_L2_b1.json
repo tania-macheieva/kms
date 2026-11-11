@@ -1,0 +1,202 @@
+[
+ {
+  "pair_id": "PR001",
+  "label": "RELATED",
+  "reason": "Same S-template query; different situation (S06 minor relative vs S02 high FS), guard class, individuals and actions."
+ },
+ {
+  "pair_id": "PR002",
+  "label": "RELATED",
+  "reason": "Both describe bcftools stats and the same single-file stats list; Sarek adds output files, manual adds options and two-file concordance."
+ },
+ {
+  "pair_id": "PR003",
+  "label": "DUP",
+  "reason": "Identical -resume text in sarek and raredisease usage docs; only heading level differs."
+ },
+ {
+  "pair_id": "PR004",
+  "label": "RELATED",
+  "reason": "Share -W write-index option text; A also has INFO names and -v, B has no-version, output and threads options."
+ },
+ {
+  "pair_id": "PR005",
+  "label": "RELATED",
+  "reason": "Same tool-section template; Parabricks DeepSomatic/DeepVariant versus plain DeepSomatic with gVCF output and different directory."
+ },
+ {
+  "pair_id": "PR006",
+  "label": "RELATED",
+  "reason": "Same profile list; B additionally has gpu profile, and Nextflow version formatting differs slightly."
+ },
+ {
+  "pair_id": "PR007",
+  "label": "DISTINCT",
+  "reason": "Sentieon TNscope and Strelka outputs versus Manta; different tools and files."
+ },
+ {
+  "pair_id": "PR008",
+  "label": "RELATED",
+  "reason": "Same boilerplate 'see parameter description above' but different WDL scripts and parameter lists."
+ },
+ {
+  "pair_id": "PR009",
+  "label": "DISTINCT",
+  "reason": "--transcript-list versus --annotation-default; different parameters and examples."
+ },
+ {
+  "pair_id": "PR010",
+  "label": "RELATED",
+  "reason": "Same -c text and resource paragraph; A adds NXF_OPTS memory section, and final link wording differs."
+ },
+ {
+  "pair_id": "PR011",
+  "label": "DISTINCT",
+  "reason": "Different rows of the reference checksum table (contigs 16-22/Y/MT versus unplaced scaffolds)."
+ },
+ {
+  "pair_id": "PR012",
+  "label": "DISTINCT",
+  "reason": "Sentieon Haplotyper outputs versus germline VCF concatenation with bcftools concat."
+ },
+ {
+  "pair_id": "PR013",
+  "label": "RELATED",
+  "reason": "Parallel joint germline calling templates; Sentieon GVCFtyper/VarCal versus GATK GenomicsDB/VQSR with different directories."
+ },
+ {
+  "pair_id": "PR014",
+  "label": "DISTINCT",
+  "reason": "proteinChange field spec versus end of previous field and codonChange spec."
+ },
+ {
+  "pair_id": "PR015",
+  "label": "DISTINCT",
+  "reason": "BAM-input samplesheet columns versus fastq/spring columns and multi-run example; only shared field rows overlap."
+ },
+ {
+  "pair_id": "PR016",
+  "label": "RELATED",
+  "reason": "Same config snippet; A sets contig_column = 1 and start_column = 2, B leaves them empty."
+ },
+ {
+  "pair_id": "PR017",
+  "label": "RELATED",
+  "reason": "Same resource-request text; B adds -c section and NXF_OPTS memory note, and section link wording differs."
+ },
+ {
+  "pair_id": "PR018",
+  "label": "DISTINCT",
+  "reason": "bcftools isec options versus bcftools consensus description and options."
+ },
+ {
+  "pair_id": "PR019",
+  "label": "DISTINCT",
+  "reason": "Different gnomAD AF annotation field lists (nfe_nwe..sas versus eas_jpn..nfe_male)."
+ },
+ {
+  "pair_id": "PR020",
+  "label": "RELATED",
+  "reason": "Same aligner template; BWA-MEME vs Bwa-mem2/BWA, with different aligner-selection statements."
+ },
+ {
+  "pair_id": "PR021",
+  "label": "DUP",
+  "reason": "Same nf-core/configs text; only trivial wording 'please can you test' differs."
+ },
+ {
+  "pair_id": "PR022",
+  "label": "RELATED",
+  "reason": "Both VCF input options lists of bcftools; A has samples options, B has different -t/-T wording and no samples or write-index."
+ },
+ {
+  "pair_id": "PR023",
+  "label": "RELATED",
+  "reason": "Same Full samplesheet text with different file names; follow-on sections differ (prepare_recalibration vs recalibrate)."
+ },
+ {
+  "pair_id": "PR024",
+  "label": "RELATED",
+  "reason": "Same S-template query; different situation (S04 small panel vs S02 high FS) with different results."
+ },
+ {
+  "pair_id": "PR025",
+  "label": "RELATED",
+  "reason": "Same samplesheet template; recalibrate step full samplesheet with table column versus md files, different following steps."
+ },
+ {
+  "pair_id": "PR026",
+  "label": "DISTINCT",
+  "reason": "bcftools index options versus bcftools head options."
+ },
+ {
+  "pair_id": "PR027",
+  "label": "DISTINCT",
+  "reason": "Different portions of nf-test pipeline log output; B includes completion summary."
+ },
+ {
+  "pair_id": "PR028",
+  "label": "RELATED",
+  "reason": "B's container citations nearly the same as A's, but A also has R package citations; Docker year formatting differs."
+ },
+ {
+  "pair_id": "PR029",
+  "label": "DISTINCT",
+  "reason": "bcftools norm options versus bcftools view subset options."
+ },
+ {
+  "pair_id": "PR030",
+  "label": "RELATED",
+  "reason": "Both explain BAM/CRAM saving with --save_mapped and --save_output_as_bam; Parabricks FQ2BAM versus Sentieon BWA mem details."
+ },
+ {
+  "pair_id": "PR031",
+  "label": "RELATED",
+  "reason": "Docker build script boilerplate; A uses GITHUB_TAG and GCR build, B uses GITHUB_HASH and dockerhub-prohibited build."
+ },
+ {
+  "pair_id": "PR032",
+  "label": "RELATED",
+  "reason": "Same annotation-section template; snpEff versus BCFtools annotate with different descriptions and filenames."
+ },
+ {
+  "pair_id": "PR033",
+  "label": "DISTINCT",
+  "reason": "bcftools call file format options versus bcftools view filter options."
+ },
+ {
+  "pair_id": "PR034",
+  "label": "DUP",
+  "reason": "Same nf-core and Nextflow citations; only bullet formatting and headings differ."
+ },
+ {
+  "pair_id": "PR035",
+  "label": "RELATED",
+  "reason": "Both contain regions/targets and -W option; A has isec -w/-W text, B has VCF output options with different -W wording."
+ },
+ {
+  "pair_id": "PR036",
+  "label": "DUP",
+  "reason": "Identical Custom Containers text in both docs."
+ },
+ {
+  "pair_id": "PR037",
+  "label": "DISTINCT",
+  "reason": "Different table rows of unplaced scaffolds; B also has explanatory text about sequence differences."
+ },
+ {
+  "pair_id": "PR038",
+  "label": "DISTINCT",
+  "reason": "bcftools view output options versus bcftools roh general options."
+ },
+ {
+  "pair_id": "PR039",
+  "label": "RELATED",
+  "reason": "Same alignment publishing template; Picard MarkDuplicates versus Sentieon Dedup, different tool, aligners and metrics file."
+ },
+ {
+  "pair_id": "PR040",
+  "label": "DISTINCT",
+  "reason": "samtools stats alignment report versus bcftools variant calling output."
+ }
+]

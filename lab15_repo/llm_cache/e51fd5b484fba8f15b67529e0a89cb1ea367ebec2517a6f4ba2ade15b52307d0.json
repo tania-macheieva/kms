@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\":[{\"tool\":\"search_docs\",\"args\":{\"query\":\"official helper installation setup steps\",\"k\":4}}],\"continue\":false,\"reason\":\"Only documented installation steps can be cited; the external URL is not in the corpus and is not presented as official.\"}"}

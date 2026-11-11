@@ -1,0 +1,151 @@
+{
+ "judge_pairs": [
+  {
+   "pair_id": "JP001",
+   "a": "sarek_usage#h017",
+   "b": "rare_usage#h029",
+   "score": 0.9198
+  },
+  {
+   "pair_id": "JP002",
+   "a": "sarek_usage#h019",
+   "b": "rare_usage#h032",
+   "score": 0.967
+  },
+  {
+   "pair_id": "JP003",
+   "a": "sarek_usage#h024",
+   "b": "rare_usage#h037",
+   "score": 0.981
+  },
+  {
+   "pair_id": "JP004",
+   "a": "sarek_usage#h025",
+   "b": "rare_usage#h039",
+   "score": 0.9889
+  },
+  {
+   "pair_id": "JP005",
+   "a": "sarek_usage#h026",
+   "b": "rare_usage#h034",
+   "score": 0.9465
+  },
+  {
+   "pair_id": "JP006",
+   "a": "sarek_usage#h029",
+   "b": "rare_usage#h037",
+   "score": 0.9811
+  },
+  {
+   "pair_id": "JP007",
+   "a": "sarek_output#h074",
+   "b": "rare_output#h014",
+   "score": 0.9649
+  },
+  {
+   "pair_id": "JP008",
+   "a": "sarek_citations#h002",
+   "b": "rare_citations#h000",
+   "score": 0.975
+  },
+  {
+   "pair_id": "JP009",
+   "a": "sarek_citations#h009",
+   "b": "rare_citations#h005",
+   "score": 0.9385
+  },
+  {
+   "pair_id": "JP010",
+   "a": "rare_output#h002",
+   "b": "rare_output#h003",
+   "score": 0.907
+  },
+  {
+   "pair_id": "JP011",
+   "a": "rare_output#h023",
+   "b": "rare_output#h032",
+   "score": 0.9731
+  },
+  {
+   "pair_id": "JP012",
+   "a": "bcftools_manual#h037",
+   "b": "bcftools_manual#h096",
+   "score": 0.9042
+  },
+  {
+   "pair_id": "JP013",
+   "a": "gatk_mutect2_wdl#h002",
+   "b": "gatk_funcotator_wdl#h000",
+   "score": 0.9524
+  },
+  {
+   "pair_id": "JP014",
+   "a": "gatk_funco_tutorial#h015",
+   "b": "gatk_funco_tutorial#h019",
+   "score": 0.9388
+  },
+  {
+   "pair_id": "JP015",
+   "a": "gatk_funco_tutorial#h016",
+   "b": "gatk_funco_tutorial#h020",
+   "score": 0.9932
+  },
+  {
+   "pair_id": "JP016",
+   "a": "int_reasoner#h004",
+   "b": "int_reasoner#h005",
+   "score": 0.9313
+  }
+ ],
+ "exact_text_rule": [
+  [
+   "sarek_usage#h018",
+   "rare_usage#h031"
+  ],
+  [
+   "sarek_usage#h020",
+   "rare_usage#h033"
+  ],
+  [
+   "sarek_usage#h022",
+   "sarek_usage#h027"
+  ],
+  [
+   "sarek_usage#h022",
+   "rare_usage#h035"
+  ],
+  [
+   "sarek_usage#h023",
+   "sarek_usage#h028"
+  ],
+  [
+   "sarek_usage#h023",
+   "rare_usage#h036"
+  ],
+  [
+   "sarek_usage#h024",
+   "sarek_usage#h029"
+  ],
+  [
+   "sarek_usage#h027",
+   "rare_usage#h035"
+  ],
+  [
+   "sarek_usage#h028",
+   "rare_usage#h036"
+  ],
+  [
+   "sarek_output#h000",
+   "rare_output#h000"
+  ],
+  [
+   "rare_output#h024",
+   "rare_output#h033"
+  ],
+  [
+   "gatk_funco_tutorial#h027",
+   "gatk_funco_spec#h001"
+  ]
+ ],
+ "sensitivity_blocked": []
+}

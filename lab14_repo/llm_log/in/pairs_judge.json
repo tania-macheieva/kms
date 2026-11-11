@@ -1,0 +1,274 @@
+[
+{
+"pair_id": "JP001",
+"a": "sarek_usage#h017",
+"b": "rare_usage#h029",
+"A": {
+"id": "sarek_usage#h017",
+"doc": "sarek_usage",
+"section": "Other nextflow hidden files, eg. history of pipeline runs and old logs. > Reproducibility",
+"text": "Introduction — Other nextflow hidden files, eg. history of pipeline runs and old logs. > Reproducibility\n## Reproducibility\n\nIt is a good idea to specify the pipeline version when running the pipeline on your data. This ensures that a specific version of the pipeline code and software are used when you run your pipeline. If you keep using the same tag, you'll be running the same version of the pipeline, even if there have been changes to the code since.\n\nFirst, go to the nf-core/sarek releases page and find the latest version number - numeric only (eg. `3.3.2`).\nThen specify this when running the pipeline with `-r` (one hyphen) - eg. `-r 3.3.2`. Of course, you can switch to another version by changing the number after the `-r` flag.\n\nThis version number will be logged in reports when you run the pipeline, so that you'll know what you used when you look back in the future. For example, at the bottom of the MultiQC reports.\n\nTo further assist in reproducibility, you can use share and reuse parameter files to repeat pipeline runs with the same settings without having to write out a command with every single parameter.\nTIP:\nIf you wish to share such profile (such as upload as supplementary material for academic publications), make sure to NOT include cluster specific paths to files, nor institutional specific profiles."
+},
+"B": {
+"id": "rare_usage#h029",
+"doc": "rare_usage",
+"section": "Other Nextflow hidden files, like history of pipeline logs. > Best practices",
+"text": "nf-core/raredisease: Usage — Other Nextflow hidden files, like history of pipeline logs. > Best practices\n- **Reproducibility:** Specify a pipeline version when running the pipeline on your data. This ensures that a specific version of the pipeline code and software are used when you run your pipeline. If you keep using the same tag, you'll be running the same version of the pipeline, even if there have been changes to the code since. First, go to the nf-core/raredisease releases page and find the latest pipeline version - numeric only (e.g. `1.3.1`). Then specify this when running the pipeline with `-r`, for example, `-r 1.3.1`. You can switch to another version by changing the number after the `-r` flag. The version number will be logged in reports when you run the pipeline. For example, you can view the version number at the bottom of the MultiQC reports.\n\nTo further assist in reproducibility, you can use share and reuse parameter files to repeat pipeline runs with the same settings without having to write out a command with every single parameter.\nTIP:\nIf you wish to share such profile (such as upload as supplementary material for academic publications), make sure to NOT include cluster specific paths to files, nor institutional specific profiles."
+}
+},
+{
+"pair_id": "JP002",
+"a": "sarek_usage#h019",
+"b": "rare_usage#h032",
+"A": {
+"id": "sarek_usage#h019",
+"doc": "sarek_usage",
+"section": "Core Nextflow arguments",
+"text": "Introduction — Core Nextflow arguments\n- `test`\n - A profile with a complete configuration for automated testing\n - Includes links to test data so needs no other parameters\n- `docker`\n - A generic configuration profile to be used with Docker\n- `singularity`\n - A generic configuration profile to be used with Singularity\n- `podman`\n - A generic configuration profile to be used with Podman\n- `shifter`\n - A generic configuration profile to be used with Shifter\n- `charliecloud`\n - A generic configuration profile to be used with Charliecloud\n- `apptainer`\n - A generic configuration profile to be used with Apptainer\n- `wave`\n - A generic configuration profile to enable Wave containers. Use together with one of the above (requires Nextflow `24.03.0-edge` or later).\n- `conda`\n - A generic configuration profile to be used with Conda. Please only use Conda as a last resort i.e. when it's not possible to run the pipeline with Docker, Singularity, Podman, Shifter, Charliecloud, or Apptainer.\n- `gpu`\n - A generic configuration profile which adds necessary flags to `docker` and `singularity` profiles."
+},
+"B": {
+"id": "rare_usage#h032",
+"doc": "rare_usage",
+"section": "Other Nextflow hidden files, like history of pipeline logs. > Core Nextflow arguments",
+"text": "nf-core/raredisease: Usage — Other Nextflow hidden files, like history of pipeline logs. > Core Nextflow arguments\n- `test`\n - A profile with a complete configuration for automated testing\n - Includes links to test data so needs no other parameters\n- `docker`\n - A generic configuration profile to be used with Docker\n- `singularity`\n - A generic configuration profile to be used with Singularity\n- `podman`\n - A generic configuration profile to be used with Podman\n- `shifter`\n - A generic configuration profile to be used with Shifter\n- `charliecloud`\n - A generic configuration profile to be used with Charliecloud\n- `apptainer`\n - A generic configuration profile to be used with Apptainer\n- `wave`\n - A generic configuration profile to enable Wave containers. Use together with one of the above (requires Nextflow ` 24.03.0-edge` or later).\n- `conda`\n - A generic configuration profile to be used with Conda. Please only use Conda as a last resort i.e. when it's not possible to run the pipeline with Docker, Singularity, Podman, Shifter, Charliecloud, or Apptainer."
+}
+},
+{
+"pair_id": "JP003",
+"a": "sarek_usage#h024",
+"b": "rare_usage#h037",
+"A": {
+"id": "sarek_usage#h024",
+"doc": "sarek_usage",
+"section": "Core Nextflow arguments > Nextflow memory requirements > nf-core/configs",
+"text": "Introduction — Core Nextflow arguments > Nextflow memory requirements > nf-core/configs\n### nf-core/configs\n\nIn most cases, you will only need to create a custom config as a one-off but if you and others within your organisation are likely to be running nf-core pipelines regularly and need to use the same settings regularly it may be a good idea to request that your custom config file is uploaded to the `nf-core/configs` git repository. Before you do this please can you test that the config file works with your pipeline of choice using the `-c` parameter. You can then create a pull request to the `nf-core/configs` repository with the addition of your config file, associated documentation file (see examples in `nf-core/configs/docs`), and amending `nfcore_custom.config` to include your custom profile.\n\nSee the main Nextflow documentation for more information about creating your own configuration files.\n\nIf you have any questions or issues please send us a message on Slack on the `#configs` channel."
+},
+"B": {
+"id": "rare_usage#h037",
+"doc": "rare_usage",
+"section": "Other Nextflow hidden files, like history of pipeline logs. > Core Nextflow arguments > Custom Tool Arguments > nf-core/configs",
+"text": "nf-core/raredisease: Usage — Other Nextflow hidden files, like history of pipeline logs. > Core Nextflow arguments > Custom Tool Arguments > nf-core/configs\n#### nf-core/configs\n\nIn most cases, you will only need to create a custom config as a one-off but if you and others within your organisation are likely to be running nf-core pipelines regularly and need to use the same settings regularly it may be a good idea to request that your custom config file is uploaded to the `nf-core/configs` git repository. Before you do this test that the config file works with your pipeline of choice using the `-c` parameter. You can then create a pull request to the `nf-core/configs` repository with the addition of your config file, associated documentation file (see examples in `nf-core/configs/docs`), and amending `nfcore_custom.config` to include your custom profile.\n\nSee the main Nextflow documentation for more information about creating your own configuration files.\n\nIf you have any questions or issues please send us a message on Slack on the `#configs` channel."
+}
+},
+{
+"pair_id": "JP004",
+"a": "sarek_usage#h025",
+"b": "rare_usage#h039",
+"A": {
+"id": "sarek_usage#h025",
+"doc": "sarek_usage",
+"section": "Core Nextflow arguments > Running in the background",
+"text": "Introduction — Core Nextflow arguments > Running in the background\n## Running in the background\n\nNextflow handles job submissions and supervises the running jobs. The Nextflow process must run until the pipeline is finished.\n\nThe Nextflow `-bg` flag launches Nextflow in the background, detached from your terminal so that the workflow does not stop if you log out of your session. The logs are saved to a file.\n\nAlternatively, you can use `screen` / `tmux` or similar tool to create a detached session which you can log back into at a later time.\nSome HPC setups also allow you to run nextflow within a cluster job submitted your job scheduler (from where it submits more jobs)."
+},
+"B": {
+"id": "rare_usage#h039",
+"doc": "rare_usage",
+"section": "Other Nextflow hidden files, like history of pipeline logs. > Core Nextflow arguments > Running in the background",
+"text": "nf-core/raredisease: Usage — Other Nextflow hidden files, like history of pipeline logs. > Core Nextflow arguments > Running in the background\n### Running in the background\n\nNextflow handles job submissions and supervises the running jobs. The Nextflow process must run until the pipeline is finished.\n\nThe Nextflow `-bg` flag launches Nextflow in the background, detached from your terminal so that the workflow does not stop if you log out of your session. The logs are saved to a file.\n\nAlternatively, you can use `screen` / `tmux` or similar tool to create a detached session which you can log back into at a later time.\nSome HPC setups also allow you to run Nextflow within a cluster job submitted to your job scheduler (from where it submits more jobs)."
+}
+},
+{
+"pair_id": "JP005",
+"a": "sarek_usage#h026",
+"b": "rare_usage#h034",
+"A": {
+"id": "sarek_usage#h026",
+"doc": "sarek_usage",
+"section": "Core Nextflow arguments > Resource requests",
+"text": "Introduction — Core Nextflow arguments > Resource requests\n## Resource requests\n\nWhilst the default requirements set within the pipeline will hopefully work for most people and with most input data, you may find that you want to customise the compute resources that the pipeline requests. Each step in the pipeline has a default set of requirements for number of CPUs, memory and time. For most of the pipeline steps, if the job exits with any of the error codes specified here it will automatically be resubmitted with higher resources request (2 x original, then 3 x original). If it still fails after the third attempt then the pipeline execution is stopped.\n\nTo change the resource requests, please see the max resources and tuning workflow resources section of the nf-core website."
+},
+"B": {
+"id": "rare_usage#h034",
+"doc": "rare_usage",
+"section": "Other Nextflow hidden files, like history of pipeline logs. > Core Nextflow arguments > `-c`",
+"text": "nf-core/raredisease: Usage — Other Nextflow hidden files, like history of pipeline logs. > Core Nextflow arguments > `-c`\n### `-c`\n\nSpecify the path to a specific config file (this is a core Nextflow command). See the nf-core website documentation for more information.\n\n\n### Resource requests\n\nWhilst the default requirements set within the pipeline will hopefully work for most people and with most input data, you may find that you want to customise the compute resources that the pipeline requests. Each step in the pipeline has a default set of requirements for number of CPUs, memory and time. For most of the pipeline steps, if the job exits with any of the error codes specified here it will automatically be resubmitted with higher resources request (2 x original, then 3 x original). If it still fails after the third attempt then the pipeline execution is stopped.\n\nTo change the resource requests, please see the max resources and tuning workflow resources section of the nf-core website."
+}
+},
+{
+"pair_id": "JP006",
+"a": "sarek_usage#h029",
+"b": "rare_usage#h037",
+"A": {
+"id": "sarek_usage#h029",
+"doc": "sarek_usage",
+"section": "Core Nextflow arguments > nf-core/configs",
+"text": "Introduction — Core Nextflow arguments > nf-core/configs\n## nf-core/configs\n\nIn most cases, you will only need to create a custom config as a one-off but if you and others within your organisation are likely to be running nf-core pipelines regularly and need to use the same settings regularly it may be a good idea to request that your custom config file is uploaded to the `nf-core/configs` git repository. Before you do this please can you test that the config file works with your pipeline of choice using the `-c` parameter. You can then create a pull request to the `nf-core/configs` repository with the addition of your config file, associated documentation file (see examples in `nf-core/configs/docs`), and amending `nfcore_custom.config` to include your custom profile.\n\nSee the main Nextflow documentation for more information about creating your own configuration files.\n\nIf you have any questions or issues please send us a message on Slack on the `#configs` channel."
+},
+"B": {
+"id": "rare_usage#h037",
+"doc": "rare_usage",
+"section": "Other Nextflow hidden files, like history of pipeline logs. > Core Nextflow arguments > Custom Tool Arguments > nf-core/configs",
+"text": "nf-core/raredisease: Usage — Other Nextflow hidden files, like history of pipeline logs. > Core Nextflow arguments > Custom Tool Arguments > nf-core/configs\n#### nf-core/configs\n\nIn most cases, you will only need to create a custom config as a one-off but if you and others within your organisation are likely to be running nf-core pipelines regularly and need to use the same settings regularly it may be a good idea to request that your custom config file is uploaded to the `nf-core/configs` git repository. Before you do this test that the config file works with your pipeline of choice using the `-c` parameter. You can then create a pull request to the `nf-core/configs` repository with the addition of your config file, associated documentation file (see examples in `nf-core/configs/docs`), and amending `nfcore_custom.config` to include your custom profile.\n\nSee the main Nextflow documentation for more information about creating your own configuration files.\n\nIf you have any questions or issues please send us a message on Slack on the `#configs` channel."
+}
+},
+{
+"pair_id": "JP007",
+"a": "sarek_output#h074",
+"b": "rare_output#h014",
+"A": {
+"id": "sarek_output#h074",
+"doc": "sarek_output",
+"section": "Variant annotation > BCFtools annotate > MultiQC",
+"text": "sarek_output — Variant annotation > BCFtools annotate > MultiQC\n#### MultiQC\n\nMultiQC is a visualization tool that generates a single HTML report summarizing all samples in your project.\nMost of the pipeline QC results are visualised in the report and further statistics are available in the report data directory.\nResults generated by MultiQC collect pipeline QC from supported tools e.g. FastQC. The pipeline has special steps which also allow the software versions to be reported in the MultiQC output for future traceability. For more information about how to use MultiQC reports, see <http://multiqc.info>.\n\n Output files\n\n- `multiqc/`\n - `multiqc_report.html`: a standalone HTML file that can be viewed in your web browser.\n - `multiqc_data/`: directory containing parsed statistics from the different tools used in the pipeline.\n - `multiqc_plots/`: directory containing static images from the report in various formats."
+},
+"B": {
+"id": "rare_output#h014",
+"doc": "rare_output",
+"section": "Pipeline overview > Subsample mitochondrial alignments > MultiQC",
+"text": "rare_output — Pipeline overview > Subsample mitochondrial alignments > MultiQC\n##### MultiQC\n\nMultiQC is a visualization tool that generates a single HTML report summarising all samples in your project. Most of the pipeline QC results are visualised in the report and further statistics are available in the report data directory.\n\nResults generated by MultiQC collate pipeline QC from supported tools e.g. FastQC. The pipeline has special steps which also allow the software versions to be reported in the MultiQC output for future traceability. For more information about how to use MultiQC reports, see <http://multiqc.info>.\n\n Output files\n\n- `multiqc/`\n - `multiqc_report.html`: a standalone HTML file that can be viewed in your web browser.\n - `multiqc_data/`: directory containing parsed statistics from the different tools used in the pipeline.\n - `multiqc_plots/`: directory containing static images from the report in various formats."
+}
+},
+{
+"pair_id": "JP008",
+"a": "sarek_citations#h002",
+"b": "rare_citations#h000",
+"A": {
+"id": "sarek_citations#h002",
+"doc": "sarek_citations",
+"section": "nf-core",
+"text": "sarek_citations — nf-core\n## nf-core\n\nEwels PA, Peltzer A, Fillinger S, Patel H, Alneberg J, Wilm A, Garcia MU, Di Tommaso P, Nahnsen S. The nf-core framework for community-curated bioinformatics pipelines. Nat Biotechnol. 2020 Mar;38(3):276-278. doi: 10.1038/s41587-020-0439-x. PubMed PMID: 32055031.\n\n## Nextflow\n\nDi Tommaso P, Chatzou M, Floden EW, Barja PP, Palumbo E, Notredame C. Nextflow enables reproducible computational workflows. Nat Biotechnol. 2017 Apr 11;35(4):316-319. doi: 10.1038/nbt.3820. PubMed PMID: 28398311."
+},
+"B": {
+"id": "rare_citations#h000",
+"doc": "rare_citations",
+"section": "Nextflow & nf-core",
+"text": "rare_citations — Nextflow & nf-core\n## Nextflow & nf-core\n\n- nf-core\n\n > Ewels PA, Peltzer A, Fillinger S, Patel H, Alneberg J, Wilm A, Garcia MU, Di Tommaso P, Nahnsen S. The nf-core framework for community-curated bioinformatics pipelines. Nat Biotechnol. 2020 Mar;38(3):276-278. doi: 10.1038/s41587-020-0439-x. PubMed PMID: 32055031.\n\n- Nextflow\n\n > Di Tommaso P, Chatzou M, Floden EW, Barja PP, Palumbo E, Notredame C. Nextflow enables reproducible computational workflows. Nat Biotechnol. 2017 Apr 11;35(4):316-319. doi: 10.1038/nbt.3820. PubMed PMID: 28398311."
+}
+},
+{
+"pair_id": "JP009",
+"a": "sarek_citations#h009",
+"b": "rare_citations#h005",
+"A": {
+"id": "sarek_citations#h009",
+"doc": "sarek_citations",
+"section": "R packages",
+"text": "sarek_citations — R packages\n## R packages\n\n- R\n\n > R Core Team (2017). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.\n\n- RColorBrewer\n\n > Erich Neuwirth (2014). RColorBrewer: ColorBrewer Palettes.\n\n## Software packaging/containerisation tools\n\n- Anaconda\n\n > Anaconda Software Distribution. Computer software. Vers. 2-2.4.0. Anaconda, Nov. 2016. Web.\n\n- Bioconda\n\n > Grüning B, Dale R, Sjödin A, Chapman BA, Rowe J, Tomkins-Tinch CH, Valieris R, Köster J; Bioconda Team. Bioconda: sustainable and comprehensive software distribution for the life sciences. Nat Methods. 2018 Jul;15(7):475-476. doi: 10.1038/s41592-018-0046-7. PubMed PMID: 29967506.\n\n- BioContainers\n\n > da Veiga Leprevost F, Grüning B, Aflitos SA, Röst HL, Uszkoreit J, Barsnes H, Vaudel M, Moreno P, Gatto L, Weber J, Bai M, Jimenez RC, Sachsenberg T, Pfeuffer J, Alvarez RV, Griss J, Nesvizhskii AI, Perez-Riverol Y. BioContainers: an open-source and community-driven framework for software standardization. Bioinformatics. 2017 Aug 15;33(16):2580-2582. doi: 10.1093/bioinformatics/btx192. PubMed PMID: 28379341; PubMed Central PMCID: PMC5870671.\n\n- Docker\n\n > Merkel, D. 2014. Docker: lightweight linux containers for consistent development and deployment. Linux Journal, 2014(239), 2. doi: 10.5555/2600239.2600241.\n\n- Singularity\n\n > Kurtzer GM, Sochat V, Bauer MW. Singularity: Scientific containers for mobility of compute. PLoS One. 2017 May 11;12(5):e0177459. doi: 10.1371/journal.pone.0177459. eCollection 2017. PubMed PMID: 28494014; PubMed Central PMCID: PMC5426675."
+},
+"B": {
+"id": "rare_citations#h005",
+"doc": "rare_citations",
+"section": "Software packaging/containerisation tools",
+"text": "rare_citations — Software packaging/containerisation tools\n## Software packaging/containerisation tools\n\n- Anaconda\n\n > Anaconda Software Distribution. Computer software. Vers. 2-2.4.0. Anaconda, Nov. 2016. Web.\n\n- Bioconda\n\n > Grüning B, Dale R, Sjödin A, Chapman BA, Rowe J, Tomkins-Tinch CH, Valieris R, Köster J; Bioconda Team. Bioconda: sustainable and comprehensive software distribution for the life sciences. Nat Methods. 2018 Jul;15(7):475-476. doi: 10.1038/s41592-018-0046-7. PubMed PMID: 29967506.\n\n- BioContainers\n\n > da Veiga Leprevost F, Grüning B, Aflitos SA, Röst HL, Uszkoreit J, Barsnes H, Vaudel M, Moreno P, Gatto L, Weber J, Bai M, Jimenez RC, Sachsenberg T, Pfeuffer J, Alvarez RV, Griss J, Nesvizhskii AI, Perez-Riverol Y. BioContainers: an open-source and community-driven framework for software standardization. Bioinformatics. 2017 Aug 15;33(16):2580-2582. doi: 10.1093/bioinformatics/btx192. PubMed PMID: 28379341; PubMed Central PMCID: PMC5870671.\n\n- Docker\n\n > Merkel, D. (2014). Docker: lightweight linux containers for consistent development and deployment. Linux Journal, 2014(239), 2. doi: 10.5555/2600239.2600241.\n\n- Singularity\n\n > Kurtzer GM, Sochat V, Bauer MW. Singularity: Scientific containers for mobility of compute. PLoS One. 2017 May 11;12(5):e0177459. doi: 10.1371/journal.pone.0177459. eCollection 2017. PubMed PMID: 28494014; PubMed Central PMCID: PMC5426675."
+}
+},
+{
+"pair_id": "JP010",
+"a": "rare_output#h002",
+"b": "rare_output#h003",
+"A": {
+"id": "rare_output#h002",
+"doc": "rare_output",
+"section": "Pipeline overview > Bwa-mem2",
+"text": "rare_output — Pipeline overview > Bwa-mem2\n##### Bwa-mem2\n\nBwa-mem2 used to map the reads to a reference genome. The aligned reads are coordinate sorted with samtools sort. These files are treated as intermediates and are not placed in the output folder by default.\n\n##### BWA\n\nBWA used to map the reads to a reference genome. The aligned reads are coordinate sorted with samtools sort. These files are treated as intermediates and are not placed in the output folder by default. It is not the default aligner, but it can be chosen by setting `--aligner` option to bwa."
+},
+"B": {
+"id": "rare_output#h003",
+"doc": "rare_output",
+"section": "Pipeline overview > BWA-MEME",
+"text": "rare_output — Pipeline overview > BWA-MEME\n##### BWA-MEME\n\nBWA-MEME used to map the reads to a reference genome. The aligned reads are coordinate sorted with samtools sort. These files are treated as intermediates and are not placed in the output folder by default. It is not the default aligner, but it can be chosen by setting `--aligner` option to bwameme."
+}
+},
+{
+"pair_id": "JP011",
+"a": "rare_output#h023",
+"b": "rare_output#h032",
+"A": {
+"id": "rare_output#h023",
+"doc": "rare_output",
+"section": "Pipeline overview > vcfanno",
+"text": "rare_output — Pipeline overview > vcfanno\n#### vcfanno\n\nvcfanno allows you to quickly annotate your VCF with any number of INFO fields from any number of VCFs. It uses a simple configuration file to allow the user to specify the source annotation files and fields and how they will be added to the info of the query VCF. Values are pulled by name from the INFO field with special-cases of ID and FILTER to pull from those VCF columns. The output files are not published in the output folder, and is passed to CADD and/or VEP for further annotation.\n\nWe recommend using vcfanno to annotate SNVs with precomputed CADD scores (files can be downloaded from here)."
+},
+"B": {
+"id": "rare_output#h032",
+"doc": "rare_output",
+"section": "Pipeline overview > Mitochondrial analysis > Alignment and variant calling > vcfanno",
+"text": "rare_output — Pipeline overview > Mitochondrial analysis > Alignment and variant calling > vcfanno\n##### vcfanno\n\nvcfanno allows you to quickly annotate your VCF with any number of INFO fields from any number of VCFs. It uses a simple conf file to allow the user to specify the source annotation files and fields and how they will be added to the info of the query VCF. Values are pulled by name from the INFO field with special-cases of ID and FILTER to pull from those VCF columns. The output files are not published in the output folder, and is passed to vep for further annotation.\n\nWe recommend using vcfanno to annotate SNVs with precomputed CADD scores (files can be downloaded from here)."
+}
+},
+{
+"pair_id": "JP012",
+"a": "bcftools_manual#h037",
+"b": "bcftools_manual#h096",
+"A": {
+"id": "bcftools_manual#h037",
+"doc": "bcftools_manual",
+"section": "bcftools consensus '[OPTIONS] FILE' > VCF input options:",
+"text": "Convert 23andme results into VCF — bcftools consensus '[OPTIONS] FILE' > VCF input options:\n### VCF input options:\n\n-e, --exclude EXPRESSION::\n exclude sites for which EXPRESSION is true. For valid expressions see\n <<expressions,EXPRESSIONS>>.\n\n-i, --include EXPRESSION::\n include only sites for which EXPRESSION is true. For valid expressions see\n <<expressions,EXPRESSIONS>>.\n\n-r, --regions chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::\n see <<common_options,Common Options>>\n\n-R, --regions-file FILE::\n see <<common_options,Common Options>>\n\n--regions-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n-s, --samples LIST::\n see <<common_options,Common Options>>\n\n-S, --samples-file FILE::\n see <<common_options,Common Options>>\n\n-t, --targets LIST::\n see <<common_options,Common Options>>\n\n-T, --targets-file FILE::\n see <<common_options,Common Options>>\n\n--targets-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n-W[FMT], -W[=FMT], --write-index[=FMT]::\n Automatically index the output file. FMT is optional and can be\n one of \"tbi\" or \"csi\" depending on output file format."
+},
+"B": {
+"id": "bcftools_manual#h096",
+"doc": "bcftools_manual",
+"section": "Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools [plugin NAME|+NAME] '[OPTIONS] FILE -- [PLUGIN OPTIONS]' > VCF input options:",
+"text": "Convert 23andme results into VCF — Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools [plugin NAME|+NAME] '[OPTIONS] FILE -- [PLUGIN OPTIONS]' > VCF input options:\n### VCF input options:\n\n-e, --exclude EXPRESSION::\n exclude sites for which EXPRESSION is true. For valid expressions see\n <<expressions,EXPRESSIONS>>.\n\n-i, --include EXPRESSION::\n include only sites for which EXPRESSION is true. For valid expressions see\n <<expressions,EXPRESSIONS>>.\n\n-r, --regions chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::\n see <<common_options,Common Options>>\n\n-R, --regions-file file::\n see <<common_options,Common Options>>\n\n--regions-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n-t, --targets chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::\n see <<common_options,Common Options>>\n\n-T, --targets-file file::\n see <<common_options,Common Options>>\n\n--targets-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>"
+}
+},
+{
+"pair_id": "JP013",
+"a": "gatk_mutect2_wdl#h002",
+"b": "gatk_funcotator_wdl#h000",
+"A": {
+"id": "gatk_mutect2_wdl#h002",
+"doc": "gatk_mutect2_wdl",
+"section": "Docker images",
+"text": "gatk_mutect2_wdl — Docker images\n### Docker images\n- \"broadinstitute/gatk-protected:1.0.0.0-alpha1.2.4\" (This is a private image! Recommended use ``gatk_jar`` as ``/root/gatk.jar``)\n- \"broadinstitute/genomes-in-the-cloud:2.2.4-1469632282\" (You must specify a ``gatk4_jar_override``)\n\n### Functional annotation (Funcotator)\n\nFuncotator (**FUNC**tional ann**OTATOR**) is a functional annotation tool in the core GATK toolset and was designed to handle both somatic and germline use cases. It analyzes given variants for their function (as retrieved from a set of data sources) and produces the analysis in a specified output file. Funcotator reads in a VCF file, labels each variant with one of twenty-three distinct variant classifications, produces gene information (e.g. affected gene, predicted variant amino acid sequence, etc.), and associations to information in datasources. Default supported datasources include GENCODE (gene information and protein change prediction), dbSNP, gnomAD, and COSMIC (among others). The corpus of datasources is extensible and user-configurable and includes cloud-based datasources supported with Google Cloud Storage. Funcotator produces either a Variant Call Format (VCF) file (with annotations in the INFO field) or a Mutation Annotation Format (MAF) file.\n\nFuncotator allows the user to add their own annotations to variants based on a set of data sources. Each data source can be customized to annotate a variant based on several matching criteria. This allows a user to create their own custom annotations easily, without modifying any Java code."
+},
+"B": {
+"id": "gatk_funcotator_wdl#h000",
+"doc": "gatk_funcotator_wdl",
+"section": "Background Information",
+"text": "gatk_funcotator_wdl — Background Information\n## Background Information\nFuncotator (**FUNC**tional ann**OTATOR**) is a functional annotation tool in the core GATK toolset and was designed to handle both somatic and germline use cases. It analyzes given variants for their function (as retrieved from a set of data sources) and produces the analysis in a specified output file. Funcotator reads in a VCF file, labels each variant with one of twenty-three distinct variant classifications, produces gene information (e.g. affected gene, predicted variant amino acid sequence, etc.), and associations to information in datasources. Default supported datasources include GENCODE (gene information and protein change prediction), dbSNP, gnomAD, and COSMIC (among others). The corpus of datasources is extensible and user-configurable and includes cloud-based datasources supported with Google Cloud Storage. Funcotator produces either a Variant Call Format (VCF) file (with annotations in the INFO field) or a Mutation Annotation Format (MAF) file.\n\nFuncotator allows the user to add their own annotations to variants based on a set of data sources. Each data source can be customized to annotate a variant based on several matching criteria. This allows a user to create their own custom annotations easily, without modifying any Java code."
+}
+},
+{
+"pair_id": "JP014",
+"a": "gatk_funco_tutorial#h015",
+"b": "gatk_funco_tutorial#h019",
+"A": {
+"id": "gatk_funco_tutorial#h015",
+"doc": "gatk_funco_tutorial",
+"section": "NCBI build version (either hg19 or hg38):",
+"text": "Required and defaults to false. — NCBI build version (either hg19 or hg38):\n# NCBI build version (either hg19 or hg38):\nncbi_build_version =\n\n# TRANSCRIPT_ID\nxsv_key = GENE_NAME\n\n# The 0-based index of the column containing the key on which to match\nxsv_key_column = 2\n\n# The delimiter by which to split the XSV file into columns.\nxsv_delimiter = \\t"
+},
+"B": {
+"id": "gatk_funco_tutorial#h019",
+"doc": "gatk_funco_tutorial",
+"section": "NCBI build version (either hg19 or hg38):",
+"text": "Required and defaults to false. — NCBI build version (either hg19 or hg38):\n# NCBI build version (either hg19 or hg38):\nncbi_build_version =\n\n# TRANSCRIPT_ID\nxsv_key =\n\n# The 0-based index of the column containing the key on which to match\nxsv_key_column =\n\n# The delimiter by which to split the XSV file into columns.\nxsv_delimiter = \\t"
+}
+},
+{
+"pair_id": "JP015",
+"a": "gatk_funco_tutorial#h016",
+"b": "gatk_funco_tutorial#h020",
+"A": {
+"id": "gatk_funco_tutorial#h016",
+"doc": "gatk_funco_tutorial",
+"section": "false",
+"text": "Required and defaults to false. — false\n# false\nxsv_permissive_cols = true\n\n# The Name or 0-based index of the column containing the contig for each row\ncontig_column =\n\n# The Name or 0-based index of the column containing the start position for each row\nstart_column ="
+},
+"B": {
+"id": "gatk_funco_tutorial#h020",
+"doc": "gatk_funco_tutorial",
+"section": "false",
+"text": "Required and defaults to false. — false\n# false\nxsv_permissive_cols = true\n\n# The Name or 0-based index of the column containing the contig for each row\ncontig_column = 1\n\n# The Name or 0-based index of the column containing the start position for each row\nstart_column = 2"
+}
+},
+{
+"pair_id": "JP016",
+"a": "int_reasoner#h004",
+"b": "int_reasoner#h005",
+"A": {
+"id": "int_reasoner#h004",
+"doc": "int_reasoner",
+"section": "Журнал reasoner (HermiT) > 3. Виведені зв'язки між індивідами (`sync_reasoner_hermit(infer_property_values=True)`) > Суперечність 1: індивід VAR-003 (INDEL) додатково оголошено SNP, а SNP і Indel диз'юнктні",
+"text": "Журнал reasoner (HermiT) — Журнал reasoner (HermiT) > 3. Виведені зв'язки між індивідами (`sync_reasoner_hermit(infer_property_values=True)`) > Суперечність 1: індивід VAR-003 (INDEL) додатково оголошено SNP, а SNP і Indel диз'юнктні\n### Суперечність 1: індивід VAR-003 (INDEL) додатково оголошено SNP, а SNP і Indel диз'юнктні\n\nВнесена зміна: `VAR-003 rdf:type dkh:SNP`.\n\nHermiT (код завершення 1):\n\n```\nException in thread \"main\" org.semanticweb.owlapi.reasoner.InconsistentOntologyException: Inconsistent ontology\n\tat org.semanticweb.HermiT.Reasoner.throwInconsistentOntologyExceptionIfNecessary(Reasoner.java:2164)\n\tat org.semanticweb.HermiT.Reasoner.checkPreConditions(Reasoner.java:2154)\n```\n\nУсунення: видалено доданий(і) трип­лет(и) (у Protégé — вилучити твердження або виправити тип/кількість батьків); повторний запуск HermiT → код 0, онтологія знову узгоджена."
+},
+"B": {
+"id": "int_reasoner#h005",
+"doc": "int_reasoner",
+"section": "Журнал reasoner (HermiT) > 3. Виведені зв'язки між індивідами (`sync_reasoner_hermit(infer_property_values=True)`) > Суперечність 2: Marta має трьох різних батьків, а Person ⊑ hasParent ≤ 2",
+"text": "Журнал reasoner (HermiT) — Журнал reasoner (HermiT) > 3. Виведені зв'язки між індивідами (`sync_reasoner_hermit(infer_property_values=True)`) > Суперечність 2: Marta має трьох різних батьків, а Person ⊑ hasParent ≤ 2\n### Суперечність 2: Marta має трьох різних батьків, а Person ⊑ hasParent ≤ 2\n\nВнесена зміна: `Marta hasParent Maria; Iryna, Petro, Maria — owl:differentFrom`.\n\nHermiT (код завершення 1):\n\n```\nException in thread \"main\" org.semanticweb.owlapi.reasoner.InconsistentOntologyException: Inconsistent ontology\n\tat org.semanticweb.HermiT.Reasoner.throwInconsistentOntologyExceptionIfNecessary(Reasoner.java:2164)\n\tat org.semanticweb.HermiT.Reasoner.checkPreConditions(Reasoner.java:2154)\n```\n\nУсунення: видалено доданий(і) трип­лет(и) (у Protégé — вилучити твердження або виправити тип/кількість батьків); повторний запуск HermiT → код 0, онтологія знову узгоджена."
+}
+}
+]

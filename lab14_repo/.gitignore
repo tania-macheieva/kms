@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+*.rdb
+*.db
+.env
+quality/gate_report_inject_*
+quality/gate_report_ci.*

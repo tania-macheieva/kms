@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "STATUS: ANSWER\nЧастка QC-пройдених викликів (pass_rate) у когорті Control становить 56.8 [sql#1], у когорті HBOC — 57.4 [sql#1]. Частка у HBOC вища на 0.6 (57.4 − 56.8) [sql#1]."}

@@ -1,0 +1,14 @@
+from,to,source,confidence,validFrom
+AdultRelative,Relative,lab7-abox,1.0,2026-10-26
+ExonEndVariant,GeneticVariant,lab7-abox,1.0,2026-10-26
+FirstDegreeRelative,Relative,lab7-abox,1.0,2026-10-26
+GenePanel,DataArtifact,lab7-abox,1.0,2026-10-26
+HighFSSnpVariant,SNP,lab7-abox,1.0,2026-10-26
+Indel,GeneticVariant,lab7-abox,1.0,2026-10-26
+LowQDVariant,GeneticVariant,lab7-abox,1.0,2026-10-26
+MinorRelative,Relative,lab7-abox,1.0,2026-10-26
+Proband,Person,lab7-abox,1.0,2026-10-26
+Relative,Person,lab7-abox,1.0,2026-10-26
+SNP,GeneticVariant,lab7-abox,1.0,2026-10-26
+SecondDegreeRelative,Relative,lab7-abox,1.0,2026-10-26
+ThirdDegreeRelative,Relative,lab7-abox,1.0,2026-10-26

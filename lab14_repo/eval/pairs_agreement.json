@@ -1,0 +1,12 @@
+{
+ "n": 160,
+ "binary_agreement": 0.994,
+ "binary_kappa": 0.968,
+ "three_class_kappa": 0.905,
+ "disagreements": [
+  "PR102"
+ ],
+ "adjudicated": [
+  "PR102"
+ ]
+}

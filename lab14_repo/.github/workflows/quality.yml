@@ -1,0 +1,19 @@
+name: quality-gate
+on:
+  push: {branches: [lab14, main]}
+  pull_request:
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -r requirements.txt
+      - name: Unit tests (dedup, conflicts, gold set)
+        run: python -m pytest tests -q
+      - name: Quality gate on the candidate store (blocking failures fail the build)
+        run: python quality/gate.py --store store_clean --label ci
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: gate-report, path: "quality/gate_report_ci.*"}

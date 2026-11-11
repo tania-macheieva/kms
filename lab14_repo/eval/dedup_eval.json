@@ -1,0 +1,189 @@
+{
+ "n": 160,
+ "n_dev": 76,
+ "n_test": 74,
+ "dup_dev": 9,
+ "dup_test": 8,
+ "by_feature": {
+  "score": {
+   "threshold": 0.975,
+   "dev_best_f1": 0.947,
+   "plateau": [
+    0.975,
+    0.975
+   ],
+   "dev": {
+    "tp": 9,
+    "fp": 1,
+    "fn": 0,
+    "precision": 0.9,
+    "recall": 1.0,
+    "f1": 0.947
+   },
+   "test": {
+    "tp": 6,
+    "fp": 0,
+    "fn": 2,
+    "precision": 1.0,
+    "recall": 0.75,
+    "f1": 0.857
+   }
+  },
+  "tfidf": {
+   "threshold": 0.968,
+   "dev_best_f1": 0.947,
+   "plateau": [
+    0.96,
+    0.975
+   ],
+   "dev": {
+    "tp": 9,
+    "fp": 1,
+    "fn": 0,
+    "precision": 0.9,
+    "recall": 1.0,
+    "f1": 0.947
+   },
+   "test": {
+    "tp": 7,
+    "fp": 0,
+    "fn": 1,
+    "precision": 1.0,
+    "recall": 0.875,
+    "f1": 0.933
+   }
+  },
+  "emb": {
+   "threshold": 0.95,
+   "dev_best_f1": 0.552,
+   "plateau": [
+    0.95,
+    0.95
+   ],
+   "dev": {
+    "tp": 8,
+    "fp": 12,
+    "fn": 1,
+    "precision": 0.4,
+    "recall": 0.889,
+    "f1": 0.552
+   },
+   "test": {
+    "tp": 4,
+    "fp": 8,
+    "fn": 4,
+    "precision": 0.333,
+    "recall": 0.5,
+    "f1": 0.4
+   }
+  },
+  "fuzz": {
+   "threshold": 0.998,
+   "dev_best_f1": 0.72,
+   "plateau": [
+    0.995,
+    1.0
+   ],
+   "dev": {
+    "tp": 9,
+    "fp": 7,
+    "fn": 0,
+    "precision": 0.562,
+    "recall": 1.0,
+    "f1": 0.72
+   },
+   "test": {
+    "tp": 7,
+    "fp": 4,
+    "fn": 1,
+    "precision": 0.636,
+    "recall": 0.875,
+    "f1": 0.737
+   }
+  },
+  "ratio": {
+   "threshold": 0.975,
+   "dev_best_f1": 0.947,
+   "plateau": [
+    0.97,
+    0.98
+   ],
+   "dev": {
+    "tp": 9,
+    "fp": 1,
+    "fn": 0,
+    "precision": 0.9,
+    "recall": 1.0,
+    "f1": 0.947
+   },
+   "test": {
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   }
+  }
+ },
+ "threshold": 0.975,
+ "borderline_band": 0.08,
+ "cv5": {
+  "tp": 16,
+  "fp": 4,
+  "fn": 1,
+  "precision": 0.8,
+  "recall": 0.941,
+  "f1": 0.865
+ },
+ "test_ci95": {
+  "precision": [
+   1.0,
+   1.0
+  ],
+  "recall": [
+   0.38,
+   1.0
+  ]
+ },
+ "errors": [
+  {
+   "pair_id": "PR016",
+   "a": "gatk_funco_tutorial#h020",
+   "b": "gatk_funco_tutorial#h016",
+   "gold": "RELATED",
+   "score": 0.9932,
+   "kind": "FP",
+   "split": "dev"
+  },
+  {
+   "pair_id": "PR091",
+   "a": "gatk_funco_spec#h001",
+   "b": "gatk_funco_tutorial#h027",
+   "gold": "DUP",
+   "score": 0.9741,
+   "kind": "FN",
+   "split": "test"
+  },
+  {
+   "pair_id": "PR128",
+   "a": "rare_output#h014",
+   "b": "sarek_output#h074",
+   "gold": "DUP",
+   "score": 0.9649,
+   "kind": "FN",
+   "split": "test"
+  }
+ ],
+ "borderline_in_gold": {
+  "n": 29,
+  "dup": 17
+ },
+ "blocking": {
+  "chunks": 688,
+  "all_pairs": 236328,
+  "candidates": 1775,
+  "probes": 10,
+  "probes_dup": 0
+ }
+}

@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\": [{\"tool\": \"sql_metric\", \"args\": {\"metric\": \"call_count\", \"where\": {\"year\": 2026}}}], \"continue\": false, \"reason\": \"The number of variant calls in 2026 is a governed call_count metric filtered by year.\"}"}

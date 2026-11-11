@@ -1,0 +1,16 @@
+numpy
+scikit-learn
+rapidfuzz
+pyshacl
+rdflib
+duckdb
+jsonschema
+pytest
+matplotlib
+python-docx
+rank-bm25==0.2.2
+tokenizers==0.23.3
+faiss-cpu
+falkordblite==0.11.0
+fastapi
+httpx

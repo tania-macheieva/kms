@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\": [{\"tool\": \"search_docs\", \"args\": {\"query\": \"GATK hard filtering definition and when to use instead of VQSR\"}}], \"continue\": false, \"reason\": \"This is a documentation definition question, so search_docs is the right tool.\"}"}

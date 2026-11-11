@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\": [{\"tool\": \"graph_query\", \"args\": {\"cypher\": \"MATCH (p:Procedure {id: 'CT-01'}) RETURN p.id AS procedure, p.minTestingAge AS minTestingAge LIMIT 1\"}}], \"continue\": false, \"reason\": \"The minimum testing age is a property of the CT-01 procedure node in the graph.\"}"}

@@ -1,0 +1,19 @@
+[
+{"id":"after:T20","claims":[],"note":"Pure abstention; no factual claims."},
+{"id":"after:T27","claims":[
+{"text":"Vendor default (active): an SNP is filtered when QD < 2.0","verdict":"supported","cited":["alt_CF-QD","G:Threshold:QD_lt_2"],"citation_ok":true},
+{"text":"Local SOP / clinic protocol (alternative, not vendor default): an SNP is filtered when QD < 1.5","verdict":"supported","cited":["fx_sop_qd","alt_CF-QD"],"citation_ok":true}],
+"note":"Both thresholds match the claim register, graph and SOP note; conflict reported faithfully."},
+{"id":"after:T28","claims":[
+{"text":"Vendor default (active): an SNP is filtered when FS > 60.0","verdict":"supported","cited":["alt_CF-FS","G:Threshold:FS_gt_60_snp"],"citation_ok":true},
+{"text":"Local SOP / clinic protocol (alternative, not vendor default): an SNP is filtered when FS > 45.0","verdict":"supported","cited":["fx_clinic_fs","alt_CF-FS"],"citation_ok":true}],
+"note":"Both thresholds match the claim register, graph and clinic note."},
+{"id":"after:T29","claims":[
+{"text":"Vendor default (active): variants are filtered when SOR > 3.0","verdict":"supported","cited":["alt_CF-SOR","G:Threshold:SOR_gt_3"],"citation_ok":true},
+{"text":"Local SOP / clinic protocol (alternative, not vendor default): variants are filtered when SOR > 4.0","verdict":"supported","cited":["fx_sop_sor","alt_CF-SOR"],"citation_ok":true}],
+"note":"Both values are in context; the HF-01 citation on the framing line was not judged as a separate claim."},
+{"id":"after:T30","claims":[
+{"text":"Current GATK 4.x README (active): Java 17 is needed to run or build GATK","verdict":"supported","cited":["gatk_readme#h001"],"citation_ok":true},
+{"text":"GATK v4.2 legacy build notes (superseded, valid 2026-09-01 to 2026-10-26): a Java 8 JDK is required","verdict":"supported","cited":["fx_gatk_java","alt_CF-JAVA"],"citation_ok":true}],
+"note":"Both versions and validity dates match the register and fixture note."}
+]

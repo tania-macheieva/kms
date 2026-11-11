@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\": [{\"tool\": \"sql_metric\", \"args\": {\"metric\": \"avg_qual\", \"by\": [\"variant_type\"]}}], \"continue\": false, \"reason\": \"Average QUAL grouped by variant type gives the SNP and indel comparison in one call.\"}"}

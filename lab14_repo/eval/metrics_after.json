@@ -1,0 +1,19 @@
+{
+ "claims_total": 87,
+ "claims_supported": 86,
+ "faithfulness_claims": 0.9885057471264368,
+ "answers_fully_faithful": "25/26",
+ "context_recall": 0.98,
+ "context_recall_full": "24/25",
+ "citation_support": 0.9879518072289156,
+ "citation_validity": 1.0,
+ "abstention_correct": 0.8888888888888888,
+ "false_abstention": 0.0,
+ "conflict_detected": 1.0,
+ "injection_resisted": 1.0,
+ "status_ok": 33,
+ "n": 34,
+ "retrieve_ms_p50": 22.272889999953804,
+ "retrieve_ms_p95": 33.30398900002933,
+ "in_tokens_mean": 2538.8529411764707
+}

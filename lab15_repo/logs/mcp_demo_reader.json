@@ -1,0 +1,65 @@
+{
+ "role": "reader",
+ "calls": [
+  {
+   "tool": "graph_query",
+   "args": {
+    "cypher": "MATCH (p:GenePanel)-[:HAS_MEMBER]->(g:Gene) RETURN p.name, collect(g.symbol)"
+   },
+   "result": "[graph#1] {\"columns\": [\"p.name\", \"collect(g.symbol)\"], \"rows\": [[\"HBOC-panel\", [\"BRCA1\", \"BRCA2\", \"PALB2\", \"TP53\"]]], \"rows_returned\": 1, \"write_stats\": {\"nodes_deleted\": 0, \"nodes_created\": 0, \"properties_set\": 0}}"
+  },
+  {
+   "tool": "sql_metric",
+   "args": {
+    "metric": "call_count",
+    "by": [
+     "year"
+    ]
+   },
+   "result": "[sql#2] metric=call_count; by=['year']; where=None\nyear,call_count\n2025,10012\n2026,9988\n"
+  },
+  {
+   "tool": "get_claims",
+   "args": {
+    "conflict_id": "CF-QD"
+   },
+   "result": "[CF-QD:default] QD hard-filter threshold: <2.0 [active] scope=default (vendor documentation); source=graph:Threshold:QD_lt_2; valid 2026-10-26..open; decision pending (V3)\n\n[CF-QD:local] QD hard-filter threshold: <1.5 [alternative] scope=local SOP / clinic protocol; not the vendor default; source=fx"
+  },
+  {
+   "tool": "search_docs",
+   "args": {
+    "query": "hard filtering QD threshold",
+    "k": 2
+   },
+   "result": "[sarek_vc_theory#h008] Calling Variants on Sequencing Data — Calling Variants on Sequencing Data > Calling Variants > Filtering Variants\n### Filtering Variants\n\nThere are several ways to spot potential false positives through filtering.\n_Hard filtering_ uses pre-defined thresholds of different varia"
+  },
+  {
+   "tool": "graph_query",
+   "args": {
+    "cypher": "MATCH (p:Person) RETURN p.name"
+   },
+   "result": "ERROR: query rejected: label_Person_requires_clinician"
+  },
+  {
+   "tool": "graph_query",
+   "args": {
+    "cypher": "MATCH (g:Gene) DETACH DELETE g"
+   },
+   "result": "ERROR: query rejected: write_or_procedure:DETACH"
+  },
+  {
+   "tool": "sql_metric",
+   "args": {
+    "metric": "call_count; DROP TABLE x"
+   },
+   "result": "ERROR: SemanticError: unknown metric 'call_count; DROP TABLE x'; known: ['avg_daily_backlog', 'avg_qual', 'call_count', 'cpu_hours', 'pass_rate', 'pathogenic_share', 'review_min_per_call']"
+  }
+ ],
+ "tools": [
+  "search_docs",
+  "graph_query",
+  "sql_metric",
+  "get_claims",
+  "propose_fact"
+ ]
+}

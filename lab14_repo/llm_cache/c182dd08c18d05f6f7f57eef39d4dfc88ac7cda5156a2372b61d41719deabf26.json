@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "STATUS: ANSWER\nOlena's parents are Iryna and Petro, which the sources state are direct parents [int_sparql#h007]. The sources do not identify Olena's sibling: the undirected path query lists Marta at one step without stating the relationship type [int_cypher#h005].", "in_tokens": 2148, "out_tokens": 67, "latency_ms": null}

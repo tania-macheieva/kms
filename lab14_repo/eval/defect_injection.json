@@ -1,0 +1,34 @@
+{
+ "D1_duplicate_chunk": {
+  "gate": "FAIL",
+  "caught_by": [
+   "test_Q11_metric_threshold[M08_near_duplicate_share]"
+  ]
+ },
+ "D2_age_rule_violation": {
+  "gate": "FAIL",
+  "caught_by": [
+   "test_Q01_shacl_conforms",
+   "test_Q11_metric_threshold[M03_open_conflicts]",
+   "test_Q11_metric_threshold[M04_active_logical_violations]",
+   "test_Q11_metric_threshold[M07_conflict_documentation]"
+  ]
+ },
+ "D3_relationship_without_provenance": {
+  "gate": "FAIL",
+  "caught_by": [
+   "test_Q10_sql_relationship_provenance"
+  ]
+ },
+ "ALL_THREE": {
+  "gate": "FAIL",
+  "caught_by": [
+   "test_Q01_shacl_conforms",
+   "test_Q10_sql_relationship_provenance",
+   "test_Q11_metric_threshold[M03_open_conflicts]",
+   "test_Q11_metric_threshold[M04_active_logical_violations]",
+   "test_Q11_metric_threshold[M07_conflict_documentation]",
+   "test_Q11_metric_threshold[M08_near_duplicate_share]"
+  ]
+ }
+}

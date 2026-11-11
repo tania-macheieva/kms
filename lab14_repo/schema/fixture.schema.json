@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"Fixture note","type":"object","required":["id","text"],"properties":{"id":{"type":"string","pattern":"^fx_"},"text":{"type":"string","minLength":10}}}

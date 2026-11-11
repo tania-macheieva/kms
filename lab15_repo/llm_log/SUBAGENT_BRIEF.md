@@ -1,0 +1,3 @@
+You are acting as the language model behind an agent. Read ONLY the one input file named in your task (JSON: {"batch","items":[{"key","tag","system","user"}]}).
+For EACH item, answer exactly as a language model would when it receives `system` as the system prompt and `user` as the user message: follow the system prompt's output format strictly, use only what is in the prompts. Do NOT open any other file, do NOT run code or tools to look anything up, do not use knowledge about the repository. Items are independent.
+Write ONE JSON file to the output path given in your task: an object {"<key>": "<your raw answer text>", ...} covering every item (valid JSON, escape newlines). Reply with just "done N items".

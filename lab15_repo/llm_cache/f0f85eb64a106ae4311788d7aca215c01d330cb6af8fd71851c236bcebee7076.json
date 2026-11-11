@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\": [{\"tool\": \"get_claims\", \"args\": {\"conflict_id\": \"CF-QD\", \"subject\": \"SNP\"}}], \"continue\": false, \"reason\": \"The request is a threshold write that no tool supports, so only the QD claims register for SNPs is checked.\"}"}

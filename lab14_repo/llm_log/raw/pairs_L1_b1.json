@@ -1,0 +1,202 @@
+[
+ {
+  "pair_id": "PR001",
+  "label": "RELATED",
+  "reason": "Same SPARQL check template for different situations (S06 minor relative vs S02 high FS); different guard, class and results."
+ },
+ {
+  "pair_id": "PR002",
+  "label": "RELATED",
+  "reason": "Same bcftools stats description sentence, but A adds Sarek output files/Strelka note; B adds manual options."
+ },
+ {
+  "pair_id": "PR003",
+  "label": "DUP",
+  "reason": "Identical -resume text; only heading level and document differ."
+ },
+ {
+  "pair_id": "PR004",
+  "label": "RELATED",
+  "reason": "Only the shared -W/--write-index option text overlaps; A has verbosity/INFO naming option, B has output options."
+ },
+ {
+  "pair_id": "PR005",
+  "label": "RELATED",
+  "reason": "Same Sarek output template for different tools: Parabricks DeepSomatic/DeepVariant vs DeepSomatic with gVCF output."
+ },
+ {
+  "pair_id": "PR006",
+  "label": "RELATED",
+  "reason": "Same profile list, but B also contains the gpu profile and minor backtick formatting difference."
+ },
+ {
+  "pair_id": "PR007",
+  "label": "DISTINCT",
+  "reason": "Sentieon TNscope and Strelka outputs vs Manta outputs; different tools and files."
+ },
+ {
+  "pair_id": "PR008",
+  "label": "RELATED",
+  "reason": "Same boilerplate 'see mutect2_multi_sample' list but for different parameter sets/workflows."
+ },
+ {
+  "pair_id": "PR009",
+  "label": "DISTINCT",
+  "reason": "Describes different Funcotator options: --transcript-list vs --annotation-default."
+ },
+ {
+  "pair_id": "PR010",
+  "label": "RELATED",
+  "reason": "Same -c and resource-request text, but A adds NXF_OPTS memory section; wording differs slightly in resource link."
+ },
+ {
+  "pair_id": "PR011",
+  "label": "DISTINCT",
+  "reason": "Different MD5 checksum table rows for different contigs."
+ },
+ {
+  "pair_id": "PR012",
+  "label": "DISTINCT",
+  "reason": "Sentieon Haplotyper outputs vs concatenation of germline VCFs."
+ },
+ {
+  "pair_id": "PR013",
+  "label": "RELATED",
+  "reason": "Parallel joint germline calling sections for Sentieon vs GATK; different tools, directories and filtering steps."
+ },
+ {
+  "pair_id": "PR014",
+  "label": "DISTINCT",
+  "reason": "proteinChange field spec vs codonChange field spec."
+ },
+ {
+  "pair_id": "PR015",
+  "label": "RELATED",
+  "reason": "Overlapping samplesheet column rows, but A is BAM-only table while B has spring columns and multi-run example."
+ },
+ {
+  "pair_id": "PR016",
+  "label": "RELATED",
+  "reason": "Same config snippet, but A sets contig_column=1 and start_column=2 while B leaves them empty."
+ },
+ {
+  "pair_id": "PR017",
+  "label": "RELATED",
+  "reason": "B contains same resource-requests paragraph plus -c and NXF_OPTS memory section; link wording differs."
+ },
+ {
+  "pair_id": "PR018",
+  "label": "DISTINCT",
+  "reason": "bcftools isec options vs bcftools consensus options."
+ },
+ {
+  "pair_id": "PR019",
+  "label": "DISTINCT",
+  "reason": "Different gnomAD AF annotation lists (nfe_nwe..sas vs eas..nfe_male)."
+ },
+ {
+  "pair_id": "PR020",
+  "label": "RELATED",
+  "reason": "Same aligner template; A is BWA-MEME with aligner option bwameme, B covers Bwa-mem2 and BWA."
+ },
+ {
+  "pair_id": "PR021",
+  "label": "DUP",
+  "reason": "Same nf-core/configs text; only trivial wording ('please can you test') differs."
+ },
+ {
+  "pair_id": "PR022",
+  "label": "RELATED",
+  "reason": "Similar VCF input options lists; A has -s/-S samples and -W, B has -t/-T with expressions and lacks samples/-W."
+ },
+ {
+  "pair_id": "PR023",
+  "label": "RELATED",
+  "reason": "Same heading and template but different file names and next-step sections (prepare_recalibration vs recalibrate)."
+ },
+ {
+  "pair_id": "PR024",
+  "label": "RELATED",
+  "reason": "Same SPARQL check template for different situations (S04 vs S02); different guard, class and results."
+ },
+ {
+  "pair_id": "PR025",
+  "label": "RELATED",
+  "reason": "Overlapping samplesheet chunk; different Full samplesheet example and next step (recalibrate vs variant_calling)."
+ },
+ {
+  "pair_id": "PR026",
+  "label": "DISTINCT",
+  "reason": "bcftools index options vs bcftools head options."
+ },
+ {
+  "pair_id": "PR027",
+  "label": "DISTINCT",
+  "reason": "Different portions of the test run process log."
+ },
+ {
+  "pair_id": "PR028",
+  "label": "RELATED",
+  "reason": "Containerisation citation list identical except Docker year parentheses; A also has R packages citations."
+ },
+ {
+  "pair_id": "PR029",
+  "label": "DISTINCT",
+  "reason": "bcftools norm options vs bcftools view subset options."
+ },
+ {
+  "pair_id": "PR030",
+  "label": "RELATED",
+  "reason": "Shared save_mapped/save_output_as_bam boilerplate, but Parabricks FQ2BAM vs Sentieon BWA mem differ in content."
+ },
+ {
+  "pair_id": "PR031",
+  "label": "RELATED",
+  "reason": "Shared docker build env-variable boilerplate, but remote GitHub tag/GCR build vs build from github hash."
+ },
+ {
+  "pair_id": "PR032",
+  "label": "RELATED",
+  "reason": "Same output template for different tools: snpEff vs BCFtools annotate."
+ },
+ {
+  "pair_id": "PR033",
+  "label": "DISTINCT",
+  "reason": "bcftools call file format options vs bcftools view filter options."
+ },
+ {
+  "pair_id": "PR034",
+  "label": "DUP",
+  "reason": "Same nf-core and Nextflow citations; only heading and bullet formatting differ."
+ },
+ {
+  "pair_id": "PR035",
+  "label": "RELATED",
+  "reason": "Only shared -W text; A has isec regions/targets/write options, B has VCF output options for plugins."
+ },
+ {
+  "pair_id": "PR036",
+  "label": "DUP",
+  "reason": "Identical Custom Containers text; only heading level and document differ."
+ },
+ {
+  "pair_id": "PR037",
+  "label": "DISTINCT",
+  "reason": "Different checksum rows; B also has explanatory text on reference differences."
+ },
+ {
+  "pair_id": "PR038",
+  "label": "DISTINCT",
+  "reason": "bcftools view output options vs bcftools roh general options."
+ },
+ {
+  "pair_id": "PR039",
+  "label": "RELATED",
+  "reason": "Same output template, but Picard MarkDuplicates vs Sentieon Dedup differ in tool, aligners and metrics file."
+ },
+ {
+  "pair_id": "PR040",
+  "label": "DISTINCT",
+  "reason": "samtools stats report vs bcftools variant calling description."
+ }
+]

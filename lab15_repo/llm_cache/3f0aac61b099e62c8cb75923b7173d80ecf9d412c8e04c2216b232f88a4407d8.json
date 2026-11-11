@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\": [{\"tool\": \"get_claims\", \"args\": {\"subject\": \"Java version\"}}], \"continue\": false, \"reason\": \"Java version requirements may differ between sources, so the claims register should be checked.\"}"}

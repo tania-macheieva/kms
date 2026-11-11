@@ -1,0 +1,181 @@
+{
+ "scenarios": [
+  {
+   "label": "L1 alias RNF53 for BRCA1",
+   "proposal_id": "P1b10a8a7",
+   "status": "auto_accepted",
+   "risk": "low",
+   "reasons": [
+    "alias/note for a known public entity with a verifiable source"
+   ],
+   "note": "written to staging only"
+  },
+  {
+   "label": "L2 note for HF-01 (allow-listed URL)",
+   "proposal_id": "P49e020dc",
+   "status": "auto_accepted",
+   "risk": "low",
+   "reasons": [
+    "alias/note for a known public entity with a verifiable source"
+   ],
+   "note": "written to staging only"
+  },
+  {
+   "label": "M1 QD alt 1.5 (local SOP)",
+   "proposal_id": "P291c62c0",
+   "status": "pending_approval",
+   "risk": "medium",
+   "reasons": [
+    "new alternative value for an existing safety-relevant threshold (never replaces the active claim)"
+   ]
+  },
+  {
+   "label": "M2 FS alt 45 (clinic protocol)",
+   "proposal_id": "P9e9f7021",
+   "status": "pending_approval",
+   "risk": "medium",
+   "reasons": [
+    "new alternative value for an existing safety-relevant threshold (never replaces the active claim)"
+   ]
+  },
+  {
+   "label": "M3 SOR alt 9",
+   "proposal_id": "Pd48dc422",
+   "status": "pending_approval",
+   "risk": "medium",
+   "reasons": [
+    "new alternative value for an existing safety-relevant threshold (never replaces the active claim)"
+   ]
+  },
+  {
+   "label": "decision P291c62c0",
+   "status": "approved",
+   "comment": "matches Lab SOP v3; scope local; keep as alternative",
+   "simulated": true
+  },
+  {
+   "label": "decision P9e9f7021",
+   "status": "approved",
+   "comment": "matches clinic protocol; alternative only",
+   "simulated": true
+  },
+  {
+   "label": "decision Pd48dc422",
+   "status": "rejected",
+   "comment": "no evidence in the source; SOR 9 is implausible for a hard filter",
+   "simulated": true
+  },
+  {
+   "label": "H1 note about Olena (restricted)",
+   "proposal_id": "P846d5a01",
+   "status": "rejected",
+   "stage": "risk",
+   "risk": "high",
+   "reasons": [
+    "touches restricted data (person/diagnosis)"
+   ]
+  },
+  {
+   "label": "H2 QD alt -3 (implausible)",
+   "proposal_id": "P15ccb246",
+   "status": "rejected",
+   "stage": "risk",
+   "risk": "high",
+   "reasons": [
+    "value outside plausible range 0.1..50 for QD"
+   ]
+  },
+  {
+   "label": "H3 note with instruction text",
+   "proposal_id": "Pcaf2bb89",
+   "status": "rejected",
+   "stage": "risk",
+   "risk": "high",
+   "reasons": [
+    "instruction-like text in the proposal"
+   ]
+  },
+  {
+   "label": "H4 relation on a person",
+   "proposal_id": "P7ea840bf",
+   "status": "rejected",
+   "stage": "risk",
+   "risk": "high",
+   "reasons": [
+    "touches restricted data (person/diagnosis)",
+    "relations are never auto-written; needs owner change request"
+   ]
+  },
+  {
+   "label": "V1 no source",
+   "proposal_id": "Pb1c80053",
+   "status": "rejected",
+   "stage": "validation",
+   "reasons": [
+    "no source: provenance is mandatory"
+   ]
+  },
+  {
+   "label": "V2 unknown subject",
+   "proposal_id": "Pe5c3b12b",
+   "status": "rejected",
+   "stage": "validation",
+   "reasons": [
+    "subject 'FAKE_GENE' is not a known entity"
+   ]
+  },
+  {
+   "label": "V3 non-numeric threshold (SHACL S03)",
+   "proposal_id": "Pc6d1f11a",
+   "status": "rejected",
+   "stage": "shacl",
+   "reasons": [
+    "S03: Threshold.value must be numeric"
+   ],
+   "shacl": [
+    "S03: Threshold.value must be numeric"
+   ]
+  },
+  {
+   "label": "V4 reader may not propose",
+   "proposal_id": "P4ef25d90",
+   "status": "rejected",
+   "stage": "permission",
+   "reasons": [
+    "role 'reader' may not propose facts"
+   ]
+  },
+  {
+   "label": "V5 unverifiable source",
+   "proposal_id": "Pdb521513",
+   "status": "rejected",
+   "stage": "risk",
+   "risk": "high",
+   "reasons": [
+    "source not verifiable"
+   ]
+  }
+ ],
+ "agent_self_approval": "'agent' is not an authorised approver",
+ "metrics": {
+  "proposals": 14,
+  "by_status": {
+   "auto_accepted": 2,
+   "approved": 2,
+   "rejected": 10,
+   "pending_approval": 0
+  },
+  "by_risk": {
+   "low": 2,
+   "medium": 3,
+   "high": 5
+  },
+  "rejected_before_risk": 4,
+  "medium_decided": 3,
+  "approved_share_of_decided": 0.667,
+  "median_wait_s": 1.03,
+  "max_wait_s": 1.04,
+  "audit_chain_ok": true
+ },
+ "audit_ok": true
+}

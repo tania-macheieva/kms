@@ -1,0 +1,202 @@
+[
+ {
+  "pair_id": "PR081",
+  "label": "RELATED",
+  "reason": "Same template and shared ref params; B lists scatter_count, pon, descriptions and Broad paths, A adds tumor/normal bam params."
+ },
+ {
+  "pair_id": "PR082",
+  "label": "DISTINCT",
+  "reason": "CNVKit vs TIDDIT output descriptions; different tools."
+ },
+ {
+  "pair_id": "PR083",
+  "label": "RELATED",
+  "reason": "Same GITHUB_TAG boilerplate; different tags, scripts (remote vs local, -p flag) and GCR tag format details."
+ },
+ {
+  "pair_id": "PR084",
+  "label": "DUP",
+  "reason": "Identical nf-core/configs text; only heading level and parent section path differ."
+ },
+ {
+  "pair_id": "PR085",
+  "label": "DISTINCT",
+  "reason": "bcftools annotate options vs bcftools csq options."
+ },
+ {
+  "pair_id": "PR086",
+  "label": "RELATED",
+  "reason": "Same remote-build snippet; B adds GCR_REPO_TAG and -t option, A has different heading following."
+ },
+ {
+  "pair_id": "PR087",
+  "label": "RELATED",
+  "reason": "Both docker build templates; A builds from GITHUB_HASH with -s, B from GITHUB_TAG without -s."
+ },
+ {
+  "pair_id": "PR088",
+  "label": "RELATED",
+  "reason": "Same CQ08 aggregate per-sample QD query in Cypher vs SPARQL; syntax and variant count for A (24 vs 22) differ."
+ },
+ {
+  "pair_id": "PR089",
+  "label": "DUP",
+  "reason": "Identical Custom Containers text; only parent section path differs."
+ },
+ {
+  "pair_id": "PR090",
+  "label": "DISTINCT",
+  "reason": "S01 low QD check vs S02 high FS SNP check; different guards and results."
+ },
+ {
+  "pair_id": "PR091",
+  "label": "DUP",
+  "reason": "Identical pre-packaged data sources paragraph; only heading number and doc differ."
+ },
+ {
+  "pair_id": "PR092",
+  "label": "DISTINCT",
+  "reason": "bcftools consensus options/examples vs bcftools merge options."
+ },
+ {
+  "pair_id": "PR093",
+  "label": "RELATED",
+  "reason": "Same HermiT inconsistency template; different contradictions (Marta parents vs VAR-003 SNP/Indel)."
+ },
+ {
+  "pair_id": "PR094",
+  "label": "DISTINCT",
+  "reason": "bcftools merge options vs bcftools csq options and examples."
+ },
+ {
+  "pair_id": "PR095",
+  "label": "DISTINCT",
+  "reason": "Sarek output files for Sentieon joint calling vs usage instructions for Sentieon functions."
+ },
+ {
+  "pair_id": "PR096",
+  "label": "DUP",
+  "reason": "Identical output Introduction text in sarek and raredisease docs."
+ },
+ {
+  "pair_id": "PR097",
+  "label": "DISTINCT",
+  "reason": "Different consecutive rows of the HumanG1Kv37 checksum table."
+ },
+ {
+  "pair_id": "PR098",
+  "label": "DISTINCT",
+  "reason": "FreeBayes output description vs samtools stats."
+ },
+ {
+  "pair_id": "PR099",
+  "label": "DISTINCT",
+  "reason": "MarkDuplicates reports vs Manta SV caller output."
+ },
+ {
+  "pair_id": "PR100",
+  "label": "DISTINCT",
+  "reason": "S03 exon-end FS check vs S05 adult relative testing; different guards and results."
+ },
+ {
+  "pair_id": "PR101",
+  "label": "DISTINCT",
+  "reason": "bcftools csq options vs bcftools norm options."
+ },
+ {
+  "pair_id": "PR102",
+  "label": "DUP",
+  "reason": "Same reproducibility advice with -r version; only pipeline name, example version and minor wording differ."
+ },
+ {
+  "pair_id": "PR103",
+  "label": "DISTINCT",
+  "reason": "Control-FREEC vs ASCAT descriptions."
+ },
+ {
+  "pair_id": "PR104",
+  "label": "RELATED",
+  "reason": "Shared Nextflow/CI boilerplate; A adds raredisease description and Illumina note, B adds sarek description and registries."
+ },
+ {
+  "pair_id": "PR105",
+  "label": "RELATED",
+  "reason": "Same config template; B fills xsv_key=GENE_NAME and xsv_key_column=2, A leaves them blank."
+ },
+ {
+  "pair_id": "PR106",
+  "label": "DISTINCT",
+  "reason": "Duplicate Marking samplesheet step vs recalibrate full samplesheet and variant_calling step."
+ },
+ {
+  "pair_id": "PR107",
+  "label": "DISTINCT",
+  "reason": "bcftools isec options vs bcftools polysomy general options."
+ },
+ {
+  "pair_id": "PR108",
+  "label": "DISTINCT",
+  "reason": "MarkDuplicates output vs FastQC output."
+ },
+ {
+  "pair_id": "PR109",
+  "label": "DISTINCT",
+  "reason": "snpEff reports vs VCFtools reports."
+ },
+ {
+  "pair_id": "PR110",
+  "label": "RELATED",
+  "reason": "Same DeepVariant description; A lists sarek outputs, B adds GLnexus joint genotyping, bcftools norm and MT filtering."
+ },
+ {
+  "pair_id": "PR111",
+  "label": "DISTINCT",
+  "reason": "bcftools stats options vs bcftools norm options."
+ },
+ {
+  "pair_id": "PR112",
+  "label": "DISTINCT",
+  "reason": "S06 minor relative check vs document intro with S01 check."
+ },
+ {
+  "pair_id": "PR113",
+  "label": "DUP",
+  "reason": "Same nf-core/configs text; only trivial wording ('please can you') and heading level differ."
+ },
+ {
+  "pair_id": "PR114",
+  "label": "DISTINCT",
+  "reason": "bcftools consensus VCF input options vs bcftools call file format options with ploidy."
+ },
+ {
+  "pair_id": "PR115",
+  "label": "DISTINCT",
+  "reason": "SNP/MNP codon change format vs deletion and frameshift formats."
+ },
+ {
+  "pair_id": "PR116",
+  "label": "DISTINCT",
+  "reason": "Duplicate Marking samplesheet vs full mapping samplesheet and prepare_recalibration step."
+ },
+ {
+  "pair_id": "PR117",
+  "label": "RELATED",
+  "reason": "Same README usage template; different samplesheet columns, pipeline name, and A adds reference-files step."
+ },
+ {
+  "pair_id": "PR118",
+  "label": "DISTINCT",
+  "reason": "FastP outputs vs FreeBayes outputs."
+ },
+ {
+  "pair_id": "PR119",
+  "label": "DISTINCT",
+  "reason": "Different rows of HumanG1Kv37 checksum table."
+ },
+ {
+  "pair_id": "PR120",
+  "label": "DUP",
+  "reason": "Same -profile section text; only heading levels and line wrapping differ."
+ }
+]

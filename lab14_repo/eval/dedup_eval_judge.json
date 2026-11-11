@@ -1,0 +1,48 @@
+{
+ "rule_evaluation": {
+  "dev": {
+   "with_judge": {
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   },
+   "rule_without_judge": {
+    "tp": 6,
+    "fp": 0,
+    "fn": 3,
+    "precision": 1.0,
+    "recall": 0.667,
+    "f1": 0.8
+   }
+  },
+  "test": {
+   "with_judge": {
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+   },
+   "rule_without_judge": {
+    "tp": 6,
+    "fp": 0,
+    "fn": 2,
+    "precision": 1.0,
+    "recall": 0.75,
+    "f1": 0.857
+   }
+  }
+ },
+ "judge_vs_gold": {
+  "judge_pairs": 16,
+  "in_gold": 16,
+  "agree_binary": 16,
+  "disagree": [],
+  "judge_dup": 5,
+  "judge_related": 11
+ }
+}

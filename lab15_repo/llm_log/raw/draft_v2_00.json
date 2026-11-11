@@ -1,0 +1,11 @@
+{
+  "2e30007a35637bf4dfa95b85cf487a0d017e6f4e7825db70bac56e8b6f283660": "STATUS: ANSWER\nДо панелі HBOC-panel входять гени: BRCA1, BRCA2, PALB2 та TP53 [graph#1].",
+  "b4fdac65eeffde05c9322202728e6822f1d480bcb470a93a99ebe77091b2eaf4": "STATUS: ANSWER\nЗа 2026 рік у сховищі зафіксовано 9988 викликів варіантів [sql#1].",
+  "8bb1e21b279a5c847b34a365427a9a068c0f6095a85ec4ef89fdc54afa0ea583": "STATUS: ANSWER\nПоказник pathogenic_share для всіх викликів у сховищі становить 15.5 [sql#1]. В результаті не вказано одиниць виміру, тому не можна однозначно підтвердити, що це відсотки.",
+  "fd5d7aa48f740071d3b264594fc0861fb723cc9e9619dde6e2fb42f990563690": "STATUS: ANSWER\nСумарно на пайплайни родини GATK витрачено 7642.6 CPU-годин [sql#1].",
+  "63e28083c21d50a0e7b17b6bcae3049c01b200c66db2587f90bbe2df9fa41547": "STATUS: ANSWER\nУ процедурі CT-01 каскадне тестування дозволене від 18 років [graph#1].",
+  "f061ee3b3611fbedfabe82573f3b0547145cda667888f23570915893cac67c22": "STATUS: ANSWER\nHard filtering applies predefined thresholds to variant annotations, such as allele depth and mapping quality, and flags variants that pass or fail all of the criteria [sarek_vc_theory#h008]. It is mostly useful when calling a few samples and enough data are not available for more sophisticated solutions [sarek_vc_theory#h008]. VQSR is the filtering step applied after joint genotyping [sarek_output#h030], and it needs a larger set of annotations with sufficient variance [sarek_vc_sarek#h007]. The observations do not state an explicit rule for choosing hard filtering over VQSR; the link is only implied by the small-dataset conditions above.",
+  "ba625cbd238aab4f5ba98172c9c53076b8c24bbeb60f6835b00ce3d6b60c40a0": "STATUS: ANSWER\nДля особи Olena в графі записано діагноз BreastCancer (ідентифікатор діагнозу Olena_BC) [graph#1].",
+  "b26ed8934cd2fec8b18d1cb437869c908a446ed5717f68922daeca2a4dc40580": "STATUS: ANSWER\nУ графі 4 варіанти мають клінічну значущість Pathogenic [graph#1].",
+  "5553b2500cdb7c7ed9fe52d03395a7e5f69a9da71deaa8b69d9479573fcb27d2": "STATUS: NO_ANSWER\nУ сховищі немає (доступної для вашої ролі) інформації про сьогоднішню біржову ціну акцій Illumina. Дані не отримано, тому значення не наводжу."
+}

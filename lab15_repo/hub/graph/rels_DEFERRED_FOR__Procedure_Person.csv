@@ -1,0 +1,2 @@
+from,to,source,confidence,validFrom,eligibleAtAge,reason
+CT-01,Sofiia,cdc,1.0,2026-10-26,18,CF-AGE-Sofiia: minTestingAge=18 > ageYears=17 (rule S14)

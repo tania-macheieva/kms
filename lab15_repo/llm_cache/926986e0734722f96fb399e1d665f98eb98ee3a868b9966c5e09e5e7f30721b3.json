@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\": [{\"tool\": \"search_docs\", \"args\": {\"query\": \"GATK hard filtering definition\", \"k\": 4}}], \"continue\": false, \"reason\": \"This is a documentation definition question, so only search_docs is needed.\"}"}

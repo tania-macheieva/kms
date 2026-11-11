@@ -1,0 +1,27 @@
+{
+ "threshold": 0.975,
+ "band": 0.08,
+ "merge_pairs": 17,
+ "by_rule": {
+  "exact_text": 12,
+  "judge": 5
+ },
+ "clusters": 11,
+ "absorbed": 14,
+ "chunks_before": 688,
+ "chunks_after": 674,
+ "sizes": {
+  "2": 8,
+  "3": 3
+ },
+ "min_cluster_score": 0.965,
+ "borderline_unjudged": 0,
+ "unmerge_one_cluster": true,
+ "unmerge_all_restores_original": true,
+ "demo": {
+  "canonical": "rare_usage#h031",
+  "absorbed": [
+   "sarek_usage#h018"
+  ]
+ }
+}

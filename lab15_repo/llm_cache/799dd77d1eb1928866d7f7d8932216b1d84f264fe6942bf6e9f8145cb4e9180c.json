@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\": [{\"tool\": \"sql_metric\", \"args\": {\"metric\": \"pass_rate\", \"by\": [\"cohort\"], \"where\": {\"cohort\": [\"HBOC\", \"Control\"]}}}], \"continue\": false, \"reason\": \"Pass rate grouped by cohort for HBOC and Control gives the comparison in one query.\"}"}

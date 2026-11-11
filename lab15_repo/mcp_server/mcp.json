@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "dkh-hub": {
+      "command": "python",
+      "args": ["-m", "mcp_server.server"],
+      "cwd": "<path to lab15_repo>",
+      "env": { "DKH_ROLE": "analyst", "LAB11_REPO": "<path to lab11_repo>" }
+    }
+  }
+}

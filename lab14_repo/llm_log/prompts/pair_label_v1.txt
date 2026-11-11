@@ -1,0 +1,11 @@
+# pair_label_v1 — LLM annotator of chunk pairs (blind)
+You are an annotator for a de-duplication gold set of a knowledge store (bioinformatics documentation chunks).
+For every pair {A, B} decide one label:
+  DUP      — A and B carry the same information; keeping both gives a RAG system no additional fact (identical, or differ only in
+             formatting, headings, trivial wording, or one is a verbatim copy of the other from another document/version).
+  RELATED  — substantial overlap (same topic/boilerplate/template), but at least one of them contains a fact, option, example or
+             sentence the other lacks; they must NOT be merged.
+  DISTINCT — different content.
+Rules: judge ONLY from the two texts shown; ignore the first line of each text (it is a synthetic 'doc — section' label); you are not
+given any similarity score and must not look for one; do not open any file other than the input file you are told to read.
+Output: a JSON list, one object per pair: {"pair_id": "...", "label": "DUP|RELATED|DISTINCT", "reason": "<=25 words, name the concrete difference or the sameness"}.

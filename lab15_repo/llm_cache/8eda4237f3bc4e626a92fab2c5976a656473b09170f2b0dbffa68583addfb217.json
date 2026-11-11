@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\": [{\"tool\": \"sql_metric\", \"args\": {\"metric\": \"cpu_hours\", \"where\": {\"family\": \"GATK\"}}}], \"continue\": false, \"reason\": \"Total CPU-hours for the GATK family is a governed pipeline metric filtered by family.\"}"}

@@ -1,0 +1,57 @@
+{
+ "claims": 9,
+ "alternatives_of_QD": [
+  [
+   1.5,
+   "alternative",
+   "local SOP / clinic protocol; not the vendor default",
+   "fx_sop_qd",
+   "proposed by Claude (LLM expert); approver: student (owner of the Hub)",
+   "2026-11-06",
+   2.0
+  ]
+ ],
+ "active_per_conflict": [
+  [
+   "CF-FS",
+   60.0,
+   "graph:Threshold:FS_gt_60_snp"
+  ],
+  [
+   "CF-JAVA",
+   "17",
+   "gatk_readme#h001"
+  ],
+  [
+   "CF-QD",
+   2.0,
+   "graph:Threshold:QD_lt_2"
+  ],
+  [
+   "CF-SOR",
+   3.0,
+   "graph:Threshold:SOR_gt_3"
+  ]
+ ],
+ "claims_about_threshold_QD_lt_2": [
+  [
+   "CF-QD:default",
+   2.0,
+   "active"
+  ]
+ ],
+ "superseded": [
+  [
+   "CF-JAVA:legacy",
+   "8",
+   "superseded",
+   "2026-10-26"
+  ],
+  [
+   "CF-JAVA-TUT:tutorial",
+   "1.8",
+   "outdated_flag",
+   null
+  ]
+ ]
+}

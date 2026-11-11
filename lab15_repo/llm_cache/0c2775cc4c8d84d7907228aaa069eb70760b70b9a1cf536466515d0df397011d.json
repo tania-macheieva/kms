@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\": [{\"tool\": \"get_claims\", \"args\": {\"conflict_id\": \"CF-FS\", \"subject\": \"FS threshold 45 vs 60\"}}], \"continue\": false, \"reason\": \"The local FS 45 threshold conflicts with the standard 60, so the claims register shows which one is active.\"}"}

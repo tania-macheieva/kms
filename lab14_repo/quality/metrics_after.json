@@ -1,0 +1,135 @@
+{
+ "label": "after",
+ "version": "after-6fcc8cc485497e2d",
+ "date": "2026-11-06",
+ "store": "store_clean",
+ "corpus_sha256_16": "6fcc8cc485497e2d",
+ "info": {
+  "n_chunks": 674,
+  "conflicts": [
+   "CF-QD",
+   "CF-FS",
+   "CF-SOR",
+   "CF-JAVA",
+   "CF-JAVA-TUT",
+   "CF-ASM-GRCh37",
+   "CF-ASM-GATK"
+  ],
+  "open_conflicts": [],
+  "expert_n": 36
+ },
+ "metrics": {
+  "M01_completeness": {
+   "value": 1.0,
+   "op": ">=",
+   "threshold": 1.0,
+   "dimension": "completeness",
+   "severity": "blocking",
+   "ok": true
+  },
+  "M02_schema_validity": {
+   "value": 1.0,
+   "op": ">=",
+   "threshold": 1.0,
+   "dimension": "validity",
+   "severity": "blocking",
+   "ok": true
+  },
+  "M03_open_conflicts": {
+   "value": 0,
+   "op": "<=",
+   "threshold": 0,
+   "dimension": "consistency",
+   "severity": "blocking",
+   "ok": true
+  },
+  "M04_active_logical_violations": {
+   "value": 0,
+   "op": "<=",
+   "threshold": 0,
+   "dimension": "consistency",
+   "severity": "blocking",
+   "ok": true
+  },
+  "M07_conflict_documentation": {
+   "value": 1.0,
+   "op": ">=",
+   "threshold": 1.0,
+   "dimension": "consistency",
+   "severity": "blocking",
+   "ok": true
+  },
+  "M05_provenance_fidelity": {
+   "value": 1.0,
+   "op": ">=",
+   "threshold": 1.0,
+   "dimension": "traceability",
+   "severity": "blocking",
+   "ok": true
+  },
+  "M08_near_duplicate_share": {
+   "value": 0.0,
+   "op": "<=",
+   "threshold": 0.0,
+   "dimension": "uniqueness",
+   "severity": "blocking",
+   "ok": true
+  },
+  "M09_freshness": {
+   "value": 1.0,
+   "op": ">=",
+   "threshold": 1.0,
+   "dimension": "timeliness",
+   "severity": "blocking",
+   "ok": true
+  },
+  "M10_id_uniqueness": {
+   "value": 1.0,
+   "op": ">=",
+   "threshold": 1.0,
+   "dimension": "uniqueness",
+   "severity": "blocking",
+   "ok": true
+  },
+  "M11_graph_referential_integrity": {
+   "value": 1.0,
+   "op": ">=",
+   "threshold": 1.0,
+   "dimension": "integrity",
+   "severity": "blocking",
+   "ok": true
+  },
+  "M12_sensitivity_valid": {
+   "value": 1.0,
+   "op": ">=",
+   "threshold": 1.0,
+   "dimension": "validity",
+   "severity": "blocking",
+   "ok": true
+  },
+  "M13_language_consistency": {
+   "value": 0.9926,
+   "op": ">=",
+   "threshold": 0.99,
+   "dimension": "consistency",
+   "severity": "blocking",
+   "ok": true
+  },
+  "M14_self_retrieval_at1": {
+   "value": 0.957,
+   "op": ">=",
+   "threshold": 0.97,
+   "dimension": "retrievability",
+   "severity": "warning",
+   "ok": false
+  },
+  "M06_expert_sample_accuracy": {
+   "value": 0.6389,
+   "op": ">=",
+   "threshold": 0.9,
+   "dimension": "accuracy",
+   "severity": "warning",
+   "ok": false
+  }
+ }
+}

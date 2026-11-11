@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\": [{\"tool\": \"sql_metric\", \"args\": {\"metric\": \"pathogenic_share\"}}], \"continue\": false, \"reason\": \"The pathogenic share across all calls is one governed warehouse metric.\"}"}

@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\": [], \"reason\": \"Sequencing cost is not a governed metric or a document in the hub, so no tool can answer it.\"}"}

@@ -1,0 +1,3 @@
+id,format,label
+sample1_bam,BAM,sample1.bam
+sample1_vcf,VCF,sample1.vcf

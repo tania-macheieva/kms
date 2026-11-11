@@ -1,0 +1,21 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dkh: <http://dkh.example/> .
+@prefix : <http://dkh.example/shape/> .
+
+:S01 a sh:NodeShape ; sh:targetClass dkh:Person ; sh:property [ sh:path dkh:ageYears ; sh:datatype xsd:integer ; sh:minInclusive 0 ; sh:maxInclusive 120 ; sh:maxCount 1 ; sh:message "S01: Person.ageYears must be an integer in 0..120" ] .
+:S02 a sh:NodeShape ; sh:targetClass dkh:Procedure ; sh:property [ sh:path dkh:kind ; sh:minCount 1 ; sh:in ( "HardFiltering" "CascadeTesting" ) ; sh:message "S02: Procedure.kind must be HardFiltering or CascadeTesting" ] .
+:S03 a sh:NodeShape ; sh:targetClass dkh:Threshold ; sh:property [ sh:path dkh:op ; sh:minCount 1 ; sh:in ( "<" ">" ) ; sh:message "S03: Threshold.op must be < or >" ] ; sh:property [ sh:path dkh:value ; sh:minCount 1 ; sh:datatype xsd:double ; sh:message "S03: Threshold.value must be numeric" ] .
+:S04 a sh:NodeShape ; sh:targetClass dkh:Variant ; sh:property [ sh:path dkh:type ; sh:minCount 1 ; sh:in ( "SNP" "Indel" ) ; sh:message "S04: Variant.type must be SNP or Indel" ] .
+:S05 a sh:NodeShape ; sh:targetClass dkh:Chunk ; sh:property [ sh:path dkh:doc_id ; sh:minCount 1 ; sh:message "S05: chunk needs doc_id" ] ; sh:property [ sh:path dkh:title ; sh:minCount 1 ; sh:minLength 1 ; sh:message "S05: chunk needs title" ] ; sh:property [ sh:path dkh:section ; sh:minCount 1 ; sh:minLength 1 ; sh:message "S05: chunk needs a non-empty section" ] ; sh:property [ sh:path dkh:text ; sh:minCount 1 ; sh:minLength 20 ; sh:message "S05: chunk needs text" ] .
+:S06 a sh:NodeShape ; sh:targetClass dkh:Chunk ; sh:property [ sh:path dkh:sensitivity ; sh:minCount 1 ; sh:in ( "public" "internal" "restricted" ) ; sh:message "S06: invalid sensitivity" ] .
+:S07 a sh:NodeShape ; sh:targetClass dkh:Chunk ; sh:property [ sh:path dkh:lang ; sh:in ( "en" "uk" ) ; sh:message "S07: lang must be en or uk" ] .
+:S08 a sh:NodeShape ; sh:targetClass dkh:Chunk ; sh:property [ sh:path dkh:date ; sh:pattern "^\\d{4}-\\d{2}-\\d{2}$" ; sh:message "S08: date must be ISO yyyy-mm-dd" ] .
+:S09 a sh:NodeShape ; sh:targetClass dkh:Chunk ; sh:property [ sh:path dkh:source_url ; sh:pattern "^(https?://|local:)" ; sh:message "S09: bad source_url" ] .
+:S10 a sh:NodeShape ; sh:targetClass dkh:Annotation ; sh:property [ sh:path dkh:name ; sh:minCount 1 ; sh:message "S10: Annotation needs name" ] ; sh:property [ sh:path dkh:value ; sh:minCount 1 ; sh:message "S10: Annotation needs value" ] .
+:S11 a sh:NodeShape ; sh:targetClass dkh:Claim ; sh:property [ sh:path dkh:status ; sh:minCount 1 ; sh:in ( "active" "alternative" "superseded" "outdated_flag" ) ; sh:message "S11: invalid claim status" ] .
+:S12 a sh:NodeShape ; sh:targetClass dkh:Claim ; sh:property [ sh:path dkh:source ; sh:minCount 1 ; sh:message "S12: claim without provenance (source)" ] ; sh:property [ sh:path dkh:decided_by ; sh:minCount 1 ; sh:message "S12: claim without decided_by" ] .
+:S13 a sh:NodeShape ; sh:targetClass dkh:Claim ; sh:sparql [ a sh:SPARQLConstraint ; sh:message "S13: validTo must be after validFrom" ;
+  sh:select """PREFIX dkh: <http://dkh.example/> SELECT $this WHERE { $this dkh:validFrom ?f ; dkh:validTo ?t . FILTER(?t <= ?f) }""" ] .
+:S14 a sh:NodeShape ; sh:targetClass dkh:Procedure ; sh:sparql [ a sh:SPARQLConstraint ; sh:message "S14: procedure APPLIES_TO a person younger than minTestingAge" ;
+  sh:select """PREFIX dkh: <http://dkh.example/> SELECT $this ?p WHERE { $this dkh:minTestingAge ?m ; dkh:APPLIES_TO ?p . ?p dkh:ageYears ?a . FILTER(?a < ?m) }""" ] .

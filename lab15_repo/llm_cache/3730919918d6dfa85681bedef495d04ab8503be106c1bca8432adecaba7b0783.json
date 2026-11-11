@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\": [{\"tool\": \"graph_query\", \"args\": {\"cypher\": \"MATCH (p:GenePanel {name: 'HBOC-panel'})-[:HAS_MEMBER]->(g:Gene) RETURN g.symbol AS gene LIMIT 50\"}}], \"continue\": false, \"reason\": \"Listing the members of a gene panel is a relation query over the graph.\"}"}

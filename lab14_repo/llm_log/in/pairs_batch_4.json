@@ -1,0 +1,602 @@
+[
+{
+"pair_id": "PR121",
+"A": {
+"id": "sarek_output#h011",
+"doc": "sarek_output",
+"section": "Preprocessing > Preparation of input files (FastQ or (u)BAM) > BWA",
+"text": "sarek_output — Preprocessing > Preparation of input files (FastQ or (u)BAM) > BWA\n#### BWA\n\nBWA is a software package for mapping low-divergent sequences against a large reference genome. The aligned reads are then coordinate-sorted (or name-sorted if `GATK MarkDuplicatesSpark` is used for duplicate marking) with samtools.\n\n#### BWA-mem2\n\nBWA-mem2 is a software package for mapping low-divergent sequences against a large reference genome.The aligned reads are then coordinate-sorted (or name-sorted if `GATK MarkDuplicatesSpark` is used for duplicate marking) with samtools."
+},
+"B": {
+"id": "rare_output#h003",
+"doc": "rare_output",
+"section": "Pipeline overview > BWA-MEME",
+"text": "rare_output — Pipeline overview > BWA-MEME\n##### BWA-MEME\n\nBWA-MEME used to map the reads to a reference genome. The aligned reads are coordinate sorted with samtools sort. These files are treated as intermediates and are not placed in the output folder by default. It is not the default aligner, but it can be chosen by setting `--aligner` option to bwameme."
+}
+},
+{
+"pair_id": "PR122",
+"A": {
+"id": "int_situations#h003",
+"doc": "int_situations",
+"section": "Перевірка шаблонів ситуацій запитами > S04 — Вибір методу для малої панелі",
+"text": "Перевірка шаблонів ситуацій запитами — Перевірка шаблонів ситуацій запитами > S04 — Вибір методу для малої панелі\n## S04 — Вибір методу для малої панелі\n\nGuard: панель мала: немає великого набору варіантів і підготовлених відомих ресурсів; клас: `dkh:GenePanel`.\n\n```sparql\nSELECT ?xl ?al ?nl WHERE {\n dkh:Situation_S04 dkh:guardClass ?c ; dkh:hasAction ?a ; dkh:hasNewState ?n .\n ?x rdf:type ?c ; rdfs:label ?xl . ?a rdfs:label ?al . ?n rdfs:label ?nl }\nORDER BY ?xl\n```\n\nРезультат: індивіди ['HBOC-panel']; дія ['S04: SelectHardFilteringAction']; новий стан ['S04: UnfilteredState']. Очікувалось ['HBOC-panel'] → **збіг**."
+},
+"B": {
+"id": "int_situations#h002",
+"doc": "int_situations",
+"section": "Перевірка шаблонів ситуацій запитами > S03 — Прапорець FS на кінці екзона",
+"text": "Перевірка шаблонів ситуацій запитами — Перевірка шаблонів ситуацій запитами > S03 — Прапорець FS на кінці екзона\n## S03 — Прапорець FS на кінці екзона\n\nGuard: єдиний прапорець — FS, варіант у кінці екзона, SOR ≤ 3; клас: `dkh:ExonEndVariant`.\n\n```sparql\nSELECT ?xl ?al ?nl WHERE {\n dkh:Situation_S03 dkh:guardClass ?c ; dkh:hasAction ?a ; dkh:hasNewState ?n .\n ?x rdf:type ?c ; rdfs:label ?xl . ?a rdfs:label ?al . ?n rdfs:label ?nl }\nORDER BY ?xl\n```\n\nРезультат: індивіди ['VAR-004']; дія ['S03: ReviewWithSORAction']; новий стан ['S03: UnfilteredState']. Очікувалось ['VAR-004'] → **збіг**."
+}
+},
+{
+"pair_id": "PR123",
+"A": {
+"id": "bcftools_manual#h064",
+"doc": "bcftools_manual",
+"section": "Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools index [OPTIONS] 'in.bcf'|'in.vcf.gz' > Indexing options:",
+"text": "Convert 23andme results into VCF — Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools index [OPTIONS] 'in.bcf'|'in.vcf.gz' > Indexing options:\n### Indexing options:\n-c, --csi::\n generate CSI-format index for VCF/BCF files [default]\n\n-f, --force::\n overwrite index if it already exists\n\n-m, --min-shift INT::\n set minimal interval size for CSI indices to 2^INT; default: 14\n\n-o, --output FILE::\n output file name. If not set, then the index will be created\n using the input file name plus a '.csi or .tbi' extension\n\n-t, --tbi::\n generate TBI-format index for VCF files\n\n--threads INT::\n see <<common_options,Common Options>>\n\n-v, --verbosity INT::\n see <<common_options,Common Options>>"
+},
+"B": {
+"id": "bcftools_manual#h067",
+"doc": "bcftools_manual",
+"section": "Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools isec [OPTIONS] 'A.vcf.gz B.vcf.gz' [...]",
+"text": "Convert 23andme results into VCF — Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools isec [OPTIONS] 'A.vcf.gz B.vcf.gz' [...]\n--regions-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n-t, --targets chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::\n see <<common_options,Common Options>>\n\n-T, --targets-file file::\n see <<common_options,Common Options>>\n\n--targets-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n-v, --verbosity INT::\n see <<common_options,Common Options>>\n\n-w, --write LIST::\n comma-separated list of input files to output given as 1-based indices. With -p and no\n -w, all files are written.\n\n-W[FMT], -W[=FMT], --write-index[=FMT]::\n Automatically index the output file. FMT is optional and defaults\n to tbi for vcf.gz and csi for bcf. This is done automatically\n with the -p option if the output format is compressed."
+}
+},
+{
+"pair_id": "PR124",
+"A": {
+"id": "bcftools_manual#h079",
+"doc": "bcftools_manual",
+"section": "Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools mpileup [OPTIONS] -f 'ref.fa in.bam' ['in2.bam' [...]] > Input options",
+"text": "Convert 23andme results into VCF — Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools mpileup [OPTIONS] -f 'ref.fa in.bam' ['in2.bam' [...]] > Input options\n-E, --redo-BAQ::\n Recalculate BAQ on the fly, ignore existing BQ tags\n\n-f, --fasta-ref FILE::\n The faidx-indexed reference file in the FASTA format. The file can be\n optionally compressed by bgzip. Reference is required by default\n unless the --no-reference option is set [null]\n\n--no-reference::\n Do not require the --fasta-ref option.\n\n-G, --read-groups [^]FILE::\n list of read groups to include or exclude if prefixed with \"^\".\n One read group per line. This file can also be used to assign new sample\n names to read groups by giving the new sample name as a second\n white-space-separated field, like this: \"read_group_id new_sample_name\".\n If the read group name is not unique, also the bam file name can\n be included: \"read_group_id file_name sample_name\". If all\n reads from the alignment file should be treated as a single sample, the\n asterisk symbol can be used: \"* file_name sample_name\". Alignments without\n a read group ID can be matched with \"?\". NOTE: The meaning of bcftools mpileup -G\n is the opposite of samtools mpileup -G.\n----\n RG_ID_1\n RG_ID_2 SAMPLE_A\n RG_ID_3 SAMPLE_A\n RG_ID_4 SAMPLE_B\n RG_ID_5 FILE_1.bam SAMPLE_A\n RG_ID_6 FILE_2.bam SAMPLE_A\n * FILE_3.bam SAMPLE_C\n ? FILE_3.bam SAMPLE_D\n----\n\n--indels-2.0::\n A new EXPERIMENTAL indel calling model which aims to address some known deficiencies of\n the current indel calling algorithm. Specifically, it uses diploid reference consensus\n sequence. Note that in the current version it has the potential to increase sensitivity\n but at the cost of decreased specificity.\n Only works with short-read sequencing technologies."
+},
+"B": {
+"id": "bcftools_manual#h008",
+"doc": "bcftools_manual",
+"section": "COMMANDS AND OPTIONS",
+"text": "Convert 23andme results into VCF — COMMANDS AND OPTIONS\n--regions-overlap pos|record|variant|'0'|'1'|'2'::\n This option controls how overlapping records are determined:\n set to pos or 0 if the VCF record has to have POS inside a region\n (this corresponds to the default behavior of -t/-T);\n set to record or 1 if also overlapping records with POS outside a region\n should be included (this is the default behavior of -r/-R, and includes indels\n with POS at the end of a region, which are technically outside the region); or set\n to variant or 2 to include only true overlapping variation (compare\n the full VCF representation \"`TA>T-`\" vs the true sequence variation \"`A>-`\").\n\n-s, --samples \\[^]LIST::\n Comma-separated list of samples to include or exclude if prefixed\n with \"^.\" (Note that when multiple samples are to be excluded,\n the \"^\" prefix is still present only once, e.g. \"^SAMPLE1,SAMPLE2\".)\n The sample order is updated to reflect that given on the command line.\n Note that in general tags such as INFO/AC, INFO/AN, etc are not updated\n to correspond to the subset samples. <<view,bcftools view>> is the\n exception where some tags will be updated (unless the -I, --no-update\n option is used; see <<view,bcftools view>> documentation). To use updated\n tags for the subset in another command one can pipe from view into\n that command. For example:\n----\n bcftools view -Ou -s sample1,sample2 file.vcf | bcftools query -f %INFO/AC\\t%INFO/AN\\n\n----"
+}
+},
+{
+"pair_id": "PR125",
+"A": {
+"id": "bcftools_manual#h029",
+"doc": "bcftools_manual",
+"section": "bcftools cnv '[OPTIONS] FILE' > General Options:",
+"text": "Convert 23andme results into VCF — bcftools cnv '[OPTIONS] FILE' > General Options:\n### General Options:\n\n-c, --control-sample string::\n optional control sample name. If given, pairwise calling is performed\n and the -P option can be used\n\n-f, --AF-file file::\n read allele frequencies from a tab-delimited file with the columns CHR,POS,REF,ALT,AF\n\n-o, --output-dir path::\n output directory\n\n-p, --plot-threshold float::\n call matplotlib to produce plots for chromosomes with quality at least float,\n useful for visual inspection of the calls. With -p 0, plots for all chromosomes will be\n generated. If not given, a matplotlib script will be created but not called.\n\n-r, --regions chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::\n see <<common_options,Common Options>>\n\n-R, --regions-file file::\n see <<common_options,Common Options>>\n\n--regions-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n-s, --query-sample string::\n query sample name\n\n-t, --targets LIST::\n see <<common_options,Common Options>>\n\n-T, --targets-file FILE::\n see <<common_options,Common Options>>\n\n--targets-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n-v, --verbosity INT::\n see <<common_options,Common Options>>"
+},
+"B": {
+"id": "bcftools_manual#h096",
+"doc": "bcftools_manual",
+"section": "Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools [plugin NAME|+NAME] '[OPTIONS] FILE -- [PLUGIN OPTIONS]' > VCF input options:",
+"text": "Convert 23andme results into VCF — Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools [plugin NAME|+NAME] '[OPTIONS] FILE -- [PLUGIN OPTIONS]' > VCF input options:\n### VCF input options:\n\n-e, --exclude EXPRESSION::\n exclude sites for which EXPRESSION is true. For valid expressions see\n <<expressions,EXPRESSIONS>>.\n\n-i, --include EXPRESSION::\n include only sites for which EXPRESSION is true. For valid expressions see\n <<expressions,EXPRESSIONS>>.\n\n-r, --regions chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::\n see <<common_options,Common Options>>\n\n-R, --regions-file file::\n see <<common_options,Common Options>>\n\n--regions-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n-t, --targets chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::\n see <<common_options,Common Options>>\n\n-T, --targets-file file::\n see <<common_options,Common Options>>\n\n--targets-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>"
+}
+},
+{
+"pair_id": "PR126",
+"A": {
+"id": "gatk_docker#h008",
+"doc": "gatk_docker",
+"section": "REPLACE with the directory where you'd like to clone the repo",
+"text": "REPLACE VALUE OF GITHUB_TAG WITH DESIRED VERSION — REPLACE with the directory where you'd like to clone the repo\n# REPLACE with the directory where you'd like to clone the repo\nexport STAGING_DIR=~/tmp/tmp_build_docker_image/\n\nBRANCH=`git rev-parse --symbolic-full-name --abbrev-ref HEAD`\nsudo bash build_docker.sh -e `git rev-parse ${BRANCH}` -s -r -d ${STAGING_DIR}\n```\n\n```bash\n# Same as above except do not run the unit tests.\nsudo bash build_docker.sh -e `git rev-parse ${BRANCH}` -s -u -d ${STAGING_DIR}\n```"
+},
+"B": {
+"id": "gatk_docker#h006",
+"doc": "gatk_docker",
+"section": "REPLACE with the directory where you'd like to clone the repo > Create GATK4 docker image (do not push to dockerhub)",
+"text": "REPLACE VALUE OF GITHUB_TAG WITH DESIRED VERSION — REPLACE with the directory where you'd like to clone the repo > Create GATK4 docker image (do not push to dockerhub)\n#### Create GATK4 docker image (do not push to dockerhub)\n\nFrom this directory, run:\n\n```bash\n# REPLACE VALUE OF GITHUB_TAG WITH DESIRED VERSION\nexport GITHUB_TAG=1.0.0.0-alpha1.2.1\n\n# REPLACE with the directory where you'd like to clone the repo\nexport STAGING_DIR=~/tmp/tmp_build_docker_image/\n\nsudo bash build_docker.sh -e ${GITHUB_TAG} -d ${STAGING_DIR}\n\n```"
+}
+},
+{
+"pair_id": "PR127",
+"A": {
+"id": "sarek_output#h007",
+"doc": "sarek_output",
+"section": "Preprocessing > Preparation of input files (FastQ or (u)BAM) > Split FastQ files",
+"text": "sarek_output — Preprocessing > Preparation of input files (FastQ or (u)BAM) > Split FastQ files\n#### Split FastQ files\n\nFastP supports splitting of one FastQ file into multiple files allowing parallel alignment of sharded FastQ file. To enable splitting, the number of reads per output can be specified. For more information, take a look into the parameter `--split_fastq`in the parameter docs.\n\nThese files are intermediate and by default not placed in the output-folder kept in the final files delivered to users. Set `--save_split` to enable publishing of these files to:\n\n Output files for all samples\n\n**Output directory: `{outdir}/preprocessing/fastp/<sample>/`**\n\n- `<sample>_<lane>_{R1,R2}.fastp.fastq.gz>`\n - Bgzipped FastQ file"
+},
+"B": {
+"id": "sarek_output#h008",
+"doc": "sarek_output",
+"section": "Preprocessing > Preparation of input files (FastQ or (u)BAM) > UMI consensus",
+"text": "sarek_output — Preprocessing > Preparation of input files (FastQ or (u)BAM) > UMI consensus\n#### UMI consensus\n\nSarek can create consensus reads when Unique Molecular Identifiers (UMIs) exist, using fgbio tools. Please note that if your UMIs are part of additional index fastq files then you can use nf-core/fastquorum to process them.\n\nThese files are intermediate and by default not placed in the output-folder kept in the final files delivered to users. Set `--save_split` to enable publishing of these files to:\n\n Output files for all samples\n\n**Output directory: `{outdir}/preprocessing/umi/<sample>/`**\n\n- `<sample_lane_{1,2}.umi-consensus.bam>`\n\n**Output directory: `{outdir}/reports/umi/`**\n\n- `<sample_lane_{1,2}_umi_histogram.txt>`"
+}
+},
+{
+"pair_id": "PR128",
+"A": {
+"id": "rare_output#h014",
+"doc": "rare_output",
+"section": "Pipeline overview > Subsample mitochondrial alignments > MultiQC",
+"text": "rare_output — Pipeline overview > Subsample mitochondrial alignments > MultiQC\n##### MultiQC\n\nMultiQC is a visualization tool that generates a single HTML report summarising all samples in your project. Most of the pipeline QC results are visualised in the report and further statistics are available in the report data directory.\n\nResults generated by MultiQC collate pipeline QC from supported tools e.g. FastQC. The pipeline has special steps which also allow the software versions to be reported in the MultiQC output for future traceability. For more information about how to use MultiQC reports, see <http://multiqc.info>.\n\n Output files\n\n- `multiqc/`\n - `multiqc_report.html`: a standalone HTML file that can be viewed in your web browser.\n - `multiqc_data/`: directory containing parsed statistics from the different tools used in the pipeline.\n - `multiqc_plots/`: directory containing static images from the report in various formats."
+},
+"B": {
+"id": "sarek_output#h074",
+"doc": "sarek_output",
+"section": "Variant annotation > BCFtools annotate > MultiQC",
+"text": "sarek_output — Variant annotation > BCFtools annotate > MultiQC\n#### MultiQC\n\nMultiQC is a visualization tool that generates a single HTML report summarizing all samples in your project.\nMost of the pipeline QC results are visualised in the report and further statistics are available in the report data directory.\nResults generated by MultiQC collect pipeline QC from supported tools e.g. FastQC. The pipeline has special steps which also allow the software versions to be reported in the MultiQC output for future traceability. For more information about how to use MultiQC reports, see <http://multiqc.info>.\n\n Output files\n\n- `multiqc/`\n - `multiqc_report.html`: a standalone HTML file that can be viewed in your web browser.\n - `multiqc_data/`: directory containing parsed statistics from the different tools used in the pipeline.\n - `multiqc_plots/`: directory containing static images from the report in various formats."
+}
+},
+{
+"pair_id": "PR129",
+"A": {
+"id": "rare_usage#h030",
+"doc": "rare_usage",
+"section": "Other Nextflow hidden files, like history of pipeline logs. > Best practices",
+"text": "nf-core/raredisease: Usage — Other Nextflow hidden files, like history of pipeline logs. > Best practices\n- **Restart a previous run:** Add `-resume` to your command when restarting a pipeline. Nextflow will use cached results from any pipeline steps where inputs are the same, and resume the run from where it terminated previously. For input to be considered the same, names and the files' contents must be identical. For more info about `-resume`, see this blog post. You can also supply a run name to resume a specific run: `-resume [run-name]`. Use the `nextflow log` command to show previous run names.\n\n- **Reusing parameters:** If you wish to repeatedly use the same parameters for multiple runs, rather than specifying each flag in the command, you can specify these in a params file.\n\nPipeline settings can be provided in a `yaml` or `json` file via `-params-file <file>`.\n\n⚠️ Do not use `-c <file>` to specify parameters as this will result in errors. Custom config files specified with `-c` must only be used for tuning process resource specifications, other infrastructural tweaks (such as output directories), or module arguments (args).\nThe above pipeline run specified with a params file in yaml format:\n\n```bash\nnextflow run nf-core/raredisease -profile docker -params-file params.yaml\n```\n\nwith:\n\n```yaml title=\"params.yaml\"\ninput: './samplesheet.csv'\noutdir: './results/'\ngenome: 'GRCh37'\n<...>\n```\n\nYou can also generate such `YAML`/`JSON` files via nf-core/launch."
+},
+"B": {
+"id": "sarek_usage#h002",
+"doc": "sarek_usage",
+"section": "Other nextflow hidden files, eg. history of pipeline runs and old logs.",
+"text": "Introduction — Other nextflow hidden files, eg. history of pipeline runs and old logs.\n# Other nextflow hidden files, eg. history of pipeline runs and old logs.\n```\n\nIf you wish to repeatedly use the same parameters for multiple runs, rather than specifying each flag in the command, you can specify these in a params file.\n\nPipeline settings can be provided in a `yaml` or `json` file via `-params-file <file>`.\nWARNING:\nDo not use `-c <file>` to specify parameters as this will result in errors. Custom config files specified with `-c` must only be used for tuning process resource specifications, other infrastructural tweaks (such as output directories), or module arguments (args).\n\nThe above pipeline run specified with a params file in yaml format:\n\n```bash\nnextflow run nf-core/sarek -params-file params.yaml\n```\n\nwith:\n\n```yaml title=\"params.yaml\"\ninput: './samplesheet.csv'\noutdir: './results/'\ngenome: 'GATK.GRCh38'\n<...>\n```\n\nYou can also generate such `YAML`/`JSON` files via nf-core/launch."
+}
+},
+{
+"pair_id": "PR130",
+"A": {
+"id": "gatk_cnv_germline#h001",
+"doc": "gatk_cnv_germline",
+"section": "Which WDL should you use? > Setting up parameter json file for a run",
+"text": "gatk_cnv_germline — Which WDL should you use? > Setting up parameter json file for a run\n#### Setting up parameter json file for a run\n\nTo get started, create the json template (using ``java -jar wdltool.jar inputs <workflow>``) for the workflow you wish to run and adjust parameters accordingly.\n\n*Please note that there are optional workflow-level and task-level parameters that do not appear in the template file. These are set to reasonable values by default, but can also be adjusted if desired.*"
+},
+"B": {
+"id": "gatk_cnv_somatic#h000",
+"doc": "gatk_cnv_somatic",
+"section": "Which WDL should you use?",
+"text": "gatk_cnv_somatic — Which WDL should you use?\n### Which WDL should you use?\n\n- Building a panel of normals (PoN): ``cnv_somatic_panel_workflow.wdl``\n- Running a matched pair: ``cnv_somatic_pair_workflow.wdl``\n\n#### Setting up parameter json file for a run\n\nTo get started, create the json template (using ``java -jar wdltool.jar inputs <workflow>``) for the workflow you wish to run and adjust parameters accordingly.\n\n*Please note that there are optional workflow-level and task-level parameters that do not appear in the template file. These are set to reasonable values by default, but can also be adjusted if desired.*"
+}
+},
+{
+"pair_id": "PR131",
+"A": {
+"id": "int_situations#h002",
+"doc": "int_situations",
+"section": "Перевірка шаблонів ситуацій запитами > S03 — Прапорець FS на кінці екзона",
+"text": "Перевірка шаблонів ситуацій запитами — Перевірка шаблонів ситуацій запитами > S03 — Прапорець FS на кінці екзона\n## S03 — Прапорець FS на кінці екзона\n\nGuard: єдиний прапорець — FS, варіант у кінці екзона, SOR ≤ 3; клас: `dkh:ExonEndVariant`.\n\n```sparql\nSELECT ?xl ?al ?nl WHERE {\n dkh:Situation_S03 dkh:guardClass ?c ; dkh:hasAction ?a ; dkh:hasNewState ?n .\n ?x rdf:type ?c ; rdfs:label ?xl . ?a rdfs:label ?al . ?n rdfs:label ?nl }\nORDER BY ?xl\n```\n\nРезультат: індивіди ['VAR-004']; дія ['S03: ReviewWithSORAction']; новий стан ['S03: UnfilteredState']. Очікувалось ['VAR-004'] → **збіг**."
+},
+"B": {
+"id": "int_situations#h001",
+"doc": "int_situations",
+"section": "Перевірка шаблонів ситуацій запитами > S02 — Високий FS у SNP",
+"text": "Перевірка шаблонів ситуацій запитами — Перевірка шаблонів ситуацій запитами > S02 — Високий FS у SNP\n## S02 — Високий FS у SNP\n\nGuard: FS > 60 і варіант є SNP; клас: `dkh:HighFSSnpVariant`.\n\n```sparql\nSELECT ?xl ?al ?nl WHERE {\n dkh:Situation_S02 dkh:guardClass ?c ; dkh:hasAction ?a ; dkh:hasNewState ?n .\n ?x rdf:type ?c ; rdfs:label ?xl . ?a rdfs:label ?al . ?n rdfs:label ?nl }\nORDER BY ?xl\n```\n\nРезультат: індивіди ['VAR-004']; дія ['S02: ApplyFlagAction']; новий стан ['S02: FlaggedState']. Очікувалось ['VAR-004'] → **збіг**."
+}
+},
+{
+"pair_id": "PR132",
+"A": {
+"id": "rare_usage#h023",
+"doc": "rare_usage",
+"section": "Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data > Reference files and parameters > 10. Mobile element calling",
+"text": "nf-core/raredisease: Usage — Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data > Reference files and parameters > 10. Mobile element calling\n##### 10. Mobile element calling\n\n| Mandatory | Optional |\n\n| genome | |\n| mobile_element_references 1 | |\n\n 1 A TSV file that describes the references (BEDs) used by RetroSeq for calling mobile elements. Sample file here\n\n##### 11. Mobile element annotation\n\n| Mandatory | Optional |\n\n| genome | vep_filters/vep_filters_scout_fmt |\n| mobile_element_svdb_annotations 1 | |\n| vep_cache_version | |\n| vep_cache | |\n| variant_consequences_sv | |\n\n 1 A CSV file that describes the databases (VCFs) used by SVDB for annotating mobile elements with allele frequencies. Sample file here."
+},
+"B": {
+"id": "rare_usage#h022",
+"doc": "rare_usage",
+"section": "Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data > Reference files and parameters > 9. Mitochondrial annotation",
+"text": "nf-core/raredisease: Usage — Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data > Reference files and parameters > 9. Mitochondrial annotation\n##### 9. Mitochondrial annotation\n\nMitochondrial analysis runs automatically for `wgs` and `mito` analysis types. For WES runs, set `--run_mt_for_wes true` to enable it.\n\n| Mandatory | Optional |\n\n| genome | run_mt_for_wes 1 |\n| mito_name | vep_filters/vep_filters_scout_fmt |\n| vcfanno_resources | vep_plugin_files |\n| vcfanno_toml | |\n| vep_cache_version | |\n| vep_cache | |\n| score_config_mt | |\n| variant_consequences_snv | |\n\n 1 Set to `true` to enable mitochondrial analysis for WES runs. Default is `false`."
+}
+},
+{
+"pair_id": "PR133",
+"A": {
+"id": "sarek_output#h037",
+"doc": "sarek_output",
+"section": "Variant Calling > SNVs and small indels > Sentieon Haplotyper",
+"text": "sarek_output — Variant Calling > SNVs and small indels > Sentieon Haplotyper\n#### Sentieon Haplotyper\n\nSentieon Haplotyper is Sention's speedup version of GATK's Haplotypecaller (see above).\n\n Unfiltered VCF-files for normal samples\n\n**Output directory: `{outdir}/variant_calling/sentieon_haplotyper/<sample>/`**\n\n- `<sample>.haplotyper.unfiltered.vcf.gz` and `<sample>.haplotyper.unfiltered.vcf.gz.tbi`\n - VCF with tabix index\n\nThe output from Sentieon's Haplotyper can be controlled through the option `--sentieon_haplotyper_emit_mode` for Sarek, see Basic usage of Sentieon functions.\n\nUnless `haplotyper_filter` is listed under `--skip_tools` in the nextflow command, GATK's CNNScoreVariants and FilterVariantTranches (see above) is applied to the unfiltered VCF-files in order to obtain filtered VCF-files.\n\n Filtered VCF-files for normal samples\n\n**Output directory: `{outdir}/variant_calling/sentieon_haplotyper/<sample>/`**\n\n- `<sample>.haplotyper.filtered.vcf.gz` and `<sample>.haplotyper.filtered.vcf.gz.tbi`\n - VCF with tabix index"
+},
+"B": {
+"id": "sarek_output#h035",
+"doc": "sarek_output",
+"section": "Variant Calling > SNVs and small indels > Parabricks HaplotypeCaller",
+"text": "sarek_output — Variant Calling > SNVs and small indels > Parabricks HaplotypeCaller\n#### Parabricks HaplotypeCaller\n\nParabricks HaplotypeCaller is a GPU-accelerated implementation of GATK HaplotypeCaller for germline SNP and indel calling. Enable with `--tools parabricks_haplotypecaller --profile <docker/singularity>,gpu`.\n\n Output files\n\n**Output directory: `{outdir}/variant_calling/parabricks_haplotypecaller/<sample>/`**\n\n- `<sample>.parabricks_haplotypecaller.vcf.gz` and `<sample>.parabricks_haplotypecaller.vcf.gz.tbi`\n - VCF with tabix index\n\n#### Sentieon DNAscope\n\nSentieon DNAscope is a variant-caller which aims at outperforming GATK's Haplotypecaller in terms of both speed and accuracy. DNAscope allows you to use a machine learning model to perform variant calling with higher accuracy by improving the candidate detection and filtering.\n\n Unfiltered VCF-files for normal samples\n\n**Output directory: `{outdir}/variant_calling/sentieon_dnascope/<sample>/`**\n\n- `<sample>.dnascope.unfiltered.vcf.gz` and `<sample>.dnascope.unfiltered.vcf.gz.tbi`\n - VCF with tabix index\n\nThe output from Sentieon's DNAscope can be controlled through the option `--sentieon_dnascope_emit_mode` for Sarek, see Basic usage of Sentieon functions.\n\nUnless `dnascope_filter` is listed under `--skip_tools` in the nextflow command, Sentieon's DNAModelApply is applied to the unfiltered VCF-files in order to obtain filtered VCF-files.\n\n Filtered VCF-files for normal samples\n\n**Output directory: `{outdir}/variant_calling/sentieon_dnascope/<sample>/`**\n\n- `<sample>.dnascope.filtered.vcf.gz` and `<sample>.dnascope.filtered.vcf.gz.tbi`\n - VCF with tabix index"
+}
+},
+{
+"pair_id": "PR134",
+"A": {
+"id": "rare_output#h028",
+"doc": "rare_output",
+"section": "Pipeline overview > SVDB query",
+"text": "rare_output — Pipeline overview > SVDB query\n#### SVDB query\n\nSVDB query allows you to quickly annotate your VCF with data from one or more structural variant databases. The output files are not published in the output folder, and is passed to vep for further annotation.\n\n#### VEP\n\nVEP determines the effect of your variants on genes, transcripts, and protein sequence, as well as regulatory regions. We recommend annotating with pLI plugin, along with any other custom plugins you may want too use. Based on VEP annotations, custom scripts used by the pipeline further annotate each record with the most severe consequence, and pli scores.\n\n Output files\n\n- `annotate_sv/`\n - `<case_id>_svdbquery_vep.vcf.gz`: file containing svdb query, and vep annotations.\n - `<case_id>_svdbquery_vep.vcf.gz.tbi`: index of the file containing bcftools roh, vcfanno, and vep annotations.\n - `<case_id>_svdbquery_vep_summary.html`: vep summary."
+},
+"B": {
+"id": "rare_output#h025",
+"doc": "rare_output",
+"section": "Pipeline overview > VEP",
+"text": "rare_output — Pipeline overview > VEP\n#### VEP\n\nVEP determines the effect of your variants on genes, transcripts, and protein sequence, as well as regulatory regions. We recommend annotating with the following plugins:\n\n- LoFtool\n- pLI\n- SpliceAI\n- MaxEntScan\n\nBased on VEP annotations, custom scripts used by the pipeline further annotate each record with the most severe consequence, and pli scores.\n\n**NB**: Output files described below do not include mitochondrial annotations only if --skip_subworklows includes mt_annotation.\n\n Output files\n\n- `annotate_snv/genome`\n - `<case_id>_<rhocall_vcfanno|vcfanno>_filter_<cadd_vep|vep>.vcf.gz`: file containing bcftools roh, vcfanno, cadd and vep annotations.\n - `<case_id>_<rhocall_vcfanno|vcfanno>_filter_<cadd_vep|vep>.vcf.gz.tbi`: index of the file containing bcftools roh, vcfanno, cadd and vep annotations."
+}
+},
+{
+"pair_id": "PR135",
+"A": {
+"id": "bcftools_manual#h052",
+"doc": "bcftools_manual",
+"section": "Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools csq '[OPTIONS] FILE'",
+"text": "Convert 23andme results into VCF — Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools csq '[OPTIONS] FILE'\n-i, --include EXPRESSION::\n include only sites for which EXPRESSION is true. For valid expressions see\n <<expressions,EXPRESSIONS>>.\n\n-l, --local-csq::\n switch off haplotype-aware calling, run localized predictions considering\n only one VCF record at a time\n\n-n, --ncsq INT::\n maximum number of per-haplotype consequences to consider for each site. The INFO/BCSQ column includes\n all consequences, but only the first INT will be referenced by the FORMAT/BCSQ fields.\n The default value is 15 which corresponds to one 32-bit integer per diploid\n sample, after accounting for values reserved by the BCF specification.\n Note that increasing the value leads to increased size of the output BCF.\n\n--no-version::\n see <<common_options,Common Options>>\n\n-o, --output FILE::\n see <<common_options,Common Options>>\n\n-O, --output-type t|b|u|z|v[0-9]::\n see <<common_options,Common Options>>. In addition, a custom tab-delimited\n plain text output can be printed (t).\n\n-p, --phase a|m|r|R|s::\n how to handle unphased heterozygous genotypes:\n\n a;;\n take GTs as is, create haplotypes regardless of phase (0/1 -> 0|1)\n\n m;;\n merge all GTs into a single haplotype (0/1 -> 1, 1/2 -> 1)\n\n r;;\n require phased GTs, throw an error on unphased heterozygous GTs\n\n R;;\n create non-reference haplotypes if possible (0/1 -> 1|1, 1/2 -> 1|2)\n\n s;;\n skip unphased heterozygous GTs\n\n-q, --quiet::\n suppress warning messages\n\n-r, --regions chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::\n see <<common_options,Common Options>>\n\n-R, --regions-file FILE::\n see <<common_options,Common Options>>\n\n--regions-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n-s, --samples LIST::\n samples to include or \"-\" to apply all variants and ignore samples\n\n-S, --samples-file FILE::\n see <<common_options,Common Options>>\n\n-t, --targets LIST::\n see <<common_options,Common Options>>\n\n-T, --targets-file FILE::\n see <<common_options,Common Options>>"
+},
+"B": {
+"id": "bcftools_manual#h096",
+"doc": "bcftools_manual",
+"section": "Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools [plugin NAME|+NAME] '[OPTIONS] FILE -- [PLUGIN OPTIONS]' > VCF input options:",
+"text": "Convert 23andme results into VCF — Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools [plugin NAME|+NAME] '[OPTIONS] FILE -- [PLUGIN OPTIONS]' > VCF input options:\n### VCF input options:\n\n-e, --exclude EXPRESSION::\n exclude sites for which EXPRESSION is true. For valid expressions see\n <<expressions,EXPRESSIONS>>.\n\n-i, --include EXPRESSION::\n include only sites for which EXPRESSION is true. For valid expressions see\n <<expressions,EXPRESSIONS>>.\n\n-r, --regions chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::\n see <<common_options,Common Options>>\n\n-R, --regions-file file::\n see <<common_options,Common Options>>\n\n--regions-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n-t, --targets chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::\n see <<common_options,Common Options>>\n\n-T, --targets-file file::\n see <<common_options,Common Options>>\n\n--targets-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>"
+}
+},
+{
+"pair_id": "PR136",
+"A": {
+"id": "gatk_funco_refdiff#h010",
+"doc": "gatk_funco_refdiff",
+"section": "HumanG1Kv37",
+"text": "gatk_funco_refdiff — HumanG1Kv37\ndd784bb8074d6f5b949464ffea8c6901 ---- ---- ---- JH720449.1\n dd8730d9d33765ff135fcfadb8810280 ---- ---- ---- GL383575.2\n df3e809f9a87f792218db18db51f6ad4 ---- ---- ---- GL383522.1\n e0da36f2d1d2c6092f13d5bee52537e0 ---- ---- ---- GL383516.1\n e0e934bd79ff323b31f4c9b80fb80a5c ---- ---- ---- JH159134.2\n e11adfbb638e60f61d7e8ef6647f30f2 ---- ---- ---- JH720448.1\n e2cd68e2099fbd7cee557d6a7910768f ---- ---- ---- KB021646.2\n e363729ea23dad7c6802e7b439b4f668 ---- ---- ---- KE332497.1\n e5b96eb9510763261839281c198607dd ---- ---- ---- GL582979.2\n e5cd94b0e0668debf81b82f405597b28 ---- ---- ---- GL582970.1\n e6c232469067e8cadfa852a2ea5513b7 ---- ---- ---- GL949749.1\n e8c870267b2a5261edb9d51d0efd6469 ---- ---- ---- GL582975.1\n ebf72aeb4d53f0fd56e2e72967751f8a ---- ---- ---- GL383562.1\n ed6bcd4459b3bc6b366ce00262952f57 ---- ---- ---- GL949743.1\n ed6fb45e0a25c31903cbb0f78d9d487e ---- ---- ---- GL383546.1\n edf086bce359065367b105cae0abfeee ---- ---- ---- GL383579.1\n edf41bfaf2584364bb4c5a645d73d53c ---- ---- ---- GL383553.2\n f2bfb99f84f2dd2ea538fe69ee786a0d ---- ---- ---- GL383525.1\n f486a5a44493d2e6bf72bf95ae898e3c ---- ---- ---- JH806574.2\n f7ee47af8d462cd9aeb6d40de99acb36 ---- ---- ---- JH806585.1\n fa5fa49d281fc855dd1076c4f51bd8dc ---- ---- ---- KE332498.1\n faa48b73103366d1da02065870a58bda ---- ---- ---- GL383543.1\n faae4c952e9c38254538e1853b786276 ---- ---- ---- GL582976.1\n fc93038463f9660e139435537ef53a5c ---- ---- ---- KB663604.1\n fdeb8db11e8544a638179a592c051331 ---- ---- ---- JH636061.1\n fef0bc815f4826ea408515d8ec74ca80 ---- ---- ---- JH636057.1\n ff7c4316cb69a8d571bd7ef85c1a10e4 ---- ---- ---- JH720455.1\n\nThis table indicates that while most contigs contain the same data, there are several with **sequence differences between the references**. Among those are **Chromosome 3**, **Chromosome Y**, and the **Mitochondrial Contig**.\n\nAnecdotally the changes are for bases for which there was low confidence, with those low confidence bases masked out to be the `IUPAC` symbol for any base. However, _there does not seem to be a detailed comparison readily available (i.e. there's no proof that this is true)_.\n\nTherefore, when doing comparisons across the four reference versions for each of these contigs, some care should be taken.\n## Additional Information\nSome further details can be found on this DNAnexus wiki page as of 2019/01/30.\n\nBack to Top\n\n<hr>"
+},
+"B": {
+"id": "gatk_funco_refdiff#h007",
+"doc": "gatk_funco_refdiff",
+"section": "HumanG1Kv37",
+"text": "gatk_funco_refdiff — HumanG1Kv37\n18c01f6e62136005ce1b2f2f33173f02 ---- ---- ---- GL582974.1\n 18fd9605f12ec0982adcf9e908f53331 ---- ---- ---- GL383523.1\n 190b4d20cab29ddba5f2495a7117f7cf ---- ---- ---- JH636055.1\n 1919a95f3ea48fde56ba925295086028 ---- ---- ---- GL383582.2\n 192dead6bc331a0dcbd1ba9d3d8a6f80 ---- ---- ---- JH806581.1\n 1b6fa375fdf382778e6645d822d12254 ---- ---- ---- GL339449.2\n 1d217e666c48ef7f2ec81946f4f4bfcc ---- ---- ---- GL383521.1\n 1d2933992f087a832718c9de19d4ceab ---- ---- ---- KE332499.1\n 20d5046bbd2a21729fdd64fa94bdd5a1 ---- ---- ---- GL949742.1\n 20da91baf79b2e14b605a8ebe1f3704e ---- ---- ---- GL877872.1\n 2118ff7bca8f75acc4629ab88bae1c2e ---- ---- ---- GL582968.1\n 23aea04f46682e2a2be1a5ff3934a9fe ---- ---- ---- GL383540.1\n 24f6ccbfc261e62451042a9713be6280 ---- ---- ---- JH636059.1\n 2536c2286fdeb98404ac410dbf528a3e ---- ---- ---- GL949745.1\n 260aca5e1ff29b6ed3d3cd9e438f4219 ---- ---- ---- JH636053.3\n 2948653361f974fbed3e26a4dfbf332c ---- ---- ---- GL383528.1\n 2cfa9ec8f70be88f95411dac6efb24c1 ---- ---- ---- JH159141.2\n 2e0bec27cfa9b440c746be52187fab0b ---- ---- ---- GL383560.1\n 2f4f58e3b3a95bed1132833156340778 ---- ---- ---- GL383555.1\n 2fc316247e162f76a01012bbd9b665e6 ---- ---- ---- JH806603.1\n 321b3324431ae40e90a4117ecc07e93c ---- ---- ---- JH591185.1\n 32ceefe714becfd36f207c5bffca4ba7 ---- ---- ---- GL877871.1\n 3342f6c21fa2dc364925712e0d52ed2d ---- ---- ---- JH159148.1\n 348782844074360bdc8b6416e16cc5d0 ---- ---- ---- GL383549.1\n 349e96f115f829409bd1087b5fb684ca ---- ---- ---- GL383519.1\n 35889722e6212fc9499e06e630268101 ---- ---- ---- JH806588.1\n 369f03e72d44461eab4542c58f3b5dcc ---- ---- ---- KE332501.1\n 384b5b32f0ea2cfd15ac268a2ce07909 ---- ---- ---- JH159146.1\n 3893d44dfad7ce35744b2bde1e43bbd3 ---- ---- ---- GL383576.1\n 38e72cd57edb75d967ac2613d61d297d ---- ---- ---- GL383563.2\n 3b40b7fdb005a1ce00efaa3310148852 ---- ---- ---- KE332502.1\n 3c5f20fb0744b7658d37d4ed79a286d1 ---- ---- ---- GL383520.1\n 3dd30a7638c3a3c518fc15571546b1be ---- ---- ---- GL877875.1\n 3e0825dd23c9fce74a88d863e33c42b7 ---- ---- ---- JH159149.1\n 40015159c7da8f06875bb558587e3f07 ---- ---- ---- GL383571.1\n 404580d8ad56ded0fb33642c8b99c28b ---- ---- ---- GL383537.1\n 4112dee892050e18ad279b8ebdcc5d48 ---- ---- ---- GL383578.1\n 41cf432193561894813a30da6e682e5b ---- ---- ---- KB021647.1\n 447fe0ff3103170150280c775095eebf ---- ---- ---- JH806593.1\n 44d5da56e5ec6ae0b9ebd354e9b47cfa ---- ---- ---- JH159150.3\n 474baa8f6c6684c55bbc2a10bfa84baf ---- ---- ---- GL949747.1\n 4791ba11d768da2cc1346d37a558047a ---- ---- ---- GL582972.1\n 485c442c93fe19514153702f0c84d952 ---- ---- ---- GL582966.2\n 4a3d54bda53308ca941d6d0e794b05cb ---- ---- ---- GL383554.1\n 4ad67c3a4e85f8b2cd54a8ef2aab4426 ---- ---- ---- GL383557.1\n 4bc4f02a4fca2c9d70646455bee8066e ---- ---- ---- JH806596.1\n 50fd52ddb8ad2b024fb8b83a5c90a642 ---- ---- ---- JH806577.1\n 5404455aab275489bc8e6c9fb3ead5cb ---- ---- ---- GL383573.1\n 54abe159678a84e88ceb2d5271027628 ---- ---- ---- KB663609.1\n 5835d9de56b65cefb9406d104d64531e ---- ---- ---- GL383536.1"
+}
+},
+{
+"pair_id": "PR137",
+"A": {
+"id": "rare_usage#h010",
+"doc": "rare_usage",
+"section": "Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data > Reference files and parameters",
+"text": "nf-core/raredisease: Usage — Other Nextflow hidden files, like history of pipeline logs. > Run nf-core/raredisease with your data > Reference files and parameters\n#### Reference files and parameters\n\nIn nf-core/raredisease, references can be supplied using parameters listed here.\nWARNING:\nDo not use `-c <file>` to specify parameters as this will result in errors. Custom config files specified with `-c` must only be used for tuning process resource specifications, other infrastructural tweaks (such as output directories), or module arguments (args).\n\nThe above pipeline run specified with a params file in yaml format:\n\n```bash\nnextflow run nf-core/raredisease -profile docker -params-file params.yaml\n```\n\nwith:\n\n```yaml title=\"params.yaml\"\ninput: \"./samplesheet.csv\"\noutdir: \"./results/\"\ngenome: \"GRCh37\"\n```"
+},
+"B": {
+"id": "sarek_usage#h002",
+"doc": "sarek_usage",
+"section": "Other nextflow hidden files, eg. history of pipeline runs and old logs.",
+"text": "Introduction — Other nextflow hidden files, eg. history of pipeline runs and old logs.\n# Other nextflow hidden files, eg. history of pipeline runs and old logs.\n```\n\nIf you wish to repeatedly use the same parameters for multiple runs, rather than specifying each flag in the command, you can specify these in a params file.\n\nPipeline settings can be provided in a `yaml` or `json` file via `-params-file <file>`.\nWARNING:\nDo not use `-c <file>` to specify parameters as this will result in errors. Custom config files specified with `-c` must only be used for tuning process resource specifications, other infrastructural tweaks (such as output directories), or module arguments (args).\n\nThe above pipeline run specified with a params file in yaml format:\n\n```bash\nnextflow run nf-core/sarek -params-file params.yaml\n```\n\nwith:\n\n```yaml title=\"params.yaml\"\ninput: './samplesheet.csv'\noutdir: './results/'\ngenome: 'GATK.GRCh38'\n<...>\n```\n\nYou can also generate such `YAML`/`JSON` files via nf-core/launch."
+}
+},
+{
+"pair_id": "PR138",
+"A": {
+"id": "gatk_funco_refdiff#h006",
+"doc": "gatk_funco_refdiff",
+"section": "HumanG1Kv37",
+"text": "gatk_funco_refdiff — HumanG1Kv37\nfc9b1a7b42b97a864f56b348b06095e6 16 16 chr16 chr16\n 351f64d4f4f9ddd45b35336ad97aa6de 17 17 chr17 chr17\n b15d4b2d29dde9d3e4f93d1d0f2cbc9c 18 18 chr18 chr18\n 1aacd71f30db8e561810913e0b72636d 19 19 chr19 chr19\n 0dec9660ec1efaaf33281c0d5ea2560f 20 20 chr20 chr20\n 2979a6085bfe28e3ad6f552f361ed74d 21 21 chr21 chr21\n a718acaa6135fdca8357d5bfe94211dd 22 22 chr22 chr22\n 1fa3474750af0948bdf97d5a0ee52e51 Y Y ---- ----\n 6743bd63b3ff2b5b8985d8933c53290a ---- NC_007605 ---- ----\n c68f52674c9fb33aef52dcf399755519 MT MT ---- chrM\n fdfd811849cc2fadebc929bb925902e5 3 3 ---- ----\n 094d037050cad692b57ea12c4fef790f ---- ---- chr6_qbl_hap6 GL000255.1\n 18c17e1641ef04873b15f40f6c8659a4 ---- ---- chr6_cox_hap2 GL000251.1\n 1e86411d73e6f00a10590f976be01623 ---- ---- chrY chrY\n 2a3c677c426a10e137883ae1ffb8da3f ---- ---- chr6_dbb_hap3 GL000252.1\n 3b6d666200e72bcc036bf88a4d7e0749 ---- ---- chr6_ssto_hap7 GL000256.1\n 641e4338fa8d52a5b781bd2a2c08d3c3 ---- ---- chr3 chr3\n 9d51d4152174461cd6715c7ddc588dc8 ---- ---- chr6_mann_hap4 GL000253.1\n d2ed829b8a1628d16cbeee88e88e39eb ---- ---- chrM ----\n d89517b400226d3b56e753972a7cad67 ---- ---- chr17_ctg5_hap1 GL000258.1\n efed415dd8742349cb7aaca054675b9a ---- ---- chr6_mcf_hap5 GL000254.1\n fa24f81b680df26bcfb6d69b784fbe36 ---- ---- chr4_ctg9_hap1 GL000257.1\n fe71bc63420d666884f37a3ad79f3317 ---- ---- chr6_apd_hap1 GL000250.1\n 0386df1d3476e6649f919195cc072fc7 ---- ---- ---- GL383574.1\n 03de7a950b56720768373120bbddf693 ---- ---- ---- GL383558.1\n 03f5fa89e52d0fe155d2e3968bf2eeb7 ---- ---- ---- GL339450.1\n 049056a72b5aee0b3f876ddf554f0208 ---- ---- ---- JH720447.1\n 063358c8e7f81361b959efab7b3f15cc ---- ---- ---- GL383565.1\n 07f56906bd56829f146dc0bf4b158603 ---- ---- ---- GL383538.1\n 09ce2d45f1f973e347e22ad1e3cf06fb ---- ---- ---- GL383568.1\n 09d4cb1070e1c521d6e86e7038824c1c ---- ---- ---- GL383544.1\n 0aee7c3e4bcc4c942230508c7836069b ---- ---- ---- GL582967.1\n 0bdfd2a40e1ceab32d71d6f1c9a6ca32 ---- ---- ---- JH636056.1\n 0c787911df2449cbba8609bebf897ecb ---- ---- ---- GL383541.1\n 0d12851232bcd8250e6dd61e3e7fd6a2 ---- ---- ---- JH636054.1\n 0db85f8e0ff66a470b46801c9892e471 ---- ---- ---- JH806589.1\n 0de582e28ae8c127d978b43e12a4f499 ---- ---- ---- KE332500.1\n 0f0364ed52ebe7757feea96ce623239f ---- ---- ---- GL383529.1\n 10b523cdfd4f3707276ec92f0f9cddfb ---- ---- ---- JH159133.1\n 1135da7b213739cfb3bdf2741c0c8083 ---- ---- ---- KE332506.1\n 122be4e189778434d8845fd5fd2c9a6b ---- ---- ---- GL949748.1\n 12406aad3f3da31bda9c21a1aa0e16b6 ---- ---- ---- GL383539.1\n 12a3180640a49f33c960eb12ca61a6c4 ---- ---- ---- GL383542.1\n 13a8dc0d93c1bf1ae397593eba841721 ---- ---- ---- JH806573.1\n 1452be48789c27311d94561610f6d5af ---- ---- ---- JH159132.1\n 157eecba5817aa1781a7bc4a9b60f933 ---- ---- ---- JH720446.1\n 15a2182cf9d3a55a7809adadc0775e03 ---- ---- ---- JH636060.1\n 16197ace4bfafdc2354857b98fc2a794 ---- ---- ---- GL582971.1\n 1668b0eb03be297f66837b46b5b73ac7 ---- ---- ---- JH806600.2\n 16a9ef53c176dcd2cf029940cbc29382 ---- ---- ---- JH720452.1"
+},
+"B": {
+"id": "gatk_funco_refdiff#h008",
+"doc": "gatk_funco_refdiff",
+"section": "HumanG1Kv37",
+"text": "gatk_funco_refdiff — HumanG1Kv37\n5950c02594cedbdf0fea5e8335e7cf80 ---- ---- ---- JH591181.2\n 5b90c3ac4e5938b400fcc2c29f3017bc ---- ---- ---- GL949744.1\n 5b9d9fb059071e552bba531b81bd3472 ---- ---- ---- KB663606.1\n 5c3a364520bf7ed46894abdce8f6e032 ---- ---- ---- GL877876.1\n 5eb6da458990f121fae13ff83a4bcbca ---- ---- ---- JH806576.1\n 5f9dc3f86463d08a1383cca5f285b7ad ---- ---- ---- GL383570.1\n 5fae03628eb9a445571bac107823b394 ---- ---- ---- KE332505.1\n 620913159e2fbd4e931ac120e3c584c9 ---- ---- ---- GL383526.1\n 659b65783878ace88f4c4b165f239363 ---- ---- ---- JH636052.4\n 675046e52613269a7c2e803525bb5a33 ---- ---- ---- JH720445.1\n 67f26a755ca4c6ca9a8f567d80d15fb9 ---- ---- ---- JH159131.1\n 68391fb8f16a37b63f607b76702de3b1 ---- ---- ---- GL383583.1\n 69490aa24b00717f2b11c095a5339516 ---- ---- ---- JH720454.3\n 6b604cf3e324680b72716e814d805944 ---- ---- ---- GL383530.1\n 6b862a953dfe724a1f48eaf12a3b948a ---- ---- ---- JH806578.1\n 6c22616c927261b8e5fc90028c780f00 ---- ---- ---- JH720444.2\n 6cba57c0e509ab785d3869134979b668 ---- ---- ---- GL383548.1\n 6d728406957c5c7fb158dbdb7efef2b7 ---- ---- ---- GL383527.1\n 6d85d704338ba29941aca4d278c7eb4a ---- ---- ---- KB663608.1\n 6fbc7007a5ff8aae8b28ca52dd6d5571 ---- ---- ---- GL383531.1\n 71a0d13c09c3e7ee64c7740e1425f20e ---- ---- ---- JH591183.1\n 73b240dd73b8bddcab281e265c9d759a ---- ---- ---- GL383559.2\n 73d39b5d51e6e2e8d9549bb85d7dae04 ---- ---- ---- JH806579.1\n 741179e4ee12c60fbcc6eba4a5c7695b ---- ---- ---- JH806598.1\n 74cff045a9cd92b7f571a756f248d16a ---- ---- ---- GL383524.1\n 7b556f03729e304a286c8d7ef0f0c10e ---- ---- ---- GL383547.1\n 7b6d6d01c18e91fc07f727ade2450f46 ---- ---- ---- JH806580.1\n 7d007a35ff02e56325881c68bb17b565 ---- ---- ---- GL949752.1\n 7e0afbdc97540aa0b101228b7bd331fb ---- ---- ---- JH806591.1\n 8213c58e2c1c22397f0ad9d0d901bbdf ---- ---- ---- JH159135.2\n 856a46516332f58a35eeb4f84d17febc ---- ---- ---- JH159142.2\n 883b29a1e5975e0f3139c183fbe2596d ---- ---- ---- GL383581.1\n 8a92722deabdf885d1aebfa8881d5903 ---- ---- ---- GL949753.1\n 8ac2dc8046e4bd0d6d46e827ff05ecd1 ---- ---- ---- JH806575.1\n 8ac9fb9d942dba38bfd30f8d767f4bba ---- ---- ---- JH159136.1\n 8b1d46e46d3083625eac92e9363773dd ---- ---- ---- KB663607.2\n 8d13c3e7cbb2b7e1a3225c5a54fe8f44 ---- ---- ---- GL383569.1\n 8e1004755b0574b2f855130c943fbd8e ---- ---- ---- KB663603.1\n 8e4f862d5b37504199902c6685b7fee5 ---- ---- ---- GL383533.1\n 8ede6eec21d781c22a9801f51433fcd6 ---- ---- ---- JH806584.1\n 8fc7aaa775b43df3d77c9782a140a981 ---- ---- ---- GL383572.1\n 902d62224f09e59cb9c6c44f71b5fca3 ---- ---- ---- GL383580.1\n 90ad438579d919fd20c42bb4f48de64b ---- ---- ---- JH591184.1\n 9133580f75d0ffa745af12953d65a4db ---- ---- ---- GL383550.1\n 93001afcfc8594885490513c4ffe243e ---- ---- ---- GL582977.2\n 93a798f03267e553445c7456c6f7ee49 ---- ---- ---- JH159143.1\n 94409f94ca59e67f811cd36ab133a82c ---- ---- ---- GL877873.1\n 955e16dfcdb2d28a334349dfa39f2ed4 ---- ---- ---- KB021645.1\n 976c3a7c4051dd9ce879833f4a764289 ---- ---- ---- JH806590.2\n 978987018f1a910273ebcc387e038de8 ---- ---- ---- GL383518.1"
+}
+},
+{
+"pair_id": "PR139",
+"A": {
+"id": "sarek_usage#h028",
+"doc": "sarek_usage",
+"section": "Core Nextflow arguments > Resource requests > Custom Tool Arguments",
+"text": "Introduction — Core Nextflow arguments > Resource requests > Custom Tool Arguments\n### Custom Tool Arguments\n\nA pipeline might not always support every possible argument or option of a particular tool used in pipeline. Fortunately, nf-core pipelines provide some freedom to users to insert additional parameters that the pipeline does not include by default.\n\nTo learn how to provide additional arguments to a particular tool of the pipeline, please see the customising tool arguments section of the nf-core website."
+},
+"B": {
+"id": "sarek_usage#h023",
+"doc": "sarek_usage",
+"section": "Core Nextflow arguments > Nextflow memory requirements > Custom Tool Arguments",
+"text": "Introduction — Core Nextflow arguments > Nextflow memory requirements > Custom Tool Arguments\n### Custom Tool Arguments\n\nA pipeline might not always support every possible argument or option of a particular tool used in pipeline. Fortunately, nf-core pipelines provide some freedom to users to insert additional parameters that the pipeline does not include by default.\n\nTo learn how to provide additional arguments to a particular tool of the pipeline, please see the customising tool arguments section of the nf-core website."
+}
+},
+{
+"pair_id": "PR140",
+"A": {
+"id": "sarek_citations#h006",
+"doc": "sarek_citations",
+"section": "Pipeline tools",
+"text": "sarek_citations — Pipeline tools\n> Ewels P, Magnusson M, Lundin S, Käller M. MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics. 2016 Oct 1;32(19):3047-8. doi: 10.1093/bioinformatics/btw354. Epub 2016 Jun 16. PubMed PMID: 27312411; PubMed Central PMCID: PMC5039924.\n\n- NGSCheckMate\n\n > Lee S, Lee S, Ouellette S, Park WY, Lee EA, Park PJ. NGSCheckMate: software for validating sample identity in next-generation sequencing studies within and across data types. Nucleic Acids Res. 2017 Jun 20;45(11):e103. doi: 10.1093/nar/gkx193. PubMed PMID: 28369524; PubMed Central PMCID: PMC5499645.\n\n- NVIDIA Clara Parabricks\n\n > NVIDIA (2025). Clara Parabricks (v.4.4.0-1 and above). <https://www.nvidia.com/en-us/clara/genomics/>\n\n- Phenotypes\n\n- PIGZ\n\n- P7Zip\n\n- SAMtools\n\n > Li H, Handsaker B, Wysoker A, Fennell T, Ruan J, Homer N, Marth G, Abecasis G, Durbin R; 1000 Genome Project Data Processing Subgroup. The Sequence Alignment/Map format and SAMtools. Bioinformatics. 2009 Aug 15;25(16):2078-9. doi: 10.1093/bioinformatics/btp352. Epub 2009 Jun 8. PubMed PMID: 19505943; PubMed Central PMCID: PMC2723002.\n\n- snpEff\n\n > Cingolani P, Platts A, Wang le L, et al.: A program for annotating and predicting the effects of single nucleotide polymorphisms, SnpEff: SNPs in the genome of Drosophila melanogaster strain w1118; iso-2; iso-3. Fly (Austin). Apr-Jun 2012;6(2):80-92. doi: 10.4161/fly.19695. PubMed PMID: 22728672; PubMed Central PMCID: PMC3679285.\n\n- SpliceAI\n\n > Jaganathan K, et al.: Predicting Splicing from Primary Sequence with Deep Learning. Cell. 2019 Jan 24;176(3):535-548.e24. doi: 10.1016/j.cell.2018.12.015. PubMed PMID: 30661751.\n\n- SpliceRegion\n\n- SPRING"
+},
+"B": {
+"id": "rare_citations#h003",
+"doc": "rare_citations",
+"section": "Pipeline tools",
+"text": "rare_citations — Pipeline tools\nEwels P, Magnusson M, Lundin S, Käller M. MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics. 2016 Oct 1;32(19):3047-8. doi: 10.1093/bioinformatics/btw354. Epub 2016 Jun 16. PubMed PMID: 27312411; PubMed Central PMCID: PMC5039924.\n\n- Peddy30017-4>)\n\n > Pedersen BS, Quinlan AR. Who’s Who? Detecting and Resolving Sample Anomalies in Human DNA Sequencing Studies with Peddy. The American Journal of Human Genetics. 2017;100(3):406-413. doi:10.1016/j.ajhg.2017.01.017\n\n- Picard\n\n- RetroSeq\n\n > Thomas M. Keane, Kim Wong, David J. Adams, RetroSeq: transposable element discovery from next-generation sequencing data. Bioinformatics.2013 Feb 1;29(3):389-90. doi: 10.1093/bioinformatics/bts697\n\n- rhocall\n\n- RTG Tools (vcfeval)\n\n > John G. Cleary, Ross Braithwaite, Kurt Gaastra, Brian S. Hilbush, Stuart Inglis, Sean A. Irvine, Alan Jackson, Richard Littin, Mehul Rathod, David Ware, Justin M. Zook, Len Trigg, and Francisco M. De La Vega. \"Comparing Variant Call Files for Performance Benchmarking of Next-Generation Sequencing Variant Calling Pipelines.\" bioRxiv, 2015. doi:10.1101/023754.\n\n- saltshaker\n\n- Sambamba\n\n > Tarasov A, Vilella AJ, Cuppen E, Nijman IJ, Prins P. Sambamba: fast processing of NGS alignment formats. Bioinformatics. 2015;31(12):2032-2034. doi:10.1093/bioinformatics/btv098\n\n- Sentieon DNAscope\n\n > Freed D, Pan R, Chen H, Li Z, Hu J, Aldana R. DNAscope: High Accuracy Small Variant Calling Using Machine Learning. Bioinformatics; 2022. doi:10.1101/2022.05.20.492556\n\n- Sentieon DNASeq\n\n > Kendig KI, Baheti S, Bockol MA, et al. Sentieon DNASeq Variant Calling Workflow Demonstrates Strong Computational Performance and Accuracy. Front Genet. 2019;10:736. doi:10.3389/fgene.2019.00736\n\n- SMNCopyNumberCaller"
+}
+},
+{
+"pair_id": "PR141",
+"A": {
+"id": "gatk_docker#h005",
+"doc": "gatk_docker",
+"section": "REPLACE VALUE OF GITHUB_TAG WITH DESIRED VERSION",
+"text": "REPLACE VALUE OF GITHUB_TAG WITH DESIRED VERSION — REPLACE VALUE OF GITHUB_TAG WITH DESIRED VERSION\n# REPLACE VALUE OF GITHUB_TAG WITH DESIRED VERSION\nexport GITHUB_TAG=4.2.6.1\n\n# REPLACE VALUE OF GITHUB_TAG WITH DESIRED VERSION\nexport GCR_REPO_TAG=us.gcr.io/myrepository:myname-master-4.2.6.1\n\n# REPLACE with the directory where you'd like to clone the repo\nexport STAGING_DIR=~/tmp/tmp_build_docker_image/\n\nsudo bash build_docker_remote.sh -e ${GITHUB_TAG} -t ${GCR_REPO_TAG} -d ${STAGING_DIR}\n\n```"
+},
+"B": {
+"id": "gatk_docker#h006",
+"doc": "gatk_docker",
+"section": "REPLACE with the directory where you'd like to clone the repo > Create GATK4 docker image (do not push to dockerhub)",
+"text": "REPLACE VALUE OF GITHUB_TAG WITH DESIRED VERSION — REPLACE with the directory where you'd like to clone the repo > Create GATK4 docker image (do not push to dockerhub)\n#### Create GATK4 docker image (do not push to dockerhub)\n\nFrom this directory, run:\n\n```bash\n# REPLACE VALUE OF GITHUB_TAG WITH DESIRED VERSION\nexport GITHUB_TAG=1.0.0.0-alpha1.2.1\n\n# REPLACE with the directory where you'd like to clone the repo\nexport STAGING_DIR=~/tmp/tmp_build_docker_image/\n\nsudo bash build_docker.sh -e ${GITHUB_TAG} -d ${STAGING_DIR}\n\n```"
+}
+},
+{
+"pair_id": "PR142",
+"A": {
+"id": "int_situations#h005",
+"doc": "int_situations",
+"section": "Перевірка шаблонів ситуацій запитами > S06 — Відкладення тестування неповнолітнього (основна перевірка)",
+"text": "Перевірка шаблонів ситуацій запитами — Перевірка шаблонів ситуацій запитами > S06 — Відкладення тестування неповнолітнього (основна перевірка)\n## S06 — Відкладення тестування неповнолітнього (основна перевірка)\n\nGuard: вік родича < 18; клас: `dkh:MinorRelative`.\n\n```sparql\nSELECT ?xl ?al ?nl WHERE {\n dkh:Situation_S06 dkh:guardClass ?c ; dkh:hasAction ?a ; dkh:hasNewState ?n .\n ?x rdf:type ?c ; rdfs:label ?xl . ?a rdfs:label ?al . ?n rdfs:label ?nl }\nORDER BY ?xl\n```\n\nРезультат: індивіди ['Sofiia']; дія ['S06: DeferTestingAction']; новий стан ['S06: TestingDeferredState']. Очікувалось ['Sofiia'] → **збіг**."
+},
+"B": {
+"id": "int_situations#h003",
+"doc": "int_situations",
+"section": "Перевірка шаблонів ситуацій запитами > S04 — Вибір методу для малої панелі",
+"text": "Перевірка шаблонів ситуацій запитами — Перевірка шаблонів ситуацій запитами > S04 — Вибір методу для малої панелі\n## S04 — Вибір методу для малої панелі\n\nGuard: панель мала: немає великого набору варіантів і підготовлених відомих ресурсів; клас: `dkh:GenePanel`.\n\n```sparql\nSELECT ?xl ?al ?nl WHERE {\n dkh:Situation_S04 dkh:guardClass ?c ; dkh:hasAction ?a ; dkh:hasNewState ?n .\n ?x rdf:type ?c ; rdfs:label ?xl . ?a rdfs:label ?al . ?n rdfs:label ?nl }\nORDER BY ?xl\n```\n\nРезультат: індивіди ['HBOC-panel']; дія ['S04: SelectHardFilteringAction']; новий стан ['S04: UnfilteredState']. Очікувалось ['HBOC-panel'] → **збіг**."
+}
+},
+{
+"pair_id": "PR143",
+"A": {
+"id": "rare_output#h025",
+"doc": "rare_output",
+"section": "Pipeline overview > VEP",
+"text": "rare_output — Pipeline overview > VEP\n#### VEP\n\nVEP determines the effect of your variants on genes, transcripts, and protein sequence, as well as regulatory regions. We recommend annotating with the following plugins:\n\n- LoFtool\n- pLI\n- SpliceAI\n- MaxEntScan\n\nBased on VEP annotations, custom scripts used by the pipeline further annotate each record with the most severe consequence, and pli scores.\n\n**NB**: Output files described below do not include mitochondrial annotations only if --skip_subworklows includes mt_annotation.\n\n Output files\n\n- `annotate_snv/genome`\n - `<case_id>_<rhocall_vcfanno|vcfanno>_filter_<cadd_vep|vep>.vcf.gz`: file containing bcftools roh, vcfanno, cadd and vep annotations.\n - `<case_id>_<rhocall_vcfanno|vcfanno>_filter_<cadd_vep|vep>.vcf.gz.tbi`: index of the file containing bcftools roh, vcfanno, cadd and vep annotations."
+},
+"B": {
+"id": "rare_output#h034",
+"doc": "rare_output",
+"section": "Pipeline overview > Mitochondrial analysis > Alignment and variant calling > VEP",
+"text": "rare_output — Pipeline overview > Mitochondrial analysis > Alignment and variant calling > VEP\n##### VEP\n\nVEP determines the effect of your variants on genes, transcripts, and protein sequence, as well as regulatory regions.\n\n Output files\n\n- `annotate_snv/mitochondria`\n - `<case_id>_mitochondria_vcfanno_<cadd_vep|vep>.vcf.gz`: file containing mitochondrial annotations.\n - `<case_id>_mitochondria_vcfanno_<cadd_vep|vep>.vcf.gz.tbi`: index of the file containing mitochondrial annotations.\n\n\n#### Filter_vep\n\nfilter_vep from VEP is used to subset the variants based on a list of HGNC ID:s. Typical use case is that you want to filter your results to only include variants in a predefined set of clinically relevant genes. This step is optional and can be disabled by using the flag `--skip_subworkflows generate_clinical_set`. You will always get the complete VCF together with the clinical VCF."
+}
+},
+{
+"pair_id": "PR144",
+"A": {
+"id": "bcftools_manual#h119",
+"doc": "bcftools_manual",
+"section": "Replace missing genotypes with 0|0 > bcftools sort [OPTIONS] file.bcf",
+"text": "Convert 23andme results into VCF — Replace missing genotypes with 0|0 > bcftools sort [OPTIONS] file.bcf\n## bcftools sort [OPTIONS] file.bcf\n\n-m, --max-mem FLOAT[kMG]::\n Maximum memory to use. Approximate, affects the number of temporary files written\n to the disk. Note that if the command fails at this step because of too many open files,\n your system limit on the number of open files (\"ulimit\") may need to be increased.\n\n-o, --output FILE::\n see <<common_options,Common Options>>\n\n-O, --output-type b|u|z|v[0-9]::\n see <<common_options,Common Options>>\n\n-T, --temp-dir DIR::\n Use this directory to store temporary files. If the last six characters of the string DIR are XXXXXX,\n then these are replaced with a string that makes the directory name unique.\n\n--threads INT::\n see <<common_options,Common Options>>\n\n-v, --verbosity INT::\n see <<common_options,Common Options>>\n\n-W[FMT], -W[=FMT], --write-index[=FMT]::\n Automatically index the output file. FMT is optional and can be\n one of \"tbi\" or \"csi\" depending on output file format.\n\n[[stats]]"
+},
+"B": {
+"id": "bcftools_manual#h053",
+"doc": "bcftools_manual",
+"section": "Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools csq '[OPTIONS] FILE'",
+"text": "Convert 23andme results into VCF — Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools csq '[OPTIONS] FILE'\n--targets-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n--unify-chr-names '0'|LIST::\n unify chromosome naming by stripping a prefix in VCF, GFF, fasta, respectively.\n For example, if the LIST is \"chr,Chromosome,-\", the program will trim the \"chr\" prefix\n in the VCF, \"Chromosome\" in the GFF, and the fasta will be left unchanged.\n The chromosome names in the output VCF will match that of the input VCF. The default is\n not to modify the sequence names.\n\n-v, --verbosity INT::\n see <<common_options,Common Options>>\n\n-W[FMT], -W[=FMT], --write-index[=FMT]::\n Automatically index the output file. FMT is optional and can be\n one of \"tbi\" or \"csi\" depending on output file format.\n\nExamples:\n----\n # Basic usage\n bcftools csq -f hs37d5.fa -g Homo_sapiens.GRCh37.82.gff3.gz in.vcf -Ob -o out.bcf\n\n # Extract the translated haplotype consequences. The following TBCSQ variations\n # are recognised:\n # %TBCSQ .. print consequences in all haplotypes in separate columns\n # %TBCSQ{0} .. print the first haplotype only\n # %TBCSQ{1} .. print the second haplotype only\n # %TBCSQ{*} .. print a list of unique consequences present in either haplotype\n bcftools query -f'[%CHROM\\t%POS\\t%SAMPLE\\t%TBCSQ\\n]' out.bcf\n----"
+}
+},
+{
+"pair_id": "PR145",
+"A": {
+"id": "gatk_funco_spec#h010",
+"doc": "gatk_funco_spec",
+"section": "1.1 Annotations for Pre-Packaged Data Sources > 1.1.1 - Gencode Annotation Specification",
+"text": "gatk_funco_spec — 1.1 Annotations for Pre-Packaged Data Sources > 1.1.1 - Gencode Annotation Specification\n* _**In-Frame Deletions of Complete Codons (codon-aligned deletions)**_\n `c.([POSITION OF FIRST BASE IN FIRST CODON DELETED]-[POSITION OF LAST BASE IN LAST CODON DELETED][REFERENCE CODONS]del`\n E.g.:\n `c.(997-999)gcadel`\n This indicates that the 332nd codon (starting at base 997, ending at base 999) was deleted in the transcript associated with this variant allele, and the deleted codon bases are `gca`.\n\n* _**In-Frame Deletions Spanning Multiple Codons**_\n `c.([POSITION OF FIRST BASE IN FIRST CODON DELETED]-[POSITION OF LAST BASE IN LAST CODON DELETED][REFERENCE CODONS]>[EXPRESSED CODONS]`\n E.g.:\n `c.(997-1002)gcactc>gtc`\n This indicates that bases in the 332nd codon (starting at base 997) and 333rd codon (ending at base 1002) were deleted in the transcript associated with this variant allele, and the resulting expressed codon would be gtc .\n\n* _**Frame Shift Insertions and Deletions**_\n `c.([POSITION OF FIRST BASE IN LAST CORRECTLY EXPRESSED/REFERENCE CODON]-[POSITION OF LAST BASE IN LAST CORRECTLY EXPRESSED/REFERENCE CODON][REFERENCE CODONS]fs`\n E.g.:\n `c.(997-999)gcafs`\n This indicates that bases just _**AFTER**_ the 332nd codon (starting at base 997, ending at base 999) were inserted or deleted in the transcript associated with this variant allele resulting in a frame shift, and that the last correctly transcribed codon would be codon 332 (starting at base 997, ending at base 999), `gca`."
+},
+"B": {
+"id": "gatk_funco_spec#h009",
+"doc": "gatk_funco_spec",
+"section": "1.1 Annotations for Pre-Packaged Data Sources > 1.1.1 - Gencode Annotation Specification",
+"text": "gatk_funco_spec — 1.1 Annotations for Pre-Packaged Data Sources > 1.1.1 - Gencode Annotation Specification\nIf the variant does not occur in the expressed transcript of the corresponding gene (e.g. is of type `IGR`), then this field is empty.\n\n18. **codonChange**\nType: _String_\nA _String_ that representing the codon-aligned change resulting from this variant allele in the coding sequence for the transcript in which it occurs.\nPositions in this field are relative to the start of the transcript (1-based, inclusive) and aligned to the coding sequence unless otherwise noted.\nUnlike the cDnaChange, the bases reported in the codonChange string will always have a length evenly divisble by 3 (except for frameshifts) and represent what the codons would be if the variant alternate allele were expressed in the reference sequence.\nCapitalized bases represent the bases changed by the variant alternate allele. Lower-case bases represent reference bases.\nGenerally the format of this field is:\n`c.[POSITION][BASES CHANGED]`\nThe format of this field slightly varies based on `VariantType`, the number of affected bases, and whether the variant allele occurs in an Intron:\n\n* _**In-Frame Insertions**_\n `c.([POSITION OF FIRST BASE IN FIRST CODON IN THE REFERENCE AFFECTED BY THIS VARIANT]-[POSITION OF LAST BASE IN LAST CODON IN THE REFERENCE AFFECTED BY THIS VARIANT][REFERENCE CODONS]>[EXPRESSED CODONS]`\n E.g.:\n `c.(19-21)ctt>ctCGTt`\n This indicates that the bases CGT were inserted before the 6th codon (starting at base 19, ending at base 21) in the transcript associated with this variant allele, and the resulting expressed codons would be `ctCGTt`."
+}
+},
+{
+"pair_id": "PR146",
+"A": {
+"id": "sarek_usage#h012",
+"doc": "sarek_usage",
+"section": "Other nextflow hidden files, eg. history of pipeline runs and old logs. > Input: Sample sheet configurations > Start with mapping (`--step mapping` [default]) > Full samplesheet",
+"text": "Introduction — Other nextflow hidden files, eg. history of pipeline runs and old logs. > Input: Sample sheet configurations > Start with mapping (`--step mapping` [default]) > Full samplesheet\n#### Full samplesheet\n\nIn this example, all possible columns are used including the `sex` and `status` information per patient:\n\n```bash\npatient,sex,status,sample,bam,bai\npatient1,XX,0,test_sample,test_mapped.bam,test_mapped.bam.bai\npatient1,XX,1,tumor_sample,test2_mapped.bam,test2_mapped.bam.bai\npatient1,XX,1,relapse_sample,test3_mapped.bam,test3_mapped.bam.bai\n```\n\n```bash\npatient,sex,status,sample,cram,crai\npatient1,XX,0,normal_sample,test_mapped.cram,test_mapped.cram.crai\npatient1,XX,1,tumor_sample,test2_mapped.cram,test2_mapped.cram.crai\npatient1,XX,1,relapse_sample,test3_mapped.cram,test3_mapped.cram.crai\n```\n\n### Start with preparing the recalibration tables (`--step prepare_recalibration`)\n\nFor starting directly from preparing the recalibration tables, the CSV file must contain at least the columns `patient`, `sample`, `bam`, `bai` or `patient`, `sample`, `cram`, `crai`.\n\nExample:\n\n```bash\npatient,sample,bam,bai\npatient1,test_sample,test_md.bam,test_md.bam.bai\n```\n\n```bash\npatient,sample,cram,crai\npatient1,test_sample,test_md.cram,test_md.cram.crai\n```\n\nThe Sarek-generated CSV file is stored under `results/csv/markduplicates_no_table.csv` and will automatically be used as an input when specifying the parameter `--step prepare_recalibration`."
+},
+"B": {
+"id": "sarek_usage#h015",
+"doc": "sarek_usage",
+"section": "Other nextflow hidden files, eg. history of pipeline runs and old logs. > Input: Sample sheet configurations > Start with variant calling (`--step variant_calling`) > Full samplesheet",
+"text": "Introduction — Other nextflow hidden files, eg. history of pipeline runs and old logs. > Input: Sample sheet configurations > Start with variant calling (`--step variant_calling`) > Full samplesheet\n#### Full samplesheet\n\nIn this example, all possible columns are used including the `sex` and `status` information per patient:\n\n```bash\npatient,sex,status,sample,cram,crai\npatient1,XX,0,normal_sample,test_mapped.cram,test_mapped.cram.crai\npatient1,XX,1,tumor_sample,test2_mapped.cram,test2_mapped.cram.crai\npatient1,XX,1,relapse_sample,test3_mapped.cram,test3_mapped.cram.crai\n```\n\n### Start with annotation (`--step annotate`)\n\nFor starting from the annotation step, the CSV file must contain at least the columns `patient`, `sample`, `vcf`.\n\nAs Sarek will use bgzip and tabix to compress and index the annotated VCF files, it expects the input VCF files to be sorted and compressed.\n\nExample:\n\n```bash\npatient,sample,vcf\npatient1,test_sample,test.vcf.gz\n```\n\nThe Sarek-generated CSV file is stored under `results/csv/variantcalled.csv` and will automatically be used as an input when specifying the parameter `--step annotation`."
+}
+},
+{
+"pair_id": "PR147",
+"A": {
+"id": "gatk_funco_refdiff#h008",
+"doc": "gatk_funco_refdiff",
+"section": "HumanG1Kv37",
+"text": "gatk_funco_refdiff — HumanG1Kv37\n5950c02594cedbdf0fea5e8335e7cf80 ---- ---- ---- JH591181.2\n 5b90c3ac4e5938b400fcc2c29f3017bc ---- ---- ---- GL949744.1\n 5b9d9fb059071e552bba531b81bd3472 ---- ---- ---- KB663606.1\n 5c3a364520bf7ed46894abdce8f6e032 ---- ---- ---- GL877876.1\n 5eb6da458990f121fae13ff83a4bcbca ---- ---- ---- JH806576.1\n 5f9dc3f86463d08a1383cca5f285b7ad ---- ---- ---- GL383570.1\n 5fae03628eb9a445571bac107823b394 ---- ---- ---- KE332505.1\n 620913159e2fbd4e931ac120e3c584c9 ---- ---- ---- GL383526.1\n 659b65783878ace88f4c4b165f239363 ---- ---- ---- JH636052.4\n 675046e52613269a7c2e803525bb5a33 ---- ---- ---- JH720445.1\n 67f26a755ca4c6ca9a8f567d80d15fb9 ---- ---- ---- JH159131.1\n 68391fb8f16a37b63f607b76702de3b1 ---- ---- ---- GL383583.1\n 69490aa24b00717f2b11c095a5339516 ---- ---- ---- JH720454.3\n 6b604cf3e324680b72716e814d805944 ---- ---- ---- GL383530.1\n 6b862a953dfe724a1f48eaf12a3b948a ---- ---- ---- JH806578.1\n 6c22616c927261b8e5fc90028c780f00 ---- ---- ---- JH720444.2\n 6cba57c0e509ab785d3869134979b668 ---- ---- ---- GL383548.1\n 6d728406957c5c7fb158dbdb7efef2b7 ---- ---- ---- GL383527.1\n 6d85d704338ba29941aca4d278c7eb4a ---- ---- ---- KB663608.1\n 6fbc7007a5ff8aae8b28ca52dd6d5571 ---- ---- ---- GL383531.1\n 71a0d13c09c3e7ee64c7740e1425f20e ---- ---- ---- JH591183.1\n 73b240dd73b8bddcab281e265c9d759a ---- ---- ---- GL383559.2\n 73d39b5d51e6e2e8d9549bb85d7dae04 ---- ---- ---- JH806579.1\n 741179e4ee12c60fbcc6eba4a5c7695b ---- ---- ---- JH806598.1\n 74cff045a9cd92b7f571a756f248d16a ---- ---- ---- GL383524.1\n 7b556f03729e304a286c8d7ef0f0c10e ---- ---- ---- GL383547.1\n 7b6d6d01c18e91fc07f727ade2450f46 ---- ---- ---- JH806580.1\n 7d007a35ff02e56325881c68bb17b565 ---- ---- ---- GL949752.1\n 7e0afbdc97540aa0b101228b7bd331fb ---- ---- ---- JH806591.1\n 8213c58e2c1c22397f0ad9d0d901bbdf ---- ---- ---- JH159135.2\n 856a46516332f58a35eeb4f84d17febc ---- ---- ---- JH159142.2\n 883b29a1e5975e0f3139c183fbe2596d ---- ---- ---- GL383581.1\n 8a92722deabdf885d1aebfa8881d5903 ---- ---- ---- GL949753.1\n 8ac2dc8046e4bd0d6d46e827ff05ecd1 ---- ---- ---- JH806575.1\n 8ac9fb9d942dba38bfd30f8d767f4bba ---- ---- ---- JH159136.1\n 8b1d46e46d3083625eac92e9363773dd ---- ---- ---- KB663607.2\n 8d13c3e7cbb2b7e1a3225c5a54fe8f44 ---- ---- ---- GL383569.1\n 8e1004755b0574b2f855130c943fbd8e ---- ---- ---- KB663603.1\n 8e4f862d5b37504199902c6685b7fee5 ---- ---- ---- GL383533.1\n 8ede6eec21d781c22a9801f51433fcd6 ---- ---- ---- JH806584.1\n 8fc7aaa775b43df3d77c9782a140a981 ---- ---- ---- GL383572.1\n 902d62224f09e59cb9c6c44f71b5fca3 ---- ---- ---- GL383580.1\n 90ad438579d919fd20c42bb4f48de64b ---- ---- ---- JH591184.1\n 9133580f75d0ffa745af12953d65a4db ---- ---- ---- GL383550.1\n 93001afcfc8594885490513c4ffe243e ---- ---- ---- GL582977.2\n 93a798f03267e553445c7456c6f7ee49 ---- ---- ---- JH159143.1\n 94409f94ca59e67f811cd36ab133a82c ---- ---- ---- GL877873.1\n 955e16dfcdb2d28a334349dfa39f2ed4 ---- ---- ---- KB021645.1\n 976c3a7c4051dd9ce879833f4a764289 ---- ---- ---- JH806590.2\n 978987018f1a910273ebcc387e038de8 ---- ---- ---- GL383518.1"
+},
+"B": {
+"id": "gatk_funco_refdiff#h010",
+"doc": "gatk_funco_refdiff",
+"section": "HumanG1Kv37",
+"text": "gatk_funco_refdiff — HumanG1Kv37\ndd784bb8074d6f5b949464ffea8c6901 ---- ---- ---- JH720449.1\n dd8730d9d33765ff135fcfadb8810280 ---- ---- ---- GL383575.2\n df3e809f9a87f792218db18db51f6ad4 ---- ---- ---- GL383522.1\n e0da36f2d1d2c6092f13d5bee52537e0 ---- ---- ---- GL383516.1\n e0e934bd79ff323b31f4c9b80fb80a5c ---- ---- ---- JH159134.2\n e11adfbb638e60f61d7e8ef6647f30f2 ---- ---- ---- JH720448.1\n e2cd68e2099fbd7cee557d6a7910768f ---- ---- ---- KB021646.2\n e363729ea23dad7c6802e7b439b4f668 ---- ---- ---- KE332497.1\n e5b96eb9510763261839281c198607dd ---- ---- ---- GL582979.2\n e5cd94b0e0668debf81b82f405597b28 ---- ---- ---- GL582970.1\n e6c232469067e8cadfa852a2ea5513b7 ---- ---- ---- GL949749.1\n e8c870267b2a5261edb9d51d0efd6469 ---- ---- ---- GL582975.1\n ebf72aeb4d53f0fd56e2e72967751f8a ---- ---- ---- GL383562.1\n ed6bcd4459b3bc6b366ce00262952f57 ---- ---- ---- GL949743.1\n ed6fb45e0a25c31903cbb0f78d9d487e ---- ---- ---- GL383546.1\n edf086bce359065367b105cae0abfeee ---- ---- ---- GL383579.1\n edf41bfaf2584364bb4c5a645d73d53c ---- ---- ---- GL383553.2\n f2bfb99f84f2dd2ea538fe69ee786a0d ---- ---- ---- GL383525.1\n f486a5a44493d2e6bf72bf95ae898e3c ---- ---- ---- JH806574.2\n f7ee47af8d462cd9aeb6d40de99acb36 ---- ---- ---- JH806585.1\n fa5fa49d281fc855dd1076c4f51bd8dc ---- ---- ---- KE332498.1\n faa48b73103366d1da02065870a58bda ---- ---- ---- GL383543.1\n faae4c952e9c38254538e1853b786276 ---- ---- ---- GL582976.1\n fc93038463f9660e139435537ef53a5c ---- ---- ---- KB663604.1\n fdeb8db11e8544a638179a592c051331 ---- ---- ---- JH636061.1\n fef0bc815f4826ea408515d8ec74ca80 ---- ---- ---- JH636057.1\n ff7c4316cb69a8d571bd7ef85c1a10e4 ---- ---- ---- JH720455.1\n\nThis table indicates that while most contigs contain the same data, there are several with **sequence differences between the references**. Among those are **Chromosome 3**, **Chromosome Y**, and the **Mitochondrial Contig**.\n\nAnecdotally the changes are for bases for which there was low confidence, with those low confidence bases masked out to be the `IUPAC` symbol for any base. However, _there does not seem to be a detailed comparison readily available (i.e. there's no proof that this is true)_.\n\nTherefore, when doing comparisons across the four reference versions for each of these contigs, some care should be taken.\n## Additional Information\nSome further details can be found on this DNAnexus wiki page as of 2019/01/30.\n\nBack to Top\n\n<hr>"
+}
+},
+{
+"pair_id": "PR148",
+"A": {
+"id": "rare_output#h032",
+"doc": "rare_output",
+"section": "Pipeline overview > Mitochondrial analysis > Alignment and variant calling > vcfanno",
+"text": "rare_output — Pipeline overview > Mitochondrial analysis > Alignment and variant calling > vcfanno\n##### vcfanno\n\nvcfanno allows you to quickly annotate your VCF with any number of INFO fields from any number of VCFs. It uses a simple conf file to allow the user to specify the source annotation files and fields and how they will be added to the info of the query VCF. Values are pulled by name from the INFO field with special-cases of ID and FILTER to pull from those VCF columns. The output files are not published in the output folder, and is passed to vep for further annotation.\n\nWe recommend using vcfanno to annotate SNVs with precomputed CADD scores (files can be downloaded from here)."
+},
+"B": {
+"id": "rare_output#h023",
+"doc": "rare_output",
+"section": "Pipeline overview > vcfanno",
+"text": "rare_output — Pipeline overview > vcfanno\n#### vcfanno\n\nvcfanno allows you to quickly annotate your VCF with any number of INFO fields from any number of VCFs. It uses a simple configuration file to allow the user to specify the source annotation files and fields and how they will be added to the info of the query VCF. Values are pulled by name from the INFO field with special-cases of ID and FILTER to pull from those VCF columns. The output files are not published in the output folder, and is passed to CADD and/or VEP for further annotation.\n\nWe recommend using vcfanno to annotate SNVs with precomputed CADD scores (files can be downloaded from here)."
+}
+},
+{
+"pair_id": "PR149",
+"A": {
+"id": "sarek_usage#h011",
+"doc": "sarek_usage",
+"section": "Other nextflow hidden files, eg. history of pipeline runs and old logs. > Input: Sample sheet configurations > Start with mapping (`--step mapping` [default]) > Duplicate Marking",
+"text": "Introduction — Other nextflow hidden files, eg. history of pipeline runs and old logs. > Input: Sample sheet configurations > Start with mapping (`--step mapping` [default]) > Duplicate Marking\n#### Duplicate Marking\n\nFor starting from duplicate marking, the CSV file must contain at least the columns `patient`, `sample`, `bam`, `bai` or `patient`, `sample`, `cram`, `crai`\n\n**NB:** When using GATK4 MarkduplicatesSpark reads should be name-sorted for efficient execution\n\nExample:\n\n```bash\npatient,sample,bam,bai\npatient1,test_sample,test_mapped.bam,test_mapped.bam.bai\n```\n\n```bash\npatient,sample,cram,crai\npatient1,test_sample,test_mapped.cram,test_mapped.cram.crai\n```\n\nThe Sarek-generated CSV file is stored under `results/csv/mapped.csv` if in a previous run `--save_mapped` was set and will automatically be used as an input when specifying the parameter `--step markduplicates`. Otherwise this file will need to be manually generated."
+},
+"B": {
+"id": "sarek_usage#h013",
+"doc": "sarek_usage",
+"section": "Other nextflow hidden files, eg. history of pipeline runs and old logs. > Input: Sample sheet configurations > Start with preparing the recalibration tables (`--step prepare_recalibration`) > Full samplesheet",
+"text": "Introduction — Other nextflow hidden files, eg. history of pipeline runs and old logs. > Input: Sample sheet configurations > Start with preparing the recalibration tables (`--step prepare_recalibration`) > Full samplesheet\n#### Full samplesheet\n\nIn this example, all possible columns are used including the `sex` and `status` information per patient:\n\n```bash\npatient,sex,status,sample,bam,bai\npatient1,XX,0,test_sample,test_md.bam,test_md.bam.bai\npatient1,XX,1,tumor_sample,test2_md.bam,test2_md.bam.bai\npatient1,XX,1,relapse_sample,test3_md.bam,test3_md.bam.bai\n```\n\n```bash\npatient,sex,status,sample,cram,crai\npatient1,XX,0,normal_sample,test_md.cram,test_md.cram.crai\npatient1,XX,1,tumor_sample,test2_md.cram,test2_md.cram.crai\npatient1,XX,1,relapse_sample,test3_md.cram,test3_md.cram.crai\n```\n\n### Start with base quality score recalibration (`--step recalibrate`)\n\nFor starting from base quality score recalibration the CSV file must contain at least the columns `patient`, `sample`, `bam`, `bai`, `table` or `patient`, `sample`, `cram`, `crai`, `table` containing the paths to _non-recalibrated CRAM/BAM_ files and the associated recalibration table.\n\nExample:\n\n```bash\npatient,sample,bam,bai,table\npatient1,test_sample,test_mapped.cram,test_mapped.cram.crai,test.table\n```\n\n```bash\npatient,sample,cram,crai,table\npatient1,test_sample,test_mapped.cram,test_mapped.cram.crai,test.table\n```\n\nThe Sarek-generated CSV file is stored under `results/csv/markduplicates.csv` and will automatically be used as an input when specifying the parameter `--step recalibrate`."
+}
+},
+{
+"pair_id": "PR150",
+"A": {
+"id": "rare_output#h003",
+"doc": "rare_output",
+"section": "Pipeline overview > BWA-MEME",
+"text": "rare_output — Pipeline overview > BWA-MEME\n##### BWA-MEME\n\nBWA-MEME used to map the reads to a reference genome. The aligned reads are coordinate sorted with samtools sort. These files are treated as intermediates and are not placed in the output folder by default. It is not the default aligner, but it can be chosen by setting `--aligner` option to bwameme."
+},
+"B": {
+"id": "rare_output#h004",
+"doc": "rare_output",
+"section": "Pipeline overview > Sentieon bwa mem",
+"text": "rare_output — Pipeline overview > Sentieon bwa mem\n##### Sentieon bwa mem\n\nSentieon's bwa mem is the software accelerated version of the bwa-mem algorithm. It is used to efficiently perform the alignment using BWA. Aligned reads are then coordinate sorted using Sentieon's sort utility. These files are treated as intermediates and are not placed in the output folder by default. It is not the default aligner, but it can be chosen by setting `--aligner` option to \"sentieon\"."
+}
+},
+{
+"pair_id": "PR151",
+"A": {
+"id": "gatk_mutect2_wdl#h002",
+"doc": "gatk_mutect2_wdl",
+"section": "Docker images",
+"text": "gatk_mutect2_wdl — Docker images\n### Docker images\n- \"broadinstitute/gatk-protected:1.0.0.0-alpha1.2.4\" (This is a private image! Recommended use ``gatk_jar`` as ``/root/gatk.jar``)\n- \"broadinstitute/genomes-in-the-cloud:2.2.4-1469632282\" (You must specify a ``gatk4_jar_override``)\n\n### Functional annotation (Funcotator)\n\nFuncotator (**FUNC**tional ann**OTATOR**) is a functional annotation tool in the core GATK toolset and was designed to handle both somatic and germline use cases. It analyzes given variants for their function (as retrieved from a set of data sources) and produces the analysis in a specified output file. Funcotator reads in a VCF file, labels each variant with one of twenty-three distinct variant classifications, produces gene information (e.g. affected gene, predicted variant amino acid sequence, etc.), and associations to information in datasources. Default supported datasources include GENCODE (gene information and protein change prediction), dbSNP, gnomAD, and COSMIC (among others). The corpus of datasources is extensible and user-configurable and includes cloud-based datasources supported with Google Cloud Storage. Funcotator produces either a Variant Call Format (VCF) file (with annotations in the INFO field) or a Mutation Annotation Format (MAF) file.\n\nFuncotator allows the user to add their own annotations to variants based on a set of data sources. Each data source can be customized to annotate a variant based on several matching criteria. This allows a user to create their own custom annotations easily, without modifying any Java code."
+},
+"B": {
+"id": "gatk_funcotator_wdl#h000",
+"doc": "gatk_funcotator_wdl",
+"section": "Background Information",
+"text": "gatk_funcotator_wdl — Background Information\n## Background Information\nFuncotator (**FUNC**tional ann**OTATOR**) is a functional annotation tool in the core GATK toolset and was designed to handle both somatic and germline use cases. It analyzes given variants for their function (as retrieved from a set of data sources) and produces the analysis in a specified output file. Funcotator reads in a VCF file, labels each variant with one of twenty-three distinct variant classifications, produces gene information (e.g. affected gene, predicted variant amino acid sequence, etc.), and associations to information in datasources. Default supported datasources include GENCODE (gene information and protein change prediction), dbSNP, gnomAD, and COSMIC (among others). The corpus of datasources is extensible and user-configurable and includes cloud-based datasources supported with Google Cloud Storage. Funcotator produces either a Variant Call Format (VCF) file (with annotations in the INFO field) or a Mutation Annotation Format (MAF) file.\n\nFuncotator allows the user to add their own annotations to variants based on a set of data sources. Each data source can be customized to annotate a variant based on several matching criteria. This allows a user to create their own custom annotations easily, without modifying any Java code."
+}
+},
+{
+"pair_id": "PR152",
+"A": {
+"id": "bcftools_manual#h052",
+"doc": "bcftools_manual",
+"section": "Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools csq '[OPTIONS] FILE'",
+"text": "Convert 23andme results into VCF — Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools csq '[OPTIONS] FILE'\n-i, --include EXPRESSION::\n include only sites for which EXPRESSION is true. For valid expressions see\n <<expressions,EXPRESSIONS>>.\n\n-l, --local-csq::\n switch off haplotype-aware calling, run localized predictions considering\n only one VCF record at a time\n\n-n, --ncsq INT::\n maximum number of per-haplotype consequences to consider for each site. The INFO/BCSQ column includes\n all consequences, but only the first INT will be referenced by the FORMAT/BCSQ fields.\n The default value is 15 which corresponds to one 32-bit integer per diploid\n sample, after accounting for values reserved by the BCF specification.\n Note that increasing the value leads to increased size of the output BCF.\n\n--no-version::\n see <<common_options,Common Options>>\n\n-o, --output FILE::\n see <<common_options,Common Options>>\n\n-O, --output-type t|b|u|z|v[0-9]::\n see <<common_options,Common Options>>. In addition, a custom tab-delimited\n plain text output can be printed (t).\n\n-p, --phase a|m|r|R|s::\n how to handle unphased heterozygous genotypes:\n\n a;;\n take GTs as is, create haplotypes regardless of phase (0/1 -> 0|1)\n\n m;;\n merge all GTs into a single haplotype (0/1 -> 1, 1/2 -> 1)\n\n r;;\n require phased GTs, throw an error on unphased heterozygous GTs\n\n R;;\n create non-reference haplotypes if possible (0/1 -> 1|1, 1/2 -> 1|2)\n\n s;;\n skip unphased heterozygous GTs\n\n-q, --quiet::\n suppress warning messages\n\n-r, --regions chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::\n see <<common_options,Common Options>>\n\n-R, --regions-file FILE::\n see <<common_options,Common Options>>\n\n--regions-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n-s, --samples LIST::\n samples to include or \"-\" to apply all variants and ignore samples\n\n-S, --samples-file FILE::\n see <<common_options,Common Options>>\n\n-t, --targets LIST::\n see <<common_options,Common Options>>\n\n-T, --targets-file FILE::\n see <<common_options,Common Options>>"
+},
+"B": {
+"id": "bcftools_manual#h033",
+"doc": "bcftools_manual",
+"section": "bcftools concat '[OPTIONS] FILE1 FILE2' [...]",
+"text": "Convert 23andme results into VCF — bcftools concat '[OPTIONS] FILE1 FILE2' [...]\n-l, --ligate::\n Ligate phased VCFs by matching phase at overlapping haplotypes.\n Note that the option is intended for VCFs with perfect overlap, sites\n in overlapping regions present in one but missing in the other are dropped.\n\n--ligate-force::\n Keep all sites and ligate even non-overlapping chunks and chunks with imperfect overlap\n\n--ligate-warn::\n Drop sites in imperfect overlaps\n\n--no-version::\n see <<common_options,Common Options>>\n\n-n, --naive::\n Concatenate VCF or BCF files without recompression. This is very fast but requires\n that all files are of the same type (all VCF or all BCF) and have the same headers.\n This is because all tags and chromosome names in the BCF body rely on the order\n of the contig and tag definitions in the header. A header check compatibility\n is performed and the program throws an error if it is not safe to use the option.\n\n--naive-force::\n Same as --naive, but header compatibility is not checked. Dangerous, use with caution.\n\n-o, --output FILE::\n see <<common_options,Common Options>>\n\n-O, --output-type b|u|z|v[0-9]::\n see <<common_options,Common Options>>\n\n-q, --min-PQ INT::\n Break phase set if phasing quality is lower than INT\n\n-r, --regions chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::\n see <<common_options,Common Options>>. Requires -a, --allow-overlaps.\n\n-R, --regions-file FILE::\n see <<common_options,Common Options>>. Requires -a, --allow-overlaps.\n\n--regions-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n--threads INT::\n see <<common_options,Common Options>>\n\n-v, --verbosity INT::\n see <<common_options,Common Options>>\n\n-W[FMT], -W[=FMT], --write-index[=FMT]::\n Automatically index the output file. FMT is optional and can be\n one of \"tbi\" or \"csi\" depending on output file format.\n\n[[consensus]]"
+}
+},
+{
+"pair_id": "PR153",
+"A": {
+"id": "gatk_funco_refdiff#h008",
+"doc": "gatk_funco_refdiff",
+"section": "HumanG1Kv37",
+"text": "gatk_funco_refdiff — HumanG1Kv37\n5950c02594cedbdf0fea5e8335e7cf80 ---- ---- ---- JH591181.2\n 5b90c3ac4e5938b400fcc2c29f3017bc ---- ---- ---- GL949744.1\n 5b9d9fb059071e552bba531b81bd3472 ---- ---- ---- KB663606.1\n 5c3a364520bf7ed46894abdce8f6e032 ---- ---- ---- GL877876.1\n 5eb6da458990f121fae13ff83a4bcbca ---- ---- ---- JH806576.1\n 5f9dc3f86463d08a1383cca5f285b7ad ---- ---- ---- GL383570.1\n 5fae03628eb9a445571bac107823b394 ---- ---- ---- KE332505.1\n 620913159e2fbd4e931ac120e3c584c9 ---- ---- ---- GL383526.1\n 659b65783878ace88f4c4b165f239363 ---- ---- ---- JH636052.4\n 675046e52613269a7c2e803525bb5a33 ---- ---- ---- JH720445.1\n 67f26a755ca4c6ca9a8f567d80d15fb9 ---- ---- ---- JH159131.1\n 68391fb8f16a37b63f607b76702de3b1 ---- ---- ---- GL383583.1\n 69490aa24b00717f2b11c095a5339516 ---- ---- ---- JH720454.3\n 6b604cf3e324680b72716e814d805944 ---- ---- ---- GL383530.1\n 6b862a953dfe724a1f48eaf12a3b948a ---- ---- ---- JH806578.1\n 6c22616c927261b8e5fc90028c780f00 ---- ---- ---- JH720444.2\n 6cba57c0e509ab785d3869134979b668 ---- ---- ---- GL383548.1\n 6d728406957c5c7fb158dbdb7efef2b7 ---- ---- ---- GL383527.1\n 6d85d704338ba29941aca4d278c7eb4a ---- ---- ---- KB663608.1\n 6fbc7007a5ff8aae8b28ca52dd6d5571 ---- ---- ---- GL383531.1\n 71a0d13c09c3e7ee64c7740e1425f20e ---- ---- ---- JH591183.1\n 73b240dd73b8bddcab281e265c9d759a ---- ---- ---- GL383559.2\n 73d39b5d51e6e2e8d9549bb85d7dae04 ---- ---- ---- JH806579.1\n 741179e4ee12c60fbcc6eba4a5c7695b ---- ---- ---- JH806598.1\n 74cff045a9cd92b7f571a756f248d16a ---- ---- ---- GL383524.1\n 7b556f03729e304a286c8d7ef0f0c10e ---- ---- ---- GL383547.1\n 7b6d6d01c18e91fc07f727ade2450f46 ---- ---- ---- JH806580.1\n 7d007a35ff02e56325881c68bb17b565 ---- ---- ---- GL949752.1\n 7e0afbdc97540aa0b101228b7bd331fb ---- ---- ---- JH806591.1\n 8213c58e2c1c22397f0ad9d0d901bbdf ---- ---- ---- JH159135.2\n 856a46516332f58a35eeb4f84d17febc ---- ---- ---- JH159142.2\n 883b29a1e5975e0f3139c183fbe2596d ---- ---- ---- GL383581.1\n 8a92722deabdf885d1aebfa8881d5903 ---- ---- ---- GL949753.1\n 8ac2dc8046e4bd0d6d46e827ff05ecd1 ---- ---- ---- JH806575.1\n 8ac9fb9d942dba38bfd30f8d767f4bba ---- ---- ---- JH159136.1\n 8b1d46e46d3083625eac92e9363773dd ---- ---- ---- KB663607.2\n 8d13c3e7cbb2b7e1a3225c5a54fe8f44 ---- ---- ---- GL383569.1\n 8e1004755b0574b2f855130c943fbd8e ---- ---- ---- KB663603.1\n 8e4f862d5b37504199902c6685b7fee5 ---- ---- ---- GL383533.1\n 8ede6eec21d781c22a9801f51433fcd6 ---- ---- ---- JH806584.1\n 8fc7aaa775b43df3d77c9782a140a981 ---- ---- ---- GL383572.1\n 902d62224f09e59cb9c6c44f71b5fca3 ---- ---- ---- GL383580.1\n 90ad438579d919fd20c42bb4f48de64b ---- ---- ---- JH591184.1\n 9133580f75d0ffa745af12953d65a4db ---- ---- ---- GL383550.1\n 93001afcfc8594885490513c4ffe243e ---- ---- ---- GL582977.2\n 93a798f03267e553445c7456c6f7ee49 ---- ---- ---- JH159143.1\n 94409f94ca59e67f811cd36ab133a82c ---- ---- ---- GL877873.1\n 955e16dfcdb2d28a334349dfa39f2ed4 ---- ---- ---- KB021645.1\n 976c3a7c4051dd9ce879833f4a764289 ---- ---- ---- JH806590.2\n 978987018f1a910273ebcc387e038de8 ---- ---- ---- GL383518.1"
+},
+"B": {
+"id": "gatk_funco_refdiff#h009",
+"doc": "gatk_funco_refdiff",
+"section": "HumanG1Kv37",
+"text": "gatk_funco_refdiff — HumanG1Kv37\n9bb3fbcd1fc9c35884e0987755c55667 ---- ---- ---- GL949741.1\n 9bed9883963242dd74b883218d5f17bf ---- ---- ---- GL383532.1\n 9d197695e8a47d4c30c891a53a0fd588 ---- ---- ---- JH720451.1\n 9dcedb7219aa23057244ca9a446f01ac ---- ---- ---- JH806592.1\n 9e1fc7ed55646756ce109b12b82ff192 ---- ---- ---- JH159147.1\n a009cf3116a844d7b2d467e672931bc5 ---- ---- ---- GL383564.1\n a0584071d5a8e88fda38d4cca38704cb ---- ---- ---- KB663605.1\n a0bce2b33eb96adcb750622527225e7d ---- ---- ---- JH720443.2\n a0f25165c6537c9861cc1231f710e99f ---- ---- ---- GL383566.1\n a1dab5e9bbedd3539ace29af1f9d6139 ---- ---- ---- JH806595.1\n a260ca7327d292deefef4f5fc7346dc4 ---- ---- ---- GL383561.2\n a2ecd2eb53eb1737423d5a637e4374a9 ---- ---- ---- JH636058.1\n a3bf927c2422ea0a661640669efd1081 ---- ---- ---- GL383577.1\n a4053747fc0cf1e03fa6ae9cd5f821d0 ---- ---- ---- KB021648.1\n aa5b0a15acec3c6177db764bd103d8a0 ---- ---- ---- JH720453.1\n ab73a8d586ef4fc44dd063730b6aef39 ---- ---- ---- GL582973.1\n abb9297c8b9dfc3013d416c803ff486c ---- ---- ---- JH806601.1\n ac9c384b2fc322b684128f1baf75785e ---- ---- ---- JH591182.1\n adb23c033121d433739de02cfa00c9fb ---- ---- ---- JH806582.2\n adec63ae44a39d716808cfee03b7a870 ---- ---- ---- JH806599.1\n afb0d13ed9fa7518989caa0ec55aeb96 ---- ---- ---- GL949750.1\n b293c854ddcbc316cb1d449bca46fbb3 ---- ---- ---- JH159137.1\n b8864877618b25fc14f80e8538f23b77 ---- ---- ---- GL949751.1\n b96f5e6bc844e8392d4e442aa7557e15 ---- ---- ---- KE332495.1\n ba6a3b1599661e674918200a8d1333d3 ---- ---- ---- JH806594.1\n bc6f64b0c4c934c2cea52bbe98639c79 ---- ---- ---- JH806583.1\n bc79d1abee7076ea672293e12bd7ccb9 ---- ---- ---- GL383517.1\n bd742a610e4bbc28fc00aaf71dfdc15d ---- ---- ---- KB021644.1\n be51fd8c00d62c3efc077a8e882062a4 ---- ---- ---- JH806586.1\n bed6a2667e8452a176e93e921e0c21f6 ---- ---- ---- GL383556.1\n c27dc6fea378fecf178a44682257c25e ---- ---- ---- GL383545.1\n c28f12c6ee0dec4cc6995766a710960c ---- ---- ---- GL383552.1\n c6ff49147dedce02366d6ade10580611 ---- ---- ---- GL383534.2\n c86ffa095c924372aa455e43e61c96e8 ---- ---- ---- JH159145.1\n ca0e3270f27bbee944844e44ec76659d ---- ---- ---- JH806602.1\n caebc01e3f44f7b2a559179b0261b77e ---- ---- ---- GL383535.1\n cca1c60136ec678eeef374134cd07a90 ---- ---- ---- GL877877.2\n cdab95f32513753b3c0add3014afad3b ---- ---- ---- JH806587.1\n d08cc284ad35f0bd1eafb443c23ad8bd ---- ---- ---- JH159138.1\n d0b63f9cef6c4d382e49636465eab851 ---- ---- ---- GL877870.2\n d0caa7bf982cf1e6ca8c8b833f56a21c ---- ---- ---- JH806597.1\n d4e2cf05984db16a78c953b898f5a86e ---- ---- ---- GL582969.1\n d76e635e75bc038782fb3d0c195d33fb ---- ---- ---- GL949746.1\n d8ef242a7373ff5657c8311b92dabfde ---- ---- ---- JH591186.1\n d9015dd9a0916a98ed8ab99fd3cdd012 ---- ---- ---- GL383567.1\n d96719c32333013a51c4d6d3261f984f ---- ---- ---- GL383551.1\n d97cf75e24ed1370388fedf523faa7ab ---- ---- ---- KE332496.1\n da648c938f1bb43b41d254bd9a015cfb ---- ---- ---- JH159139.1\n dada6dd12ec844a3a13f547f4946428e ---- ---- ---- JH159140.1\n dd0bc538e31f35af2073daec1f378147 ---- ---- ---- JH159144.1"
+}
+},
+{
+"pair_id": "PR154",
+"A": {
+"id": "bcftools_manual#h057",
+"doc": "bcftools_manual",
+"section": "Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools gtcheck [OPTIONS] [-g 'genotypes.vcf.gz'] 'query.vcf.gz'",
+"text": "Convert 23andme results into VCF — Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools gtcheck [OPTIONS] [-g 'genotypes.vcf.gz'] 'query.vcf.gz'\n## bcftools gtcheck [OPTIONS] [-g 'genotypes.vcf.gz'] 'query.vcf.gz'\nChecks sample identity. The program can operate in two modes. If the -g\noption is given, the identity of samples from 'query.vcf.gz'\nis checked against the samples in the -g file.\nWithout the -g option, multi-sample cross-check of samples in 'query.vcf.gz' is performed.\n\nNote that the interpretation of the discordance score depends on the options provided (specifically -e and\n-u) and on the available annotations (FORMAT/PL vs FORMAT/GT).\nThe discordance score can be interpreted as the number of mismatching genotypes only if GT-vs-GT matching is performed.\n\n--distinctive-sites 'NUM[,MEM[,DIR]]'::\n Find sites that can distinguish between at least NUM sample pairs. If the number is smaller or equal to 1,\n it is interpreted as the fraction of pairs. The optional MEM string sets the maximum memory used for\n in-memory sorting and DIR is the temporary directory for external sorting. This option requires also\n --pairs to be given.\n\n--dry-run::\n Stop after first record to estimate required time.\n\n-e, --exclude [qry|gt]:EXPRESSION::\n Exclude sites from query file ('qry:') or genotype file ('gt:') for which EXPRESSION is true.\n For valid expressions see <<expressions,EXPRESSIONS>>."
+},
+"B": {
+"id": "bcftools_manual#h091",
+"doc": "bcftools_manual",
+"section": "Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools norm [OPTIONS] 'file.vcf.gz'",
+"text": "Convert 23andme results into VCF — Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools norm [OPTIONS] 'file.vcf.gz'\n-c, --check-ref e|w|x|s::\n what to do when incorrect or missing REF allele is encountered:\n exit (e), warn (w), exclude (x), or set/fix (s) bad sites.\n The w option can be combined with x and s. Note that s\n can swap alleles and will update genotypes (GT) and AC counts,\n but will not attempt to fix PL or other fields. Also note, and this\n cannot be stressed enough, that s will NOT fix strand issues in\n your VCF, do NOT use it for that purpose!!! (Instead see\n <http://samtools.github.io/bcftools/howtos/plugin.af-dist.html> and\n <http://samtools.github.io/bcftools/howtos/plugin.fixref.html>.)\n See also the option -N, --no-realign.\n\n-d, --rm-dup snps|indels|both|all|exact::\n If a record is present multiple times, output only the first instance.\n See also --collapse in <<common_options,Common Options>>.\n\n-D, --remove-duplicates::\n If a record is present in multiple files, output only the first instance.\n Alias for -d exact, deprecated.\n\n-e, --exclude EXPRESSION::\n do not normalize input records for which EXPRESSION is true. For valid expressions see\n <<expressions,EXPRESSIONS>>. Note that duplicate removal ignores this option.\n\n-f, --fasta-ref FILE[[fasta_ref]]::\n reference sequence. Supplying this option will turn on left-alignment\n and normalization, however, see also the <<do_not_normalize,--no-realign>>\n option below.\n\n--force::\n try to proceed with -m- even if malformed tags with incorrect number of fields\n are encountered, discarding such tags. (Experimental, use at your own risk.)"
+}
+},
+{
+"pair_id": "PR155",
+"A": {
+"id": "bcftools_manual#h109",
+"doc": "bcftools_manual",
+"section": "Replace missing genotypes with 0|0 > bcftools query [OPTIONS] 'file.vcf.gz' ['file.vcf.gz' [...]]",
+"text": "Convert 23andme results into VCF — Replace missing genotypes with 0|0 > bcftools query [OPTIONS] 'file.vcf.gz' ['file.vcf.gz' [...]]\n## bcftools query [OPTIONS] 'file.vcf.gz' ['file.vcf.gz' [...]]\nExtracts fields from VCF or BCF files and outputs them in user-defined format.\n\n-e, --exclude EXPRESSION::\n exclude sites for which EXPRESSION is true. For valid expressions see\n <<expressions,EXPRESSIONS>>.\n\n--force-samples::\n continue even when some samples requested via -s/-S do not exist\n\n-f, --format FORMAT::\n learn by example, see below\n\n-F, --print-filtered STR::\n by default, samples failing -i/-e filtering expressions are suppressed from output\n when FORMAT fields are queried (for example '%CHROM %POS [ %GT]'). With -F, such\n fields will be still printed but instead of their actual value, STR will be used.\n\n-H, --print-header::\n print header. By default, the header is printed with column indices, e.g. \"#[1]CHROM\".\n These can be suppressed by giving the option twice, \"`-HH`\".\n\n-i, --include EXPRESSION::\n include only sites for which EXPRESSION is true. For valid expressions see\n <<expressions,EXPRESSIONS>>.\n\n-l, --list-samples::\n list sample names and exit\n\n-N, --disable-automatic-newline::\n disable automatic addition of a missing newline character at the end of the formatting\n expression. By default, the program checks if the expression contains a newline\n and appends it if not, to prevent formatting the entire output into a single\n line by mistake. Note that versions prior to 1.18 had no automatic check and newline\n had to be included explicitly.\n\n-o, --output FILE::\n see <<common_options,Common Options>>\n\n-r, --regions chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::\n see <<common_options,Common Options>>\n\n-R, --regions-file file::\n see <<common_options,Common Options>>\n\n--regions-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n-s, --samples LIST::\n see <<common_options,Common Options>>\n\n-S, --samples-file FILE::\n see <<common_options,Common Options>>\n\n-t, --targets chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::\n see <<common_options,Common Options>>"
+},
+"B": {
+"id": "bcftools_manual#h091",
+"doc": "bcftools_manual",
+"section": "Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools norm [OPTIONS] 'file.vcf.gz'",
+"text": "Convert 23andme results into VCF — Convert tab-delimited file into a sites-only VCF (no genotypes), in this example first column to be ignored > bcftools norm [OPTIONS] 'file.vcf.gz'\n-c, --check-ref e|w|x|s::\n what to do when incorrect or missing REF allele is encountered:\n exit (e), warn (w), exclude (x), or set/fix (s) bad sites.\n The w option can be combined with x and s. Note that s\n can swap alleles and will update genotypes (GT) and AC counts,\n but will not attempt to fix PL or other fields. Also note, and this\n cannot be stressed enough, that s will NOT fix strand issues in\n your VCF, do NOT use it for that purpose!!! (Instead see\n <http://samtools.github.io/bcftools/howtos/plugin.af-dist.html> and\n <http://samtools.github.io/bcftools/howtos/plugin.fixref.html>.)\n See also the option -N, --no-realign.\n\n-d, --rm-dup snps|indels|both|all|exact::\n If a record is present multiple times, output only the first instance.\n See also --collapse in <<common_options,Common Options>>.\n\n-D, --remove-duplicates::\n If a record is present in multiple files, output only the first instance.\n Alias for -d exact, deprecated.\n\n-e, --exclude EXPRESSION::\n do not normalize input records for which EXPRESSION is true. For valid expressions see\n <<expressions,EXPRESSIONS>>. Note that duplicate removal ignores this option.\n\n-f, --fasta-ref FILE[[fasta_ref]]::\n reference sequence. Supplying this option will turn on left-alignment\n and normalization, however, see also the <<do_not_normalize,--no-realign>>\n option below.\n\n--force::\n try to proceed with -m- even if malformed tags with incorrect number of fields\n are encountered, discarding such tags. (Experimental, use at your own risk.)"
+}
+},
+{
+"pair_id": "PR156",
+"A": {
+"id": "sarek_readme#h007",
+"doc": "sarek_readme",
+"section": "Acknowledgements",
+"text": "sarek_readme — Acknowledgements\n## Acknowledgements\n\n| | |\n\n| | |\n| | |\n| | |\n\n## Contributions & Support\n\nIf you would like to contribute to this pipeline, please see the contributing guidelines.\n\nFor further information or help, don't hesitate to get in touch on the Slack `#sarek` channel, or contact the dev team on the Slack `#sarek_dev` channel. (you can join with this invite)."
+},
+"B": {
+"id": "rare_readme#h004",
+"doc": "rare_readme",
+"section": "Contributions and Support",
+"text": "rare_readme — Contributions and Support\n## Contributions and Support\n\nIf you would like to contribute to this pipeline, please see the contributing guidelines.\n\nFor further information or help, don't hesitate to get in touch on the Slack `#raredisease` channel (you can join with this invite)."
+}
+},
+{
+"pair_id": "PR157",
+"A": {
+"id": "sarek_output#h038",
+"doc": "sarek_output",
+"section": "Variant Calling > SNVs and small indels > Sentieon Haplotyper > Sentieon Haplotyper joint germline variant calling",
+"text": "sarek_output — Variant Calling > SNVs and small indels > Sentieon Haplotyper > Sentieon Haplotyper joint germline variant calling\n##### Sentieon Haplotyper joint germline variant calling\n\nIn Sentieon's package DNAseq, joint germline variant calling is done by first running Sentieon's Haplotyper in emit-mode `gvcf` for each sample and then running Sentieon's GVCFtyper on the set of gVCF-files. See Basic usage of Sentieon functions for information on how joint germline variant calling can be done in Sarek using Sentieon's DNAseq. After joint genotyping, Sentieon's version of VQSR (VarCal and ApplyVarCal) is applied for filtering to produce the final multisample callset with the desired balance of precision and sensitivity.\n\n Output files from joint germline variant calling\n\n**Output directory: `{outdir}/variant_calling/sentieon_haplotyper/<sample>/`**\n\n- `<sample>.haplotyper.g.vcf.gz` and `<sample>.haplotyper.g.vcf.gz.tbi`\n - VCF with tabix index\n\n**Output directory: `{outdir}/variant_calling/sentieon_haplotyper/joint_variant_calling/`**\n\n- `joint_germline.vcf.gz` and `joint_germline.vcf.gz.tbi`\n - VCF with tabix index\n- `joint_germline_recalibrated.vcf.gz` and `joint_germline_recalibrated.vcf.gz.tbi`\n - variant recalibrated VCF with tabix index (if VarCal is applied)"
+},
+"B": {
+"id": "sarek_output#h036",
+"doc": "sarek_output",
+"section": "Variant Calling > SNVs and small indels > Sentieon DNAscope > Sentieon DNAscope joint germline variant calling",
+"text": "sarek_output — Variant Calling > SNVs and small indels > Sentieon DNAscope > Sentieon DNAscope joint germline variant calling\n##### Sentieon DNAscope joint germline variant calling\n\nIn Sentieon's package DNAscope, joint germline variant calling is done by first running Sentieon's Dnacope in emit-mode `gvcf` for each sample and then running Sentieon's GVCFtyper on the set of gVCF-files. See Basic usage of Sentieon functions for information on how joint germline variant calling can be done in Sarek using Sentieon's DNAscope.\n\n Output files from joint germline variant calling\n\n**Output directory: `{outdir}/variant_calling/sentieon_dnascope/<sample>/`**\n\n- `<sample>.dnascope.g.vcf.gz` and `<sample>.dnascope.g.vcf.gz.tbi`\n - VCF with tabix index\n\n**Output directory: `{outdir}/variant_calling/sentieon_dnascope/joint_variant_calling/`**\n\n- `joint_germline.vcf.gz` and `joint_germline.vcf.gz.tbi`\n - VCF with tabix index"
+}
+},
+{
+"pair_id": "PR158",
+"A": {
+"id": "gatk_mutect2_wdl#h013",
+"doc": "gatk_mutect2_wdl",
+"section": "Functional annotation (Funcotator) > mutect2-replicate-validation",
+"text": "gatk_mutect2_wdl — Functional annotation (Funcotator) > mutect2-replicate-validation\n#### mutect2-replicate-validation\n\n*This script is usually used by developers and evaluators only.*\n\nRecommended default values (where possible) are found in ``mutect2-replicate-validation_template.json``\n\n- ``Mutect2ReplicateValidation.gatk4_jar`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.is_run_orientation_bias_filter`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.Mutect2.onco_ds_tar_gz`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.scatter_count`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.intervals`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.is_run_oncotator`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.preemptible_attempts`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.oncotator_docker`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.pon`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.pon_index`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.gnomad`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2ReplicateValidation.gnomad_index`` -- Please see parameter description above in the mutect2_multi_sample."
+},
+"B": {
+"id": "gatk_mutect2_wdl#h010",
+"doc": "gatk_mutect2_wdl",
+"section": "Functional annotation (Funcotator) > mutect2 (single pair/sample)",
+"text": "gatk_mutect2_wdl — Functional annotation (Funcotator) > mutect2 (single pair/sample)\n#### mutect2 (single pair/sample)\n\nRecommended default values (where possible) are found in ``mutect2_template.json``\n\n- ``Mutect2.gatk4_jar`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2.intervals`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2.ref_fasta`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2.ref_fasta_index`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2.ref_dict`` -- Please see parameter description above in the mutect2_multi_sample.\n- ``Mutect2.tumor_bam`` -- File path or storage location (depending on backend) of the tumor bam file.\n- ``Mutect2.tumor_bam_index`` -- File path or storage location (depending on backend) of the tumor bam file index.\n- ``Mutect2.normal_bam`` -- (optional) File path or storage location (depending on backend) of the normal bam file.\n- ``Mutect2.normal_bam_index`` -- (optional, but required if ``Mutect2.normal_bam`` is specified) File path or storage location (depending on backend) of the normal bam file index."
+}
+},
+{
+"pair_id": "PR159",
+"A": {
+"id": "bcftools_manual#h024",
+"doc": "bcftools_manual",
+"section": "bcftools call '[OPTIONS] FILE' > File format options:",
+"text": "Convert 23andme results into VCF — bcftools call '[OPTIONS] FILE' > File format options:\n### File format options:\n\n--no-version::\n see <<common_options,Common Options>>\n\n-o, --output FILE::\n see <<common_options,Common Options>>\n\n-O, --output-type b|u|z|v[0-9]::\n see <<common_options,Common Options>>\n\n--ploidy ASSEMBLY['?'][[ploidy]]::\n predefined ploidy, use list (or any other unused word) to print a list\n of all predefined assemblies. Append a question mark to print the actual\n definition. See also --ploidy-file.\n\n--ploidy-file FILE::\n ploidy definition given as a space/tab-delimited list of\n CHROM, FROM, TO, SEX, PLOIDY. The SEX codes are arbitrary and\n correspond to the ones used by <<samples_file,--samples-file>>.\n The default ploidy can be given using the starred records (see\n below), unlisted regions have ploidy 2. The default ploidy definition is\n----\n X 1 60000 M 1\n X 2699521 154931043 M 1\n Y 1 59373566 M 1\n Y 1 59373566 F 0\n MT 1 16569 M 1\n MT 1 16569 F 1\n * M 2\n * F 2\n----\n\n-r, --regions chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::\n see <<common_options,Common Options>>\n\n-R, --regions-file file::\n see <<common_options,Common Options>>\n\n--regions-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n-s, --samples LIST::\n see <<common_options,Common Options>>\n\n-S, --samples-file FILE::\n see <<common_options,Common Options>>\n\n-t, --targets LIST::\n see <<common_options,Common Options>>\n\n-T, --targets-file FILE::\n see <<common_options,Common Options>>\n\n--targets-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n--threads INT::\n see <<common_options,Common Options>>\n\n-W[FMT], -W[=FMT], --write-index[=FMT]::\n Automatically index the output file. FMT is optional and can be\n one of \"tbi\" or \"csi\" depending on output file format."
+},
+"B": {
+"id": "bcftools_manual#h107",
+"doc": "bcftools_manual",
+"section": "Replace missing genotypes with 0|0 > bcftools polysomy [OPTIONS] 'file.vcf.gz' > General options:",
+"text": "Convert 23andme results into VCF — Replace missing genotypes with 0|0 > bcftools polysomy [OPTIONS] 'file.vcf.gz' > General options:\n### General options:\n\n-o, --output-dir path::\n output directory\n\n-r, --regions chr|'chr:pos'|'chr:from-to'|'chr:from-'[,...]::\n see <<common_options,Common Options>>\n\n-R, --regions-file file::\n see <<common_options,Common Options>>\n\n--regions-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n-s, --sample string::\n sample name\n\n-t, --targets LIST::\n see <<common_options,Common Options>>\n\n-T, --targets-file FILE::\n see <<common_options,Common Options>>\n\n--targets-overlap '0'|'1'|'2'::\n see <<common_options,Common Options>>\n\n-v, --verbosity INT::\n verbose debugging output which gives hints about the thresholds and decisions made\n by the program. Note that the exact output can change between versions.\n See also <<common_options,Common Options>>"
+}
+},
+{
+"pair_id": "PR160",
+"A": {
+"id": "rare_readme#h001",
+"doc": "rare_readme",
+"section": "Pipeline summary",
+"text": "rare_readme — Pipeline summary\n## Pipeline summary\n\n**1. Preprocessing:**\n\n- fastp\n- Spring\n\n**2. Alignment:**\n\n- Bwa-mem2\n- BWA-MEME\n- BWA\n- Sentieon DNAseq\n\n**3. Metrics:**\n\n- FastQC\n- Mosdepth\n- MultiQC\n- Picard's CollectMultipleMetrics, CollectHsMetrics, and CollectWgsMetrics\n- Sambamba\n- Sentieon's WgsMetricsAlgo\n- TIDDIT's cov\n- VerifyBamID2\n\n**4. Sex check:**\n\n- NGSbits SampleGender\n- Peddy\n\n**5. Variant calling - SNV:**\n\n- DeepVariant\n- Sentieon DNAscope\n\n**6. Variant calling - SV:**\n\n- Manta\n- TIDDIT's sv\n- Copy number variant calling:\n - CNVnator\n - GATK GermlineCNVCaller\n - SMNCopyNumberCaller\n- Mitochondrial SV calling:\n - MitoSAlt\n - Saltshaker\n\n**7. Annotation - SNV:**\n\n- bcftools roh\n- vcfanno\n- CADD\n- VEP\n- UPD\n- Chromograph\n\n**8. Annotation - SV:**\n\n- SVDB query\n- VEP\n\n**9. Mitochondrial analysis:**\n\n- Alignment and variant calling - GATK Mitochondrial short variant discovery pipeline\n- Annotation:\n - vcfanno\n - CADD\n - VEP\n\n**10. Variant calling - repeat expansions:**\n\n- Expansion Hunter\n- Stranger\n\n**11. Variant calling - mobile elements:**\n\n- RetroSeq\n\n**12. Rank variants - SV and SNV:**\n\n- GENMOD\n\n**13. Variant evaluation:**\n\n- RTG Tools\n\nNote that it is possible to include/exclude certain tools or steps."
+},
+"B": {
+"id": "rare_output#h001",
+"doc": "rare_output",
+"section": "Pipeline overview",
+"text": "rare_output — Pipeline overview\n## Pipeline overview\n\nThe pipeline is built using Nextflow and processes data using the following steps:\n\n- nf-core/raredisease: Output\n - Introduction\n - Pipeline overview\n - Alignment\n - Mapping\n - Bwa-mem2\n - BWA\n - BWA-MEME\n - Sentieon bwa mem\n - Duplicate marking\n - Picard's MarkDuplicates\n - Sentieon Dedup\n - Subsample mitochondrial alignments\n - Quality control and reporting\n - Quality control\n - FastQC\n - Mosdepth\n - Picard tools\n - Chromograph coverage\n - Sention WgsMetricsAlgo\n - TIDDIT's cov and UCSC WigToBigWig\n - VerifyBamID2\n - Reporting\n - MultiQC\n - Variant calling - SNV\n - DeepVariant\n - Sentieon DNAscope\n - Variant calling - SV\n - Manta\n - TIDDIT sv\n - GATK GermlineCNVCaller - CNV calling\n - CNVnator - CNV calling\n - SVDB merge\n - Variant calling - repeat expansions\n - Expansion Hunter\n - Stranger\n - Annotation - SNV\n - bcftools roh\n - vcfanno\n - CADD\n - VEP\n - UPD\n - Chromograph\n - Rhocall viz\n - Annotation - SV\n - SVDB query\n - VEP\n - Mitochondrial analysis\n - Alignment and variant calling\n - MT deletion script\n - MitoSAlt\n - saltshaker\n - Annotation\n - vcfanno\n - CADD\n - VEP\n - Filtering and ranking\n - Filter_vep\n - GENMOD\n - Mobile element analysis\n - Calling mobile elements\n - Annotating mobile elements\n - Variant evaluation\n - Gens\n - Peddy\n - Pipeline information"
+}
+}
+]

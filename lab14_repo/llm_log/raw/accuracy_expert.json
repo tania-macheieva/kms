@@ -1,0 +1,254 @@
+[
+ {
+  "n": 1,
+  "chunk_id": "sarek_readme#h004",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 2,
+  "chunk_id": "gatk_pathseq_wdl#h003",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 3,
+  "chunk_id": "bcftools_readme#h001",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 4,
+  "chunk_id": "gatk_cnv_germline#h002",
+  "meta_ok": true,
+  "text_ok": false,
+  "reason": "Text ends on dangling \"for example:\" with parameter list cut"
+ },
+ {
+  "n": 5,
+  "chunk_id": "sarek_vc_theory#h001",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 6,
+  "chunk_id": "int_reasoner#h001",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 7,
+  "chunk_id": "bcftools_manual#h027",
+  "meta_ok": false,
+  "text_ok": true,
+  "reason": "Title names an unrelated bcftools section (23andme conversion), not bcftools call; text fine, stray [[cnv]] anchor"
+ },
+ {
+  "n": 8,
+  "chunk_id": "int_cq_map#h003",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 9,
+  "chunk_id": "gatk_funcotator_wdl#h003",
+  "meta_ok": true,
+  "text_ok": false,
+  "reason": "Text cut off mid-word (\"Override Jar file cont\")"
+ },
+ {
+  "n": 10,
+  "chunk_id": "sarek_usage#h021",
+  "meta_ok": false,
+  "text_ok": false,
+  "reason": "Title \"Introduction\" is a body heading, section -c mixes memory text; text cut mid-sentence"
+ },
+ {
+  "n": 11,
+  "chunk_id": "int_onto_eval#h001",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 12,
+  "chunk_id": "bcftools_manual#h044",
+  "meta_ok": false,
+  "text_ok": false,
+  "reason": "Title is wrong 23andme heading; text ends mid code example after dangling ---- block"
+ },
+ {
+  "n": 13,
+  "chunk_id": "gatk_mutect2_wdl#h009",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 14,
+  "chunk_id": "gatk_funco_tutorial#h042",
+  "meta_ok": false,
+  "text_ok": false,
+  "reason": "Title is a stray body line; text cut mid-sentence at end (provide both ... argument)"
+ },
+ {
+  "n": 15,
+  "chunk_id": "gatk_docker#h004",
+  "meta_ok": false,
+  "text_ok": false,
+  "reason": "Title is a stray comment line; chunk starts mid-code-block and ends at an empty opened bash fence"
+ },
+ {
+  "n": 16,
+  "chunk_id": "gatk_funco_spec#h002",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 17,
+  "chunk_id": "int_onto_eval#h004",
+  "meta_ok": true,
+  "text_ok": false,
+  "reason": "Chunk starts mid-table without header and ends cut mid-row"
+ },
+ {
+  "n": 18,
+  "chunk_id": "rare_readme#h004",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 19,
+  "chunk_id": "sarek_usage#h020",
+  "meta_ok": false,
+  "text_ok": true,
+  "reason": "Title \"Introduction\" is a generic body heading, not the document name; text fine"
+ },
+ {
+  "n": 20,
+  "chunk_id": "gatk_readme#h025",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 21,
+  "chunk_id": "sarek_vc_sarek#h001",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 22,
+  "chunk_id": "rare_output#h040",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 23,
+  "chunk_id": "sarek_vc_intro#h002",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 24,
+  "chunk_id": "sarek_output#h070",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 25,
+  "chunk_id": "rare_citations#h005",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 26,
+  "chunk_id": "int_sparql#h005",
+  "meta_ok": false,
+  "text_ok": false,
+  "reason": "Section path contains stray prior-heading line; interpretation cut off after \"Варіа\""
+ },
+ {
+  "n": 27,
+  "chunk_id": "gatk_cnv_somatic#h002",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 28,
+  "chunk_id": "int_situations#h002",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 29,
+  "chunk_id": "int_cypher#h001",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 30,
+  "chunk_id": "sarek_vc_interp#h000",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 31,
+  "chunk_id": "int_shacl#h002",
+  "meta_ok": true,
+  "text_ok": false,
+  "reason": "Text cut mid-sentence at \"три попередження\""
+ },
+ {
+  "n": 32,
+  "chunk_id": "sarek_citations#h002",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 33,
+  "chunk_id": "rare_usage#h009",
+  "meta_ok": false,
+  "text_ok": false,
+  "reason": "Title is a stray hidden-files heading; table cut off mid-row at case_id description"
+ },
+ {
+  "n": 34,
+  "chunk_id": "int_cq_scope#h006",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ },
+ {
+  "n": 35,
+  "chunk_id": "int_rules#h002",
+  "meta_ok": true,
+  "text_ok": false,
+  "reason": "Table row cut off mid-word at the end"
+ },
+ {
+  "n": 36,
+  "chunk_id": "gatk_funco_refdiff#h004",
+  "meta_ok": true,
+  "text_ok": true,
+  "reason": "Metadata and text consistent and readable"
+ }
+]

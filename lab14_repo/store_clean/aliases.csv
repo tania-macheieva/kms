@@ -1,0 +1,5 @@
+term,related_term,relation,note,source
+hg19,b37,skos:closeMatch,"both based on GRCh37; differ in contig names (chr1 vs 1) and masked bases; NOT interchangeable",gatk_funco_refdiff#h000
+hg19,GRCh37,skos:closeMatch,"UCSC reference based on GRCh37",gatk_funco_refdiff#h002
+b37,GRCh37,skos:closeMatch,"Broad reference based on GRCh37",gatk_funco_refdiff#h003
+GRCh38.GATK,GATK.GRCh38,skos:exactMatch,"same sarek genome key written in two orders; canonical = GATK.GRCh38",sarek_usage#h001|sarek_usage#h059

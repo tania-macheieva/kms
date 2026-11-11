@@ -1,0 +1,15 @@
+langgraph==1.2.20
+mcp==2.3.0
+falkordblite==0.11.0
+FalkorDB==1.8.1
+duckdb==2.0.0
+pyshacl==0.40.2
+rdflib==7.6.0
+pyyaml
+pandas
+pyarrow
+numpy
+httpx
+rank-bm25==0.2.2
+pytest
+python-docx

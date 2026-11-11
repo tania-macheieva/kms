@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\": [{\"tool\": \"sql_metric\", \"args\": {\"metric\": \"call_count\"}}], \"continue\": false, \"reason\": \"Variant counts are not a metric, so one call_count run is planned, and conflict ids such as 1 to 1000 do not match the CF-[A-Z]+ pattern.\"}"}

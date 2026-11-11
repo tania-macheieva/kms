@@ -1,0 +1,162 @@
+{
+ "label": "S2_titles_sections",
+ "store": "/tmp/tmpzu9fc7j5/S2_titles",
+ "ts": "2026-11-06T17:29:08",
+ "total": 25,
+ "passed": 18,
+ "blocking_failed": 5,
+ "warnings": 2,
+ "gate": "FAIL",
+ "results": [
+  {
+   "check": "test_Q01_shacl_conforms",
+   "status": "fail",
+   "severity": "blocking",
+   "message": "AssertionError: SHACL violations {'S14': 1}: [('S14: procedure APPLIES_TO a person younger than minTestingAge', 'http://dkh.example/Procedure/CT-01')] assert False"
+  },
+  {
+   "check": "test_Q02_sparql_no_orphan_variants",
+   "status": "pass",
+   "severity": "blocking",
+   "message": ""
+  },
+  {
+   "check": "test_Q03_sparql_hardfiltering_has_thresholds",
+   "status": "pass",
+   "severity": "blocking",
+   "message": ""
+  },
+  {
+   "check": "test_Q04_sparql_annotation_names_unique_per_variant",
+   "status": "pass",
+   "severity": "blocking",
+   "message": ""
+  },
+  {
+   "check": "test_Q05_jsonschema_chunks",
+   "status": "pass",
+   "severity": "blocking",
+   "message": ""
+  },
+  {
+   "check": "test_Q06_jsonschema_alternatives",
+   "status": "fail",
+   "severity": "blocking",
+   "message": "AssertionError: no alternatives register assert False  +  where False = exists()  +    where exists = PosixPath('/tmp/tmpzu9fc7j5/S2_titles/alternatives.jsonl').exists"
+  },
+  {
+   "check": "test_Q07_jsonschema_fixtures",
+   "status": "pass",
+   "severity": "blocking",
+   "message": ""
+  },
+  {
+   "check": "test_Q08_sql_unique_chunk_ids",
+   "status": "pass",
+   "severity": "blocking",
+   "message": ""
+  },
+  {
+   "check": "test_Q09_sql_applies_to_person_integrity",
+   "status": "pass",
+   "severity": "blocking",
+   "message": ""
+  },
+  {
+   "check": "test_Q10_sql_relationship_provenance",
+   "status": "pass",
+   "severity": "blocking",
+   "message": ""
+  },
+  {
+   "check": "test_Q11_metric_threshold[M01_completeness]",
+   "status": "pass",
+   "severity": "blocking",
+   "message": ""
+  },
+  {
+   "check": "test_Q11_metric_threshold[M02_schema_validity]",
+   "status": "pass",
+   "severity": "blocking",
+   "message": ""
+  },
+  {
+   "check": "test_Q11_metric_threshold[M03_open_conflicts]",
+   "status": "fail",
+   "severity": "blocking",
+   "message": "AssertionError: M03_open_conflicts=8 violates <= 0 (blocking) assert False"
+  },
+  {
+   "check": "test_Q11_metric_threshold[M04_active_logical_violations]",
+   "status": "fail",
+   "severity": "blocking",
+   "message": "AssertionError: M04_active_logical_violations=1 violates <= 0 (blocking) assert False"
+  },
+  {
+   "check": "test_Q11_metric_threshold[M05_provenance_fidelity]",
+   "status": "pass",
+   "severity": "blocking",
+   "message": ""
+  },
+  {
+   "check": "test_Q11_metric_threshold[M06_expert_sample_accuracy]",
+   "status": "fail",
+   "severity": "warning",
+   "message": "AssertionError: M06_expert_sample_accuracy=0.6389 violates >= 0.9 (warning) assert False"
+  },
+  {
+   "check": "test_Q11_metric_threshold[M07_conflict_documentation]",
+   "status": "fail",
+   "severity": "blocking",
+   "message": "AssertionError: M07_conflict_documentation=0.0 violates >= 1.0 (blocking) assert False"
+  },
+  {
+   "check": "test_Q11_metric_threshold[M08_near_duplicate_share]",
+   "status": "pass",
+   "severity": "blocking",
+   "message": ""
+  },
+  {
+   "check": "test_Q11_metric_threshold[M09_freshness]",
+   "status": "pass",
+   "severity": "blocking",
+   "message": ""
+  },
+  {
+   "check": "test_Q11_metric_threshold[M10_id_uniqueness]",
+   "status": "pass",
+   "severity": "blocking",
+   "message": ""
+  },
+  {
+   "check": "test_Q11_metric_threshold[M11_graph_referential_integrity]",
+   "status": "pass",
+   "severity": "blocking",
+   "message": ""
+  },
+  {
+   "check": "test_Q11_metric_threshold[M12_sensitivity_valid]",
+   "status": "pass",
+   "severity": "blocking",
+   "message": ""
+  },
+  {
+   "check": "test_Q11_metric_threshold[M13_language_consistency]",
+   "status": "pass",
+   "severity": "blocking",
+   "message": ""
+  },
+  {
+   "check": "test_Q11_metric_threshold[M14_self_retrieval_at1]",
+   "status": "fail",
+   "severity": "warning",
+   "message": "AssertionError: M14_self_retrieval_at1=0.957 violates >= 0.97 (warning) assert False"
+  },
+  {
+   "check": "test_Q12_merge_is_reversible",
+   "status": "pass",
+   "severity": "blocking",
+   "message": ""
+  }
+ ]
+}

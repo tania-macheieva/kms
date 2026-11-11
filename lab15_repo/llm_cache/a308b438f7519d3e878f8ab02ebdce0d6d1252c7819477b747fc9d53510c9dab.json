@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "STATUS: ANSWER\nThe sql_metric result returned call_count = 20000 with no grouping and no filter [sql#1]. The metric is labelled call_count, so this value is not confirmed as a count of variants. Only this one result is in the observations, so I cannot report stability across reruns or any get_claims output."}

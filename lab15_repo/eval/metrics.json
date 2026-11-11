@@ -1,0 +1,84 @@
+{
+ "v0": {
+  "n": 16,
+  "success_share": 0.75,
+  "by_type": {
+   "success": {
+    "n": 8,
+    "ok": 4
+   },
+   "unknown": {
+    "n": 4,
+    "ok": 4
+   },
+   "conflict": {
+    "n": 4,
+    "ok": 4
+   }
+  },
+  "mean_steps": 3.81,
+  "mean_tool_calls": 0.81,
+  "redrafts": 0,
+  "mean_tokens": 1853,
+  "mean_cost_usd": 0.00237,
+  "total_cost_usd": 0.038,
+  "failed": [
+   "S01",
+   "S05",
+   "S07",
+   "S08"
+  ]
+ },
+ "v1": {
+  "n": 25,
+  "success_share": 0.96,
+  "by_type": {
+   "success": {
+    "n": 13,
+    "ok": 12
+   },
+   "unknown": {
+    "n": 6,
+    "ok": 6
+   },
+   "conflict": {
+    "n": 6,
+    "ok": 6
+   }
+  },
+  "mean_steps": 4.08,
+  "mean_tool_calls": 0.84,
+  "redrafts": 3,
+  "mean_tokens": 1924,
+  "mean_cost_usd": 0.00247,
+  "total_cost_usd": 0.0616,
+  "failed": [
+   "H02"
+  ]
+ },
+ "v2": {
+  "n": 25,
+  "success_share": 1.0,
+  "by_type": {
+   "success": {
+    "n": 13,
+    "ok": 13
+   },
+   "unknown": {
+    "n": 6,
+    "ok": 6
+   },
+   "conflict": {
+    "n": 6,
+    "ok": 6
+   }
+  },
+  "mean_steps": 4.12,
+  "mean_tool_calls": 1.12,
+  "redrafts": 0,
+  "mean_tokens": 2105,
+  "mean_cost_usd": 0.00267,
+  "total_cost_usd": 0.0667,
+  "failed": []
+ }
+}

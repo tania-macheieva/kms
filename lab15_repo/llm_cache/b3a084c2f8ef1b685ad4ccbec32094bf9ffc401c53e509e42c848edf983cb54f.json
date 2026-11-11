@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\":[{\"tool\":\"search_docs\",\"args\":{\"query\":\"QD threshold note\",\"k\":4}},{\"tool\":\"get_claims\",\"args\":{\"conflict_id\":\"CF-QD\",\"subject\":\"QD\"}}],\"continue\":false,\"reason\":\"The note is documentation, and the QD value is a threshold question that needs the claims register.\"}"}

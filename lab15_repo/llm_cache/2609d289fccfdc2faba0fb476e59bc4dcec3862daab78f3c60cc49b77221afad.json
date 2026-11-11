@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\": [{\"tool\": \"sql_metric\", \"args\": {\"metric\": \"call_count\", \"by\": [\"year\"], \"where\": {\"year\": [2025, 2026]}, \"limit\": 10}}], \"continue\": false, \"reason\": \"Call counts per year come from the call_count warehouse metric grouped by year, and the difference is computed from those values.\"}"}

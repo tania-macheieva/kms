@@ -1,0 +1,202 @@
+[
+ {
+  "pair_id": "PR121",
+  "label": "RELATED",
+  "reason": "Same BWA template; BWA-MEME text adds --aligner bwameme option and intermediates note, differs in samtools sort details."
+ },
+ {
+  "pair_id": "PR122",
+  "label": "RELATED",
+  "reason": "Same S0x template for different situations (S04 vs S03); different guard, class, individuals, actions."
+ },
+ {
+  "pair_id": "PR123",
+  "label": "DISTINCT",
+  "reason": "Different bcftools commands: index options vs isec options."
+ },
+ {
+  "pair_id": "PR124",
+  "label": "DISTINCT",
+  "reason": "mpileup input options vs general regions-overlap/samples options; different content."
+ },
+ {
+  "pair_id": "PR125",
+  "label": "DISTINCT",
+  "reason": "cnv general options vs plugin VCF input options; only shared common-options boilerplate lines."
+ },
+ {
+  "pair_id": "PR126",
+  "label": "RELATED",
+  "reason": "Both docker build snippets; A has unit-test variants with BRANCH, B has GITHUB_TAG build command."
+ },
+ {
+  "pair_id": "PR127",
+  "label": "DISTINCT",
+  "reason": "Split FastQ vs UMI consensus; different tools and output paths."
+ },
+ {
+  "pair_id": "PR128",
+  "label": "DUP",
+  "reason": "MultiQC description and output files identical apart from trivial wording (summarising/summarizing, collate/collect)."
+ },
+ {
+  "pair_id": "PR129",
+  "label": "RELATED",
+  "reason": "Same params-file guidance, but A adds -resume and reusing parameters bullets; pipeline names/genomes differ."
+ },
+ {
+  "pair_id": "PR130",
+  "label": "RELATED",
+  "reason": "Same parameter json paragraph; B also lists which WDL to use (PoN, matched pair)."
+ },
+ {
+  "pair_id": "PR131",
+  "label": "RELATED",
+  "reason": "Same S0x template for different situations (S03 vs S02); different guard, class, action, state."
+ },
+ {
+  "pair_id": "PR132",
+  "label": "DISTINCT",
+  "reason": "Mobile element calling/annotation vs mitochondrial annotation parameters."
+ },
+ {
+  "pair_id": "PR133",
+  "label": "DISTINCT",
+  "reason": "Sentieon Haplotyper outputs vs Parabricks and DNAscope outputs; different tools."
+ },
+ {
+  "pair_id": "PR134",
+  "label": "RELATED",
+  "reason": "Both contain VEP description; A also SVDB query and SV outputs, B lists plugins and SNV outputs."
+ },
+ {
+  "pair_id": "PR135",
+  "label": "DISTINCT",
+  "reason": "csq options vs plugin VCF input options; only shared common-options lines."
+ },
+ {
+  "pair_id": "PR136",
+  "label": "DISTINCT",
+  "reason": "Both contig md5 tables with different rows; A has explanatory text on differences."
+ },
+ {
+  "pair_id": "PR137",
+  "label": "RELATED",
+  "reason": "Same params-file/-c warning example; different pipeline (raredisease vs sarek), A shorter, B has extra text."
+ },
+ {
+  "pair_id": "PR138",
+  "label": "DISTINCT",
+  "reason": "Different rows of contig md5 table; no shared information."
+ },
+ {
+  "pair_id": "PR139",
+  "label": "DUP",
+  "reason": "Identical Custom Tool Arguments text, only section path differs."
+ },
+ {
+  "pair_id": "PR140",
+  "label": "DISTINCT",
+  "reason": "Different citation lists; only MultiQC citation shared."
+ },
+ {
+  "pair_id": "PR141",
+  "label": "RELATED",
+  "reason": "Both GATK docker build snippets; A remote build with GCR tag, B local build."
+ },
+ {
+  "pair_id": "PR142",
+  "label": "RELATED",
+  "reason": "Same S0x template for different situations (S06 vs S04); different guard, class, outcome."
+ },
+ {
+  "pair_id": "PR143",
+  "label": "RELATED",
+  "reason": "Both VEP sections; A has plugins and genome output files, B mitochondria outputs and Filter_vep."
+ },
+ {
+  "pair_id": "PR144",
+  "label": "DISTINCT",
+  "reason": "bcftools sort options vs csq options and examples."
+ },
+ {
+  "pair_id": "PR145",
+  "label": "DISTINCT",
+  "reason": "Different codonChange format examples (deletions, frameshift vs insertions)."
+ },
+ {
+  "pair_id": "PR146",
+  "label": "RELATED",
+  "reason": "Same Full samplesheet heading; different step (mapping BAM/CRAM vs variant calling) with different following sections."
+ },
+ {
+  "pair_id": "PR147",
+  "label": "DISTINCT",
+  "reason": "Different contig md5 rows; A lacks explanatory text."
+ },
+ {
+  "pair_id": "PR148",
+  "label": "RELATED",
+  "reason": "vcfanno description near-identical, but mito version passes output to vep, other to CADD and/or VEP."
+ },
+ {
+  "pair_id": "PR149",
+  "label": "RELATED",
+  "reason": "Different samplesheet steps (duplicate marking vs prepare recalibration/recalibrate); same template."
+ },
+ {
+  "pair_id": "PR150",
+  "label": "RELATED",
+  "reason": "Same aligner template; BWA-MEME vs Sentieon bwa mem with different details and aligner option value."
+ },
+ {
+  "pair_id": "PR151",
+  "label": "RELATED",
+  "reason": "Same Funcotator paragraphs; A also has Docker images list."
+ },
+ {
+  "pair_id": "PR152",
+  "label": "DISTINCT",
+  "reason": "csq options vs concat options."
+ },
+ {
+  "pair_id": "PR153",
+  "label": "DISTINCT",
+  "reason": "Different rows of contig md5 table."
+ },
+ {
+  "pair_id": "PR154",
+  "label": "DISTINCT",
+  "reason": "gtcheck vs norm options."
+ },
+ {
+  "pair_id": "PR155",
+  "label": "DISTINCT",
+  "reason": "query options vs norm options."
+ },
+ {
+  "pair_id": "PR156",
+  "label": "RELATED",
+  "reason": "Both Contributions and Support; A adds acknowledgements and #sarek_dev channel, different Slack channel."
+ },
+ {
+  "pair_id": "PR157",
+  "label": "RELATED",
+  "reason": "Joint germline calling Sentieon Haplotyper vs DNAscope; parallel but A adds VQSR and recalibrated VCF, tools differ."
+ },
+ {
+  "pair_id": "PR158",
+  "label": "RELATED",
+  "reason": "Same parameter-list template; different workflows (replicate-validation vs mutect2 single) with different parameters."
+ },
+ {
+  "pair_id": "PR159",
+  "label": "DISTINCT",
+  "reason": "call file format options vs polysomy general options; only shared common-option lines."
+ },
+ {
+  "pair_id": "PR160",
+  "label": "DISTINCT",
+  "reason": "Pipeline summary tool list vs output TOC; different structure and content."
+ }
+]

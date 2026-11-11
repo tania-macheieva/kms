@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\": [{\"tool\": \"graph_query\", \"args\": {\"cypher\": \"MATCH (v:Variant) WHERE v.clinicalSignificance = 'Pathogenic' RETURN count(v) AS pathogenicVariants LIMIT 50\"}}], \"continue\": false, \"reason\": \"Counting variants with a given significance within the graph is a single Cypher aggregate.\"}"}

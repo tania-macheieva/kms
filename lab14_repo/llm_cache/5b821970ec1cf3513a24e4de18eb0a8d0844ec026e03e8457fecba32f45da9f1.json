@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "STATUS: CONFLICT\nThe GATK README states that Java 17 is needed to run or build GATK [gatk_readme#h001]. A legacy build note for v4.2 states that a Java 8 JDK is required to run or build GATK [fx_gatk_java]. The sources do not resolve which requirement applies.", "in_tokens": 2178, "out_tokens": 65, "latency_ms": null}

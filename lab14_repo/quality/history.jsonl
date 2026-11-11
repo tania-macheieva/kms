@@ -1,0 +1,6 @@
+{"label": "S0_baseline", "store": "/home/claude/w/lab14_repo/store", "ts": "2026-11-06T17:28:59", "total": 25, "passed": 14, "blocking_failed": 9, "warnings": 2, "gate": "FAIL"}
+{"label": "S1_dedup", "store": "/tmp/tmpzu9fc7j5/S1_dedup", "ts": "2026-11-06T17:29:04", "total": 25, "passed": 15, "blocking_failed": 8, "warnings": 2, "gate": "FAIL"}
+{"label": "S2_titles_sections", "store": "/tmp/tmpzu9fc7j5/S2_titles", "ts": "2026-11-06T17:29:08", "total": 25, "passed": 18, "blocking_failed": 5, "warnings": 2, "gate": "FAIL"}
+{"label": "S3_alternatives_aliases", "store": "/tmp/tmpzu9fc7j5/S3_conflicts", "ts": "2026-11-06T17:29:12", "total": 25, "passed": 19, "blocking_failed": 4, "warnings": 2, "gate": "FAIL"}
+{"label": "S4_final_graph_rule", "store": "/home/claude/w/lab14_repo/store_clean", "ts": "2026-11-06T17:29:16", "total": 25, "passed": 23, "blocking_failed": 0, "warnings": 2, "gate": "PASS"}
+{"label": "ci", "store": "store_clean", "ts": "2026-11-06T22:22:00", "total": 25, "passed": 23, "blocking_failed": 0, "warnings": 2, "gate": "PASS"}

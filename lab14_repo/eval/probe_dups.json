@@ -1,0 +1,254 @@
+{
+ "queries": 11,
+ "redundant_slots_before": 17,
+ "redundant_slots_after": 0,
+ "total_slots": 55,
+ "distinct_before": 38,
+ "distinct_after": 55,
+ "cluster_found_before": 11,
+ "cluster_found_after": 11,
+ "detail": [
+  {
+   "cluster": "rare_usage#h031",
+   "query": "note: these options are part of nextflow and use a single hyphen pipeline parameters use a double-hyphen use",
+   "before": [
+    "sarek_usage#h018",
+    "rare_usage#h031",
+    "sarek_usage#h002",
+    "sarek_usage#h023",
+    "rare_usage#h036"
+   ],
+   "after": [
+    "rare_usage#h031",
+    "sarek_usage#h002",
+    "rare_usage#h036",
+    "rare_usage#h030",
+    "rare_usage#h011"
+   ],
+   "redundant_before": 2,
+   "redundant_after": 0,
+   "target_in_top5_before": true,
+   "target_in_top5_after": true
+  },
+  {
+   "cluster": "rare_usage#h033",
+   "query": "specify this when restarting a pipeline. nextflow will use cached results from any pipeline steps where the inputs",
+   "before": [
+    "sarek_usage#h020",
+    "rare_usage#h033",
+    "rare_usage#h030",
+    "sarek_usage#h034",
+    "sarek_usage#h016"
+   ],
+   "after": [
+    "rare_usage#h033",
+    "rare_usage#h030",
+    "sarek_usage#h034",
+    "sarek_usage#h016",
+    "rare_usage#h034"
+   ],
+   "redundant_before": 1,
+   "redundant_after": 0,
+   "target_in_top5_before": true,
+   "target_in_top5_after": true
+  },
+  {
+   "cluster": "rare_usage#h035",
+   "query": "in some cases, you may wish to change the container or conda environment used by a pipeline steps",
+   "before": [
+    "sarek_usage#h027",
+    "sarek_usage#h022",
+    "rare_usage#h035",
+    "sarek_usage#h018",
+    "sarek_usage#h019"
+   ],
+   "after": [
+    "rare_usage#h035",
+    "sarek_usage#h019",
+    "gatk_readme#h004",
+    "gatk_readme#h003",
+    "rare_usage#h032"
+   ],
+   "redundant_before": 2,
+   "redundant_after": 0,
+   "target_in_top5_before": true,
+   "target_in_top5_after": true
+  },
+  {
+   "cluster": "rare_usage#h036",
+   "query": "a pipeline might not always support every possible argument or option of a particular tool used in pipeline.",
+   "before": [
+    "rare_usage#h036",
+    "sarek_usage#h028",
+    "sarek_usage#h023",
+    "sarek_usage#h035",
+    "rare_usage#h011"
+   ],
+   "after": [
+    "rare_usage#h036",
+    "sarek_usage#h035",
+    "rare_usage#h011",
+    "rare_usage#h035",
+    "rare_readme#h004"
+   ],
+   "redundant_before": 2,
+   "redundant_after": 0,
+   "target_in_top5_before": true,
+   "target_in_top5_after": true
+  },
+  {
+   "cluster": "rare_usage#h037",
+   "query": "in most cases, you will only need to create a custom config as a one-off but if you",
+   "before": [
+    "rare_usage#h037",
+    "sarek_usage#h024",
+    "sarek_usage#h029",
+    "rare_usage#h031",
+    "sarek_usage#h049"
+   ],
+   "after": [
+    "rare_usage#h037",
+    "rare_usage#h031",
+    "sarek_usage#h049",
+    "rare_usage#h034",
+    "sarek_usage#h021"
+   ],
+   "redundant_before": 2,
+   "redundant_after": 0,
+   "target_in_top5_before": true,
+   "target_in_top5_after": true
+  },
+  {
+   "cluster": "rare_usage#h039",
+   "query": "nextflow handles job submissions and supervises the running jobs. the nextflow process must run until the pipeline is",
+   "before": [
+    "rare_usage#h039",
+    "sarek_usage#h025",
+    "sarek_usage#h020",
+    "rare_usage#h033",
+    "sarek_usage#h017"
+   ],
+   "after": [
+    "rare_usage#h039",
+    "rare_usage#h033",
+    "sarek_usage#h017",
+    "rare_usage#h030",
+    "sarek_usage#h002"
+   ],
+   "redundant_before": 2,
+   "redundant_after": 0,
+   "target_in_top5_before": true,
+   "target_in_top5_after": true
+  },
+  {
+   "cluster": "sarek_output#h000",
+   "query": "this document describes the output produced by the pipeline. most of the plots are taken from the multiqc",
+   "before": [
+    "sarek_output#h000",
+    "rare_output#h000",
+    "rare_output#h014",
+    "sarek_output#h074",
+    "rare_output#h001"
+   ],
+   "after": [
+    "sarek_output#h000",
+    "rare_output#h014",
+    "rare_output#h001",
+    "sarek_output#h068",
+    "sarek_output#h063"
+   ],
+   "redundant_before": 2,
+   "redundant_after": 0,
+   "target_in_top5_before": true,
+   "target_in_top5_after": true
+  },
+  {
+   "cluster": "rare_output#h014",
+   "query": "multiqc is a visualization tool that generates a single html report summarising all samples in your project. most",
+   "before": [
+    "sarek_output#h074",
+    "rare_output#h014",
+    "sarek_citations#h006",
+    "rare_citations#h003",
+    "rare_output#h008"
+   ],
+   "after": [
+    "rare_output#h014",
+    "sarek_citations#h006",
+    "rare_citations#h003",
+    "rare_output#h008",
+    "sarek_output#h000"
+   ],
+   "redundant_before": 1,
+   "redundant_after": 0,
+   "target_in_top5_before": true,
+   "target_in_top5_after": true
+  },
+  {
+   "cluster": "rare_citations#h000",
+   "query": "nf-core ewels pa, peltzer a, fillinger s, patel h, alneberg j, wilm a, garcia mu, di tommaso p,",
+   "before": [
+    "sarek_citations#h002",
+    "rare_citations#h000",
+    "sarek_readme#h008",
+    "sarek_citations#h001",
+    "sarek_citations#h000"
+   ],
+   "after": [
+    "rare_citations#h000",
+    "sarek_readme#h008",
+    "sarek_citations#h001",
+    "sarek_citations#h000",
+    "rare_citations#h001"
+   ],
+   "redundant_before": 1,
+   "redundant_after": 0,
+   "target_in_top5_before": true,
+   "target_in_top5_after": true
+  },
+  {
+   "cluster": "rare_output#h033",
+   "query": "cadd is a tool for scoring the deleteriousness of single nucleotide variants as well as insertion/deletions variants in",
+   "before": [
+    "rare_output#h024",
+    "rare_output#h033",
+    "rare_citations#h001",
+    "rare_usage#h020",
+    "rare_citations#h002"
+   ],
+   "after": [
+    "rare_output#h033",
+    "rare_citations#h001",
+    "rare_usage#h020",
+    "rare_citations#h002",
+    "rare_output#h025"
+   ],
+   "redundant_before": 1,
+   "redundant_after": 0,
+   "target_in_top5_before": true,
+   "target_in_top5_after": true
+  },
+  {
+   "cluster": "gatk_funco_tutorial#h027",
+   "query": "the pre-packaged data sources will create a set of baseline, or default annotations for an input data set.",
+   "before": [
+    "gatk_funco_spec#h001",
+    "gatk_funco_tutorial#h027",
+    "gatk_funco_tutorial#h032",
+    "gatk_funcotator_wdl#h003",
+    "gatk_funco_tutorial#h000"
+   ],
+   "after": [
+    "gatk_funco_tutorial#h027",
+    "gatk_funco_tutorial#h032",
+    "gatk_funcotator_wdl#h003",
+    "gatk_funco_tutorial#h000",
+    "gatk_funco_spec#h015"
+   ],
+   "redundant_before": 1,
+   "redundant_after": 0,
+   "target_in_top5_before": true,
+   "target_in_top5_after": true
+  }
+ ]
+}

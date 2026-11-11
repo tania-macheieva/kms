@@ -1,0 +1,202 @@
+[
+ {
+  "pair_id": "PR041",
+  "label": "DUP",
+  "reason": "Identical Custom Tool Arguments text in sarek and raredisease."
+ },
+ {
+  "pair_id": "PR042",
+  "label": "RELATED",
+  "reason": "Same build script; B adds -p flag and GCR upload section, A has docker-only heading."
+ },
+ {
+  "pair_id": "PR043",
+  "label": "RELATED",
+  "reason": "Same boilerplate; file names differ (timestamps, bco.json in B; samplesheet.valid.csv, params.json in A)."
+ },
+ {
+  "pair_id": "PR044",
+  "label": "DISTINCT",
+  "reason": "A covers config-file input; B covers direct CLI input."
+ },
+ {
+  "pair_id": "PR045",
+  "label": "RELATED",
+  "reason": "Same template for MSIsensor2 vs MSIsensorPro; different tool, paths, germline output only in B."
+ },
+ {
+  "pair_id": "PR046",
+  "label": "DISTINCT",
+  "reason": "Consensus calling versus snpEff reports."
+ },
+ {
+  "pair_id": "PR047",
+  "label": "DISTINCT",
+  "reason": "Options of bcftools concat versus bcftools norm."
+ },
+ {
+  "pair_id": "PR048",
+  "label": "RELATED",
+  "reason": "Same joint calling template; Sentieon DNAscope versus GATK HaplotypeCaller with VQSR, different outputs."
+ },
+ {
+  "pair_id": "PR049",
+  "label": "DISTINCT",
+  "reason": "BAM samplesheet columns versus FASTQ samplesheet example rows."
+ },
+ {
+  "pair_id": "PR050",
+  "label": "DISTINCT",
+  "reason": "Different consensus options (-i, -I, mark, mask) versus intro, -a, -c, -H."
+ },
+ {
+  "pair_id": "PR051",
+  "label": "RELATED",
+  "reason": "Parallel Funcotator parameter sections; annotation-default versus annotation-override with different semantics."
+ },
+ {
+  "pair_id": "PR052",
+  "label": "RELATED",
+  "reason": "Same template; pair workflow versus panel workflow, different parameter names and optional items."
+ },
+ {
+  "pair_id": "PR053",
+  "label": "DISTINCT",
+  "reason": "BWA/BWA-mem2 description versus Sentieon BWA mem with output files."
+ },
+ {
+  "pair_id": "PR054",
+  "label": "DISTINCT",
+  "reason": "Later ASCAT steps (loci/alleles R script) versus early steps (GC/RT files, Battenberg download)."
+ },
+ {
+  "pair_id": "PR055",
+  "label": "RELATED",
+  "reason": "Germline case versus cohort workflow parameters; overlapping lines but different parameters."
+ },
+ {
+  "pair_id": "PR056",
+  "label": "RELATED",
+  "reason": "Both contain -W write-index option; A adds verbosity and CSI default, B is view-specific."
+ },
+ {
+  "pair_id": "PR057",
+  "label": "RELATED",
+  "reason": "csq options versus consensus VCF input options; shared regions/samples/targets lines, different others."
+ },
+ {
+  "pair_id": "PR058",
+  "label": "DISTINCT",
+  "reason": "bcftools view output options versus bcftools head options."
+ },
+ {
+  "pair_id": "PR059",
+  "label": "DISTINCT",
+  "reason": "bcftools roh options versus bcftools norm options."
+ },
+ {
+  "pair_id": "PR060",
+  "label": "DUP",
+  "reason": "Identical CADD paragraph, only heading level and section path differ."
+ },
+ {
+  "pair_id": "PR061",
+  "label": "RELATED",
+  "reason": "Same datasource config template; type locatableXSV versus simpleXSV."
+ },
+ {
+  "pair_id": "PR062",
+  "label": "DUP",
+  "reason": "Identical Custom Tool Arguments text across sarek and raredisease."
+ },
+ {
+  "pair_id": "PR063",
+  "label": "DISTINCT",
+  "reason": "bcftools cnv general options versus bcftools view subset options."
+ },
+ {
+  "pair_id": "PR064",
+  "label": "DUP",
+  "reason": "Identical Custom Containers text across raredisease and sarek."
+ },
+ {
+  "pair_id": "PR065",
+  "label": "DISTINCT",
+  "reason": "CQ table rows versus Cypher query for CQ05 with results."
+ },
+ {
+  "pair_id": "PR066",
+  "label": "RELATED",
+  "reason": "Same NXF_OPTS memory text; B additionally has -c and resource requests content."
+ },
+ {
+  "pair_id": "PR067",
+  "label": "RELATED",
+  "reason": "A is CNVKit tumor file list; B has intro, note and normal/tumor-only list with sample-based names."
+ },
+ {
+  "pair_id": "PR068",
+  "label": "RELATED",
+  "reason": "Same full samplesheet heading; different steps, columns, and following sections."
+ },
+ {
+  "pair_id": "PR069",
+  "label": "RELATED",
+  "reason": "Same GITHUB_TAG script pattern; remote build script with tag 4.2.6.1 versus local build script."
+ },
+ {
+  "pair_id": "PR070",
+  "label": "DUP",
+  "reason": "Same running-in-background text; only trivial wording differences."
+ },
+ {
+  "pair_id": "PR071",
+  "label": "DISTINCT",
+  "reason": "bcftools merge options versus bcftools view output options."
+ },
+ {
+  "pair_id": "PR072",
+  "label": "DISTINCT",
+  "reason": "LOFTEE/Mastermind parameters versus SpliceAI parameters."
+ },
+ {
+  "pair_id": "PR073",
+  "label": "DISTINCT",
+  "reason": "mpileup input options versus cnv general options."
+ },
+ {
+  "pair_id": "PR074",
+  "label": "RELATED",
+  "reason": "Same FastP output template; trimming versus splitting, different flags (--save_trimmed vs --save_split)."
+ },
+ {
+  "pair_id": "PR075",
+  "label": "DISTINCT",
+  "reason": "Different MD5/contig checksum listings."
+ },
+ {
+  "pair_id": "PR076",
+  "label": "DISTINCT",
+  "reason": "DNAscope usage versus Haplotyper/GVCFtyper/TNscope usage."
+ },
+ {
+  "pair_id": "PR077",
+  "label": "RELATED",
+  "reason": "Both .hap format with shared --haploid2diploid, --sex text; differ in examples and --vcf-ids/--hapsample."
+ },
+ {
+  "pair_id": "PR078",
+  "label": "RELATED",
+  "reason": "Transcript selection mode; A has tie-break rules and ALL, B has intro, BEST_EFFECT and CANONICAL."
+ },
+ {
+  "pair_id": "PR079",
+  "label": "DISTINCT",
+  "reason": "bcftools sort options versus bcftools query options."
+ },
+ {
+  "pair_id": "PR080",
+  "label": "RELATED",
+  "reason": "Same Resource requests text; B adds -c section, differing in heading level."
+ }
+]

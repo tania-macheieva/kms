@@ -1,0 +1,18 @@
+[
+{"pair_id":"JP001","label":"RELATED","explanation":"Pipeline-specific facts differ: A names nf-core/sarek with example `3.3.2` and 'one hyphen'; B names nf-core/raredisease with `1.3.1`. Otherwise same advice, but these identifiers exist in only one chunk."},
+{"pair_id":"JP002","label":"RELATED","explanation":"A ends with a `gpu` profile ('adds necessary flags to `docker` and `singularity` profiles'); B lacks this entry. Rest of profile list is identical."},
+{"pair_id":"JP003","label":"DUP","explanation":"Same text; only wording trivia ('please can you test' vs 'test') and heading level differ. All facts (-c, pull request, #configs Slack) are identical."},
+{"pair_id":"JP004","label":"DUP","explanation":"Same content on -bg, screen/tmux, HPC jobs. Differences are only a typo fix ('submitted your job scheduler' vs 'submitted to your'), Nextflow capitalisation and heading level."},
+{"pair_id":"JP005","label":"RELATED","explanation":"B additionally contains a `-c` section ('Specify the path to a specific config file') that A lacks. The Resource requests text is identical, but the extra fact exists only in B."},
+{"pair_id":"JP006","label":"DUP","explanation":"Same text; only 'please can you test' vs 'test' and heading level differ. All facts and steps (-c, pull request, nfcore_custom.config, #configs) are identical."},
+{"pair_id":"JP007","label":"DUP","explanation":"Same MultiQC description and output file list. Differences are spelling/wording only ('summarizing' vs 'summarising', 'collect' vs 'collate') and paragraph breaks."},
+{"pair_id":"JP008","label":"DUP","explanation":"Identical nf-core and Nextflow citations (Ewels PA..., Di Tommaso P...); only formatting differs (headings vs bullet and blockquote)."},
+{"pair_id":"JP009","label":"RELATED","explanation":"A includes an 'R packages' part with R (R Core Team 2017) and RColorBrewer (Erich Neuwirth) citations that B lacks. Container tool citations are the same, apart from Docker '2014' vs '(2014)'."},
+{"pair_id":"JP010","label":"RELATED","explanation":"A describes Bwa-mem2 and BWA ('`--aligner` option to bwa'); B describes BWA-MEME ('`--aligner` option to bwameme'). Different tools and option values."},
+{"pair_id":"JP011","label":"RELATED","explanation":"A says output 'is passed to CADD and/or VEP' and 'configuration file'; B says 'passed to vep' and 'conf file'. Downstream tools differ; the CADD mention exists only in A."},
+{"pair_id":"JP012","label":"RELATED","explanation":"A has options B lacks: `-s, --samples LIST`, `-S, --samples-file` and `-W[FMT], --write-index`. Also `-t` has 'LIST' in A but a chr:pos region form in B."},
+{"pair_id":"JP013","label":"RELATED","explanation":"A starts with a 'Docker images' list (broadinstitute/gatk-protected:1.0.0.0-alpha1.2.4, genomes-in-the-cloud, `gatk4_jar_override`) absent from B. The Funcotator text is otherwise identical."},
+{"pair_id":"JP014","label":"RELATED","explanation":"A sets `xsv_key = GENE_NAME` and `xsv_key_column = 2`; B leaves both empty (`xsv_key =`, `xsv_key_column =`). Different config values."},
+{"pair_id":"JP015","label":"RELATED","explanation":"A leaves `contig_column =` and `start_column =` empty; B gives `contig_column = 1` and `start_column = 2`. Concrete values exist only in B."},
+{"pair_id":"JP016","label":"RELATED","explanation":"Different contradictions: A is 'VAR-003 rdf:type dkh:SNP' (SNP/Indel disjoint); B is 'Marta hasParent Maria' with three parents, hasParent ≤ 2. Only the HermiT trace and fix text are shared."}
+]

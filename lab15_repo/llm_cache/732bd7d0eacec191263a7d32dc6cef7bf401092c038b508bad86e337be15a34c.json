@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\": [{\"tool\": \"get_claims\", \"args\": {\"subject\": \"SOR\"}}], \"continue\": false, \"reason\": \"SOR thresholds may differ between sources, so the claims register should be checked.\"}"}

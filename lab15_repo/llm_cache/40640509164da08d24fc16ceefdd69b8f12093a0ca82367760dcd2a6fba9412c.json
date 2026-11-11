@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\": [{\"tool\": \"sql_metric\", \"args\": {\"metric\": \"pass_rate\", \"by\": [\"cohort\"], \"where\": {\"cohort\": [\"HBOC\", \"Control\"]}}}], \"continue\": false, \"reason\": \"Pass rate by cohort for the two named cohorts is a governed warehouse metric.\"}"}

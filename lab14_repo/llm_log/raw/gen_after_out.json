@@ -1,0 +1,22 @@
+[
+  {
+    "id": "after-001",
+    "text": "STATUS: NO_ANSWER\nThe provided sources do not contain information about which spot instance types are cheapest for running Nextflow pipelines in the cloud."
+  },
+  {
+    "id": "after-002",
+    "text": "STATUS: CONFLICT\nThe sources give two different QD hard-filter thresholds for SNPs:\n- Vendor default (active): an SNP is filtered when QD < 2.0 [alt_CF-QD] [G:Threshold:QD_lt_2]\n- Local SOP / clinic protocol (alternative, not the vendor default): an SNP is filtered when QD < 1.5 [fx_sop_qd] [alt_CF-QD]\nThe context does not choose between these values."
+  },
+  {
+    "id": "after-003",
+    "text": "STATUS: CONFLICT\nThe sources give two different FS hard-filter thresholds for SNPs:\n- Vendor default (active): an SNP is filtered when FS > 60.0 [alt_CF-FS] [G:Threshold:FS_gt_60_snp]\n- Local SOP / clinic protocol (alternative, not the vendor default): an SNP is filtered when FS > 45.0 [fx_clinic_fs] [alt_CF-FS]\nThe context does not choose between these values."
+  },
+  {
+    "id": "after-004",
+    "text": "STATUS: CONFLICT\nThe sources give two different SOR thresholds for the hard-filtering procedure HF-01 [G:Procedure:HF-01]:\n- Vendor default (active): variants are filtered when SOR > 3.0 [alt_CF-SOR] [G:Threshold:SOR_gt_3]\n- Local SOP / clinic protocol (alternative, not the vendor default): variants are filtered when SOR > 4.0 [fx_sop_sor] [alt_CF-SOR]\nThe context does not choose between these values."
+  },
+  {
+    "id": "after-005",
+    "text": "STATUS: CONFLICT\nThe sources give two different Java versions for running or building GATK:\n- Current GATK 4.x README (active): Java 17 is needed to run or build GATK [gatk_readme#h001]\n- GATK v4.2 legacy build notes (superseded, valid 2026-09-01 to 2026-10-26): a Java 8 JDK is required [fx_gatk_java] [alt_CF-JAVA]\nThe context does not choose between these versions."
+  }
+]

@@ -1,0 +1,9 @@
+[
+{"n":7,"chunk_id":"bcftools_manual#h027","meta_ok":true,"text_ok":false,"reason":"Formula garbled (Pn=floatexp(-a-blen), asterisks lost) and stray trailing [[cnv]] anchor; prefix 'Convert 23andme results' is unrelated to the section."},
+{"n":10,"chunk_id":"sarek_usage#h021","meta_ok":true,"text_ok":true,"reason":"Title, section, type fit; text readable and complete. Minor: memory-requirements content sits under the -c section."},
+{"n":12,"chunk_id":"bcftools_manual#h044","meta_ok":false,"text_ok":false,"reason":"Section parent '.hap (the default)' is a stray body line, not a heading; text cut off at 'For example:' before the example content."},
+{"n":14,"chunk_id":"gatk_funco_tutorial#h042","meta_ok":false,"text_ok":true,"reason":"Section path begins with a stray body line ('The Name or 0-based index of the column...'), and text prefix 'Required and defaults to false.' is a stray fragment; body itself is fine."},
+{"n":15,"chunk_id":"gatk_docker#h004","meta_ok":false,"text_ok":false,"reason":"Section is a bash comment line, not a heading; text starts inside a code block (dangling closing fence) and ends with an open ```bash block with no content."},
+{"n":19,"chunk_id":"sarek_usage#h020","meta_ok":false,"text_ok":true,"reason":"chunk_id prefix sarek_usage contradicts doc_id rare_usage and raredisease title/URL; section has stray 'Other Nextflow hidden files' parent. Text itself is fine."},
+{"n":32,"chunk_id":"sarek_citations#h002","meta_ok":false,"text_ok":true,"reason":"chunk_id sarek_citations contradicts doc_id rare_citations and raredisease URL; title 'rare_citations' is a filename, not a descriptive title. Text is clean."}
+]

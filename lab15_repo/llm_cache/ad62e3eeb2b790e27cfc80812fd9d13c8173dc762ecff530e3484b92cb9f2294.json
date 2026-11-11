@@ -1,0 +1,1 @@
+{"model": "claude-haiku-4-5-20251001", "text": "{\"calls\": [], \"reason\": \"Person and Diagnosis data needs the clinician role, which the analyst role does not have.\"}"}

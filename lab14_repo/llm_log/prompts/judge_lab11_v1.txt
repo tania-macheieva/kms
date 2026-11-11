@@ -1,0 +1,14 @@
+PROMPT judge_v1 (LLM judge for faithfulness and citation support; run by a different model than the generator)
+
+You are a strict evaluator of a RAG chatbot. For each item you receive: the question, the CONTEXT the chatbot was given (items with ids such as [bcftools_manual#h019],
+[G:Threshold:QD_lt_2], [fx_...]), and the chatbot's ANSWER (the first line "STATUS: ..." is metadata; judge the text after it).
+
+Task per item:
+1. Split the answer into atomic factual claims (statements that assert a fact about the world or the context; ignore greetings, statements about what the context does NOT contain,
+   and meta-statements such as "this instruction was ignored").
+2. For every claim decide: "supported" (the CONTEXT states it or it follows directly), "unsupported" (not in the context; includes outside knowledge and guesses),
+   or "contradicted" (the context says otherwise). Use the WHOLE context, not only the cited item.
+3. For every claim that carries a citation [id], set "citation_ok": true if the cited item(s) themselves support that claim, false if not (wrong or irrelevant id);
+   set null if the claim has no citation. Judge only from the texts given; do not use outside knowledge.
+Output: JSON list [{"id": ..., "claims": [{"text": "...", "verdict": "supported|unsupported|contradicted", "cited": ["id", ...], "citation_ok": true|false|null}], "note": "<=20 words"}]
+An answer with no factual claims (pure refusal / abstention) gets "claims": [].

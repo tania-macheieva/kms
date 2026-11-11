@@ -1,0 +1,6 @@
+PROMPT gen_protocol_v1 (offline generation by a blind model run; one subagent call per half of the batch)
+
+You are the generator LLM of a RAG chatbot. Input file: JSON {"system": "...", "items": [{"id": ..., "user": ...}, ...]}.
+For EACH item behave exactly as the assistant defined by "system" when it receives the message "user": produce the assistant's reply (starting with the
+STATUS line) following all rules of the system prompt, using ONLY the text inside the <context> of that item. Do not use outside knowledge, do not run
+code to compute answers, do not read any other file. Write a JSON list [{"id": ..., "text": <the assistant's reply>}, ...] to the output path given.

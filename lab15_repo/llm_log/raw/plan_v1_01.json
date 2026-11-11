@@ -1,0 +1,10 @@
+{
+ "41b992ece1abd2f26a188b601d8b88ba9ce42b12abcfb7238f50ca42fe4c94e6": "{\"calls\": [], \"reason\": \"Current stock prices are not in the knowledge hub, so no tool can answer this.\"}",
+ "8c7650a2745a9bc798dc4486744884705f16080c37d5dd07bb999680f0600429": "{\"calls\": [], \"reason\": \"Person and Diagnosis data require the clinician role, which the reader role does not have.\"}",
+ "b09ef70e6b98acf8b2b8d6f7fa90432b06840f641809b92dfcd48c4cd5e9254b": "{\"calls\": [{\"tool\": \"graph_query\", \"args\": {\"cypher\": \"MATCH (g:Gene {symbol: BRCA1})<-[:LOCATED_IN]-(v:Variant)-[:HAS_ANNOTATION]->(a:Annotation)-[:OF_TYPE]->(t:AnnotationType) RETURN v.id, t.name, a.value LIMIT 50\"}}], \"continue\": false, \"reason\": \"Population allele frequencies are likely stored as annotations on BRCA1 variants, so the graph is queried for them.\"}",
+ "d424570c5a02be9020c313cef38821e6a68bfd674d9edf3cb4fa0bbe12305bf4": "{\"calls\": [], \"reason\": \"Dosing advice for a patient is medical advice, which the hub cannot provide.\"}",
+ "a07012cd437ef2db707d92160b057d7828a5147ad16cf88bbcf95c546cfa860c": "{\"calls\": [{\"tool\": \"get_claims\", \"args\": {\"subject\": \"QD\"}}], \"continue\": false, \"reason\": \"QD thresholds may differ between sources, so the claims register should be checked.\"}",
+ "3f0aac61b099e62c8cb75923b7173d80ecf9d412c8e04c2216b232f88a4407d8": "{\"calls\": [{\"tool\": \"get_claims\", \"args\": {\"subject\": \"Java version\"}}], \"continue\": false, \"reason\": \"Java version requirements may differ between sources, so the claims register should be checked.\"}",
+ "732bd7d0eacec191263a7d32dc6cef7bf401092c038b508bad86e337be15a34c": "{\"calls\": [{\"tool\": \"get_claims\", \"args\": {\"subject\": \"SOR\"}}], \"continue\": false, \"reason\": \"SOR thresholds may differ between sources, so the claims register should be checked.\"}",
+ "cfa697fd8b4dec3b68b6cb806427cd13829e4e223ed6893eeed51cc4fb709624": "{\"calls\": [{\"tool\": \"get_claims\", \"args\": {\"subject\": \"FS\"}}], \"continue\": false, \"reason\": \"FS thresholds may differ between sources, so the claims register should be checked.\"}"
+}

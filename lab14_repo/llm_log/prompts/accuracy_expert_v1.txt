@@ -1,0 +1,9 @@
+# accuracy_expert_v1 — LLM domain expert reviews chunk records (V3)
+Domain: bioinformatics documentation (GATK, bcftools, nf-core/sarek, nf-core/raredisease) plus short Ukrainian project notes (int_*).
+For each record decide two booleans and give a reason:
+  meta_ok — metadata is correct and consistent with the text: `title` names the document or its topic (not a stray line from the body),
+            `section` matches the content of the chunk, `type`/`lang` fit, `source_url` is plausible for `doc_id` (you cannot open URLs; judge the pattern only).
+  text_ok — the chunk text is a self-contained, readable piece: no cut-off mid-sentence/mid-code-block that makes it misleading, no obvious
+            markdown/HTML garbage, factual statements (versions, thresholds, flags) look correct for the tool described. If you are unsure of a fact, say so in the reason and do NOT mark text_ok false for that alone.
+Be strict but fair; one-line reasons naming the defect. Do not open any file except the input.
+Output JSON list: {"n":int,"chunk_id":"...","meta_ok":bool,"text_ok":bool,"reason":"<=30 words"}.

@@ -1,0 +1,16 @@
+{
+ "M01_completeness":{"dimension":"completeness","op":">=","threshold":1.0,"severity":"blocking","desc":"share of chunks with all 10 required fields non-empty"},
+ "M02_schema_validity":{"dimension":"validity","op":">=","threshold":1.0,"severity":"blocking","desc":"share of chunks valid against schema/chunk.schema.json"},
+ "M03_open_conflicts":{"dimension":"consistency","op":"<=","threshold":0,"severity":"blocking","desc":"detected conflicts without a recorded resolution"},
+ "M04_active_logical_violations":{"dimension":"consistency","op":"<=","threshold":0,"severity":"blocking","desc":"active graph edges violating a rule (minTestingAge)"},
+ "M05_provenance_fidelity":{"dimension":"traceability","op":">=","threshold":1.0,"severity":"blocking","desc":"share of chunks whose source span (start:end) is contained in the chunk text"},
+ "M06_expert_sample_accuracy":{"dimension":"accuracy","op":">=","threshold":0.9,"severity":"warning","desc":"share of expert-reviewed records with meta_ok and text_ok (36-record sample, LLM expert)"},
+ "M07_conflict_documentation":{"dimension":"consistency","op":">=","threshold":1.0,"severity":"blocking","desc":"share of detected conflicts that have a decision-log entry and (value/temporal) a claim in the register"},
+ "M08_near_duplicate_share":{"dimension":"uniqueness","op":"<=","threshold":0.0,"severity":"blocking","desc":"share of chunks that the dedup rule would absorb (exact text, score>=th+band or judged DUP)"},
+ "M09_freshness":{"dimension":"timeliness","op":">=","threshold":1.0,"severity":"blocking","desc":"share of chunks with an ISO date not older than 365 days (relative to 2026-11-06)"},
+ "M10_id_uniqueness":{"dimension":"uniqueness","op":">=","threshold":1.0,"severity":"blocking","desc":"share of chunk_id values that are unique"},
+ "M11_graph_referential_integrity":{"dimension":"integrity","op":">=","threshold":1.0,"severity":"blocking","desc":"share of graph relationships whose both endpoints exist as nodes"},
+ "M12_sensitivity_valid":{"dimension":"validity","op":">=","threshold":1.0,"severity":"blocking","desc":"share of chunks with sensitivity in {public, internal, restricted}"},
+ "M13_language_consistency":{"dimension":"consistency","op":">=","threshold":0.99,"severity":"blocking","desc":"share of chunks whose lang label agrees with the script of the text (Cyrillic share >0.3 <=> uk)"},
+ "M14_self_retrieval_at1":{"dimension":"retrievability","op":">=","threshold":0.97,"severity":"warning","desc":"share of chunks retrieved as top-1 by a TF-IDF query built from their own middle 200 characters (absorbed chunks count via their canonical)"}
+}
