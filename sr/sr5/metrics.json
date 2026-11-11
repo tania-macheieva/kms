@@ -1,0 +1,399 @@
+{
+ "N": 106,
+ "k1": 7,
+ "k2": 18,
+ "linkage": {
+  "average": {
+   "silhouette": 0.126,
+   "sizes": [
+    49,
+    28,
+    15,
+    11,
+    1,
+    1,
+    1
+   ]
+  },
+  "complete": {
+   "silhouette": -1,
+   "sizes": [
+    106
+   ]
+  },
+  "ward": {
+   "silhouette": 0.208,
+   "sizes": [
+    32,
+    18,
+    17,
+    13,
+    9,
+    9,
+    8
+   ]
+  }
+ },
+ "best_linkage": "ward",
+ "so": {
+  "name": "SO (еталон, індукована)",
+  "terms": 106,
+  "max_depth": 9,
+  "mean_depth": 3.77,
+  "n_L1": 11,
+  "n_L2": 34,
+  "multi_parent": 14,
+  "max_children": 11
+ },
+ "manual": {
+  "name": "Ручна (зверху вниз)",
+  "terms": 106,
+  "coverage": 100.0,
+  "other_pct": 6.6,
+  "n_L1": 7,
+  "n_L2": 18,
+  "max_L1_share": 37.7,
+  "mean_L1": 15.1,
+  "singleton_L2": 1,
+  "mean_L2": 5.9,
+  "min_L2": 1,
+  "max_L2": 10,
+  "ambiguous_09": 5,
+  "ambiguous_08": 7,
+  "ambiguous_10": 5,
+  "ARI_L1": 0.614,
+  "NMI_L1": 0.781,
+  "ARI_L1_altparent": 0.546,
+  "NMI_L2": 0.751,
+  "pairF1_L2": 0.409,
+  "edge_pres_L1": 0.899,
+  "max_depth": 2,
+  "mean_depth": 2.0
+ },
+ "cluster": {
+  "name": "Кластеризація (знизу вгору)",
+  "terms": 106,
+  "coverage": 100.0,
+  "other_pct": 0.0,
+  "n_L1": 7,
+  "n_L2": 18,
+  "max_L1_share": 30.2,
+  "mean_L1": 15.1,
+  "singleton_L2": 0,
+  "mean_L2": 5.9,
+  "min_L2": 2,
+  "max_L2": 10,
+  "ambiguous_09": 4,
+  "ambiguous_08": 6,
+  "ambiguous_10": 2,
+  "ARI_L1": 0.148,
+  "NMI_L1": 0.466,
+  "ARI_L1_altparent": 0.136,
+  "NMI_L2": 0.73,
+  "pairF1_L2": 0.335,
+  "edge_pres_L1": 0.725,
+  "max_depth": 2,
+  "mean_depth": 2.0
+ },
+ "sensitivity": [
+  {
+   "k": 4,
+   "ARI": 0.05,
+   "NMI": 0.338
+  },
+  {
+   "k": 6,
+   "ARI": 0.056,
+   "NMI": 0.408
+  },
+  {
+   "k": 8,
+   "ARI": 0.178,
+   "NMI": 0.494
+  },
+  {
+   "k": 10,
+   "ARI": 0.096,
+   "NMI": 0.463
+  },
+  {
+   "k": 12,
+   "ARI": 0.139,
+   "NMI": 0.525
+  },
+  {
+   "k": 16,
+   "ARI": 0.138,
+   "NMI": 0.542
+  }
+ ],
+ "multi_parent_total": 14,
+ "multi_lost_manual": 9,
+ "multi_lost_cluster": 7,
+ "amb_manual": [
+  "coding_sequence_variant",
+  "exon_loss_variant",
+  "incomplete_terminal_codon_variant",
+  "non_coding_transcript_splice_region_variant",
+  "pseudoexon_variant"
+ ],
+ "amb_cluster": [
+  "5_prime_UTR_uORF_frameshift_variant",
+  "UTR_variant",
+  "incomplete_terminal_codon_variant",
+  "inframe_variant"
+ ],
+ "cluster_info": {
+  "C1": {
+   "size": 18,
+   "top_tokens": "utr, prime, 5",
+   "ref_purity": 1.0,
+   "man_purity": 1.0,
+   "ref_groups": 1,
+   "members": [
+    "3_prime_UTR_elongation",
+    "3_prime_UTR_exon_variant",
+    "3_prime_UTR_intron_variant",
+    "3_prime_UTR_truncation",
+    "3_prime_UTR_variant",
+    "5_prime_UTR_elongation"
+   ]
+  },
+  "C2": {
+   "size": 9,
+   "top_tokens": "nmd, decay, mediated",
+   "ref_purity": 0.44,
+   "man_purity": 0.44,
+   "ref_groups": 3,
+   "members": [
+    "NMD_transcript_variant",
+    "frameshift_variant_NMD_escaping",
+    "frameshift_variant_NMD_triggering",
+    "splice_acceptor_variant_NMD_escaping",
+    "splice_acceptor_variant_NMD_triggering",
+    "splice_donor_variant_NMD_escaping"
+   ]
+  },
+  "C3": {
+   "size": 8,
+   "top_tokens": "incomplete, transcript, intersects",
+   "ref_purity": 1.0,
+   "man_purity": 1.0,
+   "ref_groups": 1,
+   "members": [
+    "incomplete_transcript_3UTR_variant",
+    "incomplete_transcript_5UTR_variant",
+    "incomplete_transcript_CDS",
+    "incomplete_transcript_coding_splice_variant",
+    "incomplete_transcript_exonic_variant",
+    "incomplete_transcript_intronic_variant"
+   ]
+  },
+  "C4": {
+   "size": 17,
+   "top_tokens": "codon, least, one",
+   "ref_purity": 1.0,
+   "man_purity": 1.0,
+   "ref_groups": 1,
+   "members": [
+    "conservative_missense_variant",
+    "incomplete_terminal_codon_variant",
+    "initiator_codon_variant",
+    "missense_variant",
+    "non_conservative_missense_variant",
+    "pyrrolysine_loss"
+   ]
+  },
+  "C5": {
+   "size": 9,
+   "top_tokens": "frameshift, frame, translational",
+   "ref_purity": 1.0,
+   "man_purity": 0.89,
+   "ref_groups": 1,
+   "members": [
+    "5_prime_UTR_uORF_frameshift_variant",
+    "frame_restoring_variant",
+    "frameshift_elongation",
+    "frameshift_truncation",
+    "frameshift_variant",
+    "minus_1_frameshift_variant"
+   ]
+  },
+  "C6": {
+   "size": 13,
+   "top_tokens": "splice, region, site",
+   "ref_purity": 0.92,
+   "man_purity": 1.0,
+   "ref_groups": 2,
+   "members": [
+    "cryptic_splice_acceptor",
+    "cryptic_splice_donor",
+    "cryptic_splice_site_variant",
+    "exonic_splice_region_variant",
+    "extended_intronic_splice_region_variant",
+    "non_coding_transcript_splice_region_variant"
+   ]
+  },
+  "C7": {
+   "size": 32,
+   "top_tokens": "coding, transcript, inframe",
+   "ref_purity": 0.41,
+   "man_purity": 0.34,
+   "ref_groups": 9,
+   "members": [
+    "UTR_variant",
+    "coding_sequence_variant",
+    "coding_transcript_intron_variant",
+    "coding_transcript_variant",
+    "compensatory_transcript_secondary_structure_variant",
+    "complex_transcript_variant"
+   ]
+  }
+ },
+ "ref_L1_sizes": {
+  "exon_variant": 61,
+  "NMD_transcript_variant": 1,
+  "intron_variant": 3,
+  "coding_transcript_variant": 1,
+  "transcript_secondary_structure_variant": 2,
+  "complex_transcript_variant": 1,
+  "splicing_variant": 20,
+  "partially_duplicated_transcript": 3,
+  "incomplete_transcript_variant": 8,
+  "intragenic_variant": 1,
+  "non_coding_transcript_variant": 5
+ },
+ "manual_L1_sizes": {
+  "CDS": 40,
+  "Сплайсинг": 21,
+  "UTR": 20,
+  "Інтрони й екзони": 6,
+  "Некодувальні РНК": 4,
+  "Неповні транскрипти": 8,
+  "Інше": 7
+ },
+ "naming_pairs": [
+  [
+   "5_prime_UTR_premature_start_codon_variant",
+   "five_prime_UTR_premature_start_codon_location_variant",
+   true,
+   true
+  ]
+ ],
+ "generic": {
+  "manual": {
+   "is_a_pairs_same_L2": 76,
+   "is_a_edges_total": 109,
+   "examples": [
+    [
+     "3_prime_UTR_variant",
+     "3_prime_UTR_elongation"
+    ],
+    [
+     "3_prime_UTR_variant",
+     "3_prime_UTR_exon_variant"
+    ],
+    [
+     "3_prime_UTR_variant",
+     "3_prime_UTR_intron_variant"
+    ],
+    [
+     "3_prime_UTR_variant",
+     "3_prime_UTR_truncation"
+    ],
+    [
+     "5_prime_UTR_variant",
+     "5_prime_UTR_elongation"
+    ]
+   ],
+   "generic_spanning": [
+    [
+     "coding_transcript_variant",
+     61,
+     3
+    ],
+    [
+     "exon_variant",
+     61,
+     3
+    ],
+    [
+     "intron_variant",
+     13,
+     3
+    ],
+    [
+     "non_coding_transcript_variant",
+     4,
+     3
+    ]
+   ],
+   "n_generic_spanning": 4
+  },
+  "cluster": {
+   "is_a_pairs_same_L2": 65,
+   "is_a_edges_total": 109,
+   "examples": [
+    [
+     "3_prime_UTR_variant",
+     "3_prime_UTR_elongation"
+    ],
+    [
+     "3_prime_UTR_variant",
+     "3_prime_UTR_exon_variant"
+    ],
+    [
+     "3_prime_UTR_variant",
+     "3_prime_UTR_intron_variant"
+    ],
+    [
+     "3_prime_UTR_variant",
+     "3_prime_UTR_truncation"
+    ],
+    [
+     "5_prime_UTR_variant",
+     "5_prime_UTR_elongation"
+    ]
+   ],
+   "generic_spanning": [
+    [
+     "coding_transcript_variant",
+     61,
+     5
+    ],
+    [
+     "exon_variant",
+     61,
+     5
+    ],
+    [
+     "coding_sequence_variant",
+     39,
+     4
+    ],
+    [
+     "protein_altering_variant",
+     33,
+     4
+    ],
+    [
+     "inframe_variant",
+     22,
+     3
+    ],
+    [
+     "splicing_variant",
+     20,
+     3
+    ]
+   ],
+   "n_generic_spanning": 14
+  }
+ },
+ "nmd": {
+  "n": 8,
+  "sep_manual": 0,
+  "sep_cluster_L2": 8,
+  "sep_cluster_L1": 8
+ }
+}

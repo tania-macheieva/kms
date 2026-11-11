@@ -1,0 +1,44 @@
+"""5 шаблонів ситуацій (стан–подія–умова–новий стан–дія) + перевірка, що всі класи існують в онтології."""
+import json, rdflib
+from rdflib.namespace import RDFS
+T=[
+ dict(id='S1',name='Аномальний життєвий показник у стаціонарі',
+  state='Пацієнт у inpatient encounter; abnormal homeostasis не зафіксовано',
+  event='Фіксація vital sign під час physical examination',
+  condition='Значення виходить за normal value',
+  new_state='Підозра на abnormal homeostasis (потрібне підтвердження клініцистом)',
+  action='Повторне physical examination; запуск diagnostic process; запис у clinical finding',
+  classes=['inpatient encounter','vital sign','physical examination','normal value','abnormal homeostasis','diagnostic process','clinical finding']),
+ dict(id='S2',name='Рецидив після ремісії',
+  state='Хворий у remission (немає manifestation of a disease)',
+  event='Амбулаторний візит (outpatient encounter) із повторною появою ознак',
+  condition='Є clinical manifestation of a disease після remission',
+  new_state='relapse (стадія хвороби, що настає після remission)',
+  action='Призначити treatment; оновити prognosis',
+  classes=['remission','outpatient encounter','manifestation of a disease','clinical manifestation of a disease','relapse','treatment','prognosis']),
+ dict(id='S3',name='Лабораторний результат поза нормою',
+  state='Пацієнт без встановленого діагнозу; чекає на результат',
+  event='Завершення laboratory test',
+  condition='laboratory finding поза normal value',
+  new_state='Є preclinical finding або підстава для діагностичної гіпотези',
+  action='diagnostic process: інтерпретація clinical picture; за потреби diagnosis',
+  classes=['laboratory test','laboratory finding','normal value','preclinical finding','diagnostic process','clinical picture','diagnosis']),
+ dict(id='S4',name='Скарга пацієнта на біль',
+  state='Пацієнт без зафіксованих скарг',
+  event='patient symptom report про біль під час clinical history taking',
+  condition='pain описано пацієнтом як постійний/посилюється',
+  new_state='Зареєстровано symptom (pain) у clinical history',
+  action='Призначити physical examination; зафіксувати physical examination finding',
+  classes=['patient symptom report','clinical history taking','pain','symptom','clinical history','physical examination','physical examination finding']),
+ dict(id='S5',name='Гострий перебіг стає хронічним',
+  state='acute disease course',
+  event='Повторна оцінка після завершення лікування',
+  condition='Немає return to normal homeostasis; є abnormal homeostasis',
+  new_state='chronic disease course (замість transient disease course)',
+  action='Оновити prognosis; змінити план treatment; ввести ancillary health care process',
+  classes=['acute disease course','chronic disease course','transient disease course','abnormal homeostasis','prognosis','treatment','ancillary health care process']),
+]
+g=rdflib.Graph(); g.parse('../ogms_fixed.owl'); labs={str(o) for o in g.objects(None,RDFS.label)}
+miss=[(t['id'],c) for t in T for c in t['classes'] if c not in labs]
+print('missing:',miss, '| total links:',sum(len(t['classes']) for t in T))
+json.dump(T,open('../situation_templates.json','w'),ensure_ascii=False,indent=1)

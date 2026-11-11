@@ -1,0 +1,20 @@
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?disease ?diseaseLabel ?relationType ?item ?itemLabel WHERE {
+  VALUES ?disease { wd:Q12153 wd:Q35869 wd:Q181754 }
+  {
+    ?disease wdt:P2176 ?item .
+    BIND("ліки/терапія" AS ?relationType)
+  }
+  UNION
+  {
+    ?disease wdt:P780 ?item .
+    BIND("симптом" AS ?relationType)
+  }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "uk,en". }
+}
+ORDER BY ?diseaseLabel ?relationType ?itemLabel

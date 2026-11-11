@@ -1,0 +1,3 @@
+PREFIX ex: <http://example.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?a (COUNT(?r) AS ?n) WHERE { ?r rdf:type ex:Drug ; ex:treats ?d . ?d rdf:type ex:Disease . BIND(STRAFTER(STR(?d), "http://example.org/") AS ?a) } GROUP BY ?a ORDER BY DESC(?n) ?a LIMIT 10

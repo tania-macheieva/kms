@@ -1,0 +1,11 @@
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q8. Мовний фільтр: українська мітка + DOID
+SELECT ?d ?uk ?doid WHERE {
+  ?d wdt:P31 wd:Q12136 ; wdt:P699 ?doid ; rdfs:label ?uk .
+  FILTER(LANG(?uk)="uk")
+} LIMIT 20

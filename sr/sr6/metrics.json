@@ -1,0 +1,196 @@
+{
+ "expert": {
+  "concepts": 33,
+  "instances": 6,
+  "propositions": 49,
+  "related_to_pct": 0.0,
+  "relation_types": 12,
+  "max_hierarchy_levels": 3,
+  "bridging_props": 12,
+  "bridging_explained": 5,
+  "components": 1,
+  "has_annotation_uses_input_pct": 26.5,
+  "relations": {
+   "is_a": 11,
+   "part_of": 1,
+   "produces": 2,
+   "uses_input": 9,
+   "detects": 2,
+   "has_annotation": 4,
+   "applies_to": 5,
+   "recommended_for": 3,
+   "requires": 2,
+   "increases_risk_of": 3,
+   "is_kin_of": 1,
+   "has_example": 6
+  }
+ },
+ "llm": {
+  "concepts": 26,
+  "instances": 4,
+  "propositions": 41,
+  "related_to_pct": 0.0,
+  "relation_types": 11,
+  "max_hierarchy_levels": 2,
+  "bridging_props": 20,
+  "bridging_explained": 0,
+  "components": 1,
+  "has_annotation_uses_input_pct": 26.8,
+  "relations": {
+   "is_a": 2,
+   "uses_input": 8,
+   "has_example": 4,
+   "applies_to": 6,
+   "produces": 2,
+   "requires": 1,
+   "recommended_for": 3,
+   "has_annotation": 3,
+   "increases_risk_of": 6,
+   "detects": 5,
+   "is_kin_of": 1
+  }
+ },
+ "peer": {
+  "concepts": 35,
+  "instances": 7,
+  "propositions": 53,
+  "related_to_pct": 0.0,
+  "relation_types": 12,
+  "max_hierarchy_levels": 3,
+  "bridging_props": 28,
+  "bridging_explained": 5,
+  "components": 1,
+  "has_annotation_uses_input_pct": 26.4,
+  "relations": {
+   "produces": 3,
+   "has_annotation": 5,
+   "is_a": 8,
+   "applies_to": 5,
+   "uses_input": 9,
+   "requires": 3,
+   "has_example": 7,
+   "part_of": 2,
+   "increases_risk_of": 3,
+   "detects": 1,
+   "recommended_for": 6,
+   "is_kin_of": 1
+  }
+ },
+ "llm_fixed": {
+  "concepts": 33,
+  "instances": 11,
+  "propositions": 54,
+  "related_to_pct": 0.0,
+  "relation_types": 11,
+  "max_hierarchy_levels": 3,
+  "bridging_props": 22,
+  "bridging_explained": 5,
+  "components": 1,
+  "has_annotation_uses_input_pct": 20.4,
+  "relations": {
+   "is_a": 8,
+   "uses_input": 8,
+   "has_example": 10,
+   "applies_to": 6,
+   "produces": 1,
+   "recommended_for": 5,
+   "has_annotation": 3,
+   "increases_risk_of": 6,
+   "is_kin_of": 1,
+   "detects": 2,
+   "requires": 4
+  }
+ },
+ "audit": {
+  "llm": {
+   "n": 16,
+   "by_class": {
+    "E0": 4,
+    "E1": 4,
+    "E5": 2,
+    "E2": 2,
+    "E3": 1,
+    "E4": 1,
+    "E7": 2
+   },
+   "total": 41
+  },
+  "peer": {
+   "n": 11,
+   "by_class": {
+    "E2": 1,
+    "E5": 2,
+    "E4": 1,
+    "E8": 1,
+    "E9": 6
+   },
+   "total": 53
+  },
+  "expert": {
+   "n": 6,
+   "by_class": {
+    "E3": 2,
+    "E5": 2,
+    "E2": 1,
+    "E4": 1
+   },
+   "total": 49
+  }
+ },
+ "removed": [
+  [
+   "L011",
+   "rank sum test",
+   "applies_to",
+   "allele"
+  ],
+  [
+   "L015",
+   "variant quality score recalibration",
+   "requires",
+   "genetic variant"
+  ],
+  [
+   "L030",
+   "genetic variant",
+   "increases_risk_of",
+   "hereditary cancer"
+  ],
+  [
+   "L032",
+   "cascade testing",
+   "detects",
+   "genetic variant"
+  ],
+  [
+   "L033",
+   "cascade testing",
+   "detects",
+   "BRCA1"
+  ],
+  [
+   "L034",
+   "cascade testing",
+   "detects",
+   "BRCA2"
+  ],
+  [
+   "L038",
+   "genetic testing",
+   "detects",
+   "BRCA1"
+  ],
+  [
+   "L039",
+   "genetic testing",
+   "detects",
+   "BRCA2"
+  ],
+  [
+   "L041",
+   "genetic counseling",
+   "produces",
+   "risk assessment"
+  ]
+ ]
+}

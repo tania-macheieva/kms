@@ -1,0 +1,7 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+
+# Q10. DBpedia (інший граф): FILTER + STRSTARTS
+SELECT ?d ?icd WHERE {
+  ?d a dbo:Disease ; dbo:icd10 ?icd .
+  FILTER(STRSTARTS(STR(?icd),"E"))
+} LIMIT 20

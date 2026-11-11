@@ -1,0 +1,85 @@
+{
+ "name": "Q06",
+ "status": "ok",
+ "seconds": 2.0,
+ "boolean": null,
+ "n_rows": 176,
+ "head": [
+  {
+   "g": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q414043"
+   },
+   "dir": {
+    "type": "literal",
+    "value": "хвороба→ген"
+   },
+   "gLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "RELN"
+   }
+  },
+  {
+   "g": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q2745322"
+   },
+   "dir": {
+    "type": "literal",
+    "value": "хвороба→ген"
+   },
+   "gLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "STK11"
+   }
+  },
+  {
+   "g": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q5009814"
+   },
+   "dir": {
+    "type": "literal",
+    "value": "хвороба→ген"
+   },
+   "gLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "CD33"
+   }
+  },
+  {
+   "g": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q7392091"
+   },
+   "dir": {
+    "type": "literal",
+    "value": "хвороба→ген"
+   },
+   "gLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "SORL1"
+   }
+  },
+  {
+   "g": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q14819361"
+   },
+   "dir": {
+    "type": "literal",
+    "value": "хвороба→ген"
+   },
+   "gLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "CYCS"
+   }
+  }
+ ],
+ "error": null
+}

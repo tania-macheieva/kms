@@ -1,0 +1,14 @@
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q9. UNION + BIND (тип звʼязку) + VALUES
+SELECT ?d ?dLabel ?rel ?x ?xLabel WHERE {
+  VALUES ?d { wd:Q12206 wd:Q35869 wd:Q41861 }
+  { ?d wdt:P2176 ?x . BIND("ліки" AS ?rel) }
+  UNION
+  { ?d wdt:P780 ?x . BIND("симптом" AS ?rel) }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "uk,en". }
+} ORDER BY ?dLabel ?rel

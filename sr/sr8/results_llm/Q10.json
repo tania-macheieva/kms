@@ -1,0 +1,60 @@
+{
+ "name": "Q10",
+ "status": "ok",
+ "seconds": 13.2,
+ "boolean": null,
+ "n_rows": 20,
+ "head": [
+  {
+   "disease": {
+    "type": "uri",
+    "value": "http://dbpedia.org/resource/Glucocorticoid_deficiency"
+   },
+   "icd10": {
+    "type": "literal",
+    "value": "E27.1"
+   }
+  },
+  {
+   "disease": {
+    "type": "uri",
+    "value": "http://dbpedia.org/resource/Glycogen_storage_disease_type_I"
+   },
+   "icd10": {
+    "type": "literal",
+    "value": "E74.0"
+   }
+  },
+  {
+   "disease": {
+    "type": "uri",
+    "value": "http://dbpedia.org/resource/Hyponatremia"
+   },
+   "icd10": {
+    "type": "literal",
+    "value": "E87.1"
+   }
+  },
+  {
+   "disease": {
+    "type": "uri",
+    "value": "http://dbpedia.org/resource/Menkes_disease"
+   },
+   "icd10": {
+    "type": "literal",
+    "value": "E83.0"
+   }
+  },
+  {
+   "disease": {
+    "type": "uri",
+    "value": "http://dbpedia.org/resource/Canavan_disease"
+   },
+   "icd10": {
+    "type": "literal",
+    "value": "E75.2"
+   }
+  }
+ ],
+ "error": null
+}

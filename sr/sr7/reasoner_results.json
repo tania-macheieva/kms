@@ -1,0 +1,72 @@
+{
+ "before": {
+  "unsat_names": [
+   "Nothing",
+   "Probe_P5"
+  ],
+  "unsat_probes": {
+   "P1 normal ⊓ abnormal homeostasis": false,
+   "P2 chronic ⊓ transient disease course": false,
+   "P3 inpatient ⊓ outpatient encounter": false,
+   "P4 health care process ⊓ ancillary": false,
+   "P5 disease ⊓ disorder": true,
+   "P6 pain ⊓ quality(BFO)": false
+  },
+  "n_unsat_total": 1,
+  "time_s": 2.23,
+  "relapse ⊑ disease course": true,
+  "remission ⊑ disease course": true,
+  "pain ⊑ occurrent": false,
+  "pain ⊑ symptom": true,
+  "ancestors(pain)": [
+   "entity [BFO stub]",
+   "symptom"
+  ],
+  "ancestors(relapse)": [
+   "disease course",
+   "disease stage",
+   "entity [BFO stub]",
+   "occurrent [BFO stub]",
+   "process [BFO stub]"
+  ],
+  "individual chronic+transient": "consistent"
+ },
+ "after": {
+  "unsat_names": [
+   "Nothing",
+   "Probe_P1",
+   "Probe_P2",
+   "Probe_P3",
+   "Probe_P4",
+   "Probe_P5",
+   "Probe_P6"
+  ],
+  "unsat_probes": {
+   "P1 normal ⊓ abnormal homeostasis": true,
+   "P2 chronic ⊓ transient disease course": true,
+   "P3 inpatient ⊓ outpatient encounter": true,
+   "P4 health care process ⊓ ancillary": true,
+   "P5 disease ⊓ disorder": true,
+   "P6 pain ⊓ quality(BFO)": true
+  },
+  "n_unsat_total": 6,
+  "time_s": 1.5,
+  "relapse ⊑ disease course": false,
+  "remission ⊑ disease course": false,
+  "pain ⊑ occurrent": true,
+  "pain ⊑ symptom": false,
+  "ancestors(pain)": [
+   "bodily process",
+   "entity [BFO stub]",
+   "occurrent [BFO stub]",
+   "process [BFO stub]"
+  ],
+  "ancestors(relapse)": [
+   "disease stage",
+   "entity [BFO stub]",
+   "occurrent [BFO stub]",
+   "process [BFO stub]"
+  ],
+  "individual chronic+transient": "INCONSISTENT"
+ }
+}

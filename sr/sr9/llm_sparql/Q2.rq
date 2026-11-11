@@ -1,0 +1,3 @@
+PREFIX ex: <http://example.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT DISTINCT ?a WHERE { ex:R020 rdf:type ex:Drug ; ex:treats ?d . ?d rdf:type ex:Disease ; ex:assocGene ?g . ?g rdf:type ex:Gene . BIND(STRAFTER(STR(?g), "http://example.org/") AS ?a) } ORDER BY ?a

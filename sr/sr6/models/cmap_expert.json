@@ -1,0 +1,712 @@
+{
+ "title": "Експертна концептуальна карта v1",
+ "focus_question_file": "docs/cmap_focus.md",
+ "concepts": [
+  {
+   "id": "M01",
+   "label": "genetic variant",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Genetic variation",
+   "definition": "Відмінність послідовності ДНК від референсної."
+  },
+  {
+   "id": "M02",
+   "label": "single nucleotide polymorphism",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Genetic variation",
+   "definition": "Заміна одного нуклеотида в певній позиції геному."
+  },
+  {
+   "id": "M03",
+   "label": "insertion-deletion",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Genetic variation",
+   "definition": "Вставка або видалення невеликого числа нуклеотидів у послідовності."
+  },
+  {
+   "id": "M04",
+   "label": "germline variant",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Genetic variation",
+   "definition": "Варіант у статевих клітинах, що передається нащадкам і присутній у всіх клітинах організму."
+  },
+  {
+   "id": "M05",
+   "label": "pathogenic variant",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Genetic variation",
+   "definition": "Варіант, що за доказами спричиняє захворювання або підвищує ризик."
+  },
+  {
+   "id": "M06",
+   "label": "gene",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Biological entity",
+   "definition": "Ділянка ДНК, що кодує продукт (білок або РНК) і є одиницею спадковості."
+  },
+  {
+   "id": "M07",
+   "label": "BRCA1",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Biological entity",
+   "definition": "Ген репарації ДНК; патогенні варіанти підвищують ризик раку молочної залози й яєчників."
+  },
+  {
+   "id": "M08",
+   "label": "BRCA2",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Biological entity",
+   "definition": "Ген репарації ДНК; патогенні варіанти підвищують ризик раку молочної залози й яєчників."
+  },
+  {
+   "id": "M09",
+   "label": "gene panel",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Biological entity",
+   "definition": "Набір вибраних генів, що аналізуються разом."
+  },
+  {
+   "id": "M10",
+   "label": "VCF file",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Data and artifact",
+   "definition": "Текстовий формат для варіантів та їхніх анотацій."
+  },
+  {
+   "id": "M11",
+   "label": "BAM file",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Data and artifact",
+   "definition": "Бінарний формат вирівняних ридів."
+  },
+  {
+   "id": "M12",
+   "label": "variant calling",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Method and procedure",
+   "definition": "Визначення варіантів за вирівняними ридами."
+  },
+  {
+   "id": "M13",
+   "label": "sequence alignment",
+   "kind": "concept",
+   "cluster": "G",
+   "type": "Method and procedure",
+   "definition": "Зіставлення ридів із позиціями референсного геному."
+  },
+  {
+   "id": "M14",
+   "label": "variant filtering",
+   "kind": "concept",
+   "cluster": "Q",
+   "type": "Method and procedure",
+   "definition": "Відсіювання ненадійних варіантів за анотаціями якості."
+  },
+  {
+   "id": "M15",
+   "label": "hard filtering",
+   "kind": "concept",
+   "cluster": "Q",
+   "type": "Method and procedure",
+   "definition": "Фільтрація варіантів за фіксованими порогами окремих анотацій."
+  },
+  {
+   "id": "M16",
+   "label": "variant quality score recalibration",
+   "kind": "concept",
+   "cluster": "Q",
+   "type": "Method and procedure",
+   "definition": "Фільтрація моделлю, навченою на відомих варіантах (GATK)."
+  },
+  {
+   "id": "M17",
+   "label": "quality by depth",
+   "kind": "concept",
+   "cluster": "Q",
+   "type": "Measure of quality",
+   "definition": "Оцінка якості варіанта, нормована на глибину покриття."
+  },
+  {
+   "id": "M18",
+   "label": "Fisher strand bias",
+   "kind": "concept",
+   "cluster": "Q",
+   "type": "Measure of quality",
+   "definition": "Оцінка нерівномірності підтримки варіанта прямим і зворотним ланцюгами."
+  },
+  {
+   "id": "M19",
+   "label": "strand odds ratio",
+   "kind": "concept",
+   "cluster": "Q",
+   "type": "Measure of quality",
+   "definition": "Оцінка зміщення ланцюга, стійкіша до високого покриття."
+  },
+  {
+   "id": "M20",
+   "label": "mapping quality",
+   "kind": "concept",
+   "cluster": "Q",
+   "type": "Measure of quality",
+   "definition": "Оцінка впевненості в позиції вирівнювання рида."
+  },
+  {
+   "id": "M21",
+   "label": "rank sum test",
+   "kind": "concept",
+   "cluster": "Q",
+   "type": "Measure of quality",
+   "definition": "Непараметричний тест порівняння двох груп; у GATK порівнює ріди з референсним та альтернативним алелем."
+  },
+  {
+   "id": "M22",
+   "label": "read depth",
+   "kind": "concept",
+   "cluster": "Q",
+   "type": "Measure of quality",
+   "definition": "Кількість ридів, що перекривають позицію геному."
+  },
+  {
+   "id": "M23",
+   "label": "exon",
+   "kind": "concept",
+   "cluster": "Q",
+   "type": "Biological entity",
+   "definition": "Ділянка гена, що лишається в зрілій РНК і може кодувати білок."
+  },
+  {
+   "id": "M24",
+   "label": "hereditary cancer",
+   "kind": "concept",
+   "cluster": "C",
+   "type": "Clinical concept",
+   "definition": "Рак, що виникає через успадкований патогенний варіант."
+  },
+  {
+   "id": "M25",
+   "label": "breast cancer",
+   "kind": "concept",
+   "cluster": "C",
+   "type": "Clinical concept",
+   "definition": "Злоякісна пухлина молочної залози."
+  },
+  {
+   "id": "M26",
+   "label": "ovarian cancer",
+   "kind": "concept",
+   "cluster": "C",
+   "type": "Clinical concept",
+   "definition": "Злоякісна пухлина яєчників."
+  },
+  {
+   "id": "M27",
+   "label": "proband",
+   "kind": "concept",
+   "cluster": "C",
+   "type": "Clinical concept",
+   "definition": "Особа, з якої починається вивчення родини в генетичному дослідженні."
+  },
+  {
+   "id": "M28",
+   "label": "relative",
+   "kind": "concept",
+   "cluster": "C",
+   "type": "Clinical concept",
+   "definition": "Особа, пов'язана з пробандом спорідненістю."
+  },
+  {
+   "id": "M29",
+   "label": "family history",
+   "kind": "concept",
+   "cluster": "C",
+   "type": "Data and artifact",
+   "definition": "Відомості про захворювання у родичів пацієнта."
+  },
+  {
+   "id": "M30",
+   "label": "genetic testing",
+   "kind": "concept",
+   "cluster": "C",
+   "type": "Method and procedure",
+   "definition": "Аналіз ДНК для виявлення варіантів, пов'язаних із хворобою."
+  },
+  {
+   "id": "M31",
+   "label": "cascade testing",
+   "kind": "concept",
+   "cluster": "C",
+   "type": "Method and procedure",
+   "definition": "Послідовне тестування родичів носія відомого патогенного варіанта."
+  },
+  {
+   "id": "M32",
+   "label": "genetic counseling",
+   "kind": "concept",
+   "cluster": "C",
+   "type": "Method and procedure",
+   "definition": "Допомога особі у розумінні генетичного ризику й варіантів дій."
+  },
+  {
+   "id": "M33",
+   "label": "risk assessment",
+   "kind": "concept",
+   "cluster": "C",
+   "type": "Method and procedure",
+   "definition": "Оцінювання ймовірності виникнення захворювання."
+  },
+  {
+   "id": "I01",
+   "label": "QD < 2",
+   "kind": "instance",
+   "cluster": "Q",
+   "type": "Measure of quality",
+   "definition": "Порогове значення з рекомендацій GATK: варіанти з QD нижче 2 відкидають."
+  },
+  {
+   "id": "I02",
+   "label": "FS > 60 (SNP)",
+   "kind": "instance",
+   "cluster": "Q",
+   "type": "Measure of quality",
+   "definition": "Рекомендований поріг GATK для SNP: FS вище 60."
+  },
+  {
+   "id": "I03",
+   "label": "SOR > 3",
+   "kind": "instance",
+   "cluster": "Q",
+   "type": "Measure of quality",
+   "definition": "Рекомендований поріг GATK: SOR вище 3."
+  },
+  {
+   "id": "I04",
+   "label": "MQ < 40",
+   "kind": "instance",
+   "cluster": "Q",
+   "type": "Measure of quality",
+   "definition": "Рекомендований поріг GATK: MQ нижче 40."
+  },
+  {
+   "id": "I05",
+   "label": "рідний брат/сестра: 50%",
+   "kind": "instance",
+   "cluster": "C",
+   "type": "Clinical concept",
+   "definition": "Рідні брати й сестри пробанда з BRCA1/BRCA2 мають шанс 1 з 2 успадкувати ту саму зміну."
+  },
+  {
+   "id": "I06",
+   "label": "двоюрідний родич: до 12,5%",
+   "kind": "instance",
+   "cluster": "C",
+   "type": "Clinical concept",
+   "definition": "Двоюрідні родичі мають шанс до 1 з 8 мати ту саму зміну."
+  }
+ ],
+ "propositions": [
+  {
+   "id": "P01",
+   "s": "M02",
+   "p": "is_a",
+   "o": "M01",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P02",
+   "s": "M03",
+   "p": "is_a",
+   "o": "M01",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P03",
+   "s": "M04",
+   "p": "is_a",
+   "o": "M01",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P04",
+   "s": "M05",
+   "p": "is_a",
+   "o": "M01",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P05",
+   "s": "M07",
+   "p": "is_a",
+   "o": "M06",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P06",
+   "s": "M08",
+   "p": "is_a",
+   "o": "M06",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P07",
+   "s": "M06",
+   "p": "part_of",
+   "o": "M09",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P08",
+   "s": "M13",
+   "p": "produces",
+   "o": "M11",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P09",
+   "s": "M12",
+   "p": "uses_input",
+   "o": "M11",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P10",
+   "s": "M12",
+   "p": "produces",
+   "o": "M10",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P11",
+   "s": "M12",
+   "p": "detects",
+   "o": "M01",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P12",
+   "s": "M01",
+   "p": "has_annotation",
+   "o": "M17",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P13",
+   "s": "M01",
+   "p": "has_annotation",
+   "o": "M18",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P14",
+   "s": "M01",
+   "p": "has_annotation",
+   "o": "M19",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P15",
+   "s": "M01",
+   "p": "has_annotation",
+   "o": "M20",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P16",
+   "s": "M15",
+   "p": "is_a",
+   "o": "M14",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P17",
+   "s": "M16",
+   "p": "is_a",
+   "o": "M14",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P18",
+   "s": "M14",
+   "p": "applies_to",
+   "o": "M10",
+   "cross": true,
+   "explanation": "Поєднує кластер контролю якості з файлами результатів виклику варіантів: фільтрація працює над VCF."
+  },
+  {
+   "id": "P19",
+   "s": "M15",
+   "p": "uses_input",
+   "o": "M17",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P20",
+   "s": "M15",
+   "p": "uses_input",
+   "o": "M18",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P21",
+   "s": "M15",
+   "p": "uses_input",
+   "o": "M19",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P22",
+   "s": "M15",
+   "p": "uses_input",
+   "o": "M20",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P23",
+   "s": "M15",
+   "p": "uses_input",
+   "o": "M21",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P24",
+   "s": "M21",
+   "p": "applies_to",
+   "o": "M20",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P25",
+   "s": "M17",
+   "p": "uses_input",
+   "o": "M22",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P26",
+   "s": "M19",
+   "p": "recommended_for",
+   "o": "M23",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P27",
+   "s": "M15",
+   "p": "recommended_for",
+   "o": "M09",
+   "cross": true,
+   "explanation": "Поєднує контроль якості з типом тесту: для малих панелей (і немодельних організмів) доводиться використовувати hard filtering."
+  },
+  {
+   "id": "P28",
+   "s": "M16",
+   "p": "requires",
+   "o": "M01",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P29",
+   "s": "M25",
+   "p": "is_a",
+   "o": "M24",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P30",
+   "s": "M26",
+   "p": "is_a",
+   "o": "M24",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P31",
+   "s": "M05",
+   "p": "increases_risk_of",
+   "o": "M24",
+   "cross": true,
+   "explanation": "Зв'язує геномну гілку з клінічною: патогенний варіант (BRCA1/BRCA2) підвищує ризик спадкового раку."
+  },
+  {
+   "id": "P32",
+   "s": "M07",
+   "p": "increases_risk_of",
+   "o": "M25",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P33",
+   "s": "M08",
+   "p": "increases_risk_of",
+   "o": "M26",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P34",
+   "s": "M28",
+   "p": "is_kin_of",
+   "o": "M27",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P35",
+   "s": "M30",
+   "p": "detects",
+   "o": "M05",
+   "cross": true,
+   "explanation": "Клінічне тестування виявляє той самий тип варіантів, що аналізують у геномному конвеєрі."
+  },
+  {
+   "id": "P36",
+   "s": "M31",
+   "p": "is_a",
+   "o": "M30",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P37",
+   "s": "M31",
+   "p": "applies_to",
+   "o": "M28",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P38",
+   "s": "M31",
+   "p": "requires",
+   "o": "M05",
+   "cross": true,
+   "explanation": "Каскадне тестування можливе лише коли в пробанда вже відомий патогенний варіант."
+  },
+  {
+   "id": "P39",
+   "s": "M32",
+   "p": "recommended_for",
+   "o": "M28",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P40",
+   "s": "M32",
+   "p": "uses_input",
+   "o": "M29",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P41",
+   "s": "M33",
+   "p": "uses_input",
+   "o": "M29",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P42",
+   "s": "M33",
+   "p": "applies_to",
+   "o": "M27",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P43",
+   "s": "M30",
+   "p": "applies_to",
+   "o": "M27",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P44",
+   "s": "M17",
+   "p": "has_example",
+   "o": "I01",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P45",
+   "s": "M18",
+   "p": "has_example",
+   "o": "I02",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P46",
+   "s": "M19",
+   "p": "has_example",
+   "o": "I03",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P47",
+   "s": "M20",
+   "p": "has_example",
+   "o": "I04",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P48",
+   "s": "M28",
+   "p": "has_example",
+   "o": "I05",
+   "cross": false,
+   "explanation": ""
+  },
+  {
+   "id": "P49",
+   "s": "M28",
+   "p": "has_example",
+   "o": "I06",
+   "cross": false,
+   "explanation": ""
+  }
+ ]
+}

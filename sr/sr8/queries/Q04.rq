@@ -1,0 +1,11 @@
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q4. Агрегація: COUNT + GROUP BY (змінна й її Label) + ORDER BY + LIMIT
+SELECT ?sp ?spLabel (COUNT(DISTINCT ?d) AS ?n) WHERE {
+  ?d wdt:P31 wd:Q12136 ; wdt:P1995 ?sp .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+} GROUP BY ?sp ?spLabel ORDER BY DESC(?n) LIMIT 10

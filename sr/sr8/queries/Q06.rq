@@ -1,0 +1,13 @@
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q6. Напрямок властивості P2293 (genetic association) не перевірено: беремо ОБИДВА напрямки через UNION
+SELECT ?g ?gLabel ?dir WHERE {
+  { wd:Q11081 wdt:P2293 ?g . BIND("хвороба→ген" AS ?dir) }
+  UNION
+  { ?g wdt:P2293 wd:Q11081 . BIND("ген→хвороба" AS ?dir) }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}

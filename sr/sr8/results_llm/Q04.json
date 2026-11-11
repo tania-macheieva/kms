@@ -1,0 +1,90 @@
+{
+ "name": "Q04",
+ "status": "ok",
+ "seconds": 7.0,
+ "boolean": null,
+ "n_rows": 10,
+ "head": [
+  {
+   "specialty": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q1071953"
+   },
+   "specialtyLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "медична генетика"
+   },
+   "diseaseCount": {
+    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+    "type": "literal",
+    "value": "584"
+   }
+  },
+  {
+   "specialty": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q83042"
+   },
+   "specialtyLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "неврологія"
+   },
+   "diseaseCount": {
+    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+    "type": "literal",
+    "value": "393"
+   }
+  },
+  {
+   "specialty": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q162606"
+   },
+   "specialtyLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "ендокринологія"
+   },
+   "diseaseCount": {
+    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+    "type": "literal",
+    "value": "224"
+   }
+  },
+  {
+   "specialty": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q10379"
+   },
+   "specialtyLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "кардіологія"
+   },
+   "diseaseCount": {
+    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+    "type": "literal",
+    "value": "113"
+   }
+  },
+  {
+   "specialty": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q7867"
+   },
+   "specialtyLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "психіатрія"
+   },
+   "diseaseCount": {
+    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+    "type": "literal",
+    "value": "104"
+   }
+  }
+ ],
+ "error": null
+}

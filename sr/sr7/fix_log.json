@@ -1,0 +1,13 @@
+[
+ "A: disjoint(normal homeostasis, abnormal homeostasis)",
+ "A: disjoint(chronic disease course, transient disease course)",
+ "A: disjoint(inpatient encounter, outpatient encounter)",
+ "A: disjoint(health care process, ancillary health care process)",
+ "B: disease stage: -subClassOf disease course; +subClassOf process; +subClassOf part_of some disease course",
+ "C: pain: -subClassOf symptom; +subClassOf bodily process",
+ "D: rename label _undefined primitive term -> undefined primitive term",
+ "D: trim label \"health care process biomaterial transformation \"",
+ "D: typo fixed in definition of \"configuration\"",
+ "D: typo fixed in definition of \"laboratory test\"",
+ "D: IRI ogms.owl#disease_stage -> obo/OGMS_9000001 (тимчасовий локальний ID)"
+]

@@ -1,0 +1,90 @@
+{
+ "name": "Q04",
+ "status": "ok",
+ "seconds": 1.5,
+ "boolean": null,
+ "n_rows": 10,
+ "head": [
+  {
+   "sp": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q162555"
+   },
+   "spLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "oncology"
+   },
+   "n": {
+    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+    "type": "literal",
+    "value": "17"
+   }
+  },
+  {
+   "sp": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q83042"
+   },
+   "spLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "neurology"
+   },
+   "n": {
+    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+    "type": "literal",
+    "value": "14"
+   }
+  },
+  {
+   "sp": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q120569"
+   },
+   "spLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "gastroenterology"
+   },
+   "n": {
+    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+    "type": "literal",
+    "value": "11"
+   }
+  },
+  {
+   "sp": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q2861470"
+   },
+   "spLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "emergency medicine"
+   },
+   "n": {
+    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+    "type": "literal",
+    "value": "10"
+   }
+  },
+  {
+   "sp": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q171171"
+   },
+   "spLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "dermatology"
+   },
+   "n": {
+    "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+    "type": "literal",
+    "value": "7"
+   }
+  }
+ ],
+ "error": null
+}

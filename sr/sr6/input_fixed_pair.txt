@@ -1,0 +1,108 @@
+=== КАРТА A ===
+Понять: 33; екземплярів (конкретні значення): 11; пропозицій: 54
+
+Екземпляри: QD < 2; SOR > 3; MQ < 40; FS > 60 (SNP); FS > 200 (INDEL); MQRankSum < −12,5; ReadPosRankSum < −8; батьки, діти, рідні брати/сестри: 50 %; зведені брати/сестри, тітки/дядьки, бабусі/дідусі: 25 %; двоюрідні та далі: до 12,5 %; age ≥ 18 (виняток: дитячий ризик)
+
+Пропозиції (суб'єкт —відношення→ об'єкт):
+- hard filtering —is_a→ variant filtering
+- variant quality score recalibration —is_a→ variant filtering
+- hard filtering —uses_input→ quality by depth
+- hard filtering —uses_input→ Fisher strand bias
+- hard filtering —uses_input→ strand odds ratio
+- hard filtering —uses_input→ mapping quality
+- quality by depth —has_example→ QD < 2
+- quality by depth —uses_input→ read depth
+- mapping quality —applies_to→ sequencing read
+- rank sum test —uses_input→ mapping quality
+- variant calling —produces→ VCF file
+- variant quality score recalibration —uses_input→ VCF file
+- hard filtering —applies_to→ genetic variant
+- strand odds ratio —has_example→ SOR > 3
+- mapping quality —has_example→ MQ < 40
+- Fisher strand bias —has_example→ FS > 60 (SNP)
+- hard filtering —uses_input→ rank sum test
+- hard filtering —applies_to→ germline variant
+- variant quality score recalibration —recommended_for→ germline variant
+- genetic variant —has_annotation→ Fisher strand bias
+- genetic variant —has_annotation→ strand odds ratio
+- genetic variant —has_annotation→ quality by depth
+- BRCA1 —increases_risk_of→ breast cancer
+- BRCA1 —increases_risk_of→ ovarian cancer
+- BRCA2 —increases_risk_of→ breast cancer
+- BRCA2 —increases_risk_of→ ovarian cancer
+- BRCA1 —increases_risk_of→ hereditary cancer
+- cascade testing —applies_to→ relative
+- relative —is_kin_of→ proband
+- genetic testing —recommended_for→ breast cancer [для деяких пацієнтів]
+- genetic testing —recommended_for→ ovarian cancer [для деяких пацієнтів]
+- genetic counseling —applies_to→ relative
+- cascade testing —detects→ pathogenic variant
+- genetic testing —detects→ pathogenic variant   [КРОС-ЗВ'ЯЗОК між кластерами; пояснення: Клінічний тест шукає в ДНК той самий тип патогенних варіантів, які у геномному конвеєрі проходять фільтрацію якості; саме це поєднує дві частини фокусного питання.]
+- risk assessment —applies_to→ relative
+- pathogenic variant —increases_risk_of→ hereditary cancer   [КРОС-ЗВ'ЯЗОК між кластерами; пояснення: Лише патогенний варіант (BRCA1/BRCA2) підвищує ризик спадкового раку; цей зв'язок переводить результат геномної фільтрації в клінічний ризик.]
+- pathogenic variant —is_a→ genetic variant
+- BRCA1 —is_a→ gene
+- BRCA2 —is_a→ gene
+- variant quality score recalibration —requires→ large set of variants
+- variant quality score recalibration —requires→ known variant resources
+- Fisher strand bias —has_example→ FS > 200 (INDEL)
+- rank sum test —has_example→ MQRankSum < −12,5
+- rank sum test —has_example→ ReadPosRankSum < −8
+- first-degree relative —is_a→ relative
+- first-degree relative —has_example→ батьки, діти, рідні брати/сестри: 50 %
+- second-degree relative —is_a→ relative
+- second-degree relative —has_example→ зведені брати/сестри, тітки/дядьки, бабусі/дідусі: 25 %
+- third-degree relative —is_a→ relative
+- third-degree relative —has_example→ двоюрідні та далі: до 12,5 %
+- cascade testing —recommended_for→ first-degree relative   [КРОС-ЗВ'ЯЗОК між кластерами; пояснення: Ймовірність носійства визначає чергу тестування: спершу найближчі родичі (50 %), далі віддаленіші, якщо найближчі недоступні.]
+- cascade testing —requires→ age ≥ 18 (виняток: дитячий ризик)
+- hard filtering —recommended_for→ gene panel   [КРОС-ЗВ'ЯЗОК між кластерами; пояснення: Для малих генних панелей (до яких належать BRCA1/BRCA2) VQSR неможливий через малу кількість варіантів, тому доводиться застосовувати жорстку фільтрацію.]
+- cascade testing —requires→ pathogenic variant   [КРОС-ЗВ'ЯЗОК між кластерами; пояснення: Каскадне тестування шукає в родичів той самий варіант, що знайдено в пробанда; без підтвердженого патогенного варіанта його не запустити — отже, якість фільтрації впливає на клінічне рішення.]
+
+=== КАРТА B ===
+Понять: 26; екземплярів (конкретні значення): 4; пропозицій: 41
+
+Екземпляри: QD < 2; SOR > 3; MQ < 40; FS > 60
+
+Пропозиції (суб'єкт —відношення→ об'єкт):
+- hard filtering —is_a→ variant filtering
+- variant quality score recalibration —is_a→ variant filtering
+- hard filtering —uses_input→ quality by depth
+- hard filtering —uses_input→ Fisher strand bias
+- hard filtering —uses_input→ strand odds ratio
+- hard filtering —uses_input→ mapping quality
+- quality by depth —has_example→ QD < 2
+- quality by depth —uses_input→ read depth
+- mapping quality —applies_to→ sequencing read
+- rank sum test —uses_input→ mapping quality
+- rank sum test —applies_to→ allele
+- variant calling —produces→ VCF file
+- variant quality score recalibration —uses_input→ VCF file
+- hard filtering —applies_to→ genetic variant
+- variant quality score recalibration —requires→ genetic variant
+- strand odds ratio —has_example→ SOR > 3
+- mapping quality —has_example→ MQ < 40
+- Fisher strand bias —has_example→ FS > 60
+- hard filtering —uses_input→ rank sum test
+- hard filtering —applies_to→ germline variant
+- variant quality score recalibration —recommended_for→ germline variant
+- genetic variant —has_annotation→ Fisher strand bias
+- genetic variant —has_annotation→ strand odds ratio
+- genetic variant —has_annotation→ quality by depth
+- BRCA1 —increases_risk_of→ breast cancer
+- BRCA1 —increases_risk_of→ ovarian cancer
+- BRCA2 —increases_risk_of→ breast cancer
+- BRCA2 —increases_risk_of→ ovarian cancer
+- BRCA1 —increases_risk_of→ hereditary cancer
+- genetic variant —increases_risk_of→ hereditary cancer
+- cascade testing —applies_to→ relative
+- cascade testing —detects→ genetic variant
+- cascade testing —detects→ BRCA1
+- cascade testing —detects→ BRCA2
+- relative —is_kin_of→ proband
+- genetic testing —recommended_for→ breast cancer
+- genetic testing —recommended_for→ ovarian cancer
+- genetic testing —detects→ BRCA1
+- genetic testing —detects→ BRCA2
+- genetic counseling —applies_to→ relative
+- genetic counseling —produces→ risk assessment

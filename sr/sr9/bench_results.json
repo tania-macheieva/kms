@@ -1,0 +1,89 @@
+{
+ "params": {
+  "disease": "D017",
+  "drug": "R020",
+  "anc": "D155",
+  "co": "D076"
+ },
+ "load_s": {
+  "kuzu": 0.228,
+  "oxigraph": 0.021
+ },
+ "queries": {
+  "Q1": {
+   "rows": 10,
+   "kuzu_eq_truth": true,
+   "oxi_eq_truth": true,
+   "kuzu_eq_oxi": true,
+   "kuzu_first_ms": 14.31,
+   "kuzu_med_ms": 1.05,
+   "kuzu_p95_ms": 1.35,
+   "oxi_first_ms": 0.27,
+   "oxi_med_ms": 0.06,
+   "oxi_p95_ms": 0.08,
+   "cypher": "MATCH (r:Drug)-[:TREATS]->(d:Disease {id:'D017'}) RETURN r.id AS a ORDER BY a",
+   "sparql": "PREFIX ex: <http://example.org/>\nSELECT ?a WHERE { ?r ex:treats ex:D017 . BIND(STRAFTER(STR(?r),'http://example.org/') AS ?a) } ORDER BY ?a"
+  },
+  "Q2": {
+   "rows": 39,
+   "kuzu_eq_truth": true,
+   "oxi_eq_truth": true,
+   "kuzu_eq_oxi": true,
+   "kuzu_first_ms": 4.13,
+   "kuzu_med_ms": 1.83,
+   "kuzu_p95_ms": 2.05,
+   "oxi_first_ms": 0.45,
+   "oxi_med_ms": 0.24,
+   "oxi_p95_ms": 0.28,
+   "cypher": "MATCH (r:Drug {id:'R020'})-[:TREATS]->(d:Disease)-[:ASSOC_GENE]->(g:Gene) RETURN DISTINCT g.id AS a ORDER BY a",
+   "sparql": "PREFIX ex: <http://example.org/>\nSELECT DISTINCT ?a WHERE { ex:R020 ex:treats ?d . ?d ex:assocGene ?g . BIND(STRAFTER(STR(?g),'http://example.org/') AS ?a) } ORDER BY ?a"
+  },
+  "Q3": {
+   "rows": 10,
+   "kuzu_eq_truth": true,
+   "oxi_eq_truth": true,
+   "kuzu_eq_oxi": true,
+   "kuzu_first_ms": 8.71,
+   "kuzu_med_ms": 1.36,
+   "kuzu_p95_ms": 1.59,
+   "oxi_first_ms": 1.09,
+   "oxi_med_ms": 0.8,
+   "oxi_p95_ms": 0.86,
+   "cypher": "MATCH (r:Drug)-[:TREATS]->(d:Disease) RETURN d.id AS a, count(r) AS n ORDER BY n DESC, a LIMIT 10",
+   "sparql": "PREFIX ex: <http://example.org/>\nSELECT ?a (COUNT(?r) AS ?n) WHERE { ?r ex:treats ?d . BIND(STRAFTER(STR(?d),'http://example.org/') AS ?a) } GROUP BY ?a ORDER BY DESC(?n) ?a LIMIT 10"
+  },
+  "Q4": {
+   "rows": 19,
+   "kuzu_eq_truth": true,
+   "oxi_eq_truth": true,
+   "kuzu_eq_oxi": true,
+   "kuzu_first_ms": 2.64,
+   "kuzu_med_ms": 1.82,
+   "kuzu_p95_ms": 1.98,
+   "oxi_first_ms": 0.25,
+   "oxi_med_ms": 0.09,
+   "oxi_p95_ms": 0.13,
+   "cypher": "MATCH (d:Disease {id:'D155'})-[:SUBCLASS_OF*1..30]->(x:Disease) RETURN DISTINCT x.id AS a ORDER BY a",
+   "sparql": "PREFIX ex: <http://example.org/>\nSELECT DISTINCT ?a WHERE { ex:D155 ex:subclassOf+ ?x . BIND(STRAFTER(STR(?x),'http://example.org/') AS ?a) } ORDER BY ?a"
+  },
+  "Q5": {
+   "rows": 6,
+   "kuzu_eq_truth": true,
+   "oxi_eq_truth": true,
+   "kuzu_eq_oxi": true,
+   "kuzu_first_ms": 5.99,
+   "kuzu_med_ms": 2.01,
+   "kuzu_p95_ms": 2.13,
+   "oxi_first_ms": 0.36,
+   "oxi_med_ms": 0.15,
+   "oxi_p95_ms": 0.18,
+   "cypher": "MATCH (d:Disease {id:'D076'})-[:ASSOC_GENE]->(g:Gene)<-[:ASSOC_GENE]-(o:Disease) WHERE o.id <> 'D076' WITH o, count(DISTINCT g) AS s WHERE s >= 2 RETURN o.id AS a, s ORDER BY s DESC, a",
+   "sparql": "PREFIX ex: <http://example.org/>\nSELECT ?a (COUNT(DISTINCT ?g) AS ?s) WHERE { ex:D076 ex:assocGene ?g . ?o ex:assocGene ?g . FILTER(?o != ex:D076) BIND(STRAFTER(STR(?o),'http://example.org/') AS ?a) } GROUP BY ?a HAVING (COUNT(DISTINCT ?g) >= 2) ORDER BY DESC(?s) ?a"
+  }
+ },
+ "q4_bound12": {
+  "rows": 12,
+  "truth_rows": 19,
+  "depth_of_param": 19
+ }
+}

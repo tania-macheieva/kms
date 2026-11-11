@@ -1,0 +1,40 @@
+{
+ "name": "Q05",
+ "status": "ok",
+ "seconds": 0.7,
+ "boolean": null,
+ "n_rows": 2,
+ "head": [
+  {
+   "d": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q35869"
+   },
+   "dLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "asthma"
+   },
+   "symptoms": {
+    "type": "literal",
+    "value": "cough; wheeze; inflammation; chest pain"
+   }
+  },
+  {
+   "d": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q12206"
+   },
+   "dLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "diabetes"
+   },
+   "symptoms": {
+    "type": "literal",
+    "value": "polyuria; polydipsia; polyphagia"
+   }
+  }
+ ],
+ "error": null
+}

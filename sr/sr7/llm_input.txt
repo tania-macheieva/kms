@@ -1,0 +1,83 @@
+- ED encounter ⊑ health care encounter :: TODO
+- _undefined primitive term ⊑ entity (BFO) :: (немає визначення)
+- abnormal homeostasis ⊑ homeostasis :: Homeostasis that is clinically abnormal for an organism of a given type and age in a given environment.
+- acquired genetic disease ⊑ disease :: A disease whose physical basis is an acquired genetic disorder.
+- acquired genetic disorder ⊑ genetic disorder :: A genetic disorder acquired by a single cell in an organism that leads to a population of cells within the organism bearing the disorder.
+- acute disease course ⊑ disease course :: a disease course with a rapid onset but typical unfolding of signs and symptoms after this rapid onset.
+- ancillary health care process ⊑ planned process :: A planned process that has the objective to support the objective of a health care process without directly involving the treatment, diagnosis, or prevention of disease or injury of a patient.
+- bodily process ⊑ process (BFO) :: (немає визначення)
+- chronic disease course ⊑ disease course :: A disease course that (a) does not terminate in a return to normal homeostasis and (b) would, absent intervention, fall within abnormal homeostatic range.
+- clinical finding ⊑ data item (IAO) :: A representation that is either the output of a clinical history taking or a physical examination or an image finding, or some combination thereof.
+- clinical history ⊑ clinical finding :: A series of statements representing health-relevant qualities of a patient and of a patient's family.
+- clinical history taking ⊑ health care process assay :: A health care process in which a clinician elicits a description of previous sign and symptoms of disease from a patient or from a third party who is reporting on behalf of the patient.
+- clinical manifestation of a disease ⊑ manifestation of a disease :: A manifestation of a disease that is detectable in a clinical history taking or physical examination.
+- clinical phenotype ⊑ phenotype :: A clinically abnormal phenotype.
+- clinical picture ⊑ data item (IAO) :: A representation of clinically significant bodily components, dispositions, and/or bodily processes of a human being that is inferred from relevant clinical findings.
+- clinically abnormal ⊑ _undefined primitive term :: (немає визначення)
+- configuration ⊑ quality (BFO) :: A quality which is an spatial arrangement or distribution of a(n) independent continuant(s) across a Three Dimensional Region.
+- congenital malformation ⊑ material entity (BFO) :: A structurally anomalous part of an organism acquired during fetal development and present at birth (but not necessarily hereditary) which is hypothesized to be harmful for the organism.
+- constitutional genetic disease ⊑ disease :: A disease whose physical basis is a constitutional genetic disorder.
+- constitutional genetic disorder ⊑ genetic disorder :: A genetic disorder inherited during conception that is part of all cells in the organism.
+- convalescence ⊑ process (BFO) :: A processual entity during which a patient participating in a disease course gradually returns to participating in a canonical life course.
+- diagnosis ⊑ data item (IAO) :: The representation of a conclusion of a diagnostic process.
+- diagnostic process ⊑ health care process :: A health care process that involves the interpretation of a clinical picture from a given patient (input) and the assertion to the effect that the patient has a disease, disorder, or syndrome of a certain type, or none o
+- directive information content entity ⊑ information content entity (IAO) :: An information content entity whose concretizations indicate to their bearer how to realize them in a process.
+- disease ⊑ disposition (BFO) :: A disposition (i) to undergo pathological processes that (ii) exists in an organism because of one or more disorders in that organism.
+- disease course ⊑ process (BFO) :: The totality of all processes through which a given disease instance is realized.
+- disease phenotype ⊑ phenotype :: A clinically abnormal phenotype that is characteristic of a single disease.
+- disease prophylaxis ⊑ planned process :: A planned process whose completion is hypothesized by a health care provider to reduce the risk of developing a disorder or the signs and symptoms of a disorder.
+- disease stage ⊑ disease course :: (немає визначення)
+- disorder ⊑ material entity (BFO) :: A material entity which is clinically abnormal and part of an extended organism. Disorders are the physical basis of disease.
+- epigenetic disorder ⊑ disorder :: A disorder whose etiology involves (1) a modification to the patient's genomic DNA which leads to alterations in the normal expression pattern of the genome, but is (2) not a change in the nucleotide sequence.
+- etiological process ⊑ process (BFO) :: A process in an organism that leads to a subsequent disorder.
+- extended organism ⊑ material entity (BFO) :: An object aggregate consisting of an organism and all material entities located within the organism, overlapping the organism, or occupying sites formed in part by the organism.
+- genetic disorder ⊑ disorder :: A disorder whose etiology involves an abnormality in the nucleotide sequence of an organism's genome.
+- genetic predisposition to disease of type X ⊑ predisposition to disease of type X :: A predisposition to disease of type X whose physical basis is a constitutional abnormality in an organism's genome. This abnormality is the physical basis for the increased risk of acquiring the disease X.
+- health care encounter ⊑ health care process :: A temporally-connected health care process that has as participants an organization or person realizing the health care provider role and a person realizing the patient role.  The health care provider role and patient ar
+- health care process ⊑ planned process :: A planned process with the objective to improve the health status of a patient that directly involves the treatment, diagnosis, or prevention of disease or injury of a patient
+- health care process assay ⊑ health care process :: A health care process with the objective to produce information about the material entity that is the evaluant, by physically examining it or its proxies.
+- health care process biomaterial transformation  ⊑ health care process :: A health care process which results in physical changes in a specified input material
+- health care process data transformation ⊑ health care process :: A health care process that produces output from input data
+- homeostasis ⊑ disposition (BFO) :: (немає визначення)
+- hospitalization ⊑ health care encounter :: TODO
+- image finding ⊑ clinical finding :: A representation of an image that supports an inference to an assertion about some quality of a patient.
+- inflammatory process ⊑ bodily process :: A bodily process caused by some disorder that results in recruitment of leukocytes into a localized tissue site, typically causing localized pain and swelling.
+- injury ⊑ disorder :: A disorder that involves some structural damage that is immediately caused by a catastrophic external force.
+- inpatient encounter ⊑ health care encounter :: TODO
+- laboratory finding ⊑ clinical finding :: A representation of a quality of a specimen that is the output of a laboratory test and that can support an inference to an assertion about some quality of the patient.
+- laboratory test ⊑ health care process assay :: A measurement assay that has as input a patient-derived specimen and as output a data itme that is about a quality of the specimen.
+- life course ⊑ process (BFO) :: A process which has as parts all the processes in which a given organism is participant.
+- manifestation of a disease ⊑ quality (BFO) :: A quality of a patient that is (a) a deviation from clinical normality that exists in virtue of the realization of a disease and (b) is observable.
+- normal homeostasis ⊑ homeostasis :: Homeostasis of a type that is not clinically abnormal.
+- normal value ⊑ generically dependent continuant (BFO) :: A value for a quality reported in a lab report and asserted by the testing lab or the kit manufacturer to be normal based on a statistical treatment of values from a reference population.
+- organism population ⊑ material entity (BFO) :: An aggregate of organisms of the same type.
+- outpatient encounter ⊑ health care encounter :: TODO
+- pain ⊑ symptom :: A bodily process in an organism S involving two integrated levels: (a) activation of the nociceptive system and associated emotion generating brain components of S, and (b) a simultaneous aversive sensory and emotional e
+- pathological anatomical structure ⊑ material entity (BFO) :: An anatomical structure (FMA) is pathological whenever (1) it has come into being as a result of changes in some pre-existing canonical anatomical structure, (2) through processes other than the expression of the normal 
+- pathological bodily process ⊑ bodily process :: A bodily process that is clinically abnormal.
+- pathological derivation ⊑ pathological bodily process :: A pathological bodily process in which matter is reorganized in such a way as to give rise to new pathological formations which take the place of entities existing earlier.
+- pathological formation ⊑ material entity (BFO) :: TODO: Define, relate to disorder, and place in the OGMS hierarchy.
+- pathological invasion ⊑ pathological bodily process :: TODO: Define.
+- pathological physical configuration ⊑ configuration :: A configuration which deviates in some way from a canonical configuration for a particular organism.
+- pathological transformation ⊑ pathological bodily process :: A pathological bodily process in which a canonical anatomical structure becomes a pathological anatomical structure.
+- patient symptom report ⊑ information content entity (IAO) :: A communication from a patient about something they perceive as being abnormal about their body or life.
+- phenotype ⊑ quality (BFO) :: A (combination of) quality(ies) of an organism determined by the interaction of its genetic make-up and environment that differentiates specific instances of a species from other instances of the same species.
+- physical basis ⊑ _undefined primitive term :: (немає визначення)
+- physical examination ⊑ health care process assay :: A sequence of acts of observing and measuring qualities of a patient performed by a clinician; measurements may occur with and without elicitation.
+- physical examination finding ⊑ clinical finding :: TODO: Define.
+- planned process ⊑ process (BFO) :: A processual entity that realizes a plan which is the concretization of a plan specification.
+- portion of pathological body substance ⊑ material entity (BFO) :: TODO: Define, relate to disorder, and place in the OGMS hierarchy.
+- preclinical finding ⊑ data item (IAO) :: A representation of a quality of a patient that is (1) recorded by a clinician because the quality is hypothesized to be of clinical significance and (2) refers to qualities obtaining in the patient prior to their becomi
+- preclinical manifestation of a disease ⊑ manifestation of a disease :: A manifestation of a disease that exists prior to the time at which it would be detected in a clinical history taking or physical examination, if the patient were to present to a clinician. A realization of a disease tha
+- predisposition to disease of type X ⊑ disposition (BFO) :: A disposition in an organism that constitutes an increased risk of the organism's subsequently developing the disease X.
+- prognosis ⊑ data item (IAO) :: A hypothesis about some future part of a disease course.
+- progressive disease course ⊑ disease course :: A disease course that (a) does not terminate in a return to normal homeostasis and (b) would, absent intervention, involve an increasing deviation from homeostasis.
+- realization ⊑ _undefined primitive term :: (немає визначення)
+- relapse ⊑ disease stage :: a disease stage which is preceded by a remission and characterized by the return of a manifestation of a disease.
+- remission ⊑ disease stage :: a disease stage which is characterized by the lack of a manifestation of a disease.
+- sign ⊑ entity (BFO) :: A quality of a patient, a material entity that is part of a patient, or a processual entity that a patient participates in, any one of which is observed in a physical examination and is deemed by the clinician to be of c
+- symptom ⊑ entity (BFO) :: A quality of a patient that is observed by the patient or a processual entity experienced by the patient, either of which is hypothesized by the patient to be a realization of a disease.
+- syndrome ⊑ quality (BFO) :: A pattern of signs and symptoms that typically co-occur.
+- transient disease course ⊑ disease course :: A disease course that terminates in a return to normal homeostasis.
+- treatment ⊑ planned process :: A planned process whose completion is hypothesized by a health care provider to eliminate a disorder or to alleviate the signs and symptoms of a disorder.
+- vital sign ⊑ sign :: A physical sign in which a non-zero value is standardly considered to be an indication that the organism is alive.

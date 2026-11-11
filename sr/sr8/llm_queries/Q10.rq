@@ -1,0 +1,11 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+
+SELECT DISTINCT ?disease ?icd10 WHERE {
+  ?disease a dbo:Disease .
+  { ?disease dbp:icd10 ?icd10 . }
+  UNION
+  { ?disease dbo:icd10 ?icd10 . }
+  FILTER(STRSTARTS(UCASE(STR(?icd10)), "E"))
+}
+LIMIT 20

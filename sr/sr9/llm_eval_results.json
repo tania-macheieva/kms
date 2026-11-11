@@ -1,0 +1,27 @@
+{
+ "Q1": {
+  "rows_llm": 10,
+  "rows_mine": 10,
+  "equal": true
+ },
+ "Q2": {
+  "rows_llm": 39,
+  "rows_mine": 39,
+  "equal": true
+ },
+ "Q3": {
+  "rows_llm": 10,
+  "rows_mine": 10,
+  "equal": true
+ },
+ "Q4": {
+  "rows_llm": 19,
+  "rows_mine": 19,
+  "equal": true
+ },
+ "Q5": {
+  "rows_llm": 6,
+  "rows_mine": 6,
+  "equal": true
+ }
+}

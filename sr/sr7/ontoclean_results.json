@@ -1,0 +1,91 @@
+{
+ "tags": {
+  "disease course": [
+   "+R",
+   "totality of processes of one disease instance"
+  ],
+  "disease stage": [
+   "+R",
+   "temporal part of a course"
+  ],
+  "relapse": [
+   "+R",
+   "temporal part of a course"
+  ],
+  "remission": [
+   "+R",
+   "temporal part of a course"
+  ],
+  "symptom": [
+   "-R",
+   null
+  ],
+  "sign": [
+   "-R",
+   null
+  ],
+  "vital sign": [
+   "-R",
+   null
+  ],
+  "pain": [
+   "+R",
+   "single bodily process"
+  ],
+  "bodily process": [
+   "+R",
+   "single bodily process"
+  ],
+  "homeostasis": [
+   "+R",
+   null
+  ],
+  "normal homeostasis": [
+   "-R",
+   null
+  ],
+  "abnormal homeostasis": [
+   "-R",
+   null
+  ],
+  "chronic disease course": [
+   "+R",
+   "totality of processes of one disease instance"
+  ],
+  "acute disease course": [
+   "+R",
+   "totality of processes of one disease instance"
+  ],
+  "transient disease course": [
+   "+R",
+   "totality of processes of one disease instance"
+  ],
+  "progressive disease course": [
+   "+R",
+   "totality of processes of one disease instance"
+  ],
+  "process [BFO stub]": [
+   "+R",
+   "single process"
+  ]
+ },
+ "before": {
+  "violations": [
+   [
+    "disease stage",
+    "disease course",
+    "критерій єдності батька «totality of processes of one disease instance» не успадковано: «temporal part of a course»"
+   ],
+   [
+    "pain",
+    "symptom",
+    "анти-ригідний батько підкласифікує ригідний клас"
+   ]
+  ],
+  "ok_edges": 11
+ },
+ "after": {
+  "violations": [],
+  "ok_edges": 13
+ }
+}

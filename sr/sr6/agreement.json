@@ -1,0 +1,90 @@
+{
+ "n_pairs": 15,
+ "mean_abs_diff": 0.4,
+ "exact": 0.6,
+ "within1": 1.0,
+ "pearson": 0.518,
+ "spearman": 0.519,
+ "kappa_quadratic": 0.392,
+ "kappa_plain": 0.274,
+ "by_crit": {
+  "K1": 0.33,
+  "K2": 0.33,
+  "K3": 0.67,
+  "K4": 0.67,
+  "K5": 0.0
+ },
+ "by_map": {
+  "expert": 0.6,
+  "llm": 0.2,
+  "peer": 0.4
+ },
+ "totals": {
+  "R1": {
+   "expert": 5,
+   "llm": 4,
+   "peer": 8
+  },
+  "R2": {
+   "expert": 8,
+   "llm": 5,
+   "peer": 10
+  }
+ },
+ "total_diff": {
+  "expert": -3,
+  "llm": -1,
+  "peer": -2
+ },
+ "biggest": [
+  [
+   "expert",
+   "K2",
+   1,
+   2
+  ],
+  [
+   "expert",
+   "K3",
+   1,
+   2
+  ],
+  [
+   "expert",
+   "K4",
+   1,
+   2
+  ],
+  [
+   "llm",
+   "K3",
+   0,
+   1
+  ],
+  [
+   "peer",
+   "K1",
+   1,
+   2
+  ],
+  [
+   "peer",
+   "K4",
+   1,
+   2
+  ]
+ ],
+ "rank": {
+  "R1": [
+   "peer",
+   "expert",
+   "llm"
+  ],
+  "R2": [
+   "peer",
+   "expert",
+   "llm"
+  ]
+ },
+ "total_corr_note": "n=3 карти: кореляція сум неінформативна"
+}

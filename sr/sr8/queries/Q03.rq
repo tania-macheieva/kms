@@ -1,0 +1,11 @@
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q3. Простий трикутник + SERVICE label (мови з fallback)
+SELECT ?drug ?drugLabel WHERE {
+  wd:Q12206 wdt:P2176 ?drug .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "uk,en". }
+} ORDER BY ?drugLabel

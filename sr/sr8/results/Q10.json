@@ -1,0 +1,60 @@
+{
+ "name": "Q10",
+ "status": "ok",
+ "seconds": 11.7,
+ "boolean": null,
+ "n_rows": 20,
+ "head": [
+  {
+   "d": {
+    "type": "uri",
+    "value": "http://dbpedia.org/resource/Glucocorticoid_deficiency"
+   },
+   "icd": {
+    "type": "literal",
+    "value": "E27.1"
+   }
+  },
+  {
+   "d": {
+    "type": "uri",
+    "value": "http://dbpedia.org/resource/Glucocorticoid_deficiency"
+   },
+   "icd": {
+    "type": "literal",
+    "value": "E27.1"
+   }
+  },
+  {
+   "d": {
+    "type": "uri",
+    "value": "http://dbpedia.org/resource/Glycogen_storage_disease_type_I"
+   },
+   "icd": {
+    "type": "literal",
+    "value": "E74.0"
+   }
+  },
+  {
+   "d": {
+    "type": "uri",
+    "value": "http://dbpedia.org/resource/Glycogen_storage_disease_type_I"
+   },
+   "icd": {
+    "type": "literal",
+    "value": "E74.0"
+   }
+  },
+  {
+   "d": {
+    "type": "uri",
+    "value": "http://dbpedia.org/resource/Glycogen_storage_disease_type_I"
+   },
+   "icd": {
+    "type": "literal",
+    "value": "E74.0"
+   }
+  }
+ ],
+ "error": null
+}

@@ -1,0 +1,13 @@
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Резолвер: перевірте, що кожен Q/P-код означає те, що я припускаю
+SELECT ?id ?idLabel ?idDescription WHERE {
+  VALUES ?id { wd:Q12136 wd:Q12206 wd:Q35869 wd:Q41861 wd:Q11081 wd:Q8054
+               wdt:P279 wdt:P31 wdt:P2176 wdt:P780 wdt:P1995 wdt:P2293 wdt:P231 wdt:P699
+               wd:Q12153 wd:Q181754 wd:Q3193 }  # три останні — коди, які назвав LLM
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}

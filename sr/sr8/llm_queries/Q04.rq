@@ -1,0 +1,14 @@
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?specialty ?specialtyLabel (COUNT(DISTINCT ?disease) AS ?diseaseCount) WHERE {
+  ?disease wdt:P31/wdt:P279* wd:Q12136 ;
+           wdt:P1995 ?specialty .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "uk,en". }
+}
+GROUP BY ?specialty ?specialtyLabel
+ORDER BY DESC(?diseaseCount)
+LIMIT 10

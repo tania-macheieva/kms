@@ -1,0 +1,13 @@
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q5. VALUES (кілька хвороб) + GROUP_CONCAT
+SELECT ?d ?dLabel (GROUP_CONCAT(DISTINCT ?sLabel; separator="; ") AS ?symptoms) WHERE {
+  VALUES ?d { wd:Q12206 wd:Q35869 wd:Q41861 }
+  ?d wdt:P780 ?s .
+  ?s rdfs:label ?sLabel . FILTER(LANG(?sLabel)="en")
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+} GROUP BY ?d ?dLabel

@@ -1,0 +1,606 @@
+{
+ "domain": "Триаж варіантів: QC за GATK + спрощена ACMG-класифікація",
+ "conflict_strategy": "порядок файлу",
+ "closed_world": "qc=PASS, якщо жодне QC-FAIL правило не спрацювало; відсутня анотація → умова хибна",
+ "rules": [
+  {
+   "id": "R01",
+   "if": [
+    [
+     "type",
+     "==",
+     "SNP"
+    ],
+    [
+     "QD",
+     "<",
+     2
+    ]
+   ],
+   "then": {
+    "qc": "FAIL"
+   },
+   "source": "SIB training: GATK hard filters (sib-swiss.github.io/NGS-variants-training)",
+   "note": "",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R02",
+   "if": [
+    [
+     "type",
+     "==",
+     "SNP"
+    ],
+    [
+     "QUAL",
+     "<",
+     30
+    ]
+   ],
+   "then": {
+    "qc": "FAIL"
+   },
+   "source": "SIB training: GATK hard filters (sib-swiss.github.io/NGS-variants-training)",
+   "note": "",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R03",
+   "if": [
+    [
+     "type",
+     "==",
+     "SNP"
+    ],
+    [
+     "SOR",
+     ">",
+     3
+    ]
+   ],
+   "then": {
+    "qc": "FAIL"
+   },
+   "source": "SIB training: GATK hard filters (sib-swiss.github.io/NGS-variants-training)",
+   "note": "",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R04",
+   "if": [
+    [
+     "type",
+     "==",
+     "SNP"
+    ],
+    [
+     "FS",
+     ">",
+     60
+    ]
+   ],
+   "then": {
+    "qc": "FAIL"
+   },
+   "source": "SIB training: GATK hard filters (sib-swiss.github.io/NGS-variants-training)",
+   "note": "",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R05",
+   "if": [
+    [
+     "type",
+     "==",
+     "SNP"
+    ],
+    [
+     "MQ",
+     "<",
+     40
+    ]
+   ],
+   "then": {
+    "qc": "FAIL"
+   },
+   "source": "SIB training: GATK hard filters (sib-swiss.github.io/NGS-variants-training)",
+   "note": "",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R06",
+   "if": [
+    [
+     "type",
+     "==",
+     "SNP"
+    ],
+    [
+     "MQRankSum",
+     "<",
+     -12.5
+    ]
+   ],
+   "then": {
+    "qc": "FAIL"
+   },
+   "source": "SIB training: GATK hard filters (sib-swiss.github.io/NGS-variants-training)",
+   "note": "",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R07",
+   "if": [
+    [
+     "type",
+     "==",
+     "SNP"
+    ],
+    [
+     "ReadPosRankSum",
+     "<",
+     -8
+    ]
+   ],
+   "then": {
+    "qc": "FAIL"
+   },
+   "source": "SIB training: GATK hard filters (sib-swiss.github.io/NGS-variants-training)",
+   "note": "",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R08",
+   "if": [
+    [
+     "type",
+     "==",
+     "INDEL"
+    ],
+    [
+     "QD",
+     "<",
+     2
+    ]
+   ],
+   "then": {
+    "qc": "FAIL"
+   },
+   "source": "SIB training: GATK hard filters (sib-swiss.github.io/NGS-variants-training)",
+   "note": "",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R09",
+   "if": [
+    [
+     "type",
+     "==",
+     "INDEL"
+    ],
+    [
+     "QUAL",
+     "<",
+     30
+    ]
+   ],
+   "then": {
+    "qc": "FAIL"
+   },
+   "source": "SIB training: GATK hard filters (sib-swiss.github.io/NGS-variants-training)",
+   "note": "",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R10",
+   "if": [
+    [
+     "type",
+     "==",
+     "INDEL"
+    ],
+    [
+     "FS",
+     ">",
+     200
+    ]
+   ],
+   "then": {
+    "qc": "FAIL"
+   },
+   "source": "SIB training: GATK hard filters (sib-swiss.github.io/NGS-variants-training)",
+   "note": "",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R11",
+   "if": [
+    [
+     "type",
+     "==",
+     "INDEL"
+    ],
+    [
+     "ReadPosRankSum",
+     "<",
+     -20
+    ]
+   ],
+   "then": {
+    "qc": "FAIL"
+   },
+   "source": "SIB training: GATK hard filters (sib-swiss.github.io/NGS-variants-training)",
+   "note": "",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R12",
+   "if": [
+    [
+     "QD",
+     "<",
+     2
+    ]
+   ],
+   "then": {
+    "qc": "FAIL"
+   },
+   "source": "SIB training: GATK hard filters (sib-swiss.github.io/NGS-variants-training)",
+   "note": "узагальнене правило для будь-якого типу",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R13",
+   "if": [
+    [
+     "DP",
+     "<",
+     10
+    ]
+   ],
+   "then": {
+    "qc": "FAIL"
+   },
+   "source": "лабораторна політика / припущення автора (потребує підтвердження)",
+   "note": "мінімальна глибина покриття",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R14",
+   "if": [
+    [
+     "qc",
+     "==",
+     "PASS"
+    ],
+    [
+     "af",
+     ">=",
+     0.05
+    ]
+   ],
+   "then": {
+    "class": "Benign"
+   },
+   "source": "Richards et al. 2015 (ACMG/AMP), PMID 25741868",
+   "note": "BA1: AF>5% (stand-alone)",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R15",
+   "if": [
+    [
+     "qc",
+     "==",
+     "PASS"
+    ],
+    [
+     "lof",
+     "==",
+     true
+    ],
+    [
+     "lof_mech",
+     "==",
+     true
+    ],
+    [
+     "in_gnomad",
+     "==",
+     false
+    ]
+   ],
+   "then": {
+    "class": "Likely pathogenic"
+   },
+   "source": "Richards et al. 2015 (ACMG/AMP), PMID 25741868",
+   "note": "PVS1 + PM2",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R16",
+   "if": [
+    [
+     "qc",
+     "==",
+     "PASS"
+    ],
+    [
+     "clinvar",
+     "==",
+     "pathogenic"
+    ]
+   ],
+   "then": {
+    "class": "Pathogenic"
+   },
+   "source": "ClinVar (експертно перевірені записи) + ACMG/AMP 2015",
+   "note": "потрібен рівень рев'ю у реальній системі",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R17",
+   "if": [
+    [
+     "qc",
+     "==",
+     "PASS"
+    ],
+    [
+     "clinvar",
+     "==",
+     "benign"
+    ]
+   ],
+   "then": {
+    "class": "Benign"
+   },
+   "source": "ClinVar + ACMG/AMP 2015",
+   "note": "",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R18",
+   "if": [
+    [
+     "qc",
+     "==",
+     "PASS"
+    ],
+    [
+     "in_gnomad",
+     "==",
+     false
+    ],
+    [
+     "insilico",
+     "==",
+     "damaging"
+    ]
+   ],
+   "then": {
+    "class": "VUS"
+   },
+   "source": "Richards et al. 2015 (ACMG/AMP), PMID 25741868; ClinGen SVI (PM2_Supporting)",
+   "note": "PM2+PP3 → VUS",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R19",
+   "if": [
+    [
+     "qc",
+     "==",
+     "PASS"
+    ],
+    [
+     "af",
+     ">=",
+     0.01
+    ],
+    [
+     "insilico",
+     "==",
+     "benign"
+    ]
+   ],
+   "then": {
+    "class": "Likely benign"
+   },
+   "source": "Richards et al. 2015 (ACMG/AMP), PMID 25741868",
+   "note": "BS1 + BP4 (спрощено)",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R20",
+   "if": [
+    [
+     "qc",
+     "==",
+     "PASS"
+    ]
+   ],
+   "then": {
+    "class": "VUS"
+   },
+   "source": "Richards et al. 2015 (ACMG/AMP), PMID 25741868",
+   "note": "типовий результат за відсутності доказів",
+   "priority": null,
+   "default": true
+  },
+  {
+   "id": "R21",
+   "if": [
+    [
+     "qc",
+     "==",
+     "PASS"
+    ],
+    [
+     "in_gnomad",
+     "==",
+     false
+    ]
+   ],
+   "then": {
+    "action": "discard"
+   },
+   "source": "лабораторна політика / припущення автора (потребує підтвердження)",
+   "note": "евристика «новий варіант = артефакт»",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R22",
+   "if": [
+    [
+     "qc",
+     "==",
+     "FAIL"
+    ]
+   ],
+   "then": {
+    "action": "do_not_report_confirm"
+   },
+   "source": "SIB training: GATK hard filters (sib-swiss.github.io/NGS-variants-training); практика ортогонального підтвердження",
+   "note": "",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R23",
+   "if": [
+    [
+     "class",
+     "==",
+     "Pathogenic"
+    ]
+   ],
+   "then": {
+    "action": "report"
+   },
+   "source": "Richards et al. 2015 (ACMG/AMP), PMID 25741868",
+   "note": "",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R24",
+   "if": [
+    [
+     "class",
+     "==",
+     "Likely pathogenic"
+    ]
+   ],
+   "then": {
+    "action": "report"
+   },
+   "source": "Richards et al. 2015 (ACMG/AMP), PMID 25741868",
+   "note": "",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R25",
+   "if": [
+    [
+     "class",
+     "in",
+     [
+      "Benign",
+      "Likely benign"
+     ]
+    ]
+   ],
+   "then": {
+    "action": "no_report"
+   },
+   "source": "Richards et al. 2015 (ACMG/AMP), PMID 25741868",
+   "note": "",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R26",
+   "if": [
+    [
+     "qc",
+     "==",
+     "PASS"
+    ],
+    [
+     "DP",
+     "<",
+     10
+    ]
+   ],
+   "then": {
+    "class": "VUS"
+   },
+   "source": "лабораторна політика / припущення автора (потребує підтвердження)",
+   "note": "низька глибина → VUS",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R27",
+   "if": [
+    [
+     "qc",
+     "==",
+     "PASS"
+    ],
+    [
+     "clinvar",
+     "==",
+     "pathogenic"
+    ]
+   ],
+   "then": {
+    "class": "Pathogenic"
+   },
+   "source": "ClinVar + ACMG/AMP 2015",
+   "note": "копія з іншого переліку SOP",
+   "priority": null,
+   "default": false
+  },
+  {
+   "id": "R28",
+   "if": [
+    [
+     "class",
+     "==",
+     "VUS"
+    ]
+   ],
+   "then": {
+    "action": "list_in_VUS_section"
+   },
+   "source": "Richards et al. 2015 (ACMG/AMP), PMID 25741868",
+   "note": "",
+   "priority": null,
+   "default": false
+  }
+ ]
+}

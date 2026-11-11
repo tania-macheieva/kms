@@ -1,0 +1,85 @@
+{
+ "name": "Q08",
+ "status": "ok",
+ "seconds": 11.3,
+ "boolean": null,
+ "n_rows": 20,
+ "head": [
+  {
+   "disease": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q3043160"
+   },
+   "doid": {
+    "type": "literal",
+    "value": "DOID:612"
+   },
+   "ukLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "первинний імунодефіцит"
+   }
+  },
+  {
+   "disease": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q2711291"
+   },
+   "doid": {
+    "type": "literal",
+    "value": "DOID:13810"
+   },
+   "ukLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "сімейна гіперхолестеринемія"
+   }
+  },
+  {
+   "disease": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q5340515"
+   },
+   "doid": {
+    "type": "literal",
+    "value": "DOID:418"
+   },
+   "ukLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "системна склеродермія"
+   }
+  },
+  {
+   "disease": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q1477"
+   },
+   "doid": {
+    "type": "literal",
+    "value": "DOID:8577"
+   },
+   "ukLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "неспецифічний виразковий коліт"
+   }
+  },
+  {
+   "disease": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q8277"
+   },
+   "doid": {
+    "type": "literal",
+    "value": "DOID:2377"
+   },
+   "ukLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "розсіяний склероз"
+   }
+  }
+ ],
+ "error": null
+}

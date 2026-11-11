@@ -1,0 +1,130 @@
+{
+ "name": "Q09",
+ "status": "ok",
+ "seconds": 0.7,
+ "boolean": null,
+ "n_rows": 37,
+ "head": [
+  {
+   "disease": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q35869"
+   },
+   "item": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q4673059"
+   },
+   "relationType": {
+    "type": "literal",
+    "value": "ліки/терапія"
+   },
+   "diseaseLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "бронхіальна астма"
+   },
+   "itemLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "acefylline"
+   }
+  },
+  {
+   "disease": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q35869"
+   },
+   "item": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q3618576"
+   },
+   "relationType": {
+    "type": "literal",
+    "value": "ліки/терапія"
+   },
+   "diseaseLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "бронхіальна астма"
+   },
+   "itemLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "antiasthmatic"
+   }
+  },
+  {
+   "disease": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q35869"
+   },
+   "item": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q3633651"
+   },
+   "relationType": {
+    "type": "literal",
+    "value": "ліки/терапія"
+   },
+   "diseaseLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "бронхіальна астма"
+   },
+   "itemLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "bambuterol"
+   }
+  },
+  {
+   "disease": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q35869"
+   },
+   "item": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q4918914"
+   },
+   "relationType": {
+    "type": "literal",
+    "value": "ліки/терапія"
+   },
+   "diseaseLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "бронхіальна астма"
+   },
+   "itemLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "bitolterol"
+   }
+  },
+  {
+   "disease": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q35869"
+   },
+   "item": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q416427"
+   },
+   "relationType": {
+    "type": "literal",
+    "value": "ліки/терапія"
+   },
+   "diseaseLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "бронхіальна астма"
+   },
+   "itemLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "cromoglicic acid"
+   }
+  }
+ ],
+ "error": null
+}

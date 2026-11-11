@@ -1,0 +1,11 @@
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?disease ?diseaseLabel ?symptom ?symptomLabel WHERE {
+  VALUES ?disease { wd:Q12153 wd:Q35869 wd:Q181754 }
+  ?disease wdt:P780 ?symptom .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "uk,en". }
+}

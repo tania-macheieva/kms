@@ -1,0 +1,130 @@
+{
+ "name": "Q09",
+ "status": "ok",
+ "seconds": 2.6,
+ "boolean": null,
+ "n_rows": 143,
+ "head": [
+  {
+   "d": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q41861"
+   },
+   "x": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q2889971"
+   },
+   "rel": {
+    "type": "literal",
+    "value": "ліки"
+   },
+   "dLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "артеріальна гіпертензія"
+   },
+   "xLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "benzthiazide"
+   }
+  },
+  {
+   "d": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q41861"
+   },
+   "x": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q3332124"
+   },
+   "rel": {
+    "type": "literal",
+    "value": "ліки"
+   },
+   "dLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "артеріальна гіпертензія"
+   },
+   "xLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "mecamylamine"
+   }
+  },
+  {
+   "d": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q41861"
+   },
+   "x": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q3342150"
+   },
+   "rel": {
+    "type": "literal",
+    "value": "ліки"
+   },
+   "dLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "артеріальна гіпертензія"
+   },
+   "xLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "(RS)-nisoldipine"
+   }
+  },
+  {
+   "d": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q41861"
+   },
+   "x": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q3791957"
+   },
+   "rel": {
+    "type": "literal",
+    "value": "ліки"
+   },
+   "dLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "артеріальна гіпертензія"
+   },
+   "xLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "hydroflumethiazide"
+   }
+  },
+  {
+   "d": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q41861"
+   },
+   "x": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q4747074"
+   },
+   "rel": {
+    "type": "literal",
+    "value": "ліки"
+   },
+   "dLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "артеріальна гіпертензія"
+   },
+   "xLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "amlodipine/benazepril"
+   }
+  }
+ ],
+ "error": null
+}

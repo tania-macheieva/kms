@@ -1,0 +1,844 @@
+{
+ "draft": {
+  "N": 100000,
+  "dups": [
+   [
+    "R16",
+    "R27"
+   ]
+  ],
+  "redundant": [
+   [
+    "R01",
+    "R12"
+   ],
+   [
+    "R08",
+    "R12"
+   ]
+  ],
+  "conflicts": [
+   {
+    "a": "R14",
+    "b": "R16",
+    "attr": "class",
+    "n": 2923,
+    "then_a": "Benign",
+    "then_b": "Pathogenic"
+   },
+   {
+    "a": "R14",
+    "b": "R19",
+    "attr": "class",
+    "n": 3985,
+    "then_a": "Benign",
+    "then_b": "Likely benign"
+   },
+   {
+    "a": "R14",
+    "b": "R27",
+    "attr": "class",
+    "n": 2923,
+    "then_a": "Benign",
+    "then_b": "Pathogenic"
+   },
+   {
+    "a": "R15",
+    "b": "R16",
+    "attr": "class",
+    "n": 1137,
+    "then_a": "Likely pathogenic",
+    "then_b": "Pathogenic"
+   },
+   {
+    "a": "R15",
+    "b": "R17",
+    "attr": "class",
+    "n": 1120,
+    "then_a": "Likely pathogenic",
+    "then_b": "Benign"
+   },
+   {
+    "a": "R15",
+    "b": "R18",
+    "attr": "class",
+    "n": 1512,
+    "then_a": "Likely pathogenic",
+    "then_b": "VUS"
+   },
+   {
+    "a": "R15",
+    "b": "R27",
+    "attr": "class",
+    "n": 1137,
+    "then_a": "Likely pathogenic",
+    "then_b": "Pathogenic"
+   },
+   {
+    "a": "R16",
+    "b": "R18",
+    "attr": "class",
+    "n": 1813,
+    "then_a": "Pathogenic",
+    "then_b": "VUS"
+   },
+   {
+    "a": "R16",
+    "b": "R19",
+    "attr": "class",
+    "n": 1661,
+    "then_a": "Pathogenic",
+    "then_b": "Likely benign"
+   },
+   {
+    "a": "R17",
+    "b": "R18",
+    "attr": "class",
+    "n": 1808,
+    "then_a": "Benign",
+    "then_b": "VUS"
+   },
+   {
+    "a": "R17",
+    "b": "R19",
+    "attr": "class",
+    "n": 1646,
+    "then_a": "Benign",
+    "then_b": "Likely benign"
+   },
+   {
+    "a": "R18",
+    "b": "R27",
+    "attr": "class",
+    "n": 1813,
+    "then_a": "VUS",
+    "then_b": "Pathogenic"
+   },
+   {
+    "a": "R19",
+    "b": "R27",
+    "attr": "class",
+    "n": 1661,
+    "then_a": "Likely benign",
+    "then_b": "Pathogenic"
+   },
+   {
+    "a": "R21",
+    "b": "R23",
+    "attr": "action",
+    "n": 4248,
+    "then_a": "discard",
+    "then_b": "report"
+   },
+   {
+    "a": "R21",
+    "b": "R24",
+    "attr": "action",
+    "n": 4377,
+    "then_a": "discard",
+    "then_b": "report"
+   },
+   {
+    "a": "R21",
+    "b": "R25",
+    "attr": "action",
+    "n": 4282,
+    "then_a": "discard",
+    "then_b": "no_report"
+   },
+   {
+    "a": "R21",
+    "b": "R28",
+    "attr": "action",
+    "n": 8392,
+    "then_a": "discard",
+    "then_b": "list_in_VUS_section"
+   }
+  ],
+  "unreachable": [
+   "R26"
+  ],
+  "unreachable_why": {
+   "R26": "умова еквівалентна/сильніша за QC-FAIL правило R13 → qc завжди FAIL"
+  },
+  "fired_counts": {
+   "R01": 8080,
+   "R02": 10072,
+   "R03": 10058,
+   "R04": 13409,
+   "R05": 10177,
+   "R06": 4532,
+   "R07": 10874,
+   "R08": 7844,
+   "R09": 10118,
+   "R10": 3347,
+   "R11": 3577,
+   "R12": 15924,
+   "R13": 28709,
+   "R14": 11810,
+   "R15": 4377,
+   "R16": 13299,
+   "R17": 13369,
+   "R18": 7180,
+   "R19": 6621,
+   "R20": 53030,
+   "R21": 21299,
+   "R22": 46970,
+   "R23": 9239,
+   "R24": 4377,
+   "R25": 22376,
+   "R26": 0,
+   "R27": 13299,
+   "R28": 17038
+  }
+ },
+ "fixed": {
+  "N": 100000,
+  "dups": [],
+  "redundant": [],
+  "conflicts": [
+   {
+    "a": "R14",
+    "b": "R19",
+    "attr": "class",
+    "n": 2996,
+    "then_a": "Benign",
+    "then_b": "Likely benign"
+   },
+   {
+    "a": "R15",
+    "b": "R16",
+    "attr": "class",
+    "n": 1137,
+    "then_a": "Likely pathogenic",
+    "then_b": "Pathogenic"
+   },
+   {
+    "a": "R15",
+    "b": "R17",
+    "attr": "class",
+    "n": 1120,
+    "then_a": "Likely pathogenic",
+    "then_b": "Benign"
+   },
+   {
+    "a": "R15",
+    "b": "R18",
+    "attr": "class",
+    "n": 1512,
+    "then_a": "Likely pathogenic",
+    "then_b": "VUS"
+   },
+   {
+    "a": "R16",
+    "b": "R18",
+    "attr": "class",
+    "n": 1813,
+    "then_a": "Pathogenic",
+    "then_b": "VUS"
+   },
+   {
+    "a": "R16",
+    "b": "R19",
+    "attr": "class",
+    "n": 1661,
+    "then_a": "Pathogenic",
+    "then_b": "Likely benign"
+   },
+   {
+    "a": "R17",
+    "b": "R18",
+    "attr": "class",
+    "n": 1808,
+    "then_a": "Benign",
+    "then_b": "VUS"
+   },
+   {
+    "a": "R17",
+    "b": "R19",
+    "attr": "class",
+    "n": 1646,
+    "then_a": "Benign",
+    "then_b": "Likely benign"
+   }
+  ],
+  "unreachable": [],
+  "unreachable_why": {},
+  "fired_counts": {
+   "R02": 10072,
+   "R03": 10058,
+   "R04": 13409,
+   "R05": 10177,
+   "R06": 4532,
+   "R07": 10874,
+   "R09": 10118,
+   "R10": 3347,
+   "R11": 3577,
+   "R12": 15924,
+   "R13": 28709,
+   "R14": 8887,
+   "R15": 4377,
+   "R16": 13299,
+   "R17": 13369,
+   "R18": 7180,
+   "R19": 6621,
+   "R20": 53030,
+   "R22": 46970,
+   "R23": 12162,
+   "R24": 4377,
+   "R25": 19453,
+   "R28": 17038
+  }
+ },
+ "tests_before": [
+  {
+   "id": "T1",
+   "desc": "SNP, QD=1.2 (низька якість)",
+   "expected": {
+    "qc": "FAIL",
+    "action": "do_not_report_confirm",
+    "cls": null
+   },
+   "got": {
+    "qc": "FAIL",
+    "cls": null,
+    "action": "do_not_report_confirm"
+   },
+   "ok": true
+  },
+  {
+   "id": "T2",
+   "desc": "Новий LoF-варіант у гені з LoF-механізмом + ClinVar pathogenic",
+   "expected": {
+    "qc": "PASS",
+    "cls": "Pathogenic",
+    "action": "report"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "Likely pathogenic",
+    "action": "discard"
+   },
+   "ok": false
+  },
+  {
+   "id": "T3",
+   "desc": "Поширений (AF=12 %), in silico benign",
+   "expected": {
+    "qc": "PASS",
+    "cls": "Benign",
+    "action": "no_report"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "Benign",
+    "action": "no_report"
+   },
+   "ok": true
+  },
+  {
+   "id": "T4",
+   "desc": "AF=7 %, але курований ClinVar pathogenic (виняток BA1)",
+   "expected": {
+    "qc": "PASS",
+    "cls": "Pathogenic",
+    "action": "report"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "Benign",
+    "action": "no_report"
+   },
+   "ok": false
+  },
+  {
+   "id": "T5",
+   "desc": "Новий варіант, in silico damaging, не LoF, ClinVar немає",
+   "expected": {
+    "qc": "PASS",
+    "cls": "VUS",
+    "action": "list_in_VUS_section"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "VUS",
+    "action": "discard"
+   },
+   "ok": false
+  },
+  {
+   "id": "T6",
+   "desc": "INDEL, FS=250",
+   "expected": {
+    "qc": "FAIL",
+    "action": "do_not_report_confirm",
+    "cls": null
+   },
+   "got": {
+    "qc": "FAIL",
+    "cls": null,
+    "action": "do_not_report_confirm"
+   },
+   "ok": true
+  },
+  {
+   "id": "T7",
+   "desc": "INDEL, FS=100 (для SNP було б FAIL, для INDEL ні)",
+   "expected": {
+    "qc": "PASS",
+    "cls": "VUS",
+    "action": "list_in_VUS_section"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "VUS",
+    "action": "list_in_VUS_section"
+   },
+   "ok": true
+  },
+  {
+   "id": "T8",
+   "desc": "DP=8 при інших чистих метриках",
+   "expected": {
+    "qc": "FAIL",
+    "action": "do_not_report_confirm",
+    "cls": null
+   },
+   "got": {
+    "qc": "FAIL",
+    "cls": null,
+    "action": "do_not_report_confirm"
+   },
+   "ok": true
+  },
+  {
+   "id": "T9",
+   "desc": "ClinVar benign, AF=0.1 %",
+   "expected": {
+    "qc": "PASS",
+    "cls": "Benign",
+    "action": "no_report"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "Benign",
+    "action": "no_report"
+   },
+   "ok": true
+  },
+  {
+   "id": "T10",
+   "desc": "Новий LoF-варіант (LoF-механізм), in silico damaging, ClinVar немає",
+   "expected": {
+    "qc": "PASS",
+    "cls": "Likely pathogenic",
+    "action": "report"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "Likely pathogenic",
+    "action": "discard"
+   },
+   "ok": false
+  }
+ ],
+ "tests_after": [
+  {
+   "id": "T1",
+   "desc": "SNP, QD=1.2 (низька якість)",
+   "expected": {
+    "qc": "FAIL",
+    "action": "do_not_report_confirm",
+    "cls": null
+   },
+   "got": {
+    "qc": "FAIL",
+    "cls": null,
+    "action": "do_not_report_confirm"
+   },
+   "ok": true
+  },
+  {
+   "id": "T2",
+   "desc": "Новий LoF-варіант у гені з LoF-механізмом + ClinVar pathogenic",
+   "expected": {
+    "qc": "PASS",
+    "cls": "Pathogenic",
+    "action": "report"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "Pathogenic",
+    "action": "report"
+   },
+   "ok": true
+  },
+  {
+   "id": "T3",
+   "desc": "Поширений (AF=12 %), in silico benign",
+   "expected": {
+    "qc": "PASS",
+    "cls": "Benign",
+    "action": "no_report"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "Benign",
+    "action": "no_report"
+   },
+   "ok": true
+  },
+  {
+   "id": "T4",
+   "desc": "AF=7 %, але курований ClinVar pathogenic (виняток BA1)",
+   "expected": {
+    "qc": "PASS",
+    "cls": "Pathogenic",
+    "action": "report"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "Pathogenic",
+    "action": "report"
+   },
+   "ok": true
+  },
+  {
+   "id": "T5",
+   "desc": "Новий варіант, in silico damaging, не LoF, ClinVar немає",
+   "expected": {
+    "qc": "PASS",
+    "cls": "VUS",
+    "action": "list_in_VUS_section"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "VUS",
+    "action": "list_in_VUS_section"
+   },
+   "ok": true
+  },
+  {
+   "id": "T6",
+   "desc": "INDEL, FS=250",
+   "expected": {
+    "qc": "FAIL",
+    "action": "do_not_report_confirm",
+    "cls": null
+   },
+   "got": {
+    "qc": "FAIL",
+    "cls": null,
+    "action": "do_not_report_confirm"
+   },
+   "ok": true
+  },
+  {
+   "id": "T7",
+   "desc": "INDEL, FS=100 (для SNP було б FAIL, для INDEL ні)",
+   "expected": {
+    "qc": "PASS",
+    "cls": "VUS",
+    "action": "list_in_VUS_section"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "VUS",
+    "action": "list_in_VUS_section"
+   },
+   "ok": true
+  },
+  {
+   "id": "T8",
+   "desc": "DP=8 при інших чистих метриках",
+   "expected": {
+    "qc": "FAIL",
+    "action": "do_not_report_confirm",
+    "cls": null
+   },
+   "got": {
+    "qc": "FAIL",
+    "cls": null,
+    "action": "do_not_report_confirm"
+   },
+   "ok": true
+  },
+  {
+   "id": "T9",
+   "desc": "ClinVar benign, AF=0.1 %",
+   "expected": {
+    "qc": "PASS",
+    "cls": "Benign",
+    "action": "no_report"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "Benign",
+    "action": "no_report"
+   },
+   "ok": true
+  },
+  {
+   "id": "T10",
+   "desc": "Новий LoF-варіант (LoF-механізм), in silico damaging, ClinVar немає",
+   "expected": {
+    "qc": "PASS",
+    "cls": "Likely pathogenic",
+    "action": "report"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "Likely pathogenic",
+    "action": "report"
+   },
+   "ok": true
+  }
+ ],
+ "tests_fixed_rules_first": [
+  {
+   "id": "T1",
+   "desc": "SNP, QD=1.2 (низька якість)",
+   "expected": {
+    "qc": "FAIL",
+    "action": "do_not_report_confirm",
+    "cls": null
+   },
+   "got": {
+    "qc": "FAIL",
+    "cls": null,
+    "action": "do_not_report_confirm"
+   },
+   "ok": true
+  },
+  {
+   "id": "T2",
+   "desc": "Новий LoF-варіант у гені з LoF-механізмом + ClinVar pathogenic",
+   "expected": {
+    "qc": "PASS",
+    "cls": "Pathogenic",
+    "action": "report"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "Likely pathogenic",
+    "action": "report"
+   },
+   "ok": false
+  },
+  {
+   "id": "T3",
+   "desc": "Поширений (AF=12 %), in silico benign",
+   "expected": {
+    "qc": "PASS",
+    "cls": "Benign",
+    "action": "no_report"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "Benign",
+    "action": "no_report"
+   },
+   "ok": true
+  },
+  {
+   "id": "T4",
+   "desc": "AF=7 %, але курований ClinVar pathogenic (виняток BA1)",
+   "expected": {
+    "qc": "PASS",
+    "cls": "Pathogenic",
+    "action": "report"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "Pathogenic",
+    "action": "report"
+   },
+   "ok": true
+  },
+  {
+   "id": "T5",
+   "desc": "Новий варіант, in silico damaging, не LoF, ClinVar немає",
+   "expected": {
+    "qc": "PASS",
+    "cls": "VUS",
+    "action": "list_in_VUS_section"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "VUS",
+    "action": "list_in_VUS_section"
+   },
+   "ok": true
+  },
+  {
+   "id": "T6",
+   "desc": "INDEL, FS=250",
+   "expected": {
+    "qc": "FAIL",
+    "action": "do_not_report_confirm",
+    "cls": null
+   },
+   "got": {
+    "qc": "FAIL",
+    "cls": null,
+    "action": "do_not_report_confirm"
+   },
+   "ok": true
+  },
+  {
+   "id": "T7",
+   "desc": "INDEL, FS=100 (для SNP було б FAIL, для INDEL ні)",
+   "expected": {
+    "qc": "PASS",
+    "cls": "VUS",
+    "action": "list_in_VUS_section"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "VUS",
+    "action": "list_in_VUS_section"
+   },
+   "ok": true
+  },
+  {
+   "id": "T8",
+   "desc": "DP=8 при інших чистих метриках",
+   "expected": {
+    "qc": "FAIL",
+    "action": "do_not_report_confirm",
+    "cls": null
+   },
+   "got": {
+    "qc": "FAIL",
+    "cls": null,
+    "action": "do_not_report_confirm"
+   },
+   "ok": true
+  },
+  {
+   "id": "T9",
+   "desc": "ClinVar benign, AF=0.1 %",
+   "expected": {
+    "qc": "PASS",
+    "cls": "Benign",
+    "action": "no_report"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "Benign",
+    "action": "no_report"
+   },
+   "ok": true
+  },
+  {
+   "id": "T10",
+   "desc": "Новий LoF-варіант (LoF-механізм), in silico damaging, ClinVar немає",
+   "expected": {
+    "qc": "PASS",
+    "cls": "Likely pathogenic",
+    "action": "report"
+   },
+   "got": {
+    "qc": "PASS",
+    "cls": "Likely pathogenic",
+    "action": "report"
+   },
+   "ok": true
+  }
+ ],
+ "devil": [
+  {
+   "id": "D1",
+   "scenario": "Поширений варіант (AF 7 %) з ClinVar pathogenic: BA1 проти ClinVar",
+   "fired_class": [
+    "R14",
+    "R16",
+    "R20",
+    "R27"
+   ],
+   "fired_action": [
+    "R25"
+   ],
+   "qc": "PASS",
+   "result_first": {
+    "cls": "Benign",
+    "action": "no_report"
+   }
+  },
+  {
+   "id": "D2",
+   "scenario": "Новий LoF + ClinVar pathogenic: Likely pathogenic чи Pathogenic?",
+   "fired_class": [
+    "R15",
+    "R16",
+    "R20",
+    "R27"
+   ],
+   "fired_action": [
+    "R21",
+    "R24"
+   ],
+   "qc": "PASS",
+   "result_first": {
+    "cls": "Likely pathogenic",
+    "action": "discard"
+   }
+  },
+  {
+   "id": "D3",
+   "scenario": "Новий LoF, in silico damaging: LP проти VUS, і «report» проти «discard»",
+   "fired_class": [
+    "R15",
+    "R18",
+    "R20"
+   ],
+   "fired_action": [
+    "R21",
+    "R24"
+   ],
+   "qc": "PASS",
+   "result_first": {
+    "cls": "Likely pathogenic",
+    "action": "discard"
+   }
+  },
+  {
+   "id": "D4",
+   "scenario": "ClinVar pathogenic, AF 2 %, in silico benign: P проти LB",
+   "fired_class": [
+    "R16",
+    "R19",
+    "R20",
+    "R27"
+   ],
+   "fired_action": [
+    "R23"
+   ],
+   "qc": "PASS",
+   "result_first": {
+    "cls": "Pathogenic",
+    "action": "report"
+   }
+  },
+  {
+   "id": "D5",
+   "scenario": "Чистий QC, але DP=8 — чи спрацює правило низької глибини-VUS?",
+   "fired_class": [],
+   "fired_action": [
+    "R22"
+   ],
+   "qc": "FAIL",
+   "result_first": {
+    "cls": null,
+    "action": "do_not_report_confirm"
+   }
+  }
+ ],
+ "n_draft": 28,
+ "n_fixed": 23,
+ "fixed_ties": {
+  "N": 100000,
+  "manual_review": 0,
+  "outcome_differs_from_file_order": 2257
+ }
+}

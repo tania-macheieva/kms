@@ -1,0 +1,55 @@
+Q01	How can I set the number of threads when running GATK Spark in local mode?
+Q02	What software predicts the consequence of a variant, and what does it write into the VCF header?
+Q03	Which GPU-accelerated germline variant caller is available, and what input data types does it accept?
+Q04	In which directory should the target intervals and GC content files go when preparing ASCAT resources for exome sequencing?
+Q05	How do I supply a list of HGNC identifiers to filter_vep?
+Q06	How can I make the proprietary aligner keep its alignment output files?
+Q07	Яким чином можна закріпити конкретну версію пайплайна, щоб результати можна було відтворити?
+Q08	How do I set up a debug run configuration for GATK in IntelliJ?
+Q09	What are the Java and reference genome requirements for Funcotator?
+Q10	Where is the igenomes_base parameter used to point to reference genomes?
+Q11	What is the connection between the newer annotator and the earlier Broad Institute annotation tool?
+Q12	What steps are involved in starting the rare disease workflow, and what should the sample sheet contain?
+Q13	How can an annotation file be used to shift variant positions to the right within transcripts?
+Q14	What do the terms SNP, MNP and indel mean in VCF files?
+Q15	How do I write a custom configuration for a GRCh38 chromosome 21 genome?
+Q16	How can I publish snapshot builds to Sonatype using Gradle?
+Q17	Which vep_cache_version should I use when annotating SNVs in a genome?
+Q18	How does bcftools annotate decide how to merge values?
+Q19	What does the mobile_element_references file do in RetroSeq?
+Q20	Why must each data source folder have its own distinct name?
+Q21	Which command starts the variant calling pipeline in its usual form, and which flags must be provided?
+Q22	How do I provide a set of regions either as single positions or as ranges inside a file?
+Q23	Які колонки мають бути в повній таблиці зразків, коли запуск починається з етапу variant_calling?
+Q24	How do I enable use_gatk_spark when running MarkDuplicatesSpark?
+Q25	What is cohort_entity_id used for in the germline cohort workflow?
+Q26	What method lets me verify that samples belong to the same individual and detect sample swaps?
+Q27	How do duplicate reads originating from one original DNA fragment skew allele calling?
+Q28	What developer-oriented script checks replicate consistency, and where are its suggested default settings listed?
+Q29	Яким чином DeepVariant знаходить варіанти і що з ними відбувається після виклику?
+Q30	How can the commercial duplicate marking tool be configured to write CRAM output rather than BAM?
+Q31	How can I use zcat to locate variants with HIGH impact?
+Q32	How do I execute the tests within a container image I have already downloaded?
+Q33	How can a container image be built in the cloud rather than locally, and what tag does it get?
+Q34	How do I turn on bash tab completion for GATK?
+Q35	Why are the filter settings often adjusted when working with a very small tutorial dataset?
+Q36	Is the VCF output format identical between the newer and the older annotation tools?
+Q37	What follows variant calling differently in small clinical studies compared with large population studies?
+Q38	What tool can annotate a VCF with fields from other VCFs according to a config file?
+Q39	Як позначається вставка нуклеотидів у транскрипті за правилами HGVS?
+Q40	What does the min_clipped_read_length setting do in PathSeq?
+Q41	What term describes a variant inside a coding sequence that leaves the encoded protein unaltered?
+Q42	Який саме запит застосовує property path, щоб знайти родичів Олени?
+Q43	Через що під час порівняння властивостей із чернеткою LLM однакові властивості можуть сприйматися як різні?
+Q44	Яку базу даних застосовано для SPARQL-запитів і яким способом фіксували тривалість?
+Q45	При якому значенні QD SNP-варіант позначається як LowQD?
+Q46	Which MD5 hash belongs to the human_g1k_v37 reference, and how is the unplaced contig GL000222.1 named in hg19?
+Q47	In a small clinical case, which gene contained the stop-gained variant that was compared across versions of the constraint database?
+Q48	Which per-sample FORMAT fields does bcftools call output, and how does calling a plugin differ from running a standard bcftools command?
+Q49	Which interval list formats are required by the raredisease pipeline for whole-genome and chrY quality control, and how can I supply additional arguments to a tool that is not exposed by default?
+Q50	How can I fetch the large test files managed by git-lfs, and why does building GATK require a complete git clone?
+Q51	Can Gencode annotation be skipped in Funcotator, and how is a data source value handled when an override annotation is given for the same field?
+Q52	When is it appropriate to turn off base quality score recalibration in Sarek, and which Control-FREEC file contains beta allele frequencies?
+Q53	What is the name of the Mutect2 WDL input for the tumor BAM in the single-pair workflow, and which sequencing source values are accepted in the multi-sample workflow?
+Q54	What path holds the GATK jar within the GATK4 Docker image, and what script performs the remote Google Cloud Build of that image?
+Q55	What programs handle quality control and read trimming in Sarek, and which DOI should be cited for a particular pipeline release?

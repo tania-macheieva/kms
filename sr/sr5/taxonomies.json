@@ -1,0 +1,1857 @@
+{
+ "manual": {
+  "scheme": "manual",
+  "nodes": [
+   {
+    "id": "manual:L1:CDS",
+    "label": "CDS",
+    "broader": null
+   },
+   {
+    "id": "manual:L1:UTR",
+    "label": "UTR",
+    "broader": null
+   },
+   {
+    "id": "manual:L1:Інтрони й екзони",
+    "label": "Інтрони й екзони",
+    "broader": null
+   },
+   {
+    "id": "manual:L1:Інше",
+    "label": "Інше",
+    "broader": null
+   },
+   {
+    "id": "manual:L1:Некодувальні РНК",
+    "label": "Некодувальні РНК",
+    "broader": null
+   },
+   {
+    "id": "manual:L1:Неповні транскрипти",
+    "label": "Неповні транскрипти",
+    "broader": null
+   },
+   {
+    "id": "manual:L1:Сплайсинг",
+    "label": "Сплайсинг",
+    "broader": null
+   },
+   {
+    "id": "manual:L2:UTR: 3'",
+    "label": "UTR: 3'",
+    "broader": "manual:L1:UTR"
+   },
+   {
+    "id": "manual:L2:UTR: 5' структура",
+    "label": "UTR: 5' структура",
+    "broader": "manual:L1:UTR"
+   },
+   {
+    "id": "manual:L2:UTR: 5' передчасний старт",
+    "label": "UTR: 5' передчасний старт",
+    "broader": "manual:L1:UTR"
+   },
+   {
+    "id": "manual:L2:UTR: 5' uORF",
+    "label": "UTR: 5' uORF",
+    "broader": "manual:L1:UTR"
+   },
+   {
+    "id": "manual:L2:Інше",
+    "label": "Інше",
+    "broader": "manual:L1:Інше"
+   },
+   {
+    "id": "manual:L2:UTR: загальне",
+    "label": "UTR: загальне",
+    "broader": "manual:L1:UTR"
+   },
+   {
+    "id": "manual:L2:CDS: зміна амінокислоти",
+    "label": "CDS: зміна амінокислоти",
+    "broader": "manual:L1:CDS"
+   },
+   {
+    "id": "manual:L2:Інтрони й екзони: інтрони",
+    "label": "Інтрони й екзони: інтрони",
+    "broader": "manual:L1:Інтрони й екзони"
+   },
+   {
+    "id": "manual:L2:Некодувальні РНК",
+    "label": "Некодувальні РНК",
+    "broader": "manual:L1:Некодувальні РНК"
+   },
+   {
+    "id": "manual:L2:CDS: інфрейм-індели",
+    "label": "CDS: інфрейм-індели",
+    "broader": "manual:L1:CDS"
+   },
+   {
+    "id": "manual:L2:Сплайсинг: нові сайти й екзони",
+    "label": "Сплайсинг: нові сайти й екзони",
+    "broader": "manual:L1:Сплайсинг"
+   },
+   {
+    "id": "manual:L2:Інтрони й екзони: екзони",
+    "label": "Інтрони й екзони: екзони",
+    "broader": "manual:L1:Інтрони й екзони"
+   },
+   {
+    "id": "manual:L2:Сплайсинг: прилеглі регіони",
+    "label": "Сплайсинг: прилеглі регіони",
+    "broader": "manual:L1:Сплайсинг"
+   },
+   {
+    "id": "manual:L2:CDS: зсув рамки",
+    "label": "CDS: зсув рамки",
+    "broader": "manual:L1:CDS"
+   },
+   {
+    "id": "manual:L2:CDS: старт/стоп-кодон",
+    "label": "CDS: старт/стоп-кодон",
+    "broader": "manual:L1:CDS"
+   },
+   {
+    "id": "manual:L2:Неповні транскрипти",
+    "label": "Неповні транскрипти",
+    "broader": "manual:L1:Неповні транскрипти"
+   },
+   {
+    "id": "manual:L2:Сплайсинг: канонічні сайти",
+    "label": "Сплайсинг: канонічні сайти",
+    "broader": "manual:L1:Сплайсинг"
+   },
+   {
+    "id": "manual:L2:CDS: без зміни білка",
+    "label": "CDS: без зміни білка",
+    "broader": "manual:L1:CDS"
+   },
+   {
+    "id": "SO:0002016",
+    "label": "3_prime_UTR_elongation",
+    "broader": "manual:L2:UTR: 3'"
+   },
+   {
+    "id": "SO:0002089",
+    "label": "3_prime_UTR_exon_variant",
+    "broader": "manual:L2:UTR: 3'"
+   },
+   {
+    "id": "SO:0002090",
+    "label": "3_prime_UTR_intron_variant",
+    "broader": "manual:L2:UTR: 3'"
+   },
+   {
+    "id": "SO:0002015",
+    "label": "3_prime_UTR_truncation",
+    "broader": "manual:L2:UTR: 3'"
+   },
+   {
+    "id": "SO:0001624",
+    "label": "3_prime_UTR_variant",
+    "broader": "manual:L2:UTR: 3'"
+   },
+   {
+    "id": "SO:0002014",
+    "label": "5_prime_UTR_elongation",
+    "broader": "manual:L2:UTR: 5' структура"
+   },
+   {
+    "id": "SO:0002092",
+    "label": "5_prime_UTR_exon_variant",
+    "broader": "manual:L2:UTR: 5' структура"
+   },
+   {
+    "id": "SO:0002091",
+    "label": "5_prime_UTR_intron_variant",
+    "broader": "manual:L2:UTR: 5' структура"
+   },
+   {
+    "id": "SO:0001988",
+    "label": "5_prime_UTR_premature_start_codon_gain_variant",
+    "broader": "manual:L2:UTR: 5' передчасний старт"
+   },
+   {
+    "id": "SO:0001989",
+    "label": "5_prime_UTR_premature_start_codon_loss_variant",
+    "broader": "manual:L2:UTR: 5' передчасний старт"
+   },
+   {
+    "id": "SO:0001983",
+    "label": "5_prime_UTR_premature_start_codon_variant",
+    "broader": "manual:L2:UTR: 5' передчасний старт"
+   },
+   {
+    "id": "SO:0002013",
+    "label": "5_prime_UTR_truncation",
+    "broader": "manual:L2:UTR: 5' структура"
+   },
+   {
+    "id": "SO:0002387",
+    "label": "5_prime_UTR_uORF_frameshift_variant",
+    "broader": "manual:L2:UTR: 5' uORF"
+   },
+   {
+    "id": "SO:0002388",
+    "label": "5_prime_UTR_uORF_stop_codon_gain_variant",
+    "broader": "manual:L2:UTR: 5' uORF"
+   },
+   {
+    "id": "SO:0002389",
+    "label": "5_prime_UTR_uORF_stop_codon_loss_variant",
+    "broader": "manual:L2:UTR: 5' uORF"
+   },
+   {
+    "id": "SO:0002386",
+    "label": "5_prime_UTR_uORF_stop_codon_variant",
+    "broader": "manual:L2:UTR: 5' uORF"
+   },
+   {
+    "id": "SO:0002385",
+    "label": "5_prime_UTR_uORF_variant",
+    "broader": "manual:L2:UTR: 5' uORF"
+   },
+   {
+    "id": "SO:0001623",
+    "label": "5_prime_UTR_variant",
+    "broader": "manual:L2:UTR: 5' структура"
+   },
+   {
+    "id": "SO:0001621",
+    "label": "NMD_transcript_variant",
+    "broader": "manual:L2:Інше"
+   },
+   {
+    "id": "SO:0001622",
+    "label": "UTR_variant",
+    "broader": "manual:L2:UTR: загальне"
+   },
+   {
+    "id": "SO:0001580",
+    "label": "coding_sequence_variant",
+    "broader": "manual:L2:CDS: зміна амінокислоти"
+   },
+   {
+    "id": "SO:0001969",
+    "label": "coding_transcript_intron_variant",
+    "broader": "manual:L2:Інтрони й екзони: інтрони"
+   },
+   {
+    "id": "SO:0001968",
+    "label": "coding_transcript_variant",
+    "broader": "manual:L2:Інше"
+   },
+   {
+    "id": "SO:0001597",
+    "label": "compensatory_transcript_secondary_structure_variant",
+    "broader": "manual:L2:Некодувальні РНК"
+   },
+   {
+    "id": "SO:0001577",
+    "label": "complex_transcript_variant",
+    "broader": "manual:L2:Інше"
+   },
+   {
+    "id": "SO:0001825",
+    "label": "conservative_inframe_deletion",
+    "broader": "manual:L2:CDS: інфрейм-індели"
+   },
+   {
+    "id": "SO:0001823",
+    "label": "conservative_inframe_insertion",
+    "broader": "manual:L2:CDS: інфрейм-індели"
+   },
+   {
+    "id": "SO:0001585",
+    "label": "conservative_missense_variant",
+    "broader": "manual:L2:CDS: зміна амінокислоти"
+   },
+   {
+    "id": "SO:0002018",
+    "label": "conserved_intron_variant",
+    "broader": "manual:L2:Інтрони й екзони: інтрони"
+   },
+   {
+    "id": "SO:0001570",
+    "label": "cryptic_splice_acceptor",
+    "broader": "manual:L2:Сплайсинг: нові сайти й екзони"
+   },
+   {
+    "id": "SO:0001571",
+    "label": "cryptic_splice_donor",
+    "broader": "manual:L2:Сплайсинг: нові сайти й екзони"
+   },
+   {
+    "id": "SO:0001569",
+    "label": "cryptic_splice_site_variant",
+    "broader": "manual:L2:Сплайсинг: нові сайти й екзони"
+   },
+   {
+    "id": "SO:0001826",
+    "label": "disruptive_inframe_deletion",
+    "broader": "manual:L2:CDS: інфрейм-індели"
+   },
+   {
+    "id": "SO:0001824",
+    "label": "disruptive_inframe_insertion",
+    "broader": "manual:L2:CDS: інфрейм-індели"
+   },
+   {
+    "id": "SO:0001572",
+    "label": "exon_loss_variant",
+    "broader": "manual:L2:Сплайсинг: нові сайти й екзони"
+   },
+   {
+    "id": "SO:0001791",
+    "label": "exon_variant",
+    "broader": "manual:L2:Інтрони й екзони: екзони"
+   },
+   {
+    "id": "SO:0002084",
+    "label": "exonic_splice_region_variant",
+    "broader": "manual:L2:Сплайсинг: прилеглі регіони"
+   },
+   {
+    "id": "SO:0001995",
+    "label": "extended_intronic_splice_region_variant",
+    "broader": "manual:L2:Сплайсинг: прилеглі регіони"
+   },
+   {
+    "id": "SO:0001990",
+    "label": "five_prime_UTR_premature_start_codon_location_variant",
+    "broader": "manual:L2:UTR: 5' передчасний старт"
+   },
+   {
+    "id": "SO:0002245",
+    "label": "five_prime_duplicated_transcript",
+    "broader": "manual:L2:Інше"
+   },
+   {
+    "id": "SO:0001591",
+    "label": "frame_restoring_variant",
+    "broader": "manual:L2:CDS: зсув рамки"
+   },
+   {
+    "id": "SO:0001909",
+    "label": "frameshift_elongation",
+    "broader": "manual:L2:CDS: зсув рамки"
+   },
+   {
+    "id": "SO:0001910",
+    "label": "frameshift_truncation",
+    "broader": "manual:L2:CDS: зсув рамки"
+   },
+   {
+    "id": "SO:0001589",
+    "label": "frameshift_variant",
+    "broader": "manual:L2:CDS: зсув рамки"
+   },
+   {
+    "id": "SO:0002324",
+    "label": "frameshift_variant_NMD_escaping",
+    "broader": "manual:L2:CDS: зсув рамки"
+   },
+   {
+    "id": "SO:0002323",
+    "label": "frameshift_variant_NMD_triggering",
+    "broader": "manual:L2:CDS: зсув рамки"
+   },
+   {
+    "id": "SO:0001626",
+    "label": "incomplete_terminal_codon_variant",
+    "broader": "manual:L2:CDS: старт/стоп-кодон"
+   },
+   {
+    "id": "SO:0002076",
+    "label": "incomplete_transcript_3UTR_variant",
+    "broader": "manual:L2:Неповні транскрипти"
+   },
+   {
+    "id": "SO:0002077",
+    "label": "incomplete_transcript_5UTR_variant",
+    "broader": "manual:L2:Неповні транскрипти"
+   },
+   {
+    "id": "SO:0002081",
+    "label": "incomplete_transcript_CDS",
+    "broader": "manual:L2:Неповні транскрипти"
+   },
+   {
+    "id": "SO:0002082",
+    "label": "incomplete_transcript_coding_splice_variant",
+    "broader": "manual:L2:Неповні транскрипти"
+   },
+   {
+    "id": "SO:0002080",
+    "label": "incomplete_transcript_exonic_variant",
+    "broader": "manual:L2:Неповні транскрипти"
+   },
+   {
+    "id": "SO:0002078",
+    "label": "incomplete_transcript_intronic_variant",
+    "broader": "manual:L2:Неповні транскрипти"
+   },
+   {
+    "id": "SO:0002079",
+    "label": "incomplete_transcript_splice_region_variant",
+    "broader": "manual:L2:Неповні транскрипти"
+   },
+   {
+    "id": "SO:0002075",
+    "label": "incomplete_transcript_variant",
+    "broader": "manual:L2:Неповні транскрипти"
+   },
+   {
+    "id": "SO:0001822",
+    "label": "inframe_deletion",
+    "broader": "manual:L2:CDS: інфрейм-індели"
+   },
+   {
+    "id": "SO:0001820",
+    "label": "inframe_indel",
+    "broader": "manual:L2:CDS: інфрейм-індели"
+   },
+   {
+    "id": "SO:0001821",
+    "label": "inframe_insertion",
+    "broader": "manual:L2:CDS: інфрейм-індели"
+   },
+   {
+    "id": "SO:0001650",
+    "label": "inframe_variant",
+    "broader": "manual:L2:CDS: інфрейм-індели"
+   },
+   {
+    "id": "SO:0001582",
+    "label": "initiator_codon_variant",
+    "broader": "manual:L2:CDS: старт/стоп-кодон"
+   },
+   {
+    "id": "SO:0002011",
+    "label": "intragenic_variant",
+    "broader": "manual:L2:Інше"
+   },
+   {
+    "id": "SO:0001573",
+    "label": "intron_gain_variant",
+    "broader": "manual:L2:Сплайсинг: нові сайти й екзони"
+   },
+   {
+    "id": "SO:0001627",
+    "label": "intron_variant",
+    "broader": "manual:L2:Інтрони й екзони: інтрони"
+   },
+   {
+    "id": "SO:0001620",
+    "label": "mature_miRNA_variant",
+    "broader": "manual:L2:Некодувальні РНК"
+   },
+   {
+    "id": "SO:0001592",
+    "label": "minus_1_frameshift_variant",
+    "broader": "manual:L2:CDS: зсув рамки"
+   },
+   {
+    "id": "SO:0001593",
+    "label": "minus_2_frameshift_variant",
+    "broader": "manual:L2:CDS: зсув рамки"
+   },
+   {
+    "id": "SO:0001583",
+    "label": "missense_variant",
+    "broader": "manual:L2:CDS: зміна амінокислоти"
+   },
+   {
+    "id": "SO:0001792",
+    "label": "non_coding_transcript_exon_variant",
+    "broader": "manual:L2:Інтрони й екзони: екзони"
+   },
+   {
+    "id": "SO:0001970",
+    "label": "non_coding_transcript_intron_variant",
+    "broader": "manual:L2:Інтрони й екзони: інтрони"
+   },
+   {
+    "id": "SO:0002088",
+    "label": "non_coding_transcript_splice_region_variant",
+    "broader": "manual:L2:Сплайсинг: прилеглі регіони"
+   },
+   {
+    "id": "SO:0001619",
+    "label": "non_coding_transcript_variant",
+    "broader": "manual:L2:Некодувальні РНК"
+   },
+   {
+    "id": "SO:0001586",
+    "label": "non_conservative_missense_variant",
+    "broader": "manual:L2:CDS: зміна амінокислоти"
+   },
+   {
+    "id": "SO:0001992",
+    "label": "nonsynonymous_variant",
+    "broader": "manual:L2:CDS: зміна амінокислоти"
+   },
+   {
+    "id": "SO:0002244",
+    "label": "partially_duplicated_transcript",
+    "broader": "manual:L2:Інше"
+   },
+   {
+    "id": "SO:0001594",
+    "label": "plus_1_frameshift_variant",
+    "broader": "manual:L2:CDS: зсув рамки"
+   },
+   {
+    "id": "SO:0001595",
+    "label": "plus_2_frameshift_variant",
+    "broader": "manual:L2:CDS: зсув рамки"
+   },
+   {
+    "id": "SO:0001818",
+    "label": "protein_altering_variant",
+    "broader": "manual:L2:CDS: зміна амінокислоти"
+   },
+   {
+    "id": "SO:0002390",
+    "label": "pseudoexon_variant",
+    "broader": "manual:L2:Сплайсинг: нові сайти й екзони"
+   },
+   {
+    "id": "SO:0002010",
+    "label": "pyrrolysine_loss",
+    "broader": "manual:L2:CDS: зміна амінокислоти"
+   },
+   {
+    "id": "SO:0002008",
+    "label": "rare_amino_acid_variant",
+    "broader": "manual:L2:CDS: зміна амінокислоти"
+   },
+   {
+    "id": "SO:0002214",
+    "label": "redundant_inserted_stop_gained",
+    "broader": "manual:L2:CDS: старт/стоп-кодон"
+   },
+   {
+    "id": "SO:0002398",
+    "label": "selenocysteine_gain",
+    "broader": "manual:L2:CDS: зміна амінокислоти"
+   },
+   {
+    "id": "SO:0002009",
+    "label": "selenocysteine_loss",
+    "broader": "manual:L2:CDS: зміна амінокислоти"
+   },
+   {
+    "id": "SO:0001574",
+    "label": "splice_acceptor_variant",
+    "broader": "manual:L2:Сплайсинг: канонічні сайти"
+   },
+   {
+    "id": "SO:0002328",
+    "label": "splice_acceptor_variant_NMD_escaping",
+    "broader": "manual:L2:Сплайсинг: канонічні сайти"
+   },
+   {
+    "id": "SO:0002327",
+    "label": "splice_acceptor_variant_NMD_triggering",
+    "broader": "manual:L2:Сплайсинг: канонічні сайти"
+   },
+   {
+    "id": "SO:0001787",
+    "label": "splice_donor_5th_base_variant",
+    "broader": "manual:L2:Сплайсинг: прилеглі регіони"
+   },
+   {
+    "id": "SO:0002170",
+    "label": "splice_donor_region_variant",
+    "broader": "manual:L2:Сплайсинг: прилеглі регіони"
+   },
+   {
+    "id": "SO:0001575",
+    "label": "splice_donor_variant",
+    "broader": "manual:L2:Сплайсинг: канонічні сайти"
+   },
+   {
+    "id": "SO:0002326",
+    "label": "splice_donor_variant_NMD_escaping",
+    "broader": "manual:L2:Сплайсинг: канонічні сайти"
+   },
+   {
+    "id": "SO:0002325",
+    "label": "splice_donor_variant_NMD_triggering",
+    "broader": "manual:L2:Сплайсинг: канонічні сайти"
+   },
+   {
+    "id": "SO:0002169",
+    "label": "splice_polypyrimidine_tract_variant",
+    "broader": "manual:L2:Сплайсинг: прилеглі регіони"
+   },
+   {
+    "id": "SO:0001630",
+    "label": "splice_region_variant",
+    "broader": "manual:L2:Сплайсинг: прилеглі регіони"
+   },
+   {
+    "id": "SO:0001629",
+    "label": "splice_site_variant",
+    "broader": "manual:L2:Сплайсинг: канонічні сайти"
+   },
+   {
+    "id": "SO:0001568",
+    "label": "splicing_variant",
+    "broader": "manual:L2:Сплайсинг: нові сайти й екзони"
+   },
+   {
+    "id": "SO:0002012",
+    "label": "start_lost",
+    "broader": "manual:L2:CDS: старт/стоп-кодон"
+   },
+   {
+    "id": "SO:0002019",
+    "label": "start_retained_variant",
+    "broader": "manual:L2:CDS: без зміни білка"
+   },
+   {
+    "id": "SO:0001587",
+    "label": "stop_gained",
+    "broader": "manual:L2:CDS: старт/стоп-кодон"
+   },
+   {
+    "id": "SO:0002322",
+    "label": "stop_gained_NMD_escaping",
+    "broader": "manual:L2:CDS: старт/стоп-кодон"
+   },
+   {
+    "id": "SO:0002321",
+    "label": "stop_gained_NMD_triggering",
+    "broader": "manual:L2:CDS: старт/стоп-кодон"
+   },
+   {
+    "id": "SO:0001578",
+    "label": "stop_lost",
+    "broader": "manual:L2:CDS: старт/стоп-кодон"
+   },
+   {
+    "id": "SO:0001567",
+    "label": "stop_retained_variant",
+    "broader": "manual:L2:CDS: без зміни білка"
+   },
+   {
+    "id": "SO:0001819",
+    "label": "synonymous_variant",
+    "broader": "manual:L2:CDS: без зміни білка"
+   },
+   {
+    "id": "SO:0001590",
+    "label": "terminator_codon_variant",
+    "broader": "manual:L2:CDS: старт/стоп-кодон"
+   },
+   {
+    "id": "SO:0002246",
+    "label": "three_prime_duplicated_transcript",
+    "broader": "manual:L2:Інше"
+   },
+   {
+    "id": "SO:0001596",
+    "label": "transcript_secondary_structure_variant",
+    "broader": "manual:L2:Некодувальні РНК"
+   }
+  ]
+ },
+ "cluster": {
+  "scheme": "cluster",
+  "nodes": [
+   {
+    "id": "cluster:L1:C1",
+    "label": "C1 [utr, prime, 5]",
+    "broader": null
+   },
+   {
+    "id": "cluster:L1:C2",
+    "label": "C2 [nmd, decay, mediated]",
+    "broader": null
+   },
+   {
+    "id": "cluster:L1:C3",
+    "label": "C3 [incomplete, transcript, intersects]",
+    "broader": null
+   },
+   {
+    "id": "cluster:L1:C4",
+    "label": "C4 [codon, least, one]",
+    "broader": null
+   },
+   {
+    "id": "cluster:L1:C5",
+    "label": "C5 [frameshift, frame, translational]",
+    "broader": null
+   },
+   {
+    "id": "cluster:L1:C6",
+    "label": "C6 [splice, region, site]",
+    "broader": null
+   },
+   {
+    "id": "cluster:L1:C7",
+    "label": "C7 [coding, transcript, inframe]",
+    "broader": null
+   },
+   {
+    "id": "cluster:L2:C1.1",
+    "label": "C1.1 [utr, prime, 3]",
+    "broader": "cluster:L1:C1"
+   },
+   {
+    "id": "cluster:L2:C1.3",
+    "label": "C1.3 [premature, start, utr]",
+    "broader": "cluster:L1:C1"
+   },
+   {
+    "id": "cluster:L2:C5.8",
+    "label": "C5.8 [frameshift, frame, translational]",
+    "broader": "cluster:L1:C5"
+   },
+   {
+    "id": "cluster:L2:C1.2",
+    "label": "C1.2 [uorf, utr, 5]",
+    "broader": "cluster:L1:C1"
+   },
+   {
+    "id": "cluster:L2:C2.4",
+    "label": "C2.4 [nmd, decay, mediated]",
+    "broader": "cluster:L1:C2"
+   },
+   {
+    "id": "cluster:L2:C7.18",
+    "label": "C7.18 [exon, transcript, located]",
+    "broader": "cluster:L1:C7"
+   },
+   {
+    "id": "cluster:L2:C7.16",
+    "label": "C7.16 [coding, non, transcript]",
+    "broader": "cluster:L1:C7"
+   },
+   {
+    "id": "cluster:L2:C7.14",
+    "label": "C7.14 [intron, occurring, transcript]",
+    "broader": "cluster:L1:C7"
+   },
+   {
+    "id": "cluster:L2:C7.17",
+    "label": "C7.17 [secondary, structure, compensatory]",
+    "broader": "cluster:L1:C7"
+   },
+   {
+    "id": "cluster:L2:C7.12",
+    "label": "C7.12 [inframe, insertion, deletion]",
+    "broader": "cluster:L1:C7"
+   },
+   {
+    "id": "cluster:L2:C4.7",
+    "label": "C4.7 [amino, acid, resulting]",
+    "broader": "cluster:L1:C4"
+   },
+   {
+    "id": "cluster:L2:C6.9",
+    "label": "C6.9 [cryptic, new, splice]",
+    "broader": "cluster:L1:C6"
+   },
+   {
+    "id": "cluster:L2:C6.10",
+    "label": "C6.10 [region, splice, bases]",
+    "broader": "cluster:L1:C6"
+   },
+   {
+    "id": "cluster:L2:C7.13",
+    "label": "C7.13 [duplicated, partially, transcript]",
+    "broader": "cluster:L1:C7"
+   },
+   {
+    "id": "cluster:L2:C4.6",
+    "label": "C4.6 [codon, least, stop]",
+    "broader": "cluster:L1:C4"
+   },
+   {
+    "id": "cluster:L2:C3.5",
+    "label": "C3.5 [incomplete, transcript, intersects]",
+    "broader": "cluster:L1:C3"
+   },
+   {
+    "id": "cluster:L2:C7.15",
+    "label": "C7.15 [protein, altering, nonsynonymous]",
+    "broader": "cluster:L1:C7"
+   },
+   {
+    "id": "cluster:L2:C6.11",
+    "label": "C6.11 [splice, donor, intron]",
+    "broader": "cluster:L1:C6"
+   },
+   {
+    "id": "SO:0002016",
+    "label": "3_prime_UTR_elongation",
+    "broader": "cluster:L2:C1.1"
+   },
+   {
+    "id": "SO:0002089",
+    "label": "3_prime_UTR_exon_variant",
+    "broader": "cluster:L2:C1.1"
+   },
+   {
+    "id": "SO:0002090",
+    "label": "3_prime_UTR_intron_variant",
+    "broader": "cluster:L2:C1.1"
+   },
+   {
+    "id": "SO:0002015",
+    "label": "3_prime_UTR_truncation",
+    "broader": "cluster:L2:C1.1"
+   },
+   {
+    "id": "SO:0001624",
+    "label": "3_prime_UTR_variant",
+    "broader": "cluster:L2:C1.1"
+   },
+   {
+    "id": "SO:0002014",
+    "label": "5_prime_UTR_elongation",
+    "broader": "cluster:L2:C1.1"
+   },
+   {
+    "id": "SO:0002092",
+    "label": "5_prime_UTR_exon_variant",
+    "broader": "cluster:L2:C1.1"
+   },
+   {
+    "id": "SO:0002091",
+    "label": "5_prime_UTR_intron_variant",
+    "broader": "cluster:L2:C1.1"
+   },
+   {
+    "id": "SO:0001988",
+    "label": "5_prime_UTR_premature_start_codon_gain_variant",
+    "broader": "cluster:L2:C1.3"
+   },
+   {
+    "id": "SO:0001989",
+    "label": "5_prime_UTR_premature_start_codon_loss_variant",
+    "broader": "cluster:L2:C1.3"
+   },
+   {
+    "id": "SO:0001983",
+    "label": "5_prime_UTR_premature_start_codon_variant",
+    "broader": "cluster:L2:C1.3"
+   },
+   {
+    "id": "SO:0002013",
+    "label": "5_prime_UTR_truncation",
+    "broader": "cluster:L2:C1.1"
+   },
+   {
+    "id": "SO:0002387",
+    "label": "5_prime_UTR_uORF_frameshift_variant",
+    "broader": "cluster:L2:C5.8"
+   },
+   {
+    "id": "SO:0002388",
+    "label": "5_prime_UTR_uORF_stop_codon_gain_variant",
+    "broader": "cluster:L2:C1.2"
+   },
+   {
+    "id": "SO:0002389",
+    "label": "5_prime_UTR_uORF_stop_codon_loss_variant",
+    "broader": "cluster:L2:C1.2"
+   },
+   {
+    "id": "SO:0002386",
+    "label": "5_prime_UTR_uORF_stop_codon_variant",
+    "broader": "cluster:L2:C1.2"
+   },
+   {
+    "id": "SO:0002385",
+    "label": "5_prime_UTR_uORF_variant",
+    "broader": "cluster:L2:C1.2"
+   },
+   {
+    "id": "SO:0001623",
+    "label": "5_prime_UTR_variant",
+    "broader": "cluster:L2:C1.1"
+   },
+   {
+    "id": "SO:0001621",
+    "label": "NMD_transcript_variant",
+    "broader": "cluster:L2:C2.4"
+   },
+   {
+    "id": "SO:0001622",
+    "label": "UTR_variant",
+    "broader": "cluster:L2:C7.18"
+   },
+   {
+    "id": "SO:0001580",
+    "label": "coding_sequence_variant",
+    "broader": "cluster:L2:C7.16"
+   },
+   {
+    "id": "SO:0001969",
+    "label": "coding_transcript_intron_variant",
+    "broader": "cluster:L2:C7.14"
+   },
+   {
+    "id": "SO:0001968",
+    "label": "coding_transcript_variant",
+    "broader": "cluster:L2:C7.16"
+   },
+   {
+    "id": "SO:0001597",
+    "label": "compensatory_transcript_secondary_structure_variant",
+    "broader": "cluster:L2:C7.17"
+   },
+   {
+    "id": "SO:0001577",
+    "label": "complex_transcript_variant",
+    "broader": "cluster:L2:C7.18"
+   },
+   {
+    "id": "SO:0001825",
+    "label": "conservative_inframe_deletion",
+    "broader": "cluster:L2:C7.12"
+   },
+   {
+    "id": "SO:0001823",
+    "label": "conservative_inframe_insertion",
+    "broader": "cluster:L2:C7.12"
+   },
+   {
+    "id": "SO:0001585",
+    "label": "conservative_missense_variant",
+    "broader": "cluster:L2:C4.7"
+   },
+   {
+    "id": "SO:0002018",
+    "label": "conserved_intron_variant",
+    "broader": "cluster:L2:C7.14"
+   },
+   {
+    "id": "SO:0001570",
+    "label": "cryptic_splice_acceptor",
+    "broader": "cluster:L2:C6.9"
+   },
+   {
+    "id": "SO:0001571",
+    "label": "cryptic_splice_donor",
+    "broader": "cluster:L2:C6.9"
+   },
+   {
+    "id": "SO:0001569",
+    "label": "cryptic_splice_site_variant",
+    "broader": "cluster:L2:C6.9"
+   },
+   {
+    "id": "SO:0001826",
+    "label": "disruptive_inframe_deletion",
+    "broader": "cluster:L2:C7.12"
+   },
+   {
+    "id": "SO:0001824",
+    "label": "disruptive_inframe_insertion",
+    "broader": "cluster:L2:C7.12"
+   },
+   {
+    "id": "SO:0001572",
+    "label": "exon_loss_variant",
+    "broader": "cluster:L2:C7.18"
+   },
+   {
+    "id": "SO:0001791",
+    "label": "exon_variant",
+    "broader": "cluster:L2:C7.18"
+   },
+   {
+    "id": "SO:0002084",
+    "label": "exonic_splice_region_variant",
+    "broader": "cluster:L2:C6.10"
+   },
+   {
+    "id": "SO:0001995",
+    "label": "extended_intronic_splice_region_variant",
+    "broader": "cluster:L2:C6.10"
+   },
+   {
+    "id": "SO:0001990",
+    "label": "five_prime_UTR_premature_start_codon_location_variant",
+    "broader": "cluster:L2:C1.3"
+   },
+   {
+    "id": "SO:0002245",
+    "label": "five_prime_duplicated_transcript",
+    "broader": "cluster:L2:C7.13"
+   },
+   {
+    "id": "SO:0001591",
+    "label": "frame_restoring_variant",
+    "broader": "cluster:L2:C5.8"
+   },
+   {
+    "id": "SO:0001909",
+    "label": "frameshift_elongation",
+    "broader": "cluster:L2:C5.8"
+   },
+   {
+    "id": "SO:0001910",
+    "label": "frameshift_truncation",
+    "broader": "cluster:L2:C5.8"
+   },
+   {
+    "id": "SO:0001589",
+    "label": "frameshift_variant",
+    "broader": "cluster:L2:C5.8"
+   },
+   {
+    "id": "SO:0002324",
+    "label": "frameshift_variant_NMD_escaping",
+    "broader": "cluster:L2:C2.4"
+   },
+   {
+    "id": "SO:0002323",
+    "label": "frameshift_variant_NMD_triggering",
+    "broader": "cluster:L2:C2.4"
+   },
+   {
+    "id": "SO:0001626",
+    "label": "incomplete_terminal_codon_variant",
+    "broader": "cluster:L2:C4.6"
+   },
+   {
+    "id": "SO:0002076",
+    "label": "incomplete_transcript_3UTR_variant",
+    "broader": "cluster:L2:C3.5"
+   },
+   {
+    "id": "SO:0002077",
+    "label": "incomplete_transcript_5UTR_variant",
+    "broader": "cluster:L2:C3.5"
+   },
+   {
+    "id": "SO:0002081",
+    "label": "incomplete_transcript_CDS",
+    "broader": "cluster:L2:C3.5"
+   },
+   {
+    "id": "SO:0002082",
+    "label": "incomplete_transcript_coding_splice_variant",
+    "broader": "cluster:L2:C3.5"
+   },
+   {
+    "id": "SO:0002080",
+    "label": "incomplete_transcript_exonic_variant",
+    "broader": "cluster:L2:C3.5"
+   },
+   {
+    "id": "SO:0002078",
+    "label": "incomplete_transcript_intronic_variant",
+    "broader": "cluster:L2:C3.5"
+   },
+   {
+    "id": "SO:0002079",
+    "label": "incomplete_transcript_splice_region_variant",
+    "broader": "cluster:L2:C3.5"
+   },
+   {
+    "id": "SO:0002075",
+    "label": "incomplete_transcript_variant",
+    "broader": "cluster:L2:C3.5"
+   },
+   {
+    "id": "SO:0001822",
+    "label": "inframe_deletion",
+    "broader": "cluster:L2:C7.12"
+   },
+   {
+    "id": "SO:0001820",
+    "label": "inframe_indel",
+    "broader": "cluster:L2:C7.12"
+   },
+   {
+    "id": "SO:0001821",
+    "label": "inframe_insertion",
+    "broader": "cluster:L2:C7.12"
+   },
+   {
+    "id": "SO:0001650",
+    "label": "inframe_variant",
+    "broader": "cluster:L2:C7.12"
+   },
+   {
+    "id": "SO:0001582",
+    "label": "initiator_codon_variant",
+    "broader": "cluster:L2:C4.6"
+   },
+   {
+    "id": "SO:0002011",
+    "label": "intragenic_variant",
+    "broader": "cluster:L2:C7.18"
+   },
+   {
+    "id": "SO:0001573",
+    "label": "intron_gain_variant",
+    "broader": "cluster:L2:C7.18"
+   },
+   {
+    "id": "SO:0001627",
+    "label": "intron_variant",
+    "broader": "cluster:L2:C7.14"
+   },
+   {
+    "id": "SO:0001620",
+    "label": "mature_miRNA_variant",
+    "broader": "cluster:L2:C7.18"
+   },
+   {
+    "id": "SO:0001592",
+    "label": "minus_1_frameshift_variant",
+    "broader": "cluster:L2:C5.8"
+   },
+   {
+    "id": "SO:0001593",
+    "label": "minus_2_frameshift_variant",
+    "broader": "cluster:L2:C5.8"
+   },
+   {
+    "id": "SO:0001583",
+    "label": "missense_variant",
+    "broader": "cluster:L2:C4.7"
+   },
+   {
+    "id": "SO:0001792",
+    "label": "non_coding_transcript_exon_variant",
+    "broader": "cluster:L2:C7.16"
+   },
+   {
+    "id": "SO:0001970",
+    "label": "non_coding_transcript_intron_variant",
+    "broader": "cluster:L2:C7.14"
+   },
+   {
+    "id": "SO:0002088",
+    "label": "non_coding_transcript_splice_region_variant",
+    "broader": "cluster:L2:C6.10"
+   },
+   {
+    "id": "SO:0001619",
+    "label": "non_coding_transcript_variant",
+    "broader": "cluster:L2:C7.16"
+   },
+   {
+    "id": "SO:0001586",
+    "label": "non_conservative_missense_variant",
+    "broader": "cluster:L2:C4.7"
+   },
+   {
+    "id": "SO:0001992",
+    "label": "nonsynonymous_variant",
+    "broader": "cluster:L2:C7.15"
+   },
+   {
+    "id": "SO:0002244",
+    "label": "partially_duplicated_transcript",
+    "broader": "cluster:L2:C7.13"
+   },
+   {
+    "id": "SO:0001594",
+    "label": "plus_1_frameshift_variant",
+    "broader": "cluster:L2:C5.8"
+   },
+   {
+    "id": "SO:0001595",
+    "label": "plus_2_frameshift_variant",
+    "broader": "cluster:L2:C5.8"
+   },
+   {
+    "id": "SO:0001818",
+    "label": "protein_altering_variant",
+    "broader": "cluster:L2:C7.15"
+   },
+   {
+    "id": "SO:0002390",
+    "label": "pseudoexon_variant",
+    "broader": "cluster:L2:C7.18"
+   },
+   {
+    "id": "SO:0002010",
+    "label": "pyrrolysine_loss",
+    "broader": "cluster:L2:C4.7"
+   },
+   {
+    "id": "SO:0002008",
+    "label": "rare_amino_acid_variant",
+    "broader": "cluster:L2:C4.7"
+   },
+   {
+    "id": "SO:0002214",
+    "label": "redundant_inserted_stop_gained",
+    "broader": "cluster:L2:C4.6"
+   },
+   {
+    "id": "SO:0002398",
+    "label": "selenocysteine_gain",
+    "broader": "cluster:L2:C4.7"
+   },
+   {
+    "id": "SO:0002009",
+    "label": "selenocysteine_loss",
+    "broader": "cluster:L2:C4.7"
+   },
+   {
+    "id": "SO:0001574",
+    "label": "splice_acceptor_variant",
+    "broader": "cluster:L2:C6.11"
+   },
+   {
+    "id": "SO:0002328",
+    "label": "splice_acceptor_variant_NMD_escaping",
+    "broader": "cluster:L2:C2.4"
+   },
+   {
+    "id": "SO:0002327",
+    "label": "splice_acceptor_variant_NMD_triggering",
+    "broader": "cluster:L2:C2.4"
+   },
+   {
+    "id": "SO:0001787",
+    "label": "splice_donor_5th_base_variant",
+    "broader": "cluster:L2:C6.11"
+   },
+   {
+    "id": "SO:0002170",
+    "label": "splice_donor_region_variant",
+    "broader": "cluster:L2:C6.11"
+   },
+   {
+    "id": "SO:0001575",
+    "label": "splice_donor_variant",
+    "broader": "cluster:L2:C6.11"
+   },
+   {
+    "id": "SO:0002326",
+    "label": "splice_donor_variant_NMD_escaping",
+    "broader": "cluster:L2:C2.4"
+   },
+   {
+    "id": "SO:0002325",
+    "label": "splice_donor_variant_NMD_triggering",
+    "broader": "cluster:L2:C2.4"
+   },
+   {
+    "id": "SO:0002169",
+    "label": "splice_polypyrimidine_tract_variant",
+    "broader": "cluster:L2:C6.11"
+   },
+   {
+    "id": "SO:0001630",
+    "label": "splice_region_variant",
+    "broader": "cluster:L2:C6.10"
+   },
+   {
+    "id": "SO:0001629",
+    "label": "splice_site_variant",
+    "broader": "cluster:L2:C6.11"
+   },
+   {
+    "id": "SO:0001568",
+    "label": "splicing_variant",
+    "broader": "cluster:L2:C7.18"
+   },
+   {
+    "id": "SO:0002012",
+    "label": "start_lost",
+    "broader": "cluster:L2:C4.6"
+   },
+   {
+    "id": "SO:0002019",
+    "label": "start_retained_variant",
+    "broader": "cluster:L2:C4.6"
+   },
+   {
+    "id": "SO:0001587",
+    "label": "stop_gained",
+    "broader": "cluster:L2:C4.6"
+   },
+   {
+    "id": "SO:0002322",
+    "label": "stop_gained_NMD_escaping",
+    "broader": "cluster:L2:C2.4"
+   },
+   {
+    "id": "SO:0002321",
+    "label": "stop_gained_NMD_triggering",
+    "broader": "cluster:L2:C2.4"
+   },
+   {
+    "id": "SO:0001578",
+    "label": "stop_lost",
+    "broader": "cluster:L2:C4.6"
+   },
+   {
+    "id": "SO:0001567",
+    "label": "stop_retained_variant",
+    "broader": "cluster:L2:C4.6"
+   },
+   {
+    "id": "SO:0001819",
+    "label": "synonymous_variant",
+    "broader": "cluster:L2:C4.7"
+   },
+   {
+    "id": "SO:0001590",
+    "label": "terminator_codon_variant",
+    "broader": "cluster:L2:C4.6"
+   },
+   {
+    "id": "SO:0002246",
+    "label": "three_prime_duplicated_transcript",
+    "broader": "cluster:L2:C7.13"
+   },
+   {
+    "id": "SO:0001596",
+    "label": "transcript_secondary_structure_variant",
+    "broader": "cluster:L2:C7.17"
+   }
+  ]
+ },
+ "reference_SO": {
+  "scheme": "SO",
+  "nodes": [
+   {
+    "id": "SO:0002016",
+    "label": "3_prime_UTR_elongation",
+    "broader": "SO:0001624"
+   },
+   {
+    "id": "SO:0002089",
+    "label": "3_prime_UTR_exon_variant",
+    "broader": "SO:0001624"
+   },
+   {
+    "id": "SO:0002090",
+    "label": "3_prime_UTR_intron_variant",
+    "broader": "SO:0001624"
+   },
+   {
+    "id": "SO:0002015",
+    "label": "3_prime_UTR_truncation",
+    "broader": "SO:0001624"
+   },
+   {
+    "id": "SO:0001624",
+    "label": "3_prime_UTR_variant",
+    "broader": "SO:0001622"
+   },
+   {
+    "id": "SO:0002014",
+    "label": "5_prime_UTR_elongation",
+    "broader": "SO:0001623"
+   },
+   {
+    "id": "SO:0002092",
+    "label": "5_prime_UTR_exon_variant",
+    "broader": "SO:0001623"
+   },
+   {
+    "id": "SO:0002091",
+    "label": "5_prime_UTR_intron_variant",
+    "broader": "SO:0001623"
+   },
+   {
+    "id": "SO:0001988",
+    "label": "5_prime_UTR_premature_start_codon_gain_variant",
+    "broader": "SO:0001983"
+   },
+   {
+    "id": "SO:0001989",
+    "label": "5_prime_UTR_premature_start_codon_loss_variant",
+    "broader": "SO:0001983"
+   },
+   {
+    "id": "SO:0001983",
+    "label": "5_prime_UTR_premature_start_codon_variant",
+    "broader": "SO:0001623"
+   },
+   {
+    "id": "SO:0002013",
+    "label": "5_prime_UTR_truncation",
+    "broader": "SO:0001623"
+   },
+   {
+    "id": "SO:0002387",
+    "label": "5_prime_UTR_uORF_frameshift_variant",
+    "broader": "SO:0002385"
+   },
+   {
+    "id": "SO:0002388",
+    "label": "5_prime_UTR_uORF_stop_codon_gain_variant",
+    "broader": "SO:0002386"
+   },
+   {
+    "id": "SO:0002389",
+    "label": "5_prime_UTR_uORF_stop_codon_loss_variant",
+    "broader": "SO:0002386"
+   },
+   {
+    "id": "SO:0002386",
+    "label": "5_prime_UTR_uORF_stop_codon_variant",
+    "broader": "SO:0002385"
+   },
+   {
+    "id": "SO:0002385",
+    "label": "5_prime_UTR_uORF_variant",
+    "broader": "SO:0001623"
+   },
+   {
+    "id": "SO:0001623",
+    "label": "5_prime_UTR_variant",
+    "broader": "SO:0001622"
+   },
+   {
+    "id": "SO:0001621",
+    "label": "NMD_transcript_variant",
+    "broader": "SO:0001576"
+   },
+   {
+    "id": "SO:0001622",
+    "label": "UTR_variant",
+    "broader": "SO:0001791"
+   },
+   {
+    "id": "SO:0001580",
+    "label": "coding_sequence_variant",
+    "broader": "SO:0001791"
+   },
+   {
+    "id": "SO:0001969",
+    "label": "coding_transcript_intron_variant",
+    "broader": "SO:0001627"
+   },
+   {
+    "id": "SO:0001968",
+    "label": "coding_transcript_variant",
+    "broader": "SO:0001576"
+   },
+   {
+    "id": "SO:0001597",
+    "label": "compensatory_transcript_secondary_structure_variant",
+    "broader": "SO:0001596"
+   },
+   {
+    "id": "SO:0001577",
+    "label": "complex_transcript_variant",
+    "broader": "SO:0001576"
+   },
+   {
+    "id": "SO:0001825",
+    "label": "conservative_inframe_deletion",
+    "broader": "SO:0001822"
+   },
+   {
+    "id": "SO:0001823",
+    "label": "conservative_inframe_insertion",
+    "broader": "SO:0001821"
+   },
+   {
+    "id": "SO:0001585",
+    "label": "conservative_missense_variant",
+    "broader": "SO:0001583"
+   },
+   {
+    "id": "SO:0002018",
+    "label": "conserved_intron_variant",
+    "broader": "SO:0001627"
+   },
+   {
+    "id": "SO:0001570",
+    "label": "cryptic_splice_acceptor",
+    "broader": "SO:0001569"
+   },
+   {
+    "id": "SO:0001571",
+    "label": "cryptic_splice_donor",
+    "broader": "SO:0001569"
+   },
+   {
+    "id": "SO:0001569",
+    "label": "cryptic_splice_site_variant",
+    "broader": "SO:0001568"
+   },
+   {
+    "id": "SO:0001826",
+    "label": "disruptive_inframe_deletion",
+    "broader": "SO:0001822"
+   },
+   {
+    "id": "SO:0001824",
+    "label": "disruptive_inframe_insertion",
+    "broader": "SO:0001821"
+   },
+   {
+    "id": "SO:0001572",
+    "label": "exon_loss_variant",
+    "broader": "SO:0001568"
+   },
+   {
+    "id": "SO:0001791",
+    "label": "exon_variant",
+    "broader": "SO:0001576"
+   },
+   {
+    "id": "SO:0002084",
+    "label": "exonic_splice_region_variant",
+    "broader": "SO:0001630"
+   },
+   {
+    "id": "SO:0001995",
+    "label": "extended_intronic_splice_region_variant",
+    "broader": "SO:0001568"
+   },
+   {
+    "id": "SO:0001990",
+    "label": "five_prime_UTR_premature_start_codon_location_variant",
+    "broader": "SO:0001983"
+   },
+   {
+    "id": "SO:0002245",
+    "label": "five_prime_duplicated_transcript",
+    "broader": "SO:0002244"
+   },
+   {
+    "id": "SO:0001591",
+    "label": "frame_restoring_variant",
+    "broader": "SO:0001589"
+   },
+   {
+    "id": "SO:0001909",
+    "label": "frameshift_elongation",
+    "broader": "SO:0001589"
+   },
+   {
+    "id": "SO:0001910",
+    "label": "frameshift_truncation",
+    "broader": "SO:0001589"
+   },
+   {
+    "id": "SO:0001589",
+    "label": "frameshift_variant",
+    "broader": "SO:0001818"
+   },
+   {
+    "id": "SO:0002324",
+    "label": "frameshift_variant_NMD_escaping",
+    "broader": "SO:0001589"
+   },
+   {
+    "id": "SO:0002323",
+    "label": "frameshift_variant_NMD_triggering",
+    "broader": "SO:0001589"
+   },
+   {
+    "id": "SO:0001626",
+    "label": "incomplete_terminal_codon_variant",
+    "broader": "SO:0001590"
+   },
+   {
+    "id": "SO:0002076",
+    "label": "incomplete_transcript_3UTR_variant",
+    "broader": "SO:0002075"
+   },
+   {
+    "id": "SO:0002077",
+    "label": "incomplete_transcript_5UTR_variant",
+    "broader": "SO:0002075"
+   },
+   {
+    "id": "SO:0002081",
+    "label": "incomplete_transcript_CDS",
+    "broader": "SO:0002075"
+   },
+   {
+    "id": "SO:0002082",
+    "label": "incomplete_transcript_coding_splice_variant",
+    "broader": "SO:0002079"
+   },
+   {
+    "id": "SO:0002080",
+    "label": "incomplete_transcript_exonic_variant",
+    "broader": "SO:0002075"
+   },
+   {
+    "id": "SO:0002078",
+    "label": "incomplete_transcript_intronic_variant",
+    "broader": "SO:0002075"
+   },
+   {
+    "id": "SO:0002079",
+    "label": "incomplete_transcript_splice_region_variant",
+    "broader": "SO:0002075"
+   },
+   {
+    "id": "SO:0002075",
+    "label": "incomplete_transcript_variant",
+    "broader": "SO:0001576"
+   },
+   {
+    "id": "SO:0001822",
+    "label": "inframe_deletion",
+    "broader": "SO:0001820"
+   },
+   {
+    "id": "SO:0001820",
+    "label": "inframe_indel",
+    "broader": "SO:0001650"
+   },
+   {
+    "id": "SO:0001821",
+    "label": "inframe_insertion",
+    "broader": "SO:0001820"
+   },
+   {
+    "id": "SO:0001650",
+    "label": "inframe_variant",
+    "broader": "SO:0001818"
+   },
+   {
+    "id": "SO:0001582",
+    "label": "initiator_codon_variant",
+    "broader": "SO:0001580"
+   },
+   {
+    "id": "SO:0002011",
+    "label": "intragenic_variant",
+    "broader": "SO:0001576"
+   },
+   {
+    "id": "SO:0001573",
+    "label": "intron_gain_variant",
+    "broader": "SO:0001568"
+   },
+   {
+    "id": "SO:0001627",
+    "label": "intron_variant",
+    "broader": "SO:0001576"
+   },
+   {
+    "id": "SO:0001620",
+    "label": "mature_miRNA_variant",
+    "broader": "SO:0001619"
+   },
+   {
+    "id": "SO:0001592",
+    "label": "minus_1_frameshift_variant",
+    "broader": "SO:0001589"
+   },
+   {
+    "id": "SO:0001593",
+    "label": "minus_2_frameshift_variant",
+    "broader": "SO:0001589"
+   },
+   {
+    "id": "SO:0001583",
+    "label": "missense_variant",
+    "broader": "SO:0001992"
+   },
+   {
+    "id": "SO:0001792",
+    "label": "non_coding_transcript_exon_variant",
+    "broader": "SO:0001619"
+   },
+   {
+    "id": "SO:0001970",
+    "label": "non_coding_transcript_intron_variant",
+    "broader": "SO:0001619"
+   },
+   {
+    "id": "SO:0002088",
+    "label": "non_coding_transcript_splice_region_variant",
+    "broader": "SO:0001619"
+   },
+   {
+    "id": "SO:0001619",
+    "label": "non_coding_transcript_variant",
+    "broader": "SO:0001576"
+   },
+   {
+    "id": "SO:0001586",
+    "label": "non_conservative_missense_variant",
+    "broader": "SO:0001583"
+   },
+   {
+    "id": "SO:0001992",
+    "label": "nonsynonymous_variant",
+    "broader": "SO:0001650"
+   },
+   {
+    "id": "SO:0002244",
+    "label": "partially_duplicated_transcript",
+    "broader": "SO:0001576"
+   },
+   {
+    "id": "SO:0001594",
+    "label": "plus_1_frameshift_variant",
+    "broader": "SO:0001589"
+   },
+   {
+    "id": "SO:0001595",
+    "label": "plus_2_frameshift_variant",
+    "broader": "SO:0001589"
+   },
+   {
+    "id": "SO:0001818",
+    "label": "protein_altering_variant",
+    "broader": "SO:0001580"
+   },
+   {
+    "id": "SO:0002390",
+    "label": "pseudoexon_variant",
+    "broader": "SO:0001568"
+   },
+   {
+    "id": "SO:0002010",
+    "label": "pyrrolysine_loss",
+    "broader": "SO:0002008"
+   },
+   {
+    "id": "SO:0002008",
+    "label": "rare_amino_acid_variant",
+    "broader": "SO:0001586"
+   },
+   {
+    "id": "SO:0002214",
+    "label": "redundant_inserted_stop_gained",
+    "broader": "SO:0001992"
+   },
+   {
+    "id": "SO:0002398",
+    "label": "selenocysteine_gain",
+    "broader": "SO:0002008"
+   },
+   {
+    "id": "SO:0002009",
+    "label": "selenocysteine_loss",
+    "broader": "SO:0002008"
+   },
+   {
+    "id": "SO:0001574",
+    "label": "splice_acceptor_variant",
+    "broader": "SO:0001629"
+   },
+   {
+    "id": "SO:0002328",
+    "label": "splice_acceptor_variant_NMD_escaping",
+    "broader": "SO:0001574"
+   },
+   {
+    "id": "SO:0002327",
+    "label": "splice_acceptor_variant_NMD_triggering",
+    "broader": "SO:0001574"
+   },
+   {
+    "id": "SO:0001787",
+    "label": "splice_donor_5th_base_variant",
+    "broader": "SO:0001629"
+   },
+   {
+    "id": "SO:0002170",
+    "label": "splice_donor_region_variant",
+    "broader": "SO:0001630"
+   },
+   {
+    "id": "SO:0001575",
+    "label": "splice_donor_variant",
+    "broader": "SO:0001629"
+   },
+   {
+    "id": "SO:0002326",
+    "label": "splice_donor_variant_NMD_escaping",
+    "broader": "SO:0001575"
+   },
+   {
+    "id": "SO:0002325",
+    "label": "splice_donor_variant_NMD_triggering",
+    "broader": "SO:0001575"
+   },
+   {
+    "id": "SO:0002169",
+    "label": "splice_polypyrimidine_tract_variant",
+    "broader": "SO:0001568"
+   },
+   {
+    "id": "SO:0001630",
+    "label": "splice_region_variant",
+    "broader": "SO:0001568"
+   },
+   {
+    "id": "SO:0001629",
+    "label": "splice_site_variant",
+    "broader": "SO:0001568"
+   },
+   {
+    "id": "SO:0001568",
+    "label": "splicing_variant",
+    "broader": "SO:0001576"
+   },
+   {
+    "id": "SO:0002012",
+    "label": "start_lost",
+    "broader": "SO:0001582"
+   },
+   {
+    "id": "SO:0002019",
+    "label": "start_retained_variant",
+    "broader": "SO:0001582"
+   },
+   {
+    "id": "SO:0001587",
+    "label": "stop_gained",
+    "broader": "SO:0001906"
+   },
+   {
+    "id": "SO:0002322",
+    "label": "stop_gained_NMD_escaping",
+    "broader": "SO:0001587"
+   },
+   {
+    "id": "SO:0002321",
+    "label": "stop_gained_NMD_triggering",
+    "broader": "SO:0001587"
+   },
+   {
+    "id": "SO:0001578",
+    "label": "stop_lost",
+    "broader": "SO:0001590"
+   },
+   {
+    "id": "SO:0001567",
+    "label": "stop_retained_variant",
+    "broader": "SO:0001590"
+   },
+   {
+    "id": "SO:0001819",
+    "label": "synonymous_variant",
+    "broader": "SO:0001580"
+   },
+   {
+    "id": "SO:0001590",
+    "label": "terminator_codon_variant",
+    "broader": "SO:0001580"
+   },
+   {
+    "id": "SO:0002246",
+    "label": "three_prime_duplicated_transcript",
+    "broader": "SO:0002244"
+   },
+   {
+    "id": "SO:0001596",
+    "label": "transcript_secondary_structure_variant",
+    "broader": "SO:0001576"
+   }
+  ]
+ }
+}

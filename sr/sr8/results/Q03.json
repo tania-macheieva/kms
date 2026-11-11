@@ -1,0 +1,54 @@
+{
+ "name": "Q03",
+ "status": "ok",
+ "seconds": 1.9,
+ "boolean": null,
+ "n_rows": 4,
+ "head": [
+  {
+   "drug": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q3492616"
+   },
+   "drugLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "Insulin Lispro"
+   }
+  },
+  {
+   "drug": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q2329715"
+   },
+   "drugLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "chromium picolinate"
+   }
+  },
+  {
+   "drug": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q7939403"
+   },
+   "drugLabel": {
+    "xml:lang": "en",
+    "type": "literal",
+    "value": "voglibose"
+   }
+  },
+  {
+   "drug": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q19484"
+   },
+   "drugLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "метформін"
+   }
+  }
+ ],
+ "error": null
+}

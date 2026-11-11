@@ -1,0 +1,12 @@
+{
+ "R1": {
+  "A": "expert",
+  "B": "peer",
+  "C": "llm"
+ },
+ "R2": {
+  "A": "llm",
+  "B": "peer",
+  "C": "expert"
+ }
+}

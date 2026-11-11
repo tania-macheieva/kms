@@ -1,0 +1,110 @@
+{
+ "name": "Q05",
+ "status": "ok",
+ "seconds": 8.3,
+ "boolean": null,
+ "n_rows": 9,
+ "head": [
+  {
+   "disease": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q35869"
+   },
+   "symptom": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q35805"
+   },
+   "diseaseLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "бронхіальна астма"
+   },
+   "symptomLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "кашель"
+   }
+  },
+  {
+   "disease": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q35869"
+   },
+   "symptom": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q101991"
+   },
+   "diseaseLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "бронхіальна астма"
+   },
+   "symptomLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "запалення"
+   }
+  },
+  {
+   "disease": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q35869"
+   },
+   "symptom": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q517104"
+   },
+   "diseaseLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "бронхіальна астма"
+   },
+   "symptomLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "хрип"
+   }
+  },
+  {
+   "disease": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q35869"
+   },
+   "symptom": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q693058"
+   },
+   "diseaseLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "бронхіальна астма"
+   },
+   "symptomLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "біль за грудиною"
+   }
+  },
+  {
+   "disease": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q181754"
+   },
+   "symptom": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q9690"
+   },
+   "diseaseLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "серцева недостатність"
+   },
+   "symptomLabel": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "перевтома"
+   }
+  }
+ ],
+ "error": null
+}

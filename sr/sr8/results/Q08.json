@@ -1,0 +1,55 @@
+{
+ "name": "Q08",
+ "status": "ok",
+ "seconds": 2.3,
+ "boolean": null,
+ "n_rows": 3,
+ "head": [
+  {
+   "d": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q12078"
+   },
+   "doid": {
+    "type": "literal",
+    "value": "DOID:162"
+   },
+   "uk": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "злоякісна пухлина"
+   }
+  },
+  {
+   "d": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q12199"
+   },
+   "doid": {
+    "type": "literal",
+    "value": "DOID:635"
+   },
+   "uk": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "синдром набутого імунного дефіциту"
+   }
+  },
+  {
+   "d": {
+    "type": "uri",
+    "value": "http://www.wikidata.org/entity/Q183560"
+   },
+   "doid": {
+    "type": "literal",
+    "value": "DOID:1059"
+   },
+   "uk": {
+    "xml:lang": "uk",
+    "type": "literal",
+    "value": "розумова відсталість"
+   }
+  }
+ ],
+ "error": null
+}
