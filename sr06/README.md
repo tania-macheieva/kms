@@ -24,4 +24,4 @@ python -X utf8 build6.py
 python -X utf8 draw.py
 ```
 
-Потрібні `openpyxl`, `matplotlib`, `networkx`; для рендерингу карти бажаний Graphviz (`dot`), інакше скрипт використовує fallback. `build_doc6.py` формує DOCX-звіт.
+Потрібні `openpyxl`, `matplotlib`, `networkx`; для рендерингу карти бажаний Graphviz (`dot`), інакше скрипт використовує fallback.

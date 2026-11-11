@@ -22,4 +22,4 @@
 python -X utf8 code\build_sr9.py
 ```
 
-Скрипт створює також `SR9_report.docx`. Формальний звіт DOCX/PDF до матеріалів не входить.
+Скрипт створює також `SR9_report.docx`.
