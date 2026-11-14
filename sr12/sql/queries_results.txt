@@ -1,0 +1,48 @@
+Query 1
+run_label category_group  n  n_match  status_accuracy_pct
+        A     answerable 18     18.0                100.0
+        A       conflict  4      4.0                100.0
+        A      no_answer  8      7.0                 87.5
+        A         unsafe  4      4.0                100.0
+        B     answerable 18     18.0                100.0
+        B       conflict  4      4.0                100.0
+        B      no_answer  8      8.0                100.0
+        B         unsafe  4      4.0                100.0
+     SR11     answerable 10     10.0                100.0
+     SR11       conflict  3      3.0                100.0
+     SR11      no_answer  3      3.0                100.0
+     SR11         unsafe  4      4.0                100.0
+
+Query 2
+run_label  reranker_on role_code  n  avg_retrieve_ms  avg_in_tokens
+        A         True   analyst  2             24.8         2454.0
+        A         True clinician  2             25.9         3014.0
+        A         True    reader 30             28.0         2501.0
+        B        False   analyst  2             10.6         3270.0
+        B        False clinician  2             11.5         3023.0
+        B        False    reader 30             13.4         2343.0
+     SR11         True clinician  1           5022.3         2393.0
+     SR11         True    reader 19           1824.0         2454.0
+
+Query 3
+run_label language_code category_group  n_tests  gold_total  gold_hit  context_recall
+        A            en     answerable       18        25.0      24.0            0.96
+        A            en       conflict        4         8.0       8.0            1.00
+        A            en         unsafe        4         3.0       3.0            1.00
+        B            en     answerable       18        25.0      24.0            0.96
+        B            en       conflict        4         8.0       8.0            1.00
+        B            en         unsafe        4         3.0       3.0            1.00
+     SR11            en     answerable        7        10.0       8.0            0.80
+     SR11            en       conflict        3         6.0       6.0            1.00
+     SR11            en         unsafe        4         1.0       1.0            1.00
+     SR11            uk     answerable        3         2.0       2.0            1.00
+
+Query 4
+run_label  claims  supported  faithfulness  citations  invalid_citations  uncited_sentences
+        A    90.0       89.0         0.989       84.0                0.0               23.0
+        B    92.0       90.0         0.978       77.0                0.0               38.0
+     SR11    54.0       54.0         1.000       39.0                0.0               25.0
+
+Query 5
+expected_status actual_status role_code run_label  n_errors
+      NO_ANSWER        ANSWER    reader         A         1

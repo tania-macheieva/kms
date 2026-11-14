@@ -1,0 +1,151 @@
+{
+ "time_s": 0.0010807514190673828,
+ "preds": {
+  "S01": [],
+  "S02": [],
+  "S03": [],
+  "S04": [],
+  "S05": [
+   [
+    "It",
+    "contains",
+    "all the vcf commands"
+   ]
+  ],
+  "S06": [],
+  "S07": [],
+  "S08": [],
+  "S09": [],
+  "S10": [],
+  "S11": [],
+  "S12": [
+   [
+    "This repository",
+    "contains",
+    "the next generation"
+   ]
+  ],
+  "S13": [],
+  "S14": [],
+  "S15": [
+   [
+    "The GATK4 docker image",
+    "uses",
+    "this one"
+   ]
+  ],
+  "S16": [
+   [
+    "It",
+    "uses",
+    "Docker/Singularity containers making installation trivial"
+   ]
+  ],
+  "S17": [],
+  "S18": [
+   [
+    "Sarek",
+    "contains",
+    "support"
+   ]
+  ],
+  "S19": [],
+  "S20": [],
+  "S21": [],
+  "S22": [],
+  "S23": [],
+  "S24": [],
+  "S25": [],
+  "S26": [],
+  "S27": [
+   [
+    "Varlociraptor",
+    "supports",
+    "the usage"
+   ]
+  ],
+  "S28": [
+   [
+    "the M2 WDL",
+    "uses",
+    "Funcotator"
+   ]
+  ],
+  "S29": [],
+  "S30": [],
+  "S31": [],
+  "S32": [
+   [
+    "this pipeline",
+    "uses",
+    "one container per process"
+   ]
+  ],
+  "S33": [],
+  "S34": [],
+  "S35": [
+   [
+    "The pipeline",
+    "performs",
+    "variant calling"
+   ]
+  ],
+  "S36": [],
+  "S37": [
+   [
+    "These pages",
+    "is_a",
+    "tutorial workshop"
+   ]
+  ],
+  "S38": [],
+  "S39": [],
+  "S40": [
+   [
+    "Funcotator",
+    "supports",
+    "the user"
+   ]
+  ],
+  "S41": [],
+  "S42": [],
+  "S43": [],
+  "S44": [
+   [
+    "candidate variants",
+    "is_a",
+    "subset"
+   ]
+  ],
+  "S45": [
+   [
+    "BBSplit",
+    "is_a",
+    "tool"
+   ]
+  ],
+  "S46": [],
+  "S47": [],
+  "S48": [
+   [
+    "sarek",
+    "uses",
+    "preprocessing"
+   ]
+  ],
+  "S49": [
+   [
+    "Annotation-cache",
+    "is_a",
+    "open AWS registry resource"
+   ]
+  ],
+  "S50": [
+   [
+    "This repo",
+    "contains",
+    "the scripts"
+   ]
+  ]
+ }
+}

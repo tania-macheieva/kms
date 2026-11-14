@@ -1,0 +1,37 @@
+[
+ {
+  "case": "50 фрагментів без source_url",
+  "metric": "M1",
+  "before": 1.0,
+  "after": 0.9259,
+  "detected": true
+ },
+ {
+  "case": "30 фрагментів: підмінено слово в тексті",
+  "metric": "M2",
+  "before": 1.0,
+  "after": 0.9556,
+  "detected": true
+ },
+ {
+  "case": "40 фрагментів скопійовано (дублі)",
+  "metric": "M3",
+  "before": 1.0,
+  "after": 0.9441,
+  "detected": true
+ },
+ {
+  "case": "60 фрагментів: sensitivity не збігається з манифестом",
+  "metric": "M4",
+  "before": 1.0,
+  "after": 0.9892,
+  "detected": true
+ },
+ {
+  "case": "15 документів із датою травня (>90 днів)",
+  "metric": "M5",
+  "before": 1.0,
+  "after": 0.5455,
+  "detected": true
+ }
+]

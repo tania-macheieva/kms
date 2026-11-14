@@ -1,0 +1,8 @@
+from,to,source,confidence,validFrom
+FS_gt_200_indel,FS,gatk,1.0,2026-10-26
+FS_gt_60_snp,FS,gatk,1.0,2026-10-26
+MQRankSum_lt_-12.5,MQRankSum,gatk,1.0,2026-10-26
+MQ_lt_40,MQ,gatk,1.0,2026-10-26
+QD_lt_2,QD,gatk,1.0,2026-10-26
+ReadPosRankSum_lt_-8,ReadPosRankSum,gatk,1.0,2026-10-26
+SOR_gt_3,SOR,gatk,1.0,2026-10-26

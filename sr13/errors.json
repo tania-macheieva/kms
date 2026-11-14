@@ -1,0 +1,1498 @@
+{
+ "rules": [
+  [
+   "FN",
+   "S01",
+   null,
+   [
+    "samtools",
+    "performs",
+    "coordinate-sorting of aligned reads"
+   ]
+  ],
+  [
+   "FN",
+   "S01",
+   null,
+   [
+    "GATK MarkDuplicatesSpark",
+    "performs",
+    "duplicate marking"
+   ]
+  ],
+  [
+   "FN",
+   "S04",
+   null,
+   [
+    "samtools sort",
+    "performs",
+    "coordinate sorting of aligned reads"
+   ]
+  ],
+  [
+   "FN",
+   "S06",
+   null,
+   [
+    "Default supported datasources",
+    "contains",
+    "GENCODE"
+   ]
+  ],
+  [
+   "FN",
+   "S06",
+   null,
+   [
+    "Default supported datasources",
+    "contains",
+    "dbSNP"
+   ]
+  ],
+  [
+   "FN",
+   "S06",
+   null,
+   [
+    "Default supported datasources",
+    "contains",
+    "gnomAD"
+   ]
+  ],
+  [
+   "FN",
+   "S06",
+   null,
+   [
+    "Default supported datasources",
+    "contains",
+    "COSMIC"
+   ]
+  ],
+  [
+   "FN",
+   "S07",
+   null,
+   [
+    "MultiQC",
+    "performs",
+    "summarizing analysis results for multiple tools and samples"
+   ]
+  ],
+  [
+   "FN",
+   "S09",
+   null,
+   [
+    "Funcotator",
+    "is_a",
+    "functional annotation tool"
+   ]
+  ],
+  [
+   "FN",
+   "S09",
+   null,
+   [
+    "core GATK toolset",
+    "contains",
+    "Funcotator"
+   ]
+  ],
+  [
+   "FN",
+   "S11",
+   null,
+   [
+    "VQSR",
+    "is_a",
+    "filtering tool"
+   ]
+  ],
+  [
+   "FN",
+   "S13",
+   null,
+   [
+    "Each read",
+    "supports",
+    "presence of an allele"
+   ]
+  ],
+  [
+   "FN",
+   "S14",
+   null,
+   [
+    "Some tools",
+    "uses",
+    "tabix- or CSI-indexed files"
+   ]
+  ],
+  [
+   "FN",
+   "S15",
+   null,
+   [
+    "gatk4",
+    "is_a",
+    "official docker image for GATK4"
+   ]
+  ],
+  [
+   "FP",
+   "S18",
+   [
+    "Sarek",
+    "contains",
+    "support"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S18",
+   null,
+   [
+    "Sarek",
+    "supports",
+    "some of the functions in Sentieon"
+   ]
+  ],
+  [
+   "FN",
+   "S20",
+   null,
+   [
+    "GATK Resource Bundle",
+    "contains",
+    "PathSeq reference files"
+   ]
+  ],
+  [
+   "FN",
+   "S21",
+   null,
+   [
+    "bcftools isec",
+    "performs",
+    "intersection and complements of two sets"
+   ]
+  ],
+  [
+   "FN",
+   "S23",
+   null,
+   [
+    "These files",
+    "contains",
+    "table of data"
+   ]
+  ],
+  [
+   "FN",
+   "S24",
+   null,
+   [
+    "Sentieon's sort utility",
+    "performs",
+    "coordinate sorting of aligned reads"
+   ]
+  ],
+  [
+   "FN",
+   "S25",
+   null,
+   [
+    "REViewer",
+    "uses",
+    "files generated"
+   ]
+  ],
+  [
+   "FP",
+   "S27",
+   [
+    "Varlociraptor",
+    "supports",
+    "the usage"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S27",
+   null,
+   [
+    "Varlociraptor",
+    "supports",
+    "different scenario files"
+   ]
+  ],
+  [
+   "FN",
+   "S28",
+   null,
+   [
+    "M2 WDL",
+    "produces",
+    "TCGA MAF"
+   ]
+  ],
+  [
+   "FN",
+   "S30",
+   null,
+   [
+    "variant_vcf_to_funcotate",
+    "contains",
+    "variants to annotate"
+   ]
+  ],
+  [
+   "FN",
+   "S33",
+   null,
+   [
+    "GATK4",
+    "supports",
+    "Spark cluster"
+   ]
+  ],
+  [
+   "FN",
+   "S33",
+   null,
+   [
+    "GATK4",
+    "supports",
+    "Google Dataproc"
+   ]
+  ],
+  [
+   "FN",
+   "S34",
+   null,
+   [
+    "GenomicsDB datastore",
+    "contains",
+    "gVCFs"
+   ]
+  ],
+  [
+   "FN",
+   "S35",
+   null,
+   [
+    "pipeline",
+    "uses",
+    "Sentieon DNAscope"
+   ]
+  ],
+  [
+   "FN",
+   "S35",
+   null,
+   [
+    "Sentieon DNAscope",
+    "uses",
+    "machine learning model"
+   ]
+  ],
+  [
+   "FN",
+   "S36",
+   null,
+   [
+    "The pipeline",
+    "uses",
+    "Nextflow"
+   ]
+  ],
+  [
+   "FN",
+   "S36",
+   null,
+   [
+    "Nextflow",
+    "is_a",
+    "workflow tool"
+   ]
+  ],
+  [
+   "FN",
+   "S38",
+   null,
+   [
+    "tar.gz",
+    "contains",
+    "data sources for Funcotator"
+   ]
+  ],
+  [
+   "FN",
+   "S39",
+   null,
+   [
+    "VEP",
+    "uses",
+    "output files"
+   ]
+  ],
+  [
+   "FN",
+   "S40",
+   null,
+   [
+    "Funcotator",
+    "uses",
+    "set of data sources"
+   ]
+  ],
+  [
+   "FN",
+   "S41",
+   null,
+   [
+    "Strelka",
+    "performs",
+    "somatic variant calling"
+   ]
+  ],
+  [
+   "FN",
+   "S41",
+   null,
+   [
+    "Strelka",
+    "uses",
+    "candidate indels from Manta"
+   ]
+  ],
+  [
+   "FN",
+   "S41",
+   null,
+   [
+    "Manta",
+    "produces",
+    "candidate indels"
+   ]
+  ],
+  [
+   "FN",
+   "S42",
+   null,
+   [
+    "data sources",
+    "uses",
+    "hg19 reference"
+   ]
+  ],
+  [
+   "FN",
+   "S43",
+   null,
+   [
+    "UMIs",
+    "performs",
+    "identification of reads from the same original DNA molecule"
+   ]
+  ],
+  [
+   "FP",
+   "S44",
+   [
+    "candidate variants",
+    "is_a",
+    "subset"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S44",
+   null,
+   [
+    "Research variants",
+    "contains",
+    "all the variants"
+   ]
+  ],
+  [
+   "FN",
+   "S44",
+   null,
+   [
+    "Research variants",
+    "contains",
+    "candidate variants"
+   ]
+  ],
+  [
+   "FN",
+   "S45",
+   null,
+   [
+    "BBSplit",
+    "performs",
+    "binning reads"
+   ]
+  ],
+  [
+   "FN",
+   "S45",
+   null,
+   [
+    "BBSplit",
+    "uses",
+    "BBMap"
+   ]
+  ],
+  [
+   "FN",
+   "S47",
+   null,
+   [
+    "image",
+    "contains",
+    "GATK4"
+   ]
+  ],
+  [
+   "FP",
+   "S48",
+   [
+    "sarek",
+    "uses",
+    "preprocessing"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S48",
+   null,
+   [
+    "sarek",
+    "performs",
+    "preprocessing"
+   ]
+  ],
+  [
+   "FN",
+   "S48",
+   null,
+   [
+    "sarek",
+    "uses",
+    "Strelka"
+   ]
+  ],
+  [
+   "FN",
+   "S49",
+   null,
+   [
+    "Annotation-cache",
+    "contains",
+    "mirror of some cache files"
+   ]
+  ],
+  [
+   "FN",
+   "S49",
+   null,
+   [
+    "Annotation-cache",
+    "supports",
+    "Sarek"
+   ]
+  ],
+  [
+   "FN",
+   "S50",
+   null,
+   [
+    "gatkbase",
+    "is_a",
+    "basic docker image"
+   ]
+  ]
+ ],
+ "spacy": [
+  [
+   "FN",
+   "S01",
+   null,
+   [
+    "samtools",
+    "performs",
+    "coordinate-sorting of aligned reads"
+   ]
+  ],
+  [
+   "FN",
+   "S01",
+   null,
+   [
+    "GATK MarkDuplicatesSpark",
+    "performs",
+    "duplicate marking"
+   ]
+  ],
+  [
+   "FN",
+   "S04",
+   null,
+   [
+    "samtools sort",
+    "performs",
+    "coordinate sorting of aligned reads"
+   ]
+  ],
+  [
+   "FN",
+   "S06",
+   null,
+   [
+    "Default supported datasources",
+    "contains",
+    "dbSNP"
+   ]
+  ],
+  [
+   "FN",
+   "S06",
+   null,
+   [
+    "Default supported datasources",
+    "contains",
+    "gnomAD"
+   ]
+  ],
+  [
+   "FN",
+   "S06",
+   null,
+   [
+    "Default supported datasources",
+    "contains",
+    "COSMIC"
+   ]
+  ],
+  [
+   "FN",
+   "S07",
+   null,
+   [
+    "MultiQC",
+    "performs",
+    "summarizing analysis results for multiple tools and samples"
+   ]
+  ],
+  [
+   "FN",
+   "S09",
+   null,
+   [
+    "core GATK toolset",
+    "contains",
+    "Funcotator"
+   ]
+  ],
+  [
+   "FP",
+   "S11",
+   [
+    "we",
+    "uses",
+    "the VQSR filtering tool"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S11",
+   null,
+   [
+    "VQSR",
+    "is_a",
+    "filtering tool"
+   ]
+  ],
+  [
+   "FN",
+   "S15",
+   null,
+   [
+    "gatk4",
+    "is_a",
+    "official docker image for GATK4"
+   ]
+  ],
+  [
+   "FP",
+   "S18",
+   [
+    "Sarek",
+    "contains",
+    "support"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S18",
+   null,
+   [
+    "Sarek",
+    "supports",
+    "some of the functions in Sentieon"
+   ]
+  ],
+  [
+   "FN",
+   "S20",
+   null,
+   [
+    "GATK Resource Bundle",
+    "contains",
+    "PathSeq reference files"
+   ]
+  ],
+  [
+   "FN",
+   "S21",
+   null,
+   [
+    "bcftools isec",
+    "performs",
+    "intersection and complements of two sets"
+   ]
+  ],
+  [
+   "FP",
+   "S23",
+   [
+    "These files",
+    "contains",
+    "_genome position"
+   ],
+   null
+  ],
+  [
+   "FP",
+   "S23",
+   [
+    "These files",
+    "contains",
+    "_"
+   ],
+   null
+  ],
+  [
+   "FP",
+   "S24",
+   [
+    "Aligned reads",
+    "is_a",
+    "coordinate"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S24",
+   null,
+   [
+    "Sentieon's sort utility",
+    "performs",
+    "coordinate sorting of aligned reads"
+   ]
+  ],
+  [
+   "FN",
+   "S25",
+   null,
+   [
+    "REViewer",
+    "uses",
+    "files generated"
+   ]
+  ],
+  [
+   "FN",
+   "S27",
+   null,
+   [
+    "Varlociraptor",
+    "supports",
+    "different scenario files"
+   ]
+  ],
+  [
+   "FN",
+   "S28",
+   null,
+   [
+    "M2 WDL",
+    "produces",
+    "TCGA MAF"
+   ]
+  ],
+  [
+   "FN",
+   "S30",
+   null,
+   [
+    "variant_vcf_to_funcotate",
+    "contains",
+    "variants to annotate"
+   ]
+  ],
+  [
+   "FP",
+   "S32",
+   [
+    "The Nextflow DSL2 implementation",
+    "uses",
+    "one container"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S32",
+   null,
+   [
+    "pipeline",
+    "uses",
+    "one container per process"
+   ]
+  ],
+  [
+   "FN",
+   "S33",
+   null,
+   [
+    "GATK4",
+    "supports",
+    "Spark cluster"
+   ]
+  ],
+  [
+   "FN",
+   "S33",
+   null,
+   [
+    "GATK4",
+    "supports",
+    "Google Dataproc"
+   ]
+  ],
+  [
+   "FN",
+   "S34",
+   null,
+   [
+    "GenomicsDB datastore",
+    "contains",
+    "gVCFs"
+   ]
+  ],
+  [
+   "FN",
+   "S35",
+   null,
+   [
+    "pipeline",
+    "performs",
+    "variant calling"
+   ]
+  ],
+  [
+   "FN",
+   "S35",
+   null,
+   [
+    "pipeline",
+    "uses",
+    "Sentieon DNAscope"
+   ]
+  ],
+  [
+   "FN",
+   "S35",
+   null,
+   [
+    "Sentieon DNAscope",
+    "uses",
+    "machine learning model"
+   ]
+  ],
+  [
+   "FN",
+   "S36",
+   null,
+   [
+    "The pipeline",
+    "uses",
+    "Nextflow"
+   ]
+  ],
+  [
+   "FN",
+   "S36",
+   null,
+   [
+    "Nextflow",
+    "is_a",
+    "workflow tool"
+   ]
+  ],
+  [
+   "FP",
+   "S38",
+   [
+    "data_sources_tar_gz - Path",
+    "produces",
+    "annotations"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S38",
+   null,
+   [
+    "tar.gz",
+    "contains",
+    "data sources for Funcotator"
+   ]
+  ],
+  [
+   "FN",
+   "S39",
+   null,
+   [
+    "VEP",
+    "uses",
+    "output files"
+   ]
+  ],
+  [
+   "FN",
+   "S40",
+   null,
+   [
+    "Funcotator",
+    "supports",
+    "user's own annotations"
+   ]
+  ],
+  [
+   "FN",
+   "S40",
+   null,
+   [
+    "Funcotator",
+    "uses",
+    "set of data sources"
+   ]
+  ],
+  [
+   "FN",
+   "S41",
+   null,
+   [
+    "Strelka",
+    "performs",
+    "somatic variant calling"
+   ]
+  ],
+  [
+   "FN",
+   "S41",
+   null,
+   [
+    "Strelka",
+    "uses",
+    "candidate indels from Manta"
+   ]
+  ],
+  [
+   "FN",
+   "S41",
+   null,
+   [
+    "Manta",
+    "produces",
+    "candidate indels"
+   ]
+  ],
+  [
+   "FN",
+   "S43",
+   null,
+   [
+    "UMIs",
+    "performs",
+    "identification of reads from the same original DNA molecule"
+   ]
+  ],
+  [
+   "FP",
+   "S44",
+   [
+    "candidate variants",
+    "is_a",
+    "a subset"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S44",
+   null,
+   [
+    "Research variants",
+    "contains",
+    "candidate variants"
+   ]
+  ],
+  [
+   "FN",
+   "S45",
+   null,
+   [
+    "BBSplit",
+    "performs",
+    "binning reads"
+   ]
+  ],
+  [
+   "FN",
+   "S45",
+   null,
+   [
+    "BBSplit",
+    "uses",
+    "BBMap"
+   ]
+  ],
+  [
+   "FP",
+   "S47",
+   [
+    "This",
+    "is_a",
+    "the image"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S47",
+   null,
+   [
+    "image",
+    "contains",
+    "GATK4"
+   ]
+  ],
+  [
+   "FN",
+   "S48",
+   null,
+   [
+    "sarek",
+    "performs",
+    "preprocessing"
+   ]
+  ],
+  [
+   "FN",
+   "S48",
+   null,
+   [
+    "sarek",
+    "uses",
+    "Strelka"
+   ]
+  ],
+  [
+   "FP",
+   "S49",
+   [
+    "that",
+    "contains",
+    "a mirror"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S49",
+   null,
+   [
+    "Annotation-cache",
+    "contains",
+    "mirror of some cache files"
+   ]
+  ],
+  [
+   "FN",
+   "S49",
+   null,
+   [
+    "Annotation-cache",
+    "supports",
+    "Sarek"
+   ]
+  ],
+  [
+   "FN",
+   "S50",
+   null,
+   [
+    "gatkbase",
+    "is_a",
+    "basic docker image"
+   ]
+  ]
+ ],
+ "llm": [
+  [
+   "FP",
+   "S01",
+   [
+    "The aligned reads",
+    "uses",
+    "samtools"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S01",
+   null,
+   [
+    "samtools",
+    "performs",
+    "coordinate-sorting of aligned reads"
+   ]
+  ],
+  [
+   "FN",
+   "S01",
+   null,
+   [
+    "GATK MarkDuplicatesSpark",
+    "performs",
+    "duplicate marking"
+   ]
+  ],
+  [
+   "FP",
+   "S04",
+   [
+    "The aligned reads",
+    "uses",
+    "samtools sort"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S04",
+   null,
+   [
+    "samtools sort",
+    "performs",
+    "coordinate sorting of aligned reads"
+   ]
+  ],
+  [
+   "FP",
+   "S05",
+   [
+    "It",
+    "contains",
+    "the samtools BCF calling"
+   ],
+   null
+  ],
+  [
+   "FP",
+   "S07",
+   [
+    "MultiQC",
+    "performs",
+    "summarize analysis results"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S07",
+   null,
+   [
+    "MultiQC",
+    "performs",
+    "summarizing analysis results for multiple tools and samples"
+   ]
+  ],
+  [
+   "FP",
+   "S09",
+   [
+    "Funcotator",
+    "performs",
+    "somatic and germline use cases"
+   ],
+   null
+  ],
+  [
+   "FP",
+   "S11",
+   [
+    "we",
+    "uses",
+    "the VQSR filtering tool"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S11",
+   null,
+   [
+    "VQSR",
+    "is_a",
+    "filtering tool"
+   ]
+  ],
+  [
+   "FP",
+   "S13",
+   [
+    "the variant calling algorithm",
+    "performs",
+    "measure the weighted support for each allele"
+   ],
+   null
+  ],
+  [
+   "FP",
+   "S17",
+   [
+    "the raw data",
+    "supports",
+    "a specific allele"
+   ],
+   null
+  ],
+  [
+   "FP",
+   "S19",
+   [
+    "Spark",
+    "supports",
+    "the cluster"
+   ],
+   null
+  ],
+  [
+   "FP",
+   "S24",
+   [
+    "Aligned reads",
+    "uses",
+    "Sentieon's sort utility"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S24",
+   null,
+   [
+    "Sentieon's sort utility",
+    "performs",
+    "coordinate sorting of aligned reads"
+   ]
+  ],
+  [
+   "FP",
+   "S25",
+   [
+    "REViewer",
+    "supports",
+    "The files generated"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S25",
+   null,
+   [
+    "REViewer",
+    "uses",
+    "files generated"
+   ]
+  ],
+  [
+   "FP",
+   "S27",
+   [
+    "the scenario catalog",
+    "contains",
+    "a few examples"
+   ],
+   null
+  ],
+  [
+   "FP",
+   "S28",
+   [
+    "Funcotator",
+    "performs",
+    "functional annotation"
+   ],
+   null
+  ],
+  [
+   "FP",
+   "S30",
+   [
+    "variant_vcf_to_funcotate",
+    "is_a",
+    "Variant Context File (VCF)"
+   ],
+   null
+  ],
+  [
+   "FP",
+   "S30",
+   [
+    "Variant Context File (VCF)",
+    "contains",
+    "the variants to annotate"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S30",
+   null,
+   [
+    "variant_vcf_to_funcotate",
+    "contains",
+    "variants to annotate"
+   ]
+  ],
+  [
+   "FP",
+   "S33",
+   [
+    "GATK4",
+    "supports",
+    "the cloud"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S33",
+   null,
+   [
+    "GATK4",
+    "supports",
+    "Google Dataproc"
+   ]
+  ],
+  [
+   "FN",
+   "S34",
+   null,
+   [
+    "GenomicsDB datastore",
+    "contains",
+    "gVCFs"
+   ]
+  ],
+  [
+   "FP",
+   "S36",
+   [
+    "Nextflow",
+    "supports",
+    "multiple compute infrastructures"
+   ],
+   null
+  ],
+  [
+   "FP",
+   "S38",
+   [
+    "Funcotator",
+    "produces",
+    "annotations"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S39",
+   null,
+   [
+    "VEP",
+    "uses",
+    "output files"
+   ]
+  ],
+  [
+   "FN",
+   "S40",
+   null,
+   [
+    "Funcotator",
+    "uses",
+    "set of data sources"
+   ]
+  ],
+  [
+   "FP",
+   "S41",
+   [
+    "the output candidate indels from Manta",
+    "uses",
+    "Strelka Best Practices"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S41",
+   null,
+   [
+    "Strelka",
+    "performs",
+    "somatic variant calling"
+   ]
+  ],
+  [
+   "FN",
+   "S41",
+   null,
+   [
+    "Strelka",
+    "uses",
+    "candidate indels from Manta"
+   ]
+  ],
+  [
+   "FN",
+   "S41",
+   null,
+   [
+    "Manta",
+    "produces",
+    "candidate indels"
+   ]
+  ],
+  [
+   "FP",
+   "S42",
+   [
+    "UCSC",
+    "produces",
+    "the Gencode data source"
+   ],
+   null
+  ],
+  [
+   "FP",
+   "S44",
+   [
+    "candidate variants",
+    "is_a",
+    "a subset of research variants"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S44",
+   null,
+   [
+    "Research variants",
+    "contains",
+    "candidate variants"
+   ]
+  ],
+  [
+   "FP",
+   "S45",
+   [
+    "BBSplit",
+    "performs",
+    "bins reads"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S45",
+   null,
+   [
+    "BBSplit",
+    "performs",
+    "binning reads"
+   ]
+  ],
+  [
+   "FN",
+   "S47",
+   null,
+   [
+    "image",
+    "contains",
+    "GATK4"
+   ]
+  ],
+  [
+   "FP",
+   "S49",
+   [
+    "an open AWS registry resource",
+    "contains",
+    "a mirror of some cache files"
+   ],
+   null
+  ],
+  [
+   "FN",
+   "S49",
+   null,
+   [
+    "Annotation-cache",
+    "contains",
+    "mirror of some cache files"
+   ]
+  ],
+  [
+   "FN",
+   "S49",
+   null,
+   [
+    "Annotation-cache",
+    "supports",
+    "Sarek"
+   ]
+  ]
+ ]
+}

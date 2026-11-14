@@ -1,0 +1,208 @@
+{
+ "time_s": 0.20027756690979004,
+ "load_s": 0.2778890132904053,
+ "preds": {
+  "S01": [],
+  "S02": [],
+  "S03": [],
+  "S04": [],
+  "S05": [
+   [
+    "It",
+    "contains",
+    "all the vcf"
+   ]
+  ],
+  "S06": [
+   [
+    "datasources",
+    "contains",
+    "GENCODE"
+   ]
+  ],
+  "S07": [],
+  "S08": [],
+  "S09": [
+   [
+    "Funcotator",
+    "is_a",
+    "a functional annotation tool"
+   ]
+  ],
+  "S10": [],
+  "S11": [
+   [
+    "we",
+    "uses",
+    "the VQSR filtering tool"
+   ]
+  ],
+  "S12": [
+   [
+    "This repository",
+    "contains",
+    "the next generation"
+   ]
+  ],
+  "S13": [
+   [
+    "Each read",
+    "supports",
+    "the presence"
+   ]
+  ],
+  "S14": [
+   [
+    "Some tools",
+    "uses",
+    "tabix- or CSI-indexed files"
+   ]
+  ],
+  "S15": [
+   [
+    "The GATK4 docker image",
+    "uses",
+    "this one"
+   ]
+  ],
+  "S16": [
+   [
+    "It",
+    "uses",
+    "Docker/Singularity containers"
+   ]
+  ],
+  "S17": [],
+  "S18": [
+   [
+    "Sarek",
+    "contains",
+    "support"
+   ]
+  ],
+  "S19": [],
+  "S20": [],
+  "S21": [],
+  "S22": [],
+  "S23": [
+   [
+    "These files",
+    "contains",
+    "a table"
+   ],
+   [
+    "These files",
+    "contains",
+    "_genome position"
+   ],
+   [
+    "These files",
+    "contains",
+    "_"
+   ]
+  ],
+  "S24": [
+   [
+    "Aligned reads",
+    "is_a",
+    "coordinate"
+   ]
+  ],
+  "S25": [],
+  "S26": [],
+  "S27": [],
+  "S28": [
+   [
+    "the M2 WDL",
+    "uses",
+    "Funcotator"
+   ]
+  ],
+  "S29": [],
+  "S30": [],
+  "S31": [],
+  "S32": [
+   [
+    "The Nextflow DSL2 implementation",
+    "uses",
+    "one container"
+   ]
+  ],
+  "S33": [],
+  "S34": [],
+  "S35": [],
+  "S36": [],
+  "S37": [
+   [
+    "These pages",
+    "is_a",
+    "a tutorial workshop"
+   ]
+  ],
+  "S38": [
+   [
+    "data_sources_tar_gz - Path",
+    "produces",
+    "annotations"
+   ]
+  ],
+  "S39": [],
+  "S40": [],
+  "S41": [],
+  "S42": [
+   [
+    "the data sources",
+    "uses",
+    "the hg19 reference"
+   ]
+  ],
+  "S43": [],
+  "S44": [
+   [
+    "Research variants",
+    "contains",
+    "all the variants"
+   ],
+   [
+    "candidate variants",
+    "is_a",
+    "a subset"
+   ]
+  ],
+  "S45": [
+   [
+    "BBSplit",
+    "is_a",
+    "a tool"
+   ]
+  ],
+  "S46": [],
+  "S47": [
+   [
+    "This",
+    "is_a",
+    "the image"
+   ]
+  ],
+  "S48": [],
+  "S49": [
+   [
+    "Annotation-cache",
+    "is_a",
+    "an open AWS registry resource"
+   ],
+   [
+    "that",
+    "contains",
+    "a mirror"
+   ]
+  ],
+  "S50": [
+   [
+    "This repo",
+    "contains",
+    "the scripts"
+   ]
+  ]
+ }
+}

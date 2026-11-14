@@ -1,0 +1,641 @@
+[
+ {
+  "id": "S01",
+  "doc": "sarek_output",
+  "sentence": "The aligned reads are then coordinate-sorted (or name-sorted if `GATK MarkDuplicatesSpark` is used for duplicate marking) with samtools.",
+  "gold": [
+   [
+    "samtools",
+    "performs",
+    "coordinate-sorting of aligned reads"
+   ],
+   [
+    "GATK MarkDuplicatesSpark",
+    "performs",
+    "duplicate marking"
+   ]
+  ]
+ },
+ {
+  "id": "S02",
+  "doc": "sarek_vc_interp",
+  "sentence": "In order to search for the variant we can type its coordinates in the search field and choose the proposed variant corresponding to the exact position we need.",
+  "gold": []
+ },
+ {
+  "id": "S03",
+  "doc": "rare_readme",
+  "sentence": "Note that it is possible to include/exclude certain tools or steps.",
+  "gold": []
+ },
+ {
+  "id": "S04",
+  "doc": "rare_output",
+  "sentence": "The aligned reads are coordinate sorted with samtools sort.",
+  "gold": [
+   [
+    "samtools sort",
+    "performs",
+    "coordinate sorting of aligned reads"
+   ]
+  ]
+ },
+ {
+  "id": "S05",
+  "doc": "bcftools_readme",
+  "sentence": "It contains all the vcf* commands which previously lived in the htslib repository (such as vcfcheck, vcfmerge, vcfisec, etc.) and the samtools BCF calling from bcftools subdirectory of samtools.",
+  "gold": [
+   [
+    "It",
+    "contains",
+    "vcf* commands"
+   ]
+  ]
+ },
+ {
+  "id": "S06",
+  "doc": "gatk_mutect2_wdl",
+  "sentence": "Default supported datasources include GENCODE (gene information and protein change prediction), dbSNP, gnomAD, and COSMIC (among others).",
+  "gold": [
+   [
+    "Default supported datasources",
+    "contains",
+    "GENCODE"
+   ],
+   [
+    "Default supported datasources",
+    "contains",
+    "dbSNP"
+   ],
+   [
+    "Default supported datasources",
+    "contains",
+    "gnomAD"
+   ],
+   [
+    "Default supported datasources",
+    "contains",
+    "COSMIC"
+   ]
+  ]
+ },
+ {
+  "id": "S07",
+  "doc": "rare_citations",
+  "sentence": "MultiQC: summarize analysis results for multiple tools and samples in a single report.",
+  "gold": [
+   [
+    "MultiQC",
+    "performs",
+    "summarizing analysis results for multiple tools and samples"
+   ]
+  ]
+ },
+ {
+  "id": "S08",
+  "doc": "bcftools_manual",
+  "sentence": "In the case of records with the same position, only the first will be considered and appear on output.",
+  "gold": []
+ },
+ {
+  "id": "S09",
+  "doc": "gatk_mutect2_wdl",
+  "sentence": "Funcotator (**FUNC**tional ann**OTATOR**) is a functional annotation tool in the core GATK toolset and was designed to handle both somatic and germline use cases.",
+  "gold": [
+   [
+    "Funcotator",
+    "is_a",
+    "functional annotation tool"
+   ],
+   [
+    "core GATK toolset",
+    "contains",
+    "Funcotator"
+   ]
+  ]
+ },
+ {
+  "id": "S10",
+  "doc": "gatk_funcotator_wdl",
+  "sentence": "Boolean compress - Whether to compress the resulting output file.",
+  "gold": []
+ },
+ {
+  "id": "S11",
+  "doc": "sarek_vc_sarek",
+  "sentence": "As we mentioned earlier, we will be using the VQSR filtering tool once the variants have been called.",
+  "gold": [
+   [
+    "VQSR",
+    "is_a",
+    "filtering tool"
+   ]
+  ]
+ },
+ {
+  "id": "S12",
+  "doc": "gatk_readme",
+  "sentence": "This repository contains the next generation of the Genome Analysis Toolkit (GATK).",
+  "gold": [
+   [
+    "This repository",
+    "contains",
+    "next generation of the Genome Analysis Toolkit (GATK)"
+   ]
+  ]
+ },
+ {
+  "id": "S13",
+  "doc": "sarek_vc_theory",
+  "sentence": "Each read will support the presence of an allele identical to the reference, or a different one (alternative allele), and the variant calling algorithm will measure the weighted support for each allele.",
+  "gold": [
+   [
+    "Each read",
+    "supports",
+    "presence of an allele"
+   ]
+  ]
+ },
+ {
+  "id": "S14",
+  "doc": "bcftools_manual",
+  "sentence": "Some tools may require tabix- or CSI-indexed files.",
+  "gold": [
+   [
+    "Some tools",
+    "uses",
+    "tabix- or CSI-indexed files"
+   ]
+  ]
+ },
+ {
+  "id": "S15",
+  "doc": "gatk_docker",
+  "sentence": "The GATK4 docker image uses this one (``FROM``) - gatk4 -- the official docker image for GATK4.",
+  "gold": [
+   [
+    "GATK4 docker image",
+    "uses",
+    "this one"
+   ],
+   [
+    "gatk4",
+    "is_a",
+    "official docker image for GATK4"
+   ]
+  ]
+ },
+ {
+  "id": "S16",
+  "doc": "sarek_readme",
+  "sentence": "It uses Docker/Singularity containers making installation trivial and results highly reproducible.",
+  "gold": [
+   [
+    "It",
+    "uses",
+    "Docker/Singularity containers"
+   ]
+  ]
+ },
+ {
+  "id": "S17",
+  "doc": "sarek_vc_theory",
+  "sentence": "When these measurements however are not independent, the raw data might provide a biased support towards a specific allele.",
+  "gold": []
+ },
+ {
+  "id": "S18",
+  "doc": "sarek_usage",
+  "sentence": "Sarek contains support for some of the functions in Sentieon.",
+  "gold": [
+   [
+    "Sarek",
+    "supports",
+    "some of the functions in Sentieon"
+   ]
+  ]
+ },
+ {
+  "id": "S19",
+  "doc": "gatk_readme",
+  "sentence": "In a cluster scenario, your input and output files reside on HDFS, and Spark will run in a distributed fashion on the cluster.",
+  "gold": []
+ },
+ {
+  "id": "S20",
+  "doc": "gatk_pathseq_wdl",
+  "sentence": "PathSeq reference files are available in the GATK Resource Bundle at `gs://gatk-best-practices/pathseq`.",
+  "gold": [
+   [
+    "GATK Resource Bundle",
+    "contains",
+    "PathSeq reference files"
+   ]
+  ]
+ },
+ {
+  "id": "S21",
+  "doc": "bcftools_manual",
+  "sentence": "Create intersection and complements of two sets saving the output in dir/* ---- bcftools isec -p dir A.vcf.gz B.vcf.gz ----",
+  "gold": [
+   [
+    "bcftools isec",
+    "performs",
+    "intersection and complements of two sets"
+   ]
+  ]
+ },
+ {
+  "id": "S22",
+  "doc": "gatk_cnv_germline",
+  "sentence": "Note that lowering disk and memory too much will eventually lead to the workflow failing.",
+  "gold": []
+ },
+ {
+  "id": "S23",
+  "doc": "gatk_funco_tutorial",
+  "sentence": "These files contain a table of data that can be matched to a variant by _gene name_, _transcript ID_, or _genome position_.",
+  "gold": [
+   [
+    "These files",
+    "contains",
+    "table of data"
+   ]
+  ]
+ },
+ {
+  "id": "S24",
+  "doc": "rare_output",
+  "sentence": "Aligned reads are then coordinate sorted using Sentieon's sort utility.",
+  "gold": [
+   [
+    "Sentieon's sort utility",
+    "performs",
+    "coordinate sorting of aligned reads"
+   ]
+  ]
+ },
+ {
+  "id": "S25",
+  "doc": "rare_output",
+  "sentence": "The files generated are ready to be used with REViewer.",
+  "gold": [
+   [
+    "REViewer",
+    "uses",
+    "files generated"
+   ]
+  ]
+ },
+ {
+  "id": "S26",
+  "doc": "sarek_vc_theory",
+  "sentence": "A Yates correction is applied to this, to avoid either dividing by 0 or dealing with small counts.",
+  "gold": []
+ },
+ {
+  "id": "S27",
+  "doc": "sarek_usage",
+  "sentence": "Varlociraptor allows the usage of different scenario files, a few examples can be found in the scenario catalog.",
+  "gold": [
+   [
+    "Varlociraptor",
+    "supports",
+    "different scenario files"
+   ]
+  ]
+ },
+ {
+  "id": "S28",
+  "doc": "gatk_mutect2_wdl",
+  "sentence": "By default the M2 WDL runs Funcotator for functional annotation and produce a TCGA MAF from the M2 VCF.",
+  "gold": [
+   [
+    "M2 WDL",
+    "uses",
+    "Funcotator"
+   ],
+   [
+    "M2 WDL",
+    "produces",
+    "TCGA MAF"
+   ]
+  ]
+ },
+ {
+  "id": "S29",
+  "doc": "gatk_funco_refdiff",
+  "sentence": "Anecdotally the changes are for bases for which there was low confidence.",
+  "gold": []
+ },
+ {
+  "id": "S30",
+  "doc": "gatk_funcotator_wdl",
+  "sentence": "File variant_vcf_to_funcotate - Variant Context File (VCF) containing the variants to annotate.",
+  "gold": [
+   [
+    "variant_vcf_to_funcotate",
+    "contains",
+    "variants to annotate"
+   ]
+  ]
+ },
+ {
+  "id": "S31",
+  "doc": "sarek_vc_theory",
+  "sentence": "This approach is mostly useful when calling a few samples and enough data are not available for more sophisticated solutions.",
+  "gold": []
+ },
+ {
+  "id": "S32",
+  "doc": "sarek_readme",
+  "sentence": "The Nextflow DSL2 implementation of this pipeline uses one container per process which makes it much easier to maintain and update software dependencies.",
+  "gold": [
+   [
+    "pipeline",
+    "uses",
+    "one container per process"
+   ]
+  ]
+ },
+ {
+  "id": "S33",
+  "doc": "gatk_readme",
+  "sentence": "GATK4 can run on any Spark cluster, such as an on-premise Hadoop cluster with HDFS storage and the Spark runtime, as well as on the cloud using Google Dataproc.",
+  "gold": [
+   [
+    "GATK4",
+    "supports",
+    "Spark cluster"
+   ],
+   [
+    "GATK4",
+    "supports",
+    "Google Dataproc"
+   ]
+  ]
+ },
+ {
+  "id": "S34",
+  "doc": "sarek_output",
+  "sentence": "Next, the gVCFs are consolidated from multiple samples into a GenomicsDB datastore.",
+  "gold": [
+   [
+    "GenomicsDB datastore",
+    "contains",
+    "gVCFs"
+   ]
+  ]
+ },
+ {
+  "id": "S35",
+  "doc": "rare_output",
+  "sentence": "The pipeline performs variant calling using Sentieon DNAscope with a machine learning model.",
+  "gold": [
+   [
+    "pipeline",
+    "performs",
+    "variant calling"
+   ],
+   [
+    "pipeline",
+    "uses",
+    "Sentieon DNAscope"
+   ],
+   [
+    "Sentieon DNAscope",
+    "uses",
+    "machine learning model"
+   ]
+  ]
+ },
+ {
+  "id": "S36",
+  "doc": "sarek_readme",
+  "sentence": "The pipeline is built using Nextflow, a workflow tool to run tasks across multiple compute infrastructures in a very portable manner.",
+  "gold": [
+   [
+    "The pipeline",
+    "uses",
+    "Nextflow"
+   ],
+   [
+    "Nextflow",
+    "is_a",
+    "workflow tool"
+   ]
+  ]
+ },
+ {
+  "id": "S37",
+  "doc": "sarek_vc_intro",
+  "sentence": "These pages are a tutorial workshop for the Nextflow pipeline nf-core/sarek.",
+  "gold": [
+   [
+    "These pages",
+    "is_a",
+    "tutorial workshop"
+   ]
+  ]
+ },
+ {
+  "id": "S38",
+  "doc": "gatk_funcotator_wdl",
+  "sentence": "File? data_sources_tar_gz - Path to tar.gz containing the data sources for Funcotator to create annotations.",
+  "gold": [
+   [
+    "tar.gz",
+    "contains",
+    "data sources for Funcotator"
+   ]
+  ]
+ },
+ {
+  "id": "S39",
+  "doc": "rare_output",
+  "sentence": "The output files are not published in the output folder, and is passed to VEP for further annotation.",
+  "gold": [
+   [
+    "VEP",
+    "uses",
+    "output files"
+   ]
+  ]
+ },
+ {
+  "id": "S40",
+  "doc": "gatk_mutect2_wdl",
+  "sentence": "Funcotator allows the user to add their own annotations to variants based on a set of data sources.",
+  "gold": [
+   [
+    "Funcotator",
+    "supports",
+    "user's own annotations"
+   ],
+   [
+    "Funcotator",
+    "uses",
+    "set of data sources"
+   ]
+  ]
+ },
+ {
+  "id": "S41",
+  "doc": "sarek_output",
+  "sentence": "If Strelka is used for somatic variant calling and Manta is also specified in tools, the output candidate indels from Manta are used according to Strelka Best Practices.",
+  "gold": [
+   [
+    "Strelka",
+    "performs",
+    "somatic variant calling"
+   ],
+   [
+    "Strelka",
+    "uses",
+    "candidate indels from Manta"
+   ],
+   [
+    "Manta",
+    "produces",
+    "candidate indels"
+   ]
+  ]
+ },
+ {
+  "id": "S42",
+  "doc": "gatk_funco_tutorial",
+  "sentence": "Due to the Gencode data source being published by UCSC, the data sources all use the hg19 reference for hg19 data (as opposed to b37).",
+  "gold": [
+   [
+    "data sources",
+    "uses",
+    "hg19 reference"
+   ]
+  ]
+ },
+ {
+  "id": "S43",
+  "doc": "sarek_usage",
+  "sentence": "Unique Molecular Identifiers (UMIs) are used to identify which reads came from the same original DNA molecule prior to any amplification steps.",
+  "gold": [
+   [
+    "UMIs",
+    "performs",
+    "identification of reads from the same original DNA molecule"
+   ]
+  ]
+ },
+ {
+  "id": "S44",
+  "doc": "rare_usage",
+  "sentence": "Research variants contain all the variants, while candidate variants are a subset of research variants and are associated with candidate genes.",
+  "gold": [
+   [
+    "Research variants",
+    "contains",
+    "all the variants"
+   ],
+   [
+    "Research variants",
+    "contains",
+    "candidate variants"
+   ]
+  ]
+ },
+ {
+  "id": "S45",
+  "doc": "sarek_output",
+  "sentence": "BBSplit is a tool that bins reads by mapping to multiple references simultaneously, using BBMap.",
+  "gold": [
+   [
+    "BBSplit",
+    "is_a",
+    "tool"
+   ],
+   [
+    "BBSplit",
+    "performs",
+    "binning reads"
+   ],
+   [
+    "BBSplit",
+    "uses",
+    "BBMap"
+   ]
+  ]
+ },
+ {
+  "id": "S46",
+  "doc": "gatk_funco_tutorial",
+  "sentence": "Each data source can be customized to annotate a variant based on several matching criteria.",
+  "gold": []
+ },
+ {
+  "id": "S47",
+  "doc": "gatk_docker",
+  "sentence": "This is the image where the actual GATK4 resides.",
+  "gold": [
+   [
+    "image",
+    "contains",
+    "GATK4"
+   ]
+  ]
+ },
+ {
+  "id": "S48",
+  "doc": "sarek_usage",
+  "sentence": "When using default parameters only, sarek runs preprocessing and `Strelka`.",
+  "gold": [
+   [
+    "sarek",
+    "performs",
+    "preprocessing"
+   ],
+   [
+    "sarek",
+    "uses",
+    "Strelka"
+   ]
+  ]
+ },
+ {
+  "id": "S49",
+  "doc": "sarek_usage",
+  "sentence": "Annotation-cache is an open AWS registry resource that stores a mirror of some cache files on AWS S3 which can be used with Sarek.",
+  "gold": [
+   [
+    "Annotation-cache",
+    "is_a",
+    "open AWS registry resource"
+   ],
+   [
+    "Annotation-cache",
+    "contains",
+    "mirror of some cache files"
+   ],
+   [
+    "Annotation-cache",
+    "supports",
+    "Sarek"
+   ]
+  ]
+ },
+ {
+  "id": "S50",
+  "doc": "gatk_docker",
+  "sentence": "This repo contains the scripts for creating and pushing two docker images: - gatkbase -- a basic docker image that we do not expect to change very often.",
+  "gold": [
+   [
+    "This repo",
+    "contains",
+    "scripts for creating and pushing two docker images"
+   ],
+   [
+    "gatkbase",
+    "is_a",
+    "basic docker image"
+   ]
+  ]
+ }
+]

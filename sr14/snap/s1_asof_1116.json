@@ -1,0 +1,117 @@
+{
+ "as_of": "2026-11-16",
+ "n_chunks": 688,
+ "n_docs": 33,
+ "n_refs": 5642,
+ "n_graph_rels": 757,
+ "median_age_days": 22,
+ "metrics": {
+  "M1": 0.9956395348837209,
+  "M2": 1.0,
+  "M3": 0.9811046511627907,
+  "M4": 1.0,
+  "M5": 0.696969696969697,
+  "M6": 1.0,
+  "M7": 0.8947368421052632,
+  "M8": 0.35174418604651164
+ },
+ "defects": {
+  "M1": [
+   "bcftools_readme#h000",
+   "gatk_readme#h000",
+   "gatk_docker#h000"
+  ],
+  "M2": [],
+  "M3": [
+   [
+    "sarek_usage#h018",
+    "rare_usage#h031"
+   ],
+   [
+    "sarek_usage#h020",
+    "rare_usage#h033"
+   ],
+   [
+    "sarek_usage#h022",
+    "sarek_usage#h027"
+   ],
+   [
+    "sarek_usage#h022",
+    "rare_usage#h035"
+   ],
+   [
+    "sarek_usage#h023",
+    "sarek_usage#h028"
+   ],
+   [
+    "sarek_usage#h023",
+    "rare_usage#h036"
+   ],
+   [
+    "sarek_usage#h024",
+    "sarek_usage#h029"
+   ],
+   [
+    "sarek_usage#h024",
+    "rare_usage#h037"
+   ],
+   [
+    "sarek_usage#h025",
+    "rare_usage#h039"
+   ],
+   [
+    "sarek_usage#h027",
+    "rare_usage#h035"
+   ]
+  ],
+  "M4": [],
+  "M5": [
+   "gatk_readme",
+   "gatk_mutect2_wdl",
+   "gatk_cnv_germline",
+   "gatk_cnv_somatic",
+   "gatk_funcotator_wdl",
+   "gatk_pathseq_wdl",
+   "gatk_docker",
+   "gatk_funco_tutorial",
+   "gatk_funco_spec",
+   "gatk_funco_refdiff"
+  ]
+ },
+ "defect_counts": {
+  "M1": 3,
+  "M2": 0,
+  "M3": 16,
+  "M4": 0,
+  "M5": 10
+ },
+ "runs": {
+  "A": {
+   "date": "2026-10-31",
+   "faithfulness": 0.9888888888888889,
+   "claims": 90,
+   "context_recall": 0.9722222222222222,
+   "gold": 36,
+   "n": 34,
+   "utilisation_cum": 0.17732558139534885
+  },
+  "B": {
+   "date": "2026-11-01",
+   "faithfulness": 0.9782608695652174,
+   "claims": 92,
+   "context_recall": 0.9722222222222222,
+   "gold": 36,
+   "n": 34,
+   "utilisation_cum": 0.2703488372093023
+  },
+  "SR11": {
+   "date": "2026-11-11",
+   "faithfulness": 1.0,
+   "claims": 54,
+   "context_recall": 0.8947368421052632,
+   "gold": 19,
+   "n": 20,
+   "utilisation_cum": 0.35174418604651164
+  }
+ }
+}

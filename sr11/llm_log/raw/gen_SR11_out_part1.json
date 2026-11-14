@@ -1,0 +1,42 @@
+[
+  {
+    "id": "SR11-001",
+    "text": "STATUS: ANSWER\nTwo GPU-accelerated germline callers from NVIDIA Parabricks are supported: Parabricks DeepVariant and Parabricks HaplotypeCaller [sarek_output#h034][sarek_output#h035]. Both are experimental additions to the pipeline [sarek_usage#h010].\nThe support table lists these callers against several input types, but its column headers are not included in the provided sources, so I cannot state for which input types each caller is supported [sarek_usage#h037]."
+  },
+  {
+    "id": "SR11-002",
+    "text": "STATUS: ANSWER\nThe context covers two pipelines, each with its own Sentieon-based setup.\nSarek (Sentieon BWA mem, which is part of a proprietary package): the alignment files are not published by default. Add --save_mapped to save the sorted CRAM and its index under {outdir}/preprocessing/mapped/<sample>/. Add --save_output_as_bam together with --save_mapped to save BAM instead [sarek_output#h013].\nraredisease (Sentieon Dedup): alignment files are published as BAM by default. Use --save_all_mapped_as_cram for the full alignment as CRAM, or --save_noalt_mapped_as_cram for the alt-filtered CRAM, which requires --exclude_alt [rare_output#h006]."
+  },
+  {
+    "id": "SR11-003",
+    "text": "STATUS: ANSWER\nUse bcftools norm with the -g (--gff-annot) option and a GFF file. When a GFF file is given, bcftools follows the HGVS 3' rule and right-aligns variants in transcripts on the forward strand [bcftools_manual#h092]. For overlapping transcripts, the default is to left-align the variant [bcftools_manual#h092]. The GFF3 format details are referenced to the bcftools csq section, which is not included in the provided sources [bcftools_manual#h092]."
+  },
+  {
+    "id": "SR11-004",
+    "text": "STATUS: ANSWER\nUse the -R (--regions-file) option with a tab-delimited file. The file can list positions as two columns (CHROM, POS) or intervals as three columns (CHROM, BEG, END), but not both in the same file. Positions are 1-based and inclusive [bcftools_manual#h007]. If the file has a .bed or .bed.gz suffix, it is read as BED instead, with 0-based, half-open coordinates [bcftools_manual#h007]. The option requires indexed VCF/BCF files and cannot be combined with -r [bcftools_manual#h007]."
+  },
+  {
+    "id": "SR11-005",
+    "text": "STATUS: ANSWER\nThe whole-genome and chromosome Y QC files are intervals_wgs and intervals_y. They are Picard-style interval list files covering the entire genome or only chromosome Y, and they are mandatory for the QC stats step [rare_usage#h014]. A version for GRCh37 and GRCh38 is supplied in the pipeline assets, and they are not needed when using Sentieon [rare_usage#h014].\nThe provided sources do not describe how to pass extra arguments to a tool that the pipeline does not expose by default, so that part is not covered."
+  },
+  {
+    "id": "SR11-006",
+    "text": "STATUS: ANSWER\nBase quality score recalibration should be turned off when the reads are UMI tagged or when DragMap is used as the mapper [sarek_output#h017]. It is also not needed for every tool combination in Sarek [sarek_output#h017].\nThe Control-FREEC file that lists beta allele frequencies is the BAF text file: <tumorsample>_BAF.txt for tumor-only samples, and <tumorsample_vs_normalsample>.mpileup.gz_BAF.txt for tumor/normal pairs. It contains the beta allele frequency for each possibly heterozygous SNP position [sarek_output#h049]."
+  },
+  {
+    "id": "SR11-007",
+    "text": "STATUS: ANSWER\nSequencing QC and trimming use FastQC and fastp, and trimming is enabled by --trim_fastq [sarek_readme#h001].\nThe provided sources do not contain a DOI for citing a specific version of the pipeline. The citation list gives papers for individual tools only [sarek_citations#h003]."
+  },
+  {
+    "id": "SR11-008",
+    "text": "STATUS: ANSWER\nDeepVariant is a variant caller based on deep learning. It takes aligned reads, produces pileup image tensors from them, classifies each tensor with a convolutional neural network, and reports the results in a standard VCF or gVCF file [rare_output#h015].\nIts calls are joint genotyped with GLnexus and then normalized with bcftools norm [rare_output#h015]. By default, only the normalized VCF files are placed in the output folder [rare_output#h015]. In a separate mitochondrial analysis, mitochondrial calls are filtered from the normalized VCFs with GATK SelectVariants before they are published [rare_output#h015].\nIn Sarek, DeepVariant results for normal samples are written to {outdir}/variant_calling/deepvariant/<sample>/ as VCF and gVCF files with tabix indexes [sarek_output#h027]."
+  },
+  {
+    "id": "SR11-009",
+    "text": "STATUS: ANSWER\nFor SPARQL queries, the store is pyoxigraph: a local, persistent store with named graphs tbox, abox, inferred and links. Queries run over the union of these graphs [int_sparql#h000].\nThe time was measured as the median of 5 runs on a local machine. The data set is small, so the absolute numbers say little [int_sparql#h000]."
+  },
+  {
+    "id": "SR11-010",
+    "text": "STATUS: NO_ANSWER\nThe provided sources do not contain any information about metformin or its dosing."
+  }
+]

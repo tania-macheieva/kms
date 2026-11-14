@@ -1,0 +1,50 @@
+erDiagram
+  FACT_RAG_ANSWER {
+    smallint run_key PK,FK
+    int test_key PK,FK
+    int date_key FK
+    smallint role_key FK
+    smallint outcome_key FK
+    int in_tokens "additive"
+    int out_tokens "additive"
+    double retrieve_ms "additive"
+    double graph_ms "additive"
+    smallint n_cited "additive"
+    smallint n_invalid "additive"
+    smallint uncited_sent "additive"
+    smallint claims_total "additive"
+    smallint claims_supported "additive"
+    smallint gold_total "additive"
+    smallint gold_hit "additive"
+  }
+  DIM_RUN { smallint run_key PK
+    string run_label
+    string suite
+    bool reranker_on
+    smallint top_k
+    string generator_model }
+  DIM_TEST { int test_key PK
+    string suite
+    string test_id
+    string category_group
+    string category
+    string subtype
+    string language_code
+    date valid_from "SCD2" }
+  DIM_DATE { int date_key PK
+    date full_date
+    int year_num
+    int quarter_num
+    int month_num
+    int iso_week }
+  DIM_ROLE { smallint role_key PK
+    string role_code }
+  DIM_OUTCOME { smallint outcome_key PK
+    string expected_status
+    string actual_status
+    bool is_match }
+  DIM_RUN ||--o{ FACT_RAG_ANSWER : run_key
+  DIM_TEST ||--o{ FACT_RAG_ANSWER : test_key
+  DIM_DATE ||--o{ FACT_RAG_ANSWER : "date_key (дата прогону)"
+  DIM_ROLE ||--o{ FACT_RAG_ANSWER : role_key
+  DIM_OUTCOME ||--o{ FACT_RAG_ANSWER : outcome_key
